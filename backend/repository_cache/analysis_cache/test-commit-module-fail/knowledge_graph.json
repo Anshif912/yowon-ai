@@ -1,0 +1,253 @@
+{
+  "nodes": [
+    {
+      "id": "repo::SentinelProject",
+      "label": "SentinelProject",
+      "type": "repository",
+      "metadata": {
+        "description": "Root Repository Node",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::presentation",
+      "label": "Presentation Layer",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Presentation Layer",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::api",
+      "label": "API Gateways",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: API Gateways",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::controllers",
+      "label": "Route Controllers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Route Controllers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::services",
+      "label": "Business Services",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Business Services",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::repositories",
+      "label": "Data Repositories",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Data Repositories",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::models",
+      "label": "ORM Models",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: ORM Models",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::database",
+      "label": "Relational Database",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Relational Database",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::caching",
+      "label": "Cache store",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Cache store",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::workers",
+      "label": "Workers & Background Tasks",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Workers & Background Tasks",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::schedulers",
+      "label": "Schedulers & Cron",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Schedulers & Cron",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::ai_agents",
+      "label": "AI Agent System",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: AI Agent System",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::prompt_manager",
+      "label": "Prompt templates",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Prompt templates",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::memory",
+      "label": "Agent Memory & VectorDB",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Agent Memory & VectorDB",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::llm_providers",
+      "label": "LLM Providers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: LLM Providers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::deployment",
+      "label": "CI/CD & DevOps",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: CI/CD & DevOps",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::testing",
+      "label": "Testing Suite",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Testing Suite",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::configuration",
+      "label": "Configuration & Env",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Configuration & Env",
+        "level": 1
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::presentation",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::api",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::controllers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::services",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::repositories",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::models",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::database",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::caching",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::workers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::schedulers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::ai_agents",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::prompt_manager",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::memory",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::llm_providers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::deployment",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::testing",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::SentinelProject",
+      "target": "sub::configuration",
+      "relation": "CONTAINS"
+    }
+  ]
+}

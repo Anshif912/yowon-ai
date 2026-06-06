@@ -1,0 +1,382 @@
+{
+  "nodes": [
+    {
+      "id": "presentation",
+      "label": "Presentation",
+      "type": "layer",
+      "metadata": {
+        "description": "Client-facing UI components, layouts, and web templates",
+        "technologies": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ],
+        "files": [
+          "backend/intelligence/models.py"
+        ],
+        "purpose": "Client-facing UI components, layouts, and web templates",
+        "responsibilities": [
+          "Rendering layouts",
+          "Managing user interaction",
+          "Local UI state"
+        ],
+        "inputs": "User mouse and keyboard actions",
+        "outputs": "HTML DOM layouts and browser logs",
+        "consumers": [
+          "End User / Browser"
+        ],
+        "providers": [
+          "API Gateways"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Presentation.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "type": "layer",
+      "metadata": {
+        "description": "REST/GraphQL endpoints, API routes, and gateways",
+        "technologies": [],
+        "files": [],
+        "purpose": "REST/GraphQL endpoints, API routes, and gateways",
+        "responsibilities": [
+          "Routing HTTP endpoints",
+          "Gateway mapping",
+          "Request validations"
+        ],
+        "inputs": "HTTP REST requests",
+        "outputs": "HTTP JSON responses",
+        "consumers": [
+          "Presentation Layer"
+        ],
+        "providers": [
+          "Controllers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing API.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "controllers",
+      "label": "Controllers",
+      "type": "layer",
+      "metadata": {
+        "description": "Request coordinators, route controllers, and input handlers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Request coordinators, route controllers, and input handlers",
+        "responsibilities": [
+          "Orchestrating controllers",
+          "Mapping route params",
+          "Session handlers"
+        ],
+        "inputs": "Parsed route parameter dictionaries",
+        "outputs": "Service request parameter mappings",
+        "consumers": [
+          "API Gateways"
+        ],
+        "providers": [
+          "Services"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Controllers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "type": "layer",
+      "metadata": {
+        "description": "Core business logic modules and external API wrappers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Core business logic modules and external API wrappers",
+        "responsibilities": [
+          "Executing business service calculations",
+          "API wrappers"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Controllers"
+        ],
+        "providers": [
+          "Repositories & LLM Providers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Services.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "repositories",
+      "label": "Repositories",
+      "type": "layer",
+      "metadata": {
+        "description": "Data access abstraction interfaces and CRUD layers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Data access abstraction interfaces and CRUD layers",
+        "responsibilities": [
+          "Executing database query abstractions",
+          "Data mapper CRUD"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "Database & Models"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Repositories.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "models",
+      "label": "Models",
+      "type": "layer",
+      "metadata": {
+        "description": "ORM models, database schemas, and Pydantic validators",
+        "technologies": [
+          "SQLAlchemy"
+        ],
+        "files": [
+          "backend/intelligence/models.py"
+        ],
+        "purpose": "ORM models, database schemas, and Pydantic validators",
+        "responsibilities": [
+          "Defining database data structures",
+          "Type declarations"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Repositories & Services"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Models.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "type": "layer",
+      "metadata": {
+        "description": "Raw SQL connectors, migrations, and database scripts",
+        "technologies": [],
+        "files": [],
+        "purpose": "Raw SQL connectors, migrations, and database scripts",
+        "responsibilities": [
+          "Database migrations",
+          "Raw connection pools"
+        ],
+        "inputs": "SQL dialect command texts",
+        "outputs": "Raw row tuples and transaction status",
+        "consumers": [
+          "Repositories"
+        ],
+        "providers": [
+          "PostgreSQL / SQLite Engines"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Database.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "testing",
+      "label": "Testing",
+      "type": "layer",
+      "metadata": {
+        "description": "Unit, integration, and end-to-end test suites",
+        "technologies": [
+          "Pytest"
+        ],
+        "files": [
+          "backend/intelligence/models.py"
+        ],
+        "purpose": "Unit, integration, and end-to-end test suites",
+        "responsibilities": [
+          "Executing custom business logic"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Testing.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "ai_agents",
+      "label": "AI Agents",
+      "type": "layer",
+      "metadata": {
+        "description": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "technologies": [
+          "CrewAI"
+        ],
+        "files": [
+          "backend/test_crew.py",
+          "backend/tests/test_crewai_ollama_integration.py",
+          "backend/scratch/test_llm.py",
+          "backend/test_task.py"
+        ],
+        "purpose": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "responsibilities": [
+          "Orchestrating AI agents teams",
+          "Task registry executions"
+        ],
+        "inputs": "Agent context prompts and schemas",
+        "outputs": "Agent execution task records",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "LLM Providers & Memory DBs"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing AI Agents.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "deployment",
+      "label": "Deployment",
+      "type": "layer",
+      "metadata": {
+        "description": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "technologies": [
+          "Docker"
+        ],
+        "files": [
+          "backend/intelligence/models.py",
+          "docker-compose.yml"
+        ],
+        "purpose": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "responsibilities": [
+          "Docker container configs",
+          "CI/CD execution pipelines"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Deployment.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "presentation",
+      "target": "api",
+      "label": "Sends HTTP requests to",
+      "metadata": {}
+    },
+    {
+      "source": "api",
+      "target": "controllers",
+      "label": "Delegates handling to",
+      "metadata": {}
+    },
+    {
+      "source": "controllers",
+      "target": "services",
+      "label": "Calls business logic in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "repositories",
+      "label": "Accesses data via",
+      "metadata": {}
+    },
+    {
+      "source": "repositories",
+      "target": "models",
+      "label": "Maps entities through",
+      "metadata": {}
+    },
+    {
+      "source": "models",
+      "target": "database",
+      "label": "Persists schema in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "ai_agents",
+      "label": "Orchestrates AI through",
+      "metadata": {}
+    },
+    {
+      "source": "testing",
+      "target": "services",
+      "label": "Validates behavior of",
+      "metadata": {}
+    }
+  ]
+}

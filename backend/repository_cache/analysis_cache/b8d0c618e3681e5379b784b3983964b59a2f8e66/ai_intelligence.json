@@ -1,0 +1,17 @@
+{
+  "framework": "None",
+  "has_ai_agents": true,
+  "agents": [],
+  "planners": [
+    "Agent Planner"
+  ],
+  "executors": [
+    "Agent Executor"
+  ],
+  "tools": [],
+  "memory": [],
+  "llms": [],
+  "prompts": [],
+  "communication": [],
+  "orchestration": "Sequential execution pipeline"
+}

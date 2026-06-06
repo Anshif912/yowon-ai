@@ -1,0 +1,13 @@
+{
+  "architecture": 92.5,
+  "security": 85.0,
+  "testing": 55.0,
+  "maintainability": 95.8,
+  "complexity": 99.2,
+  "documentation": 95.0,
+  "deployment": 95.0,
+  "performance": 100.0,
+  "observability": 65.0,
+  "ai_readiness": 95.0,
+  "overall_health": 87.8
+}

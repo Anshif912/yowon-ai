@@ -1,0 +1,181 @@
+[
+  {
+    "id": "3b29b148-7ef9-5c93-a5c4-f672a50c7266",
+    "evidence_ids": [
+      "c3259dc594f41a72e8f51db453fe786b",
+      "9153012a8e61a25ddcc542ee358bbfe6",
+      "e9a9f24685e82fdcb9975f0bc4096579"
+    ],
+    "triggered_rule_ids": [
+      "RULE_SECRET_DB_URL"
+    ],
+    "affected_files": [
+      "backend/app/database.py",
+      "backend/app/config.py",
+      "docker-compose.yml"
+    ],
+    "title": "General recommendation",
+    "recommendation": "Review code patterns for optimal structure. Affected files: backend/app/database.py, backend/app/config.py, docker-compose.yml.",
+    "severity": "HIGH",
+    "expected_score_gain": 7.5,
+    "confidence": 0.85,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "fb6b58a2-58c0-508c-99c5-935c09e115ad",
+    "evidence_ids": [
+      "01895092a1118887a1557523197e0628"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKER_MULTI_SERVICE"
+    ],
+    "affected_files": [
+      "docker-compose.yml"
+    ],
+    "title": "Docker Compose Multi-Container Orchestration",
+    "recommendation": "Use compose depends_on rules to control container startup orders and check service healthiness. Affected files: docker-compose.yml.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.95,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "3327e84d-3c21-5b78-8a48-b2061d4c7b65",
+    "evidence_ids": [
+      "7802cf43ff4cbde2e38f1494d756076a"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKERFILE"
+    ],
+    "affected_files": [
+      "backend/app/__init__.py"
+    ],
+    "title": "Dockerfile / Container deployment recipe",
+    "recommendation": "Use multi-stage builds to reduce image size and run containers as non-root users for security. Affected files: backend/app/__init__.py.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.97,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "690d4562-6145-598f-9801-536a54db2bc3",
+    "evidence_ids": [
+      "b4a21d6787165eb4ab90ed4743e65273"
+    ],
+    "triggered_rule_ids": [
+      "RULE_PYDANTIC_MODEL"
+    ],
+    "affected_files": [
+      "backend/app/config.py"
+    ],
+    "title": "Pydantic Data validation Schema Model",
+    "recommendation": "Use Pydantic schemas for request/response serialization to ensure strict runtime type safety. Affected files: backend/app/config.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.95,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "a71d5564-8648-55e7-9a34-701a45337813",
+    "evidence_ids": [
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9",
+      "97418a28ede0f4545d18feb3c2de56d9"
+    ],
+    "triggered_rule_ids": [
+      "RULE_ENV_VAR_USAGE"
+    ],
+    "affected_files": [
+      "backend/app/config.py"
+    ],
+    "title": "Environment variable retrieval configuration",
+    "recommendation": "Centralize all env var access in a settings configuration file and validate with Pydantic. Affected files: backend/app/config.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.9000000000000002,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "d399ce89-1868-5c4b-8d98-4da3bd66f2f0",
+    "evidence_ids": [
+      "0235cb31a778ed668e8fa0b1b46d3be4"
+    ],
+    "triggered_rule_ids": [
+      "RULE_PYTHON_CODE"
+    ],
+    "affected_files": [
+      "backend/app/__init__.py"
+    ],
+    "title": "Python Backend Application Source File",
+    "recommendation": "Adhere to PEP 8 style guidelines and include function docstrings and type hints. Affected files: backend/app/__init__.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 1.0,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "fa6c273c-c8c9-5ec1-bf96-df7b7f8d7477",
+    "evidence_ids": [
+      "85fbd0eeaf61e1d172522bcee7662cd7"
+    ],
+    "triggered_rule_ids": [
+      "RULE_TYPESCRIPT_CODE"
+    ],
+    "affected_files": [
+      "backend/app/__init__.py"
+    ],
+    "title": "TypeScript Static Typing Definition File",
+    "recommendation": "Enforce strict type checking in tsconfig.json and avoid using the 'any' type. Affected files: backend/app/__init__.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 1.0,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "8f15cadb-233b-5e04-9e56-2e05f705fa8d",
+    "evidence_ids": [
+      "66c0cfe925f081184ea372a5a6834abb"
+    ],
+    "triggered_rule_ids": [
+      "RULE_REACT"
+    ],
+    "affected_files": [
+      "backend/app/__init__.py"
+    ],
+    "title": "React.js Client Framework Integration",
+    "recommendation": "Structure UI components under a components/ directory and manage state hooks predictably. Affected files: backend/app/__init__.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.99,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "f61356fc-8d6f-5a99-9894-4cf0c675df04",
+    "evidence_ids": [
+      "5d48680324c4e738fe2f1ab6cbb07178"
+    ],
+    "triggered_rule_ids": [
+      "RULE_TAILWIND"
+    ],
+    "affected_files": [
+      "backend/app/__init__.py"
+    ],
+    "title": "Tailwind Utility-First CSS Framework Configurations",
+    "recommendation": "Keep tailwind configs customized and purge unused styles in production configurations. Affected files: backend/app/__init__.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.99,
+    "estimated_effort": "LOW"
+  }
+]

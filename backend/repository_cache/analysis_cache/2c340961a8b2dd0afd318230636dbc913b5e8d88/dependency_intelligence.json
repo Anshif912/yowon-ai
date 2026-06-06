@@ -1,0 +1,1362 @@
+{
+  "module_graph": {
+    "backend/intelligence/models.py": [
+      "backend/analysis/code_intelligence.py"
+    ],
+    "backend/run_tests.py": [
+      "backend/validation/__init__.py",
+      "backend/reports/report_generator.py",
+      "backend/data/evaluation_history.json"
+    ],
+    "backend/scratch/run_ri_test.py": [
+      "backend/logging_config.py",
+      "backend/database.py",
+      "backend/eval_context/__init__.py",
+      "backend/intelligence/repository_scan.py",
+      "backend/analysis/code_intelligence.py"
+    ],
+    "backend/scratch/test_llm.py": [
+      "backend/check_crewai_agents.py",
+      "backend/config.py"
+    ],
+    "backend/scratch/test_treesitter.py": [],
+    "backend/test.py": [
+      "backend/llm_utils.py"
+    ],
+    "backend/test_crew.py": [
+      "backend/llm_utils.py",
+      "backend/check_crewai_agents.py"
+    ],
+    "backend/test_direct_llm.py": [
+      "backend/llm_utils.py"
+    ],
+    "backend/test_pipeline.py": [
+      "backend/check_crewai_agents.py"
+    ],
+    "backend/test_task.py": [
+      "backend/check_crewai_agents.py",
+      "backend/agents/council_agents.py"
+    ]
+  },
+  "package_graph": {},
+  "call_graph": {
+    "backend/intelligence/models.py": [
+      "backend/analysis/code_intelligence.py"
+    ],
+    "backend/run_tests.py": [
+      "backend/validation/__init__.py",
+      "backend/reports/report_generator.py",
+      "backend/data/evaluation_history.json"
+    ],
+    "backend/scratch/run_ri_test.py": [
+      "backend/logging_config.py",
+      "backend/database.py",
+      "backend/eval_context/__init__.py",
+      "backend/intelligence/repository_scan.py",
+      "backend/analysis/code_intelligence.py"
+    ],
+    "backend/scratch/test_llm.py": [
+      "backend/check_crewai_agents.py",
+      "backend/config.py"
+    ],
+    "backend/scratch/test_treesitter.py": [],
+    "backend/test.py": [
+      "backend/llm_utils.py"
+    ],
+    "backend/test_crew.py": [
+      "backend/llm_utils.py",
+      "backend/check_crewai_agents.py"
+    ],
+    "backend/test_direct_llm.py": [
+      "backend/llm_utils.py"
+    ],
+    "backend/test_pipeline.py": [
+      "backend/check_crewai_agents.py"
+    ],
+    "backend/test_task.py": [
+      "backend/check_crewai_agents.py",
+      "backend/agents/council_agents.py"
+    ]
+  },
+  "circular_dependencies": [],
+  "coupling": {
+    ".env.example": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "DEPLOYMENT.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "artifacts/architecture_flow.pdf": {
+      "ca": 0,
+      "ce": 0
+    },
+    "artifacts/jury-desktop.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "artifacts/landing-desktop.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "artifacts/leaderboard-desktop.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "artifacts/submit-desktop.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/.env.example": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/council_agents.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/agents/forge_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/guardian_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/insight_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/showcase_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/visionary_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/agents/yowon_prime_agent.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/alembic.ini": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/analysis/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/analysis/code_intelligence.py": {
+      "ca": 2,
+      "ce": 0
+    },
+    "backend/auth/routes.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/auth/schemas.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/auth/security.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/check_crewai_agents.py": {
+      "ca": 4,
+      "ce": 0
+    },
+    "backend/config.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/config/health_weights.yaml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/context/brief_builder.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/context/slices.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/crew/crew.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/data/evaluation_history.json": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/database.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/docker-entrypoint.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/eval_context/__init__.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/eval_context/brief_builder.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/eval_context/context_slicer.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/eval_context/evaluation_context.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/eval_context/pipeline_validator.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/eval_context/prompt_registry.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/health_check.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/architecture_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/cache_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/canonical_models.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/engine_contract.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/evidence_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/exceptions.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/architecture_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/base_builder.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/call_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/dependency_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/relationship_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/graph/technology_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/health_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/intelligence_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/knowledge_graph/knowledge_graph_builder.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/knowledge_graph/knowledge_graph_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/metrics_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/models.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/intelligence/orchestrator.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/base_parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/javascript_parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/parser_registry.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/python_parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/typescript_parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/parsers/unknown_parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/recommendation_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/repository_scan.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/intelligence/ri_contract.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/security_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/semantic_index.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/symbol_indexer.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/intelligence/utils.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/llm_utils.py": {
+      "ca": 3,
+      "ce": 0
+    },
+    "backend/logging_config.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/main.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/README": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/env.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/script.py.mako": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/versions/4e457597937b_normalized_schema.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/progress.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/reports/report_generator.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/requirements-lock.txt": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/requirements.txt": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/run_tests.py": {
+      "ca": 0,
+      "ce": 3
+    },
+    "backend/scoring/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/scoring/rubrics.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/scoring/score_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/scratch/check_db.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/scratch/run_ri_test.py": {
+      "ca": 0,
+      "ce": 5
+    },
+    "backend/scratch/test_llm.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "backend/scratch/test_treesitter.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/security.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/task.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tasks/evaluation_tasks.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/test.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/test_crew.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "backend/test_direct_llm.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/test_pipeline.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/test_task.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "backend/tests/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_auth.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_cache_normalization.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_code_intelligence.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_contract_synchronization.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_crewai_ollama_integration.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_enterprise_suite.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_history.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_intelligence_hardening.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_json_utils.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_knowledge_graph.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_report_generator.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_repository_intelligence.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_repository_intelligence_graphs.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_repository_metrics.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_ri_contract.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tests/test_score_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/github_tool.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/parser.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/pdf_tool.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/ppt_tool.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/security_tool.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/tools/vector_store.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/uploads/.gitkeep": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/uploads/pdfs/.gitkeep": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/uploads/ppts/.gitkeep": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/uploads/repos/.gitkeep": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/utils/git_provider.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/utils/ranking_engine.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/utils/serialization.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/validation/__init__.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/validation/json_utils.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/validation/schemas.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/validation/verdict_schema.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-backup.ps1": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-backup.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-clean.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-compose.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-restore.ps1": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-restore.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-start.ps1": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-start.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-stop.ps1": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-stop.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-update.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docs/api_documentation.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docs/architecture.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docs/codebase_audit.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docs/workflow.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/.env.example": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/index.html": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/nginx.conf": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/package.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/postcss.config.js": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/App.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/api/api.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/assets/bg.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/ScoreRing.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/VerdictBadge.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/auth/AuthContext.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/auth/GuestRoute.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/auth/ProtectedRoute.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/AnimatedGrid.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/Galaxy.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/Galaxy.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/NeuralOverlay.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/ParticleField.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/RenderingManager.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/ScanLine.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/effects/SoftAurora.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/evaluation/AgentNetwork.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/evaluation/AgentPipelineCard.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/evaluation/EvaluationTimeline.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/evaluation/JuryChamber.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/evaluation/TerminalLog.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/ArchitectureCanvas.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/ExecutionPipeline.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/FloatingInspector.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/KnowledgeMindMap.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/MagicBento.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/MagicBento.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/graphs/TechnologyGalaxy.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/landing/AgentShowcase.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/landing/NeuralNetwork.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/AppLayout.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/AppShell.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/CommandPalette.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/Header.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/Sidebar.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/layout/Topbar.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/providers/QueryProvider.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/AIAgentsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/AgentReportsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/AnalyticsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/ArchitectureGraphPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/DNASelector.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/DashboardSection.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/DependencyGraphPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/DiagnosticsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/ErrorBoundary.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/EvidenceExplorerPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/ExecutionFlowPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/ExecutiveSummaryPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/KnowledgeGraphPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/LineSidebar.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/LineSidebar.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/MetricsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/OverviewPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RankingsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RecommendationsPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RepositoryStoryPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RepositoryTreePanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/RoadmapPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/SentinelPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/Skeletons.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/SoftwareArchitectureNavigator.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/TechnologyGraphPanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/TimelinePanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/report/queries.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/AgentConsensus.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/ConfidenceMeter.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/ExecutiveSummary.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/ReadinessGauge.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/RiskHeatmap.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/ThreatRadar.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/results/VerdictReveal.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/upload/FileDropZone.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/hooks/useEvaluationPoll.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/hooks/useEvaluationProgress.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/hooks/usePerformanceManager.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/hooks/usePerformanceMode.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/hooks/useVisibilityPause.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/index.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/main.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/DashboardPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/DemoPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/EvaluatePage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/HistoryPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/IntelligencePage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/JuryDashboardPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/LandingPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/LeaderboardPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/Login/LoginPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/ProjectsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/ReportPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/SettingsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    }
+  },
+  "instability": {
+    ".env.example": 0.0,
+    ".gitignore": 0.0,
+    "DEPLOYMENT.md": 0.0,
+    "README.md": 0.0,
+    "artifacts/architecture_flow.pdf": 0.0,
+    "artifacts/jury-desktop.png": 0.0,
+    "artifacts/landing-desktop.png": 0.0,
+    "artifacts/leaderboard-desktop.png": 0.0,
+    "artifacts/submit-desktop.png": 0.0,
+    "backend/.env.example": 0.0,
+    "backend/Dockerfile": 0.0,
+    "backend/agents/council_agents.py": 0.0,
+    "backend/agents/forge_agent.py": 0.0,
+    "backend/agents/guardian_agent.py": 0.0,
+    "backend/agents/insight_agent.py": 0.0,
+    "backend/agents/showcase_agent.py": 0.0,
+    "backend/agents/visionary_agent.py": 0.0,
+    "backend/agents/yowon_prime_agent.py": 0.0,
+    "backend/alembic.ini": 0.0,
+    "backend/analysis/__init__.py": 0.0,
+    "backend/analysis/code_intelligence.py": 0.0,
+    "backend/auth/routes.py": 0.0,
+    "backend/auth/schemas.py": 0.0,
+    "backend/auth/security.py": 0.0,
+    "backend/check_crewai_agents.py": 0.0,
+    "backend/config.py": 0.0,
+    "backend/config/health_weights.yaml": 0.0,
+    "backend/context/brief_builder.py": 0.0,
+    "backend/context/slices.py": 0.0,
+    "backend/crew/crew.py": 0.0,
+    "backend/data/evaluation_history.json": 0.0,
+    "backend/database.py": 0.0,
+    "backend/docker-entrypoint.sh": 0.0,
+    "backend/eval_context/__init__.py": 0.0,
+    "backend/eval_context/brief_builder.py": 0.0,
+    "backend/eval_context/context_slicer.py": 0.0,
+    "backend/eval_context/evaluation_context.py": 0.0,
+    "backend/eval_context/pipeline_validator.py": 0.0,
+    "backend/eval_context/prompt_registry.py": 0.0,
+    "backend/health_check.py": 0.0,
+    "backend/intelligence/__init__.py": 0.0,
+    "backend/intelligence/architecture_engine.py": 0.0,
+    "backend/intelligence/cache_engine.py": 0.0,
+    "backend/intelligence/canonical_models.py": 0.0,
+    "backend/intelligence/engine_contract.py": 0.0,
+    "backend/intelligence/evidence_engine.py": 0.0,
+    "backend/intelligence/exceptions.py": 0.0,
+    "backend/intelligence/graph/__init__.py": 0.0,
+    "backend/intelligence/graph/architecture_graph.py": 0.0,
+    "backend/intelligence/graph/base_builder.py": 0.0,
+    "backend/intelligence/graph/call_graph.py": 0.0,
+    "backend/intelligence/graph/dependency_graph.py": 0.0,
+    "backend/intelligence/graph/relationship_graph.py": 0.0,
+    "backend/intelligence/graph/technology_graph.py": 0.0,
+    "backend/intelligence/health_engine.py": 0.0,
+    "backend/intelligence/intelligence_service.py": 0.0,
+    "backend/intelligence/knowledge_graph/knowledge_graph_builder.py": 0.0,
+    "backend/intelligence/knowledge_graph/knowledge_graph_service.py": 0.0,
+    "backend/intelligence/metrics_engine.py": 0.0,
+    "backend/intelligence/models.py": 1.0,
+    "backend/intelligence/orchestrator.py": 0.0,
+    "backend/intelligence/parsers/__init__.py": 0.0,
+    "backend/intelligence/parsers/base_parser.py": 0.0,
+    "backend/intelligence/parsers/javascript_parser.py": 0.0,
+    "backend/intelligence/parsers/parser_registry.py": 0.0,
+    "backend/intelligence/parsers/python_parser.py": 0.0,
+    "backend/intelligence/parsers/typescript_parser.py": 0.0,
+    "backend/intelligence/parsers/unknown_parser.py": 0.0,
+    "backend/intelligence/recommendation_engine.py": 0.0,
+    "backend/intelligence/repository_scan.py": 0.0,
+    "backend/intelligence/ri_contract.py": 0.0,
+    "backend/intelligence/security_engine.py": 0.0,
+    "backend/intelligence/semantic_index.py": 0.0,
+    "backend/intelligence/symbol_indexer.py": 0.0,
+    "backend/intelligence/utils.py": 0.0,
+    "backend/llm_utils.py": 0.0,
+    "backend/logging_config.py": 0.0,
+    "backend/main.py": 0.0,
+    "backend/migrations/README": 0.0,
+    "backend/migrations/env.py": 0.0,
+    "backend/migrations/script.py.mako": 0.0,
+    "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py": 0.0,
+    "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py": 0.0,
+    "backend/migrations/versions/4e457597937b_normalized_schema.py": 0.0,
+    "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py": 0.0,
+    "backend/progress.py": 0.0,
+    "backend/reports/report_generator.py": 0.0,
+    "backend/requirements-lock.txt": 0.0,
+    "backend/requirements.txt": 0.0,
+    "backend/run_tests.py": 1.0,
+    "backend/scoring/__init__.py": 0.0,
+    "backend/scoring/rubrics.py": 0.0,
+    "backend/scoring/score_engine.py": 0.0,
+    "backend/scratch/check_db.py": 0.0,
+    "backend/scratch/run_ri_test.py": 1.0,
+    "backend/scratch/test_llm.py": 1.0,
+    "backend/scratch/test_treesitter.py": 0.0,
+    "backend/security.py": 0.0,
+    "backend/task.md": 0.0,
+    "backend/tasks/evaluation_tasks.py": 0.0,
+    "backend/test.py": 1.0,
+    "backend/test_crew.py": 1.0,
+    "backend/test_direct_llm.py": 1.0,
+    "backend/test_pipeline.py": 1.0,
+    "backend/test_task.py": 1.0,
+    "backend/tests/__init__.py": 0.0,
+    "backend/tests/test_auth.py": 0.0,
+    "backend/tests/test_cache_normalization.py": 0.0,
+    "backend/tests/test_code_intelligence.py": 0.0,
+    "backend/tests/test_contract_synchronization.py": 0.0,
+    "backend/tests/test_crewai_ollama_integration.py": 0.0,
+    "backend/tests/test_enterprise_suite.py": 0.0,
+    "backend/tests/test_history.py": 0.0,
+    "backend/tests/test_intelligence_hardening.py": 0.0,
+    "backend/tests/test_json_utils.py": 0.0,
+    "backend/tests/test_knowledge_graph.py": 0.0,
+    "backend/tests/test_report_generator.py": 0.0,
+    "backend/tests/test_repository_intelligence.py": 0.0,
+    "backend/tests/test_repository_intelligence_graphs.py": 0.0,
+    "backend/tests/test_repository_metrics.py": 0.0,
+    "backend/tests/test_ri_contract.py": 0.0,
+    "backend/tests/test_score_engine.py": 0.0,
+    "backend/tools/github_tool.py": 0.0,
+    "backend/tools/parser.py": 0.0,
+    "backend/tools/pdf_tool.py": 0.0,
+    "backend/tools/ppt_tool.py": 0.0,
+    "backend/tools/security_tool.py": 0.0,
+    "backend/tools/vector_store.py": 0.0,
+    "backend/uploads/.gitkeep": 0.0,
+    "backend/uploads/pdfs/.gitkeep": 0.0,
+    "backend/uploads/ppts/.gitkeep": 0.0,
+    "backend/uploads/repos/.gitkeep": 0.0,
+    "backend/utils/git_provider.py": 0.0,
+    "backend/utils/ranking_engine.py": 0.0,
+    "backend/utils/serialization.py": 0.0,
+    "backend/validation/__init__.py": 0.0,
+    "backend/validation/json_utils.py": 0.0,
+    "backend/validation/schemas.py": 0.0,
+    "backend/validation/verdict_schema.py": 0.0,
+    "docker-backup.ps1": 0.0,
+    "docker-backup.sh": 0.0,
+    "docker-clean.sh": 0.0,
+    "docker-compose.yml": 0.0,
+    "docker-restore.ps1": 0.0,
+    "docker-restore.sh": 0.0,
+    "docker-start.ps1": 0.0,
+    "docker-start.sh": 0.0,
+    "docker-stop.ps1": 0.0,
+    "docker-stop.sh": 0.0,
+    "docker-update.sh": 0.0,
+    "docs/api_documentation.md": 0.0,
+    "docs/architecture.md": 0.0,
+    "docs/codebase_audit.md": 0.0,
+    "docs/workflow.md": 0.0,
+    "frontend/.env.example": 0.0,
+    "frontend/Dockerfile": 0.0,
+    "frontend/index.html": 0.0,
+    "frontend/nginx.conf": 0.0,
+    "frontend/package.json": 0.0,
+    "frontend/postcss.config.js": 0.0,
+    "frontend/src/App.tsx": 0.0,
+    "frontend/src/api/api.ts": 0.0,
+    "frontend/src/assets/bg.png": 0.0,
+    "frontend/src/components/ScoreRing.tsx": 0.0,
+    "frontend/src/components/VerdictBadge.tsx": 0.0,
+    "frontend/src/components/auth/AuthContext.tsx": 0.0,
+    "frontend/src/components/auth/GuestRoute.tsx": 0.0,
+    "frontend/src/components/auth/ProtectedRoute.tsx": 0.0,
+    "frontend/src/components/effects/AnimatedGrid.tsx": 0.0,
+    "frontend/src/components/effects/Galaxy.css": 0.0,
+    "frontend/src/components/effects/Galaxy.tsx": 0.0,
+    "frontend/src/components/effects/NeuralOverlay.tsx": 0.0,
+    "frontend/src/components/effects/ParticleField.tsx": 0.0,
+    "frontend/src/components/effects/RenderingManager.tsx": 0.0,
+    "frontend/src/components/effects/ScanLine.tsx": 0.0,
+    "frontend/src/components/effects/SoftAurora.tsx": 0.0,
+    "frontend/src/components/evaluation/AgentNetwork.tsx": 0.0,
+    "frontend/src/components/evaluation/AgentPipelineCard.tsx": 0.0,
+    "frontend/src/components/evaluation/EvaluationTimeline.tsx": 0.0,
+    "frontend/src/components/evaluation/JuryChamber.tsx": 0.0,
+    "frontend/src/components/evaluation/TerminalLog.tsx": 0.0,
+    "frontend/src/components/graphs/ArchitectureCanvas.tsx": 0.0,
+    "frontend/src/components/graphs/ExecutionPipeline.tsx": 0.0,
+    "frontend/src/components/graphs/FloatingInspector.tsx": 0.0,
+    "frontend/src/components/graphs/KnowledgeMindMap.tsx": 0.0,
+    "frontend/src/components/graphs/MagicBento.css": 0.0,
+    "frontend/src/components/graphs/MagicBento.tsx": 0.0,
+    "frontend/src/components/graphs/TechnologyGalaxy.tsx": 0.0,
+    "frontend/src/components/landing/AgentShowcase.tsx": 0.0,
+    "frontend/src/components/landing/NeuralNetwork.tsx": 0.0,
+    "frontend/src/components/layout/AppLayout.tsx": 0.0,
+    "frontend/src/components/layout/AppShell.tsx": 0.0,
+    "frontend/src/components/layout/CommandPalette.tsx": 0.0,
+    "frontend/src/components/layout/Header.tsx": 0.0,
+    "frontend/src/components/layout/Sidebar.tsx": 0.0,
+    "frontend/src/components/layout/Topbar.tsx": 0.0,
+    "frontend/src/components/providers/QueryProvider.tsx": 0.0,
+    "frontend/src/components/report/AIAgentsPanel.tsx": 0.0,
+    "frontend/src/components/report/AgentReportsPanel.tsx": 0.0,
+    "frontend/src/components/report/AnalyticsPanel.tsx": 0.0,
+    "frontend/src/components/report/ArchitectureGraphPanel.tsx": 0.0,
+    "frontend/src/components/report/DNASelector.tsx": 0.0,
+    "frontend/src/components/report/DashboardSection.tsx": 0.0,
+    "frontend/src/components/report/DependencyGraphPanel.tsx": 0.0,
+    "frontend/src/components/report/DiagnosticsPanel.tsx": 0.0,
+    "frontend/src/components/report/ErrorBoundary.tsx": 0.0,
+    "frontend/src/components/report/EvidenceExplorerPanel.tsx": 0.0,
+    "frontend/src/components/report/ExecutionFlowPanel.tsx": 0.0,
+    "frontend/src/components/report/ExecutiveSummaryPanel.tsx": 0.0,
+    "frontend/src/components/report/KnowledgeGraphPanel.tsx": 0.0,
+    "frontend/src/components/report/LineSidebar.css": 0.0,
+    "frontend/src/components/report/LineSidebar.tsx": 0.0,
+    "frontend/src/components/report/MetricsPanel.tsx": 0.0,
+    "frontend/src/components/report/OverviewPanel.tsx": 0.0,
+    "frontend/src/components/report/RankingsPanel.tsx": 0.0,
+    "frontend/src/components/report/RecommendationsPanel.tsx": 0.0,
+    "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx": 0.0,
+    "frontend/src/components/report/RepositoryStoryPanel.tsx": 0.0,
+    "frontend/src/components/report/RepositoryTreePanel.tsx": 0.0,
+    "frontend/src/components/report/RoadmapPanel.tsx": 0.0,
+    "frontend/src/components/report/SentinelPanel.tsx": 0.0,
+    "frontend/src/components/report/Skeletons.tsx": 0.0,
+    "frontend/src/components/report/SoftwareArchitectureNavigator.tsx": 0.0,
+    "frontend/src/components/report/TechnologyGraphPanel.tsx": 0.0,
+    "frontend/src/components/report/TimelinePanel.tsx": 0.0,
+    "frontend/src/components/report/queries.ts": 0.0,
+    "frontend/src/components/results/AgentConsensus.tsx": 0.0,
+    "frontend/src/components/results/ConfidenceMeter.tsx": 0.0,
+    "frontend/src/components/results/ExecutiveSummary.tsx": 0.0,
+    "frontend/src/components/results/ReadinessGauge.tsx": 0.0,
+    "frontend/src/components/results/RiskHeatmap.tsx": 0.0,
+    "frontend/src/components/results/ThreatRadar.tsx": 0.0,
+    "frontend/src/components/results/VerdictReveal.tsx": 0.0,
+    "frontend/src/components/upload/FileDropZone.tsx": 0.0,
+    "frontend/src/hooks/useEvaluationPoll.ts": 0.0,
+    "frontend/src/hooks/useEvaluationProgress.ts": 0.0,
+    "frontend/src/hooks/usePerformanceManager.ts": 0.0,
+    "frontend/src/hooks/usePerformanceMode.ts": 0.0,
+    "frontend/src/hooks/useVisibilityPause.ts": 0.0,
+    "frontend/src/index.css": 0.0,
+    "frontend/src/main.tsx": 0.0,
+    "frontend/src/pages/DashboardPage.tsx": 0.0,
+    "frontend/src/pages/DemoPage.tsx": 0.0,
+    "frontend/src/pages/EvaluatePage.tsx": 0.0,
+    "frontend/src/pages/HistoryPage.tsx": 0.0,
+    "frontend/src/pages/IntelligencePage.tsx": 0.0,
+    "frontend/src/pages/JuryDashboardPage.tsx": 0.0,
+    "frontend/src/pages/LandingPage.tsx": 0.0,
+    "frontend/src/pages/LeaderboardPage.tsx": 0.0,
+    "frontend/src/pages/Login/LoginPage.tsx": 0.0,
+    "frontend/src/pages/ProjectsPage.tsx": 0.0,
+    "frontend/src/pages/ReportPage.tsx": 0.0,
+    "frontend/src/pages/SettingsPage.tsx": 0.0
+  },
+  "hotspots": [
+    "backend/check_crewai_agents.py",
+    "backend/llm_utils.py",
+    "backend/scratch/run_ri_test.py"
+  ],
+  "critical_chains": [
+    "backend/check_crewai_agents.py",
+    "backend/llm_utils.py",
+    "backend/scratch/run_ri_test.py"
+  ],
+  "dependency_heatmap": []
+}

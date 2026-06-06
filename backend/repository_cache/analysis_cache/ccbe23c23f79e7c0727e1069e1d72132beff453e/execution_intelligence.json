@@ -1,0 +1,160 @@
+{
+  "startup_flow": [
+    {
+      "node": "Process Init",
+      "description": "OS launches runtime process"
+    },
+    {
+      "node": "Config load",
+      "description": "Reads settings.py / .env environment variables"
+    },
+    {
+      "node": "Load main.py",
+      "description": "Loads application entry script"
+    },
+    {
+      "node": "App startup event",
+      "description": "Runs app lifecycle startup hooks and setups database connections"
+    }
+  ],
+  "request_flow": [
+    {
+      "node": "Browser Client",
+      "type": "UI",
+      "desc": "User triggers action in web browser"
+    },
+    {
+      "node": "React UI",
+      "type": "UI",
+      "desc": "React triggers async fetch request to API"
+    },
+    {
+      "node": "API Gateway",
+      "type": "API",
+      "desc": "API gateway routes request to application controller"
+    },
+    {
+      "node": "Business Services",
+      "type": "service",
+      "desc": "Executes transaction calculations and validation rules"
+    },
+    {
+      "node": "ORM Database persistence",
+      "type": "database",
+      "desc": "SQLAlchemy ORM writes records to PostgreSQL"
+    },
+    {
+      "node": "JSON Response",
+      "type": "API",
+      "desc": "Returns status payload back to user"
+    }
+  ],
+  "inference_flow": [
+    {
+      "node": "Agent trigger",
+      "desc": "User prompt kickoff call is received by Agent team executor"
+    },
+    {
+      "node": "Prompt templates formatter",
+      "desc": "Combines system role parameters with conversation context"
+    },
+    {
+      "node": "LLM API connector",
+      "desc": "Calls OpenAI GPT-4o model endpoint for reasoning decision"
+    },
+    {
+      "node": "Memory trace / Vector search",
+      "desc": "Queries Chroma Vector database for relevant context chunk"
+    },
+    {
+      "node": "Tool selector router",
+      "desc": "Invokes search tools or code interpreters if model requested it"
+    },
+    {
+      "node": "Result parse",
+      "desc": "Extracts structured JSON content to satisfy crew tasks goals"
+    }
+  ],
+  "worker_flow": [
+    {
+      "node": "Celery broker listener",
+      "desc": "RabbitMQ or Redis broker receives task task_id"
+    },
+    {
+      "node": "Celery worker daemon",
+      "desc": "Worker thread picks up task from queue for processing"
+    },
+    {
+      "node": "Execute transaction task",
+      "desc": "Imports service methods and processes task data"
+    },
+    {
+      "node": "Task completed",
+      "desc": "Saves task execution outcome to database cache"
+    }
+  ],
+  "scheduler_flow": [
+    {
+      "node": "Scheduler Trigger",
+      "desc": "Cron triggers background periodic execution timer"
+    },
+    {
+      "node": "Dispatch Job Task",
+      "desc": "Dispatches asynchronous task payload to broker execution queue"
+    }
+  ],
+  "shutdown_flow": [
+    {
+      "node": "Process SIGTERM",
+      "description": "OS requests graceful daemon shutdown"
+    },
+    {
+      "node": "Close DB pools",
+      "description": "Terminates open connections in engine pool"
+    },
+    {
+      "node": "Clean workers queue",
+      "description": "Completes active threads and shuts down process context"
+    }
+  ],
+  "critical_paths": [
+    "React -> FastAPI -> Controller -> Service -> Database -> Response",
+    "User -> CrewAI -> Agent -> Task -> OpenAI LLM -> VectorDB -> Tool -> Response"
+  ],
+  "entry_points": [
+    "backend/app/main.py",
+    "frontend-native/app/index.tsx",
+    "frontend/src/main.tsx"
+  ],
+  "exit_points": [
+    "HTTP Response payload",
+    "Database transaction commit",
+    "Celery result storage"
+  ],
+  "execution_timeline": [
+    {
+      "step": "1",
+      "event": "Bootstrap runtime and configuration setup"
+    },
+    {
+      "step": "2",
+      "event": "Setup routing map hooks"
+    },
+    {
+      "step": "3",
+      "event": "Accept HTTP Gateway requests"
+    },
+    {
+      "step": "4",
+      "event": "Route to Service handlers"
+    },
+    {
+      "step": "5",
+      "event": "Database ORM persist and commit"
+    },
+    {
+      "step": "6",
+      "event": "Return JSON response payload"
+    }
+  ]
+}

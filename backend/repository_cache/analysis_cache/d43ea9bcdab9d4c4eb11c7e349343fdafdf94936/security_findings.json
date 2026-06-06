@@ -1,0 +1,38 @@
+[
+  {
+    "type": "secret_leak",
+    "rule_id": "RULE_SECRET_DB_URL",
+    "file_path": "backend/tests/test_code_intelligence.py",
+    "line_start": 27,
+    "line_end": 27,
+    "column_start": 24,
+    "column_end": 33,
+    "description": "Potential leak of secret: db url",
+    "severity": "HIGH",
+    "confidence": 0.85
+  },
+  {
+    "type": "secret_leak",
+    "rule_id": "RULE_SECRET_DB_URL",
+    "file_path": "backend/tests/test_history.py",
+    "line_start": 32,
+    "line_end": 32,
+    "column_start": 21,
+    "column_end": 30,
+    "description": "Potential leak of secret: db url",
+    "severity": "HIGH",
+    "confidence": 0.85
+  },
+  {
+    "type": "secret_leak",
+    "rule_id": "RULE_SECRET_DB_URL",
+    "file_path": "docker-compose.yml",
+    "line_start": 13,
+    "line_end": 13,
+    "column_start": 21,
+    "column_end": 30,
+    "description": "Potential leak of secret: db url",
+    "severity": "HIGH",
+    "confidence": 0.85
+  }
+]

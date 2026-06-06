@@ -1,0 +1,11 @@
+{
+  "module_graph": {},
+  "package_graph": {},
+  "call_graph": {},
+  "circular_dependencies": [],
+  "coupling": {},
+  "instability": {},
+  "hotspots": [],
+  "critical_chains": [],
+  "dependency_heatmap": []
+}

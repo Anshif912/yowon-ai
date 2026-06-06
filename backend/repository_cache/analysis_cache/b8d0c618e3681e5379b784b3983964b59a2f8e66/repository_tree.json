@@ -1,0 +1,4185 @@
+[
+  {
+    "name": ".agents",
+    "path": ".agents",
+    "type": "dir",
+    "children": [
+      {
+        "name": "skills",
+        "path": ".agents/skills",
+        "type": "dir",
+        "children": [
+          {
+            "name": "cross-repo-testing",
+            "path": ".agents/skills/cross-repo-testing",
+            "type": "dir",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "path": ".agents/skills/cross-repo-testing/SKILL.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "047dc75e11841901",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "custom-codereview-guide.md",
+            "path": ".agents/skills/custom-codereview-guide.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "7732690104b63f38",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "upcoming-release",
+            "path": ".agents/skills/upcoming-release",
+            "type": "dir",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "path": ".agents/skills/upcoming-release/SKILL.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "76b0dd1b678d4fe7",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "update-sdk",
+            "path": ".agents/skills/update-sdk",
+            "type": "dir",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "path": ".agents/skills/update-sdk/SKILL.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4290303ed9b2dfd5",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "references",
+                "path": ".agents/skills/update-sdk/references",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "docker-image-locations.md",
+                    "path": ".agents/skills/update-sdk/references/docker-image-locations.md",
+                    "type": "file",
+                    "language": "md",
+                    "extension": ".md",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "521083bd8eba8266",
+                    "roles": {
+                      "Documentation": 0.99,
+                      "Deployment": 0.99
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "sdk-pinning-examples.md",
+                    "path": ".agents/skills/update-sdk/references/sdk-pinning-examples.md",
+                    "type": "file",
+                    "language": "md",
+                    "extension": ".md",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "752938c3dc338f1c",
+                    "roles": {
+                      "Documentation": 0.99
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": ".devcontainer",
+    "path": ".devcontainer",
+    "type": "dir",
+    "children": [
+      {
+        "name": "README.md",
+        "path": ".devcontainer/README.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 94,
+        "loc": 1,
+        "sha256": "0f9548cbce10dbde",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "devcontainer.json",
+        "path": ".devcontainer/devcontainer.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "24ad71c8613ddcf6",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "setup.sh",
+        "path": ".devcontainer/setup.sh",
+        "type": "file",
+        "language": "sh",
+        "extension": ".sh",
+        "size": 0,
+        "loc": 0,
+        "sha256": "aaf9e7764a12876c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": ".dockerignore",
+    "path": ".dockerignore",
+    "type": "file",
+    "language": "dockerignore",
+    "extension": ".dockerignore",
+    "size": 0,
+    "loc": 0,
+    "sha256": "2f754321d62f08ba",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".editorconfig",
+    "path": ".editorconfig",
+    "type": "file",
+    "language": "editorconfig",
+    "extension": ".editorconfig",
+    "size": 0,
+    "loc": 0,
+    "sha256": "0947e2727d6bad8c",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".gitattributes",
+    "path": ".gitattributes",
+    "type": "file",
+    "language": "gitattributes",
+    "extension": ".gitattributes",
+    "size": 0,
+    "loc": 0,
+    "sha256": "618cd5b83d62060b",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".github",
+    "path": ".github",
+    "type": "dir",
+    "children": [
+      {
+        "name": "ISSUE_TEMPLATE",
+        "path": ".github/ISSUE_TEMPLATE",
+        "type": "dir",
+        "children": [
+          {
+            "name": "bug_template.yml",
+            "path": ".github/ISSUE_TEMPLATE/bug_template.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "85ea04094735d835",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "config.yml",
+            "path": ".github/ISSUE_TEMPLATE/config.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "1c0d972ee49103af",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "feature_request.yml",
+            "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "c6b098646bf32c64",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "actions",
+        "path": ".github/actions",
+        "type": "dir",
+        "children": [
+          {
+            "name": "docker-image-tags",
+            "path": ".github/actions/docker-image-tags",
+            "type": "dir",
+            "children": [
+              {
+                "name": "action.yml",
+                "path": ".github/actions/docker-image-tags/action.yml",
+                "type": "file",
+                "language": "yml",
+                "extension": ".yml",
+                "size": 0,
+                "loc": 0,
+                "sha256": "51369282da7e5f79",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "docker-merge-manifest",
+            "path": ".github/actions/docker-merge-manifest",
+            "type": "dir",
+            "children": [
+              {
+                "name": "action.yml",
+                "path": ".github/actions/docker-merge-manifest/action.yml",
+                "type": "file",
+                "language": "yml",
+                "extension": ".yml",
+                "size": 0,
+                "loc": 0,
+                "sha256": "87957a09261cad55",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "dependabot.yml",
+        "path": ".github/dependabot.yml",
+        "type": "file",
+        "language": "yml",
+        "extension": ".yml",
+        "size": 0,
+        "loc": 0,
+        "sha256": "dd4fbda47e51f1e3",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "pull_request_template.md",
+        "path": ".github/pull_request_template.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "b2496e80299b8c31",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "release.yml",
+        "path": ".github/release.yml",
+        "type": "file",
+        "language": "yml",
+        "extension": ".yml",
+        "size": 0,
+        "loc": 0,
+        "sha256": "409fea45635f464a",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "scripts",
+        "path": ".github/scripts",
+        "type": "dir",
+        "children": [
+          {
+            "name": "find_prs_between_commits.py",
+            "path": ".github/scripts/find_prs_between_commits.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 10677,
+            "loc": 301,
+            "sha256": "02372c53a48d2a54",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "update_pr_description.sh",
+            "path": ".github/scripts/update_pr_description.sh",
+            "type": "file",
+            "language": "sh",
+            "extension": ".sh",
+            "size": 0,
+            "loc": 0,
+            "sha256": "6b1346b12cc80932",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "workflows",
+        "path": ".github/workflows",
+        "type": "dir",
+        "children": [
+          {
+            "name": "_build-image.yml",
+            "path": ".github/workflows/_build-image.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 4083,
+            "loc": 116,
+            "sha256": "a06240d96190a212",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "bump-chart.yml",
+            "path": ".github/workflows/bump-chart.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 770,
+            "loc": 22,
+            "sha256": "de318d69b1dd6bb2",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "check-package-versions.yml",
+            "path": ".github/workflows/check-package-versions.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 2013,
+            "loc": 65,
+            "sha256": "a5edb3da3330bf1e",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "check-version-consistency.yml",
+            "path": ".github/workflows/check-version-consistency.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 4880,
+            "loc": 122,
+            "sha256": "164ab1f1ff89affb",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "enterprise-check-migrations.yml",
+            "path": ".github/workflows/enterprise-check-migrations.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 5277,
+            "loc": 144,
+            "sha256": "ea7e148f1474b591",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "fe-e2e-tests.yml",
+            "path": ".github/workflows/fe-e2e-tests.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 1354,
+            "loc": 49,
+            "sha256": "27047c725edc115f",
+            "roles": {
+              "Test": 0.99,
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "fe-unit-tests.yml",
+            "path": ".github/workflows/fe-unit-tests.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 1321,
+            "loc": 46,
+            "sha256": "c3ba4d2c94b0504c",
+            "roles": {
+              "Test": 0.99,
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "ghcr-build.yml",
+            "path": ".github/workflows/ghcr-build.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 2281,
+            "loc": 70,
+            "sha256": "aa1ed960dab77d87",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "issue-opened.yml",
+            "path": ".github/workflows/issue-opened.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 15616,
+            "loc": 335,
+            "sha256": "8ace1c1cc0da792f",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "lint-fix.yml",
+            "path": ".github/workflows/lint-fix.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 3054,
+            "loc": 98,
+            "sha256": "a400aca72038c3cb",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "lint.yml",
+            "path": ".github/workflows/lint.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 2250,
+            "loc": 75,
+            "sha256": "107e910e9f2ebfb9",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "npm-publish-ui.yml",
+            "path": ".github/workflows/npm-publish-ui.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 3988,
+            "loc": 114,
+            "sha256": "59cbd6d316e6ac51",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pr-artifacts.yml",
+            "path": ".github/workflows/pr-artifacts.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 5804,
+            "loc": 139,
+            "sha256": "977a09c95b4f6783",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pr-readiness-confirm.yml",
+            "path": ".github/workflows/pr-readiness-confirm.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 10900,
+            "loc": 293,
+            "sha256": "8676cee3464ce732",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pr.yml",
+            "path": ".github/workflows/pr.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 453,
+            "loc": 14,
+            "sha256": "15c806aa50953819",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "promote-to-development.yml",
+            "path": ".github/workflows/promote-to-development.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 3662,
+            "loc": 86,
+            "sha256": "086b20f850239096",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "py-tests.yml",
+            "path": ".github/workflows/py-tests.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 4234,
+            "loc": 125,
+            "sha256": "f0263b7556185d24",
+            "roles": {
+              "Test": 0.99,
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pypi-release.yml",
+            "path": ".github/workflows/pypi-release.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 1376,
+            "loc": 42,
+            "sha256": "cd1f17b21b16e3d7",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "qa-changes-by-openhands.yml",
+            "path": ".github/workflows/qa-changes-by-openhands.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 1499,
+            "loc": 41,
+            "sha256": "fad718b50e26548a",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "release-ready.yml",
+            "path": ".github/workflows/release-ready.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 890,
+            "loc": 32,
+            "sha256": "67eab5adb14147e7",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "release.yml",
+            "path": ".github/workflows/release.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 893,
+            "loc": 31,
+            "sha256": "87db21a973eed4fe",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "remove-duplicate-candidate-label.yml",
+            "path": ".github/workflows/remove-duplicate-candidate-label.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 1075,
+            "loc": 30,
+            "sha256": "d25c246ecf5dc876",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "stale.yml",
+            "path": ".github/workflows/stale.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "b5e0854ed0838024",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "tag-image.yml",
+            "path": ".github/workflows/tag-image.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "461128090f325528",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "ui-build.yml",
+            "path": ".github/workflows/ui-build.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4858064dfca7fce8",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "welcome-good-first-issue.yml",
+            "path": ".github/workflows/welcome-good-first-issue.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "f4f154d69ddd071e",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "type": "file",
+    "language": "gitignore",
+    "extension": ".gitignore",
+    "size": 0,
+    "loc": 0,
+    "sha256": "bc37d034bad56458",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".nvmrc",
+    "path": ".nvmrc",
+    "type": "file",
+    "language": "nvmrc",
+    "extension": ".nvmrc",
+    "size": 0,
+    "loc": 0,
+    "sha256": "2c8effdf840690cc",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".openhands",
+    "path": ".openhands",
+    "type": "dir",
+    "children": [
+      {
+        "name": "microagents",
+        "path": ".openhands/microagents",
+        "type": "dir",
+        "children": [
+          {
+            "name": "documentation.md",
+            "path": ".openhands/microagents/documentation.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "e32467afeaf47f66",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "glossary.md",
+            "path": ".openhands/microagents/glossary.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "5fb1d23cad5daff9",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "pre-commit.sh",
+        "path": ".openhands/pre-commit.sh",
+        "type": "file",
+        "language": "sh",
+        "extension": ".sh",
+        "size": 0,
+        "loc": 0,
+        "sha256": "7cfae67f7aaf9eba",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "setup.sh",
+        "path": ".openhands/setup.sh",
+        "type": "file",
+        "language": "sh",
+        "extension": ".sh",
+        "size": 0,
+        "loc": 0,
+        "sha256": "e1eceba5ca2e3dbf",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": ".release-please-manifest.cloud.json",
+    "path": ".release-please-manifest.cloud.json",
+    "type": "file",
+    "language": "json",
+    "extension": ".json",
+    "size": 0,
+    "loc": 0,
+    "sha256": "d7500b771f6db060",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".release-please-manifest.json",
+    "path": ".release-please-manifest.json",
+    "type": "file",
+    "language": "json",
+    "extension": ".json",
+    "size": 0,
+    "loc": 0,
+    "sha256": "e38bb01e41ed5baa",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".vscode",
+    "path": ".vscode",
+    "type": "dir",
+    "children": [
+      {
+        "name": "settings.json",
+        "path": ".vscode/settings.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "a5de3e5871ffcc38",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": "AGENTS.md",
+    "path": "AGENTS.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "a54ff182c7e8acf5",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "CITATION.cff",
+    "path": "CITATION.cff",
+    "type": "file",
+    "language": "cff",
+    "extension": ".cff",
+    "size": 0,
+    "loc": 0,
+    "sha256": "9b9f76394a441ff4",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "CNAME",
+    "path": "CNAME",
+    "type": "file",
+    "language": "unknown",
+    "extension": null,
+    "size": 0,
+    "loc": 0,
+    "sha256": "76b26edb75578663",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "CODE_OF_CONDUCT.md",
+    "path": "CODE_OF_CONDUCT.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "ffdbe3a1e7ee93ca",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "COMMUNITY.md",
+    "path": "COMMUNITY.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "393e4aae2d355a93",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "CONTRIBUTING.md",
+    "path": "CONTRIBUTING.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "eca12c0a30e25b4b",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "CREDITS.md",
+    "path": "CREDITS.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "7ddc0d1fb1cd484a",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "Development.md",
+    "path": "Development.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "0903494949ffdee0",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "ISSUE_TRIAGE.md",
+    "path": "ISSUE_TRIAGE.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "bdb2f72625af131d",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "type": "file",
+    "language": "unknown",
+    "extension": null,
+    "size": 0,
+    "loc": 0,
+    "sha256": "c693279643b8cd5d",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "MANIFEST.in",
+    "path": "MANIFEST.in",
+    "type": "file",
+    "language": "in",
+    "extension": ".in",
+    "size": 0,
+    "loc": 0,
+    "sha256": "41d5a52589e0480b",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "Makefile",
+    "path": "Makefile",
+    "type": "file",
+    "language": "unknown",
+    "extension": null,
+    "size": 0,
+    "loc": 0,
+    "sha256": "76ed074a9305c040",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 8507,
+    "loc": 150,
+    "sha256": "b335630551682c19",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "build.sh",
+    "path": "build.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "4d2a8eefdf2a9783",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": true,
+    "ignored": false
+  },
+  {
+    "name": "config.template.toml",
+    "path": "config.template.toml",
+    "type": "file",
+    "language": "toml",
+    "extension": ".toml",
+    "size": 0,
+    "loc": 0,
+    "sha256": "8647bc42ec0a03f8",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "containers",
+    "path": "containers",
+    "type": "dir",
+    "children": [
+      {
+        "name": "README.md",
+        "path": "containers/README.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "7b75075aa85d3fb5",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "app",
+        "path": "containers/app",
+        "type": "dir",
+        "children": [
+          {
+            "name": "Dockerfile",
+            "path": "containers/app/Dockerfile",
+            "type": "file",
+            "language": "unknown",
+            "extension": null,
+            "size": 0,
+            "loc": 0,
+            "sha256": "6cc49007fe4e6fbd",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "entrypoint.sh",
+            "path": "containers/app/entrypoint.sh",
+            "type": "file",
+            "language": "sh",
+            "extension": ".sh",
+            "size": 0,
+            "loc": 0,
+            "sha256": "0eaa038b1e1104a6",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "dev",
+        "path": "containers/dev",
+        "type": "dir",
+        "children": [
+          {
+            "name": "Dockerfile",
+            "path": "containers/dev/Dockerfile",
+            "type": "file",
+            "language": "unknown",
+            "extension": null,
+            "size": 0,
+            "loc": 0,
+            "sha256": "19fa373e6ad55b70",
+            "roles": {
+              "Deployment": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "README.md",
+            "path": "containers/dev/README.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "410ddc0312dd7ff6",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "compose.yml",
+            "path": "containers/dev/compose.yml",
+            "type": "file",
+            "language": "yml",
+            "extension": ".yml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "5aacc29bb8640296",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "dev.sh",
+            "path": "containers/dev/dev.sh",
+            "type": "file",
+            "language": "sh",
+            "extension": ".sh",
+            "size": 0,
+            "loc": 0,
+            "sha256": "e4203e7d86d2451a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "dev_config",
+    "path": "dev_config",
+    "type": "dir",
+    "children": [
+      {
+        "name": "python",
+        "path": "dev_config/python",
+        "type": "dir",
+        "children": [
+          {
+            "name": ".pre-commit-config.yaml",
+            "path": "dev_config/python/.pre-commit-config.yaml",
+            "type": "file",
+            "language": "yaml",
+            "extension": ".yaml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "e914a2b3ab6323a7",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "mypy.ini",
+            "path": "dev_config/python/mypy.ini",
+            "type": "file",
+            "language": "ini",
+            "extension": ".ini",
+            "size": 0,
+            "loc": 0,
+            "sha256": "e200ab83c0483898",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "docker-compose.yml",
+    "path": "docker-compose.yml",
+    "type": "file",
+    "language": "yml",
+    "extension": ".yml",
+    "size": 927,
+    "loc": 24,
+    "sha256": "e45e45baeda1c1e7",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "enterprise",
+    "path": "enterprise",
+    "type": "dir",
+    "children": [
+      {
+        "name": "Dockerfile",
+        "path": "enterprise/Dockerfile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 0,
+        "loc": 0,
+        "sha256": "320e02f65091c7de",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "LICENSE",
+        "path": "enterprise/LICENSE",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 0,
+        "loc": 0,
+        "sha256": "573f91364fe58990",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "Makefile",
+        "path": "enterprise/Makefile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 0,
+        "loc": 0,
+        "sha256": "94720162a91a0f8d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "README.md",
+        "path": "enterprise/README.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "2ce62fe7f0af6842",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "__init__.py",
+        "path": "enterprise/__init__.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 28,
+        "loc": 1,
+        "sha256": "2e297a757b113f4c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "alembic.ini",
+        "path": "enterprise/alembic.ini",
+        "type": "file",
+        "language": "ini",
+        "extension": ".ini",
+        "size": 0,
+        "loc": 0,
+        "sha256": "b33e5383476bfd63",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "allhands-realm-github-provider.json.tmpl",
+        "path": "enterprise/allhands-realm-github-provider.json.tmpl",
+        "type": "file",
+        "language": "tmpl",
+        "extension": ".tmpl",
+        "size": 0,
+        "loc": 0,
+        "sha256": "b8cdb6bb58a08cda",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "analytics",
+        "path": "enterprise/analytics",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "enterprise/analytics/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 30,
+            "loc": 1,
+            "sha256": "4e6984f7e0ba2d21",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "saas_user_provider.py",
+            "path": "enterprise/analytics/saas_user_provider.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1017,
+            "loc": 31,
+            "sha256": "53d702b921481563",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "dev_config",
+        "path": "enterprise/dev_config",
+        "type": "dir",
+        "children": [
+          {
+            "name": "python",
+            "path": "enterprise/dev_config/python",
+            "type": "dir",
+            "children": [
+              {
+                "name": ".pre-commit-config.yaml",
+                "path": "enterprise/dev_config/python/.pre-commit-config.yaml",
+                "type": "file",
+                "language": "yaml",
+                "extension": ".yaml",
+                "size": 0,
+                "loc": 0,
+                "sha256": "14a5914b7a6ef1ab",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "mypy.ini",
+                "path": "enterprise/dev_config/python/mypy.ini",
+                "type": "file",
+                "language": "ini",
+                "extension": ".ini",
+                "size": 0,
+                "loc": 0,
+                "sha256": "276bb3b8407ec158",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "ruff.toml",
+                "path": "enterprise/dev_config/python/ruff.toml",
+                "type": "file",
+                "language": "toml",
+                "extension": ".toml",
+                "size": 0,
+                "loc": 0,
+                "sha256": "016aca9250d168f9",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "doc",
+        "path": "enterprise/doc",
+        "type": "dir",
+        "children": [
+          {
+            "name": "architecture",
+            "path": "enterprise/doc/architecture",
+            "type": "dir",
+            "children": [
+              {
+                "name": "README.md",
+                "path": "enterprise/doc/architecture/README.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "74b8c37d2b89cf1f",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "authentication.md",
+                "path": "enterprise/doc/architecture/authentication.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "446da97cacf1644e",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "external-integrations.md",
+                "path": "enterprise/doc/architecture/external-integrations.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "708fe663882372a8",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "design-doc",
+            "path": "enterprise/doc/design-doc",
+            "type": "dir",
+            "children": [
+              {
+                "name": "openhands-enterprise-telemetry-design.md",
+                "path": "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "be70fe9fec33e358",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "plugin-launch-flow.md",
+                "path": "enterprise/doc/design-doc/plugin-launch-flow.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 0,
+                "loc": 0,
+                "sha256": "385c05f684a33e69",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "enterprise_local",
+        "path": "enterprise/enterprise_local",
+        "type": "dir",
+        "children": [
+          {
+            "name": "README.md",
+            "path": "enterprise/enterprise_local/README.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "43ad1b339f2c4fed",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "convert_to_env.py",
+            "path": "enterprise/enterprise_local/convert_to_env.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 4764,
+            "loc": 130,
+            "sha256": "33b6b4b090aafced",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "decrypt_env.sh",
+            "path": "enterprise/enterprise_local/decrypt_env.sh",
+            "type": "file",
+            "language": "sh",
+            "extension": ".sh",
+            "size": 0,
+            "loc": 0,
+            "sha256": "856310f9a0929c33",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "integrations",
+        "path": "enterprise/integrations",
+        "type": "dir",
+        "children": [
+          {
+            "name": "azure_devops",
+            "path": "enterprise/integrations/azure_devops",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "enterprise/integrations/azure_devops/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "563564b5959b19f7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "azure_devops_manager.py",
+                "path": "enterprise/integrations/azure_devops/azure_devops_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "577b889b92c25369",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "azure_devops_service.py",
+                "path": "enterprise/integrations/azure_devops/azure_devops_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1c273bc3672c1780",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "azure_devops_v1_callback_processor.py",
+                "path": "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1b621c3c64cb44e5",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "azure_devops_view.py",
+                "path": "enterprise/integrations/azure_devops/azure_devops_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "98a13e4ecdac6ee1",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "bitbucket",
+            "path": "enterprise/integrations/bitbucket",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "enterprise/integrations/bitbucket/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "24a5f83ce170b319",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_manager.py",
+                "path": "enterprise/integrations/bitbucket/bitbucket_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "26e150454ed8c10e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_service.py",
+                "path": "enterprise/integrations/bitbucket/bitbucket_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d57670078eb48647",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_v1_callback_processor.py",
+                "path": "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "98a00bf57e6e7975",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_view.py",
+                "path": "enterprise/integrations/bitbucket/bitbucket_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "30a421e21eefd49a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "bitbucket_data_center",
+            "path": "enterprise/integrations/bitbucket_data_center",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "enterprise/integrations/bitbucket_data_center/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ace40da7c8b9143e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_dc_manager.py",
+                "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cd10701287cc6404",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_dc_service.py",
+                "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "dbeee62aafaa375b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_dc_service_account.py",
+                "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4d9ae14f0817742a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_dc_v1_callback_processor.py",
+                "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4a620403abbc23db",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "bitbucket_dc_view.py",
+                "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7fa07ad4dd97ec9c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "github",
+            "path": "enterprise/integrations/github",
+            "type": "dir",
+            "children": [
+              {
+                "name": "data_collector.py",
+                "path": "enterprise/integrations/github/data_collector.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7a66131176c85c6b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "github_manager.py",
+                "path": "enterprise/integrations/github/github_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cb03ce998a4c86d9",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "github_service.py",
+                "path": "enterprise/integrations/github/github_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cb5f8668b6d54fc3",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "github_types.py",
+                "path": "enterprise/integrations/github/github_types.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "888ccb2503eb4418",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "github_v1_callback_processor.py",
+                "path": "enterprise/integrations/github/github_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0f1f9632110622a6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "github_view.py",
+                "path": "enterprise/integrations/github/github_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cc37daa4e7aaba53",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "queries.py",
+                "path": "enterprise/integrations/github/queries.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9a4ac47b979e93f2",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "gitlab",
+            "path": "enterprise/integrations/gitlab",
+            "type": "dir",
+            "children": [
+              {
+                "name": "gitlab_manager.py",
+                "path": "enterprise/integrations/gitlab/gitlab_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ef2a544f2c6b6c50",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "gitlab_service.py",
+                "path": "enterprise/integrations/gitlab/gitlab_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "b6d8100c25446c54",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "gitlab_v1_callback_processor.py",
+                "path": "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a215d57521274488",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "gitlab_view.py",
+                "path": "enterprise/integrations/gitlab/gitlab_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ed7f1687ac370439",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "webhook_installation.py",
+                "path": "enterprise/integrations/gitlab/webhook_installation.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "dda5ce38a77996ae",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "jira",
+            "path": "enterprise/integrations/jira",
+            "type": "dir",
+            "children": [
+              {
+                "name": "jira_manager.py",
+                "path": "enterprise/integrations/jira/jira_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a165a3e55988c023",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_payload.py",
+                "path": "enterprise/integrations/jira/jira_payload.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f6c5f01f2f399ce4",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_types.py",
+                "path": "enterprise/integrations/jira/jira_types.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1847725212a2f1f4",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_v1_callback_processor.py",
+                "path": "enterprise/integrations/jira/jira_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "fbf1b3d1b722fe50",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_view.py",
+                "path": "enterprise/integrations/jira/jira_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4f4a8728947030e5",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "jira_dc",
+            "path": "enterprise/integrations/jira_dc",
+            "type": "dir",
+            "children": [
+              {
+                "name": "jira_dc_conversation_secret_enricher.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "480db83af5fa2179",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_manager.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c4f48a11cd938113",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_service_account.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_service_account.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "369fe9a8f3e62ab7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_types.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_types.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cd75c88aa8b39ee6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_user_token.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_user_token.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8566ddb87f782b2d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_v1_callback_processor.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "71e8a9495751a0a8",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jira_dc_view.py",
+                "path": "enterprise/integrations/jira_dc/jira_dc_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c0325818f4ce8945",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "manager.py",
+            "path": "enterprise/integrations/manager.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1129,
+            "loc": 36,
+            "sha256": "bc01c9d5ad5d62aa",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "models.py",
+            "path": "enterprise/integrations/models.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1235,
+            "loc": 48,
+            "sha256": "9df637f9e2dffb8f",
+            "roles": {
+              "Database": 0.9,
+              "Model": 0.8
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "resolver_context.py",
+            "path": "enterprise/integrations/resolver_context.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 4598,
+            "loc": 107,
+            "sha256": "9855bafef441cd51",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "resolver_org_router.py",
+            "path": "enterprise/integrations/resolver_org_router.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 2769,
+            "loc": 78,
+            "sha256": "1d5cfe9928862c04",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "slack",
+            "path": "enterprise/integrations/slack",
+            "type": "dir",
+            "children": [
+              {
+                "name": "slack_attachments.py",
+                "path": "enterprise/integrations/slack/slack_attachments.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "adbbbe4a1c70b431",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "slack_errors.py",
+                "path": "enterprise/integrations/slack/slack_errors.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d7011cd8a824928e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "slack_manager.py",
+                "path": "enterprise/integrations/slack/slack_manager.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4f378f434229e75f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "slack_types.py",
+                "path": "enterprise/integrations/slack/slack_types.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9923127a0d282e45",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "slack_v1_callback_processor.py",
+                "path": "enterprise/integrations/slack/slack_v1_callback_processor.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "53c272045c324189",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "slack_view.py",
+                "path": "enterprise/integrations/slack/slack_view.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e97929fb3bff698d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "store_repo_utils.py",
+            "path": "enterprise/integrations/store_repo_utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1856,
+            "loc": 49,
+            "sha256": "7c5e3848888aadd9",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "stripe_service.py",
+            "path": "enterprise/integrations/stripe_service.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 5100,
+            "loc": 156,
+            "sha256": "b85c9a331b3d7263",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "types.py",
+            "path": "enterprise/integrations/types.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 2365,
+            "loc": 81,
+            "sha256": "6dfc714c57a2cba0",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "utils.py",
+            "path": "enterprise/integrations/utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 218,
+            "loc": 10,
+            "sha256": "f4618ac95dd74a94",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "v1_utils.py",
+            "path": "enterprise/integrations/v1_utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a20e141b74da44bb",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "migrations",
+        "path": "enterprise/migrations",
+        "type": "dir",
+        "children": [
+          {
+            "name": "README.md",
+            "path": "enterprise/migrations/README.md",
+            "type": "file",
+            "language": "md",
+            "extension": ".md",
+            "size": 0,
+            "loc": 0,
+            "sha256": "49ea996decffbc40",
+            "roles": {
+              "Documentation": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "env.py",
+            "path": "enterprise/migrations/env.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "8a66c49c80287838",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "script.py.mako",
+            "path": "enterprise/migrations/script.py.mako",
+            "type": "file",
+            "language": "mako",
+            "extension": ".mako",
+            "size": 0,
+            "loc": 0,
+            "sha256": "68d0e40cffa78d91",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "versions",
+            "path": "enterprise/migrations/versions",
+            "type": "dir",
+            "children": [
+              {
+                "name": "001_create_feedback_table.py",
+                "path": "enterprise/migrations/versions/001_create_feedback_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "3ccac3e9686dcfd8",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "002_create_saas_settings_table.py",
+                "path": "enterprise/migrations/versions/002_create_saas_settings_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1b2ff8a6ac9c1fda",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "003_create_saas_conversation_metadata_table.py",
+                "path": "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ba710ff7d8ac4e95",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "004_create_billing_sessions_table.py",
+                "path": "enterprise/migrations/versions/004_create_billing_sessions_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f6e426abb1e31d7a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "005_add_margin_column.py",
+                "path": "enterprise/migrations/versions/005_add_margin_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "5139930eee1c7e84",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "006_add_branch_column_to_convo_metadata_table.py",
+                "path": "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f1714b23f2d5f551",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "007_add_enable_sound_notifications_column.py",
+                "path": "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6f9cdf67a0881e6a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "008_fix_enable_sound_notifications_column.py",
+                "path": "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2ca788ab8995526f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "009_fix_enable_sound_notifications_column.py",
+                "path": "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ccb708ee3251ddcb",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "010_create_offline_tokens_table.py",
+                "path": "enterprise/migrations/versions/010_create_offline_tokens_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "bddff4757ffdf941",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "011_create_user_settings_table.py",
+                "path": "enterprise/migrations/versions/011_create_user_settings_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "757305aec3003304",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "012_add_secret_store_column_to_settings.py",
+                "path": "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4bb9ccb55574fbb6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "013_create_github_app_installations_table.py",
+                "path": "enterprise/migrations/versions/013_create_github_app_installations_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "494f17cbde08b135",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "014_add_github_user_id.py",
+                "path": "enterprise/migrations/versions/014_add_github_user_id.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7c5ff204f359ff4f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "015_add_sandbox_container_image_columns.py",
+                "path": "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "107835086f5a9c62",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "016_add_user_version_column.py",
+                "path": "enterprise/migrations/versions/016_add_user_version_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1d2da7a925b65444",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "017_add_stripe_customers_table.py",
+                "path": "enterprise/migrations/versions/017_add_stripe_customers_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7e2fdf0e7e34c2dd",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "018_add_script_results_table.py",
+                "path": "enterprise/migrations/versions/018_add_script_results_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "44cf679aa1f89d65",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "019_remove_duplicates_from_stripe.py",
+                "path": "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "19fb2d908475f93c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "020_set_condenser_to_false.py",
+                "path": "enterprise/migrations/versions/020_set_condenser_to_false.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "85822fdc5b50fb7d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "021_create_auth_tokens_table.py",
+                "path": "enterprise/migrations/versions/021_create_auth_tokens_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d678367bc7969c03",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "022_create_api_keys_table.py",
+                "path": "enterprise/migrations/versions/022_create_api_keys_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1e6a2b4ee3e62342",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "023_add_cost_and_token_metrics_columns.py",
+                "path": "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "740c876477d8c372",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "024_update_enable_default_condenser_default.py",
+                "path": "enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c4c0a0c0de9ca54e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "025_revert_user_version_from_3_to_2.py",
+                "path": "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4307e426308a466d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "026_add_trigger_information_to_conversation_metadata.py",
+                "path": "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "83fa8c57824e9e15",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "027_create_gitlab_webhook_table.py",
+                "path": "enterprise/migrations/versions/027_create_gitlab_webhook_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9f76286409acf6c5",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "028_create_user_repos_table.py",
+                "path": "enterprise/migrations/versions/028_create_user_repos_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "fc56d134ad2f4795",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "029_add_accepted_tos_to_user_settings.py",
+                "path": "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "3ec03b5b3a2b9fb0",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "030_add_proactive_conversation_starters_column.py",
+                "path": "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "828fff87a05aa7ae",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "031_add_user_secrets_store.py",
+                "path": "enterprise/migrations/versions/031_add_user_secrets_store.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2d2eb847833f3ba2",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "032_add_status_column_to_gitlab_webhook.py",
+                "path": "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "66d7758fbba95b1c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "033_add_gitlab_webhook_uuid_column.py",
+                "path": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f4f49b8e8612d2f7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "034_add_proactive_convo_commits_table.py",
+                "path": "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ff4c1b9d2e1899ca",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "035_create_slack_users_table.py",
+                "path": "enterprise/migrations/versions/035_create_slack_users_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0b0a9cee4ddefbfe",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "036_add_mcp_config_to_user_settings.py",
+                "path": "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e8d669aa27b26983",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "037_make_user_secrets_table_one_row_per_secret.py",
+                "path": "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8f6c426d711cb114",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "038_add_pr_number_to_conversation_metadata.py",
+                "path": "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d8be0b446615d164",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "039_add_user_token_to_slack_table.py",
+                "path": "enterprise/migrations/versions/039_add_user_token_to_slack_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "528e6e59968a8d58",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "040_add_search_api_key_to_user_settings.py",
+                "path": "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7de673c1aa769d80",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "041_create_slack_conversation_table.py",
+                "path": "enterprise/migrations/versions/041_create_slack_conversation_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "53021eec7bb08d7b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "042_add_git_provider_to_conversation_metadata.py",
+                "path": "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cd181c5f3b6aa156",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "043_add_message_ts_column_to_slack_conversation.py",
+                "path": "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "beb22d72fff90840",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "044_add_llm_model_to_conversation_metadata.py",
+                "path": "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7925bcc0389bb8df",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "045_create_slack_team_table.py",
+                "path": "enterprise/migrations/versions/045_create_slack_team_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0cb417b621bdbf9d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "046_delete_all_slack_users.py",
+                "path": "enterprise/migrations/versions/046_delete_all_slack_users.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "19e03ecc7724d59b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "047_create_conversation_feedback_table.py",
+                "path": "enterprise/migrations/versions/047_create_conversation_feedback_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1ca882b357ca1451",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "048_add_max_budget_per_task_to_user_settings.py",
+                "path": "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6c83d2a04913b1aa",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "049_create_conversation_callbacks_table.py",
+                "path": "enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6d1f378a710223ec",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "050_create_openhands_prs_table.py",
+                "path": "enterprise/migrations/versions/050_create_openhands_prs_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d0d20448fc6bec91",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "051_update_conversation_callbacks_fk_to_cascade.py",
+                "path": "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ef26459e4ad228c6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "052_add_sandbox_api_key_to_user_settings.py",
+                "path": "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "004b2801ca49c09b",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "053_add_enable_solvability_analysis_to_user_settings.py",
+                "path": "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "07b57c8afe79a44d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "054_add_email_fields_to_user_settings.py",
+                "path": "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a4907726ba490f6b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "055_drop_slack_user_token_column.py",
+                "path": "enterprise/migrations/versions/055_drop_slack_user_token_column.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "aaae62f07fd05ecf",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "056_add_llm_api_key_for_byor_to_user_settings.py",
+                "path": "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "5c6045e026e4a035",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "057_enable_solvability_analysis_for_all_users.py",
+                "path": "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "45da4245a4120b52",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "058_create_conversation_work_table.py",
+                "path": "enterprise/migrations/versions/058_create_conversation_work_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a013ae62c1b7ca53",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "059_create_maintenance_tasks_table.py",
+                "path": "enterprise/migrations/versions/059_create_maintenance_tasks_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "5f51b7af3a1bf22c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "060_create_user_version_upgrade_tasks.py",
+                "path": "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9168e52501e23afe",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "061_create_experiment_assignments_table.py",
+                "path": "enterprise/migrations/versions/061_create_experiment_assignments_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ccbf9e71a442c0ff",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "062_add_git_user_fields_to_user_settings.py",
+                "path": "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f8c26cbd07ded1f3",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "063_create_jira_workspaces_table.py",
+                "path": "enterprise/migrations/versions/063_create_jira_workspaces_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "b884da47772be75a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "064_create_jira_users_table.py",
+                "path": "enterprise/migrations/versions/064_create_jira_users_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "fae5f2e9fcf8a7ba",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "065_create_jira_conversations_table.py",
+                "path": "enterprise/migrations/versions/065_create_jira_conversations_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "141edd092f16085a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "066_create_jira_dc_workspaces_table.py",
+                "path": "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9a40740f5ade286d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "067_create_jira_dc_users_table.py",
+                "path": "enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "165368c89e474c7b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "068_create_jira_dc_conversations_table.py",
+                "path": "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2a17663f68cec4b3",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "069_create_linear_workspaces_table.py",
+                "path": "enterprise/migrations/versions/069_create_linear_workspaces_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6715b3f71dffca75",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "070_create_linear_users_table.py",
+                "path": "enterprise/migrations/versions/070_create_linear_users_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6479a2c7fc4f6c34",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "071_create_linear_conversations_table.py",
+                "path": "enterprise/migrations/versions/071_create_linear_conversations_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c805e1d5defdcfd8",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "072_add_condenser_max_size_to_user_settings.py",
+                "path": "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ad28ddb4f4988f38",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "073_add_type_to_billing_sessions.py",
+                "path": "enterprise/migrations/versions/073_add_type_to_billing_sessions.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ff9cf0a9cc51e156",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "074_create_subscription_access_table.py",
+                "path": "enterprise/migrations/versions/074_create_subscription_access_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c1483fe4352cc415",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "075_add_cancellation_fields_to_subscription_access.py",
+                "path": "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4d472813c07177c4",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "076_add_v1_tables.py",
+                "path": "enterprise/migrations/versions/076_add_v1_tables.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f632e0e185f375ab",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "077_drop_settings_table.py",
+                "path": "enterprise/migrations/versions/077_drop_settings_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cf3e6cc5bbe23835",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "078_create_telemetry_tables.py",
+                "path": "enterprise/migrations/versions/078_create_telemetry_tables.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "5bf21024a6beadf6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "079_rename_user_secrets_to_custom_secrets.py",
+                "path": "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c0ba1e0d986dcda7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "080_add_status_and_updated_at_to_callback.py",
+                "path": "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e752ffe2cd1a4e20",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "081_add_parent_conversation_id.py",
+                "path": "enterprise/migrations/versions/081_add_parent_conversation_id.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "26cad7c7f36f47a8",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "082_add_setting_up_skills_enum_value.py",
+                "path": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e82988a53dfc731a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "083_add_v1_enabled_to_user_settings.py",
+                "path": "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ad74f57e341e9cf7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "084_create_device_codes_table.py",
+                "path": "enterprise/migrations/versions/084_create_device_codes_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6855865cb84bfb1f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "085_add_public_column_to_conversation_metadata.py",
+                "path": "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6a3b744a9f9b405f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "086_add_v1_column_to_slack_conversation.py",
+                "path": "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "da50885cb19823df",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "087_bump_condenser_defaults.py",
+                "path": "enterprise/migrations/versions/087_bump_condenser_defaults.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "62483cca02117636",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "088_create_blocked_email_domains_table.py",
+                "path": "enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7f7c169c286589e1",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "089_create_org_tables.py",
+                "path": "enterprise/migrations/versions/089_create_org_tables.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a55428fae9462628",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "090_add_git_user_fields_to_user.py",
+                "path": "enterprise/migrations/versions/090_add_git_user_fields_to_user.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "26531161bee7c1d8",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "091_add_byor_export_enabled_flag.py",
+                "path": "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a570ba1900ae54dc",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "092_rename_user_role_to_member.py",
+                "path": "enterprise/migrations/versions/092_rename_user_role_to_member.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d147d26677b32c94",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "093_add_pending_free_credits.py",
+                "path": "enterprise/migrations/versions/093_add_pending_free_credits.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a9fd9489fe394e71",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "094_create_org_invitation_table.py",
+                "path": "enterprise/migrations/versions/094_create_org_invitation_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "98604cfec6a95a9f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "095_drop_pending_free_credits.py",
+                "path": "enterprise/migrations/versions/095_drop_pending_free_credits.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "b30f13b6aba4003d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "096_create_resend_synced_users_table.py",
+                "path": "enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "7d1bc869d4bd40f0",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+                "path": "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a74db9ce0593c67c",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "098_create_verified_models_table.py",
+                "path": "enterprise/migrations/versions/098_create_verified_models_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0feebdc81fc9b4fa",
+                "roles": {
+                  "Database": 0.9,
+                  "Model": 0.8
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "099_create_user_authorizations_table.py",
+                "path": "enterprise/migrations/versions/099_create_user_authorizations_table.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c74621356b4dde3f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

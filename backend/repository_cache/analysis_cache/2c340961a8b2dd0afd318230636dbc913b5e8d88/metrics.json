@@ -1,0 +1,4313 @@
+{
+  ".env.example": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "DEPLOYMENT.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 37.846758698883676,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 95,
+    "size_bytes": 2651
+  },
+  "artifacts/architecture_flow.pdf": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "artifacts/jury-desktop.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "artifacts/landing-desktop.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "artifacts/leaderboard-desktop.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "artifacts/submit-desktop.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/.env.example": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 10,
+      "cognitive_complexity": 9,
+      "maintainability_index": 44.555470359673734,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 51,
+    "size_bytes": 1376
+  },
+  "backend/agents/council_agents.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/forge_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/guardian_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/insight_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/showcase_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/visionary_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/agents/yowon_prime_agent.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/alembic.ini": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/analysis/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/analysis/code_intelligence.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/auth/routes.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 301,
+    "size_bytes": 10321
+  },
+  "backend/auth/schemas.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/auth/security.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/check_crewai_agents.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/config.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/config/health_weights.yaml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/context/brief_builder.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/context/slices.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/crew/crew.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/data/evaluation_history.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/database.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 301,
+    "size_bytes": 15508
+  },
+  "backend/docker-entrypoint.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/brief_builder.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/context_slicer.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/evaluation_context.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/pipeline_validator.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/eval_context/prompt_registry.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/health_check.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/architecture_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/cache_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/canonical_models.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/engine_contract.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/evidence_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/exceptions.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/architecture_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/base_builder.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/call_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/dependency_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/relationship_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/graph/technology_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/health_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/intelligence_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/knowledge_graph/knowledge_graph_builder.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/knowledge_graph/knowledge_graph_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/metrics_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/models.py": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 2,
+      "maintainability_index": 35.54083247654887,
+      "function_count": 7,
+      "class_count": 8
+    },
+    "risk": 10,
+    "importance": 85,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 113,
+    "size_bytes": 3689
+  },
+  "backend/intelligence/orchestrator.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/base_parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/javascript_parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/parser_registry.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/python_parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/typescript_parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/parsers/unknown_parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/recommendation_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/repository_scan.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/ri_contract.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/security_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/semantic_index.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/symbol_indexer.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/intelligence/utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/llm_utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/logging_config.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/main.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 95,
+    "coverage": 0,
+    "roles": {
+      "Entry Point": 0.95
+    },
+    "loc": 301,
+    "size_bytes": 9725
+  },
+  "backend/migrations/README": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/env.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/script.py.mako": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/versions/4e457597937b_normalized_schema.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/progress.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/reports/report_generator.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/requirements-lock.txt": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/requirements.txt": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 48.497357092321934,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 41,
+    "size_bytes": 795
+  },
+  "backend/run_tests.py": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 0,
+      "maintainability_index": 46.6536632624254,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 40,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 47,
+    "size_bytes": 1256
+  },
+  "backend/scoring/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/scoring/rubrics.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/scoring/score_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/scratch/check_db.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/scratch/run_ri_test.py": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 4,
+      "maintainability_index": 38.84879728660572,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 40,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 84,
+    "size_bytes": 2966
+  },
+  "backend/scratch/test_llm.py": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 1,
+      "maintainability_index": 48.85421264805161,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 30,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 39,
+    "size_bytes": 665
+  },
+  "backend/scratch/test_treesitter.py": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 64.8280491330161,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 25,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 11,
+    "size_bytes": 334
+  },
+  "backend/security.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/task.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tasks/evaluation_tasks.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/test.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 67.47386953236702,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 15,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 9,
+    "size_bytes": 165
+  },
+  "backend/test_crew.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 50.47747037395861,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 35,
+    "size_bytes": 591
+  },
+  "backend/test_direct_llm.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 60.27340596456806,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 15,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 16,
+    "size_bytes": 197
+  },
+  "backend/test_pipeline.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 53.2700270980078,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 15,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 28,
+    "size_bytes": 386
+  },
+  "backend/test_task.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 63.87363774846754,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 12,
+    "size_bytes": 311
+  },
+  "backend/tests/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_auth.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 72.54811123617678,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 6,
+    "size_bytes": 193
+  },
+  "backend/tests/test_cache_normalization.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_code_intelligence.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_contract_synchronization.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_crewai_ollama_integration.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_enterprise_suite.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_history.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_intelligence_hardening.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_json_utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Service": 0.85,
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_knowledge_graph.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_report_generator.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_repository_intelligence.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_repository_intelligence_graphs.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_repository_metrics.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_ri_contract.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tests/test_score_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/github_tool.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/parser.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/pdf_tool.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/ppt_tool.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/security_tool.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/tools/vector_store.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/uploads/.gitkeep": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/uploads/pdfs/.gitkeep": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/uploads/ppts/.gitkeep": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/uploads/repos/.gitkeep": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/utils/git_provider.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/utils/ranking_engine.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/utils/serialization.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/validation/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/validation/json_utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/validation/schemas.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/validation/verdict_schema.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-backup.ps1": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-backup.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-clean.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-compose.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 37.59217474373828,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 35,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 98,
+    "size_bytes": 2149
+  },
+  "docker-restore.ps1": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-restore.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-start.ps1": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-start.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-stop.ps1": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-stop.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-update.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docs/api_documentation.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7,
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docs/architecture.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docs/codebase_audit.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docs/workflow.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/.env.example": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 52.696369645398896,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 29,
+    "size_bytes": 637
+  },
+  "frontend/index.html": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/nginx.conf": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/package.json": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 50.705735455296384,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 34,
+    "size_bytes": 861
+  },
+  "frontend/postcss.config.js": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/App.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 95,
+    "coverage": 0,
+    "roles": {
+      "Entry Point": 0.95
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/api/api.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/assets/bg.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/ScoreRing.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/VerdictBadge.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/auth/AuthContext.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/auth/GuestRoute.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/auth/ProtectedRoute.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/AnimatedGrid.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/Galaxy.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/Galaxy.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/NeuralOverlay.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/ParticleField.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/RenderingManager.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/ScanLine.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/effects/SoftAurora.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/evaluation/AgentNetwork.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/evaluation/AgentPipelineCard.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/evaluation/EvaluationTimeline.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/evaluation/JuryChamber.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/evaluation/TerminalLog.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/ArchitectureCanvas.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/ExecutionPipeline.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/FloatingInspector.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 100,
+    "roles": {
+      "Test": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/KnowledgeMindMap.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/MagicBento.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/MagicBento.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/graphs/TechnologyGalaxy.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/landing/AgentShowcase.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/landing/NeuralNetwork.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/AppLayout.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/AppShell.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/CommandPalette.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/Header.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/Sidebar.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/layout/Topbar.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/providers/QueryProvider.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/AIAgentsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/AgentReportsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/AnalyticsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/ArchitectureGraphPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/DNASelector.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/DashboardSection.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/DependencyGraphPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/DiagnosticsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/ErrorBoundary.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/EvidenceExplorerPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/ExecutionFlowPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/ExecutiveSummaryPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/KnowledgeGraphPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/LineSidebar.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/LineSidebar.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/MetricsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/OverviewPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RankingsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RecommendationsPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RepositoryStoryPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RepositoryTreePanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/RoadmapPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/SentinelPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/Skeletons.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/SoftwareArchitectureNavigator.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/TechnologyGraphPanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/TimelinePanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/report/queries.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/AgentConsensus.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/ConfidenceMeter.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/ExecutiveSummary.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/ReadinessGauge.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/RiskHeatmap.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/ThreatRadar.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/results/VerdictReveal.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/upload/FileDropZone.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/hooks/useEvaluationPoll.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/hooks/useEvaluationProgress.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/hooks/usePerformanceManager.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/hooks/usePerformanceMode.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/hooks/useVisibilityPause.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/index.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/main.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/DashboardPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/DemoPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/EvaluatePage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/HistoryPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/IntelligencePage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/JuryDashboardPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/LandingPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/LeaderboardPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/Login/LoginPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/ProjectsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/ReportPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/SettingsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  }
+}

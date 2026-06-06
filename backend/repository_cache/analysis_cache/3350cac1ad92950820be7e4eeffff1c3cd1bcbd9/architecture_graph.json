@@ -1,0 +1,709 @@
+{
+  "nodes": [
+    {
+      "id": "presentation",
+      "label": "Presentation",
+      "type": "layer",
+      "metadata": {
+        "description": "Client-facing UI components, layouts, and web templates",
+        "technologies": [
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ],
+        "files": [
+          "frontend/src/utils/listNormalizer.ts",
+          "backend/intelligence/models.py",
+          "frontend/nginx.conf",
+          "frontend/src/hooks/useEvaluationProgress.ts",
+          "frontend/src/pages/DemoPage.tsx",
+          "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+          "frontend/src/components/auth/ProtectedRoute.tsx",
+          "frontend/src/utils/demoData.ts",
+          "frontend/src/components/report/RepositoryStoryPanel.tsx",
+          "frontend/src/components/results/AgentConsensus.tsx",
+          "frontend/src/components/results/ConfidenceMeter.tsx",
+          "frontend/src/components/report/MetricsPanel.tsx",
+          "frontend/src/pages/Login/LoginPage.tsx",
+          "frontend/tests/roadmapNormalizer.test.mjs",
+          "frontend/src/components/auth/AuthContext.tsx",
+          "frontend/src/pages/ProjectsPage.tsx",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/effects/ScanLine.tsx",
+          "frontend/src/components/results/RiskHeatmap.tsx",
+          "frontend/src/components/results/VerdictReveal.tsx",
+          "frontend/src/components/report/RecommendationsPanel.tsx",
+          "frontend/src/components/report/SentinelPanel.tsx",
+          "frontend/src/pages/EvaluatePage.tsx",
+          "frontend/src/main.tsx",
+          "frontend/src/components/report/ErrorBoundary.tsx",
+          "frontend/src/components/report/Skeletons.tsx",
+          "frontend/src/components/evaluation/JuryChamber.tsx",
+          "frontend/src/components/report/DNASelector.tsx",
+          "frontend/src/components/report/RankingsPanel.tsx",
+          "frontend/src/utils/reportParser.ts"
+        ],
+        "purpose": "Client-facing UI components, layouts, and web templates",
+        "responsibilities": [
+          "Rendering layouts",
+          "Managing user interaction",
+          "Local UI state"
+        ],
+        "inputs": "User mouse and keyboard actions",
+        "outputs": "HTML DOM layouts and browser logs",
+        "consumers": [
+          "End User / Browser"
+        ],
+        "providers": [
+          "API Gateways"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 4.2,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Presentation.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "type": "layer",
+      "metadata": {
+        "description": "REST/GraphQL endpoints, API routes, and gateways",
+        "technologies": [
+          "FastAPI"
+        ],
+        "files": [
+          "backend/auth/routes.py"
+        ],
+        "purpose": "REST/GraphQL endpoints, API routes, and gateways",
+        "responsibilities": [
+          "Routing HTTP endpoints",
+          "Gateway mapping",
+          "Request validations"
+        ],
+        "inputs": "HTTP REST requests",
+        "outputs": "HTTP JSON responses",
+        "consumers": [
+          "Presentation Layer"
+        ],
+        "providers": [
+          "Controllers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing API.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "controllers",
+      "label": "Controllers",
+      "type": "layer",
+      "metadata": {
+        "description": "Request coordinators, route controllers, and input handlers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Request coordinators, route controllers, and input handlers",
+        "responsibilities": [
+          "Orchestrating controllers",
+          "Mapping route params",
+          "Session handlers"
+        ],
+        "inputs": "Parsed route parameter dictionaries",
+        "outputs": "Service request parameter mappings",
+        "consumers": [
+          "API Gateways"
+        ],
+        "providers": [
+          "Services"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Controllers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "type": "layer",
+      "metadata": {
+        "description": "Core business logic modules and external API wrappers",
+        "technologies": [],
+        "files": [
+          "backend/analysis/__init__.py",
+          "backend/eval_context/brief_builder.py",
+          "backend/intelligence/architecture_engine.py",
+          "backend/intelligence/graph/architecture_graph.py",
+          "backend/tools/github_tool.py",
+          "scripts/generate_architecture_pdf.py",
+          "backend/intelligence/models.py",
+          "backend/intelligence/exceptions.py",
+          "backend/intelligence/orchestrator.py",
+          "backend/scoring/__init__.py",
+          "backend/security.py",
+          "backend/eval_context/context_slicer.py",
+          "backend/intelligence/evidence_engine.py",
+          "backend/intelligence/__init__.py",
+          "backend/scoring/score_engine.py",
+          "backend/intelligence/parsers/typescript_parser.py",
+          "backend/progress.py",
+          "backend/utils/ranking_engine.py",
+          "backend/intelligence/graph/relationship_graph.py",
+          "backend/intelligence/metrics_engine.py",
+          "backend/tools/pdf_tool.py",
+          "backend/intelligence/graph/dependency_graph.py",
+          "backend/intelligence/ri_contract.py",
+          "backend/context/slices.py",
+          "backend/intelligence/health_engine.py",
+          "backend/intelligence/symbol_indexer.py",
+          "backend/scratch/check_db.py",
+          "backend/health_check.py",
+          "backend/intelligence/parsers/base_parser.py",
+          "backend/intelligence/engine_contract.py"
+        ],
+        "purpose": "Core business logic modules and external API wrappers",
+        "responsibilities": [
+          "Executing business service calculations",
+          "API wrappers"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Controllers"
+        ],
+        "providers": [
+          "Repositories & LLM Providers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 4.2,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Services.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "repositories",
+      "label": "Repositories",
+      "type": "layer",
+      "metadata": {
+        "description": "Data access abstraction interfaces and CRUD layers",
+        "technologies": [],
+        "files": [
+          "backend/intelligence/repository_scan.py"
+        ],
+        "purpose": "Data access abstraction interfaces and CRUD layers",
+        "responsibilities": [
+          "Executing database query abstractions",
+          "Data mapper CRUD"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "Database & Models"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Repositories.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "models",
+      "label": "Models",
+      "type": "layer",
+      "metadata": {
+        "description": "ORM models, database schemas, and Pydantic validators",
+        "technologies": [
+          "Pydantic",
+          "SQLAlchemy"
+        ],
+        "files": [
+          "backend/validation/schemas.py",
+          "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+          "backend/alembic.ini",
+          "backend/validation/verdict_schema.py",
+          "backend/intelligence/models.py",
+          "backend/migrations/script.py.mako",
+          "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py",
+          "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+          "backend/migrations/versions/4e457597937b_normalized_schema.py",
+          "backend/migrations/README",
+          "backend/auth/schemas.py",
+          "backend/intelligence/canonical_models.py"
+        ],
+        "purpose": "ORM models, database schemas, and Pydantic validators",
+        "responsibilities": [
+          "Defining database data structures",
+          "Type declarations"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Repositories & Services"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 10.5,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Models.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "type": "layer",
+      "metadata": {
+        "description": "Raw SQL connectors, migrations, and database scripts",
+        "technologies": [],
+        "files": [],
+        "purpose": "Raw SQL connectors, migrations, and database scripts",
+        "responsibilities": [
+          "Database migrations",
+          "Raw connection pools"
+        ],
+        "inputs": "SQL dialect command texts",
+        "outputs": "Raw row tuples and transaction status",
+        "consumers": [
+          "Repositories"
+        ],
+        "providers": [
+          "PostgreSQL / SQLite Engines"
+        ],
+        "health": 90.0,
+        "risk": 17.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Database.",
+        "evidence": [
+          "[SemanticIndex] Syntax error in backend/database.py"
+        ],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "caching",
+      "label": "Caching",
+      "type": "layer",
+      "metadata": {
+        "description": "Redis, Memcached, and local cache layers",
+        "technologies": [],
+        "files": [
+          "backend/intelligence/cache_engine.py"
+        ],
+        "purpose": "Redis, Memcached, and local cache layers",
+        "responsibilities": [
+          "Cache keys storage",
+          "Local caches eviction"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Caching.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "workers",
+      "label": "Workers",
+      "type": "layer",
+      "metadata": {
+        "description": "Async task queue workers and thread pool jobs",
+        "technologies": [],
+        "files": [
+          "backend/task.md",
+          "backend/tasks/evaluation_tasks.py",
+          "scripts/chief_task_smoke.py"
+        ],
+        "purpose": "Async task queue workers and thread pool jobs",
+        "responsibilities": [
+          "Executing background task queue jobs"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 42.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Workers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "configuration",
+      "label": "Configuration",
+      "type": "layer",
+      "metadata": {
+        "description": "Settings files, environment parsers, and constants",
+        "technologies": [],
+        "files": [
+          ".env.example",
+          "docker-compose.yml",
+          "frontend/tsconfig.node.json",
+          "backend/.env.example",
+          "backend/config.py",
+          "ruff.toml",
+          "backend/logging_config.py",
+          "frontend/vite.config.ts",
+          "frontend/postcss.config.js",
+          "frontend/tsconfig.json",
+          "backend/migrations/env.py",
+          "frontend/src/vite-env.d.ts",
+          "frontend/tailwind.config.js",
+          "frontend/.env.example",
+          "backend/config/health_weights.yaml"
+        ],
+        "purpose": "Settings files, environment parsers, and constants",
+        "responsibilities": [
+          "Executing custom business logic"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 8.5,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Configuration.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "testing",
+      "label": "Testing",
+      "type": "layer",
+      "metadata": {
+        "description": "Unit, integration, and end-to-end test suites",
+        "technologies": [
+          "Pytest"
+        ],
+        "files": [
+          "backend/tests/__init__.py",
+          "backend/intelligence/models.py",
+          "backend/tests/test_repository_intelligence_graphs.py",
+          "backend/tests/test_cache_normalization.py",
+          "backend/tests/test_repository_metrics.py",
+          "backend/tests/test_json_utils.py",
+          "backend/run_tests.py",
+          "backend/test_direct_llm.py",
+          "backend/tests/test_code_intelligence.py",
+          "backend/scratch/run_ri_test.py",
+          "backend/tests/test_report_generator.py",
+          "backend/tests/test_knowledge_graph.py",
+          "backend/tests/test_crewai_ollama_integration.py",
+          "backend/scratch/test_treesitter.py",
+          "backend/tests/test_auth.py",
+          "backend/test_pipeline.py",
+          "backend/tests/test_history.py",
+          "backend/tests/test_ri_contract.py",
+          "backend/tests/test_score_engine.py",
+          "backend/tests/test_intelligence_hardening.py",
+          "backend/tests/test_contract_synchronization.py",
+          "backend/tests/test_enterprise_suite.py",
+          "backend/tests/test_repository_intelligence.py"
+        ],
+        "purpose": "Unit, integration, and end-to-end test suites",
+        "responsibilities": [
+          "Executing custom business logic"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 5.5,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Testing.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "ai_agents",
+      "label": "AI Agents",
+      "type": "layer",
+      "metadata": {
+        "description": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "technologies": [
+          "CrewAI"
+        ],
+        "files": [
+          "backend/agents/insight_agent.py",
+          "backend/agents/forge_agent.py",
+          "backend/agents/council_agents.py",
+          "backend/scratch/test_llm.py",
+          "backend/check_crewai_agents.py",
+          "backend/agents/showcase_agent.py",
+          "backend/agents/visionary_agent.py",
+          "backend/test_crew.py",
+          "backend/crew/crew.py",
+          "backend/test_task.py",
+          "backend/agents/yowon_prime_agent.py",
+          "backend/agents/guardian_agent.py"
+        ],
+        "purpose": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "responsibilities": [
+          "Orchestrating AI agents teams",
+          "Task registry executions"
+        ],
+        "inputs": "Agent context prompts and schemas",
+        "outputs": "Agent execution task records",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "LLM Providers & Memory DBs"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 10.5,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing AI Agents.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "prompt_manager",
+      "label": "Prompt Manager",
+      "type": "layer",
+      "metadata": {
+        "description": "Prompt templates, system messages, and formatting tools",
+        "technologies": [],
+        "files": [
+          "backend/eval_context/prompt_registry.py"
+        ],
+        "purpose": "Prompt templates, system messages, and formatting tools",
+        "responsibilities": [
+          "Formatting prompt templates",
+          "System template binds"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "AI Agents"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Prompt Manager.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "llm_providers",
+      "label": "LLM Providers",
+      "type": "layer",
+      "metadata": {
+        "description": "Ollama, OpenAI, Anthropic connectors, and LiteLLM",
+        "technologies": [
+          "LiteLLM"
+        ],
+        "files": [
+          "ollama-init.sh",
+          "backend/utils/git_provider.py",
+          "backend/llm_utils.py"
+        ],
+        "purpose": "Ollama, OpenAI, Anthropic connectors, and LiteLLM",
+        "responsibilities": [
+          "Invoking OpenAI API",
+          "Invoking Ollama local models"
+        ],
+        "inputs": "Prompt token arrays",
+        "outputs": "Generated completion texts",
+        "consumers": [
+          "AI Agents"
+        ],
+        "providers": [
+          "OpenAI / Ollama Host"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 42.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing LLM Providers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "deployment",
+      "label": "Deployment",
+      "type": "layer",
+      "metadata": {
+        "description": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "technologies": [
+          "Docker",
+          "Docker Compose"
+        ],
+        "files": [
+          "docker-compose.yml",
+          "backend/Dockerfile",
+          "backend/intelligence/models.py",
+          "frontend/Dockerfile"
+        ],
+        "purpose": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "responsibilities": [
+          "Docker container configs",
+          "CI/CD execution pipelines"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 31.7,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Deployment.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "presentation",
+      "target": "api",
+      "label": "Sends HTTP requests to",
+      "metadata": {}
+    },
+    {
+      "source": "api",
+      "target": "controllers",
+      "label": "Delegates handling to",
+      "metadata": {}
+    },
+    {
+      "source": "controllers",
+      "target": "services",
+      "label": "Calls business logic in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "repositories",
+      "label": "Accesses data via",
+      "metadata": {}
+    },
+    {
+      "source": "repositories",
+      "target": "models",
+      "label": "Maps entities through",
+      "metadata": {}
+    },
+    {
+      "source": "models",
+      "target": "database",
+      "label": "Persists schema in",
+      "metadata": {}
+    },
+    {
+      "source": "controllers",
+      "target": "caching",
+      "label": "Reads hot data from",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "workers",
+      "label": "Dispatches jobs to",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "ai_agents",
+      "label": "Orchestrates AI through",
+      "metadata": {}
+    },
+    {
+      "source": "ai_agents",
+      "target": "llm_providers",
+      "label": "Invokes models via",
+      "metadata": {}
+    },
+    {
+      "source": "ai_agents",
+      "target": "prompt_manager",
+      "label": "Formats prompts using",
+      "metadata": {}
+    },
+    {
+      "source": "llm_providers",
+      "target": "ai_agents",
+      "label": "Returns completions to",
+      "metadata": {}
+    },
+    {
+      "source": "configuration",
+      "target": "services",
+      "label": "Injects settings into",
+      "metadata": {}
+    },
+    {
+      "source": "testing",
+      "target": "services",
+      "label": "Validates behavior of",
+      "metadata": {}
+    }
+  ]
+}

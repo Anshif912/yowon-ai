@@ -1,0 +1,4873 @@
+{
+  "nodes": [
+    {
+      "id": "repo::.env.example",
+      "label": ".env.example",
+      "type": "repository",
+      "metadata": {
+        "description": "Root Repository Node",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::frontend",
+      "label": "Frontend",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Frontend",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::backend",
+      "label": "Backend",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Backend",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::ai",
+      "label": "AI",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: AI",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::devops",
+      "label": "DevOps",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: DevOps",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::containerized",
+      "label": "Containerized",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Containerized",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::microservices",
+      "label": "Microservices",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Microservices",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::documentation",
+      "label": "Documentation",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Documentation",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::hybrid",
+      "label": "Hybrid",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Hybrid",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::presentation",
+      "label": "Presentation Layer",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Presentation Layer",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::api",
+      "label": "API Gateways",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: API Gateways",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::controllers",
+      "label": "Route Controllers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Route Controllers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::services",
+      "label": "Business Services",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Business Services",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::repositories",
+      "label": "Data Repositories",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Data Repositories",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::models",
+      "label": "ORM Models",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: ORM Models",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::database",
+      "label": "Relational Database",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Relational Database",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::caching",
+      "label": "Cache store",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Cache store",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::workers",
+      "label": "Workers & Background Tasks",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Workers & Background Tasks",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::schedulers",
+      "label": "Schedulers & Cron",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Schedulers & Cron",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::ai_agents",
+      "label": "AI Agent System",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: AI Agent System",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::prompt_manager",
+      "label": "Prompt templates",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Prompt templates",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::memory",
+      "label": "Agent Memory & VectorDB",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Agent Memory & VectorDB",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::llm_providers",
+      "label": "LLM Providers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: LLM Providers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::deployment",
+      "label": "CI/CD & DevOps",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: CI/CD & DevOps",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::testing",
+      "label": "Testing Suite",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Testing Suite",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::configuration",
+      "label": "Configuration & Env",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Configuration & Env",
+        "level": 1
+      }
+    },
+    {
+      "id": ".env.example",
+      "label": ".env.example",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .env.example",
+        "level": 2
+      }
+    },
+    {
+      "id": ".gitignore",
+      "label": ".gitignore",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .gitignore",
+        "level": 2
+      }
+    },
+    {
+      "id": "DEPLOYMENT.md",
+      "label": "DEPLOYMENT.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: DEPLOYMENT.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "artifacts/architecture_flow.pdf",
+      "label": "architecture_flow.pdf",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: artifacts/architecture_flow.pdf",
+        "level": 2
+      }
+    },
+    {
+      "id": "artifacts/jury-desktop.png",
+      "label": "jury-desktop.png",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: artifacts/jury-desktop.png",
+        "level": 2
+      }
+    },
+    {
+      "id": "artifacts/landing-desktop.png",
+      "label": "landing-desktop.png",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: artifacts/landing-desktop.png",
+        "level": 2
+      }
+    },
+    {
+      "id": "artifacts/leaderboard-desktop.png",
+      "label": "leaderboard-desktop.png",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: artifacts/leaderboard-desktop.png",
+        "level": 2
+      }
+    },
+    {
+      "id": "artifacts/submit-desktop.png",
+      "label": "submit-desktop.png",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: artifacts/submit-desktop.png",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/.env.example",
+      "label": ".env.example",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/.env.example",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/Dockerfile",
+      "label": "Dockerfile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/Dockerfile",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/council_agents.py",
+      "label": "council_agents.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/council_agents.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/forge_agent.py",
+      "label": "forge_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/forge_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/guardian_agent.py",
+      "label": "guardian_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/guardian_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/insight_agent.py",
+      "label": "insight_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/insight_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/showcase_agent.py",
+      "label": "showcase_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/showcase_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/visionary_agent.py",
+      "label": "visionary_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/visionary_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/agents/yowon_prime_agent.py",
+      "label": "yowon_prime_agent.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/agents/yowon_prime_agent.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/alembic.ini",
+      "label": "alembic.ini",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/alembic.ini",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/analysis/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/analysis/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/analysis/code_intelligence.py",
+      "label": "code_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/analysis/code_intelligence.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/auth/routes.py",
+      "label": "routes.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/auth/routes.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/auth/schemas.py",
+      "label": "schemas.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/auth/schemas.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/auth/security.py",
+      "label": "security.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/auth/security.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/check_crewai_agents.py",
+      "label": "check_crewai_agents.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/check_crewai_agents.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/config.py",
+      "label": "config.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/config.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/config/health_weights.yaml",
+      "label": "health_weights.yaml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/config/health_weights.yaml",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/context/brief_builder.py",
+      "label": "brief_builder.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/context/brief_builder.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/context/slices.py",
+      "label": "slices.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/context/slices.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/crew/crew.py",
+      "label": "crew.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/crew/crew.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/data/evaluation_history.json",
+      "label": "evaluation_history.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/data/evaluation_history.json",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/database.py",
+      "label": "database.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/database.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/docker-entrypoint.sh",
+      "label": "docker-entrypoint.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/docker-entrypoint.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/brief_builder.py",
+      "label": "brief_builder.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/brief_builder.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/context_slicer.py",
+      "label": "context_slicer.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/context_slicer.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/evaluation_context.py",
+      "label": "evaluation_context.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/evaluation_context.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/pipeline_validator.py",
+      "label": "pipeline_validator.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/pipeline_validator.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/eval_context/prompt_registry.py",
+      "label": "prompt_registry.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/eval_context/prompt_registry.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/health_check.py",
+      "label": "health_check.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/health_check.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/architecture_engine.py",
+      "label": "architecture_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/architecture_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/cache_engine.py",
+      "label": "cache_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/cache_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/canonical_models.py",
+      "label": "canonical_models.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/canonical_models.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/engine_contract.py",
+      "label": "engine_contract.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/engine_contract.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/evidence_engine.py",
+      "label": "evidence_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/evidence_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/exceptions.py",
+      "label": "exceptions.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/exceptions.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/architecture_graph.py",
+      "label": "architecture_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/architecture_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/base_builder.py",
+      "label": "base_builder.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/base_builder.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/call_graph.py",
+      "label": "call_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/call_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/dependency_graph.py",
+      "label": "dependency_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/dependency_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/relationship_graph.py",
+      "label": "relationship_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/relationship_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/technology_graph.py",
+      "label": "technology_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/graph/technology_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/health_engine.py",
+      "label": "health_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/health_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/intelligence_service.py",
+      "label": "intelligence_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/intelligence_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/knowledge_graph/knowledge_graph_builder.py",
+      "label": "knowledge_graph_builder.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/knowledge_graph/knowledge_graph_builder.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/knowledge_graph/knowledge_graph_service.py",
+      "label": "knowledge_graph_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/knowledge_graph/knowledge_graph_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/metrics_engine.py",
+      "label": "metrics_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/metrics_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py",
+      "label": "models.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/models.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/orchestrator.py",
+      "label": "orchestrator.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/orchestrator.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/base_parser.py",
+      "label": "base_parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/base_parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/javascript_parser.py",
+      "label": "javascript_parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/javascript_parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/parser_registry.py",
+      "label": "parser_registry.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/parser_registry.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/python_parser.py",
+      "label": "python_parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/python_parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/typescript_parser.py",
+      "label": "typescript_parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/typescript_parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/unknown_parser.py",
+      "label": "unknown_parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/parsers/unknown_parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/recommendation_engine.py",
+      "label": "recommendation_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/recommendation_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/repository_scan.py",
+      "label": "repository_scan.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/repository_scan.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/ri_contract.py",
+      "label": "ri_contract.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/ri_contract.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/security_engine.py",
+      "label": "security_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/security_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/semantic_index.py",
+      "label": "semantic_index.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/semantic_index.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/symbol_indexer.py",
+      "label": "symbol_indexer.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/symbol_indexer.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/utils.py",
+      "label": "utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/intelligence/utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/llm_utils.py",
+      "label": "llm_utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/llm_utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/logging_config.py",
+      "label": "logging_config.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/logging_config.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/main.py",
+      "label": "main.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/main.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/README",
+      "label": "README",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/README",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/env.py",
+      "label": "env.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/env.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/script.py.mako",
+      "label": "script.py.mako",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/script.py.mako",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+      "label": "1c6fa2941993_add_analysis_lifecycle_columns.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py",
+      "label": "4970e9afb155_add_provenance_and_diagnostics.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/versions/4e457597937b_normalized_schema.py",
+      "label": "4e457597937b_normalized_schema.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/versions/4e457597937b_normalized_schema.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+      "label": "afe6139c5330_add_intelligence_module_statuses.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/progress.py",
+      "label": "progress.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/progress.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/reports/report_generator.py",
+      "label": "report_generator.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/reports/report_generator.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/requirements-lock.txt",
+      "label": "requirements-lock.txt",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/requirements-lock.txt",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/requirements.txt",
+      "label": "requirements.txt",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/requirements.txt",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/run_tests.py",
+      "label": "run_tests.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/run_tests.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scoring/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scoring/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scoring/rubrics.py",
+      "label": "rubrics.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scoring/rubrics.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scoring/score_engine.py",
+      "label": "score_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scoring/score_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scratch/check_db.py",
+      "label": "check_db.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scratch/check_db.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scratch/run_ri_test.py",
+      "label": "run_ri_test.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scratch/run_ri_test.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scratch/test_llm.py",
+      "label": "test_llm.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scratch/test_llm.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scratch/test_treesitter.py",
+      "label": "test_treesitter.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/scratch/test_treesitter.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/security.py",
+      "label": "security.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/security.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/task.md",
+      "label": "task.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/task.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tasks/evaluation_tasks.py",
+      "label": "evaluation_tasks.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tasks/evaluation_tasks.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/test.py",
+      "label": "test.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/test.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/test_crew.py",
+      "label": "test_crew.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/test_crew.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/test_direct_llm.py",
+      "label": "test_direct_llm.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/test_direct_llm.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/test_pipeline.py",
+      "label": "test_pipeline.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/test_pipeline.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/test_task.py",
+      "label": "test_task.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/test_task.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_auth.py",
+      "label": "test_auth.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_auth.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_cache_normalization.py",
+      "label": "test_cache_normalization.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_cache_normalization.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_code_intelligence.py",
+      "label": "test_code_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_code_intelligence.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_contract_synchronization.py",
+      "label": "test_contract_synchronization.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_contract_synchronization.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_crewai_ollama_integration.py",
+      "label": "test_crewai_ollama_integration.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_crewai_ollama_integration.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_enterprise_suite.py",
+      "label": "test_enterprise_suite.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_enterprise_suite.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_history.py",
+      "label": "test_history.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_history.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_intelligence_hardening.py",
+      "label": "test_intelligence_hardening.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_intelligence_hardening.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_json_utils.py",
+      "label": "test_json_utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_json_utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_knowledge_graph.py",
+      "label": "test_knowledge_graph.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_knowledge_graph.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_report_generator.py",
+      "label": "test_report_generator.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_report_generator.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_intelligence.py",
+      "label": "test_repository_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_repository_intelligence.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_intelligence_graphs.py",
+      "label": "test_repository_intelligence_graphs.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_repository_intelligence_graphs.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_metrics.py",
+      "label": "test_repository_metrics.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_repository_metrics.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_ri_contract.py",
+      "label": "test_ri_contract.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_ri_contract.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tests/test_score_engine.py",
+      "label": "test_score_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tests/test_score_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/github_tool.py",
+      "label": "github_tool.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/github_tool.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/parser.py",
+      "label": "parser.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/parser.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/pdf_tool.py",
+      "label": "pdf_tool.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/pdf_tool.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/ppt_tool.py",
+      "label": "ppt_tool.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/ppt_tool.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/security_tool.py",
+      "label": "security_tool.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/security_tool.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/tools/vector_store.py",
+      "label": "vector_store.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/tools/vector_store.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/uploads/.gitkeep",
+      "label": ".gitkeep",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/uploads/.gitkeep",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/uploads/pdfs/.gitkeep",
+      "label": ".gitkeep",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/uploads/pdfs/.gitkeep",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/uploads/ppts/.gitkeep",
+      "label": ".gitkeep",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/uploads/ppts/.gitkeep",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/uploads/repos/.gitkeep",
+      "label": ".gitkeep",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/uploads/repos/.gitkeep",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/utils/git_provider.py",
+      "label": "git_provider.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/utils/git_provider.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/utils/ranking_engine.py",
+      "label": "ranking_engine.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/utils/ranking_engine.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/utils/serialization.py",
+      "label": "serialization.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/utils/serialization.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/validation/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/validation/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/validation/json_utils.py",
+      "label": "json_utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/validation/json_utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/validation/schemas.py",
+      "label": "schemas.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/validation/schemas.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/validation/verdict_schema.py",
+      "label": "verdict_schema.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: backend/validation/verdict_schema.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-backup.ps1",
+      "label": "docker-backup.ps1",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-backup.ps1",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-backup.sh",
+      "label": "docker-backup.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-backup.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-clean.sh",
+      "label": "docker-clean.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-clean.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-compose.yml",
+      "label": "docker-compose.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-compose.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-restore.ps1",
+      "label": "docker-restore.ps1",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-restore.ps1",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-restore.sh",
+      "label": "docker-restore.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-restore.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-start.ps1",
+      "label": "docker-start.ps1",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-start.ps1",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-start.sh",
+      "label": "docker-start.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-start.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-stop.ps1",
+      "label": "docker-stop.ps1",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-stop.ps1",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-stop.sh",
+      "label": "docker-stop.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-stop.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-update.sh",
+      "label": "docker-update.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-update.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "docs/api_documentation.md",
+      "label": "api_documentation.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docs/api_documentation.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "docs/architecture.md",
+      "label": "architecture.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docs/architecture.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "docs/codebase_audit.md",
+      "label": "codebase_audit.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docs/codebase_audit.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "docs/workflow.md",
+      "label": "workflow.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docs/workflow.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/.env.example",
+      "label": ".env.example",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/.env.example",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/Dockerfile",
+      "label": "Dockerfile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/Dockerfile",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/index.html",
+      "label": "index.html",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/index.html",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/nginx.conf",
+      "label": "nginx.conf",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/nginx.conf",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/package.json",
+      "label": "package.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/package.json",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/postcss.config.js",
+      "label": "postcss.config.js",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/postcss.config.js",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/App.tsx",
+      "label": "App.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/App.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/api/api.ts",
+      "label": "api.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/api/api.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/assets/bg.png",
+      "label": "bg.png",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/assets/bg.png",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/ScoreRing.tsx",
+      "label": "ScoreRing.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/ScoreRing.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/VerdictBadge.tsx",
+      "label": "VerdictBadge.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/VerdictBadge.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/AuthContext.tsx",
+      "label": "AuthContext.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/auth/AuthContext.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/GuestRoute.tsx",
+      "label": "GuestRoute.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/auth/GuestRoute.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/ProtectedRoute.tsx",
+      "label": "ProtectedRoute.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/auth/ProtectedRoute.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/AnimatedGrid.tsx",
+      "label": "AnimatedGrid.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/effects/AnimatedGrid.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/NeuralOverlay.tsx",
+      "label": "NeuralOverlay.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/effects/NeuralOverlay.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/ParticleField.tsx",
+      "label": "ParticleField.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/effects/ParticleField.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/ScanLine.tsx",
+      "label": "ScanLine.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/effects/ScanLine.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/SoftAurora.tsx",
+      "label": "SoftAurora.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/effects/SoftAurora.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/AgentNetwork.tsx",
+      "label": "AgentNetwork.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/evaluation/AgentNetwork.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/AgentPipelineCard.tsx",
+      "label": "AgentPipelineCard.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/evaluation/AgentPipelineCard.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/EvaluationTimeline.tsx",
+      "label": "EvaluationTimeline.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/evaluation/EvaluationTimeline.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/JuryChamber.tsx",
+      "label": "JuryChamber.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/evaluation/JuryChamber.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/TerminalLog.tsx",
+      "label": "TerminalLog.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/evaluation/TerminalLog.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/landing/AgentShowcase.tsx",
+      "label": "AgentShowcase.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/landing/AgentShowcase.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/landing/NeuralNetwork.tsx",
+      "label": "NeuralNetwork.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/landing/NeuralNetwork.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/AppShell.tsx",
+      "label": "AppShell.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/layout/AppShell.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/Header.tsx",
+      "label": "Header.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/layout/Header.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/providers/QueryProvider.tsx",
+      "label": "QueryProvider.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/providers/QueryProvider.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AIAgentsPanel.tsx",
+      "label": "AIAgentsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/AIAgentsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AgentReportsPanel.tsx",
+      "label": "AgentReportsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/AgentReportsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AnalyticsPanel.tsx",
+      "label": "AnalyticsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/AnalyticsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ArchitectureGraphPanel.tsx",
+      "label": "ArchitectureGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/ArchitectureGraphPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DNASelector.tsx",
+      "label": "DNASelector.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/DNASelector.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DashboardSection.tsx",
+      "label": "DashboardSection.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/DashboardSection.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DependencyGraphPanel.tsx",
+      "label": "DependencyGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/DependencyGraphPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DiagnosticsPanel.tsx",
+      "label": "DiagnosticsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/DiagnosticsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ErrorBoundary.tsx",
+      "label": "ErrorBoundary.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/ErrorBoundary.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/EvidenceExplorerPanel.tsx",
+      "label": "EvidenceExplorerPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/EvidenceExplorerPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ExecutionFlowPanel.tsx",
+      "label": "ExecutionFlowPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/ExecutionFlowPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ExecutiveSummaryPanel.tsx",
+      "label": "ExecutiveSummaryPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/ExecutiveSummaryPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/KnowledgeGraphPanel.tsx",
+      "label": "KnowledgeGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/KnowledgeGraphPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/LineSidebar.css",
+      "label": "LineSidebar.css",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/LineSidebar.css",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/LineSidebar.tsx",
+      "label": "LineSidebar.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/LineSidebar.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/MetricsPanel.tsx",
+      "label": "MetricsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/MetricsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/OverviewPanel.tsx",
+      "label": "OverviewPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/OverviewPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RankingsPanel.tsx",
+      "label": "RankingsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RankingsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RecommendationsPanel.tsx",
+      "label": "RecommendationsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RecommendationsPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+      "label": "RepositoryIntelligenceWrapper.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryStoryPanel.tsx",
+      "label": "RepositoryStoryPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RepositoryStoryPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryTreePanel.tsx",
+      "label": "RepositoryTreePanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RepositoryTreePanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RoadmapPanel.tsx",
+      "label": "RoadmapPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/RoadmapPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/SentinelPanel.tsx",
+      "label": "SentinelPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/SentinelPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/Skeletons.tsx",
+      "label": "Skeletons.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/Skeletons.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/SoftwareArchitectureNavigator.tsx",
+      "label": "SoftwareArchitectureNavigator.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/SoftwareArchitectureNavigator.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/TechnologyGraphPanel.tsx",
+      "label": "TechnologyGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/TechnologyGraphPanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/TimelinePanel.tsx",
+      "label": "TimelinePanel.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/TimelinePanel.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/report/queries.ts",
+      "label": "queries.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/report/queries.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/AgentConsensus.tsx",
+      "label": "AgentConsensus.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/AgentConsensus.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ConfidenceMeter.tsx",
+      "label": "ConfidenceMeter.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/ConfidenceMeter.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ExecutiveSummary.tsx",
+      "label": "ExecutiveSummary.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/ExecutiveSummary.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ReadinessGauge.tsx",
+      "label": "ReadinessGauge.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/ReadinessGauge.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/RiskHeatmap.tsx",
+      "label": "RiskHeatmap.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/RiskHeatmap.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ThreatRadar.tsx",
+      "label": "ThreatRadar.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/ThreatRadar.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/results/VerdictReveal.tsx",
+      "label": "VerdictReveal.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/results/VerdictReveal.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/components/upload/FileDropZone.tsx",
+      "label": "FileDropZone.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/components/upload/FileDropZone.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/hooks/useEvaluationPoll.ts",
+      "label": "useEvaluationPoll.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/hooks/useEvaluationPoll.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/hooks/useEvaluationProgress.ts",
+      "label": "useEvaluationProgress.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/hooks/useEvaluationProgress.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/index.css",
+      "label": "index.css",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/index.css",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/main.tsx",
+      "label": "main.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/main.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/DemoPage.tsx",
+      "label": "DemoPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/DemoPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/EvaluatePage.tsx",
+      "label": "EvaluatePage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/EvaluatePage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/JuryDashboardPage.tsx",
+      "label": "JuryDashboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/JuryDashboardPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/LandingPage.tsx",
+      "label": "LandingPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/LandingPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/LeaderboardPage.tsx",
+      "label": "LeaderboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/LeaderboardPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/Login/LoginPage.tsx",
+      "label": "LoginPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/Login/LoginPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/ProjectsPage.tsx",
+      "label": "ProjectsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/ProjectsPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/ReportPage.tsx",
+      "label": "ReportPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/ReportPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/pages/SubmitPage.tsx",
+      "label": "SubmitPage.tsx",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/pages/SubmitPage.tsx",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/types/index.ts",
+      "label": "index.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/types/index.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/utils/demoData.ts",
+      "label": "demoData.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/utils/demoData.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/utils/listNormalizer.ts",
+      "label": "listNormalizer.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/utils/listNormalizer.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/utils/reportParser.ts",
+      "label": "reportParser.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/utils/reportParser.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/src/vite-env.d.ts",
+      "label": "vite-env.d.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/src/vite-env.d.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/tailwind.config.js",
+      "label": "tailwind.config.js",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/tailwind.config.js",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/tests/roadmapNormalizer.test.mjs",
+      "label": "roadmapNormalizer.test.mjs",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/tests/roadmapNormalizer.test.mjs",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/tsconfig.json",
+      "label": "tsconfig.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/tsconfig.json",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/tsconfig.node.json",
+      "label": "tsconfig.node.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/tsconfig.node.json",
+        "level": 2
+      }
+    },
+    {
+      "id": "frontend/vite.config.ts",
+      "label": "vite.config.ts",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: frontend/vite.config.ts",
+        "level": 2
+      }
+    },
+    {
+      "id": "ollama-init.sh",
+      "label": "ollama-init.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: ollama-init.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "ruff.toml",
+      "label": "ruff.toml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: ruff.toml",
+        "level": 2
+      }
+    },
+    {
+      "id": "scripts/chief_task_smoke.py",
+      "label": "chief_task_smoke.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: scripts/chief_task_smoke.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "scripts/generate_architecture_pdf.py",
+      "label": "generate_architecture_pdf.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: scripts/generate_architecture_pdf.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "scripts/import_smoke.py",
+      "label": "import_smoke.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: scripts/import_smoke.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "scripts/presentation_modules/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: scripts/presentation_modules/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "label": "DictCompatibilityMixin",
+      "type": "class",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 5,
+        "line_end": 33,
+        "description": "Semantic components: DictCompatibilityMixin (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::RepositoryTreeNode",
+      "label": "RepositoryTreeNode",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 36,
+        "line_end": 48,
+        "description": "Semantic components: RepositoryTreeNode (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::SymbolRecord",
+      "label": "SymbolRecord",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 53,
+        "line_end": 61,
+        "description": "Semantic components: SymbolRecord (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::EvidenceRecord",
+      "label": "EvidenceRecord",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 63,
+        "line_end": 75,
+        "description": "Semantic components: EvidenceRecord (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::TechnologyRecord",
+      "label": "TechnologyRecord",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 77,
+        "line_end": 81,
+        "description": "Semantic components: TechnologyRecord (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::GraphNode",
+      "label": "GraphNode",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 83,
+        "line_end": 87,
+        "description": "Semantic components: GraphNode (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::GraphEdge",
+      "label": "GraphEdge",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 89,
+        "line_end": 93,
+        "description": "Semantic components: GraphEdge (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::RecommendationRecord",
+      "label": "RecommendationRecord",
+      "type": "model",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 95,
+        "line_end": 105,
+        "description": "Semantic components: RecommendationRecord (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::get",
+      "label": "get",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 10,
+        "line_end": 11,
+        "description": "Semantic components: get (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::__getitem__",
+      "label": "__getitem__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 13,
+        "line_end": 16,
+        "description": "Semantic components: __getitem__ (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::__setitem__",
+      "label": "__setitem__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 18,
+        "line_end": 19,
+        "description": "Semantic components: __setitem__ (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::__contains__",
+      "label": "__contains__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 21,
+        "line_end": 22,
+        "description": "Semantic components: __contains__ (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::keys",
+      "label": "keys",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 24,
+        "line_end": 27,
+        "description": "Semantic components: keys (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::values",
+      "label": "values",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 29,
+        "line_end": 30,
+        "description": "Semantic components: values (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::items",
+      "label": "items",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 32,
+        "line_end": 33,
+        "description": "Semantic components: items (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/scratch/run_ri_test.py::main",
+      "label": "main",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/scratch/run_ri_test.py",
+        "line_start": 19,
+        "line_end": 81,
+        "description": "Semantic components: main (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.get",
+      "label": "DictCompatibilityMixin.get",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 10,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.__getitem__",
+      "label": "DictCompatibilityMixin.__getitem__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 13,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.__setitem__",
+      "label": "DictCompatibilityMixin.__setitem__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 18,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.__contains__",
+      "label": "DictCompatibilityMixin.__contains__",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 21,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.keys",
+      "label": "DictCompatibilityMixin.keys",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 24,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py::DictCompatibilityMixin.values",
+      "label": "DictCompatibilityMixin.values",
+      "type": "function",
+      "metadata": {
+        "file_path": "backend/intelligence/models.py",
+        "line_start": 29,
+        "level": 3,
+        "parent_class": "DictCompatibilityMixin"
+      }
+    },
+    {
+      "id": "env::ENVIRONMENT",
+      "label": "ENVIRONMENT",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in backend/main.py."
+      }
+    },
+    {
+      "id": "docker::backend",
+      "label": "backend",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    },
+    {
+      "id": "docker::frontend",
+      "label": "frontend",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    },
+    {
+      "id": "docker::chromadb",
+      "label": "chromadb",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    },
+    {
+      "id": "docker::ollama",
+      "label": "ollama",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    },
+    {
+      "id": "docker::ollama-init",
+      "label": "ollama-init",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    },
+    {
+      "id": "lib::fastapi",
+      "label": "fastapi",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::uvicorn[standard]",
+      "label": "uvicorn[standard]",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::python-multipart",
+      "label": "python-multipart",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::crewai",
+      "label": "crewai",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::langchain-ollama",
+      "label": "langchain-ollama",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::google-generativeai",
+      "label": "google-generativeai",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::litellm",
+      "label": "litellm",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::tree-sitter",
+      "label": "tree-sitter",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::tree-sitter-javascript",
+      "label": "tree-sitter-javascript",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::tree-sitter-typescript",
+      "label": "tree-sitter-typescript",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::PyYAML",
+      "label": "PyYAML",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::PyMuPDF",
+      "label": "PyMuPDF",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::pypdf",
+      "label": "pypdf",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::python-pptx",
+      "label": "python-pptx",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::PyGithub",
+      "label": "PyGithub",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::bandit",
+      "label": "bandit",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::chromadb",
+      "label": "chromadb",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::reportlab",
+      "label": "reportlab",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::sqlalchemy",
+      "label": "sqlalchemy",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::alembic",
+      "label": "alembic",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::python-dotenv",
+      "label": "python-dotenv",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::pydantic",
+      "label": "pydantic",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::httpx",
+      "label": "httpx",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::pytest",
+      "label": "pytest",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::pytest-asyncio",
+      "label": "pytest-asyncio",
+      "type": "library",
+      "metadata": {
+        "description": "External Python package dependency."
+      }
+    },
+    {
+      "id": "lib::@tanstack/react-query",
+      "label": "@tanstack/react-query",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::axios",
+      "label": "axios",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::framer-motion",
+      "label": "framer-motion",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::lucide-react",
+      "label": "lucide-react",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::ogl",
+      "label": "ogl",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::react",
+      "label": "react",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::react-dom",
+      "label": "react-dom",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::react-router-dom",
+      "label": "react-router-dom",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::recharts",
+      "label": "recharts",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::@types/react",
+      "label": "@types/react",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::@types/react-dom",
+      "label": "@types/react-dom",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::@vitejs/plugin-react",
+      "label": "@vitejs/plugin-react",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::autoprefixer",
+      "label": "autoprefixer",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::postcss",
+      "label": "postcss",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::tailwindcss",
+      "label": "tailwindcss",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::typescript",
+      "label": "typescript",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    },
+    {
+      "id": "lib::vite",
+      "label": "vite",
+      "type": "library",
+      "metadata": {
+        "description": "External Node.js package dependency."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "repo::.env.example",
+      "target": "cap::frontend",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::backend",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::ai",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::devops",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::containerized",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::microservices",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::documentation",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "cap::hybrid",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::presentation",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::api",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::controllers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::services",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::repositories",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::models",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::database",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::caching",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::workers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::schedulers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::ai_agents",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::prompt_manager",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::memory",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::llm_providers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::deployment",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::testing",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.env.example",
+      "target": "sub::configuration",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".env.example",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".gitignore",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "DEPLOYMENT.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "artifacts/architecture_flow.pdf",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "artifacts/jury-desktop.png",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "artifacts/landing-desktop.png",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "artifacts/leaderboard-desktop.png",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "artifacts/submit-desktop.png",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/.env.example",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "backend/Dockerfile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/council_agents.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/forge_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/guardian_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/insight_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/showcase_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/visionary_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/agents/yowon_prime_agent.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/alembic.ini",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/analysis/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/analysis/code_intelligence.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "backend/auth/routes.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/auth/schemas.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/auth/security.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/check_crewai_agents.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/config.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/config/health_weights.yaml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/context/brief_builder.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/context/slices.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "backend/crew/crew.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/data/evaluation_history.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/database.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "backend/docker-entrypoint.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/brief_builder.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/context_slicer.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/evaluation_context.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/pipeline_validator.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/eval_context/prompt_registry.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/health_check.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/architecture_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/cache_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/intelligence/canonical_models.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/engine_contract.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/evidence_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/exceptions.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/architecture_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/base_builder.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/call_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/dependency_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/relationship_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/graph/technology_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/health_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/intelligence_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/knowledge_graph/knowledge_graph_builder.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/knowledge_graph/knowledge_graph_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/metrics_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/intelligence/models.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/orchestrator.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/base_parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/javascript_parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/parser_registry.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/python_parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/typescript_parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/parsers/unknown_parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/recommendation_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/repository_scan.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/ri_contract.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/security_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/semantic_index.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/symbol_indexer.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/intelligence/utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/llm_utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/logging_config.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/main.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/README",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/env.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/script.py.mako",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/migrations/versions/4e457597937b_normalized_schema.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/progress.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/reports/report_generator.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/requirements-lock.txt",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/requirements.txt",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/run_tests.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/scoring/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/scoring/rubrics.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/scoring/score_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/scratch/check_db.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/scratch/run_ri_test.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/scratch/test_llm.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/scratch/test_treesitter.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/security.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/task.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tasks/evaluation_tasks.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/test.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/test_crew.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/test_direct_llm.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/test_pipeline.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/test_task.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_auth.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_cache_normalization.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_code_intelligence.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_contract_synchronization.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_crewai_ollama_integration.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_enterprise_suite.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_history.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_intelligence_hardening.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_json_utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_knowledge_graph.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_report_generator.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_repository_intelligence.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_repository_intelligence_graphs.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_repository_metrics.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_ri_contract.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": "backend/tests/test_score_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/github_tool.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/parser.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/pdf_tool.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/ppt_tool.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/security_tool.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/tools/vector_store.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/uploads/.gitkeep",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/uploads/pdfs/.gitkeep",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/uploads/ppts/.gitkeep",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/uploads/repos/.gitkeep",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/utils/git_provider.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/utils/ranking_engine.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/utils/serialization.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/validation/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "backend/validation/json_utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/validation/schemas.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "backend/validation/verdict_schema.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-backup.ps1",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-backup.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-clean.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-compose.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-restore.ps1",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-restore.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-start.ps1",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-start.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-stop.ps1",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-stop.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-update.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "docs/api_documentation.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "docs/architecture.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "docs/codebase_audit.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "docs/workflow.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/.env.example",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/Dockerfile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/index.html",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/nginx.conf",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/package.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/postcss.config.js",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/App.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/api/api.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/assets/bg.png",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/ScoreRing.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/VerdictBadge.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/auth/AuthContext.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/auth/GuestRoute.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/auth/ProtectedRoute.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/effects/AnimatedGrid.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/effects/NeuralOverlay.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/effects/ParticleField.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/effects/ScanLine.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/effects/SoftAurora.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/evaluation/AgentNetwork.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/evaluation/AgentPipelineCard.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/evaluation/EvaluationTimeline.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/evaluation/JuryChamber.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/evaluation/TerminalLog.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/landing/AgentShowcase.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/landing/NeuralNetwork.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/layout/AppShell.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/layout/Header.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/providers/QueryProvider.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/AIAgentsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/AgentReportsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/AnalyticsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/ArchitectureGraphPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/DNASelector.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/DashboardSection.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/DependencyGraphPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/DiagnosticsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/ErrorBoundary.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/EvidenceExplorerPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/ExecutionFlowPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/ExecutiveSummaryPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/KnowledgeGraphPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/LineSidebar.css",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/LineSidebar.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/MetricsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/OverviewPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RankingsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RecommendationsPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RepositoryStoryPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RepositoryTreePanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/RoadmapPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/SentinelPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/Skeletons.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/SoftwareArchitectureNavigator.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/TechnologyGraphPanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/TimelinePanel.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/report/queries.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/AgentConsensus.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/ConfidenceMeter.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/ExecutiveSummary.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/ReadinessGauge.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/RiskHeatmap.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/ThreatRadar.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/results/VerdictReveal.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/components/upload/FileDropZone.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/hooks/useEvaluationPoll.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/hooks/useEvaluationProgress.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/index.css",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/main.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/DemoPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/EvaluatePage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/JuryDashboardPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/LandingPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/LeaderboardPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/Login/LoginPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/ProjectsPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/ReportPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/pages/SubmitPage.tsx",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/types/index.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/utils/demoData.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/utils/listNormalizer.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/utils/reportParser.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/src/vite-env.d.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/tailwind.config.js",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/tests/roadmapNormalizer.test.mjs",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/tsconfig.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/tsconfig.node.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::presentation",
+      "target": "frontend/vite.config.ts",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "ollama-init.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "ruff.toml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "scripts/chief_task_smoke.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "scripts/generate_architecture_pdf.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "scripts/import_smoke.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "scripts/presentation_modules/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::RepositoryTreeNode",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::SymbolRecord",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::EvidenceRecord",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::TechnologyRecord",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::GraphNode",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::GraphEdge",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::RecommendationRecord",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::get",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::__getitem__",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::__setitem__",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::__contains__",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::keys",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::values",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/intelligence/models.py::items",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/scratch/run_ri_test.py::main",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.get",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.__getitem__",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.__setitem__",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.__contains__",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.keys",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/intelligence/models.py::DictCompatibilityMixin",
+      "target": "backend/intelligence/models.py::DictCompatibilityMixin.values",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "backend/main.py",
+      "target": "env::ENVIRONMENT",
+      "relation": "READS"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::ENVIRONMENT",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::backend",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::backend",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::frontend",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::frontend",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::chromadb",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::chromadb",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::ollama",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::ollama",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::ollama-init",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::ollama-init",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::fastapi",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::uvicorn[standard]",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::python-multipart",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::crewai",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::langchain-ollama",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::google-generativeai",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::litellm",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::tree-sitter",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::tree-sitter-javascript",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::tree-sitter-typescript",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::PyYAML",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::PyMuPDF",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::pypdf",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::python-pptx",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::PyGithub",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::bandit",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::chromadb",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::reportlab",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::sqlalchemy",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::alembic",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::python-dotenv",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::pydantic",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::httpx",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::pytest",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "backend/requirements.txt",
+      "target": "lib::pytest-asyncio",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::@tanstack/react-query",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::axios",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::framer-motion",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::lucide-react",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::ogl",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::react",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::react-dom",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::react-router-dom",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::recharts",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::@types/react",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::@types/react-dom",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::@vitejs/plugin-react",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::autoprefixer",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::postcss",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::tailwindcss",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::typescript",
+      "relation": "DEPENDS_ON"
+    },
+    {
+      "source": "frontend/package.json",
+      "target": "lib::vite",
+      "relation": "DEPENDS_ON"
+    }
+  ]
+}

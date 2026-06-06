@@ -1,0 +1,1328 @@
+{
+  "nodes": [
+    {
+      "id": ".github/scripts/find_prs_between_commits.py",
+      "label": "find_prs_between_commits.py",
+      "type": "file",
+      "metadata": {
+        "path": ".github/scripts/find_prs_between_commits.py"
+      }
+    },
+    {
+      "id": "enterprise/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/__init__.py"
+      }
+    },
+    {
+      "id": "enterprise/analytics/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/analytics/__init__.py"
+      }
+    },
+    {
+      "id": "enterprise/analytics/saas_user_provider.py",
+      "label": "saas_user_provider.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/analytics/saas_user_provider.py"
+      }
+    },
+    {
+      "id": "enterprise/enterprise_local/convert_to_env.py",
+      "label": "convert_to_env.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/enterprise_local/convert_to_env.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/azure_devops/__init__.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_manager.py",
+      "label": "azure_devops_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/azure_devops/azure_devops_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_service.py",
+      "label": "azure_devops_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/azure_devops/azure_devops_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py",
+      "label": "azure_devops_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_view.py",
+      "label": "azure_devops_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/azure_devops/azure_devops_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket/__init__.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_manager.py",
+      "label": "bitbucket_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket/bitbucket_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_service.py",
+      "label": "bitbucket_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket/bitbucket_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py",
+      "label": "bitbucket_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_view.py",
+      "label": "bitbucket_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket/bitbucket_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/__init__.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py",
+      "label": "bitbucket_dc_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+      "label": "bitbucket_dc_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+      "label": "bitbucket_dc_service_account.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py",
+      "label": "bitbucket_dc_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py",
+      "label": "bitbucket_dc_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/data_collector.py",
+      "label": "data_collector.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/data_collector.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_manager.py",
+      "label": "github_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/github_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_service.py",
+      "label": "github_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/github_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_types.py",
+      "label": "github_types.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/github_types.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_v1_callback_processor.py",
+      "label": "github_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/github_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_view.py",
+      "label": "github_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/github_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/queries.py",
+      "label": "queries.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/github/queries.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_manager.py",
+      "label": "gitlab_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/gitlab/gitlab_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_service.py",
+      "label": "gitlab_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/gitlab/gitlab_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py",
+      "label": "gitlab_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_view.py",
+      "label": "gitlab_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/gitlab/gitlab_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/webhook_installation.py",
+      "label": "webhook_installation.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/gitlab/webhook_installation.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_manager.py",
+      "label": "jira_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira/jira_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_payload.py",
+      "label": "jira_payload.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira/jira_payload.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_types.py",
+      "label": "jira_types.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira/jira_types.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_v1_callback_processor.py",
+      "label": "jira_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira/jira_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_view.py",
+      "label": "jira_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira/jira_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py",
+      "label": "jira_dc_conversation_secret_enricher.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_manager.py",
+      "label": "jira_dc_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_service_account.py",
+      "label": "jira_dc_service_account.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_service_account.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_types.py",
+      "label": "jira_dc_types.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_types.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_user_token.py",
+      "label": "jira_dc_user_token.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_user_token.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py",
+      "label": "jira_dc_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_view.py",
+      "label": "jira_dc_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/jira_dc/jira_dc_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py",
+      "label": "manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/models.py",
+      "label": "models.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/models.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py",
+      "label": "resolver_context.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/resolver_context.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_org_router.py",
+      "label": "resolver_org_router.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/resolver_org_router.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_attachments.py",
+      "label": "slack_attachments.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_attachments.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_errors.py",
+      "label": "slack_errors.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_errors.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_manager.py",
+      "label": "slack_manager.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_manager.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_types.py",
+      "label": "slack_types.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_types.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_v1_callback_processor.py",
+      "label": "slack_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_v1_callback_processor.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_view.py",
+      "label": "slack_view.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/slack/slack_view.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/store_repo_utils.py",
+      "label": "store_repo_utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/store_repo_utils.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py",
+      "label": "stripe_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/stripe_service.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py",
+      "label": "types.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/types.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/utils.py",
+      "label": "utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/utils.py"
+      }
+    },
+    {
+      "id": "enterprise/integrations/v1_utils.py",
+      "label": "v1_utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/integrations/v1_utils.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/env.py",
+      "label": "env.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/env.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/001_create_feedback_table.py",
+      "label": "001_create_feedback_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/001_create_feedback_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/002_create_saas_settings_table.py",
+      "label": "002_create_saas_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/002_create_saas_settings_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py",
+      "label": "003_create_saas_conversation_metadata_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/004_create_billing_sessions_table.py",
+      "label": "004_create_billing_sessions_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/004_create_billing_sessions_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/005_add_margin_column.py",
+      "label": "005_add_margin_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/005_add_margin_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py",
+      "label": "006_add_branch_column_to_convo_metadata_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py",
+      "label": "007_add_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+      "label": "008_fix_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+      "label": "009_fix_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/010_create_offline_tokens_table.py",
+      "label": "010_create_offline_tokens_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/010_create_offline_tokens_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/011_create_user_settings_table.py",
+      "label": "011_create_user_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/011_create_user_settings_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py",
+      "label": "012_add_secret_store_column_to_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/013_create_github_app_installations_table.py",
+      "label": "013_create_github_app_installations_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/013_create_github_app_installations_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/014_add_github_user_id.py",
+      "label": "014_add_github_user_id.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/014_add_github_user_id.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py",
+      "label": "015_add_sandbox_container_image_columns.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/016_add_user_version_column.py",
+      "label": "016_add_user_version_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/016_add_user_version_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/017_add_stripe_customers_table.py",
+      "label": "017_add_stripe_customers_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/017_add_stripe_customers_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/018_add_script_results_table.py",
+      "label": "018_add_script_results_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/018_add_script_results_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py",
+      "label": "019_remove_duplicates_from_stripe.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/020_set_condenser_to_false.py",
+      "label": "020_set_condenser_to_false.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/020_set_condenser_to_false.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/021_create_auth_tokens_table.py",
+      "label": "021_create_auth_tokens_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/021_create_auth_tokens_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/022_create_api_keys_table.py",
+      "label": "022_create_api_keys_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/022_create_api_keys_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py",
+      "label": "023_add_cost_and_token_metrics_columns.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+      "label": "024_update_enable_default_condenser_default.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/024_update_enable_default_condenser_default.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py",
+      "label": "025_revert_user_version_from_3_to_2.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py",
+      "label": "026_add_trigger_information_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/027_create_gitlab_webhook_table.py",
+      "label": "027_create_gitlab_webhook_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/027_create_gitlab_webhook_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/028_create_user_repos_table.py",
+      "label": "028_create_user_repos_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/028_create_user_repos_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py",
+      "label": "029_add_accepted_tos_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+      "label": "030_add_proactive_conversation_starters_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/031_add_user_secrets_store.py",
+      "label": "031_add_user_secrets_store.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/031_add_user_secrets_store.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py",
+      "label": "032_add_status_column_to_gitlab_webhook.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "033_add_gitlab_webhook_uuid_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py",
+      "label": "034_add_proactive_convo_commits_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/035_create_slack_users_table.py",
+      "label": "035_create_slack_users_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/035_create_slack_users_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py",
+      "label": "036_add_mcp_config_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+      "label": "037_make_user_secrets_table_one_row_per_secret.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py",
+      "label": "038_add_pr_number_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/039_add_user_token_to_slack_table.py",
+      "label": "039_add_user_token_to_slack_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/039_add_user_token_to_slack_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py",
+      "label": "040_add_search_api_key_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/041_create_slack_conversation_table.py",
+      "label": "041_create_slack_conversation_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/041_create_slack_conversation_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+      "label": "042_add_git_provider_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py",
+      "label": "043_add_message_ts_column_to_slack_conversation.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+      "label": "044_add_llm_model_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/045_create_slack_team_table.py",
+      "label": "045_create_slack_team_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/045_create_slack_team_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/046_delete_all_slack_users.py",
+      "label": "046_delete_all_slack_users.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/046_delete_all_slack_users.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/047_create_conversation_feedback_table.py",
+      "label": "047_create_conversation_feedback_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/047_create_conversation_feedback_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py",
+      "label": "048_add_max_budget_per_task_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+      "label": "049_create_conversation_callbacks_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/049_create_conversation_callbacks_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/050_create_openhands_prs_table.py",
+      "label": "050_create_openhands_prs_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/050_create_openhands_prs_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py",
+      "label": "051_update_conversation_callbacks_fk_to_cascade.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py",
+      "label": "052_add_sandbox_api_key_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+      "label": "053_add_enable_solvability_analysis_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py",
+      "label": "054_add_email_fields_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/055_drop_slack_user_token_column.py",
+      "label": "055_drop_slack_user_token_column.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/055_drop_slack_user_token_column.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py",
+      "label": "056_add_llm_api_key_for_byor_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py",
+      "label": "057_enable_solvability_analysis_for_all_users.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/058_create_conversation_work_table.py",
+      "label": "058_create_conversation_work_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/058_create_conversation_work_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/059_create_maintenance_tasks_table.py",
+      "label": "059_create_maintenance_tasks_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/059_create_maintenance_tasks_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+      "label": "060_create_user_version_upgrade_tasks.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/061_create_experiment_assignments_table.py",
+      "label": "061_create_experiment_assignments_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/061_create_experiment_assignments_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py",
+      "label": "062_add_git_user_fields_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/063_create_jira_workspaces_table.py",
+      "label": "063_create_jira_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/063_create_jira_workspaces_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/064_create_jira_users_table.py",
+      "label": "064_create_jira_users_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/064_create_jira_users_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/065_create_jira_conversations_table.py",
+      "label": "065_create_jira_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/065_create_jira_conversations_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py",
+      "label": "066_create_jira_dc_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+      "label": "067_create_jira_dc_users_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/067_create_jira_dc_users_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+      "label": "068_create_jira_dc_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/069_create_linear_workspaces_table.py",
+      "label": "069_create_linear_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/069_create_linear_workspaces_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/070_create_linear_users_table.py",
+      "label": "070_create_linear_users_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/070_create_linear_users_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/071_create_linear_conversations_table.py",
+      "label": "071_create_linear_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/071_create_linear_conversations_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py",
+      "label": "072_add_condenser_max_size_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/073_add_type_to_billing_sessions.py",
+      "label": "073_add_type_to_billing_sessions.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/073_add_type_to_billing_sessions.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/074_create_subscription_access_table.py",
+      "label": "074_create_subscription_access_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/074_create_subscription_access_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py",
+      "label": "075_add_cancellation_fields_to_subscription_access.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/076_add_v1_tables.py",
+      "label": "076_add_v1_tables.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/076_add_v1_tables.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/077_drop_settings_table.py",
+      "label": "077_drop_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/077_drop_settings_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/078_create_telemetry_tables.py",
+      "label": "078_create_telemetry_tables.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/078_create_telemetry_tables.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py",
+      "label": "079_rename_user_secrets_to_custom_secrets.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+      "label": "080_add_status_and_updated_at_to_callback.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/081_add_parent_conversation_id.py",
+      "label": "081_add_parent_conversation_id.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/081_add_parent_conversation_id.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "label": "082_add_setting_up_skills_enum_value.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py",
+      "label": "083_add_v1_enabled_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/084_create_device_codes_table.py",
+      "label": "084_create_device_codes_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/084_create_device_codes_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py",
+      "label": "085_add_public_column_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py",
+      "label": "086_add_v1_column_to_slack_conversation.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/087_bump_condenser_defaults.py",
+      "label": "087_bump_condenser_defaults.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/087_bump_condenser_defaults.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+      "label": "088_create_blocked_email_domains_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/088_create_blocked_email_domains_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/089_create_org_tables.py",
+      "label": "089_create_org_tables.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/089_create_org_tables.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/090_add_git_user_fields_to_user.py",
+      "label": "090_add_git_user_fields_to_user.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/090_add_git_user_fields_to_user.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py",
+      "label": "091_add_byor_export_enabled_flag.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/092_rename_user_role_to_member.py",
+      "label": "092_rename_user_role_to_member.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/092_rename_user_role_to_member.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/093_add_pending_free_credits.py",
+      "label": "093_add_pending_free_credits.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/093_add_pending_free_credits.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/094_create_org_invitation_table.py",
+      "label": "094_create_org_invitation_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/094_create_org_invitation_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/095_drop_pending_free_credits.py",
+      "label": "095_drop_pending_free_credits.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/095_drop_pending_free_credits.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+      "label": "096_create_resend_synced_users_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/096_create_resend_synced_users_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+      "label": "097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/098_create_verified_models_table.py",
+      "label": "098_create_verified_models_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/098_create_verified_models_table.py"
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/099_create_user_authorizations_table.py",
+      "label": "099_create_user_authorizations_table.py",
+      "type": "file",
+      "metadata": {
+        "path": "enterprise/migrations/versions/099_create_user_authorizations_table.py"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "enterprise/integrations/models.py",
+      "target": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/resolver_org_router.py",
+      "target": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/migrations/versions/017_add_stripe_customers_table.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "imports",
+      "metadata": {}
+    }
+  ]
+}

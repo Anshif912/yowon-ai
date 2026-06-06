@@ -1,0 +1,26 @@
+{
+  "framework": "CrewAI",
+  "has_ai_agents": true,
+  "agents": [],
+  "planners": [
+    "ReAct Planner",
+    "Sequential Planner"
+  ],
+  "executors": [
+    "CrewAgentExecutor"
+  ],
+  "tools": [],
+  "memory": [
+    "Vector DB Memory Store",
+    "ShortTerm Memory Buffer"
+  ],
+  "llms": [
+    "Ollama Local"
+  ],
+  "prompts": [
+    "system_prompt_template",
+    "task_description_template"
+  ],
+  "communication": [],
+  "orchestration": "Hierarchical Crew tasks workflow"
+}

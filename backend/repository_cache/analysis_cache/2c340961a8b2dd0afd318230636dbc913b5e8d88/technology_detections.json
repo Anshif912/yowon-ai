@@ -1,0 +1,168 @@
+[
+  {
+    "name": "CrewAI",
+    "version": "1.14.6",
+    "confidence": 1.0,
+    "category": "ML",
+    "sources": [
+      "requirements.txt",
+      "import"
+    ]
+  },
+  {
+    "name": "Pydantic",
+    "version": "2.11.9,<2.13",
+    "confidence": 1.0,
+    "category": "FRAMEWORK",
+    "sources": [
+      "requirements.txt",
+      "import"
+    ]
+  },
+  {
+    "name": "Python",
+    "version": null,
+    "confidence": 1.0,
+    "category": "LANGUAGE",
+    "sources": [
+      "requirements.txt",
+      "file_extensions"
+    ]
+  },
+  {
+    "name": "TypeScript",
+    "version": "5.4.5",
+    "confidence": 1.0,
+    "category": "LANGUAGE",
+    "sources": [
+      "package.json",
+      "file_extensions"
+    ]
+  },
+  {
+    "name": "FastAPI",
+    "version": "0.111.0",
+    "confidence": 0.99,
+    "category": "FRAMEWORK",
+    "sources": [
+      "requirements.txt"
+    ]
+  },
+  {
+    "name": "ChromaDB",
+    "version": "1.1.0,<2.0.0",
+    "confidence": 0.99,
+    "category": "DATABASE",
+    "sources": [
+      "requirements.txt"
+    ]
+  },
+  {
+    "name": "SQLAlchemy",
+    "version": "2.0.30,<2.1.0",
+    "confidence": 0.99,
+    "category": "DATABASE",
+    "sources": [
+      "requirements.txt"
+    ]
+  },
+  {
+    "name": "Alembic",
+    "version": "1.13.1,<2.0.0",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "requirements.txt"
+    ]
+  },
+  {
+    "name": "Pytest",
+    "version": "9.1.0,<10.0.0",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "requirements.txt"
+    ]
+  },
+  {
+    "name": "TanStack Query",
+    "version": "5.101.2",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Axios",
+    "version": "1.7.2",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Framer Motion",
+    "version": "11.2.12",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "React",
+    "version": "18.3.1",
+    "confidence": 0.99,
+    "category": "FRAMEWORK",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Tailwind CSS",
+    "version": "3.4.4",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Vite",
+    "version": "5.2.12",
+    "confidence": 0.99,
+    "category": "TOOL",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Node.js",
+    "version": null,
+    "confidence": 0.97,
+    "category": "RUNTIME",
+    "sources": [
+      "package.json"
+    ]
+  },
+  {
+    "name": "Docker",
+    "version": null,
+    "confidence": 0.97,
+    "category": "TOOL",
+    "sources": [
+      "dockerfile"
+    ]
+  },
+  {
+    "name": "Docker Compose",
+    "version": null,
+    "confidence": 0.95,
+    "category": "TOOL",
+    "sources": [
+      "docker-compose.yml"
+    ]
+  }
+]

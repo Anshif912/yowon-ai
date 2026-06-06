@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    {
+      "name": "main.py",
+      "path": "src/main.py",
+      "type": "file"
+    }
+  ]
+}

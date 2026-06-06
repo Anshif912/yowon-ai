@@ -1,0 +1,1094 @@
+{
+  "nodes": [
+    {
+      "id": "project",
+      "label": "Femme",
+      "type": "project",
+      "metadata": {
+        "description": "Target codebase"
+      }
+    },
+    {
+      "id": "eco_python",
+      "label": "Python Packages",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Python"
+      }
+    },
+    {
+      "id": "dep_python_fastapi",
+      "label": "fastapi@0.110.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.110.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_uvicorn",
+      "label": "uvicorn@0.28.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.28.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pydantic",
+      "label": "pydantic@2.6.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.6.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pydantic_settings",
+      "label": "pydantic-settings@2.2.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.2.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_python_jose[cryptography]",
+      "label": "python-jose[cryptography]@3.3.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "3.3.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_passlib[bcrypt]",
+      "label": "passlib[bcrypt]@1.7.4",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.7.4",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_reportlab",
+      "label": "reportlab@4.1.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.1.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_firebase_admin",
+      "label": "firebase-admin@6.5.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.5.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_python_multipart",
+      "label": "python-multipart@0.0.9",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.0.9",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_requests",
+      "label": "requests@2.31.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.31.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_twilio",
+      "label": "twilio@9.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "9.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "eco_node_js",
+      "label": "Node.js Packages",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo",
+      "label": "expo@54",
+      "type": "dependency",
+      "metadata": {
+        "version": "54",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_av",
+      "label": "expo-av@16.0.8",
+      "type": "dependency",
+      "metadata": {
+        "version": "16.0.8",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_constants",
+      "label": "expo-constants@18.0.13",
+      "type": "dependency",
+      "metadata": {
+        "version": "18.0.13",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_linking",
+      "label": "expo-linking@8.0.12",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.0.12",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_location",
+      "label": "expo-location@19.0.8",
+      "type": "dependency",
+      "metadata": {
+        "version": "19.0.8",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_notifications",
+      "label": "expo-notifications@0.32.17",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.32.17",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_router",
+      "label": "expo-router@6.0.24",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.0.24",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_secure_store",
+      "label": "expo-secure-store@15.0.8",
+      "type": "dependency",
+      "metadata": {
+        "version": "15.0.8",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_sensors",
+      "label": "expo-sensors@15.0.8",
+      "type": "dependency",
+      "metadata": {
+        "version": "15.0.8",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_sms",
+      "label": "expo-sms@14.0.8",
+      "type": "dependency",
+      "metadata": {
+        "version": "14.0.8",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_expo_status_bar",
+      "label": "expo-status-bar@3.0.9",
+      "type": "dependency",
+      "metadata": {
+        "version": "3.0.9",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_lucide_react_native",
+      "label": "lucide-react-native@0.542.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.542.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react",
+      "label": "react@19.2.6",
+      "type": "dependency",
+      "metadata": {
+        "version": "19.2.6",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native",
+      "label": "react-native@0.81.5",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.81.5",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_gesture_handler",
+      "label": "react-native-gesture-handler@2.28.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.28.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_maps",
+      "label": "react-native-maps@1.20.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.20.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_reanimated",
+      "label": "react-native-reanimated@4.1.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.1.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_safe_area_context",
+      "label": "react-native-safe-area-context@5.6.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.6.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_screens",
+      "label": "react-native-screens@4.16.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.16.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_svg",
+      "label": "react-native-svg@15.12.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "15.12.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_native_worklets",
+      "label": "react-native-worklets@0.5.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.5.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_zustand",
+      "label": "zustand@5.0.14",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.0.14",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@babel/core",
+      "label": "@babel/core@7.20.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "7.20.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/react",
+      "label": "@types/react@19.2.14",
+      "type": "dependency",
+      "metadata": {
+        "version": "19.2.14",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_babel_preset_expo",
+      "label": "babel-preset-expo@54.0.10",
+      "type": "dependency",
+      "metadata": {
+        "version": "54.0.10",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_typescript",
+      "label": "typescript@6.0.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.0.2",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@capacitor/core",
+      "label": "@capacitor/core@8.4.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.4.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@tanstack/react_query",
+      "label": "@tanstack/react-query@5.101.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.101.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_canvas_confetti",
+      "label": "canvas-confetti@1.9.4",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.9.4",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_framer_motion",
+      "label": "framer-motion@12.40.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "12.40.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_jwt_decode",
+      "label": "jwt-decode@4.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.0.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_leaflet",
+      "label": "leaflet@1.9.4",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.9.4",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_lottie_react",
+      "label": "lottie-react@2.4.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.4.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_lucide_react",
+      "label": "lucide-react@1.18.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.18.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_countup",
+      "label": "react-countup@6.5.3",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.5.3",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_dom",
+      "label": "react-dom@19.2.6",
+      "type": "dependency",
+      "metadata": {
+        "version": "19.2.6",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_leaflet",
+      "label": "react-leaflet@5.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.0.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_router_dom",
+      "label": "react-router-dom@7.17.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "7.17.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@capacitor/android",
+      "label": "@capacitor/android@8.4.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.4.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@capacitor/cli",
+      "label": "@capacitor/cli@8.4.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.4.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@eslint/js",
+      "label": "@eslint/js@10.0.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "10.0.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/canvas_confetti",
+      "label": "@types/canvas-confetti@1.9.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.9.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/leaflet",
+      "label": "@types/leaflet@1.9.21",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.9.21",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/node",
+      "label": "@types/node@24.12.3",
+      "type": "dependency",
+      "metadata": {
+        "version": "24.12.3",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/react_dom",
+      "label": "@types/react-dom@19.2.3",
+      "type": "dependency",
+      "metadata": {
+        "version": "19.2.3",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@vitejs/plugin_react",
+      "label": "@vitejs/plugin-react@6.0.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.0.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_autoprefixer",
+      "label": "autoprefixer@10.5.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "10.5.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_eslint",
+      "label": "eslint@10.3.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "10.3.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_eslint_plugin_react_hooks",
+      "label": "eslint-plugin-react-hooks@7.1.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "7.1.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_eslint_plugin_react_refresh",
+      "label": "eslint-plugin-react-refresh@0.5.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.5.2",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_globals",
+      "label": "globals@17.6.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "17.6.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_postcss",
+      "label": "postcss@8.5.15",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.5.15",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_tailwindcss",
+      "label": "tailwindcss@3.4.19",
+      "type": "dependency",
+      "metadata": {
+        "version": "3.4.19",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_typescript_eslint",
+      "label": "typescript-eslint@8.59.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.59.2",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_vite",
+      "label": "vite@8.0.12",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.0.12",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "eco_docker",
+      "label": "Containers",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Docker"
+      }
+    },
+    {
+      "id": "dep_docker_python_3_10-slim",
+      "label": "python:3.10-slim",
+      "type": "container",
+      "metadata": {
+        "image": "python:3.10-slim"
+      }
+    },
+    {
+      "id": "dep_docker_node_22-alpine",
+      "label": "node:22-alpine",
+      "type": "container",
+      "metadata": {
+        "image": "node:22-alpine"
+      }
+    },
+    {
+      "id": "dep_docker_nginx_alpine",
+      "label": "nginx:alpine",
+      "type": "container",
+      "metadata": {
+        "image": "nginx:alpine"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "project",
+      "target": "eco_python",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_fastapi",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_uvicorn",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pydantic",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pydantic_settings",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_python_jose[cryptography]",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_passlib[bcrypt]",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_reportlab",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_firebase_admin",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_python_multipart",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_requests",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_twilio",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "project",
+      "target": "eco_node_js",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_av",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_constants",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_linking",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_location",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_notifications",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_router",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_secure_store",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_sensors",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_sms",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_expo_status_bar",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_lucide_react_native",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_gesture_handler",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_maps",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_reanimated",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_safe_area_context",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_screens",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_svg",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_native_worklets",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_zustand",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@babel/core",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_babel_preset_expo",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_typescript",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@capacitor/core",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@tanstack/react_query",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_canvas_confetti",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_framer_motion",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_jwt_decode",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_leaflet",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_lottie_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_lucide_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_countup",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_leaflet",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_router_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@capacitor/android",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@capacitor/cli",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@eslint/js",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/canvas_confetti",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/leaflet",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/node",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/react_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@vitejs/plugin_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_autoprefixer",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_eslint",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_eslint_plugin_react_hooks",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_eslint_plugin_react_refresh",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_globals",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_postcss",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_tailwindcss",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_typescript_eslint",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_vite",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "project",
+      "target": "eco_docker",
+      "label": "deploys",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_python_3_10-slim",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_node_22-alpine",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_nginx_alpine",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "dep_python_fastapi",
+      "target": "dep_python_pydantic",
+      "label": "uses",
+      "metadata": {}
+    }
+  ]
+}

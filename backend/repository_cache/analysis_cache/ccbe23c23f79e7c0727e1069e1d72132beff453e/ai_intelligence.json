@@ -1,0 +1,36 @@
+{
+  "framework": "None",
+  "agents": [
+    "DefaultAgent"
+  ],
+  "planners": [
+    "Standard Chain Planner"
+  ],
+  "executors": [
+    "ChainExecutor"
+  ],
+  "tools": [
+    "CodeInterpreter",
+    "FileReadTool"
+  ],
+  "memory": [
+    "Vector DB Memory Store",
+    "ShortTerm Memory Buffer"
+  ],
+  "llms": [
+    "Default System Fallback LLM"
+  ],
+  "prompts": [
+    "system_prompt_template",
+    "task_description_template"
+  ],
+  "communication": [
+    {
+      "source": "AgentA",
+      "target": "AgentB",
+      "type": "delegation",
+      "label": "delegates task context"
+    }
+  ],
+  "orchestration": "Sequential execution pipeline"
+}

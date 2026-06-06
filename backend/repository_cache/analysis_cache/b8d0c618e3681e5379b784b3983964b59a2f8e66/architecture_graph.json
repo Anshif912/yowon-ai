@@ -1,0 +1,549 @@
+{
+  "nodes": [
+    {
+      "id": "presentation",
+      "label": "Presentation",
+      "type": "layer",
+      "metadata": {
+        "description": "Client-facing UI components, layouts, and web templates",
+        "technologies": [],
+        "files": [],
+        "purpose": "Client-facing UI components, layouts, and web templates",
+        "responsibilities": [
+          "Rendering layouts",
+          "Managing user interaction",
+          "Local UI state"
+        ],
+        "inputs": "User mouse and keyboard actions",
+        "outputs": "HTML DOM layouts and browser logs",
+        "consumers": [
+          "End User / Browser"
+        ],
+        "providers": [
+          "API Gateways"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Presentation.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "type": "layer",
+      "metadata": {
+        "description": "REST/GraphQL endpoints, API routes, and gateways",
+        "technologies": [],
+        "files": [
+          "enterprise/integrations/resolver_org_router.py"
+        ],
+        "purpose": "REST/GraphQL endpoints, API routes, and gateways",
+        "responsibilities": [
+          "Routing HTTP endpoints",
+          "Gateway mapping",
+          "Request validations"
+        ],
+        "inputs": "HTTP REST requests",
+        "outputs": "HTTP JSON responses",
+        "consumers": [
+          "Presentation Layer"
+        ],
+        "providers": [
+          "Controllers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing API.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "controllers",
+      "label": "Controllers",
+      "type": "layer",
+      "metadata": {
+        "description": "Request coordinators, route controllers, and input handlers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Request coordinators, route controllers, and input handlers",
+        "responsibilities": [
+          "Orchestrating controllers",
+          "Mapping route params",
+          "Session handlers"
+        ],
+        "inputs": "Parsed route parameter dictionaries",
+        "outputs": "Service request parameter mappings",
+        "consumers": [
+          "API Gateways"
+        ],
+        "providers": [
+          "Services"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Controllers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "type": "layer",
+      "metadata": {
+        "description": "Core business logic modules and external API wrappers",
+        "technologies": [],
+        "files": [
+          "enterprise/doc/architecture/external-integrations.md",
+          ".github/scripts/find_prs_between_commits.py",
+          "enterprise/integrations/github/github_service.py",
+          "enterprise/integrations/jira_dc/jira_dc_manager.py",
+          "enterprise/integrations/slack/slack_view.py",
+          "enterprise/integrations/store_repo_utils.py",
+          "enterprise/analytics/__init__.py",
+          "enterprise/integrations/azure_devops/azure_devops_view.py",
+          "enterprise/integrations/github/github_types.py",
+          "enterprise/integrations/bitbucket/__init__.py",
+          "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+          "enterprise/integrations/stripe_service.py",
+          "enterprise/integrations/bitbucket/bitbucket_service.py",
+          "enterprise/integrations/bitbucket/bitbucket_manager.py",
+          "enterprise/analytics/saas_user_provider.py",
+          "enterprise/integrations/jira_dc/jira_dc_view.py",
+          "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+          "enterprise/integrations/slack/slack_types.py",
+          "enterprise/integrations/gitlab/webhook_installation.py",
+          "enterprise/integrations/github/data_collector.py",
+          "enterprise/integrations/github/github_v1_callback_processor.py",
+          "enterprise/integrations/v1_utils.py",
+          "enterprise/integrations/jira/jira_view.py",
+          "enterprise/integrations/jira/jira_payload.py",
+          "enterprise/integrations/slack/slack_attachments.py",
+          "enterprise/integrations/azure_devops/azure_devops_manager.py",
+          "enterprise/integrations/github/github_view.py",
+          "enterprise/integrations/manager.py",
+          "enterprise/integrations/gitlab/gitlab_manager.py",
+          "enterprise/integrations/jira/jira_manager.py"
+        ],
+        "purpose": "Core business logic modules and external API wrappers",
+        "responsibilities": [
+          "Executing business service calculations",
+          "API wrappers"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Controllers"
+        ],
+        "providers": [
+          "Repositories & LLM Providers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 7.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Services.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "repositories",
+      "label": "Repositories",
+      "type": "layer",
+      "metadata": {
+        "description": "Data access abstraction interfaces and CRUD layers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Data access abstraction interfaces and CRUD layers",
+        "responsibilities": [
+          "Executing database query abstractions",
+          "Data mapper CRUD"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "Database & Models"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Repositories.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "models",
+      "label": "Models",
+      "type": "layer",
+      "metadata": {
+        "description": "ORM models, database schemas, and Pydantic validators",
+        "technologies": [
+          "SQLAlchemy",
+          "Pydantic"
+        ],
+        "files": [
+          "enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+          "enterprise/migrations/versions/010_create_offline_tokens_table.py",
+          "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+          "enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+          "enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+          "enterprise/migrations/versions/050_create_openhands_prs_table.py",
+          "enterprise/migrations/versions/021_create_auth_tokens_table.py",
+          "enterprise/migrations/versions/099_create_user_authorizations_table.py",
+          "enterprise/migrations/versions/098_create_verified_models_table.py",
+          "enterprise/migrations/README.md",
+          "enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+          "enterprise/integrations/models.py",
+          "enterprise/migrations/versions/081_add_parent_conversation_id.py",
+          "enterprise/migrations/script.py.mako",
+          "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+          "enterprise/migrations/versions/022_create_api_keys_table.py",
+          "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+          "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+          "enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+          "enterprise/migrations/versions/035_create_slack_users_table.py",
+          "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+          "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+          "enterprise/migrations/versions/084_create_device_codes_table.py",
+          "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+          "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+          "enterprise/migrations/versions/064_create_jira_users_table.py",
+          "enterprise/migrations/versions/046_delete_all_slack_users.py",
+          "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+          "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+          "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py"
+        ],
+        "purpose": "ORM models, database schemas, and Pydantic validators",
+        "responsibilities": [
+          "Defining database data structures",
+          "Type declarations"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Repositories & Services"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 7.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Models.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "type": "layer",
+      "metadata": {
+        "description": "Raw SQL connectors, migrations, and database scripts",
+        "technologies": [],
+        "files": [],
+        "purpose": "Raw SQL connectors, migrations, and database scripts",
+        "responsibilities": [
+          "Database migrations",
+          "Raw connection pools"
+        ],
+        "inputs": "SQL dialect command texts",
+        "outputs": "Raw row tuples and transaction status",
+        "consumers": [
+          "Repositories"
+        ],
+        "providers": [
+          "PostgreSQL / SQLite Engines"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Database.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "configuration",
+      "label": "Configuration",
+      "type": "layer",
+      "metadata": {
+        "description": "Settings files, environment parsers, and constants",
+        "technologies": [],
+        "files": [
+          ".github/workflows/fe-unit-tests.yml",
+          ".github/dependabot.yml",
+          ".editorconfig",
+          ".github/ISSUE_TEMPLATE/config.yml",
+          ".github/workflows/qa-changes-by-openhands.yml",
+          ".github/workflows/stale.yml",
+          "dev_config/python/mypy.ini",
+          "enterprise/dev_config/python/.pre-commit-config.yaml",
+          "enterprise/migrations/versions/002_create_saas_settings_table.py",
+          "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+          ".github/workflows/check-package-versions.yml",
+          "docker-compose.yml",
+          ".github/release.yml",
+          ".github/ISSUE_TEMPLATE/bug_template.yml",
+          ".github/workflows/fe-e2e-tests.yml",
+          ".github/workflows/pr-artifacts.yml",
+          "enterprise/migrations/versions/011_create_user_settings_table.py",
+          ".github/workflows/issue-opened.yml",
+          ".vscode/settings.json",
+          "enterprise/dev_config/python/mypy.ini",
+          ".github/workflows/npm-publish-ui.yml",
+          ".github/workflows/ui-build.yml",
+          ".github/workflows/pr-readiness-confirm.yml",
+          ".github/workflows/pypi-release.yml",
+          ".github/workflows/promote-to-development.yml",
+          ".github/workflows/release-ready.yml",
+          ".github/workflows/remove-duplicate-candidate-label.yml",
+          "enterprise/dev_config/python/ruff.toml",
+          "enterprise/migrations/versions/077_drop_settings_table.py",
+          ".github/actions/docker-merge-manifest/action.yml"
+        ],
+        "purpose": "Settings files, environment parsers, and constants",
+        "responsibilities": [
+          "Executing custom business logic"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 7.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Configuration.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "ai_agents",
+      "label": "AI Agents",
+      "type": "layer",
+      "metadata": {
+        "description": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "technologies": [],
+        "files": [
+          ".agents/skills/update-sdk/references/sdk-pinning-examples.md",
+          ".openhands/microagents/documentation.md",
+          ".agents/skills/update-sdk/SKILL.md",
+          ".agents/skills/cross-repo-testing/SKILL.md",
+          ".openhands/microagents/glossary.md",
+          ".agents/skills/upcoming-release/SKILL.md",
+          "AGENTS.md",
+          ".agents/skills/custom-codereview-guide.md",
+          ".agents/skills/update-sdk/references/docker-image-locations.md"
+        ],
+        "purpose": "CrewAI agents, LangChain chains, and agent orchestrators",
+        "responsibilities": [
+          "Orchestrating AI agents teams",
+          "Task registry executions"
+        ],
+        "inputs": "Agent context prompts and schemas",
+        "outputs": "Agent execution task records",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "LLM Providers & Memory DBs"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 24.3,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing AI Agents.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "plugin_system",
+      "label": "Plugin System",
+      "type": "layer",
+      "metadata": {
+        "description": "Dynamic extensions, load-time hooks, and dynamic imports",
+        "technologies": [],
+        "files": [
+          "enterprise/doc/design-doc/plugin-launch-flow.md"
+        ],
+        "purpose": "Dynamic extensions, load-time hooks, and dynamic imports",
+        "responsibilities": [
+          "Dynamic class loader hooks",
+          "Modules load paths"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Plugin System.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "llm_providers",
+      "label": "LLM Providers",
+      "type": "layer",
+      "metadata": {
+        "description": "Ollama, OpenAI, Anthropic connectors, and LiteLLM",
+        "technologies": [],
+        "files": [
+          "enterprise/allhands-realm-github-provider.json.tmpl"
+        ],
+        "purpose": "Ollama, OpenAI, Anthropic connectors, and LiteLLM",
+        "responsibilities": [
+          "Invoking OpenAI API",
+          "Invoking Ollama local models"
+        ],
+        "inputs": "Prompt token arrays",
+        "outputs": "Generated completion texts",
+        "consumers": [
+          "AI Agents"
+        ],
+        "providers": [
+          "OpenAI / Ollama Host"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 100.0,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing LLM Providers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "deployment",
+      "label": "Deployment",
+      "type": "layer",
+      "metadata": {
+        "description": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "technologies": [
+          "Docker",
+          "Docker Compose"
+        ],
+        "files": [
+          "containers/app/Dockerfile",
+          "containers/dev/Dockerfile",
+          "enterprise/__init__.py",
+          "docker-compose.yml",
+          "enterprise/Dockerfile"
+        ],
+        "purpose": "Dockerfiles, docker-compose configs, and CI/CD pipelines",
+        "responsibilities": [
+          "Docker container configs",
+          "CI/CD execution pipelines"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Upstream caller modules"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 43.9,
+        "confidence": 0.95,
+        "summary": "Deterministic architecture layer representing Deployment.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "presentation",
+      "target": "api",
+      "label": "Sends HTTP requests to",
+      "metadata": {}
+    },
+    {
+      "source": "api",
+      "target": "controllers",
+      "label": "Delegates handling to",
+      "metadata": {}
+    },
+    {
+      "source": "controllers",
+      "target": "services",
+      "label": "Calls business logic in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "repositories",
+      "label": "Accesses data via",
+      "metadata": {}
+    },
+    {
+      "source": "repositories",
+      "target": "models",
+      "label": "Maps entities through",
+      "metadata": {}
+    },
+    {
+      "source": "models",
+      "target": "database",
+      "label": "Persists schema in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "ai_agents",
+      "label": "Orchestrates AI through",
+      "metadata": {}
+    },
+    {
+      "source": "ai_agents",
+      "target": "llm_providers",
+      "label": "Invokes models via",
+      "metadata": {}
+    },
+    {
+      "source": "llm_providers",
+      "target": "ai_agents",
+      "label": "Returns completions to",
+      "metadata": {}
+    },
+    {
+      "source": "configuration",
+      "target": "services",
+      "label": "Injects settings into",
+      "metadata": {}
+    }
+  ]
+}

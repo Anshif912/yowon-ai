@@ -1,0 +1,255 @@
+{
+  "nodes": [
+    {
+      "id": "presentation",
+      "label": "Presentation",
+      "type": "layer",
+      "metadata": {
+        "description": "Client-facing UI components, layouts, and web templates",
+        "technologies": [],
+        "files": [],
+        "purpose": "Client-facing UI components, layouts, and web templates",
+        "responsibilities": [
+          "Rendering layouts",
+          "Managing user interaction",
+          "Local UI state"
+        ],
+        "inputs": "User mouse and keyboard actions",
+        "outputs": "HTML DOM layouts and browser logs",
+        "consumers": [
+          "End User / Browser"
+        ],
+        "providers": [
+          "API Gateways"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Presentation.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "type": "layer",
+      "metadata": {
+        "description": "REST/GraphQL endpoints, API routes, and gateways",
+        "technologies": [],
+        "files": [],
+        "purpose": "REST/GraphQL endpoints, API routes, and gateways",
+        "responsibilities": [
+          "Routing HTTP endpoints",
+          "Gateway mapping",
+          "Request validations"
+        ],
+        "inputs": "HTTP REST requests",
+        "outputs": "HTTP JSON responses",
+        "consumers": [
+          "Presentation Layer"
+        ],
+        "providers": [
+          "Controllers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing API.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "controllers",
+      "label": "Controllers",
+      "type": "layer",
+      "metadata": {
+        "description": "Request coordinators, route controllers, and input handlers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Request coordinators, route controllers, and input handlers",
+        "responsibilities": [
+          "Orchestrating controllers",
+          "Mapping route params",
+          "Session handlers"
+        ],
+        "inputs": "Parsed route parameter dictionaries",
+        "outputs": "Service request parameter mappings",
+        "consumers": [
+          "API Gateways"
+        ],
+        "providers": [
+          "Services"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Controllers.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "type": "layer",
+      "metadata": {
+        "description": "Core business logic modules and external API wrappers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Core business logic modules and external API wrappers",
+        "responsibilities": [
+          "Executing business service calculations",
+          "API wrappers"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Controllers"
+        ],
+        "providers": [
+          "Repositories & LLM Providers"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Services.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "repositories",
+      "label": "Repositories",
+      "type": "layer",
+      "metadata": {
+        "description": "Data access abstraction interfaces and CRUD layers",
+        "technologies": [],
+        "files": [],
+        "purpose": "Data access abstraction interfaces and CRUD layers",
+        "responsibilities": [
+          "Executing database query abstractions",
+          "Data mapper CRUD"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Services"
+        ],
+        "providers": [
+          "Database & Models"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Repositories.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "models",
+      "label": "Models",
+      "type": "layer",
+      "metadata": {
+        "description": "ORM models, database schemas, and Pydantic validators",
+        "technologies": [],
+        "files": [],
+        "purpose": "ORM models, database schemas, and Pydantic validators",
+        "responsibilities": [
+          "Defining database data structures",
+          "Type declarations"
+        ],
+        "inputs": "Internal method parameters",
+        "outputs": "Data object return values",
+        "consumers": [
+          "Repositories & Services"
+        ],
+        "providers": [
+          "Downstream helper modules"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Models.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "type": "layer",
+      "metadata": {
+        "description": "Raw SQL connectors, migrations, and database scripts",
+        "technologies": [],
+        "files": [],
+        "purpose": "Raw SQL connectors, migrations, and database scripts",
+        "responsibilities": [
+          "Database migrations",
+          "Raw connection pools"
+        ],
+        "inputs": "SQL dialect command texts",
+        "outputs": "Raw row tuples and transaction status",
+        "consumers": [
+          "Repositories"
+        ],
+        "providers": [
+          "PostgreSQL / SQLite Engines"
+        ],
+        "health": 98.0,
+        "risk": 5.0,
+        "complexity": 0.0,
+        "confidence": 0.7,
+        "summary": "Deterministic architecture layer representing Database.",
+        "evidence": [],
+        "ownership": "Core Engineering Team"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "presentation",
+      "target": "api",
+      "label": "Sends HTTP requests to",
+      "metadata": {}
+    },
+    {
+      "source": "api",
+      "target": "controllers",
+      "label": "Delegates handling to",
+      "metadata": {}
+    },
+    {
+      "source": "controllers",
+      "target": "services",
+      "label": "Calls business logic in",
+      "metadata": {}
+    },
+    {
+      "source": "services",
+      "target": "repositories",
+      "label": "Accesses data via",
+      "metadata": {}
+    },
+    {
+      "source": "repositories",
+      "target": "models",
+      "label": "Maps entities through",
+      "metadata": {}
+    },
+    {
+      "source": "models",
+      "target": "database",
+      "label": "Persists schema in",
+      "metadata": {}
+    }
+  ]
+}

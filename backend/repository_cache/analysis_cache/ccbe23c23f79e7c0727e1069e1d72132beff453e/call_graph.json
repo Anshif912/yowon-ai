@@ -1,0 +1,653 @@
+{
+  "nodes": [
+    {
+      "id": "backend/app/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/__init__.py"
+      }
+    },
+    {
+      "id": "backend/app/auth.py",
+      "label": "auth.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/auth.py"
+      }
+    },
+    {
+      "id": "backend/app/config.py",
+      "label": "config.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/config.py"
+      }
+    },
+    {
+      "id": "backend/app/database.py",
+      "label": "database.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/database.py"
+      }
+    },
+    {
+      "id": "backend/app/main.py",
+      "label": "main.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/main.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/__init__.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/contacts.py",
+      "label": "contacts.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/contacts.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/evidence.py",
+      "label": "evidence.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/evidence.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/geocode.py",
+      "label": "geocode.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/geocode.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/journeys.py",
+      "label": "journeys.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/journeys.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/reports.py",
+      "label": "reports.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/reports.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/safety_route.py",
+      "label": "safety_route.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/safety_route.py"
+      }
+    },
+    {
+      "id": "backend/app/routes/simulation.py",
+      "label": "simulation.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/routes/simulation.py"
+      }
+    },
+    {
+      "id": "backend/app/services/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/services/__init__.py"
+      }
+    },
+    {
+      "id": "backend/app/services/geocode.py",
+      "label": "geocode.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/services/geocode.py"
+      }
+    },
+    {
+      "id": "backend/app/services/reverse_geocode.py",
+      "label": "reverse_geocode.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/services/reverse_geocode.py"
+      }
+    },
+    {
+      "id": "backend/app/services/routing.py",
+      "label": "routing.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/services/routing.py"
+      }
+    },
+    {
+      "id": "backend/app/utils/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/utils/__init__.py"
+      }
+    },
+    {
+      "id": "backend/app/utils/notification_providers.py",
+      "label": "notification_providers.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/utils/notification_providers.py"
+      }
+    },
+    {
+      "id": "backend/app/utils/pdf_generator.py",
+      "label": "pdf_generator.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/utils/pdf_generator.py"
+      }
+    },
+    {
+      "id": "backend/app/utils/phone_validation.py",
+      "label": "phone_validation.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/utils/phone_validation.py"
+      }
+    },
+    {
+      "id": "backend/app/utils/routing.py",
+      "label": "routing.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/app/utils/routing.py"
+      }
+    },
+    {
+      "id": "backend/services/geocode.py",
+      "label": "geocode.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/services/geocode.py"
+      }
+    },
+    {
+      "id": "backend/services/reverse_geocode.py",
+      "label": "reverse_geocode.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/services/reverse_geocode.py"
+      }
+    },
+    {
+      "id": "backend/services/routing.py",
+      "label": "routing.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/services/routing.py"
+      }
+    },
+    {
+      "id": "backend/services/safety_scorer.py",
+      "label": "safety_scorer.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/services/safety_scorer.py"
+      }
+    },
+    {
+      "id": "frontend-native/app/(auth)/login.tsx",
+      "label": "login.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(auth)/login.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/(tabs)/_layout.tsx",
+      "label": "_layout.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(tabs)/_layout.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/(tabs)/contacts.tsx",
+      "label": "contacts.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(tabs)/contacts.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/(tabs)/dashboard.tsx",
+      "label": "dashboard.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(tabs)/dashboard.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/(tabs)/settings.tsx",
+      "label": "settings.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(tabs)/settings.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/(tabs)/vault.tsx",
+      "label": "vault.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/(tabs)/vault.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/_layout.tsx",
+      "label": "_layout.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/_layout.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/index.tsx",
+      "label": "index.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/index.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/journey/active.tsx",
+      "label": "active.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/journey/active.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/journey/route.tsx",
+      "label": "route.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/journey/route.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/journey/setup.tsx",
+      "label": "setup.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/journey/setup.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/app/sos/active.tsx",
+      "label": "active.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/app/sos/active.tsx"
+      }
+    },
+    {
+      "id": "frontend-native/babel.config.js",
+      "label": "babel.config.js",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/babel.config.js"
+      }
+    },
+    {
+      "id": "frontend-native/store/useStore.ts",
+      "label": "useStore.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/store/useStore.ts"
+      }
+    },
+    {
+      "id": "frontend-native/utils/CommunicationProvider.ts",
+      "label": "CommunicationProvider.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/utils/CommunicationProvider.ts"
+      }
+    },
+    {
+      "id": "frontend-native/utils/api.ts",
+      "label": "api.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend-native/utils/api.ts"
+      }
+    },
+    {
+      "id": "frontend/capacitor.config.ts",
+      "label": "capacitor.config.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/capacitor.config.ts"
+      }
+    },
+    {
+      "id": "frontend/eslint.config.js",
+      "label": "eslint.config.js",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/eslint.config.js"
+      }
+    },
+    {
+      "id": "frontend/postcss.config.js",
+      "label": "postcss.config.js",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/postcss.config.js"
+      }
+    },
+    {
+      "id": "frontend/src/App.tsx",
+      "label": "App.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/App.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/AIHero.tsx",
+      "label": "AIHero.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/AIHero.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/AnimatedCounter.tsx",
+      "label": "AnimatedCounter.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/AnimatedCounter.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/GlassCard.tsx",
+      "label": "GlassCard.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/GlassCard.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/Layout.tsx",
+      "label": "Layout.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/Layout.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/LocationPermissionModal.tsx",
+      "label": "LocationPermissionModal.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/LocationPermissionModal.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/SafetyRoutePanel.tsx",
+      "label": "SafetyRoutePanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/SafetyRoutePanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/VideoBackground.tsx",
+      "label": "VideoBackground.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/VideoBackground.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/context/AuthProvider.tsx",
+      "label": "AuthProvider.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/context/AuthProvider.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/context/LocationContext.tsx",
+      "label": "LocationContext.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/context/LocationContext.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/main.tsx",
+      "label": "main.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/main.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/ActiveJourneyPage.tsx",
+      "label": "ActiveJourneyPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/ActiveJourneyPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/AnalyticsPage.tsx",
+      "label": "AnalyticsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/AnalyticsPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/AnomalyCenterPage.tsx",
+      "label": "AnomalyCenterPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/AnomalyCenterPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/AuthPage.tsx",
+      "label": "AuthPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/AuthPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/CommunityReportsPage.tsx",
+      "label": "CommunityReportsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/CommunityReportsPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/DashboardPage.tsx",
+      "label": "DashboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/DashboardPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/EvidenceVaultPage.tsx",
+      "label": "EvidenceVaultPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/EvidenceVaultPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/FIRGeneratorPage.tsx",
+      "label": "FIRGeneratorPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/FIRGeneratorPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/JourneySetupPage.tsx",
+      "label": "JourneySetupPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/JourneySetupPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/LandingPage.tsx",
+      "label": "LandingPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/LandingPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/ProfilePage.tsx",
+      "label": "ProfilePage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/ProfilePage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/RouteViewPage.tsx",
+      "label": "RouteViewPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/RouteViewPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/SOSCenterPage.tsx",
+      "label": "SOSCenterPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/SOSCenterPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/SafeZoneMapPage.tsx",
+      "label": "SafeZoneMapPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/SafeZoneMapPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/SettingsPage.tsx",
+      "label": "SettingsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/SettingsPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/TrustedContactsPage.tsx",
+      "label": "TrustedContactsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/TrustedContactsPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/store/useStore.ts",
+      "label": "useStore.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/store/useStore.ts"
+      }
+    },
+    {
+      "id": "frontend/src/types/global.d.ts",
+      "label": "global.d.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/types/global.d.ts"
+      }
+    },
+    {
+      "id": "frontend/src/types/jwt-decode.d.ts",
+      "label": "jwt-decode.d.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/types/jwt-decode.d.ts"
+      }
+    },
+    {
+      "id": "frontend/src/utils/Logger.ts",
+      "label": "Logger.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/utils/Logger.ts"
+      }
+    },
+    {
+      "id": "frontend/src/utils/api.ts",
+      "label": "api.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/utils/api.ts"
+      }
+    },
+    {
+      "id": "frontend/src/utils/jwtDecode.ts",
+      "label": "jwtDecode.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/utils/jwtDecode.ts"
+      }
+    },
+    {
+      "id": "frontend/tailwind.config.js",
+      "label": "tailwind.config.js",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/tailwind.config.js"
+      }
+    },
+    {
+      "id": "frontend/vite.config.ts",
+      "label": "vite.config.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/vite.config.ts"
+      }
+    },
+    {
+      "id": "test_endpoints.py",
+      "label": "test_endpoints.py",
+      "type": "file",
+      "metadata": {
+        "path": "test_endpoints.py"
+      }
+    }
+  ],
+  "edges": []
+}

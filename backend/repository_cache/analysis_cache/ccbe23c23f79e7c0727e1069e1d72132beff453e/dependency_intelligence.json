@@ -1,0 +1,916 @@
+{
+  "module_graph": {
+    "backend/app/__init__.py": [],
+    "backend/app/auth.py": [
+      "backend/app/__init__.py"
+    ],
+    "backend/app/config.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/geocode.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/reverse_geocode.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/routing.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/safety_scorer.py": [],
+    "frontend-native/app/_layout.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend-native/app/index.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend/capacitor.config.ts": [
+      "frontend/android/app/capacitor.build.gradle"
+    ],
+    "frontend/eslint.config.js": [
+      "frontend/eslint.config.js"
+    ],
+    "frontend/postcss.config.js": [],
+    "frontend/src/App.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend/tailwind.config.js": [],
+    "frontend/vite.config.ts": [
+      "frontend/src/assets/vite.svg"
+    ]
+  },
+  "package_graph": {},
+  "call_graph": {
+    "backend/app/__init__.py": [],
+    "backend/app/auth.py": [
+      "backend/app/__init__.py"
+    ],
+    "backend/app/config.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/geocode.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/reverse_geocode.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/routing.py": [
+      "docker-compose.yml"
+    ],
+    "backend/services/safety_scorer.py": [],
+    "frontend-native/app/_layout.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend-native/app/index.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend/capacitor.config.ts": [
+      "frontend/android/app/capacitor.build.gradle"
+    ],
+    "frontend/eslint.config.js": [
+      "frontend/eslint.config.js"
+    ],
+    "frontend/postcss.config.js": [],
+    "frontend/src/App.tsx": [
+      "frontend/src/assets/react.svg"
+    ],
+    "frontend/tailwind.config.js": [],
+    "frontend/vite.config.ts": [
+      "frontend/src/assets/vite.svg"
+    ]
+  },
+  "circular_dependencies": [
+    [
+      "frontend/eslint.config.js",
+      "frontend/eslint.config.js"
+    ]
+  ],
+  "coupling": {
+    ".gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/__init__.py": {
+      "ca": 1,
+      "ce": 0
+    },
+    "backend/app/auth.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/app/config.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/app/database.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/main.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/contacts.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/evidence.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/geocode.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/journeys.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/reports.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/safety_route.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/routes/simulation.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/services/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/services/geocode.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/services/reverse_geocode.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/services/routing.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/utils/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/utils/notification_providers.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/utils/pdf_generator.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/utils/phone_validation.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/app/utils/routing.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/requirements.txt": {
+      "ca": 0,
+      "ce": 0
+    },
+    "backend/services/geocode.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/services/reverse_geocode.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/services/routing.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "backend/services/safety_scorer.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-compose.yml": {
+      "ca": 4,
+      "ce": 0
+    },
+    "frontend-native/.gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(auth)/login.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(tabs)/_layout.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(tabs)/contacts.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(tabs)/dashboard.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(tabs)/settings.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/(tabs)/vault.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/_layout.tsx": {
+      "ca": 0,
+      "ce": 1
+    },
+    "frontend-native/app/index.tsx": {
+      "ca": 0,
+      "ce": 1
+    },
+    "frontend-native/app/journey/active.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/journey/route.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/journey/setup.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/app/sos/active.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/assets/siren.mp3": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/babel.config.js": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/package.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/store/useStore.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/tsconfig.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/utils/CommunicationProvider.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend-native/utils/api.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/.gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/.gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/.gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/build.gradle": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/capacitor.build.gradle": {
+      "ca": 1,
+      "ce": 0
+    },
+    "frontend/android/app/proguard-rules.pro": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/AndroidManifest.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/java/com/femme/app/MainActivity.java": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-land-hdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-land-mdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-land-xhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-land-xxhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-land-xxxhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-port-hdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-port-mdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-port-xhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-port-xxhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-port-xxxhdpi/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable/ic_launcher_background.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/drawable/splash.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/layout/activity_main.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/values/ic_launcher_background.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/values/strings.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/values/styles.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/main/res/xml/file_paths.xml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/build.gradle": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/capacitor.settings.gradle": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/gradle.properties": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/gradle/wrapper/gradle-wrapper.jar": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/gradle/wrapper/gradle-wrapper.properties": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/gradlew": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/gradlew.bat": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/settings.gradle": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/android/variables.gradle": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/capacitor.config.ts": {
+      "ca": 0,
+      "ce": 1
+    },
+    "frontend/eslint.config.js": {
+      "ca": 1,
+      "ce": 1
+    },
+    "frontend/index.html": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/package.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/postcss.config.js": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/public/favicon.svg": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/public/icons.svg": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/App.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/App.tsx": {
+      "ca": 0,
+      "ce": 1
+    },
+    "frontend/src/assets/ai_guardian.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/assets/ai_guardian_placeholder.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/assets/hero.png": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/assets/react.svg": {
+      "ca": 3,
+      "ce": 0
+    },
+    "frontend/src/assets/vite.svg": {
+      "ca": 1,
+      "ce": 0
+    },
+    "frontend/src/components/AIHero.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/AnimatedCounter.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/GlassCard.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/Layout.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/LocationPermissionModal.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/SafetyRoutePanel.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/components/VideoBackground.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/context/AuthProvider.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/context/LocationContext.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/index.css": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/main.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/ActiveJourneyPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/AnalyticsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/AnomalyCenterPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/AuthPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/CommunityReportsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/DashboardPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/EvidenceVaultPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/FIRGeneratorPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/JourneySetupPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/LandingPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/ProfilePage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/RouteViewPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/SOSCenterPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/SafeZoneMapPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/SettingsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/pages/TrustedContactsPage.tsx": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/store/useStore.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/types/global.d.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/types/jwt-decode.d.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/utils/Logger.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/utils/api.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/src/utils/jwtDecode.ts": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/tailwind.config.js": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/tsconfig.app.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/tsconfig.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/tsconfig.node.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "frontend/vite.config.ts": {
+      "ca": 0,
+      "ce": 1
+    },
+    "test_endpoints.py": {
+      "ca": 0,
+      "ce": 0
+    }
+  },
+  "instability": {
+    ".gitignore": 0.0,
+    "README.md": 0.0,
+    "backend/Dockerfile": 0.0,
+    "backend/app/__init__.py": 0.0,
+    "backend/app/auth.py": 1.0,
+    "backend/app/config.py": 1.0,
+    "backend/app/database.py": 0.0,
+    "backend/app/main.py": 0.0,
+    "backend/app/routes/__init__.py": 0.0,
+    "backend/app/routes/contacts.py": 0.0,
+    "backend/app/routes/evidence.py": 0.0,
+    "backend/app/routes/geocode.py": 0.0,
+    "backend/app/routes/journeys.py": 0.0,
+    "backend/app/routes/reports.py": 0.0,
+    "backend/app/routes/safety_route.py": 0.0,
+    "backend/app/routes/simulation.py": 0.0,
+    "backend/app/services/__init__.py": 0.0,
+    "backend/app/services/geocode.py": 0.0,
+    "backend/app/services/reverse_geocode.py": 0.0,
+    "backend/app/services/routing.py": 0.0,
+    "backend/app/utils/__init__.py": 0.0,
+    "backend/app/utils/notification_providers.py": 0.0,
+    "backend/app/utils/pdf_generator.py": 0.0,
+    "backend/app/utils/phone_validation.py": 0.0,
+    "backend/app/utils/routing.py": 0.0,
+    "backend/requirements.txt": 0.0,
+    "backend/services/geocode.py": 1.0,
+    "backend/services/reverse_geocode.py": 1.0,
+    "backend/services/routing.py": 1.0,
+    "backend/services/safety_scorer.py": 0.0,
+    "docker-compose.yml": 0.0,
+    "frontend-native/.gitignore": 0.0,
+    "frontend-native/app.json": 0.0,
+    "frontend-native/app/(auth)/login.tsx": 0.0,
+    "frontend-native/app/(tabs)/_layout.tsx": 0.0,
+    "frontend-native/app/(tabs)/contacts.tsx": 0.0,
+    "frontend-native/app/(tabs)/dashboard.tsx": 0.0,
+    "frontend-native/app/(tabs)/settings.tsx": 0.0,
+    "frontend-native/app/(tabs)/vault.tsx": 0.0,
+    "frontend-native/app/_layout.tsx": 1.0,
+    "frontend-native/app/index.tsx": 1.0,
+    "frontend-native/app/journey/active.tsx": 0.0,
+    "frontend-native/app/journey/route.tsx": 0.0,
+    "frontend-native/app/journey/setup.tsx": 0.0,
+    "frontend-native/app/sos/active.tsx": 0.0,
+    "frontend-native/assets/siren.mp3": 0.0,
+    "frontend-native/babel.config.js": 0.0,
+    "frontend-native/package.json": 0.0,
+    "frontend-native/store/useStore.ts": 0.0,
+    "frontend-native/tsconfig.json": 0.0,
+    "frontend-native/utils/CommunicationProvider.ts": 0.0,
+    "frontend-native/utils/api.ts": 0.0,
+    "frontend/.gitignore": 0.0,
+    "frontend/Dockerfile": 0.0,
+    "frontend/README.md": 0.0,
+    "frontend/android/.gitignore": 0.0,
+    "frontend/android/app/.gitignore": 0.0,
+    "frontend/android/app/build.gradle": 0.0,
+    "frontend/android/app/capacitor.build.gradle": 0.0,
+    "frontend/android/app/proguard-rules.pro": 0.0,
+    "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java": 0.0,
+    "frontend/android/app/src/main/AndroidManifest.xml": 0.0,
+    "frontend/android/app/src/main/java/com/femme/app/MainActivity.java": 0.0,
+    "frontend/android/app/src/main/res/drawable-land-hdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-land-mdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-land-xhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-land-xxhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-land-xxxhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-port-hdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-port-mdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-port-xhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-port-xxhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-port-xxxhdpi/splash.png": 0.0,
+    "frontend/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml": 0.0,
+    "frontend/android/app/src/main/res/drawable/ic_launcher_background.xml": 0.0,
+    "frontend/android/app/src/main/res/drawable/splash.png": 0.0,
+    "frontend/android/app/src/main/res/layout/activity_main.xml": 0.0,
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": 0.0,
+    "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": 0.0,
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": 0.0,
+    "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": 0.0,
+    "frontend/android/app/src/main/res/values/ic_launcher_background.xml": 0.0,
+    "frontend/android/app/src/main/res/values/strings.xml": 0.0,
+    "frontend/android/app/src/main/res/values/styles.xml": 0.0,
+    "frontend/android/app/src/main/res/xml/file_paths.xml": 0.0,
+    "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": 0.0,
+    "frontend/android/build.gradle": 0.0,
+    "frontend/android/capacitor.settings.gradle": 0.0,
+    "frontend/android/gradle.properties": 0.0,
+    "frontend/android/gradle/wrapper/gradle-wrapper.jar": 0.0,
+    "frontend/android/gradle/wrapper/gradle-wrapper.properties": 0.0,
+    "frontend/android/gradlew": 0.0,
+    "frontend/android/gradlew.bat": 0.0,
+    "frontend/android/settings.gradle": 0.0,
+    "frontend/android/variables.gradle": 0.0,
+    "frontend/capacitor.config.ts": 1.0,
+    "frontend/eslint.config.js": 0.5,
+    "frontend/index.html": 0.0,
+    "frontend/package.json": 0.0,
+    "frontend/postcss.config.js": 0.0,
+    "frontend/public/favicon.svg": 0.0,
+    "frontend/public/icons.svg": 0.0,
+    "frontend/src/App.css": 0.0,
+    "frontend/src/App.tsx": 1.0,
+    "frontend/src/assets/ai_guardian.json": 0.0,
+    "frontend/src/assets/ai_guardian_placeholder.json": 0.0,
+    "frontend/src/assets/hero.png": 0.0,
+    "frontend/src/assets/react.svg": 0.0,
+    "frontend/src/assets/vite.svg": 0.0,
+    "frontend/src/components/AIHero.tsx": 0.0,
+    "frontend/src/components/AnimatedCounter.tsx": 0.0,
+    "frontend/src/components/GlassCard.tsx": 0.0,
+    "frontend/src/components/Layout.tsx": 0.0,
+    "frontend/src/components/LocationPermissionModal.tsx": 0.0,
+    "frontend/src/components/SafetyRoutePanel.tsx": 0.0,
+    "frontend/src/components/VideoBackground.tsx": 0.0,
+    "frontend/src/context/AuthProvider.tsx": 0.0,
+    "frontend/src/context/LocationContext.tsx": 0.0,
+    "frontend/src/index.css": 0.0,
+    "frontend/src/main.tsx": 0.0,
+    "frontend/src/pages/ActiveJourneyPage.tsx": 0.0,
+    "frontend/src/pages/AnalyticsPage.tsx": 0.0,
+    "frontend/src/pages/AnomalyCenterPage.tsx": 0.0,
+    "frontend/src/pages/AuthPage.tsx": 0.0,
+    "frontend/src/pages/CommunityReportsPage.tsx": 0.0,
+    "frontend/src/pages/DashboardPage.tsx": 0.0,
+    "frontend/src/pages/EvidenceVaultPage.tsx": 0.0,
+    "frontend/src/pages/FIRGeneratorPage.tsx": 0.0,
+    "frontend/src/pages/JourneySetupPage.tsx": 0.0,
+    "frontend/src/pages/LandingPage.tsx": 0.0,
+    "frontend/src/pages/ProfilePage.tsx": 0.0,
+    "frontend/src/pages/RouteViewPage.tsx": 0.0,
+    "frontend/src/pages/SOSCenterPage.tsx": 0.0,
+    "frontend/src/pages/SafeZoneMapPage.tsx": 0.0,
+    "frontend/src/pages/SettingsPage.tsx": 0.0,
+    "frontend/src/pages/TrustedContactsPage.tsx": 0.0,
+    "frontend/src/store/useStore.ts": 0.0,
+    "frontend/src/types/global.d.ts": 0.0,
+    "frontend/src/types/jwt-decode.d.ts": 0.0,
+    "frontend/src/utils/Logger.ts": 0.0,
+    "frontend/src/utils/api.ts": 0.0,
+    "frontend/src/utils/jwtDecode.ts": 0.0,
+    "frontend/tailwind.config.js": 0.0,
+    "frontend/tsconfig.app.json": 0.0,
+    "frontend/tsconfig.json": 0.0,
+    "frontend/tsconfig.node.json": 0.0,
+    "frontend/vite.config.ts": 1.0,
+    "test_endpoints.py": 0.0
+  },
+  "hotspots": [
+    "docker-compose.yml",
+    "frontend/src/assets/react.svg"
+  ],
+  "critical_chains": [
+    "docker-compose.yml",
+    "frontend/src/assets/react.svg"
+  ],
+  "dependency_heatmap": [
+    {
+      "source": "auth.py",
+      "target": "__init__.py",
+      "value": 1.0
+    },
+    {
+      "source": "config.py",
+      "target": "docker-compose.yml",
+      "value": 1.0
+    }
+  ]
+}

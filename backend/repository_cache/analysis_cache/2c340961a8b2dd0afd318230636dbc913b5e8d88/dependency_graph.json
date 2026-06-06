@@ -1,0 +1,802 @@
+{
+  "nodes": [
+    {
+      "id": "project",
+      "label": "yowon-ai",
+      "type": "project",
+      "metadata": {
+        "description": "Target codebase"
+      }
+    },
+    {
+      "id": "eco_python",
+      "label": "Python Packages",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Python"
+      }
+    },
+    {
+      "id": "dep_python_fastapi",
+      "label": "fastapi@0.111.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.111.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_uvicorn[standard]",
+      "label": "uvicorn[standard]@0.31.1,<1.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.31.1,<1.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_python_multipart",
+      "label": "python-multipart@0.0.9",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.0.9",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_crewai",
+      "label": "crewai@1.14.6",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.14.6",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_langchain_ollama",
+      "label": "langchain-ollama@0.1.3,<0.2.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.1.3,<0.2.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_google_generativeai",
+      "label": "google-generativeai@0.7.2,<0.9.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.7.2,<0.9.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_litellm",
+      "label": "litellm@1.40.0,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.40.0,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_tree_sitter",
+      "label": "tree-sitter@0.26.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.26.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_tree_sitter_javascript",
+      "label": "tree-sitter-javascript@0.25.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.25.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_tree_sitter_typescript",
+      "label": "tree-sitter-typescript@0.23.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.23.2",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pyyaml",
+      "label": "pyyaml@6.0.1,<7.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.0.1,<7.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pymupdf",
+      "label": "pymupdf@1.26.6",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.26.6",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pypdf",
+      "label": "pypdf@4.0.0,<5.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.0.0,<5.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_python_pptx",
+      "label": "python-pptx@1.0.0,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.0.0,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pygithub",
+      "label": "pygithub@2.3.0,<3.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.3.0,<3.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_bandit",
+      "label": "bandit@1.7.9,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.7.9,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_chromadb",
+      "label": "chromadb@1.1.0,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.1.0,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_reportlab",
+      "label": "reportlab@4.2.2,<5.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.2.2,<5.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_sqlalchemy",
+      "label": "sqlalchemy@2.0.30,<2.1.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.0.30,<2.1.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_alembic",
+      "label": "alembic@1.13.1,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.13.1,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_python_dotenv",
+      "label": "python-dotenv@1.2.2,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.2.2,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pydantic",
+      "label": "pydantic@2.11.9,<2.13",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.11.9,<2.13",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pytest",
+      "label": "pytest@9.1.0,<10.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "9.1.0,<10.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "dep_python_pytest_asyncio",
+      "label": "pytest-asyncio@1.4.0,<2.0.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.4.0,<2.0.0",
+        "ecosystem": "Python"
+      }
+    },
+    {
+      "id": "eco_node_js",
+      "label": "Node.js Packages",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@tanstack/react_query",
+      "label": "@tanstack/react-query@5.101.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.101.2",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_axios",
+      "label": "axios@1.7.2",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.7.2",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_framer_motion",
+      "label": "framer-motion@11.2.12",
+      "type": "dependency",
+      "metadata": {
+        "version": "11.2.12",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_gsap",
+      "label": "gsap@3.15.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "3.15.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_lucide_react",
+      "label": "lucide-react@0.383.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "0.383.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_ogl",
+      "label": "ogl@1.0.11",
+      "type": "dependency",
+      "metadata": {
+        "version": "1.0.11",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react",
+      "label": "react@18.3.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "18.3.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_dom",
+      "label": "react-dom@18.3.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "18.3.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_react_router_dom",
+      "label": "react-router-dom@6.23.1",
+      "type": "dependency",
+      "metadata": {
+        "version": "6.23.1",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_recharts",
+      "label": "recharts@2.12.7",
+      "type": "dependency",
+      "metadata": {
+        "version": "2.12.7",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/react",
+      "label": "@types/react@18.3.3",
+      "type": "dependency",
+      "metadata": {
+        "version": "18.3.3",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@types/react_dom",
+      "label": "@types/react-dom@18.3.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "18.3.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_@vitejs/plugin_react",
+      "label": "@vitejs/plugin-react@4.3.0",
+      "type": "dependency",
+      "metadata": {
+        "version": "4.3.0",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_autoprefixer",
+      "label": "autoprefixer@10.4.19",
+      "type": "dependency",
+      "metadata": {
+        "version": "10.4.19",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_postcss",
+      "label": "postcss@8.4.38",
+      "type": "dependency",
+      "metadata": {
+        "version": "8.4.38",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_tailwindcss",
+      "label": "tailwindcss@3.4.4",
+      "type": "dependency",
+      "metadata": {
+        "version": "3.4.4",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_typescript",
+      "label": "typescript@5.4.5",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.4.5",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "dep_node.js_vite",
+      "label": "vite@5.2.12",
+      "type": "dependency",
+      "metadata": {
+        "version": "5.2.12",
+        "ecosystem": "Node.js"
+      }
+    },
+    {
+      "id": "eco_docker",
+      "label": "Containers",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Docker"
+      }
+    },
+    {
+      "id": "dep_docker_chromadb_chroma_latest",
+      "label": "chromadb/chroma:latest",
+      "type": "container",
+      "metadata": {
+        "image": "chromadb/chroma:latest"
+      }
+    },
+    {
+      "id": "dep_docker_ollama_ollama_latest",
+      "label": "ollama/ollama:latest",
+      "type": "container",
+      "metadata": {
+        "image": "ollama/ollama:latest"
+      }
+    },
+    {
+      "id": "dep_docker_curlimages_curl_latest",
+      "label": "curlimages/curl:latest",
+      "type": "container",
+      "metadata": {
+        "image": "curlimages/curl:latest"
+      }
+    },
+    {
+      "id": "dep_docker_python_3_11-slim",
+      "label": "python:3.11-slim",
+      "type": "container",
+      "metadata": {
+        "image": "python:3.11-slim"
+      }
+    },
+    {
+      "id": "dep_docker_python_3_11-slim",
+      "label": "python:3.11-slim",
+      "type": "container",
+      "metadata": {
+        "image": "python:3.11-slim"
+      }
+    },
+    {
+      "id": "dep_docker_node_20-alpine",
+      "label": "node:20-alpine",
+      "type": "container",
+      "metadata": {
+        "image": "node:20-alpine"
+      }
+    },
+    {
+      "id": "dep_docker_nginx_alpine",
+      "label": "nginx:alpine",
+      "type": "container",
+      "metadata": {
+        "image": "nginx:alpine"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "project",
+      "target": "eco_python",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_fastapi",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_uvicorn[standard]",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_python_multipart",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_crewai",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_langchain_ollama",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_google_generativeai",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_litellm",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_tree_sitter",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_tree_sitter_javascript",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_tree_sitter_typescript",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pyyaml",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pymupdf",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pypdf",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_python_pptx",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pygithub",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_bandit",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_chromadb",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_reportlab",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_sqlalchemy",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_alembic",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_python_dotenv",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pydantic",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pytest",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_python",
+      "target": "dep_python_pytest_asyncio",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "project",
+      "target": "eco_node_js",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@tanstack/react_query",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_axios",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_framer_motion",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_gsap",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_lucide_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_ogl",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_react_router_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_recharts",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@types/react_dom",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_@vitejs/plugin_react",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_autoprefixer",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_postcss",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_tailwindcss",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_typescript",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "eco_node_js",
+      "target": "dep_node.js_vite",
+      "label": "requires",
+      "metadata": {}
+    },
+    {
+      "source": "project",
+      "target": "eco_docker",
+      "label": "deploys",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_chromadb_chroma_latest",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_ollama_ollama_latest",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_curlimages_curl_latest",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_python_3_11-slim",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_python_3_11-slim",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_node_20-alpine",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_nginx_alpine",
+      "label": "runs",
+      "metadata": {}
+    },
+    {
+      "source": "dep_python_fastapi",
+      "target": "dep_python_sqlalchemy",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "dep_python_fastapi",
+      "target": "dep_python_pydantic",
+      "label": "uses",
+      "metadata": {}
+    },
+    {
+      "source": "dep_python_crewai",
+      "target": "dep_python_langchain_ollama",
+      "label": "orchestrates",
+      "metadata": {}
+    }
+  ]
+}

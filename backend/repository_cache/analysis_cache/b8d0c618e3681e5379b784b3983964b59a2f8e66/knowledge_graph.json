@@ -1,0 +1,4969 @@
+{
+  "nodes": [
+    {
+      "id": "repo::.agents",
+      "label": ".agents",
+      "type": "repository",
+      "metadata": {
+        "description": "Root Repository Node",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::ai",
+      "label": "AI",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: AI",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::devops",
+      "label": "DevOps",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: DevOps",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::containerized",
+      "label": "Containerized",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Containerized",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::plugin architecture",
+      "label": "Plugin Architecture",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Plugin Architecture",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::event driven",
+      "label": "Event Driven",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Event Driven",
+        "level": 1
+      }
+    },
+    {
+      "id": "cap::documentation",
+      "label": "Documentation",
+      "type": "capability",
+      "metadata": {
+        "description": "Repository architectural capability: Documentation",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::presentation",
+      "label": "Presentation Layer",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Presentation Layer",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::api",
+      "label": "API Gateways",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: API Gateways",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::controllers",
+      "label": "Route Controllers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Route Controllers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::services",
+      "label": "Business Services",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Business Services",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::repositories",
+      "label": "Data Repositories",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Data Repositories",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::models",
+      "label": "ORM Models",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: ORM Models",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::database",
+      "label": "Relational Database",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Relational Database",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::caching",
+      "label": "Cache store",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Cache store",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::workers",
+      "label": "Workers & Background Tasks",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Workers & Background Tasks",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::schedulers",
+      "label": "Schedulers & Cron",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Schedulers & Cron",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::ai_agents",
+      "label": "AI Agent System",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: AI Agent System",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::prompt_manager",
+      "label": "Prompt templates",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Prompt templates",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::memory",
+      "label": "Agent Memory & VectorDB",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Agent Memory & VectorDB",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::llm_providers",
+      "label": "LLM Providers",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: LLM Providers",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::deployment",
+      "label": "CI/CD & DevOps",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: CI/CD & DevOps",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::testing",
+      "label": "Testing Suite",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Testing Suite",
+        "level": 1
+      }
+    },
+    {
+      "id": "sub::configuration",
+      "label": "Configuration & Env",
+      "type": "subsystem",
+      "metadata": {
+        "description": "Architectural Subsystem: Configuration & Env",
+        "level": 1
+      }
+    },
+    {
+      "id": ".agents/skills/cross-repo-testing/SKILL.md",
+      "label": "SKILL.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/cross-repo-testing/SKILL.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".agents/skills/custom-codereview-guide.md",
+      "label": "custom-codereview-guide.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/custom-codereview-guide.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".agents/skills/upcoming-release/SKILL.md",
+      "label": "SKILL.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/upcoming-release/SKILL.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".agents/skills/update-sdk/SKILL.md",
+      "label": "SKILL.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/update-sdk/SKILL.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".agents/skills/update-sdk/references/docker-image-locations.md",
+      "label": "docker-image-locations.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/update-sdk/references/docker-image-locations.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".agents/skills/update-sdk/references/sdk-pinning-examples.md",
+      "label": "sdk-pinning-examples.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .agents/skills/update-sdk/references/sdk-pinning-examples.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".devcontainer/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .devcontainer/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".devcontainer/devcontainer.json",
+      "label": "devcontainer.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .devcontainer/devcontainer.json",
+        "level": 2
+      }
+    },
+    {
+      "id": ".devcontainer/setup.sh",
+      "label": "setup.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .devcontainer/setup.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": ".dockerignore",
+      "label": ".dockerignore",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .dockerignore",
+        "level": 2
+      }
+    },
+    {
+      "id": ".editorconfig",
+      "label": ".editorconfig",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .editorconfig",
+        "level": 2
+      }
+    },
+    {
+      "id": ".gitattributes",
+      "label": ".gitattributes",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .gitattributes",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/bug_template.yml",
+      "label": "bug_template.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/ISSUE_TEMPLATE/bug_template.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/config.yml",
+      "label": "config.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/ISSUE_TEMPLATE/config.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "label": "feature_request.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/ISSUE_TEMPLATE/feature_request.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/actions/docker-image-tags/action.yml",
+      "label": "action.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/actions/docker-image-tags/action.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/actions/docker-merge-manifest/action.yml",
+      "label": "action.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/actions/docker-merge-manifest/action.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/dependabot.yml",
+      "label": "dependabot.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/dependabot.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/pull_request_template.md",
+      "label": "pull_request_template.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/pull_request_template.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/release.yml",
+      "label": "release.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/release.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/scripts/find_prs_between_commits.py",
+      "label": "find_prs_between_commits.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/scripts/find_prs_between_commits.py",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/scripts/update_pr_description.sh",
+      "label": "update_pr_description.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/scripts/update_pr_description.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/_build-image.yml",
+      "label": "_build-image.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/_build-image.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/bump-chart.yml",
+      "label": "bump-chart.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/bump-chart.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/check-package-versions.yml",
+      "label": "check-package-versions.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/check-package-versions.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/check-version-consistency.yml",
+      "label": "check-version-consistency.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/check-version-consistency.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/enterprise-check-migrations.yml",
+      "label": "enterprise-check-migrations.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/enterprise-check-migrations.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/fe-e2e-tests.yml",
+      "label": "fe-e2e-tests.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/fe-e2e-tests.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/fe-unit-tests.yml",
+      "label": "fe-unit-tests.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/fe-unit-tests.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/ghcr-build.yml",
+      "label": "ghcr-build.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/ghcr-build.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/issue-opened.yml",
+      "label": "issue-opened.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/issue-opened.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/lint-fix.yml",
+      "label": "lint-fix.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/lint-fix.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/lint.yml",
+      "label": "lint.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/lint.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/npm-publish-ui.yml",
+      "label": "npm-publish-ui.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/npm-publish-ui.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/pr-artifacts.yml",
+      "label": "pr-artifacts.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/pr-artifacts.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/pr-readiness-confirm.yml",
+      "label": "pr-readiness-confirm.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/pr-readiness-confirm.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/pr.yml",
+      "label": "pr.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/pr.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/promote-to-development.yml",
+      "label": "promote-to-development.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/promote-to-development.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/py-tests.yml",
+      "label": "py-tests.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/py-tests.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/pypi-release.yml",
+      "label": "pypi-release.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/pypi-release.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/qa-changes-by-openhands.yml",
+      "label": "qa-changes-by-openhands.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/qa-changes-by-openhands.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/release-ready.yml",
+      "label": "release-ready.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/release-ready.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/release.yml",
+      "label": "release.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/release.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/remove-duplicate-candidate-label.yml",
+      "label": "remove-duplicate-candidate-label.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/remove-duplicate-candidate-label.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/stale.yml",
+      "label": "stale.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/stale.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/tag-image.yml",
+      "label": "tag-image.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/tag-image.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/ui-build.yml",
+      "label": "ui-build.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/ui-build.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".github/workflows/welcome-good-first-issue.yml",
+      "label": "welcome-good-first-issue.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .github/workflows/welcome-good-first-issue.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": ".gitignore",
+      "label": ".gitignore",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .gitignore",
+        "level": 2
+      }
+    },
+    {
+      "id": ".nvmrc",
+      "label": ".nvmrc",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .nvmrc",
+        "level": 2
+      }
+    },
+    {
+      "id": ".openhands/microagents/documentation.md",
+      "label": "documentation.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .openhands/microagents/documentation.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".openhands/microagents/glossary.md",
+      "label": "glossary.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .openhands/microagents/glossary.md",
+        "level": 2
+      }
+    },
+    {
+      "id": ".openhands/pre-commit.sh",
+      "label": "pre-commit.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .openhands/pre-commit.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": ".openhands/setup.sh",
+      "label": "setup.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .openhands/setup.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": ".release-please-manifest.cloud.json",
+      "label": ".release-please-manifest.cloud.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .release-please-manifest.cloud.json",
+        "level": 2
+      }
+    },
+    {
+      "id": ".release-please-manifest.json",
+      "label": ".release-please-manifest.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .release-please-manifest.json",
+        "level": 2
+      }
+    },
+    {
+      "id": ".vscode/settings.json",
+      "label": "settings.json",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: .vscode/settings.json",
+        "level": 2
+      }
+    },
+    {
+      "id": "AGENTS.md",
+      "label": "AGENTS.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: AGENTS.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "CITATION.cff",
+      "label": "CITATION.cff",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: CITATION.cff",
+        "level": 2
+      }
+    },
+    {
+      "id": "CNAME",
+      "label": "CNAME",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: CNAME",
+        "level": 2
+      }
+    },
+    {
+      "id": "CODE_OF_CONDUCT.md",
+      "label": "CODE_OF_CONDUCT.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: CODE_OF_CONDUCT.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "COMMUNITY.md",
+      "label": "COMMUNITY.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: COMMUNITY.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "CONTRIBUTING.md",
+      "label": "CONTRIBUTING.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: CONTRIBUTING.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "CREDITS.md",
+      "label": "CREDITS.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: CREDITS.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "Development.md",
+      "label": "Development.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: Development.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "ISSUE_TRIAGE.md",
+      "label": "ISSUE_TRIAGE.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: ISSUE_TRIAGE.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "LICENSE",
+      "label": "LICENSE",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: LICENSE",
+        "level": 2
+      }
+    },
+    {
+      "id": "MANIFEST.in",
+      "label": "MANIFEST.in",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: MANIFEST.in",
+        "level": 2
+      }
+    },
+    {
+      "id": "Makefile",
+      "label": "Makefile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: Makefile",
+        "level": 2
+      }
+    },
+    {
+      "id": "README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "build.sh",
+      "label": "build.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: build.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "config.template.toml",
+      "label": "config.template.toml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: config.template.toml",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/app/Dockerfile",
+      "label": "Dockerfile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/app/Dockerfile",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/app/entrypoint.sh",
+      "label": "entrypoint.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/app/entrypoint.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/dev/Dockerfile",
+      "label": "Dockerfile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/dev/Dockerfile",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/dev/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/dev/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/dev/compose.yml",
+      "label": "compose.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/dev/compose.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": "containers/dev/dev.sh",
+      "label": "dev.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: containers/dev/dev.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "dev_config/python/.pre-commit-config.yaml",
+      "label": ".pre-commit-config.yaml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: dev_config/python/.pre-commit-config.yaml",
+        "level": 2
+      }
+    },
+    {
+      "id": "dev_config/python/mypy.ini",
+      "label": "mypy.ini",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: dev_config/python/mypy.ini",
+        "level": 2
+      }
+    },
+    {
+      "id": "docker-compose.yml",
+      "label": "docker-compose.yml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: docker-compose.yml",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/Dockerfile",
+      "label": "Dockerfile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/Dockerfile",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/LICENSE",
+      "label": "LICENSE",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/LICENSE",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/Makefile",
+      "label": "Makefile",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/Makefile",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/alembic.ini",
+      "label": "alembic.ini",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/alembic.ini",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/allhands-realm-github-provider.json.tmpl",
+      "label": "allhands-realm-github-provider.json.tmpl",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/allhands-realm-github-provider.json.tmpl",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/analytics/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/analytics/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/analytics/saas_user_provider.py",
+      "label": "saas_user_provider.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/analytics/saas_user_provider.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/dev_config/python/.pre-commit-config.yaml",
+      "label": ".pre-commit-config.yaml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/dev_config/python/.pre-commit-config.yaml",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/dev_config/python/mypy.ini",
+      "label": "mypy.ini",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/dev_config/python/mypy.ini",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/dev_config/python/ruff.toml",
+      "label": "ruff.toml",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/dev_config/python/ruff.toml",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/doc/architecture/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/doc/architecture/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/doc/architecture/authentication.md",
+      "label": "authentication.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/doc/architecture/authentication.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/doc/architecture/external-integrations.md",
+      "label": "external-integrations.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/doc/architecture/external-integrations.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md",
+      "label": "openhands-enterprise-telemetry-design.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/doc/design-doc/plugin-launch-flow.md",
+      "label": "plugin-launch-flow.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/doc/design-doc/plugin-launch-flow.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/enterprise_local/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/enterprise_local/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/enterprise_local/convert_to_env.py",
+      "label": "convert_to_env.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/enterprise_local/convert_to_env.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/enterprise_local/decrypt_env.sh",
+      "label": "decrypt_env.sh",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/enterprise_local/decrypt_env.sh",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/azure_devops/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_manager.py",
+      "label": "azure_devops_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/azure_devops/azure_devops_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_service.py",
+      "label": "azure_devops_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/azure_devops/azure_devops_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py",
+      "label": "azure_devops_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/azure_devops/azure_devops_view.py",
+      "label": "azure_devops_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/azure_devops/azure_devops_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_manager.py",
+      "label": "bitbucket_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket/bitbucket_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_service.py",
+      "label": "bitbucket_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket/bitbucket_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py",
+      "label": "bitbucket_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket/bitbucket_view.py",
+      "label": "bitbucket_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket/bitbucket_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/__init__.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py",
+      "label": "bitbucket_dc_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+      "label": "bitbucket_dc_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+      "label": "bitbucket_dc_service_account.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py",
+      "label": "bitbucket_dc_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py",
+      "label": "bitbucket_dc_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/data_collector.py",
+      "label": "data_collector.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/data_collector.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_manager.py",
+      "label": "github_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/github_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_service.py",
+      "label": "github_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/github_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_types.py",
+      "label": "github_types.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/github_types.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_v1_callback_processor.py",
+      "label": "github_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/github_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/github_view.py",
+      "label": "github_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/github_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/github/queries.py",
+      "label": "queries.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/github/queries.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_manager.py",
+      "label": "gitlab_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/gitlab/gitlab_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_service.py",
+      "label": "gitlab_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/gitlab/gitlab_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py",
+      "label": "gitlab_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/gitlab/gitlab_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/gitlab_view.py",
+      "label": "gitlab_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/gitlab/gitlab_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/gitlab/webhook_installation.py",
+      "label": "webhook_installation.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/gitlab/webhook_installation.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_manager.py",
+      "label": "jira_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira/jira_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_payload.py",
+      "label": "jira_payload.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira/jira_payload.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_types.py",
+      "label": "jira_types.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira/jira_types.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_v1_callback_processor.py",
+      "label": "jira_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira/jira_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira/jira_view.py",
+      "label": "jira_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira/jira_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py",
+      "label": "jira_dc_conversation_secret_enricher.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_manager.py",
+      "label": "jira_dc_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_service_account.py",
+      "label": "jira_dc_service_account.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_service_account.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_types.py",
+      "label": "jira_dc_types.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_types.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_user_token.py",
+      "label": "jira_dc_user_token.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_user_token.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py",
+      "label": "jira_dc_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/jira_dc/jira_dc_view.py",
+      "label": "jira_dc_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/jira_dc/jira_dc_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py",
+      "label": "manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/models.py",
+      "label": "models.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/models.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py",
+      "label": "resolver_context.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/resolver_context.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_org_router.py",
+      "label": "resolver_org_router.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/resolver_org_router.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_attachments.py",
+      "label": "slack_attachments.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_attachments.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_errors.py",
+      "label": "slack_errors.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_errors.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_manager.py",
+      "label": "slack_manager.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_manager.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_types.py",
+      "label": "slack_types.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_types.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_v1_callback_processor.py",
+      "label": "slack_v1_callback_processor.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_v1_callback_processor.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/slack/slack_view.py",
+      "label": "slack_view.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/slack/slack_view.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/store_repo_utils.py",
+      "label": "store_repo_utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/store_repo_utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py",
+      "label": "stripe_service.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/stripe_service.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py",
+      "label": "types.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/types.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/utils.py",
+      "label": "utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/v1_utils.py",
+      "label": "v1_utils.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/integrations/v1_utils.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/README.md",
+      "label": "README.md",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/README.md",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/env.py",
+      "label": "env.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/env.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/script.py.mako",
+      "label": "script.py.mako",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/script.py.mako",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/001_create_feedback_table.py",
+      "label": "001_create_feedback_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/001_create_feedback_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/002_create_saas_settings_table.py",
+      "label": "002_create_saas_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/002_create_saas_settings_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py",
+      "label": "003_create_saas_conversation_metadata_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/004_create_billing_sessions_table.py",
+      "label": "004_create_billing_sessions_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/004_create_billing_sessions_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/005_add_margin_column.py",
+      "label": "005_add_margin_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/005_add_margin_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py",
+      "label": "006_add_branch_column_to_convo_metadata_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py",
+      "label": "007_add_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/007_add_enable_sound_notifications_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+      "label": "008_fix_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+      "label": "009_fix_enable_sound_notifications_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/010_create_offline_tokens_table.py",
+      "label": "010_create_offline_tokens_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/010_create_offline_tokens_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/011_create_user_settings_table.py",
+      "label": "011_create_user_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/011_create_user_settings_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py",
+      "label": "012_add_secret_store_column_to_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/012_add_secret_store_column_to_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/013_create_github_app_installations_table.py",
+      "label": "013_create_github_app_installations_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/013_create_github_app_installations_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/014_add_github_user_id.py",
+      "label": "014_add_github_user_id.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/014_add_github_user_id.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py",
+      "label": "015_add_sandbox_container_image_columns.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/015_add_sandbox_container_image_columns.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/016_add_user_version_column.py",
+      "label": "016_add_user_version_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/016_add_user_version_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/017_add_stripe_customers_table.py",
+      "label": "017_add_stripe_customers_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/017_add_stripe_customers_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/018_add_script_results_table.py",
+      "label": "018_add_script_results_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/018_add_script_results_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py",
+      "label": "019_remove_duplicates_from_stripe.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/019_remove_duplicates_from_stripe.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/020_set_condenser_to_false.py",
+      "label": "020_set_condenser_to_false.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/020_set_condenser_to_false.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/021_create_auth_tokens_table.py",
+      "label": "021_create_auth_tokens_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/021_create_auth_tokens_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/022_create_api_keys_table.py",
+      "label": "022_create_api_keys_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/022_create_api_keys_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py",
+      "label": "023_add_cost_and_token_metrics_columns.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+      "label": "024_update_enable_default_condenser_default.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py",
+      "label": "025_revert_user_version_from_3_to_2.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py",
+      "label": "026_add_trigger_information_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/027_create_gitlab_webhook_table.py",
+      "label": "027_create_gitlab_webhook_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/027_create_gitlab_webhook_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/028_create_user_repos_table.py",
+      "label": "028_create_user_repos_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/028_create_user_repos_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py",
+      "label": "029_add_accepted_tos_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+      "label": "030_add_proactive_conversation_starters_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/031_add_user_secrets_store.py",
+      "label": "031_add_user_secrets_store.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/031_add_user_secrets_store.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py",
+      "label": "032_add_status_column_to_gitlab_webhook.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "label": "033_add_gitlab_webhook_uuid_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py",
+      "label": "034_add_proactive_convo_commits_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/034_add_proactive_convo_commits_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/035_create_slack_users_table.py",
+      "label": "035_create_slack_users_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/035_create_slack_users_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py",
+      "label": "036_add_mcp_config_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+      "label": "037_make_user_secrets_table_one_row_per_secret.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py",
+      "label": "038_add_pr_number_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/039_add_user_token_to_slack_table.py",
+      "label": "039_add_user_token_to_slack_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/039_add_user_token_to_slack_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py",
+      "label": "040_add_search_api_key_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/041_create_slack_conversation_table.py",
+      "label": "041_create_slack_conversation_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/041_create_slack_conversation_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+      "label": "042_add_git_provider_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py",
+      "label": "043_add_message_ts_column_to_slack_conversation.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+      "label": "044_add_llm_model_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/045_create_slack_team_table.py",
+      "label": "045_create_slack_team_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/045_create_slack_team_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/046_delete_all_slack_users.py",
+      "label": "046_delete_all_slack_users.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/046_delete_all_slack_users.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/047_create_conversation_feedback_table.py",
+      "label": "047_create_conversation_feedback_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/047_create_conversation_feedback_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py",
+      "label": "048_add_max_budget_per_task_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+      "label": "049_create_conversation_callbacks_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/050_create_openhands_prs_table.py",
+      "label": "050_create_openhands_prs_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/050_create_openhands_prs_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py",
+      "label": "051_update_conversation_callbacks_fk_to_cascade.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py",
+      "label": "052_add_sandbox_api_key_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+      "label": "053_add_enable_solvability_analysis_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py",
+      "label": "054_add_email_fields_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/054_add_email_fields_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/055_drop_slack_user_token_column.py",
+      "label": "055_drop_slack_user_token_column.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/055_drop_slack_user_token_column.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py",
+      "label": "056_add_llm_api_key_for_byor_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py",
+      "label": "057_enable_solvability_analysis_for_all_users.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/058_create_conversation_work_table.py",
+      "label": "058_create_conversation_work_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/058_create_conversation_work_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/059_create_maintenance_tasks_table.py",
+      "label": "059_create_maintenance_tasks_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/059_create_maintenance_tasks_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+      "label": "060_create_user_version_upgrade_tasks.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/061_create_experiment_assignments_table.py",
+      "label": "061_create_experiment_assignments_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/061_create_experiment_assignments_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py",
+      "label": "062_add_git_user_fields_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/063_create_jira_workspaces_table.py",
+      "label": "063_create_jira_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/063_create_jira_workspaces_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/064_create_jira_users_table.py",
+      "label": "064_create_jira_users_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/064_create_jira_users_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/065_create_jira_conversations_table.py",
+      "label": "065_create_jira_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/065_create_jira_conversations_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py",
+      "label": "066_create_jira_dc_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+      "label": "067_create_jira_dc_users_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+      "label": "068_create_jira_dc_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/069_create_linear_workspaces_table.py",
+      "label": "069_create_linear_workspaces_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/069_create_linear_workspaces_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/070_create_linear_users_table.py",
+      "label": "070_create_linear_users_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/070_create_linear_users_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/071_create_linear_conversations_table.py",
+      "label": "071_create_linear_conversations_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/071_create_linear_conversations_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py",
+      "label": "072_add_condenser_max_size_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/073_add_type_to_billing_sessions.py",
+      "label": "073_add_type_to_billing_sessions.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/073_add_type_to_billing_sessions.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/074_create_subscription_access_table.py",
+      "label": "074_create_subscription_access_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/074_create_subscription_access_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py",
+      "label": "075_add_cancellation_fields_to_subscription_access.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/076_add_v1_tables.py",
+      "label": "076_add_v1_tables.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/076_add_v1_tables.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/077_drop_settings_table.py",
+      "label": "077_drop_settings_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/077_drop_settings_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/078_create_telemetry_tables.py",
+      "label": "078_create_telemetry_tables.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/078_create_telemetry_tables.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py",
+      "label": "079_rename_user_secrets_to_custom_secrets.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+      "label": "080_add_status_and_updated_at_to_callback.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/081_add_parent_conversation_id.py",
+      "label": "081_add_parent_conversation_id.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/081_add_parent_conversation_id.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "label": "082_add_setting_up_skills_enum_value.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py",
+      "label": "083_add_v1_enabled_to_user_settings.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/084_create_device_codes_table.py",
+      "label": "084_create_device_codes_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/084_create_device_codes_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py",
+      "label": "085_add_public_column_to_conversation_metadata.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py",
+      "label": "086_add_v1_column_to_slack_conversation.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/087_bump_condenser_defaults.py",
+      "label": "087_bump_condenser_defaults.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/087_bump_condenser_defaults.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+      "label": "088_create_blocked_email_domains_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/089_create_org_tables.py",
+      "label": "089_create_org_tables.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/089_create_org_tables.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/090_add_git_user_fields_to_user.py",
+      "label": "090_add_git_user_fields_to_user.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/090_add_git_user_fields_to_user.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py",
+      "label": "091_add_byor_export_enabled_flag.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/091_add_byor_export_enabled_flag.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/092_rename_user_role_to_member.py",
+      "label": "092_rename_user_role_to_member.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/092_rename_user_role_to_member.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/093_add_pending_free_credits.py",
+      "label": "093_add_pending_free_credits.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/093_add_pending_free_credits.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/094_create_org_invitation_table.py",
+      "label": "094_create_org_invitation_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/094_create_org_invitation_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/095_drop_pending_free_credits.py",
+      "label": "095_drop_pending_free_credits.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/095_drop_pending_free_credits.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+      "label": "096_create_resend_synced_users_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+      "label": "097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/098_create_verified_models_table.py",
+      "label": "098_create_verified_models_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/098_create_verified_models_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/migrations/versions/099_create_user_authorizations_table.py",
+      "label": "099_create_user_authorizations_table.py",
+      "type": "file",
+      "metadata": {
+        "description": "Source file: enterprise/migrations/versions/099_create_user_authorizations_table.py",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/analytics/saas_user_provider.py::SaasAnalyticsUserProvider",
+      "label": "SaasAnalyticsUserProvider",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/analytics/saas_user_provider.py",
+        "line_start": 15,
+        "line_end": 31,
+        "description": "Semantic components: SaasAnalyticsUserProvider (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/analytics/saas_user_provider.py::get_user_by_id",
+      "label": "get_user_by_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/analytics/saas_user_provider.py",
+        "line_start": 22,
+        "line_end": 31,
+        "description": "Semantic components: get_user_by_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/enterprise_local/convert_to_env.py::convert_yaml_to_env",
+      "label": "convert_yaml_to_env",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/enterprise_local/convert_to_env.py",
+        "line_start": 8,
+        "line_end": 72,
+        "description": "Semantic components: convert_yaml_to_env (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::Manager",
+      "label": "Manager",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 10,
+        "line_end": 36,
+        "description": "Semantic components: Manager (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::receive_message",
+      "label": "receive_message",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 14,
+        "line_end": 16,
+        "description": "Semantic components: receive_message (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::send_message",
+      "label": "send_message",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 19,
+        "line_end": 25,
+        "description": "Semantic components: send_message (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::start_job",
+      "label": "start_job",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 28,
+        "line_end": 36,
+        "description": "Semantic components: start_job (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/models.py::SourceType",
+      "label": "SourceType",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/models.py",
+        "line_start": 9,
+        "line_end": 19,
+        "description": "Semantic components: SourceType (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/models.py::Message",
+      "label": "Message",
+      "type": "model",
+      "metadata": {
+        "file_path": "enterprise/integrations/models.py",
+        "line_start": 22,
+        "line_end": 33,
+        "description": "Semantic components: Message (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/models.py::JobContext",
+      "label": "JobContext",
+      "type": "model",
+      "metadata": {
+        "file_path": "enterprise/integrations/models.py",
+        "line_start": 36,
+        "line_end": 48,
+        "description": "Semantic components: JobContext (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "label": "ResolverUserContext",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 14,
+        "line_end": 107,
+        "description": "Semantic components: ResolverUserContext (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::__init__",
+      "label": "__init__",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 17,
+        "line_end": 31,
+        "description": "Semantic components: __init__ (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_user_id",
+      "label": "get_user_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 33,
+        "line_end": 34,
+        "description": "Semantic components: get_user_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_user_email",
+      "label": "get_user_email",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 36,
+        "line_end": 37,
+        "description": "Semantic components: get_user_email (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_user_info",
+      "label": "get_user_info",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 39,
+        "line_end": 48,
+        "description": "Semantic components: get_user_info (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::_get_provider_handler",
+      "label": "_get_provider_handler",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 50,
+        "line_end": 60,
+        "description": "Semantic components: _get_provider_handler (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_authenticated_git_url",
+      "label": "get_authenticated_git_url",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 62,
+        "line_end": 69,
+        "description": "Semantic components: get_authenticated_git_url (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_latest_token",
+      "label": "get_latest_token",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 71,
+        "line_end": 78,
+        "description": "Semantic components: get_latest_token (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_provider_tokens",
+      "label": "get_provider_tokens",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 80,
+        "line_end": 83,
+        "description": "Semantic components: get_provider_tokens (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_secrets",
+      "label": "get_secrets",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 85,
+        "line_end": 97,
+        "description": "Semantic components: get_secrets (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_mcp_api_key",
+      "label": "get_mcp_api_key",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 99,
+        "line_end": 100,
+        "description": "Semantic components: get_mcp_api_key (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_user_git_info",
+      "label": "get_user_git_info",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 102,
+        "line_end": 103,
+        "description": "Semantic components: get_user_git_info (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::get_default_sandbox_spec_id",
+      "label": "get_default_sandbox_spec_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 105,
+        "line_end": 107,
+        "description": "Semantic components: get_default_sandbox_spec_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_org_router.py::resolve_org_for_repo",
+      "label": "resolve_org_for_repo",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_org_router.py",
+        "line_start": 16,
+        "line_end": 78,
+        "description": "Semantic components: resolve_org_for_repo (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/store_repo_utils.py::store_repositories_in_db",
+      "label": "store_repositories_in_db",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/store_repo_utils.py",
+        "line_start": 10,
+        "line_end": 49,
+        "description": "Semantic components: store_repositories_in_db (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::find_customer_id_by_org_id",
+      "label": "find_customer_id_by_org_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 15,
+        "line_end": 34,
+        "description": "Semantic components: find_customer_id_by_org_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::_resolve_org_for_user",
+      "label": "_resolve_org_for_user",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 37,
+        "line_end": 52,
+        "description": "Semantic components: _resolve_org_for_user (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::find_customer_id_by_user_id",
+      "label": "find_customer_id_by_user_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 55,
+        "line_end": 67,
+        "description": "Semantic components: find_customer_id_by_user_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::find_or_create_customer_by_user_id",
+      "label": "find_or_create_customer_by_user_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 70,
+        "line_end": 114,
+        "description": "Semantic components: find_or_create_customer_by_user_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::has_payment_method_by_user_id",
+      "label": "has_payment_method_by_user_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 117,
+        "line_end": 129,
+        "description": "Semantic components: has_payment_method_by_user_id (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/stripe_service.py::migrate_customer",
+      "label": "migrate_customer",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/stripe_service.py",
+        "line_start": 132,
+        "line_end": 156,
+        "description": "Semantic components: migrate_customer (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::GitLabResourceType",
+      "label": "GitLabResourceType",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 16,
+        "line_end": 19,
+        "description": "Semantic components: GitLabResourceType (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::PRStatus",
+      "label": "PRStatus",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 22,
+        "line_end": 24,
+        "description": "Semantic components: PRStatus (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::UserData",
+      "label": "UserData",
+      "type": "model",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 27,
+        "line_end": 32,
+        "description": "Semantic components: UserData (model)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::SummaryExtractionTracker",
+      "label": "SummaryExtractionTracker",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 36,
+        "line_end": 39,
+        "description": "Semantic components: SummaryExtractionTracker (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::ResolverViewInterface",
+      "label": "ResolverViewInterface",
+      "type": "class",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 43,
+        "line_end": 81,
+        "description": "Semantic components: ResolverViewInterface (class)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::_get_instructions",
+      "label": "_get_instructions",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 54,
+        "line_end": 56,
+        "description": "Semantic components: _get_instructions (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::initialize_new_conversation",
+      "label": "initialize_new_conversation",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 58,
+        "line_end": 64,
+        "description": "Semantic components: initialize_new_conversation (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::create_new_conversation",
+      "label": "create_new_conversation",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 66,
+        "line_end": 81,
+        "description": "Semantic components: create_new_conversation (function)",
+        "level": 2
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::Manager.receive_message",
+      "label": "Manager.receive_message",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 14,
+        "level": 3,
+        "parent_class": "Manager"
+      }
+    },
+    {
+      "id": "enterprise/integrations/manager.py::Manager.send_message",
+      "label": "Manager.send_message",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/manager.py",
+        "line_start": 19,
+        "level": 3,
+        "parent_class": "Manager"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.__init__",
+      "label": "ResolverUserContext.__init__",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 17,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_id",
+      "label": "ResolverUserContext.get_user_id",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 33,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_email",
+      "label": "ResolverUserContext.get_user_email",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 36,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_info",
+      "label": "ResolverUserContext.get_user_info",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 39,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext._get_provider_handler",
+      "label": "ResolverUserContext._get_provider_handler",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 50,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_authenticated_git_url",
+      "label": "ResolverUserContext.get_authenticated_git_url",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 62,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_latest_token",
+      "label": "ResolverUserContext.get_latest_token",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 71,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_provider_tokens",
+      "label": "ResolverUserContext.get_provider_tokens",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 80,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_secrets",
+      "label": "ResolverUserContext.get_secrets",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 85,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_mcp_api_key",
+      "label": "ResolverUserContext.get_mcp_api_key",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 99,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_git_info",
+      "label": "ResolverUserContext.get_user_git_info",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/resolver_context.py",
+        "line_start": 102,
+        "level": 3,
+        "parent_class": "ResolverUserContext"
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::ResolverViewInterface._get_instructions",
+      "label": "ResolverViewInterface._get_instructions",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 54,
+        "level": 3,
+        "parent_class": "ResolverViewInterface"
+      }
+    },
+    {
+      "id": "enterprise/integrations/types.py::ResolverViewInterface.initialize_new_conversation",
+      "label": "ResolverViewInterface.initialize_new_conversation",
+      "type": "function",
+      "metadata": {
+        "file_path": "enterprise/integrations/types.py",
+        "line_start": 58,
+        "level": 3,
+        "parent_class": "ResolverViewInterface"
+      }
+    },
+    {
+      "id": "env::POSTHOG_CLIENT_KEY",
+      "label": "POSTHOG_CLIENT_KEY",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in enterprise/server/app_lifespan/saas_app_lifespan_service.py."
+      }
+    },
+    {
+      "id": "env::POSTHOG_HOST",
+      "label": "POSTHOG_HOST",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in enterprise/server/app_lifespan/saas_app_lifespan_service.py."
+      }
+    },
+    {
+      "id": "env::OPENHANDS_CONFIG_CLS",
+      "label": "OPENHANDS_CONFIG_CLS",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in enterprise/saas_server.py."
+      }
+    },
+    {
+      "id": "env::FRONTEND_DIRECTORY",
+      "label": "FRONTEND_DIRECTORY",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in enterprise/saas_server.py."
+      }
+    },
+    {
+      "id": "env::LITE_LLM_API_KEY",
+      "label": "LITE_LLM_API_KEY",
+      "type": "env_var",
+      "metadata": {
+        "description": "Config environment variable used in enterprise/enterprise_local/convert_to_env.py."
+      }
+    },
+    {
+      "id": "docker::openhands",
+      "label": "openhands",
+      "type": "docker_service",
+      "metadata": {
+        "description": "Docker container service defined in docker-compose.yml."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "repo::.agents",
+      "target": "cap::ai",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "cap::devops",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "cap::containerized",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "cap::plugin architecture",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "cap::event driven",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "cap::documentation",
+      "relation": "HAS_CAPABILITY"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::presentation",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::api",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::controllers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::services",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::repositories",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::models",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::database",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::caching",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::workers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::schedulers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::ai_agents",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::prompt_manager",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::memory",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::llm_providers",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::deployment",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::testing",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "repo::.agents",
+      "target": "sub::configuration",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": ".agents/skills/cross-repo-testing/SKILL.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".agents/skills/custom-codereview-guide.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".agents/skills/upcoming-release/SKILL.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".agents/skills/update-sdk/SKILL.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".agents/skills/update-sdk/references/docker-image-locations.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".agents/skills/update-sdk/references/sdk-pinning-examples.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".devcontainer/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".devcontainer/devcontainer.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".devcontainer/setup.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".dockerignore",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".editorconfig",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".gitattributes",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/ISSUE_TEMPLATE/bug_template.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/ISSUE_TEMPLATE/config.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/actions/docker-image-tags/action.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/actions/docker-merge-manifest/action.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/dependabot.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/pull_request_template.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/release.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/scripts/find_prs_between_commits.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".github/scripts/update_pr_description.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/_build-image.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/bump-chart.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/check-package-versions.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/check-version-consistency.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/enterprise-check-migrations.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": ".github/workflows/fe-e2e-tests.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": ".github/workflows/fe-unit-tests.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/ghcr-build.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/issue-opened.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/lint-fix.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/lint.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/npm-publish-ui.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/pr-artifacts.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/pr-readiness-confirm.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/pr.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/promote-to-development.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::testing",
+      "target": ".github/workflows/py-tests.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/pypi-release.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/qa-changes-by-openhands.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/release-ready.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/release.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/remove-duplicate-candidate-label.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/stale.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/tag-image.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/ui-build.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": ".github/workflows/welcome-good-first-issue.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".gitignore",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".nvmrc",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".openhands/microagents/documentation.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": ".openhands/microagents/glossary.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".openhands/pre-commit.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".openhands/setup.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".release-please-manifest.cloud.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".release-please-manifest.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": ".vscode/settings.json",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::ai_agents",
+      "target": "AGENTS.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "CITATION.cff",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "CNAME",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "CODE_OF_CONDUCT.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "COMMUNITY.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "CONTRIBUTING.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "CREDITS.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "Development.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "ISSUE_TRIAGE.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "LICENSE",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "MANIFEST.in",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "Makefile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "build.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "config.template.toml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "containers/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "containers/app/Dockerfile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "containers/app/entrypoint.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "containers/dev/Dockerfile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "containers/dev/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "containers/dev/compose.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "containers/dev/dev.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "dev_config/python/.pre-commit-config.yaml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "dev_config/python/mypy.ini",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker-compose.yml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "enterprise/Dockerfile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/LICENSE",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/Makefile",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/alembic.ini",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/allhands-realm-github-provider.json.tmpl",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/analytics/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/analytics/saas_user_provider.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/dev_config/python/.pre-commit-config.yaml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/dev_config/python/mypy.ini",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/dev_config/python/ruff.toml",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/doc/architecture/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/doc/architecture/authentication.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/doc/architecture/external-integrations.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/doc/design-doc/plugin-launch-flow.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/enterprise_local/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/enterprise_local/convert_to_env.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/enterprise_local/decrypt_env.sh",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/azure_devops/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/azure_devops/azure_devops_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/azure_devops/azure_devops_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/azure_devops/azure_devops_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket/bitbucket_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket/bitbucket_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket/bitbucket_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/__init__.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/data_collector.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/github_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/github_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/github_types.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/github_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/github_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/github/queries.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/gitlab/gitlab_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/gitlab/gitlab_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/gitlab/gitlab_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/gitlab/webhook_installation.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira/jira_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira/jira_payload.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira/jira_types.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira/jira_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira/jira_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_service_account.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_types.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_user_token.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/jira_dc/jira_dc_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/integrations/models.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/resolver_context.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/integrations/resolver_org_router.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_attachments.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_errors.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_manager.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_types.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_v1_callback_processor.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/slack/slack_view.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/store_repo_utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/stripe_service.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/types.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/integrations/v1_utils.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/README.md",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/env.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/script.py.mako",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/migrations/versions/001_create_feedback_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/002_create_saas_settings_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/004_create_billing_sessions_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/005_add_margin_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/010_create_offline_tokens_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/011_create_user_settings_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/013_create_github_app_installations_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/014_add_github_user_id.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/016_add_user_version_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/017_add_stripe_customers_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/018_add_script_results_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/020_set_condenser_to_false.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/021_create_auth_tokens_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/migrations/versions/022_create_api_keys_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/024_update_enable_default_condenser_default.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/027_create_gitlab_webhook_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/028_create_user_repos_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/031_add_user_secrets_store.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/035_create_slack_users_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/039_add_user_token_to_slack_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/041_create_slack_conversation_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/045_create_slack_team_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/046_delete_all_slack_users.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/migrations/versions/047_create_conversation_feedback_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/049_create_conversation_callbacks_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/050_create_openhands_prs_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/055_drop_slack_user_token_column.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/058_create_conversation_work_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/059_create_maintenance_tasks_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/061_create_experiment_assignments_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/063_create_jira_workspaces_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/064_create_jira_users_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/065_create_jira_conversations_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/067_create_jira_dc_users_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/069_create_linear_workspaces_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/070_create_linear_users_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/071_create_linear_conversations_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/073_add_type_to_billing_sessions.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/074_create_subscription_access_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/076_add_v1_tables.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/077_drop_settings_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/078_create_telemetry_tables.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/081_add_parent_conversation_id.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/084_create_device_codes_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/087_bump_condenser_defaults.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/088_create_blocked_email_domains_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/089_create_org_tables.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/090_add_git_user_fields_to_user.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/092_rename_user_role_to_member.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/093_add_pending_free_credits.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/094_create_org_invitation_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/095_drop_pending_free_credits.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/096_create_resend_synced_users_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::api",
+      "target": "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::models",
+      "target": "enterprise/migrations/versions/098_create_verified_models_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "sub::services",
+      "target": "enterprise/migrations/versions/099_create_user_authorizations_table.py",
+      "relation": "CONTAINS"
+    },
+    {
+      "source": "enterprise/analytics/saas_user_provider.py",
+      "target": "enterprise/analytics/saas_user_provider.py::SaasAnalyticsUserProvider",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/analytics/saas_user_provider.py",
+      "target": "enterprise/analytics/saas_user_provider.py::get_user_by_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/enterprise_local/convert_to_env.py",
+      "target": "enterprise/enterprise_local/convert_to_env.py::convert_yaml_to_env",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py",
+      "target": "enterprise/integrations/manager.py::Manager",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py",
+      "target": "enterprise/integrations/manager.py::receive_message",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py",
+      "target": "enterprise/integrations/manager.py::send_message",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py",
+      "target": "enterprise/integrations/manager.py::start_job",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/models.py",
+      "target": "enterprise/integrations/models.py::SourceType",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/models.py",
+      "target": "enterprise/integrations/models.py::Message",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/models.py",
+      "target": "enterprise/integrations/models.py::JobContext",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::__init__",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_user_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_user_email",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_user_info",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::_get_provider_handler",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_authenticated_git_url",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_latest_token",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_provider_tokens",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_secrets",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_mcp_api_key",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_user_git_info",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py",
+      "target": "enterprise/integrations/resolver_context.py::get_default_sandbox_spec_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/resolver_org_router.py",
+      "target": "enterprise/integrations/resolver_org_router.py::resolve_org_for_repo",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/store_repo_utils.py",
+      "target": "enterprise/integrations/store_repo_utils.py::store_repositories_in_db",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::find_customer_id_by_org_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::_resolve_org_for_user",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::find_customer_id_by_user_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::find_or_create_customer_by_user_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::has_payment_method_by_user_id",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/stripe_service.py",
+      "target": "enterprise/integrations/stripe_service.py::migrate_customer",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::GitLabResourceType",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::PRStatus",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::UserData",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::SummaryExtractionTracker",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::ResolverViewInterface",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::_get_instructions",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::initialize_new_conversation",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/types.py",
+      "target": "enterprise/integrations/types.py::create_new_conversation",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py::Manager",
+      "target": "enterprise/integrations/manager.py::Manager.receive_message",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/manager.py::Manager",
+      "target": "enterprise/integrations/manager.py::Manager.send_message",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.__init__",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_id",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_email",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_info",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext._get_provider_handler",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_authenticated_git_url",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_latest_token",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_provider_tokens",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_secrets",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_mcp_api_key",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/resolver_context.py::ResolverUserContext",
+      "target": "enterprise/integrations/resolver_context.py::ResolverUserContext.get_user_git_info",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/types.py::ResolverViewInterface",
+      "target": "enterprise/integrations/types.py::ResolverViewInterface._get_instructions",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "enterprise/integrations/types.py::ResolverViewInterface",
+      "target": "enterprise/integrations/types.py::ResolverViewInterface.initialize_new_conversation",
+      "relation": "DEFINES_METHOD"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::POSTHOG_CLIENT_KEY",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::POSTHOG_HOST",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::OPENHANDS_CONFIG_CLS",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::FRONTEND_DIRECTORY",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "enterprise/enterprise_local/convert_to_env.py",
+      "target": "env::LITE_LLM_API_KEY",
+      "relation": "READS"
+    },
+    {
+      "source": "sub::configuration",
+      "target": "env::LITE_LLM_API_KEY",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "docker-compose.yml",
+      "target": "docker::openhands",
+      "relation": "DEFINES"
+    },
+    {
+      "source": "sub::deployment",
+      "target": "docker::openhands",
+      "relation": "EXPOSES"
+    },
+    {
+      "source": "enterprise/integrations/manager.py::Manager",
+      "target": "enterprise/integrations/models.py::Message",
+      "relation": "MUTATES"
+    },
+    {
+      "source": "enterprise/integrations/types.py::ResolverViewInterface",
+      "target": "enterprise/integrations/models.py::Message",
+      "relation": "MUTATES"
+    },
+    {
+      "source": "enterprise/integrations/types.py::ResolverViewInterface",
+      "target": "enterprise/integrations/types.py::UserData",
+      "relation": "MUTATES"
+    }
+  ]
+}

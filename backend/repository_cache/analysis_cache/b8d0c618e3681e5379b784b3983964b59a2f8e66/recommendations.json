@@ -1,0 +1,95 @@
+[
+  {
+    "id": "fb6b58a2-58c0-508c-99c5-935c09e115ad",
+    "evidence_ids": [
+      "01895092a1118887a1557523197e0628"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKER_MULTI_SERVICE"
+    ],
+    "affected_files": [
+      "docker-compose.yml"
+    ],
+    "title": "Docker Compose Multi-Container Orchestration",
+    "recommendation": "Use compose depends_on rules to control container startup orders and check service healthiness. Affected files: docker-compose.yml.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.95,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "0c473c96-40d7-54c0-83b7-768330795857",
+    "evidence_ids": [
+      "717c04fd76e75875f4525f7c8ed60516"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKERFILE"
+    ],
+    "affected_files": [
+      "enterprise/__init__.py"
+    ],
+    "title": "Dockerfile / Container deployment recipe",
+    "recommendation": "Use multi-stage builds to reduce image size and run containers as non-root users for security. Affected files: enterprise/__init__.py.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.97,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "0afe9e26-2505-5f48-b732-e0a5e60a9323",
+    "evidence_ids": [
+      "fc19059a252035c9eb94800ffba6fc9f",
+      "4899fad0c0a500658815ab2d44fd5919",
+      "1b07dcc44d3b582bd2ae67f77a17c25f"
+    ],
+    "triggered_rule_ids": [
+      "RULE_SQLALCHEMY_MODEL"
+    ],
+    "affected_files": [
+      "enterprise/integrations/models.py",
+      "enterprise/integrations/types.py"
+    ],
+    "title": "SQLAlchemy Declarative Database Schema Model",
+    "recommendation": "Ensure columns with high search volumes have indexes (index=True) and declare proper relationships. Affected files: enterprise/integrations/models.py, enterprise/integrations/types.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.9499999999999998,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "a8aacf1d-ee75-5868-b29f-a8b00bf99be8",
+    "evidence_ids": [
+      "435e6b213a5e75e28c28380170956df8"
+    ],
+    "triggered_rule_ids": [
+      "RULE_ENV_VAR_USAGE"
+    ],
+    "affected_files": [
+      "enterprise/enterprise_local/convert_to_env.py"
+    ],
+    "title": "Environment variable retrieval configuration",
+    "recommendation": "Centralize all env var access in a settings configuration file and validate with Pydantic. Affected files: enterprise/enterprise_local/convert_to_env.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.9,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "5e50bc44-bc56-5d6f-afab-a775c8badc57",
+    "evidence_ids": [
+      "dec5348cd46e80826d6048dcb2431f6d"
+    ],
+    "triggered_rule_ids": [
+      "RULE_PYTHON_CODE"
+    ],
+    "affected_files": [
+      "enterprise/__init__.py"
+    ],
+    "title": "Python Backend Application Source File",
+    "recommendation": "Adhere to PEP 8 style guidelines and include function docstrings and type hints. Affected files: enterprise/__init__.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.95,
+    "estimated_effort": "LOW"
+  }
+]

@@ -1,0 +1,2899 @@
+[
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "type": "file",
+    "language": "gitignore",
+    "extension": ".gitignore",
+    "size": 0,
+    "loc": 0,
+    "sha256": "bc37d034bad56458",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 2385,
+    "loc": 55,
+    "sha256": "b335630551682c19",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "backend",
+    "path": "backend",
+    "type": "dir",
+    "children": [
+      {
+        "name": "Dockerfile",
+        "path": "backend/Dockerfile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 357,
+        "loc": 19,
+        "sha256": "fed51f49a9f26cb9",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "app",
+        "path": "backend/app",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/app/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 15,
+            "loc": 1,
+            "sha256": "cdbaec5fe2aeb3e2",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "auth.py",
+            "path": "backend/app/auth.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 4593,
+            "loc": 113,
+            "sha256": "86fc081feb79aa8c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "config.py",
+            "path": "backend/app/config.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 4017,
+            "loc": 90,
+            "sha256": "91d704eebe928802",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "database.py",
+            "path": "backend/app/database.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 9727,
+            "loc": 301,
+            "sha256": "6ec8fee1ac51687f",
+            "roles": {
+              "Database": 0.9,
+              "Model": 0.8
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "main.py",
+            "path": "backend/app/main.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 11039,
+            "loc": 301,
+            "sha256": "82608d38c4441937",
+            "roles": {
+              "Entry Point": 0.95
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "routes",
+            "path": "backend/app/routes",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "backend/app/routes/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d23592066370de19",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "contacts.py",
+                "path": "backend/app/routes/contacts.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "bb159af6be3da40b",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "evidence.py",
+                "path": "backend/app/routes/evidence.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8aec696a190afac8",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "geocode.py",
+                "path": "backend/app/routes/geocode.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e7596a415f38306b",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "journeys.py",
+                "path": "backend/app/routes/journeys.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d271c7076efe810f",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "reports.py",
+                "path": "backend/app/routes/reports.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "109f665f0e51e174",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "safety_route.py",
+                "path": "backend/app/routes/safety_route.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "56807a41a7fd3e8a",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "simulation.py",
+                "path": "backend/app/routes/simulation.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "829c2e9f7cd66736",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "services",
+            "path": "backend/app/services",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "backend/app/services/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "67036e9b1e5a9e61",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "geocode.py",
+                "path": "backend/app/services/geocode.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "71d860b47c0ad566",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "reverse_geocode.py",
+                "path": "backend/app/services/reverse_geocode.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ead0974c86e97ec7",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "routing.py",
+                "path": "backend/app/services/routing.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6edb5d9919efb7fa",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "utils",
+            "path": "backend/app/utils",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "backend/app/utils/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4538c50f32f15de4",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "notification_providers.py",
+                "path": "backend/app/utils/notification_providers.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "3ba4a0316ac72e61",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "pdf_generator.py",
+                "path": "backend/app/utils/pdf_generator.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ccb24bc74c74d07a",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "phone_validation.py",
+                "path": "backend/app/utils/phone_validation.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d2591a60d3dd1f22",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "routing.py",
+                "path": "backend/app/utils/routing.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2a0ebdbbc6db917b",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "requirements.txt",
+        "path": "backend/requirements.txt",
+        "type": "file",
+        "language": "txt",
+        "extension": ".txt",
+        "size": 224,
+        "loc": 11,
+        "sha256": "a780f027052bed3b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "services",
+        "path": "backend/services",
+        "type": "dir",
+        "children": [
+          {
+            "name": "geocode.py",
+            "path": "backend/services/geocode.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1647,
+            "loc": 36,
+            "sha256": "daabb6a696d53bf0",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "reverse_geocode.py",
+            "path": "backend/services/reverse_geocode.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 805,
+            "loc": 24,
+            "sha256": "0c3e6abab53606c5",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "routing.py",
+            "path": "backend/services/routing.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1591,
+            "loc": 35,
+            "sha256": "3e6ac501bc9fadce",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "safety_scorer.py",
+            "path": "backend/services/safety_scorer.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 1632,
+            "loc": 50,
+            "sha256": "d69603ce92e30581",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "docker-compose.yml",
+    "path": "docker-compose.yml",
+    "type": "file",
+    "language": "yml",
+    "extension": ".yml",
+    "size": 980,
+    "loc": 40,
+    "sha256": "e45e45baeda1c1e7",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "frontend-native",
+    "path": "frontend-native",
+    "type": "dir",
+    "children": [
+      {
+        "name": ".gitignore",
+        "path": "frontend-native/.gitignore",
+        "type": "file",
+        "language": "gitignore",
+        "extension": ".gitignore",
+        "size": 0,
+        "loc": 0,
+        "sha256": "bf251d45f998bac9",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "app.json",
+        "path": "frontend-native/app.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "e7003e61f99f5149",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "app",
+        "path": "frontend-native/app",
+        "type": "dir",
+        "children": [
+          {
+            "name": "(auth)",
+            "path": "frontend-native/app/(auth)",
+            "type": "dir",
+            "children": [
+              {
+                "name": "login.tsx",
+                "path": "frontend-native/app/(auth)/login.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "866ba593d09c11b6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "(tabs)",
+            "path": "frontend-native/app/(tabs)",
+            "type": "dir",
+            "children": [
+              {
+                "name": "_layout.tsx",
+                "path": "frontend-native/app/(tabs)/_layout.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a7bdcce36240e37c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "contacts.tsx",
+                "path": "frontend-native/app/(tabs)/contacts.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "b2c5f7724377760e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "dashboard.tsx",
+                "path": "frontend-native/app/(tabs)/dashboard.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0aa7dd97b5dd4ab7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "settings.tsx",
+                "path": "frontend-native/app/(tabs)/settings.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9a7f1d73f6ce2adc",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "vault.tsx",
+                "path": "frontend-native/app/(tabs)/vault.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1f23fbca562425ee",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "_layout.tsx",
+            "path": "frontend-native/app/_layout.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 9527,
+            "loc": 301,
+            "sha256": "1672d078ca4af421",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "index.tsx",
+            "path": "frontend-native/app/index.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 472,
+            "loc": 20,
+            "sha256": "fe88d71cdfac35a6",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "journey",
+            "path": "frontend-native/app/journey",
+            "type": "dir",
+            "children": [
+              {
+                "name": "active.tsx",
+                "path": "frontend-native/app/journey/active.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e26b4fdcd0206662",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "route.tsx",
+                "path": "frontend-native/app/journey/route.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cf58cbdf2f9171a4",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "setup.tsx",
+                "path": "frontend-native/app/journey/setup.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "73d7b58fb0a85803",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "sos",
+            "path": "frontend-native/app/sos",
+            "type": "dir",
+            "children": [
+              {
+                "name": "active.tsx",
+                "path": "frontend-native/app/sos/active.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2c5e59b12b72b3bc",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "assets",
+        "path": "frontend-native/assets",
+        "type": "dir",
+        "children": [
+          {
+            "name": "siren.mp3",
+            "path": "frontend-native/assets/siren.mp3",
+            "type": "file",
+            "language": "mp3",
+            "extension": ".mp3",
+            "size": 0,
+            "loc": 0,
+            "sha256": "54d64915136ee673",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "babel.config.js",
+        "path": "frontend-native/babel.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 0,
+        "loc": 0,
+        "sha256": "fad2551d45f613e9",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "package.json",
+        "path": "frontend-native/package.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 1186,
+        "loc": 43,
+        "sha256": "fe0cc50bc255e22b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "store",
+        "path": "frontend-native/store",
+        "type": "dir",
+        "children": [
+          {
+            "name": "useStore.ts",
+            "path": "frontend-native/store/useStore.ts",
+            "type": "file",
+            "language": "ts",
+            "extension": ".ts",
+            "size": 0,
+            "loc": 0,
+            "sha256": "bf2c917689f16893",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "tsconfig.json",
+        "path": "frontend-native/tsconfig.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "f7526d93d7362451",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "utils",
+        "path": "frontend-native/utils",
+        "type": "dir",
+        "children": [
+          {
+            "name": "CommunicationProvider.ts",
+            "path": "frontend-native/utils/CommunicationProvider.ts",
+            "type": "file",
+            "language": "ts",
+            "extension": ".ts",
+            "size": 0,
+            "loc": 0,
+            "sha256": "9353a1372695d6f9",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "api.ts",
+            "path": "frontend-native/utils/api.ts",
+            "type": "file",
+            "language": "ts",
+            "extension": ".ts",
+            "size": 0,
+            "loc": 0,
+            "sha256": "63e85f629ee9d8ba",
+            "roles": {
+              "API": 0.85,
+              "Controller": 0.7,
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "frontend",
+    "path": "frontend",
+    "type": "dir",
+    "children": [
+      {
+        "name": ".gitignore",
+        "path": "frontend/.gitignore",
+        "type": "file",
+        "language": "gitignore",
+        "extension": ".gitignore",
+        "size": 0,
+        "loc": 0,
+        "sha256": "8e548ede50532796",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "Dockerfile",
+        "path": "frontend/Dockerfile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 270,
+        "loc": 19,
+        "sha256": "ea60ef29f6f537c1",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "README.md",
+        "path": "frontend/README.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 2425,
+        "loc": 73,
+        "sha256": "35aa98d245b201cf",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "android",
+        "path": "frontend/android",
+        "type": "dir",
+        "children": [
+          {
+            "name": ".gitignore",
+            "path": "frontend/android/.gitignore",
+            "type": "file",
+            "language": "gitignore",
+            "extension": ".gitignore",
+            "size": 0,
+            "loc": 0,
+            "sha256": "09372fab01809b9f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "app",
+            "path": "frontend/android/app",
+            "type": "dir",
+            "children": [
+              {
+                "name": ".gitignore",
+                "path": "frontend/android/app/.gitignore",
+                "type": "file",
+                "language": "gitignore",
+                "extension": ".gitignore",
+                "size": 0,
+                "loc": 0,
+                "sha256": "a5619616131114ed",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "build.gradle",
+                "path": "frontend/android/app/build.gradle",
+                "type": "file",
+                "language": "gradle",
+                "extension": ".gradle",
+                "size": 2124,
+                "loc": 54,
+                "sha256": "725e0da59f6fc5fc",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": true,
+                "ignored": false
+              },
+              {
+                "name": "capacitor.build.gradle",
+                "path": "frontend/android/app/capacitor.build.gradle",
+                "type": "file",
+                "language": "gradle",
+                "extension": ".gradle",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e12c25fc5748d7a7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": true,
+                "ignored": false
+              },
+              {
+                "name": "proguard-rules.pro",
+                "path": "frontend/android/app/proguard-rules.pro",
+                "type": "file",
+                "language": "pro",
+                "extension": ".pro",
+                "size": 0,
+                "loc": 0,
+                "sha256": "98039c33970e874f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "src",
+                "path": "frontend/android/app/src",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "androidTest",
+                    "path": "frontend/android/app/src/androidTest",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "java",
+                        "path": "frontend/android/app/src/androidTest/java",
+                        "type": "dir",
+                        "children": [
+                          {
+                            "name": "com",
+                            "path": "frontend/android/app/src/androidTest/java/com",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "getcapacitor",
+                                "path": "frontend/android/app/src/androidTest/java/com/getcapacitor",
+                                "type": "dir",
+                                "children": [
+                                  {
+                                    "name": "myapp",
+                                    "path": "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp",
+                                    "type": "dir",
+                                    "children": [
+                                      {
+                                        "name": "ExampleInstrumentedTest.java",
+                                        "path": "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+                                        "type": "file",
+                                        "language": "java",
+                                        "extension": ".java",
+                                        "size": 0,
+                                        "loc": 0,
+                                        "sha256": "ba8a3ff927100fc2",
+                                        "roles": {
+                                          "Unknown": 1.0
+                                        },
+                                        "generated": false,
+                                        "ignored": false
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "main",
+                    "path": "frontend/android/app/src/main",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "AndroidManifest.xml",
+                        "path": "frontend/android/app/src/main/AndroidManifest.xml",
+                        "type": "file",
+                        "language": "xml",
+                        "extension": ".xml",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "fe1a9770491e6843",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "java",
+                        "path": "frontend/android/app/src/main/java",
+                        "type": "dir",
+                        "children": [
+                          {
+                            "name": "com",
+                            "path": "frontend/android/app/src/main/java/com",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "femme",
+                                "path": "frontend/android/app/src/main/java/com/femme",
+                                "type": "dir",
+                                "children": [
+                                  {
+                                    "name": "app",
+                                    "path": "frontend/android/app/src/main/java/com/femme/app",
+                                    "type": "dir",
+                                    "children": [
+                                      {
+                                        "name": "MainActivity.java",
+                                        "path": "frontend/android/app/src/main/java/com/femme/app/MainActivity.java",
+                                        "type": "file",
+                                        "language": "java",
+                                        "extension": ".java",
+                                        "size": 0,
+                                        "loc": 0,
+                                        "sha256": "2562312652b241c0",
+                                        "roles": {
+                                          "Unknown": 1.0
+                                        },
+                                        "generated": false,
+                                        "ignored": false
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "res",
+                        "path": "frontend/android/app/src/main/res",
+                        "type": "dir",
+                        "children": [
+                          {
+                            "name": "drawable-land-hdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-land-hdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-land-hdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "ca211fab36faa7b7",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-land-mdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-land-mdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-land-mdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "1f03c0d271d69ff0",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-land-xhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-land-xhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-land-xhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "0da2fbeda2ada533",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-land-xxhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-land-xxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "253d497d3805c46f",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-land-xxxhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-land-xxxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "6a465b5585dccc3e",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-port-hdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-port-hdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-port-hdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "a09b59cc9ed529f2",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-port-mdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-port-mdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-port-mdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "47d2fbb28a842318",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-port-xhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-port-xhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-port-xhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "9be6686ca7eb2d9a",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-port-xxhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-port-xxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "5a6909c0799d991f",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-port-xxxhdpi",
+                            "path": "frontend/android/app/src/main/res/drawable-port-xxxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "df4c7d45e5e3de4e",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable-v24",
+                            "path": "frontend/android/app/src/main/res/drawable-v24",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher_foreground.xml",
+                                "path": "frontend/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "9faa311ce97d1446",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "drawable",
+                            "path": "frontend/android/app/src/main/res/drawable",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher_background.xml",
+                                "path": "frontend/android/app/src/main/res/drawable/ic_launcher_background.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "f62374a58ca3ff09",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "splash.png",
+                                "path": "frontend/android/app/src/main/res/drawable/splash.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "8ea3dc7286bc3236",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "layout",
+                            "path": "frontend/android/app/src/main/res/layout",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "activity_main.xml",
+                                "path": "frontend/android/app/src/main/res/layout/activity_main.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "360c22d1d0136ea4",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-anydpi-v26",
+                            "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.xml",
+                                "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "93b1c0b670f8f11d",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.xml",
+                                "path": "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "bd7d184314a090e0",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-hdpi",
+                            "path": "frontend/android/app/src/main/res/mipmap-hdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "294a16bae3fb0eb8",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_foreground.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "ac5e5ce88fc348c4",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "9f4a1b73be65ea01",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-mdpi",
+                            "path": "frontend/android/app/src/main/res/mipmap-mdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "14915be1a7a7843f",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_foreground.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "2ed205ab0092e1ad",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "896248f70344d96c",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-xhdpi",
+                            "path": "frontend/android/app/src/main/res/mipmap-xhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "d0c49de2f463e907",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_foreground.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "092716e0cdc6016c",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "8d4ad309a56438c7",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-xxhdpi",
+                            "path": "frontend/android/app/src/main/res/mipmap-xxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "6d9d04e407cfa830",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_foreground.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "79f79680e8e8fe19",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "e7b72fae1c1aba21",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "mipmap-xxxhdpi",
+                            "path": "frontend/android/app/src/main/res/mipmap-xxxhdpi",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "c539a080b8252ddf",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_foreground.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "9f4a245c4f97adb4",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "ic_launcher_round.png",
+                                "path": "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+                                "type": "file",
+                                "language": "png",
+                                "extension": ".png",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "c4b046780346b71e",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "values",
+                            "path": "frontend/android/app/src/main/res/values",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "ic_launcher_background.xml",
+                                "path": "frontend/android/app/src/main/res/values/ic_launcher_background.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "7e93d8a110760ac2",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "strings.xml",
+                                "path": "frontend/android/app/src/main/res/values/strings.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "40947e028c809f5d",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              },
+                              {
+                                "name": "styles.xml",
+                                "path": "frontend/android/app/src/main/res/values/styles.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "0ec289bfaa05277e",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          },
+                          {
+                            "name": "xml",
+                            "path": "frontend/android/app/src/main/res/xml",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "file_paths.xml",
+                                "path": "frontend/android/app/src/main/res/xml/file_paths.xml",
+                                "type": "file",
+                                "language": "xml",
+                                "extension": ".xml",
+                                "size": 0,
+                                "loc": 0,
+                                "sha256": "e3bb0c7d90073bd4",
+                                "roles": {
+                                  "Unknown": 1.0
+                                },
+                                "generated": false,
+                                "ignored": false
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "test",
+                    "path": "frontend/android/app/src/test",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "java",
+                        "path": "frontend/android/app/src/test/java",
+                        "type": "dir",
+                        "children": [
+                          {
+                            "name": "com",
+                            "path": "frontend/android/app/src/test/java/com",
+                            "type": "dir",
+                            "children": [
+                              {
+                                "name": "getcapacitor",
+                                "path": "frontend/android/app/src/test/java/com/getcapacitor",
+                                "type": "dir",
+                                "children": [
+                                  {
+                                    "name": "myapp",
+                                    "path": "frontend/android/app/src/test/java/com/getcapacitor/myapp",
+                                    "type": "dir",
+                                    "children": [
+                                      {
+                                        "name": "ExampleUnitTest.java",
+                                        "path": "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+                                        "type": "file",
+                                        "language": "java",
+                                        "extension": ".java",
+                                        "size": 0,
+                                        "loc": 0,
+                                        "sha256": "59c1c39089dbc14e",
+                                        "roles": {
+                                          "Unknown": 1.0
+                                        },
+                                        "generated": false,
+                                        "ignored": false
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "build.gradle",
+            "path": "frontend/android/build.gradle",
+            "type": "file",
+            "language": "gradle",
+            "extension": ".gradle",
+            "size": 637,
+            "loc": 29,
+            "sha256": "b25465cf80ce8e56",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "capacitor.settings.gradle",
+            "path": "frontend/android/capacitor.settings.gradle",
+            "type": "file",
+            "language": "gradle",
+            "extension": ".gradle",
+            "size": 0,
+            "loc": 0,
+            "sha256": "09f44b3b29ff2eb2",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "gradle.properties",
+            "path": "frontend/android/gradle.properties",
+            "type": "file",
+            "language": "properties",
+            "extension": ".properties",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a28e76e8367a5747",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "gradle",
+            "path": "frontend/android/gradle",
+            "type": "dir",
+            "children": [
+              {
+                "name": "wrapper",
+                "path": "frontend/android/gradle/wrapper",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "gradle-wrapper.jar",
+                    "path": "frontend/android/gradle/wrapper/gradle-wrapper.jar",
+                    "type": "file",
+                    "language": "jar",
+                    "extension": ".jar",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "c41cb29ab979cacf",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "gradle-wrapper.properties",
+                    "path": "frontend/android/gradle/wrapper/gradle-wrapper.properties",
+                    "type": "file",
+                    "language": "properties",
+                    "extension": ".properties",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "0c1ab4b9690fa780",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "gradlew",
+            "path": "frontend/android/gradlew",
+            "type": "file",
+            "language": "unknown",
+            "extension": null,
+            "size": 0,
+            "loc": 0,
+            "sha256": "9d296d1259d5d712",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "gradlew.bat",
+            "path": "frontend/android/gradlew.bat",
+            "type": "file",
+            "language": "bat",
+            "extension": ".bat",
+            "size": 0,
+            "loc": 0,
+            "sha256": "024748743f03ed31",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "settings.gradle",
+            "path": "frontend/android/settings.gradle",
+            "type": "file",
+            "language": "gradle",
+            "extension": ".gradle",
+            "size": 0,
+            "loc": 0,
+            "sha256": "8d703b32e393fe3f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "variables.gradle",
+            "path": "frontend/android/variables.gradle",
+            "type": "file",
+            "language": "gradle",
+            "extension": ".gradle",
+            "size": 0,
+            "loc": 0,
+            "sha256": "bdc900ec0a828589",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "capacitor.config.ts",
+        "path": "frontend/capacitor.config.ts",
+        "type": "file",
+        "language": "ts",
+        "extension": ".ts",
+        "size": 267,
+        "loc": 14,
+        "sha256": "65ff8c1cb02b056c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "eslint.config.js",
+        "path": "frontend/eslint.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 1254,
+        "loc": 40,
+        "sha256": "8b60be22f06ef19e",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "index.html",
+        "path": "frontend/index.html",
+        "type": "file",
+        "language": "html",
+        "extension": ".html",
+        "size": 0,
+        "loc": 0,
+        "sha256": "959f9cada636604d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "package.json",
+        "path": "frontend/package.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 1315,
+        "loc": 49,
+        "sha256": "da6498268e99511d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "postcss.config.js",
+        "path": "frontend/postcss.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 80,
+        "loc": 6,
+        "sha256": "4d9caaa225a07b88",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "public",
+        "path": "frontend/public",
+        "type": "dir",
+        "children": [
+          {
+            "name": "favicon.svg",
+            "path": "frontend/public/favicon.svg",
+            "type": "file",
+            "language": "svg",
+            "extension": ".svg",
+            "size": 0,
+            "loc": 0,
+            "sha256": "bc7caad82dd86731",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "icons.svg",
+            "path": "frontend/public/icons.svg",
+            "type": "file",
+            "language": "svg",
+            "extension": ".svg",
+            "size": 0,
+            "loc": 0,
+            "sha256": "2ece9b0501ce6eab",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "src",
+        "path": "frontend/src",
+        "type": "dir",
+        "children": [
+          {
+            "name": "App.css",
+            "path": "frontend/src/App.css",
+            "type": "file",
+            "language": "css",
+            "extension": ".css",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a335e6772310196b",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "App.tsx",
+            "path": "frontend/src/App.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 1490,
+            "loc": 33,
+            "sha256": "e56cb91573ddb6a9",
+            "roles": {
+              "Entry Point": 0.95
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "assets",
+            "path": "frontend/src/assets",
+            "type": "dir",
+            "children": [
+              {
+                "name": "ai_guardian.json",
+                "path": "frontend/src/assets/ai_guardian.json",
+                "type": "file",
+                "language": "json",
+                "extension": ".json",
+                "size": 0,
+                "loc": 0,
+                "sha256": "73791dfab75282c4",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "ai_guardian_placeholder.json",
+                "path": "frontend/src/assets/ai_guardian_placeholder.json",
+                "type": "file",
+                "language": "json",
+                "extension": ".json",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ebaeaef4456287ef",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "hero.png",
+                "path": "frontend/src/assets/hero.png",
+                "type": "file",
+                "language": "png",
+                "extension": ".png",
+                "size": 0,
+                "loc": 0,
+                "sha256": "51bbfa47a3e1b21e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "react.svg",
+                "path": "frontend/src/assets/react.svg",
+                "type": "file",
+                "language": "svg",
+                "extension": ".svg",
+                "size": 0,
+                "loc": 0,
+                "sha256": "19683eba59ddd683",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "vite.svg",
+                "path": "frontend/src/assets/vite.svg",
+                "type": "file",
+                "language": "svg",
+                "extension": ".svg",
+                "size": 0,
+                "loc": 0,
+                "sha256": "aeb071d1787a2459",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "components",
+            "path": "frontend/src/components",
+            "type": "dir",
+            "children": [
+              {
+                "name": "AIHero.tsx",
+                "path": "frontend/src/components/AIHero.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6f78abbd0c81e6e6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "AnimatedCounter.tsx",
+                "path": "frontend/src/components/AnimatedCounter.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "60d13742219ea9fe",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "GlassCard.tsx",
+                "path": "frontend/src/components/GlassCard.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d506b62f4d0dff8c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "Layout.tsx",
+                "path": "frontend/src/components/Layout.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ef64813e651fd570",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "LocationPermissionModal.tsx",
+                "path": "frontend/src/components/LocationPermissionModal.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2fa4283dcb56cd6e",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "SafetyRoutePanel.tsx",
+                "path": "frontend/src/components/SafetyRoutePanel.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "518bd66a80e8c506",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "VideoBackground.tsx",
+                "path": "frontend/src/components/VideoBackground.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "830966320fa7dac7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "context",
+            "path": "frontend/src/context",
+            "type": "dir",
+            "children": [
+              {
+                "name": "AuthProvider.tsx",
+                "path": "frontend/src/context/AuthProvider.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c5988b94ea3fc558",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "LocationContext.tsx",
+                "path": "frontend/src/context/LocationContext.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "ffe2d235a286966c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "index.css",
+            "path": "frontend/src/index.css",
+            "type": "file",
+            "language": "css",
+            "extension": ".css",
+            "size": 0,
+            "loc": 0,
+            "sha256": "b6889d573bf68429",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "main.tsx",
+            "path": "frontend/src/main.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 0,
+            "loc": 0,
+            "sha256": "f687de21d327881c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pages",
+            "path": "frontend/src/pages",
+            "type": "dir",
+            "children": [
+              {
+                "name": "ActiveJourneyPage.tsx",
+                "path": "frontend/src/pages/ActiveJourneyPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6c2b0cfb13e56175",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "AnalyticsPage.tsx",
+                "path": "frontend/src/pages/AnalyticsPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "be03c2dac04a490f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "AnomalyCenterPage.tsx",
+                "path": "frontend/src/pages/AnomalyCenterPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8da5efae9370fdc5",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "AuthPage.tsx",
+                "path": "frontend/src/pages/AuthPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "61c6b6ad3c8e515f",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "CommunityReportsPage.tsx",
+                "path": "frontend/src/pages/CommunityReportsPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "b019f1d3b1911824",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "DashboardPage.tsx",
+                "path": "frontend/src/pages/DashboardPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e8136f48312feae3",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "EvidenceVaultPage.tsx",
+                "path": "frontend/src/pages/EvidenceVaultPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d2c5a3bdbbbf672c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "FIRGeneratorPage.tsx",
+                "path": "frontend/src/pages/FIRGeneratorPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d79ff6d868a738e1",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "JourneySetupPage.tsx",
+                "path": "frontend/src/pages/JourneySetupPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0f00b540b3712f40",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "LandingPage.tsx",
+                "path": "frontend/src/pages/LandingPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "fd2148bae5498fff",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "ProfilePage.tsx",
+                "path": "frontend/src/pages/ProfilePage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "326cad5141ca9dbe",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "RouteViewPage.tsx",
+                "path": "frontend/src/pages/RouteViewPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0dc225550a48e568",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "SOSCenterPage.tsx",
+                "path": "frontend/src/pages/SOSCenterPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0525f7ce62a02271",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "SafeZoneMapPage.tsx",
+                "path": "frontend/src/pages/SafeZoneMapPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9d3b3168bd23d3ce",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "SettingsPage.tsx",
+                "path": "frontend/src/pages/SettingsPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "39a34da300f0b475",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "TrustedContactsPage.tsx",
+                "path": "frontend/src/pages/TrustedContactsPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "bc782c9d4a6f9c23",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "store",
+            "path": "frontend/src/store",
+            "type": "dir",
+            "children": [
+              {
+                "name": "useStore.ts",
+                "path": "frontend/src/store/useStore.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "bb088daa3f92e209",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "path": "frontend/src/types",
+            "type": "dir",
+            "children": [
+              {
+                "name": "global.d.ts",
+                "path": "frontend/src/types/global.d.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e5fd331481f699e2",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jwt-decode.d.ts",
+                "path": "frontend/src/types/jwt-decode.d.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "34b6069db9724e14",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "utils",
+            "path": "frontend/src/utils",
+            "type": "dir",
+            "children": [
+              {
+                "name": "Logger.ts",
+                "path": "frontend/src/utils/Logger.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "bfc22e174823da76",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "api.ts",
+                "path": "frontend/src/utils/api.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2beb6ebeac073ebc",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7,
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "jwtDecode.ts",
+                "path": "frontend/src/utils/jwtDecode.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e20243513fa9562b",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tailwind.config.js",
+        "path": "frontend/tailwind.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 1730,
+        "loc": 56,
+        "sha256": "8fdab0c1827a182d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tsconfig.app.json",
+        "path": "frontend/tsconfig.app.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "33b476defcc78b9e",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tsconfig.json",
+        "path": "frontend/tsconfig.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "5c19f37df4b2357c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tsconfig.node.json",
+        "path": "frontend/tsconfig.node.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "bbfd505103ddd5c6",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "vite.config.ts",
+        "path": "frontend/vite.config.ts",
+        "type": "file",
+        "language": "ts",
+        "extension": ".ts",
+        "size": 161,
+        "loc": 7,
+        "sha256": "97c6e2c429ec4831",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": "test_endpoints.py",
+    "path": "test_endpoints.py",
+    "type": "file",
+    "language": "py",
+    "extension": ".py",
+    "size": 0,
+    "loc": 0,
+    "sha256": "52515cb6755fff6c",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  }
+]

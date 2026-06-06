@@ -1,0 +1,446 @@
+[
+  {
+    "name": "SaasAnalyticsUserProvider",
+    "type": "class",
+    "file_path": "enterprise/analytics/saas_user_provider.py",
+    "line_start": 15,
+    "line_end": 31,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "AnalyticsUserProvider"
+      }
+    ]
+  },
+  {
+    "name": "get_user_by_id",
+    "type": "function",
+    "file_path": "enterprise/analytics/saas_user_provider.py",
+    "line_start": 22,
+    "line_end": 31,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "convert_yaml_to_env",
+    "type": "function",
+    "file_path": "enterprise/enterprise_local/convert_to_env.py",
+    "line_start": 8,
+    "line_end": 72,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "Manager",
+    "type": "class",
+    "file_path": "enterprise/integrations/manager.py",
+    "line_start": 10,
+    "line_end": 36,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "ABC"
+      }
+    ]
+  },
+  {
+    "name": "receive_message",
+    "type": "function",
+    "file_path": "enterprise/integrations/manager.py",
+    "line_start": 14,
+    "line_end": 16,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "send_message",
+    "type": "function",
+    "file_path": "enterprise/integrations/manager.py",
+    "line_start": 19,
+    "line_end": 25,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "start_job",
+    "type": "function",
+    "file_path": "enterprise/integrations/manager.py",
+    "line_start": 28,
+    "line_end": 36,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "SourceType",
+    "type": "class",
+    "file_path": "enterprise/integrations/models.py",
+    "line_start": 9,
+    "line_end": 19,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "str"
+      },
+      {
+        "type": "extends",
+        "target": "Enum"
+      }
+    ]
+  },
+  {
+    "name": "Message",
+    "type": "model",
+    "file_path": "enterprise/integrations/models.py",
+    "line_start": 22,
+    "line_end": 33,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "JobContext",
+    "type": "model",
+    "file_path": "enterprise/integrations/models.py",
+    "line_start": 36,
+    "line_end": 48,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "ResolverUserContext",
+    "type": "class",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 14,
+    "line_end": 107,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "UserContext"
+      }
+    ]
+  },
+  {
+    "name": "__init__",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 17,
+    "line_end": 31,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_user_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 33,
+    "line_end": 34,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_user_email",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 36,
+    "line_end": 37,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_user_info",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 39,
+    "line_end": 48,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "_get_provider_handler",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 50,
+    "line_end": 60,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_authenticated_git_url",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 62,
+    "line_end": 69,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_latest_token",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 71,
+    "line_end": 78,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_provider_tokens",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 80,
+    "line_end": 83,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_secrets",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 85,
+    "line_end": 97,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_mcp_api_key",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 99,
+    "line_end": 100,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_user_git_info",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 102,
+    "line_end": 103,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "get_default_sandbox_spec_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_context.py",
+    "line_start": 105,
+    "line_end": 107,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "resolve_org_for_repo",
+    "type": "function",
+    "file_path": "enterprise/integrations/resolver_org_router.py",
+    "line_start": 16,
+    "line_end": 78,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "store_repositories_in_db",
+    "type": "function",
+    "file_path": "enterprise/integrations/store_repo_utils.py",
+    "line_start": 10,
+    "line_end": 49,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "find_customer_id_by_org_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 15,
+    "line_end": 34,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "_resolve_org_for_user",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 37,
+    "line_end": 52,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "find_customer_id_by_user_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 55,
+    "line_end": 67,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "find_or_create_customer_by_user_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 70,
+    "line_end": 114,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "has_payment_method_by_user_id",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 117,
+    "line_end": 129,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "migrate_customer",
+    "type": "function",
+    "file_path": "enterprise/integrations/stripe_service.py",
+    "line_start": 132,
+    "line_end": 156,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "GitLabResourceType",
+    "type": "class",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 16,
+    "line_end": 19,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "Enum"
+      }
+    ]
+  },
+  {
+    "name": "PRStatus",
+    "type": "class",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 22,
+    "line_end": 24,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "Enum"
+      }
+    ]
+  },
+  {
+    "name": "UserData",
+    "type": "model",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 27,
+    "line_end": 32,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "SummaryExtractionTracker",
+    "type": "class",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 36,
+    "line_end": 39,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "ResolverViewInterface",
+    "type": "class",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 43,
+    "line_end": 81,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "SummaryExtractionTracker"
+      }
+    ]
+  },
+  {
+    "name": "_get_instructions",
+    "type": "function",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 54,
+    "line_end": 56,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "initialize_new_conversation",
+    "type": "function",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 58,
+    "line_end": 64,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "create_new_conversation",
+    "type": "function",
+    "file_path": "enterprise/integrations/types.py",
+    "line_start": 66,
+    "line_end": 81,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  }
+]

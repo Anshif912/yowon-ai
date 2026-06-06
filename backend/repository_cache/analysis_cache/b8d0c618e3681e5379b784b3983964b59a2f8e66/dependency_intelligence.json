@@ -1,0 +1,1397 @@
+{
+  "module_graph": {
+    "enterprise/__init__.py": [],
+    "enterprise/analytics/__init__.py": [],
+    "enterprise/analytics/saas_user_provider.py": [
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/enterprise_local/convert_to_env.py": [
+      "dev_config/python/.pre-commit-config.yaml",
+      ".agents/skills/cross-repo-testing/SKILL.md"
+    ],
+    "enterprise/integrations/manager.py": [
+      "enterprise/doc/architecture/external-integrations.md"
+    ],
+    "enterprise/integrations/models.py": [
+      "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/integrations/resolver_context.py": [
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/resolver_org_router.py": [
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/store_repo_utils.py": [
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/integrations/stripe_service.py": [
+      "enterprise/integrations/stripe_service.py",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/types.py": [
+      "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "enterprise/doc/architecture/external-integrations.md",
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ]
+  },
+  "package_graph": {},
+  "call_graph": {
+    "enterprise/__init__.py": [],
+    "enterprise/analytics/__init__.py": [],
+    "enterprise/analytics/saas_user_provider.py": [
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/enterprise_local/convert_to_env.py": [
+      "dev_config/python/.pre-commit-config.yaml",
+      ".agents/skills/cross-repo-testing/SKILL.md"
+    ],
+    "enterprise/integrations/manager.py": [
+      "enterprise/doc/architecture/external-integrations.md"
+    ],
+    "enterprise/integrations/models.py": [
+      "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/integrations/resolver_context.py": [
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/resolver_org_router.py": [
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/store_repo_utils.py": [
+      ".github/workflows/qa-changes-by-openhands.yml"
+    ],
+    "enterprise/integrations/stripe_service.py": [
+      "enterprise/integrations/stripe_service.py",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ],
+    "enterprise/integrations/types.py": [
+      "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py",
+      "enterprise/doc/architecture/external-integrations.md",
+      ".github/workflows/qa-changes-by-openhands.yml",
+      "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+    ]
+  },
+  "circular_dependencies": [
+    [
+      "enterprise/integrations/stripe_service.py",
+      "enterprise/integrations/stripe_service.py"
+    ]
+  ],
+  "coupling": {
+    ".agents/skills/cross-repo-testing/SKILL.md": {
+      "ca": 1,
+      "ce": 0
+    },
+    ".agents/skills/custom-codereview-guide.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".agents/skills/upcoming-release/SKILL.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".agents/skills/update-sdk/SKILL.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".agents/skills/update-sdk/references/docker-image-locations.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".agents/skills/update-sdk/references/sdk-pinning-examples.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".devcontainer/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".devcontainer/devcontainer.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".devcontainer/setup.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".dockerignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".editorconfig": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".gitattributes": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/ISSUE_TEMPLATE/bug_template.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/ISSUE_TEMPLATE/config.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/ISSUE_TEMPLATE/feature_request.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/actions/docker-image-tags/action.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/actions/docker-merge-manifest/action.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/dependabot.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/pull_request_template.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/release.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/scripts/find_prs_between_commits.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/scripts/update_pr_description.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/_build-image.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/bump-chart.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/check-package-versions.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/check-version-consistency.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/enterprise-check-migrations.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/fe-e2e-tests.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/fe-unit-tests.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/ghcr-build.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/issue-opened.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/lint-fix.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/lint.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/npm-publish-ui.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/pr-artifacts.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/pr-readiness-confirm.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/pr.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/promote-to-development.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/py-tests.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/pypi-release.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/qa-changes-by-openhands.yml": {
+      "ca": 6,
+      "ce": 0
+    },
+    ".github/workflows/release-ready.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/release.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/remove-duplicate-candidate-label.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/stale.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/tag-image.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/ui-build.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".github/workflows/welcome-good-first-issue.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".gitignore": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".nvmrc": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".openhands/microagents/documentation.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".openhands/microagents/glossary.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".openhands/pre-commit.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".openhands/setup.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".release-please-manifest.cloud.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".release-please-manifest.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    ".vscode/settings.json": {
+      "ca": 0,
+      "ce": 0
+    },
+    "AGENTS.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "CITATION.cff": {
+      "ca": 0,
+      "ce": 0
+    },
+    "CNAME": {
+      "ca": 0,
+      "ce": 0
+    },
+    "CODE_OF_CONDUCT.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "COMMUNITY.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "CONTRIBUTING.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "CREDITS.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "Development.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "ISSUE_TRIAGE.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "LICENSE": {
+      "ca": 0,
+      "ce": 0
+    },
+    "MANIFEST.in": {
+      "ca": 0,
+      "ce": 0
+    },
+    "Makefile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "build.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "config.template.toml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/app/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/app/entrypoint.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/dev/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/dev/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/dev/compose.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "containers/dev/dev.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "dev_config/python/.pre-commit-config.yaml": {
+      "ca": 1,
+      "ce": 0
+    },
+    "dev_config/python/mypy.ini": {
+      "ca": 0,
+      "ce": 0
+    },
+    "docker-compose.yml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/Dockerfile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/LICENSE": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/Makefile": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/alembic.ini": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/allhands-realm-github-provider.json.tmpl": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/analytics/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/analytics/saas_user_provider.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "enterprise/dev_config/python/.pre-commit-config.yaml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/dev_config/python/mypy.ini": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/dev_config/python/ruff.toml": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/doc/architecture/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/doc/architecture/authentication.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/doc/architecture/external-integrations.md": {
+      "ca": 2,
+      "ce": 0
+    },
+    "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/doc/design-doc/plugin-launch-flow.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/enterprise_local/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/enterprise_local/convert_to_env.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "enterprise/enterprise_local/decrypt_env.sh": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/azure_devops/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/azure_devops/azure_devops_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/azure_devops/azure_devops_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/azure_devops/azure_devops_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket/bitbucket_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket/bitbucket_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket/bitbucket_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/__init__.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/data_collector.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/github_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/github_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/github_types.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/github_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/github_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/github/queries.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/gitlab/gitlab_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/gitlab/gitlab_service.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/gitlab/gitlab_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/gitlab/webhook_installation.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira/jira_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira/jira_payload.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira/jira_types.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira/jira_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira/jira_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_service_account.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_types.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_user_token.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/jira_dc/jira_dc_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/manager.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "enterprise/integrations/models.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "enterprise/integrations/resolver_context.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "enterprise/integrations/resolver_org_router.py": {
+      "ca": 0,
+      "ce": 2
+    },
+    "enterprise/integrations/slack/slack_attachments.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/slack/slack_errors.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/slack/slack_manager.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/slack/slack_types.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/slack/slack_v1_callback_processor.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/slack/slack_view.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/store_repo_utils.py": {
+      "ca": 0,
+      "ce": 1
+    },
+    "enterprise/integrations/stripe_service.py": {
+      "ca": 1,
+      "ce": 2
+    },
+    "enterprise/integrations/types.py": {
+      "ca": 0,
+      "ce": 4
+    },
+    "enterprise/integrations/utils.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/integrations/v1_utils.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/README.md": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/env.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/script.py.mako": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/001_create_feedback_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/002_create_saas_settings_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/004_create_billing_sessions_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/005_add_margin_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/010_create_offline_tokens_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/011_create_user_settings_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/013_create_github_app_installations_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/014_add_github_user_id.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/016_add_user_version_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/017_add_stripe_customers_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/018_add_script_results_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/020_set_condenser_to_false.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/021_create_auth_tokens_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/022_create_api_keys_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/024_update_enable_default_condenser_default.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/027_create_gitlab_webhook_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/028_create_user_repos_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/031_add_user_secrets_store.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py": {
+      "ca": 4,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/035_create_slack_users_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/039_add_user_token_to_slack_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/041_create_slack_conversation_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/045_create_slack_team_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/046_delete_all_slack_users.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/047_create_conversation_feedback_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/049_create_conversation_callbacks_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/050_create_openhands_prs_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/055_drop_slack_user_token_column.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/058_create_conversation_work_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/059_create_maintenance_tasks_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/061_create_experiment_assignments_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/063_create_jira_workspaces_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/064_create_jira_users_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/065_create_jira_conversations_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/067_create_jira_dc_users_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/069_create_linear_workspaces_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/070_create_linear_users_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/071_create_linear_conversations_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/073_add_type_to_billing_sessions.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/074_create_subscription_access_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/076_add_v1_tables.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/077_drop_settings_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/078_create_telemetry_tables.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/081_add_parent_conversation_id.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py": {
+      "ca": 2,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/084_create_device_codes_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/087_bump_condenser_defaults.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/088_create_blocked_email_domains_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/089_create_org_tables.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/090_add_git_user_fields_to_user.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/092_rename_user_role_to_member.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/093_add_pending_free_credits.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/094_create_org_invitation_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/095_drop_pending_free_credits.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/096_create_resend_synced_users_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/098_create_verified_models_table.py": {
+      "ca": 0,
+      "ce": 0
+    },
+    "enterprise/migrations/versions/099_create_user_authorizations_table.py": {
+      "ca": 0,
+      "ce": 0
+    }
+  },
+  "instability": {
+    ".agents/skills/cross-repo-testing/SKILL.md": 0.0,
+    ".agents/skills/custom-codereview-guide.md": 0.0,
+    ".agents/skills/upcoming-release/SKILL.md": 0.0,
+    ".agents/skills/update-sdk/SKILL.md": 0.0,
+    ".agents/skills/update-sdk/references/docker-image-locations.md": 0.0,
+    ".agents/skills/update-sdk/references/sdk-pinning-examples.md": 0.0,
+    ".devcontainer/README.md": 0.0,
+    ".devcontainer/devcontainer.json": 0.0,
+    ".devcontainer/setup.sh": 0.0,
+    ".dockerignore": 0.0,
+    ".editorconfig": 0.0,
+    ".gitattributes": 0.0,
+    ".github/ISSUE_TEMPLATE/bug_template.yml": 0.0,
+    ".github/ISSUE_TEMPLATE/config.yml": 0.0,
+    ".github/ISSUE_TEMPLATE/feature_request.yml": 0.0,
+    ".github/actions/docker-image-tags/action.yml": 0.0,
+    ".github/actions/docker-merge-manifest/action.yml": 0.0,
+    ".github/dependabot.yml": 0.0,
+    ".github/pull_request_template.md": 0.0,
+    ".github/release.yml": 0.0,
+    ".github/scripts/find_prs_between_commits.py": 0.0,
+    ".github/scripts/update_pr_description.sh": 0.0,
+    ".github/workflows/_build-image.yml": 0.0,
+    ".github/workflows/bump-chart.yml": 0.0,
+    ".github/workflows/check-package-versions.yml": 0.0,
+    ".github/workflows/check-version-consistency.yml": 0.0,
+    ".github/workflows/enterprise-check-migrations.yml": 0.0,
+    ".github/workflows/fe-e2e-tests.yml": 0.0,
+    ".github/workflows/fe-unit-tests.yml": 0.0,
+    ".github/workflows/ghcr-build.yml": 0.0,
+    ".github/workflows/issue-opened.yml": 0.0,
+    ".github/workflows/lint-fix.yml": 0.0,
+    ".github/workflows/lint.yml": 0.0,
+    ".github/workflows/npm-publish-ui.yml": 0.0,
+    ".github/workflows/pr-artifacts.yml": 0.0,
+    ".github/workflows/pr-readiness-confirm.yml": 0.0,
+    ".github/workflows/pr.yml": 0.0,
+    ".github/workflows/promote-to-development.yml": 0.0,
+    ".github/workflows/py-tests.yml": 0.0,
+    ".github/workflows/pypi-release.yml": 0.0,
+    ".github/workflows/qa-changes-by-openhands.yml": 0.0,
+    ".github/workflows/release-ready.yml": 0.0,
+    ".github/workflows/release.yml": 0.0,
+    ".github/workflows/remove-duplicate-candidate-label.yml": 0.0,
+    ".github/workflows/stale.yml": 0.0,
+    ".github/workflows/tag-image.yml": 0.0,
+    ".github/workflows/ui-build.yml": 0.0,
+    ".github/workflows/welcome-good-first-issue.yml": 0.0,
+    ".gitignore": 0.0,
+    ".nvmrc": 0.0,
+    ".openhands/microagents/documentation.md": 0.0,
+    ".openhands/microagents/glossary.md": 0.0,
+    ".openhands/pre-commit.sh": 0.0,
+    ".openhands/setup.sh": 0.0,
+    ".release-please-manifest.cloud.json": 0.0,
+    ".release-please-manifest.json": 0.0,
+    ".vscode/settings.json": 0.0,
+    "AGENTS.md": 0.0,
+    "CITATION.cff": 0.0,
+    "CNAME": 0.0,
+    "CODE_OF_CONDUCT.md": 0.0,
+    "COMMUNITY.md": 0.0,
+    "CONTRIBUTING.md": 0.0,
+    "CREDITS.md": 0.0,
+    "Development.md": 0.0,
+    "ISSUE_TRIAGE.md": 0.0,
+    "LICENSE": 0.0,
+    "MANIFEST.in": 0.0,
+    "Makefile": 0.0,
+    "README.md": 0.0,
+    "build.sh": 0.0,
+    "config.template.toml": 0.0,
+    "containers/README.md": 0.0,
+    "containers/app/Dockerfile": 0.0,
+    "containers/app/entrypoint.sh": 0.0,
+    "containers/dev/Dockerfile": 0.0,
+    "containers/dev/README.md": 0.0,
+    "containers/dev/compose.yml": 0.0,
+    "containers/dev/dev.sh": 0.0,
+    "dev_config/python/.pre-commit-config.yaml": 0.0,
+    "dev_config/python/mypy.ini": 0.0,
+    "docker-compose.yml": 0.0,
+    "enterprise/Dockerfile": 0.0,
+    "enterprise/LICENSE": 0.0,
+    "enterprise/Makefile": 0.0,
+    "enterprise/README.md": 0.0,
+    "enterprise/__init__.py": 0.0,
+    "enterprise/alembic.ini": 0.0,
+    "enterprise/allhands-realm-github-provider.json.tmpl": 0.0,
+    "enterprise/analytics/__init__.py": 0.0,
+    "enterprise/analytics/saas_user_provider.py": 1.0,
+    "enterprise/dev_config/python/.pre-commit-config.yaml": 0.0,
+    "enterprise/dev_config/python/mypy.ini": 0.0,
+    "enterprise/dev_config/python/ruff.toml": 0.0,
+    "enterprise/doc/architecture/README.md": 0.0,
+    "enterprise/doc/architecture/authentication.md": 0.0,
+    "enterprise/doc/architecture/external-integrations.md": 0.0,
+    "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md": 0.0,
+    "enterprise/doc/design-doc/plugin-launch-flow.md": 0.0,
+    "enterprise/enterprise_local/README.md": 0.0,
+    "enterprise/enterprise_local/convert_to_env.py": 1.0,
+    "enterprise/enterprise_local/decrypt_env.sh": 0.0,
+    "enterprise/integrations/azure_devops/__init__.py": 0.0,
+    "enterprise/integrations/azure_devops/azure_devops_manager.py": 0.0,
+    "enterprise/integrations/azure_devops/azure_devops_service.py": 0.0,
+    "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/azure_devops/azure_devops_view.py": 0.0,
+    "enterprise/integrations/bitbucket/__init__.py": 0.0,
+    "enterprise/integrations/bitbucket/bitbucket_manager.py": 0.0,
+    "enterprise/integrations/bitbucket/bitbucket_service.py": 0.0,
+    "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/bitbucket/bitbucket_view.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/__init__.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py": 0.0,
+    "enterprise/integrations/github/data_collector.py": 0.0,
+    "enterprise/integrations/github/github_manager.py": 0.0,
+    "enterprise/integrations/github/github_service.py": 0.0,
+    "enterprise/integrations/github/github_types.py": 0.0,
+    "enterprise/integrations/github/github_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/github/github_view.py": 0.0,
+    "enterprise/integrations/github/queries.py": 0.0,
+    "enterprise/integrations/gitlab/gitlab_manager.py": 0.0,
+    "enterprise/integrations/gitlab/gitlab_service.py": 0.0,
+    "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/gitlab/gitlab_view.py": 0.0,
+    "enterprise/integrations/gitlab/webhook_installation.py": 0.0,
+    "enterprise/integrations/jira/jira_manager.py": 0.0,
+    "enterprise/integrations/jira/jira_payload.py": 0.0,
+    "enterprise/integrations/jira/jira_types.py": 0.0,
+    "enterprise/integrations/jira/jira_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/jira/jira_view.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_manager.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_service_account.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_types.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_user_token.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/jira_dc/jira_dc_view.py": 0.0,
+    "enterprise/integrations/manager.py": 1.0,
+    "enterprise/integrations/models.py": 1.0,
+    "enterprise/integrations/resolver_context.py": 1.0,
+    "enterprise/integrations/resolver_org_router.py": 1.0,
+    "enterprise/integrations/slack/slack_attachments.py": 0.0,
+    "enterprise/integrations/slack/slack_errors.py": 0.0,
+    "enterprise/integrations/slack/slack_manager.py": 0.0,
+    "enterprise/integrations/slack/slack_types.py": 0.0,
+    "enterprise/integrations/slack/slack_v1_callback_processor.py": 0.0,
+    "enterprise/integrations/slack/slack_view.py": 0.0,
+    "enterprise/integrations/store_repo_utils.py": 1.0,
+    "enterprise/integrations/stripe_service.py": 0.67,
+    "enterprise/integrations/types.py": 1.0,
+    "enterprise/integrations/utils.py": 0.0,
+    "enterprise/integrations/v1_utils.py": 0.0,
+    "enterprise/migrations/README.md": 0.0,
+    "enterprise/migrations/env.py": 0.0,
+    "enterprise/migrations/script.py.mako": 0.0,
+    "enterprise/migrations/versions/001_create_feedback_table.py": 0.0,
+    "enterprise/migrations/versions/002_create_saas_settings_table.py": 0.0,
+    "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py": 0.0,
+    "enterprise/migrations/versions/004_create_billing_sessions_table.py": 0.0,
+    "enterprise/migrations/versions/005_add_margin_column.py": 0.0,
+    "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py": 0.0,
+    "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py": 0.0,
+    "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py": 0.0,
+    "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py": 0.0,
+    "enterprise/migrations/versions/010_create_offline_tokens_table.py": 0.0,
+    "enterprise/migrations/versions/011_create_user_settings_table.py": 0.0,
+    "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py": 0.0,
+    "enterprise/migrations/versions/013_create_github_app_installations_table.py": 0.0,
+    "enterprise/migrations/versions/014_add_github_user_id.py": 0.0,
+    "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py": 0.0,
+    "enterprise/migrations/versions/016_add_user_version_column.py": 0.0,
+    "enterprise/migrations/versions/017_add_stripe_customers_table.py": 0.0,
+    "enterprise/migrations/versions/018_add_script_results_table.py": 0.0,
+    "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py": 0.0,
+    "enterprise/migrations/versions/020_set_condenser_to_false.py": 0.0,
+    "enterprise/migrations/versions/021_create_auth_tokens_table.py": 0.0,
+    "enterprise/migrations/versions/022_create_api_keys_table.py": 0.0,
+    "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py": 0.0,
+    "enterprise/migrations/versions/024_update_enable_default_condenser_default.py": 0.0,
+    "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py": 0.0,
+    "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py": 0.0,
+    "enterprise/migrations/versions/027_create_gitlab_webhook_table.py": 0.0,
+    "enterprise/migrations/versions/028_create_user_repos_table.py": 0.0,
+    "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py": 0.0,
+    "enterprise/migrations/versions/031_add_user_secrets_store.py": 0.0,
+    "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py": 0.0,
+    "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py": 0.0,
+    "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py": 0.0,
+    "enterprise/migrations/versions/035_create_slack_users_table.py": 0.0,
+    "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py": 0.0,
+    "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py": 0.0,
+    "enterprise/migrations/versions/039_add_user_token_to_slack_table.py": 0.0,
+    "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/041_create_slack_conversation_table.py": 0.0,
+    "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py": 0.0,
+    "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py": 0.0,
+    "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py": 0.0,
+    "enterprise/migrations/versions/045_create_slack_team_table.py": 0.0,
+    "enterprise/migrations/versions/046_delete_all_slack_users.py": 0.0,
+    "enterprise/migrations/versions/047_create_conversation_feedback_table.py": 0.0,
+    "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/049_create_conversation_callbacks_table.py": 0.0,
+    "enterprise/migrations/versions/050_create_openhands_prs_table.py": 0.0,
+    "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py": 0.0,
+    "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/055_drop_slack_user_token_column.py": 0.0,
+    "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py": 0.0,
+    "enterprise/migrations/versions/058_create_conversation_work_table.py": 0.0,
+    "enterprise/migrations/versions/059_create_maintenance_tasks_table.py": 0.0,
+    "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py": 0.0,
+    "enterprise/migrations/versions/061_create_experiment_assignments_table.py": 0.0,
+    "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/063_create_jira_workspaces_table.py": 0.0,
+    "enterprise/migrations/versions/064_create_jira_users_table.py": 0.0,
+    "enterprise/migrations/versions/065_create_jira_conversations_table.py": 0.0,
+    "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py": 0.0,
+    "enterprise/migrations/versions/067_create_jira_dc_users_table.py": 0.0,
+    "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py": 0.0,
+    "enterprise/migrations/versions/069_create_linear_workspaces_table.py": 0.0,
+    "enterprise/migrations/versions/070_create_linear_users_table.py": 0.0,
+    "enterprise/migrations/versions/071_create_linear_conversations_table.py": 0.0,
+    "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/073_add_type_to_billing_sessions.py": 0.0,
+    "enterprise/migrations/versions/074_create_subscription_access_table.py": 0.0,
+    "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py": 0.0,
+    "enterprise/migrations/versions/076_add_v1_tables.py": 0.0,
+    "enterprise/migrations/versions/077_drop_settings_table.py": 0.0,
+    "enterprise/migrations/versions/078_create_telemetry_tables.py": 0.0,
+    "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py": 0.0,
+    "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py": 0.0,
+    "enterprise/migrations/versions/081_add_parent_conversation_id.py": 0.0,
+    "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py": 0.0,
+    "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py": 0.0,
+    "enterprise/migrations/versions/084_create_device_codes_table.py": 0.0,
+    "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py": 0.0,
+    "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py": 0.0,
+    "enterprise/migrations/versions/087_bump_condenser_defaults.py": 0.0,
+    "enterprise/migrations/versions/088_create_blocked_email_domains_table.py": 0.0,
+    "enterprise/migrations/versions/089_create_org_tables.py": 0.0,
+    "enterprise/migrations/versions/090_add_git_user_fields_to_user.py": 0.0,
+    "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py": 0.0,
+    "enterprise/migrations/versions/092_rename_user_role_to_member.py": 0.0,
+    "enterprise/migrations/versions/093_add_pending_free_credits.py": 0.0,
+    "enterprise/migrations/versions/094_create_org_invitation_table.py": 0.0,
+    "enterprise/migrations/versions/095_drop_pending_free_credits.py": 0.0,
+    "enterprise/migrations/versions/096_create_resend_synced_users_table.py": 0.0,
+    "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py": 0.0,
+    "enterprise/migrations/versions/098_create_verified_models_table.py": 0.0,
+    "enterprise/migrations/versions/099_create_user_authorizations_table.py": 0.0
+  },
+  "hotspots": [
+    ".github/workflows/qa-changes-by-openhands.yml",
+    "enterprise/integrations/types.py",
+    "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+  ],
+  "critical_chains": [
+    ".github/workflows/qa-changes-by-openhands.yml",
+    "enterprise/integrations/types.py",
+    "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py"
+  ],
+  "dependency_heatmap": []
+}

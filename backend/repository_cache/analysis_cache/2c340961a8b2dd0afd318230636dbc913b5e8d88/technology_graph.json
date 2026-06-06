@@ -1,0 +1,574 @@
+{
+  "nodes": [
+    {
+      "id": "crewai",
+      "label": "CrewAI",
+      "type": "technology",
+      "metadata": {
+        "confidence": 1.0,
+        "category": "ML",
+        "version": "1.14.6",
+        "sources": [
+          "requirements.txt",
+          "import"
+        ],
+        "description": "Ml component: CrewAI. AI/ML Inference Engine.",
+        "detection_reason": "Detected via requirements.txt manifest, 3 source file import(s). Found in 3 file(s).",
+        "related_files": [
+          "backend/scratch/test_llm.py",
+          "backend/test_crew.py",
+          "backend/test_task.py"
+        ],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "AutoGen",
+          "LangGraph",
+          "Agency Swarm",
+          "Phidata"
+        ],
+        "runtime": "AI/ML Inference Engine"
+      }
+    },
+    {
+      "id": "pydantic",
+      "label": "Pydantic",
+      "type": "technology",
+      "metadata": {
+        "confidence": 1.0,
+        "category": "FRAMEWORK",
+        "version": "2.11.9,<2.13",
+        "sources": [
+          "requirements.txt",
+          "import"
+        ],
+        "description": "Framework component: Pydantic. Application Runtime.",
+        "detection_reason": "Detected via requirements.txt manifest, 1 source file import(s). Found in 1 file(s).",
+        "related_files": [
+          "backend/intelligence/models.py"
+        ],
+        "related_apis": [],
+        "related_services": [
+          "Service: RepositoryTreeNode"
+        ],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Application Runtime"
+      }
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "type": "technology",
+      "metadata": {
+        "confidence": 1.0,
+        "category": "LANGUAGE",
+        "version": "unknown",
+        "sources": [
+          "requirements.txt",
+          "file_extensions"
+        ],
+        "description": "Language component: Python. Interpreter/Compiler.",
+        "detection_reason": "Detected via requirements.txt manifest, file extension analysis.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [
+          "python:3.11-slim"
+        ],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Interpreter/Compiler"
+      }
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "type": "technology",
+      "metadata": {
+        "confidence": 1.0,
+        "category": "LANGUAGE",
+        "version": "5.4.5",
+        "sources": [
+          "package.json",
+          "file_extensions"
+        ],
+        "description": "Language component: TypeScript. Interpreter/Compiler.",
+        "detection_reason": "Detected via package.json manifest, file extension analysis.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Interpreter/Compiler"
+      }
+    },
+    {
+      "id": "fastapi",
+      "label": "FastAPI",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "FRAMEWORK",
+        "version": "0.111.0",
+        "sources": [
+          "requirements.txt"
+        ],
+        "description": "Framework component: FastAPI. Application Runtime.",
+        "detection_reason": "Detected via requirements.txt manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Flask",
+          "Django",
+          "Litestar",
+          "Starlette"
+        ],
+        "runtime": "Application Runtime"
+      }
+    },
+    {
+      "id": "chromadb",
+      "label": "ChromaDB",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "DATABASE",
+        "version": "1.1.0,<2.0.0",
+        "sources": [
+          "requirements.txt"
+        ],
+        "description": "Database component: ChromaDB. Data Persistence Layer.",
+        "detection_reason": "Detected via requirements.txt manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [
+          "Model: RepositoryTreeNode (models.py)",
+          "Model: SymbolRecord (models.py)",
+          "Model: EvidenceRecord (models.py)",
+          "Model: TechnologyRecord (models.py)",
+          "Model: GraphNode (models.py)",
+          "Model: GraphEdge (models.py)",
+          "Model: RecommendationRecord (models.py)"
+        ],
+        "related_docker": [
+          "chromadb/chroma:latest",
+          "service: chromadb"
+        ],
+        "related_agents": [],
+        "alternatives": [
+          "Pinecone",
+          "Weaviate",
+          "Qdrant",
+          "FAISS"
+        ],
+        "runtime": "Data Persistence Layer"
+      }
+    },
+    {
+      "id": "sqlalchemy",
+      "label": "SQLAlchemy",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "DATABASE",
+        "version": "2.0.30,<2.1.0",
+        "sources": [
+          "requirements.txt"
+        ],
+        "description": "Database component: SQLAlchemy. Data Persistence Layer.",
+        "detection_reason": "Detected via requirements.txt manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [
+          "Model: RepositoryTreeNode (models.py)",
+          "Model: SymbolRecord (models.py)",
+          "Model: EvidenceRecord (models.py)",
+          "Model: TechnologyRecord (models.py)",
+          "Model: GraphNode (models.py)",
+          "Model: GraphEdge (models.py)",
+          "Model: RecommendationRecord (models.py)"
+        ],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Tortoise ORM",
+          "Peewee",
+          "Django ORM",
+          "Prisma"
+        ],
+        "runtime": "Data Persistence Layer"
+      }
+    },
+    {
+      "id": "alembic",
+      "label": "Alembic",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "1.13.1,<2.0.0",
+        "sources": [
+          "requirements.txt"
+        ],
+        "description": "Tool component: Alembic. Developer Tooling.",
+        "detection_reason": "Detected via requirements.txt manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "pytest",
+      "label": "Pytest",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "9.1.0,<10.0.0",
+        "sources": [
+          "requirements.txt"
+        ],
+        "description": "Tool component: Pytest. Developer Tooling.",
+        "detection_reason": "Detected via requirements.txt manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "unittest",
+          "nose2",
+          "hypothesis"
+        ],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "tanstack query",
+      "label": "TanStack Query",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "5.101.2",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Tool component: TanStack Query. Developer Tooling.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "axios",
+      "label": "Axios",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "1.7.2",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Tool component: Axios. Developer Tooling.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "framer motion",
+      "label": "Framer Motion",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "11.2.12",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Tool component: Framer Motion. Developer Tooling.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "FRAMEWORK",
+        "version": "18.3.1",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Framework component: React. Application Runtime.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Vue.js",
+          "Angular",
+          "Svelte",
+          "SolidJS"
+        ],
+        "runtime": "Application Runtime"
+      }
+    },
+    {
+      "id": "tailwind css",
+      "label": "Tailwind CSS",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "3.4.4",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Tool component: Tailwind CSS. Developer Tooling.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "vite",
+      "label": "Vite",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.99,
+        "category": "TOOL",
+        "version": "5.2.12",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Tool component: Vite. Developer Tooling.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "node.js",
+      "label": "Node.js",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.97,
+        "category": "RUNTIME",
+        "version": "unknown",
+        "sources": [
+          "package.json"
+        ],
+        "description": "Runtime component: Node.js. Runtime Environment.",
+        "detection_reason": "Detected via package.json manifest.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Runtime Environment"
+      }
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.97,
+        "category": "TOOL",
+        "version": "unknown",
+        "sources": [
+          "dockerfile"
+        ],
+        "description": "Tool component: Docker. Developer Tooling.",
+        "detection_reason": "Detected via Dockerfile FROM statement.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Podman",
+          "Buildah",
+          "containerd"
+        ],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "docker compose",
+      "label": "Docker Compose",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.95,
+        "category": "TOOL",
+        "version": "unknown",
+        "sources": [
+          "docker-compose.yml"
+        ],
+        "description": "Tool component: Docker Compose. Developer Tooling.",
+        "detection_reason": "Detected via docker-compose.yml.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "react",
+      "target": "vite",
+      "label": "bundled by",
+      "metadata": {
+        "why": "React modules are bundled and served via Vite's dev server for hot module reloading and optimized production builds."
+      }
+    },
+    {
+      "source": "react",
+      "target": "typescript",
+      "label": "written in",
+      "metadata": {
+        "why": "React components are statically typed using TypeScript, providing compile-time safety and IDE intelligence."
+      }
+    },
+    {
+      "source": "react",
+      "target": "tailwind css",
+      "label": "styled with",
+      "metadata": {
+        "why": "React UI elements are styled using Tailwind CSS utility classes compiled at build time."
+      }
+    },
+    {
+      "source": "fastapi",
+      "target": "sqlalchemy",
+      "label": "queries via",
+      "metadata": {
+        "why": "FastAPI route handlers access the database through SQLAlchemy ORM sessions injected as dependencies."
+      }
+    },
+    {
+      "source": "fastapi",
+      "target": "pydantic",
+      "label": "serializes via",
+      "metadata": {
+        "why": "FastAPI uses Pydantic models to automatically validate and serialize all incoming request bodies and outgoing responses."
+      }
+    },
+    {
+      "source": "fastapi",
+      "target": "python",
+      "label": "runs on",
+      "metadata": {
+        "why": "FastAPI is a Python web framework; all routes, middleware, and handlers run in the Python runtime."
+      }
+    },
+    {
+      "source": "chromadb",
+      "target": "python",
+      "label": "accessed from",
+      "metadata": {
+        "why": "Chromadb connects to Python as part of the integrated technology stack."
+      }
+    },
+    {
+      "source": "pytest",
+      "target": "python",
+      "label": "tests",
+      "metadata": {
+        "why": "Pytest connects to Python as part of the integrated technology stack."
+      }
+    },
+    {
+      "source": "docker compose",
+      "target": "docker",
+      "label": "groups containers of",
+      "metadata": {
+        "why": "Docker Compose defines and orchestrates multiple Docker container services as a unified application."
+      }
+    },
+    {
+      "source": "python",
+      "target": "docker",
+      "label": "containerized in",
+      "metadata": {
+        "why": "The Python application environment is built and runs inside a Docker container for reproducible deployments."
+      }
+    },
+    {
+      "source": "node.js",
+      "target": "docker",
+      "label": "containerized in",
+      "metadata": {
+        "why": "Node.js connects to Docker as part of the integrated technology stack."
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "techs": [
+    "FastAPI",
+    "Python",
+    "TypeScript",
+    "Uvicorn",
+    "Pydantic",
+    "React",
+    "TanStack Query",
+    "Framer Motion",
+    "Tailwind CSS",
+    "Vite",
+    "Node.js",
+    "Docker",
+    "Docker Compose",
+    "Java"
+  ],
+  "frameworks": [],
+  "languages": [],
+  "tools": []
+}

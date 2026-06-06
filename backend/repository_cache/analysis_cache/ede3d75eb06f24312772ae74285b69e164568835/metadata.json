@@ -1,0 +1,15 @@
+{
+  "analysis_version": "2.0.0",
+  "engine_version": "2.0.0",
+  "prompt_templates_hash": "cd7e3c1926a10dd3",
+  "ri_component_versions": {
+    "symbol_indexer": "2.1.0",
+    "parser_registry": "2.0.5",
+    "evidence_engine": "2.2.0",
+    "recommendation_engine": "2.0.1",
+    "architecture_graph": "2.1.2",
+    "dependency_graph": "2.0.0",
+    "technology_graph": "2.0.0",
+    "call_graph": "2.1.0"
+  }
+}

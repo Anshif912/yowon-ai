@@ -1,0 +1,155 @@
+{
+  "nodes": [
+    {
+      "id": "docker",
+      "label": "Docker",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.97,
+        "category": "TOOL",
+        "version": "unknown",
+        "sources": [
+          "dockerfile"
+        ],
+        "description": "Tool component: Docker. Developer Tooling.",
+        "detection_reason": "Detected via Dockerfile FROM statement.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Podman",
+          "Buildah",
+          "containerd"
+        ],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.95,
+        "category": "LANGUAGE",
+        "version": "unknown",
+        "sources": [
+          "file_extensions"
+        ],
+        "description": "Language component: Python. Interpreter/Compiler.",
+        "detection_reason": "Detected via file extension analysis.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Interpreter/Compiler"
+      }
+    },
+    {
+      "id": "docker compose",
+      "label": "Docker Compose",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.95,
+        "category": "TOOL",
+        "version": "unknown",
+        "sources": [
+          "docker-compose.yml"
+        ],
+        "description": "Tool component: Docker Compose. Developer Tooling.",
+        "detection_reason": "Detected via docker-compose.yml.",
+        "related_files": [],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Developer Tooling"
+      }
+    },
+    {
+      "id": "sqlalchemy",
+      "label": "SQLAlchemy",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.93,
+        "category": "DATABASE",
+        "version": "unknown",
+        "sources": [
+          "import"
+        ],
+        "description": "Database component: SQLAlchemy. Data Persistence Layer.",
+        "detection_reason": "Detected via 1 source file import(s). Found in 1 file(s).",
+        "related_files": [
+          "enterprise/integrations/stripe_service.py"
+        ],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [
+          "Model: Message (models.py)",
+          "Model: JobContext (models.py)",
+          "Model: UserData (types.py)"
+        ],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [
+          "Tortoise ORM",
+          "Peewee",
+          "Django ORM",
+          "Prisma"
+        ],
+        "runtime": "Data Persistence Layer"
+      }
+    },
+    {
+      "id": "pydantic",
+      "label": "Pydantic",
+      "type": "technology",
+      "metadata": {
+        "confidence": 0.92,
+        "category": "FRAMEWORK",
+        "version": "unknown",
+        "sources": [
+          "import"
+        ],
+        "description": "Framework component: Pydantic. Application Runtime.",
+        "detection_reason": "Detected via 2 source file import(s). Found in 2 file(s).",
+        "related_files": [
+          "enterprise/integrations/models.py",
+          "enterprise/integrations/types.py"
+        ],
+        "related_apis": [],
+        "related_services": [],
+        "related_databases": [],
+        "related_docker": [],
+        "related_agents": [],
+        "alternatives": [],
+        "runtime": "Application Runtime"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "docker compose",
+      "target": "docker",
+      "label": "groups containers of",
+      "metadata": {
+        "why": "Docker Compose defines and orchestrates multiple Docker container services as a unified application."
+      }
+    },
+    {
+      "source": "python",
+      "target": "docker",
+      "label": "containerized in",
+      "metadata": {
+        "why": "The Python application environment is built and runs inside a Docker container for reproducible deployments."
+      }
+    }
+  ]
+}

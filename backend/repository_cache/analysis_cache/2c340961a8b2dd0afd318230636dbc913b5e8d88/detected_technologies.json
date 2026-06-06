@@ -1,0 +1,20 @@
+[
+  "CrewAI",
+  "Pydantic",
+  "Python",
+  "TypeScript",
+  "FastAPI",
+  "ChromaDB",
+  "SQLAlchemy",
+  "Alembic",
+  "Pytest",
+  "TanStack Query",
+  "Axios",
+  "Framer Motion",
+  "React",
+  "Tailwind CSS",
+  "Vite",
+  "Node.js",
+  "Docker",
+  "Docker Compose"
+]

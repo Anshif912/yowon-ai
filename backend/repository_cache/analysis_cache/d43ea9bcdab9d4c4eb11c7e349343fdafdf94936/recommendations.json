@@ -1,0 +1,216 @@
+[
+  {
+    "id": "ff71f10f-c151-5d0a-af6d-3881e003c489",
+    "evidence_ids": [
+      "f061402567e143d42752d64b98ecc1f4",
+      "6619fd769a9140549fa1e151c5aa0e61",
+      "332df96c29835421ce9478aa83383859"
+    ],
+    "triggered_rule_ids": [
+      "RULE_SECRET_DB_URL"
+    ],
+    "affected_files": [
+      "backend/tests/test_code_intelligence.py",
+      "docker-compose.yml",
+      "backend/tests/test_history.py"
+    ],
+    "title": "General recommendation",
+    "recommendation": "Review code patterns for optimal structure. Affected files: backend/tests/test_code_intelligence.py, docker-compose.yml, backend/tests/test_history.py.",
+    "severity": "HIGH",
+    "expected_score_gain": 7.5,
+    "confidence": 0.85,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "2789f102-4ab1-56b8-93cf-7d8521ec571b",
+    "evidence_ids": [
+      "a2776e9edc799ef95a57692e8f03ef39"
+    ],
+    "triggered_rule_ids": [
+      "RULE_CREWAI_AGENT"
+    ],
+    "affected_files": [
+      "backend/tests/test_crewai_ollama_integration.py"
+    ],
+    "title": "CrewAI Autonomous Agent definition",
+    "recommendation": "Define custom agent tools and verify prompt templates to guide agent task executions. Affected files: backend/tests/test_crewai_ollama_integration.py.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.95,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "fb6b58a2-58c0-508c-99c5-935c09e115ad",
+    "evidence_ids": [
+      "01895092a1118887a1557523197e0628"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKER_MULTI_SERVICE"
+    ],
+    "affected_files": [
+      "docker-compose.yml"
+    ],
+    "title": "Docker Compose Multi-Container Orchestration",
+    "recommendation": "Use compose depends_on rules to control container startup orders and check service healthiness. Affected files: docker-compose.yml.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.95,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "0aba2112-9ca9-510e-9c40-ab300906e98d",
+    "evidence_ids": [
+      "b51136226d07569ecfb8d09d1bd323ee",
+      "263ce0e3bee30c232f526af4e1de4b34",
+      "1aa00c20f2d38bec612ff74110aeb5c0",
+      "efad151fbff9d6126e39b831698f8f44"
+    ],
+    "triggered_rule_ids": [
+      "RULE_CREWAI"
+    ],
+    "affected_files": [
+      "backend/tests/test_crewai_ollama_integration.py",
+      "backend/scratch/test_llm.py",
+      "backend/test_crew.py",
+      "backend/test_task.py"
+    ],
+    "title": "CrewAI Multi-Agent Coordination Framework",
+    "recommendation": "Configure agent memory options and use clean LLM integration hooks to keep agents deterministic. Affected files: backend/tests/test_crewai_ollama_integration.py, backend/scratch/test_llm.py, backend/test_crew.py and 1 other files.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.95,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "0a950fb2-c642-55ed-a8ae-eb831a8c50ca",
+    "evidence_ids": [
+      "819d6817d06eff130ec450bd9a1314f2"
+    ],
+    "triggered_rule_ids": [
+      "RULE_DOCKERFILE"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "Dockerfile / Container deployment recipe",
+    "recommendation": "Use multi-stage builds to reduce image size and run containers as non-root users for security. Affected files: backend/intelligence/models.py.",
+    "severity": "LOW",
+    "expected_score_gain": 2.5,
+    "confidence": 0.97,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "e29327ef-3ef4-55cd-9b64-199706645ec4",
+    "evidence_ids": [
+      "40d0d9fa99c009f572d300ae9d4e5f02",
+      "8944ec391f57715ba6cc187864ece707",
+      "1fdaff913e9f5b2e3c13a5139bdb5fe2",
+      "655d9d8555b2789853d0fa9d84b8704a",
+      "498c406c3b633313c9331d8ed502900b",
+      "079940b7473b882c2c5ef5647c8ab70e",
+      "a116a6a148c9f770d4bfff1d25a38cfa"
+    ],
+    "triggered_rule_ids": [
+      "RULE_SQLALCHEMY_MODEL"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "SQLAlchemy Declarative Database Schema Model",
+    "recommendation": "Ensure columns with high search volumes have indexes (index=True) and declare proper relationships. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.9500000000000001,
+    "estimated_effort": "MEDIUM"
+  },
+  {
+    "id": "07b9a359-249c-5bb7-8586-e08d6c905fa9",
+    "evidence_ids": [
+      "7ff69c24514dba003f1a0329adea40c9"
+    ],
+    "triggered_rule_ids": [
+      "RULE_PYTHON_CODE"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "Python Backend Application Source File",
+    "recommendation": "Adhere to PEP 8 style guidelines and include function docstrings and type hints. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 1.0,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "869ede8d-79eb-5571-a701-d6dd2e755dbe",
+    "evidence_ids": [
+      "a551dc66dae40b9aaac34d6af12a6834"
+    ],
+    "triggered_rule_ids": [
+      "RULE_TYPESCRIPT_CODE"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "TypeScript Static Typing Definition File",
+    "recommendation": "Enforce strict type checking in tsconfig.json and avoid using the 'any' type. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 1.0,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "220963d1-a386-50c4-bd3e-69f069184440",
+    "evidence_ids": [
+      "4fc7be5cd6ebb6b1adefc9a2be635735"
+    ],
+    "triggered_rule_ids": [
+      "RULE_PYTEST"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "Pytest Test Suite Integration",
+    "recommendation": "Structure tests cleanly under a tests/ folder and write fixtures to share test setup code. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.99,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "8e4c9698-bd0e-57de-9ae7-789906a048ca",
+    "evidence_ids": [
+      "e3dfc30cc2ea9bfe94875165fc8d4c1c"
+    ],
+    "triggered_rule_ids": [
+      "RULE_REACT"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "React.js Client Framework Integration",
+    "recommendation": "Structure UI components under a components/ directory and manage state hooks predictably. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.99,
+    "estimated_effort": "LOW"
+  },
+  {
+    "id": "bcfb2ea6-21ca-5c66-be1e-ed2cec85d064",
+    "evidence_ids": [
+      "4b70b53037ed0094096ae12ae6fb715a"
+    ],
+    "triggered_rule_ids": [
+      "RULE_TAILWIND"
+    ],
+    "affected_files": [
+      "backend/intelligence/models.py"
+    ],
+    "title": "Tailwind Utility-First CSS Framework Configurations",
+    "recommendation": "Keep tailwind configs customized and purge unused styles in production configurations. Affected files: backend/intelligence/models.py.",
+    "severity": "INFO",
+    "expected_score_gain": 1.0,
+    "confidence": 0.99,
+    "estimated_effort": "LOW"
+  }
+]

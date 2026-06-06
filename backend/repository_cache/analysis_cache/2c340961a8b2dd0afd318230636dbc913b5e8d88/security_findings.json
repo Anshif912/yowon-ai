@@ -1,0 +1,14 @@
+[
+  {
+    "type": "secret_leak",
+    "rule_id": "RULE_SECRET_DB_URL",
+    "file_path": "docker-compose.yml",
+    "line_start": 13,
+    "line_end": 13,
+    "column_start": 21,
+    "column_end": 30,
+    "description": "Potential leak of secret: db url",
+    "severity": "HIGH",
+    "confidence": 0.85
+  }
+]

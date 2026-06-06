@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {
+      "id": "project",
+      "label": "Unknown Repository",
+      "type": "project",
+      "metadata": {
+        "description": "Target codebase"
+      }
+    }
+  ],
+  "edges": []
+}

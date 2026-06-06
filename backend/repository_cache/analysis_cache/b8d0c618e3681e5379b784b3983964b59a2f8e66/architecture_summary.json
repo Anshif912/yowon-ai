@@ -1,0 +1,1 @@
+"Codebase follows a layered model with 12 layers: Presentation, API, Controllers, Services, Repositories, Models, Database, Configuration, AI Agents, Plugin System, LLM Providers, Deployment"

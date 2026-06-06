@@ -1,0 +1,225 @@
+[
+  {
+    "name": "DictCompatibilityMixin",
+    "type": "class",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 5,
+    "line_end": 33,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "RepositoryTreeNode",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 36,
+    "line_end": 48,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "SymbolRecord",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 53,
+    "line_end": 61,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "EvidenceRecord",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 63,
+    "line_end": 75,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "TechnologyRecord",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 77,
+    "line_end": 81,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "GraphNode",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 83,
+    "line_end": 87,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "GraphEdge",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 89,
+    "line_end": 93,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "RecommendationRecord",
+    "type": "model",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 95,
+    "line_end": 105,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": [
+      {
+        "type": "extends",
+        "target": "DictCompatibilityMixin"
+      },
+      {
+        "type": "extends",
+        "target": "BaseModel"
+      }
+    ]
+  },
+  {
+    "name": "get",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 10,
+    "line_end": 11,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "__getitem__",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 13,
+    "line_end": 16,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "__setitem__",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 18,
+    "line_end": 19,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "__contains__",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 21,
+    "line_end": 22,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "keys",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 24,
+    "line_end": 27,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "values",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 29,
+    "line_end": 30,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "items",
+    "type": "function",
+    "file_path": "backend/intelligence/models.py",
+    "line_start": 32,
+    "line_end": 33,
+    "column_start": 4,
+    "column_end": 0,
+    "relationships": []
+  },
+  {
+    "name": "main",
+    "type": "function",
+    "file_path": "backend/scratch/run_ri_test.py",
+    "line_start": 19,
+    "line_end": 81,
+    "column_start": 0,
+    "column_end": 0,
+    "relationships": []
+  }
+]

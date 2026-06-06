@@ -1,0 +1,1740 @@
+{
+  "nodes": [
+    {
+      "id": "backend/agents/council_agents.py",
+      "label": "council_agents.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/council_agents.py"
+      }
+    },
+    {
+      "id": "backend/agents/forge_agent.py",
+      "label": "forge_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/forge_agent.py"
+      }
+    },
+    {
+      "id": "backend/agents/guardian_agent.py",
+      "label": "guardian_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/guardian_agent.py"
+      }
+    },
+    {
+      "id": "backend/agents/insight_agent.py",
+      "label": "insight_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/insight_agent.py"
+      }
+    },
+    {
+      "id": "backend/agents/showcase_agent.py",
+      "label": "showcase_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/showcase_agent.py"
+      }
+    },
+    {
+      "id": "backend/agents/visionary_agent.py",
+      "label": "visionary_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/visionary_agent.py"
+      }
+    },
+    {
+      "id": "backend/agents/yowon_prime_agent.py",
+      "label": "yowon_prime_agent.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/agents/yowon_prime_agent.py"
+      }
+    },
+    {
+      "id": "backend/analysis/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/analysis/__init__.py"
+      }
+    },
+    {
+      "id": "backend/analysis/code_intelligence.py",
+      "label": "code_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/analysis/code_intelligence.py"
+      }
+    },
+    {
+      "id": "backend/auth/routes.py",
+      "label": "routes.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/auth/routes.py"
+      }
+    },
+    {
+      "id": "backend/auth/schemas.py",
+      "label": "schemas.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/auth/schemas.py"
+      }
+    },
+    {
+      "id": "backend/auth/security.py",
+      "label": "security.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/auth/security.py"
+      }
+    },
+    {
+      "id": "backend/check_crewai_agents.py",
+      "label": "check_crewai_agents.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/check_crewai_agents.py"
+      }
+    },
+    {
+      "id": "backend/config.py",
+      "label": "config.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/config.py"
+      }
+    },
+    {
+      "id": "backend/context/brief_builder.py",
+      "label": "brief_builder.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/context/brief_builder.py"
+      }
+    },
+    {
+      "id": "backend/context/slices.py",
+      "label": "slices.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/context/slices.py"
+      }
+    },
+    {
+      "id": "backend/crew/crew.py",
+      "label": "crew.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/crew/crew.py"
+      }
+    },
+    {
+      "id": "backend/database.py",
+      "label": "database.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/database.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/__init__.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/brief_builder.py",
+      "label": "brief_builder.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/brief_builder.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/context_slicer.py",
+      "label": "context_slicer.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/context_slicer.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/evaluation_context.py",
+      "label": "evaluation_context.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/evaluation_context.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/pipeline_validator.py",
+      "label": "pipeline_validator.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/pipeline_validator.py"
+      }
+    },
+    {
+      "id": "backend/eval_context/prompt_registry.py",
+      "label": "prompt_registry.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/eval_context/prompt_registry.py"
+      }
+    },
+    {
+      "id": "backend/health_check.py",
+      "label": "health_check.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/health_check.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/__init__.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/architecture_engine.py",
+      "label": "architecture_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/architecture_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/cache_engine.py",
+      "label": "cache_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/cache_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/canonical_models.py",
+      "label": "canonical_models.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/canonical_models.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/engine_contract.py",
+      "label": "engine_contract.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/engine_contract.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/evidence_engine.py",
+      "label": "evidence_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/evidence_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/exceptions.py",
+      "label": "exceptions.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/exceptions.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/__init__.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/architecture_graph.py",
+      "label": "architecture_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/architecture_graph.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/base_builder.py",
+      "label": "base_builder.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/base_builder.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/call_graph.py",
+      "label": "call_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/call_graph.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/dependency_graph.py",
+      "label": "dependency_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/dependency_graph.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/relationship_graph.py",
+      "label": "relationship_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/relationship_graph.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/graph/technology_graph.py",
+      "label": "technology_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/graph/technology_graph.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/health_engine.py",
+      "label": "health_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/health_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/intelligence_service.py",
+      "label": "intelligence_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/intelligence_service.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/knowledge_graph/knowledge_graph_builder.py",
+      "label": "knowledge_graph_builder.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/knowledge_graph/knowledge_graph_builder.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/knowledge_graph/knowledge_graph_service.py",
+      "label": "knowledge_graph_service.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/knowledge_graph/knowledge_graph_service.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/metrics_engine.py",
+      "label": "metrics_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/metrics_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/models.py",
+      "label": "models.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/models.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/orchestrator.py",
+      "label": "orchestrator.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/orchestrator.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/__init__.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/base_parser.py",
+      "label": "base_parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/base_parser.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/javascript_parser.py",
+      "label": "javascript_parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/javascript_parser.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/parser_registry.py",
+      "label": "parser_registry.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/parser_registry.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/python_parser.py",
+      "label": "python_parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/python_parser.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/typescript_parser.py",
+      "label": "typescript_parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/typescript_parser.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/parsers/unknown_parser.py",
+      "label": "unknown_parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/parsers/unknown_parser.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/recommendation_engine.py",
+      "label": "recommendation_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/recommendation_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/repository_scan.py",
+      "label": "repository_scan.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/repository_scan.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/ri_contract.py",
+      "label": "ri_contract.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/ri_contract.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/security_engine.py",
+      "label": "security_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/security_engine.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/semantic_index.py",
+      "label": "semantic_index.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/semantic_index.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/symbol_indexer.py",
+      "label": "symbol_indexer.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/symbol_indexer.py"
+      }
+    },
+    {
+      "id": "backend/intelligence/utils.py",
+      "label": "utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/intelligence/utils.py"
+      }
+    },
+    {
+      "id": "backend/llm_utils.py",
+      "label": "llm_utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/llm_utils.py"
+      }
+    },
+    {
+      "id": "backend/logging_config.py",
+      "label": "logging_config.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/logging_config.py"
+      }
+    },
+    {
+      "id": "backend/main.py",
+      "label": "main.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/main.py"
+      }
+    },
+    {
+      "id": "backend/migrations/env.py",
+      "label": "env.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/migrations/env.py"
+      }
+    },
+    {
+      "id": "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+      "label": "1c6fa2941993_add_analysis_lifecycle_columns.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py"
+      }
+    },
+    {
+      "id": "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py",
+      "label": "4970e9afb155_add_provenance_and_diagnostics.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/migrations/versions/4970e9afb155_add_provenance_and_diagnostics.py"
+      }
+    },
+    {
+      "id": "backend/migrations/versions/4e457597937b_normalized_schema.py",
+      "label": "4e457597937b_normalized_schema.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/migrations/versions/4e457597937b_normalized_schema.py"
+      }
+    },
+    {
+      "id": "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+      "label": "afe6139c5330_add_intelligence_module_statuses.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py"
+      }
+    },
+    {
+      "id": "backend/progress.py",
+      "label": "progress.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/progress.py"
+      }
+    },
+    {
+      "id": "backend/reports/report_generator.py",
+      "label": "report_generator.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/reports/report_generator.py"
+      }
+    },
+    {
+      "id": "backend/run_tests.py",
+      "label": "run_tests.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/run_tests.py"
+      }
+    },
+    {
+      "id": "backend/scoring/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scoring/__init__.py"
+      }
+    },
+    {
+      "id": "backend/scoring/rubrics.py",
+      "label": "rubrics.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scoring/rubrics.py"
+      }
+    },
+    {
+      "id": "backend/scoring/score_engine.py",
+      "label": "score_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scoring/score_engine.py"
+      }
+    },
+    {
+      "id": "backend/scratch/check_db.py",
+      "label": "check_db.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scratch/check_db.py"
+      }
+    },
+    {
+      "id": "backend/scratch/run_ri_test.py",
+      "label": "run_ri_test.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scratch/run_ri_test.py"
+      }
+    },
+    {
+      "id": "backend/scratch/test_llm.py",
+      "label": "test_llm.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scratch/test_llm.py"
+      }
+    },
+    {
+      "id": "backend/scratch/test_treesitter.py",
+      "label": "test_treesitter.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/scratch/test_treesitter.py"
+      }
+    },
+    {
+      "id": "backend/security.py",
+      "label": "security.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/security.py"
+      }
+    },
+    {
+      "id": "backend/tasks/evaluation_tasks.py",
+      "label": "evaluation_tasks.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tasks/evaluation_tasks.py"
+      }
+    },
+    {
+      "id": "backend/test.py",
+      "label": "test.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/test.py"
+      }
+    },
+    {
+      "id": "backend/test_crew.py",
+      "label": "test_crew.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/test_crew.py"
+      }
+    },
+    {
+      "id": "backend/test_direct_llm.py",
+      "label": "test_direct_llm.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/test_direct_llm.py"
+      }
+    },
+    {
+      "id": "backend/test_pipeline.py",
+      "label": "test_pipeline.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/test_pipeline.py"
+      }
+    },
+    {
+      "id": "backend/test_task.py",
+      "label": "test_task.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/test_task.py"
+      }
+    },
+    {
+      "id": "backend/tests/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/__init__.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_auth.py",
+      "label": "test_auth.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_auth.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_cache_normalization.py",
+      "label": "test_cache_normalization.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_cache_normalization.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_code_intelligence.py",
+      "label": "test_code_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_code_intelligence.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_contract_synchronization.py",
+      "label": "test_contract_synchronization.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_contract_synchronization.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_crewai_ollama_integration.py",
+      "label": "test_crewai_ollama_integration.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_crewai_ollama_integration.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_enterprise_suite.py",
+      "label": "test_enterprise_suite.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_enterprise_suite.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_history.py",
+      "label": "test_history.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_history.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_intelligence_hardening.py",
+      "label": "test_intelligence_hardening.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_intelligence_hardening.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_json_utils.py",
+      "label": "test_json_utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_json_utils.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_knowledge_graph.py",
+      "label": "test_knowledge_graph.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_knowledge_graph.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_report_generator.py",
+      "label": "test_report_generator.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_report_generator.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_intelligence.py",
+      "label": "test_repository_intelligence.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_repository_intelligence.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_intelligence_graphs.py",
+      "label": "test_repository_intelligence_graphs.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_repository_intelligence_graphs.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_repository_metrics.py",
+      "label": "test_repository_metrics.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_repository_metrics.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_ri_contract.py",
+      "label": "test_ri_contract.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_ri_contract.py"
+      }
+    },
+    {
+      "id": "backend/tests/test_score_engine.py",
+      "label": "test_score_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tests/test_score_engine.py"
+      }
+    },
+    {
+      "id": "backend/tools/github_tool.py",
+      "label": "github_tool.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/github_tool.py"
+      }
+    },
+    {
+      "id": "backend/tools/parser.py",
+      "label": "parser.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/parser.py"
+      }
+    },
+    {
+      "id": "backend/tools/pdf_tool.py",
+      "label": "pdf_tool.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/pdf_tool.py"
+      }
+    },
+    {
+      "id": "backend/tools/ppt_tool.py",
+      "label": "ppt_tool.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/ppt_tool.py"
+      }
+    },
+    {
+      "id": "backend/tools/security_tool.py",
+      "label": "security_tool.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/security_tool.py"
+      }
+    },
+    {
+      "id": "backend/tools/vector_store.py",
+      "label": "vector_store.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/tools/vector_store.py"
+      }
+    },
+    {
+      "id": "backend/utils/git_provider.py",
+      "label": "git_provider.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/utils/git_provider.py"
+      }
+    },
+    {
+      "id": "backend/utils/ranking_engine.py",
+      "label": "ranking_engine.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/utils/ranking_engine.py"
+      }
+    },
+    {
+      "id": "backend/utils/serialization.py",
+      "label": "serialization.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/utils/serialization.py"
+      }
+    },
+    {
+      "id": "backend/validation/__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/validation/__init__.py"
+      }
+    },
+    {
+      "id": "backend/validation/json_utils.py",
+      "label": "json_utils.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/validation/json_utils.py"
+      }
+    },
+    {
+      "id": "backend/validation/schemas.py",
+      "label": "schemas.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/validation/schemas.py"
+      }
+    },
+    {
+      "id": "backend/validation/verdict_schema.py",
+      "label": "verdict_schema.py",
+      "type": "file",
+      "metadata": {
+        "path": "backend/validation/verdict_schema.py"
+      }
+    },
+    {
+      "id": "frontend/postcss.config.js",
+      "label": "postcss.config.js",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/postcss.config.js"
+      }
+    },
+    {
+      "id": "frontend/src/App.tsx",
+      "label": "App.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/App.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/api/api.ts",
+      "label": "api.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/api/api.ts"
+      }
+    },
+    {
+      "id": "frontend/src/components/ScoreRing.tsx",
+      "label": "ScoreRing.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/ScoreRing.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/VerdictBadge.tsx",
+      "label": "VerdictBadge.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/VerdictBadge.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/AuthContext.tsx",
+      "label": "AuthContext.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/auth/AuthContext.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/GuestRoute.tsx",
+      "label": "GuestRoute.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/auth/GuestRoute.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/auth/ProtectedRoute.tsx",
+      "label": "ProtectedRoute.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/auth/ProtectedRoute.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/AnimatedGrid.tsx",
+      "label": "AnimatedGrid.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/AnimatedGrid.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/Galaxy.tsx",
+      "label": "Galaxy.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/Galaxy.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/NeuralOverlay.tsx",
+      "label": "NeuralOverlay.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/NeuralOverlay.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/ParticleField.tsx",
+      "label": "ParticleField.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/ParticleField.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/RenderingManager.tsx",
+      "label": "RenderingManager.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/RenderingManager.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/ScanLine.tsx",
+      "label": "ScanLine.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/ScanLine.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/effects/SoftAurora.tsx",
+      "label": "SoftAurora.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/effects/SoftAurora.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/AgentNetwork.tsx",
+      "label": "AgentNetwork.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/evaluation/AgentNetwork.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/AgentPipelineCard.tsx",
+      "label": "AgentPipelineCard.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/evaluation/AgentPipelineCard.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/EvaluationTimeline.tsx",
+      "label": "EvaluationTimeline.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/evaluation/EvaluationTimeline.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/JuryChamber.tsx",
+      "label": "JuryChamber.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/evaluation/JuryChamber.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/evaluation/TerminalLog.tsx",
+      "label": "TerminalLog.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/evaluation/TerminalLog.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/ArchitectureCanvas.tsx",
+      "label": "ArchitectureCanvas.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/ArchitectureCanvas.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/ExecutionPipeline.tsx",
+      "label": "ExecutionPipeline.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/ExecutionPipeline.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/FloatingInspector.tsx",
+      "label": "FloatingInspector.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/FloatingInspector.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/KnowledgeMindMap.tsx",
+      "label": "KnowledgeMindMap.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/KnowledgeMindMap.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/MagicBento.tsx",
+      "label": "MagicBento.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/MagicBento.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/graphs/TechnologyGalaxy.tsx",
+      "label": "TechnologyGalaxy.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/graphs/TechnologyGalaxy.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/landing/AgentShowcase.tsx",
+      "label": "AgentShowcase.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/landing/AgentShowcase.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/landing/NeuralNetwork.tsx",
+      "label": "NeuralNetwork.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/landing/NeuralNetwork.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/AppLayout.tsx",
+      "label": "AppLayout.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/AppLayout.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/AppShell.tsx",
+      "label": "AppShell.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/AppShell.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/CommandPalette.tsx",
+      "label": "CommandPalette.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/CommandPalette.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/Header.tsx",
+      "label": "Header.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/Header.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/Sidebar.tsx",
+      "label": "Sidebar.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/Sidebar.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/layout/Topbar.tsx",
+      "label": "Topbar.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/layout/Topbar.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/providers/QueryProvider.tsx",
+      "label": "QueryProvider.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/providers/QueryProvider.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AIAgentsPanel.tsx",
+      "label": "AIAgentsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/AIAgentsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AgentReportsPanel.tsx",
+      "label": "AgentReportsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/AgentReportsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/AnalyticsPanel.tsx",
+      "label": "AnalyticsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/AnalyticsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ArchitectureGraphPanel.tsx",
+      "label": "ArchitectureGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/ArchitectureGraphPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DNASelector.tsx",
+      "label": "DNASelector.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/DNASelector.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DashboardSection.tsx",
+      "label": "DashboardSection.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/DashboardSection.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DependencyGraphPanel.tsx",
+      "label": "DependencyGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/DependencyGraphPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/DiagnosticsPanel.tsx",
+      "label": "DiagnosticsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/DiagnosticsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ErrorBoundary.tsx",
+      "label": "ErrorBoundary.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/ErrorBoundary.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/EvidenceExplorerPanel.tsx",
+      "label": "EvidenceExplorerPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/EvidenceExplorerPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ExecutionFlowPanel.tsx",
+      "label": "ExecutionFlowPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/ExecutionFlowPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/ExecutiveSummaryPanel.tsx",
+      "label": "ExecutiveSummaryPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/ExecutiveSummaryPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/KnowledgeGraphPanel.tsx",
+      "label": "KnowledgeGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/KnowledgeGraphPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/LineSidebar.tsx",
+      "label": "LineSidebar.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/LineSidebar.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/MetricsPanel.tsx",
+      "label": "MetricsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/MetricsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/OverviewPanel.tsx",
+      "label": "OverviewPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/OverviewPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RankingsPanel.tsx",
+      "label": "RankingsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RankingsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RecommendationsPanel.tsx",
+      "label": "RecommendationsPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RecommendationsPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+      "label": "RepositoryIntelligenceWrapper.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryStoryPanel.tsx",
+      "label": "RepositoryStoryPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RepositoryStoryPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RepositoryTreePanel.tsx",
+      "label": "RepositoryTreePanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RepositoryTreePanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/RoadmapPanel.tsx",
+      "label": "RoadmapPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/RoadmapPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/SentinelPanel.tsx",
+      "label": "SentinelPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/SentinelPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/Skeletons.tsx",
+      "label": "Skeletons.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/Skeletons.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/SoftwareArchitectureNavigator.tsx",
+      "label": "SoftwareArchitectureNavigator.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/SoftwareArchitectureNavigator.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/TechnologyGraphPanel.tsx",
+      "label": "TechnologyGraphPanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/TechnologyGraphPanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/TimelinePanel.tsx",
+      "label": "TimelinePanel.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/TimelinePanel.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/report/queries.ts",
+      "label": "queries.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/report/queries.ts"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/AgentConsensus.tsx",
+      "label": "AgentConsensus.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/AgentConsensus.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ConfidenceMeter.tsx",
+      "label": "ConfidenceMeter.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/ConfidenceMeter.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ExecutiveSummary.tsx",
+      "label": "ExecutiveSummary.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/ExecutiveSummary.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ReadinessGauge.tsx",
+      "label": "ReadinessGauge.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/ReadinessGauge.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/RiskHeatmap.tsx",
+      "label": "RiskHeatmap.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/RiskHeatmap.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/ThreatRadar.tsx",
+      "label": "ThreatRadar.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/ThreatRadar.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/results/VerdictReveal.tsx",
+      "label": "VerdictReveal.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/results/VerdictReveal.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/components/upload/FileDropZone.tsx",
+      "label": "FileDropZone.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/components/upload/FileDropZone.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/hooks/useEvaluationPoll.ts",
+      "label": "useEvaluationPoll.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/hooks/useEvaluationPoll.ts"
+      }
+    },
+    {
+      "id": "frontend/src/hooks/useEvaluationProgress.ts",
+      "label": "useEvaluationProgress.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/hooks/useEvaluationProgress.ts"
+      }
+    },
+    {
+      "id": "frontend/src/hooks/usePerformanceManager.ts",
+      "label": "usePerformanceManager.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/hooks/usePerformanceManager.ts"
+      }
+    },
+    {
+      "id": "frontend/src/hooks/usePerformanceMode.ts",
+      "label": "usePerformanceMode.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/hooks/usePerformanceMode.ts"
+      }
+    },
+    {
+      "id": "frontend/src/hooks/useVisibilityPause.ts",
+      "label": "useVisibilityPause.ts",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/hooks/useVisibilityPause.ts"
+      }
+    },
+    {
+      "id": "frontend/src/main.tsx",
+      "label": "main.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/main.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/DashboardPage.tsx",
+      "label": "DashboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/DashboardPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/DemoPage.tsx",
+      "label": "DemoPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/DemoPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/EvaluatePage.tsx",
+      "label": "EvaluatePage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/EvaluatePage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/HistoryPage.tsx",
+      "label": "HistoryPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/HistoryPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/IntelligencePage.tsx",
+      "label": "IntelligencePage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/IntelligencePage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/JuryDashboardPage.tsx",
+      "label": "JuryDashboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/JuryDashboardPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/LandingPage.tsx",
+      "label": "LandingPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/LandingPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/LeaderboardPage.tsx",
+      "label": "LeaderboardPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/LeaderboardPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/Login/LoginPage.tsx",
+      "label": "LoginPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/Login/LoginPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/ProjectsPage.tsx",
+      "label": "ProjectsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/ProjectsPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/ReportPage.tsx",
+      "label": "ReportPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/ReportPage.tsx"
+      }
+    },
+    {
+      "id": "frontend/src/pages/SettingsPage.tsx",
+      "label": "SettingsPage.tsx",
+      "type": "file",
+      "metadata": {
+        "path": "frontend/src/pages/SettingsPage.tsx"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "backend/intelligence/models.py",
+      "target": "backend/analysis/code_intelligence.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/run_tests.py",
+      "target": "backend/validation/__init__.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/run_tests.py",
+      "target": "backend/reports/report_generator.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/logging_config.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/database.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/eval_context/__init__.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/intelligence/repository_scan.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/run_ri_test.py",
+      "target": "backend/analysis/code_intelligence.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/test_llm.py",
+      "target": "backend/check_crewai_agents.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/scratch/test_llm.py",
+      "target": "backend/config.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test.py",
+      "target": "backend/llm_utils.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_crew.py",
+      "target": "backend/llm_utils.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_crew.py",
+      "target": "backend/check_crewai_agents.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_direct_llm.py",
+      "target": "backend/llm_utils.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_pipeline.py",
+      "target": "backend/crew/crew.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_task.py",
+      "target": "backend/check_crewai_agents.py",
+      "label": "imports",
+      "metadata": {}
+    },
+    {
+      "source": "backend/test_task.py",
+      "target": "backend/agents/council_agents.py",
+      "label": "imports",
+      "metadata": {}
+    }
+  ]
+}

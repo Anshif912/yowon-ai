@@ -1,0 +1,42 @@
+{
+  "nodes": [
+    {
+      "id": "project",
+      "label": "Unknown Repository",
+      "type": "project",
+      "metadata": {
+        "description": "Target codebase"
+      }
+    },
+    {
+      "id": "eco_docker",
+      "label": "Containers",
+      "type": "ecosystem",
+      "metadata": {
+        "language": "Docker"
+      }
+    },
+    {
+      "id": "dep_docker_openhands_latest",
+      "label": "openhands:latest",
+      "type": "container",
+      "metadata": {
+        "image": "openhands:latest"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "project",
+      "target": "eco_docker",
+      "label": "deploys",
+      "metadata": {}
+    },
+    {
+      "source": "eco_docker",
+      "target": "dep_docker_openhands_latest",
+      "label": "runs",
+      "metadata": {}
+    }
+  ]
+}

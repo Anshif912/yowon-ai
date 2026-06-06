@@ -1,0 +1,4416 @@
+{
+  ".agents/skills/cross-repo-testing/SKILL.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".agents/skills/custom-codereview-guide.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".agents/skills/upcoming-release/SKILL.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".agents/skills/update-sdk/SKILL.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".agents/skills/update-sdk/references/docker-image-locations.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99,
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".agents/skills/update-sdk/references/sdk-pinning-examples.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".devcontainer/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 94.97129991540508,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 1,
+    "size_bytes": 94
+  },
+  ".devcontainer/devcontainer.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".devcontainer/setup.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".dockerignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".editorconfig": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".gitattributes": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/ISSUE_TEMPLATE/bug_template.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/ISSUE_TEMPLATE/config.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/ISSUE_TEMPLATE/feature_request.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/actions/docker-image-tags/action.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/actions/docker-merge-manifest/action.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/dependabot.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/pull_request_template.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/release.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/scripts/find_prs_between_commits.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 301,
+    "size_bytes": 10677
+  },
+  ".github/scripts/update_pr_description.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/workflows/_build-image.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 7,
+      "cognitive_complexity": 6,
+      "maintainability_index": 34.67490805009735,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 116,
+    "size_bytes": 4083
+  },
+  ".github/workflows/bump-chart.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 56.288078569283456,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 22,
+    "size_bytes": 770
+  },
+  ".github/workflows/check-package-versions.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 9,
+      "cognitive_complexity": 8,
+      "maintainability_index": 41.654406596243305,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 65,
+    "size_bytes": 2013
+  },
+  ".github/workflows/check-version-consistency.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 14,
+      "cognitive_complexity": 13,
+      "maintainability_index": 33.10226461874326,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 122,
+    "size_bytes": 4880
+  },
+  ".github/workflows/enterprise-check-migrations.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 12,
+      "cognitive_complexity": 11,
+      "maintainability_index": 31.296443417787295,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 144,
+    "size_bytes": 5277
+  },
+  ".github/workflows/fe-e2e-tests.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 4,
+      "cognitive_complexity": 3,
+      "maintainability_index": 45.863139459517726,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Test": 0.99,
+      "Deployment": 0.99
+    },
+    "loc": 49,
+    "size_bytes": 1354
+  },
+  ".github/workflows/fe-unit-tests.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 2,
+      "maintainability_index": 46.788302321915815,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Test": 0.99,
+      "Deployment": 0.99
+    },
+    "loc": 46,
+    "size_bytes": 1321
+  },
+  ".github/workflows/ghcr-build.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 10,
+      "cognitive_complexity": 9,
+      "maintainability_index": 40.592470570459874,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 70,
+    "size_bytes": 2281
+  },
+  ".github/workflows/issue-opened.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 59,
+      "cognitive_complexity": 58,
+      "maintainability_index": 14.408496768588472,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 30,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 335,
+    "size_bytes": 15616
+  },
+  ".github/workflows/lint-fix.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 16,
+      "cognitive_complexity": 15,
+      "maintainability_index": 35.574630884089146,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 98,
+    "size_bytes": 3054
+  },
+  ".github/workflows/lint.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 4,
+      "cognitive_complexity": 3,
+      "maintainability_index": 40.53606855302085,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 75,
+    "size_bytes": 2250
+  },
+  ".github/workflows/npm-publish-ui.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 13,
+      "cognitive_complexity": 12,
+      "maintainability_index": 34.08554155538039,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 114,
+    "size_bytes": 3988
+  },
+  ".github/workflows/pr-artifacts.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 19,
+      "cognitive_complexity": 18,
+      "maintainability_index": 30.797181687921572,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 139,
+    "size_bytes": 5804
+  },
+  ".github/workflows/pr-readiness-confirm.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 51,
+      "cognitive_complexity": 50,
+      "maintainability_index": 17.16095264466517,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 30,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 293,
+    "size_bytes": 10900
+  },
+  ".github/workflows/pr.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 61.944500585717044,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 14,
+    "size_bytes": 453
+  },
+  ".github/workflows/promote-to-development.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 11,
+      "cognitive_complexity": 10,
+      "maintainability_index": 37.88180743597522,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 86,
+    "size_bytes": 3662
+  },
+  ".github/workflows/py-tests.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 5,
+      "maintainability_index": 33.874274197118964,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Test": 0.99,
+      "Deployment": 0.99
+    },
+    "loc": 125,
+    "size_bytes": 4234
+  },
+  ".github/workflows/pypi-release.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 9,
+      "cognitive_complexity": 8,
+      "maintainability_index": 47.11976200238516,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 42,
+    "size_bytes": 1376
+  },
+  ".github/workflows/qa-changes-by-openhands.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 5,
+      "cognitive_complexity": 4,
+      "maintainability_index": 47.95934539641549,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 41,
+    "size_bytes": 1499
+  },
+  ".github/workflows/release-ready.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 2,
+      "maintainability_index": 51.329926628905575,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 32,
+    "size_bytes": 890
+  },
+  ".github/workflows/release.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 51.9962553680471,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 31,
+    "size_bytes": 893
+  },
+  ".github/workflows/remove-duplicate-candidate-label.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 10,
+      "cognitive_complexity": 9,
+      "maintainability_index": 51.19608122091961,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 30,
+    "size_bytes": 1075
+  },
+  ".github/workflows/stale.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/workflows/tag-image.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/workflows/ui-build.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".github/workflows/welcome-good-first-issue.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".nvmrc": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".openhands/microagents/documentation.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".openhands/microagents/glossary.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".openhands/pre-commit.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".openhands/setup.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".release-please-manifest.cloud.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".release-please-manifest.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  ".vscode/settings.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "AGENTS.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "CITATION.cff": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "CNAME": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "CODE_OF_CONDUCT.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "COMMUNITY.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "CONTRIBUTING.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "CREDITS.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "Development.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "ISSUE_TRIAGE.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "LICENSE": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "MANIFEST.in": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "Makefile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 17,
+      "cognitive_complexity": 16,
+      "maintainability_index": 30.113057053615695,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 150,
+    "size_bytes": 8507
+  },
+  "build.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "config.template.toml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/app/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/app/entrypoint.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/dev/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/dev/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/dev/compose.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "containers/dev/dev.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "dev_config/python/.pre-commit-config.yaml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "dev_config/python/mypy.ini": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "docker-compose.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 2,
+      "maintainability_index": 54.930158412805056,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 24,
+    "size_bytes": 927
+  },
+  "enterprise/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/LICENSE": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/Makefile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 94.97129991540508,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 1,
+    "size_bytes": 28
+  },
+  "enterprise/alembic.ini": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/allhands-realm-github-provider.json.tmpl": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/analytics/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 94.97129991540508,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 1,
+    "size_bytes": 30
+  },
+  "enterprise/analytics/saas_user_provider.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 51.9962553680471,
+      "function_count": 1,
+      "class_count": 1
+    },
+    "risk": 10,
+    "importance": 25,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 31,
+    "size_bytes": 1017
+  },
+  "enterprise/dev_config/python/.pre-commit-config.yaml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/dev_config/python/mypy.ini": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/dev_config/python/ruff.toml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/doc/architecture/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/doc/architecture/authentication.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/doc/architecture/external-integrations.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/doc/design-doc/openhands-enterprise-telemetry-design.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/doc/design-doc/plugin-launch-flow.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/enterprise_local/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/enterprise_local/convert_to_env.py": {
+    "complexity": {
+      "cyclomatic_complexity": 16,
+      "cognitive_complexity": 16,
+      "maintainability_index": 32.03841264069779,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 30,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 130,
+    "size_bytes": 4764
+  },
+  "enterprise/enterprise_local/decrypt_env.sh": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/azure_devops/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/azure_devops/azure_devops_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/azure_devops/azure_devops_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/azure_devops/azure_devops_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/azure_devops/azure_devops_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket/bitbucket_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket/bitbucket_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket/bitbucket_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket/bitbucket_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/bitbucket_dc_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/bitbucket_dc_service_account.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/bitbucket_dc_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/bitbucket_data_center/bitbucket_dc_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/data_collector.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/github_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/github_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/github_types.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/github_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/github_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/github/queries.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/gitlab/gitlab_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/gitlab/gitlab_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/gitlab/gitlab_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/gitlab/gitlab_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/gitlab/webhook_installation.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira/jira_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira/jira_payload.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira/jira_types.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira/jira_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira/jira_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_conversation_secret_enricher.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_service_account.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_types.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_user_token.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/jira_dc/jira_dc_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 50.12492255694851,
+      "function_count": 3,
+      "class_count": 1
+    },
+    "risk": 10,
+    "importance": 25,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 36,
+    "size_bytes": 1129
+  },
+  "enterprise/integrations/models.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 46.524690773049024,
+      "function_count": 0,
+      "class_count": 3
+    },
+    "risk": 10,
+    "importance": 85,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 48,
+    "size_bytes": 1235
+  },
+  "enterprise/integrations/resolver_context.py": {
+    "complexity": {
+      "cyclomatic_complexity": 11,
+      "cognitive_complexity": 11,
+      "maintainability_index": 35.147594033835034,
+      "function_count": 12,
+      "class_count": 1
+    },
+    "risk": 20,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 107,
+    "size_bytes": 4598
+  },
+  "enterprise/integrations/resolver_org_router.py": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 4,
+      "maintainability_index": 39.776230388412536,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 25,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 78,
+    "size_bytes": 2769
+  },
+  "enterprise/integrations/slack/slack_attachments.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/slack/slack_errors.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/slack/slack_manager.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/slack/slack_types.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/slack/slack_v1_callback_processor.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/slack/slack_view.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/integrations/store_repo_utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 4,
+      "cognitive_complexity": 2,
+      "maintainability_index": 45.863139459517726,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 49,
+    "size_bytes": 1856
+  },
+  "enterprise/integrations/stripe_service.py": {
+    "complexity": {
+      "cyclomatic_complexity": 13,
+      "cognitive_complexity": 13,
+      "maintainability_index": 30.16023643286701,
+      "function_count": 6,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 35,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 156,
+    "size_bytes": 5100
+  },
+  "enterprise/integrations/types.py": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 39.841936225352335,
+      "function_count": 3,
+      "class_count": 5
+    },
+    "risk": 10,
+    "importance": 40,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 81,
+    "size_bytes": 2365
+  },
+  "enterprise/integrations/utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 66.15532272822813,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 10,
+    "size_bytes": 218
+  },
+  "enterprise/integrations/v1_utils.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/env.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/script.py.mako": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/001_create_feedback_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/002_create_saas_settings_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/003_create_saas_conversation_metadata_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/004_create_billing_sessions_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/005_add_margin_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/006_add_branch_column_to_convo_metadata_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/007_add_enable_sound_notifications_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/008_fix_enable_sound_notifications_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/009_fix_enable_sound_notifications_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/010_create_offline_tokens_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/011_create_user_settings_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/012_add_secret_store_column_to_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/013_create_github_app_installations_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/014_add_github_user_id.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/015_add_sandbox_container_image_columns.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/016_add_user_version_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/017_add_stripe_customers_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/018_add_script_results_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/019_remove_duplicates_from_stripe.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/020_set_condenser_to_false.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/021_create_auth_tokens_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/022_create_api_keys_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/023_add_cost_and_token_metrics_columns.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/024_update_enable_default_condenser_default.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/025_revert_user_version_from_3_to_2.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/026_add_trigger_information_to_conversation_metadata.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/027_create_gitlab_webhook_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/028_create_user_repos_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/029_add_accepted_tos_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/030_add_proactive_conversation_starters_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/031_add_user_secrets_store.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/032_add_status_column_to_gitlab_webhook.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/033_add_gitlab_webhook_uuid_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/034_add_proactive_convo_commits_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/035_create_slack_users_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/036_add_mcp_config_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/037_make_user_secrets_table_one_row_per_secret.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/038_add_pr_number_to_conversation_metadata.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/039_add_user_token_to_slack_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/040_add_search_api_key_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/041_create_slack_conversation_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/042_add_git_provider_to_conversation_metadata.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/043_add_message_ts_column_to_slack_conversation.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/044_add_llm_model_to_conversation_metadata.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/045_create_slack_team_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/046_delete_all_slack_users.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/047_create_conversation_feedback_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/048_add_max_budget_per_task_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/049_create_conversation_callbacks_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/050_create_openhands_prs_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/051_update_conversation_callbacks_fk_to_cascade.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/052_add_sandbox_api_key_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/053_add_enable_solvability_analysis_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/054_add_email_fields_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/055_drop_slack_user_token_column.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/056_add_llm_api_key_for_byor_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/057_enable_solvability_analysis_for_all_users.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/058_create_conversation_work_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/059_create_maintenance_tasks_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/060_create_user_version_upgrade_tasks.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/061_create_experiment_assignments_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/062_add_git_user_fields_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/063_create_jira_workspaces_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/064_create_jira_users_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/065_create_jira_conversations_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/066_create_jira_dc_workspaces_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/067_create_jira_dc_users_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/068_create_jira_dc_conversations_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/069_create_linear_workspaces_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/070_create_linear_users_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/071_create_linear_conversations_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/072_add_condenser_max_size_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/073_add_type_to_billing_sessions.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/074_create_subscription_access_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/075_add_cancellation_fields_to_subscription_access.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/076_add_v1_tables.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/077_drop_settings_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/078_create_telemetry_tables.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/079_rename_user_secrets_to_custom_secrets.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/080_add_status_and_updated_at_to_callback.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/081_add_parent_conversation_id.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/082_add_setting_up_skills_enum_value.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/083_add_v1_enabled_to_user_settings.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/084_create_device_codes_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/085_add_public_column_to_conversation_metadata.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/086_add_v1_column_to_slack_conversation.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/087_bump_condenser_defaults.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/088_create_blocked_email_domains_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/089_create_org_tables.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/090_add_git_user_fields_to_user.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/091_add_byor_export_enabled_flag.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/092_rename_user_role_to_member.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/093_add_pending_free_credits.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/094_create_org_invitation_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/095_drop_pending_free_credits.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/096_create_resend_synced_users_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/097_add_session_api_key_hash_to_v1_remote_sandbox.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/098_create_verified_models_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "enterprise/migrations/versions/099_create_user_authorizations_table.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  }
+}

@@ -1,0 +1,4110 @@
+[
+  {
+    "name": ".env.example",
+    "path": ".env.example",
+    "type": "file",
+    "language": "example",
+    "extension": ".example",
+    "size": 0,
+    "loc": 0,
+    "sha256": "a3046da0d15a27e8",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "type": "file",
+    "language": "gitignore",
+    "extension": ".gitignore",
+    "size": 0,
+    "loc": 0,
+    "sha256": "bc37d034bad56458",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "DEPLOYMENT.md",
+    "path": "DEPLOYMENT.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 0,
+    "loc": 0,
+    "sha256": "04615394c116398f",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "HA Frontend.zip",
+    "path": "HA Frontend.zip",
+    "type": "file",
+    "language": "zip",
+    "extension": ".zip",
+    "size": 0,
+    "loc": 0,
+    "sha256": "0eb9061807c2313e",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "type": "file",
+    "language": "md",
+    "extension": ".md",
+    "size": 2651,
+    "loc": 95,
+    "sha256": "b335630551682c19",
+    "roles": {
+      "Documentation": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "artifacts",
+    "path": "artifacts",
+    "type": "dir",
+    "children": [
+      {
+        "name": "architecture_flow.pdf",
+        "path": "artifacts/architecture_flow.pdf",
+        "type": "file",
+        "language": "pdf",
+        "extension": ".pdf",
+        "size": 0,
+        "loc": 0,
+        "sha256": "b9a5595252340750",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "jury-desktop.png",
+        "path": "artifacts/jury-desktop.png",
+        "type": "file",
+        "language": "png",
+        "extension": ".png",
+        "size": 0,
+        "loc": 0,
+        "sha256": "9a8582f52ad8064b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "landing-desktop.png",
+        "path": "artifacts/landing-desktop.png",
+        "type": "file",
+        "language": "png",
+        "extension": ".png",
+        "size": 0,
+        "loc": 0,
+        "sha256": "a42cc6246d432d4c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "leaderboard-desktop.png",
+        "path": "artifacts/leaderboard-desktop.png",
+        "type": "file",
+        "language": "png",
+        "extension": ".png",
+        "size": 0,
+        "loc": 0,
+        "sha256": "82c39ee730a03f0b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "submit-desktop.png",
+        "path": "artifacts/submit-desktop.png",
+        "type": "file",
+        "language": "png",
+        "extension": ".png",
+        "size": 0,
+        "loc": 0,
+        "sha256": "a53cce97c8b6e9e7",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": "backend",
+    "path": "backend",
+    "type": "dir",
+    "children": [
+      {
+        "name": ".env.example",
+        "path": "backend/.env.example",
+        "type": "file",
+        "language": "example",
+        "extension": ".example",
+        "size": 0,
+        "loc": 0,
+        "sha256": "361f2d0f55c49b27",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "Dockerfile",
+        "path": "backend/Dockerfile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 1376,
+        "loc": 51,
+        "sha256": "fed51f49a9f26cb9",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "agents",
+        "path": "backend/agents",
+        "type": "dir",
+        "children": [
+          {
+            "name": "council_agents.py",
+            "path": "backend/agents/council_agents.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "1c986fc0264cf19a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "forge_agent.py",
+            "path": "backend/agents/forge_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "566ef73a4a218547",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "guardian_agent.py",
+            "path": "backend/agents/guardian_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "2fa15c0be235c695",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "insight_agent.py",
+            "path": "backend/agents/insight_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4b389967d9f3420b",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "showcase_agent.py",
+            "path": "backend/agents/showcase_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "7890d61a532f046f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "visionary_agent.py",
+            "path": "backend/agents/visionary_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "ae8ef5e65faa7c1f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_prime_agent.py",
+            "path": "backend/agents/yowon_prime_agent.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "f7fc938d73e31332",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "alembic.ini",
+        "path": "backend/alembic.ini",
+        "type": "file",
+        "language": "ini",
+        "extension": ".ini",
+        "size": 0,
+        "loc": 0,
+        "sha256": "53c2f7ae57ae0dc4",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "analysis",
+        "path": "backend/analysis",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/analysis/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "38e82a6531b9aad9",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "code_intelligence.py",
+            "path": "backend/analysis/code_intelligence.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "3681e874e986ac88",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "check_crewai_agents.py",
+        "path": "backend/check_crewai_agents.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "4b13c9e6360fac17",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "config.py",
+        "path": "backend/config.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "651976572b51d1a1",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "config",
+        "path": "backend/config",
+        "type": "dir",
+        "children": [
+          {
+            "name": "health_weights.yaml",
+            "path": "backend/config/health_weights.yaml",
+            "type": "file",
+            "language": "yaml",
+            "extension": ".yaml",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a48183d6f4755ebc",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "context",
+        "path": "backend/context",
+        "type": "dir",
+        "children": [
+          {
+            "name": "brief_builder.py",
+            "path": "backend/context/brief_builder.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "73eb77ccd9db6c83",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "slices.py",
+            "path": "backend/context/slices.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "822239be87aee9c9",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "crew",
+        "path": "backend/crew",
+        "type": "dir",
+        "children": [
+          {
+            "name": "crew.py",
+            "path": "backend/crew/crew.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "83ca43e47c9d50c7",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "data",
+        "path": "backend/data",
+        "type": "dir",
+        "children": [
+          {
+            "name": "evaluation_history.json",
+            "path": "backend/data/evaluation_history.json",
+            "type": "file",
+            "language": "json",
+            "extension": ".json",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4cb6d6e6ac005f0d",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "database.py",
+        "path": "backend/database.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 15068,
+        "loc": 301,
+        "sha256": "5d66f5fb1e2bd240",
+        "roles": {
+          "Database": 0.9,
+          "Model": 0.8
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "docker-entrypoint.sh",
+        "path": "backend/docker-entrypoint.sh",
+        "type": "file",
+        "language": "sh",
+        "extension": ".sh",
+        "size": 0,
+        "loc": 0,
+        "sha256": "8796cdd14372ccf1",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "eval_context",
+        "path": "backend/eval_context",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/eval_context/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "fbe5faca0b4b27f1",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "brief_builder.py",
+            "path": "backend/eval_context/brief_builder.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "482ec22acf7b843d",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": true,
+            "ignored": false
+          },
+          {
+            "name": "context_slicer.py",
+            "path": "backend/eval_context/context_slicer.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "53dea600a7ec859c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "health_check.py",
+        "path": "backend/health_check.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "f9ba72b13faa3578",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "intelligence",
+        "path": "backend/intelligence",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/intelligence/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "34c080e2decf5e5a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "architecture_engine.py",
+            "path": "backend/intelligence/architecture_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "9fefeba4d3685946",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "cache_engine.py",
+            "path": "backend/intelligence/cache_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "2c1fac62f85ba424",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "evidence_engine.py",
+            "path": "backend/intelligence/evidence_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "f8b3b116bb129684",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "graph",
+            "path": "backend/intelligence/graph",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "backend/intelligence/graph/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2a5c67b086eec28a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "architecture_graph.py",
+                "path": "backend/intelligence/graph/architecture_graph.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "e86ee6e92b87ee94",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "base_builder.py",
+                "path": "backend/intelligence/graph/base_builder.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "03d9515c147bfafb",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": true,
+                "ignored": false
+              },
+              {
+                "name": "call_graph.py",
+                "path": "backend/intelligence/graph/call_graph.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cd92ac1bb40dcd8a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "dependency_graph.py",
+                "path": "backend/intelligence/graph/dependency_graph.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0f04d60082d5b76c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "relationship_graph.py",
+                "path": "backend/intelligence/graph/relationship_graph.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8196a830be45b9ef",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "technology_graph.py",
+                "path": "backend/intelligence/graph/technology_graph.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4ac5b96ee764f40b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "health_engine.py",
+            "path": "backend/intelligence/health_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "05f926bc565bf08f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "intelligence_service.py",
+            "path": "backend/intelligence/intelligence_service.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "395d71a3c98f1208",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "knowledge_graph",
+            "path": "backend/intelligence/knowledge_graph",
+            "type": "dir",
+            "children": [
+              {
+                "name": "knowledge_graph_builder.py",
+                "path": "backend/intelligence/knowledge_graph/knowledge_graph_builder.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "392ff56acab831ed",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": true,
+                "ignored": false
+              },
+              {
+                "name": "knowledge_graph_service.py",
+                "path": "backend/intelligence/knowledge_graph/knowledge_graph_service.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2254eebba85b9c7b",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "metrics_engine.py",
+            "path": "backend/intelligence/metrics_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "5e65c8ac53dc46dd",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "models.py",
+            "path": "backend/intelligence/models.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 2164,
+            "loc": 74,
+            "sha256": "f9f22a2feb45a85a",
+            "roles": {
+              "Database": 0.9,
+              "Model": 0.8
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "parsers",
+            "path": "backend/intelligence/parsers",
+            "type": "dir",
+            "children": [
+              {
+                "name": "__init__.py",
+                "path": "backend/intelligence/parsers/__init__.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "5a00bec812de4b2c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "base_parser.py",
+                "path": "backend/intelligence/parsers/base_parser.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4605bc46903baf23",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "javascript_parser.py",
+                "path": "backend/intelligence/parsers/javascript_parser.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "d6cd29cc82639376",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "parser_registry.py",
+                "path": "backend/intelligence/parsers/parser_registry.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "f2804303d5ed5d1a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "python_parser.py",
+                "path": "backend/intelligence/parsers/python_parser.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4d38bb500368d0ff",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "typescript_parser.py",
+                "path": "backend/intelligence/parsers/typescript_parser.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cc63d2b4dff25b19",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "unknown_parser.py",
+                "path": "backend/intelligence/parsers/unknown_parser.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8984b9edc12f7eb6",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "recommendation_engine.py",
+            "path": "backend/intelligence/recommendation_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "de8831d4b6015076",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "security_engine.py",
+            "path": "backend/intelligence/security_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "d4497c94eac08cfc",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "symbol_indexer.py",
+            "path": "backend/intelligence/symbol_indexer.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4b451134d58d765c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "utils.py",
+            "path": "backend/intelligence/utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "509b921c705d5778",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "llm_utils.py",
+        "path": "backend/llm_utils.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "cce32e6bf38b3ccb",
+        "roles": {
+          "Service": 0.85
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "logging_config.py",
+        "path": "backend/logging_config.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "0bd451f7092b0560",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "main.py",
+        "path": "backend/main.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 10245,
+        "loc": 301,
+        "sha256": "df5184bf1f67239f",
+        "roles": {
+          "Entry Point": 0.95
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "migrations",
+        "path": "backend/migrations",
+        "type": "dir",
+        "children": [
+          {
+            "name": "README",
+            "path": "backend/migrations/README",
+            "type": "file",
+            "language": "unknown",
+            "extension": null,
+            "size": 0,
+            "loc": 0,
+            "sha256": "69623a4c072ff784",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "env.py",
+            "path": "backend/migrations/env.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "c66ec5da353024a5",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "script.py.mako",
+            "path": "backend/migrations/script.py.mako",
+            "type": "file",
+            "language": "mako",
+            "extension": ".mako",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a9eba3e5a73c3e37",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "versions",
+            "path": "backend/migrations/versions",
+            "type": "dir",
+            "children": [
+              {
+                "name": "1c6fa2941993_add_analysis_lifecycle_columns.py",
+                "path": "backend/migrations/versions/1c6fa2941993_add_analysis_lifecycle_columns.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2c2ddfcc069c98fc",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "4e457597937b_normalized_schema.py",
+                "path": "backend/migrations/versions/4e457597937b_normalized_schema.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c674e08002d7e07a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "afe6139c5330_add_intelligence_module_statuses.py",
+                "path": "backend/migrations/versions/afe6139c5330_add_intelligence_module_statuses.py",
+                "type": "file",
+                "language": "py",
+                "extension": ".py",
+                "size": 0,
+                "loc": 0,
+                "sha256": "6f79d1dd1f2477f1",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "progress.py",
+        "path": "backend/progress.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "a90bdf0a116b02f2",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "reports",
+        "path": "backend/reports",
+        "type": "dir",
+        "children": [
+          {
+            "name": "report_generator.py",
+            "path": "backend/reports/report_generator.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "9cea6e114f86af08",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_3cfc4795-c812-427b-9a86-15903b57cee2.pdf",
+            "path": "backend/reports/yowon_report_3cfc4795-c812-427b-9a86-15903b57cee2.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4a875a8a00c50b69",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_416c2493-1f47-4d18-bce0-45502117206e.pdf",
+            "path": "backend/reports/yowon_report_416c2493-1f47-4d18-bce0-45502117206e.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "699620eb9004229b",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_501cd145-a2f6-4d48-a1e8-c22a4c0f4bfd.pdf",
+            "path": "backend/reports/yowon_report_501cd145-a2f6-4d48-a1e8-c22a4c0f4bfd.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "0c2b2448b55745a2",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_55d40638-8b47-4d0c-8a91-2d07b89b1c67.pdf",
+            "path": "backend/reports/yowon_report_55d40638-8b47-4d0c-8a91-2d07b89b1c67.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "bd0f8cada5826691",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_7a477378-aec8-451d-9d37-3ab0b621590a.pdf",
+            "path": "backend/reports/yowon_report_7a477378-aec8-451d-9d37-3ab0b621590a.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "8b8c46dc774b014c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_7fce72e4-06bd-4c6f-b038-9f24e5abb63d.pdf",
+            "path": "backend/reports/yowon_report_7fce72e4-06bd-4c6f-b038-9f24e5abb63d.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "ce2c02ea7e54e57e",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_81c26a0f-1c9f-46e4-93ac-632a4edbe728.pdf",
+            "path": "backend/reports/yowon_report_81c26a0f-1c9f-46e4-93ac-632a4edbe728.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "4c97e812fa558dae",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_97adaa25-3e14-4c55-8c78-d608b1023eb5.pdf",
+            "path": "backend/reports/yowon_report_97adaa25-3e14-4c55-8c78-d608b1023eb5.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "029accb08d744a47",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_a2015c4d-2d3e-4d86-b7ba-86a6fb5f87ae.pdf",
+            "path": "backend/reports/yowon_report_a2015c4d-2d3e-4d86-b7ba-86a6fb5f87ae.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "0728f1aace674cd9",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_cbc83c82-c0bc-46e9-bc4d-96cfdc205b3c.pdf",
+            "path": "backend/reports/yowon_report_cbc83c82-c0bc-46e9-bc4d-96cfdc205b3c.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "fbe17c6b4976c32a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_e98c0682-6870-497c-99f2-4df4e61da339.pdf",
+            "path": "backend/reports/yowon_report_e98c0682-6870-497c-99f2-4df4e61da339.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "648791d70ed82303",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "yowon_report_f6bb880a-5327-4c20-8229-26f6b1217eab.pdf",
+            "path": "backend/reports/yowon_report_f6bb880a-5327-4c20-8229-26f6b1217eab.pdf",
+            "type": "file",
+            "language": "pdf",
+            "extension": ".pdf",
+            "size": 0,
+            "loc": 0,
+            "sha256": "fd805da81d8ee145",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "requirements-lock.txt",
+        "path": "backend/requirements-lock.txt",
+        "type": "file",
+        "language": "txt",
+        "extension": ".txt",
+        "size": 0,
+        "loc": 0,
+        "sha256": "89831477ef6a0ef7",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "requirements.txt",
+        "path": "backend/requirements.txt",
+        "type": "file",
+        "language": "txt",
+        "extension": ".txt",
+        "size": 795,
+        "loc": 41,
+        "sha256": "a780f027052bed3b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "run_tests.py",
+        "path": "backend/run_tests.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 1256,
+        "loc": 47,
+        "sha256": "f61ad1921a8e8969",
+        "roles": {
+          "Test": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "scoring",
+        "path": "backend/scoring",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/scoring/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "ba0c4d07d7a0ffc7",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "rubrics.py",
+            "path": "backend/scoring/rubrics.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "c8b3d6bbbf0cd63a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "score_engine.py",
+            "path": "backend/scoring/score_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "c7f16798e8c93b8e",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "scratch",
+        "path": "backend/scratch",
+        "type": "dir",
+        "children": [
+          {
+            "name": "test_llm.py",
+            "path": "backend/scratch/test_llm.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 670,
+            "loc": 39,
+            "sha256": "71c11adcbcf2c8a6",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_treesitter.py",
+            "path": "backend/scratch/test_treesitter.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 334,
+            "loc": 11,
+            "sha256": "eae8150b670d12b6",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "security.py",
+        "path": "backend/security.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 0,
+        "loc": 0,
+        "sha256": "1fd964348a8f2a37",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tasks",
+        "path": "backend/tasks",
+        "type": "dir",
+        "children": [
+          {
+            "name": "evaluation_tasks.py",
+            "path": "backend/tasks/evaluation_tasks.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "643771b7d194f08a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "test.py",
+        "path": "backend/test.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 165,
+        "loc": 9,
+        "sha256": "f94d8d36e2ecfc5d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "test_crew.py",
+        "path": "backend/test_crew.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 591,
+        "loc": 35,
+        "sha256": "12110d9ac63acbd7",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "test_direct_llm.py",
+        "path": "backend/test_direct_llm.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 197,
+        "loc": 16,
+        "sha256": "845addce736a6fd0",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "test_pipeline.py",
+        "path": "backend/test_pipeline.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 386,
+        "loc": 28,
+        "sha256": "8e36ca169cd285d6",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "test_task.py",
+        "path": "backend/test_task.py",
+        "type": "file",
+        "language": "py",
+        "extension": ".py",
+        "size": 311,
+        "loc": 12,
+        "sha256": "3492fe6939b380d6",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tests",
+        "path": "backend/tests",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/tests/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "d76fec676f91bf89",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_code_intelligence.py",
+            "path": "backend/tests/test_code_intelligence.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 4482,
+            "loc": 118,
+            "sha256": "68dcf9210ad5bf69",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_crewai_ollama_integration.py",
+            "path": "backend/tests/test_crewai_ollama_integration.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 2952,
+            "loc": 97,
+            "sha256": "c1d7c47c7bbec022",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_history.py",
+            "path": "backend/tests/test_history.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 7488,
+            "loc": 241,
+            "sha256": "9381aff100d78393",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_intelligence_hardening.py",
+            "path": "backend/tests/test_intelligence_hardening.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "0b9ed2766dcfa8ab",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_json_utils.py",
+            "path": "backend/tests/test_json_utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "fc59fb7900dd600a",
+            "roles": {
+              "Service": 0.85,
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_knowledge_graph.py",
+            "path": "backend/tests/test_knowledge_graph.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "67176998448872e1",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_report_generator.py",
+            "path": "backend/tests/test_report_generator.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "344d89f2f80741bd",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_repository_intelligence.py",
+            "path": "backend/tests/test_repository_intelligence.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "12ff08792e43f59d",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_repository_intelligence_graphs.py",
+            "path": "backend/tests/test_repository_intelligence_graphs.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "2468ed13a1133df5",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_repository_metrics.py",
+            "path": "backend/tests/test_repository_metrics.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "28cc53da55c51f9d",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "test_score_engine.py",
+            "path": "backend/tests/test_score_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "3a8badd2ea78cd5d",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "tools",
+        "path": "backend/tools",
+        "type": "dir",
+        "children": [
+          {
+            "name": "github_tool.py",
+            "path": "backend/tools/github_tool.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "69832d31568f534a",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "parser.py",
+            "path": "backend/tools/parser.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "2bbbced1b29f0b75",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pdf_tool.py",
+            "path": "backend/tools/pdf_tool.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "5db56c82b30a7ee6",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "ppt_tool.py",
+            "path": "backend/tools/ppt_tool.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "b1c209569efa9b71",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "security_tool.py",
+            "path": "backend/tools/security_tool.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "d9da2adc93cd17f9",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "vector_store.py",
+            "path": "backend/tools/vector_store.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "618b188166ceeba1",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "utils",
+        "path": "backend/utils",
+        "type": "dir",
+        "children": [
+          {
+            "name": "git_provider.py",
+            "path": "backend/utils/git_provider.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "7f3796fb8a3d9065",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "ranking_engine.py",
+            "path": "backend/utils/ranking_engine.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "d1ce7e4375f157f1",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "validation",
+        "path": "backend/validation",
+        "type": "dir",
+        "children": [
+          {
+            "name": "__init__.py",
+            "path": "backend/validation/__init__.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "8ec9db6f09d84e0f",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "json_utils.py",
+            "path": "backend/validation/json_utils.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "a54307a75ab21a0c",
+            "roles": {
+              "Service": 0.85
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "schemas.py",
+            "path": "backend/validation/schemas.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "de1fd0a71c271070",
+            "roles": {
+              "Database": 0.9,
+              "Model": 0.8
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "verdict_schema.py",
+            "path": "backend/validation/verdict_schema.py",
+            "type": "file",
+            "language": "py",
+            "extension": ".py",
+            "size": 0,
+            "loc": 0,
+            "sha256": "6d82f89fc8ab2e69",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "docker-backup.ps1",
+    "path": "docker-backup.ps1",
+    "type": "file",
+    "language": "ps1",
+    "extension": ".ps1",
+    "size": 0,
+    "loc": 0,
+    "sha256": "e2b54e7d94c1e773",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-backup.sh",
+    "path": "docker-backup.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "c129fb7b32d5c348",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-clean.sh",
+    "path": "docker-clean.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "35a8b49a59ae2714",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-compose.yml",
+    "path": "docker-compose.yml",
+    "type": "file",
+    "language": "yml",
+    "extension": ".yml",
+    "size": 2149,
+    "loc": 98,
+    "sha256": "e45e45baeda1c1e7",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-restore.ps1",
+    "path": "docker-restore.ps1",
+    "type": "file",
+    "language": "ps1",
+    "extension": ".ps1",
+    "size": 0,
+    "loc": 0,
+    "sha256": "5db74e3a6b00f750",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-restore.sh",
+    "path": "docker-restore.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "7961d8ceb49881cb",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-start.ps1",
+    "path": "docker-start.ps1",
+    "type": "file",
+    "language": "ps1",
+    "extension": ".ps1",
+    "size": 0,
+    "loc": 0,
+    "sha256": "7d25e54a1b68ce14",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-start.sh",
+    "path": "docker-start.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "455585e6206e5189",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-stop.ps1",
+    "path": "docker-stop.ps1",
+    "type": "file",
+    "language": "ps1",
+    "extension": ".ps1",
+    "size": 0,
+    "loc": 0,
+    "sha256": "809377779d4d6180",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-stop.sh",
+    "path": "docker-stop.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "f8c8b95826386d2b",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docker-update.sh",
+    "path": "docker-update.sh",
+    "type": "file",
+    "language": "sh",
+    "extension": ".sh",
+    "size": 0,
+    "loc": 0,
+    "sha256": "37caa5325bff9e59",
+    "roles": {
+      "Deployment": 0.99
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "docs",
+    "path": "docs",
+    "type": "dir",
+    "children": [
+      {
+        "name": "api_documentation.md",
+        "path": "docs/api_documentation.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "e8f2de7b4631c9b4",
+        "roles": {
+          "API": 0.85,
+          "Controller": 0.7,
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "architecture.md",
+        "path": "docs/architecture.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "140eef3ba41bdcf4",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "codebase_audit.md",
+        "path": "docs/codebase_audit.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "2672f70437b7d92c",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "workflow.md",
+        "path": "docs/workflow.md",
+        "type": "file",
+        "language": "md",
+        "extension": ".md",
+        "size": 0,
+        "loc": 0,
+        "sha256": "275884dd33d2ba55",
+        "roles": {
+          "Documentation": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": "dribbble_shot.mp4",
+    "path": "dribbble_shot.mp4",
+    "type": "file",
+    "language": "mp4",
+    "extension": ".mp4",
+    "size": 0,
+    "loc": 0,
+    "sha256": "472c5839dc02fb89",
+    "roles": {
+      "Unknown": 1.0
+    },
+    "generated": false,
+    "ignored": false
+  },
+  {
+    "name": "frontend",
+    "path": "frontend",
+    "type": "dir",
+    "children": [
+      {
+        "name": ".env.example",
+        "path": "frontend/.env.example",
+        "type": "file",
+        "language": "example",
+        "extension": ".example",
+        "size": 0,
+        "loc": 0,
+        "sha256": "7b3b2052ac3e484b",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "Dockerfile",
+        "path": "frontend/Dockerfile",
+        "type": "file",
+        "language": "unknown",
+        "extension": null,
+        "size": 637,
+        "loc": 29,
+        "sha256": "ea60ef29f6f537c1",
+        "roles": {
+          "Deployment": 0.99
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "index.html",
+        "path": "frontend/index.html",
+        "type": "file",
+        "language": "html",
+        "extension": ".html",
+        "size": 0,
+        "loc": 0,
+        "sha256": "959f9cada636604d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "nginx.conf",
+        "path": "frontend/nginx.conf",
+        "type": "file",
+        "language": "conf",
+        "extension": ".conf",
+        "size": 0,
+        "loc": 0,
+        "sha256": "5fbe9ea284689611",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "package.json",
+        "path": "frontend/package.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 816,
+        "loc": 32,
+        "sha256": "da6498268e99511d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "postcss.config.js",
+        "path": "frontend/postcss.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 0,
+        "loc": 0,
+        "sha256": "4d9caaa225a07b88",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "src",
+        "path": "frontend/src",
+        "type": "dir",
+        "children": [
+          {
+            "name": "App.tsx",
+            "path": "frontend/src/App.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 0,
+            "loc": 0,
+            "sha256": "e56cb91573ddb6a9",
+            "roles": {
+              "Entry Point": 0.95
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "api",
+            "path": "frontend/src/api",
+            "type": "dir",
+            "children": [
+              {
+                "name": "api.ts",
+                "path": "frontend/src/api/api.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "9099dfcb65b652e3",
+                "roles": {
+                  "API": 0.85,
+                  "Controller": 0.7
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "assets",
+            "path": "frontend/src/assets",
+            "type": "dir",
+            "children": [
+              {
+                "name": "bg.png",
+                "path": "frontend/src/assets/bg.png",
+                "type": "file",
+                "language": "png",
+                "extension": ".png",
+                "size": 0,
+                "loc": 0,
+                "sha256": "36d9453ef4144adf",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "components",
+            "path": "frontend/src/components",
+            "type": "dir",
+            "children": [
+              {
+                "name": "ScoreRing.tsx",
+                "path": "frontend/src/components/ScoreRing.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "59769f3c4ea1ff74",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "VerdictBadge.tsx",
+                "path": "frontend/src/components/VerdictBadge.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "21cdc3bed857cbeb",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "effects",
+                "path": "frontend/src/components/effects",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AnimatedGrid.tsx",
+                    "path": "frontend/src/components/effects/AnimatedGrid.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "f0179665035bed2a",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "NeuralOverlay.tsx",
+                    "path": "frontend/src/components/effects/NeuralOverlay.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "81264d4ad6c036ad",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ParticleField.tsx",
+                    "path": "frontend/src/components/effects/ParticleField.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "01b0b2b8db27e559",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ScanLine.tsx",
+                    "path": "frontend/src/components/effects/ScanLine.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "ec0b397da053ab4a",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "evaluation",
+                "path": "frontend/src/components/evaluation",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AgentNetwork.tsx",
+                    "path": "frontend/src/components/evaluation/AgentNetwork.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "2a47cf6a4f66cb3e",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "AgentPipelineCard.tsx",
+                    "path": "frontend/src/components/evaluation/AgentPipelineCard.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "617ca7fc245d57a6",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "EvaluationTimeline.tsx",
+                    "path": "frontend/src/components/evaluation/EvaluationTimeline.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "863d5c1816c2cab3",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "JuryChamber.tsx",
+                    "path": "frontend/src/components/evaluation/JuryChamber.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "bc132b20a5259bae",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "TerminalLog.tsx",
+                    "path": "frontend/src/components/evaluation/TerminalLog.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "af2022cb3bda2324",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "landing",
+                "path": "frontend/src/components/landing",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AgentShowcase.tsx",
+                    "path": "frontend/src/components/landing/AgentShowcase.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "0f86e01a4d9b7de1",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "NeuralNetwork.tsx",
+                    "path": "frontend/src/components/landing/NeuralNetwork.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "63b9315f92400961",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "layout",
+                "path": "frontend/src/components/layout",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AppShell.tsx",
+                    "path": "frontend/src/components/layout/AppShell.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "c2786546b607facc",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "Header.tsx",
+                    "path": "frontend/src/components/layout/Header.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "40340c6f9220694b",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "providers",
+                "path": "frontend/src/components/providers",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "QueryProvider.tsx",
+                    "path": "frontend/src/components/providers/QueryProvider.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "c7a9d0c717062208",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "report",
+                "path": "frontend/src/components/report",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AgentReportsPanel.tsx",
+                    "path": "frontend/src/components/report/AgentReportsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "241fd9e3ba25e1c6",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "AnalyticsPanel.tsx",
+                    "path": "frontend/src/components/report/AnalyticsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "3a8d8639cf5449f5",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ArchitectureGraphPanel.tsx",
+                    "path": "frontend/src/components/report/ArchitectureGraphPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "b849646f3344d5af",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "DNASelector.tsx",
+                    "path": "frontend/src/components/report/DNASelector.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "83eb678232580462",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "DashboardSection.tsx",
+                    "path": "frontend/src/components/report/DashboardSection.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "a72869224d99d402",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "DependencyGraphPanel.tsx",
+                    "path": "frontend/src/components/report/DependencyGraphPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "385b2f2b11f040b1",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "DiagnosticsPanel.tsx",
+                    "path": "frontend/src/components/report/DiagnosticsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "2778bd5099f00f07",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ErrorBoundary.tsx",
+                    "path": "frontend/src/components/report/ErrorBoundary.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "d828d1f5fdff33b9",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "EvidenceExplorerPanel.tsx",
+                    "path": "frontend/src/components/report/EvidenceExplorerPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "9c4343b672ab5b03",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "KnowledgeGraphPanel.tsx",
+                    "path": "frontend/src/components/report/KnowledgeGraphPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "8da244c9b4e061ea",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "MetricsPanel.tsx",
+                    "path": "frontend/src/components/report/MetricsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "1d1517e47485341b",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "OverviewPanel.tsx",
+                    "path": "frontend/src/components/report/OverviewPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "3df77e6d4ef45645",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RankingsPanel.tsx",
+                    "path": "frontend/src/components/report/RankingsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "95dd33c1d755edd1",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RecommendationsPanel.tsx",
+                    "path": "frontend/src/components/report/RecommendationsPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "89935b9765586f27",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RepositoryIntelligenceWrapper.tsx",
+                    "path": "frontend/src/components/report/RepositoryIntelligenceWrapper.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "ed947d558bb5adb4",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RepositoryTreePanel.tsx",
+                    "path": "frontend/src/components/report/RepositoryTreePanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "747ba83152f6d5ee",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RoadmapPanel.tsx",
+                    "path": "frontend/src/components/report/RoadmapPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "48f25e03a29523fc",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "SentinelPanel.tsx",
+                    "path": "frontend/src/components/report/SentinelPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "cc85149af452e05d",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "Skeletons.tsx",
+                    "path": "frontend/src/components/report/Skeletons.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "ad32e7d4b09c955c",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "TechnologyGraphPanel.tsx",
+                    "path": "frontend/src/components/report/TechnologyGraphPanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "db5fc579a0393923",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "TimelinePanel.tsx",
+                    "path": "frontend/src/components/report/TimelinePanel.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "cdf00e9c2bebdb5b",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "queries.ts",
+                    "path": "frontend/src/components/report/queries.ts",
+                    "type": "file",
+                    "language": "ts",
+                    "extension": ".ts",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "8f35fcf5d007f2a9",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "results",
+                "path": "frontend/src/components/results",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "AgentConsensus.tsx",
+                    "path": "frontend/src/components/results/AgentConsensus.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "5bedc1867a0a0b92",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ConfidenceMeter.tsx",
+                    "path": "frontend/src/components/results/ConfidenceMeter.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "b7507a8c972652ae",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ExecutiveSummary.tsx",
+                    "path": "frontend/src/components/results/ExecutiveSummary.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "5f39cbd970466a90",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ReadinessGauge.tsx",
+                    "path": "frontend/src/components/results/ReadinessGauge.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "14fa8470c7a8e200",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "RiskHeatmap.tsx",
+                    "path": "frontend/src/components/results/RiskHeatmap.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "f2aa08dc9062709e",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "ThreatRadar.tsx",
+                    "path": "frontend/src/components/results/ThreatRadar.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "85c1c7b939554ea3",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "VerdictReveal.tsx",
+                    "path": "frontend/src/components/results/VerdictReveal.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "529ccc4c7d7a9551",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "upload",
+                "path": "frontend/src/components/upload",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "FileDropZone.tsx",
+                    "path": "frontend/src/components/upload/FileDropZone.tsx",
+                    "type": "file",
+                    "language": "tsx",
+                    "extension": ".tsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "7a60f8cd64cecc95",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "path": "frontend/src/hooks",
+            "type": "dir",
+            "children": [
+              {
+                "name": "useEvaluationPoll.ts",
+                "path": "frontend/src/hooks/useEvaluationPoll.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "87be7e9083606696",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "useEvaluationProgress.ts",
+                "path": "frontend/src/hooks/useEvaluationProgress.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0b54d657e336c2d7",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "index.css",
+            "path": "frontend/src/index.css",
+            "type": "file",
+            "language": "css",
+            "extension": ".css",
+            "size": 0,
+            "loc": 0,
+            "sha256": "b6889d573bf68429",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "main.tsx",
+            "path": "frontend/src/main.tsx",
+            "type": "file",
+            "language": "tsx",
+            "extension": ".tsx",
+            "size": 0,
+            "loc": 0,
+            "sha256": "f687de21d327881c",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          },
+          {
+            "name": "pages",
+            "path": "frontend/src/pages",
+            "type": "dir",
+            "children": [
+              {
+                "name": "DemoPage.tsx",
+                "path": "frontend/src/pages/DemoPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0fbb6d12c581d3ad",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "EvaluatePage.tsx",
+                "path": "frontend/src/pages/EvaluatePage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0706df02412c2532",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "JuryDashboardPage.tsx",
+                "path": "frontend/src/pages/JuryDashboardPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "87580166b8177323",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "LandingPage.tsx",
+                "path": "frontend/src/pages/LandingPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "fd2148bae5498fff",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "LeaderboardPage.tsx",
+                "path": "frontend/src/pages/LeaderboardPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "0c249e25ff9af5e3",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "ProjectsPage.tsx",
+                "path": "frontend/src/pages/ProjectsPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "c373b01f1baf0cea",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "ReportPage.tsx",
+                "path": "frontend/src/pages/ReportPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "2edfc0844c4a662a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "SubmitPage.tsx",
+                "path": "frontend/src/pages/SubmitPage.tsx",
+                "type": "file",
+                "language": "tsx",
+                "extension": ".tsx",
+                "size": 0,
+                "loc": 0,
+                "sha256": "cdad049de506687d",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "path": "frontend/src/types",
+            "type": "dir",
+            "children": [
+              {
+                "name": "index.ts",
+                "path": "frontend/src/types/index.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 4109,
+                "loc": 240,
+                "sha256": "1b4a95b65fea8956",
+                "roles": {
+                  "Entry Point": 0.95
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "utils",
+            "path": "frontend/src/utils",
+            "type": "dir",
+            "children": [
+              {
+                "name": "demoData.ts",
+                "path": "frontend/src/utils/demoData.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "4ac7e462fbdcd347",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "listNormalizer.ts",
+                "path": "frontend/src/utils/listNormalizer.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "8d2b5fbf1d77dd61",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "reportParser.ts",
+                "path": "frontend/src/utils/reportParser.ts",
+                "type": "file",
+                "language": "ts",
+                "extension": ".ts",
+                "size": 0,
+                "loc": 0,
+                "sha256": "1cbf4518847aafaf",
+                "roles": {
+                  "Service": 0.85
+                },
+                "generated": false,
+                "ignored": false
+              }
+            ]
+          },
+          {
+            "name": "vite-env.d.ts",
+            "path": "frontend/src/vite-env.d.ts",
+            "type": "file",
+            "language": "ts",
+            "extension": ".ts",
+            "size": 0,
+            "loc": 0,
+            "sha256": "420f7e3d750cbd70",
+            "roles": {
+              "Unknown": 1.0
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "tailwind.config.js",
+        "path": "frontend/tailwind.config.js",
+        "type": "file",
+        "language": "js",
+        "extension": ".js",
+        "size": 0,
+        "loc": 0,
+        "sha256": "8fdab0c1827a182d",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tests",
+        "path": "frontend/tests",
+        "type": "dir",
+        "children": [
+          {
+            "name": "roadmapNormalizer.test.mjs",
+            "path": "frontend/tests/roadmapNormalizer.test.mjs",
+            "type": "file",
+            "language": "mjs",
+            "extension": ".mjs",
+            "size": 0,
+            "loc": 0,
+            "sha256": "84e564d441961cba",
+            "roles": {
+              "Test": 0.99
+            },
+            "generated": false,
+            "ignored": false
+          }
+        ]
+      },
+      {
+        "name": "tsconfig.json",
+        "path": "frontend/tsconfig.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "5c19f37df4b2357c",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "tsconfig.node.json",
+        "path": "frontend/tsconfig.node.json",
+        "type": "file",
+        "language": "json",
+        "extension": ".json",
+        "size": 0,
+        "loc": 0,
+        "sha256": "bbfd505103ddd5c6",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      },
+      {
+        "name": "vite.config.ts",
+        "path": "frontend/vite.config.ts",
+        "type": "file",
+        "language": "ts",
+        "extension": ".ts",
+        "size": 0,
+        "loc": 0,
+        "sha256": "97c6e2c429ec4831",
+        "roles": {
+          "Unknown": 1.0
+        },
+        "generated": false,
+        "ignored": false
+      }
+    ]
+  },
+  {
+    "name": "ha_frontend_ref",
+    "path": "ha_frontend_ref",
+    "type": "dir",
+    "children": [
+      {
+        "name": "HA Frontend",
+        "path": "ha_frontend_ref/HA Frontend",
+        "type": "dir",
+        "children": [
+          {
+            "name": "frontend",
+            "path": "ha_frontend_ref/HA Frontend/frontend",
+            "type": "dir",
+            "children": [
+              {
+                "name": ".gitignore",
+                "path": "ha_frontend_ref/HA Frontend/frontend/.gitignore",
+                "type": "file",
+                "language": "gitignore",
+                "extension": ".gitignore",
+                "size": 0,
+                "loc": 0,
+                "sha256": "71cba1fab6dba7bf",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": ".oxlintrc.json",
+                "path": "ha_frontend_ref/HA Frontend/frontend/.oxlintrc.json",
+                "type": "file",
+                "language": "json",
+                "extension": ".json",
+                "size": 0,
+                "loc": 0,
+                "sha256": "38a39785d216b754",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "README.md",
+                "path": "ha_frontend_ref/HA Frontend/frontend/README.md",
+                "type": "file",
+                "language": "md",
+                "extension": ".md",
+                "size": 1009,
+                "loc": 16,
+                "sha256": "560b9b295fa73bb9",
+                "roles": {
+                  "Documentation": 0.99
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "index.html",
+                "path": "ha_frontend_ref/HA Frontend/frontend/index.html",
+                "type": "file",
+                "language": "html",
+                "extension": ".html",
+                "size": 0,
+                "loc": 0,
+                "sha256": "011d88bd5d63caec",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "package.json",
+                "path": "ha_frontend_ref/HA Frontend/frontend/package.json",
+                "type": "file",
+                "language": "json",
+                "extension": ".json",
+                "size": 673,
+                "loc": 30,
+                "sha256": "84f201036509648a",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "postcss.config.js",
+                "path": "ha_frontend_ref/HA Frontend/frontend/postcss.config.js",
+                "type": "file",
+                "language": "js",
+                "extension": ".js",
+                "size": 0,
+                "loc": 0,
+                "sha256": "3d77f20579f0863c",
+                "roles": {
+                  "Unknown": 1.0
+                },
+                "generated": false,
+                "ignored": false
+              },
+              {
+                "name": "public",
+                "path": "ha_frontend_ref/HA Frontend/frontend/public",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "favicon.svg",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/public/favicon.svg",
+                    "type": "file",
+                    "language": "svg",
+                    "extension": ".svg",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "21ad0e7636d2de01",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "icons.svg",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/public/icons.svg",
+                    "type": "file",
+                    "language": "svg",
+                    "extension": ".svg",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "e09479c758f5f859",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  }
+                ]
+              },
+              {
+                "name": "src",
+                "path": "ha_frontend_ref/HA Frontend/frontend/src",
+                "type": "dir",
+                "children": [
+                  {
+                    "name": "App.css",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/src/App.css",
+                    "type": "file",
+                    "language": "css",
+                    "extension": ".css",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "e6593a13606e2149",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "App.jsx",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/src/App.jsx",
+                    "type": "file",
+                    "language": "jsx",
+                    "extension": ".jsx",
+                    "size": 0,
+                    "loc": 0,
+                    "sha256": "990fce3a365d481a",
+                    "roles": {
+                      "Unknown": 1.0
+                    },
+                    "generated": false,
+                    "ignored": false
+                  },
+                  {
+                    "name": "api",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/src/api",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "client.js",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/api/client.js",
+                        "type": "file",
+                        "language": "js",
+                        "extension": ".js",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "b0fcbf558f546ac1",
+                        "roles": {
+                          "API": 0.85,
+                          "Controller": 0.7
+                        },
+                        "generated": false,
+                        "ignored": false
+                      }
+                    ]
+                  },
+                  {
+                    "name": "assets",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/src/assets",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "hero.png",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/assets/hero.png",
+                        "type": "file",
+                        "language": "png",
+                        "extension": ".png",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "e6c13536c13756d5",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "react.svg",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/assets/react.svg",
+                        "type": "file",
+                        "language": "svg",
+                        "extension": ".svg",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "6f73b35065eb43a1",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "vite.svg",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/assets/vite.svg",
+                        "type": "file",
+                        "language": "svg",
+                        "extension": ".svg",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "bd4c6c3d1aa03cb9",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      }
+                    ]
+                  },
+                  {
+                    "name": "components",
+                    "path": "ha_frontend_ref/HA Frontend/frontend/src/components",
+                    "type": "dir",
+                    "children": [
+                      {
+                        "name": "AnnotatedScreenshot.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/AnnotatedScreenshot.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "8f94f9fc4a9ca5b2",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "AuditInputPage.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/AuditInputPage.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "cbc542706ad8ae82",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "BusinessImpactPanel.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/BusinessImpactPanel.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "e053299434ca7959",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "ChatPanel.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/ChatPanel.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "98b7ffa40d92bd90",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "ConsistencyPlot.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/ConsistencyPlot.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "80ea1bc081ba21fa",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "CosmoCanvas.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/CosmoCanvas.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "03dc3be943151139",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "CrawlProgress.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/CrawlProgress.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "cb388b8e2d079cc3",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "ErrorBoundary.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/ErrorBoundary.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "fde515d1adec3879",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "ExecutiveDashboard.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/ExecutiveDashboard.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "77510ac32b5048b0",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "ExportButton.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/ExportButton.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "bfd08edd15b1e12e",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "FileDiffPanel.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/FileDiffPanel.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "92933090fe9abf08",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "FixPreviewFrame.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/FixPreviewFrame.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "b77a5dd64a1b3371",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "IssueList.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/IssueList.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "e0f749dcf7229b6a",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "JourneyTimeline.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/JourneyTimeline.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "1bef3c61730a5da4",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "LandingHero.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/LandingHero.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "1814b2db0f214199",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "MasterDashboard.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/MasterDashboard.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "39b39f1a6925abb0",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "NavigationGraph.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/NavigationGraph.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "718bfac2566e4c39",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      },
+                      {
+                        "name": "PersonaPanel.jsx",
+                        "path": "ha_frontend_ref/HA Frontend/frontend/src/components/PersonaPanel.jsx",
+                        "type": "file",
+                        "language": "jsx",
+                        "extension": ".jsx",
+                        "size": 0,
+                        "loc": 0,
+                        "sha256": "4ce0829be7687b10",
+                        "roles": {
+                          "Unknown": 1.0
+                        },
+                        "generated": false,
+                        "ignored": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,2752 @@
+{
+  ".gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 4,
+      "cognitive_complexity": 3,
+      "maintainability_index": 44.41753958559521,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 55,
+    "size_bytes": 2385
+  },
+  "backend/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 4,
+      "cognitive_complexity": 3,
+      "maintainability_index": 57.71925655039817,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 19,
+    "size_bytes": 357
+  },
+  "backend/app/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 94.97129991540508,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 1,
+    "size_bytes": 15
+  },
+  "backend/app/auth.py": {
+    "complexity": {
+      "cyclomatic_complexity": 20,
+      "cognitive_complexity": 14,
+      "maintainability_index": 33.25428276894654,
+      "function_count": 7,
+      "class_count": 0
+    },
+    "risk": 20,
+    "importance": 40,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 113,
+    "size_bytes": 4593
+  },
+  "backend/app/config.py": {
+    "complexity": {
+      "cyclomatic_complexity": 17,
+      "cognitive_complexity": 30,
+      "maintainability_index": 36.505845561564335,
+      "function_count": 1,
+      "class_count": 2
+    },
+    "risk": 45,
+    "importance": 25,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 90,
+    "size_bytes": 4017
+  },
+  "backend/app/database.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 35,
+    "importance": 65,
+    "coverage": 0,
+    "roles": {
+      "Database": 0.9,
+      "Model": 0.8
+    },
+    "loc": 301,
+    "size_bytes": 9727
+  },
+  "backend/app/main.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 23.548984321471792,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 95,
+    "coverage": 0,
+    "roles": {
+      "Entry Point": 0.95
+    },
+    "loc": 301,
+    "size_bytes": 11039
+  },
+  "backend/app/routes/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/contacts.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/evidence.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/geocode.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/journeys.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/reports.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/safety_route.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/routes/simulation.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/services/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/services/geocode.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/services/reverse_geocode.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/services/routing.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/utils/__init__.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/utils/notification_providers.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/utils/pdf_generator.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/utils/phone_validation.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/app/utils/routing.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "backend/requirements.txt": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 64.9625520569927,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 11,
+    "size_bytes": 224
+  },
+  "backend/services/geocode.py": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 4,
+      "maintainability_index": 49.45240793706546,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 90,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 36,
+    "size_bytes": 1647
+  },
+  "backend/services/reverse_geocode.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 55.19916426075829,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 90,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 24,
+    "size_bytes": 805
+  },
+  "backend/services/routing.py": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 50.34296744998199,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 90,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 35,
+    "size_bytes": 1591
+  },
+  "backend/services/safety_scorer.py": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 7,
+      "maintainability_index": 45.3413044088774,
+      "function_count": 2,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 80,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 50,
+    "size_bytes": 1632
+  },
+  "docker-compose.yml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 48.806375752809636,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 35,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 40,
+    "size_bytes": 980
+  },
+  "frontend-native/.gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(auth)/login.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(tabs)/_layout.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(tabs)/contacts.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(tabs)/dashboard.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(tabs)/settings.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/(tabs)/vault.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/_layout.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 24,
+      "cognitive_complexity": 22,
+      "maintainability_index": 20.4554170700098,
+      "function_count": 23,
+      "class_count": 0
+    },
+    "risk": 30,
+    "importance": 40,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 301,
+    "size_bytes": 9527
+  },
+  "frontend-native/app/index.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 57.48084924051887,
+      "function_count": 2,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 20,
+    "size_bytes": 472
+  },
+  "frontend-native/app/journey/active.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/journey/route.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/journey/setup.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/app/sos/active.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/assets/siren.mp3": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/babel.config.js": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/package.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 47.90131016345057,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 43,
+    "size_bytes": 1186
+  },
+  "frontend-native/store/useStore.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/tsconfig.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/utils/CommunicationProvider.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend-native/utils/api.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7,
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/.gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/Dockerfile": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 58.12276532232799,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Deployment": 0.99
+    },
+    "loc": 19,
+    "size_bytes": 270
+  },
+  "frontend/README.md": {
+    "complexity": {
+      "cyclomatic_complexity": 6,
+      "cognitive_complexity": 5,
+      "maintainability_index": 40.60531626594568,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Documentation": 0.99
+    },
+    "loc": 73,
+    "size_bytes": 2425
+  },
+  "frontend/android/.gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/.gitignore": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/build.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 3,
+      "cognitive_complexity": 2,
+      "maintainability_index": 44.781675005185505,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 54,
+    "size_bytes": 2124
+  },
+  "frontend/android/app/capacitor.build.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/proguard-rules.pro": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/AndroidManifest.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/java/com/femme/app/MainActivity.java": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-land-hdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-land-mdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-land-xhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-land-xxhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-land-xxxhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-port-hdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-port-mdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-port-xhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-port-xxhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-port-xxxhdpi/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable/ic_launcher_background.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/drawable/splash.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/layout/activity_main.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/values/ic_launcher_background.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/values/strings.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/values/styles.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/main/res/xml/file_paths.xml": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/build.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 52.830872569375515,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 29,
+    "size_bytes": 637
+  },
+  "frontend/android/capacitor.settings.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/gradle.properties": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/gradle/wrapper/gradle-wrapper.jar": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/gradle/wrapper/gradle-wrapper.properties": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/gradlew": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/gradlew.bat": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/settings.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/android/variables.gradle": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/capacitor.config.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 61.944500585717044,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 15,
+    "coverage": 90,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 14,
+    "size_bytes": 267
+  },
+  "frontend/eslint.config.js": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 48.806375752809636,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 35,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 40,
+    "size_bytes": 1254
+  },
+  "frontend/index.html": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/package.json": {
+    "complexity": {
+      "cyclomatic_complexity": 2,
+      "cognitive_complexity": 1,
+      "maintainability_index": 46.13214530747093,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 49,
+    "size_bytes": 1315
+  },
+  "frontend/postcss.config.js": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 72.54811123617678,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 6,
+    "size_bytes": 80
+  },
+  "frontend/public/favicon.svg": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/public/icons.svg": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/App.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/App.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 51.21383686547368,
+      "function_count": 1,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 100,
+    "coverage": 0,
+    "roles": {
+      "Entry Point": 0.95
+    },
+    "loc": 33,
+    "size_bytes": 1490
+  },
+  "frontend/src/assets/ai_guardian.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/assets/ai_guardian_placeholder.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/assets/hero.png": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/assets/react.svg": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/assets/vite.svg": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/AIHero.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/AnimatedCounter.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/GlassCard.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/Layout.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/LocationPermissionModal.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/SafetyRoutePanel.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/components/VideoBackground.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/context/AuthProvider.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/context/LocationContext.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/index.css": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/main.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/ActiveJourneyPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/AnalyticsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/AnomalyCenterPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/AuthPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/CommunityReportsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/DashboardPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/EvidenceVaultPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/FIRGeneratorPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/JourneySetupPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/LandingPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/ProfilePage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/RouteViewPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/SOSCenterPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/SafeZoneMapPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/SettingsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/pages/TrustedContactsPage.tsx": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/store/useStore.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/types/global.d.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/types/jwt-decode.d.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/utils/Logger.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/utils/api.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 75,
+    "coverage": 0,
+    "roles": {
+      "API": 0.85,
+      "Controller": 0.7,
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/src/utils/jwtDecode.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Service": 0.85
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/tailwind.config.js": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 44.59555361029854,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 56,
+    "size_bytes": 1730
+  },
+  "frontend/tsconfig.app.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/tsconfig.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/tsconfig.node.json": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  },
+  "frontend/vite.config.ts": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 70.6189740734263,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 20,
+    "coverage": 0,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 7,
+    "size_bytes": 161
+  },
+  "test_endpoints.py": {
+    "complexity": {
+      "cyclomatic_complexity": 1,
+      "cognitive_complexity": 0,
+      "maintainability_index": 100,
+      "function_count": 0,
+      "class_count": 0
+    },
+    "risk": 10,
+    "importance": 10,
+    "coverage": 100,
+    "roles": {
+      "Unknown": 1.0
+    },
+    "loc": 0,
+    "size_bytes": 0
+  }
+}

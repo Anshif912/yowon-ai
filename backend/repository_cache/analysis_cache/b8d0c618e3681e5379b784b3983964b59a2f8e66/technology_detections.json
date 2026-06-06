@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Docker",
+    "version": null,
+    "confidence": 0.97,
+    "category": "TOOL",
+    "sources": [
+      "dockerfile"
+    ]
+  },
+  {
+    "name": "Python",
+    "version": null,
+    "confidence": 0.95,
+    "category": "LANGUAGE",
+    "sources": [
+      "file_extensions"
+    ]
+  },
+  {
+    "name": "Docker Compose",
+    "version": null,
+    "confidence": 0.95,
+    "category": "TOOL",
+    "sources": [
+      "docker-compose.yml"
+    ]
+  },
+  {
+    "name": "SQLAlchemy",
+    "version": null,
+    "confidence": 0.93,
+    "category": "DATABASE",
+    "sources": [
+      "import"
+    ]
+  },
+  {
+    "name": "Pydantic",
+    "version": null,
+    "confidence": 0.92,
+    "category": "FRAMEWORK",
+    "sources": [
+      "import"
+    ]
+  }
+]
