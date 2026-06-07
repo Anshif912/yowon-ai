@@ -170,6 +170,45 @@ def _agent_score_map(verdict: dict) -> dict[str, float]:
     }
 
 
+INTERNAL_VERDICT_FIELDS = {
+    "raw_agent_scores",
+    "calibrated_agent_scores",
+    "agent_calibration_reasons",
+    "calibration_adjustments",
+    "raw_weighted_score",
+}
+
+
+def _public_verdict_data(verdict: dict) -> dict:
+    """Strip backend-only scoring diagnostics from user-facing responses."""
+    if not isinstance(verdict, dict):
+        return {}
+    return {k: v for k, v in verdict.items() if k not in INTERNAL_VERDICT_FIELDS}
+
+
+def _chief_public_findings(verdict: dict) -> str:
+    public = _public_verdict_data(verdict)
+    lines = [
+        "Final Verdict",
+        f"Status: {public.get('status', 'COMPLETE')}",
+        f"Overall Score: {public.get('overall_score', 0)}/100",
+        f"Verdict: {public.get('verdict', 'REJECT')}",
+        f"Risk Level: {public.get('risk_level', 'UNKNOWN')}",
+        f"Score Band: {public.get('score_band', 'Unknown')}",
+        f"Confidence: {public.get('confidence', 0)}/100",
+        "",
+        "Executive Summary:",
+        public.get("executive_summary") or public.get("final_reason") or "No executive summary available.",
+    ]
+    if public.get("blocking_issues"):
+        lines.extend(["", "Blocking Issues:"])
+        lines.extend(f"- {item}" for item in public["blocking_issues"])
+    if public.get("recommended_fixes"):
+        lines.extend(["", "Recommended Fixes:"])
+        lines.extend(f"- {item}" for item in public["recommended_fixes"])
+    return "\n".join(lines)
+
+
 def _run_evaluation_background(project_id: str) -> None:
     from database import SessionLocal
 
@@ -438,11 +477,9 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
             verdict_data = parsed
         else:
             logger.warning("Could not parse chief findings for project %s", project_id)
-    raw_scores = verdict_data.get("raw_agent_scores", {})
-    for agent_name, evaluation in eval_map.items():
-        dimension = "impact" if agent_name == "risk" else agent_name
-        if dimension in raw_scores:
-            evaluation["raw_score"] = raw_scores[dimension]
+    public_verdict = _public_verdict_data(verdict_data)
+    if "chief_evaluation" in eval_map:
+        eval_map["chief_evaluation"]["findings"] = _chief_public_findings(public_verdict)
 
     return {
         "project_id": project_id,
@@ -456,10 +493,8 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
         "verdict": report.verdict if report else verdict_data.get("verdict"),
         "report_id": report.id if report else None,
         "evaluations": eval_map,
-        "verdict_data": verdict_data,
-        "raw_agent_scores": raw_scores or verdict_data.get("agent_scores", {}),
-        "calibrated_agent_scores": verdict_data.get("calibrated_agent_scores", verdict_data.get("agent_scores", {})),
-        "agent_failures": verdict_data.get("agent_failures") if verdict_data else {},
+        "verdict_data": public_verdict,
+        "agent_failures": public_verdict.get("agent_failures") if public_verdict else {},
     }
 
 
