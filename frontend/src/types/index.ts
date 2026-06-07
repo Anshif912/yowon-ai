@@ -61,7 +61,9 @@ export interface VerdictData {
 
   recommended_fixes?: string[]
 
-  deployment_roadmap?: string[]
+  roadmap?: string[] | string
+
+  deployment_roadmap?: string[] | string
 
   agent_scores?: AgentScores
 

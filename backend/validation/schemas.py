@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class TechnicalReport(BaseModel):
@@ -64,6 +64,7 @@ class ChiefVerdict(BaseModel):
     contradictions: list[str] = Field(default_factory=list)
     blocking_issues: list[str] = Field(default_factory=list)
     recommended_fixes: list[str] = Field(default_factory=list)
+    roadmap: list[str] = Field(default_factory=list)
     deployment_roadmap: list[str] = Field(default_factory=list)
     agent_scores: AgentScores
     raw_agent_scores: AgentScores
@@ -84,7 +85,7 @@ class ChiefVerdict(BaseModel):
     missing_evidence: list[str] = Field(default_factory=list)
     positive_factors: list[str] = Field(default_factory=list)
 
-    @field_validator("recommended_fixes", "deployment_roadmap", mode="before")
+    @field_validator("recommended_fixes", "roadmap", "deployment_roadmap", mode="before")
     @classmethod
     def coerce_fixes(cls, v):
         if not v:
@@ -105,3 +106,11 @@ class ChiefVerdict(BaseModel):
                 else:
                     out.append(str(fix))
         return out
+
+    @model_validator(mode="after")
+    def sync_roadmap_aliases(self):
+        if self.roadmap and not self.deployment_roadmap:
+            self.deployment_roadmap = list(self.roadmap)
+        if self.deployment_roadmap and not self.roadmap:
+            self.roadmap = list(self.deployment_roadmap)
+        return self

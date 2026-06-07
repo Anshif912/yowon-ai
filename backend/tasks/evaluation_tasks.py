@@ -170,7 +170,8 @@ def create_chief_evaluation_task(
         "- contradictions (array of strings)\n"
         "- blocking_issues (array of strings)\n"
         "- recommended_fixes (array of strings, max 5)\n"
-        "- deployment_roadmap (array of strings, max 6)\n\n"
+        "- roadmap (array of strings, max 6; action items only, not one long string)\n"
+        "- deployment_roadmap (same array as roadmap for backward compatibility)\n\n"
         "Specialist jury reports:\n"
         f"{specialist_summary}\n\n"
         "Pre-computed scores (for reference only, DO NOT MODIFY):\n"
@@ -193,7 +194,7 @@ def create_narrative_task(agent: Agent, numeric_summary: dict, key_findings: str
         + brief
         + "\n\nKey findings:\n"
         + (key_findings or "")[:800]
-        + "\n\nReturn only a single JSON object with keys: executive_summary, top_strengths, top_weaknesses, recommended_fixes, deployment_roadmap."
+        + "\n\nReturn only a single JSON object with keys: executive_summary, top_strengths, top_weaknesses, recommended_fixes, roadmap, deployment_roadmap. Roadmap fields must be arrays of full action-item strings, never a single string."
     )
     return Task(
         description=user_text,

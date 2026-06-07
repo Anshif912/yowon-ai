@@ -4,7 +4,7 @@ import {
   FileText, ThumbsUp, ThumbsDown, AlertOctagon, Wrench, Map,
 } from 'lucide-react'
 import type { VerdictData } from '../../types'
-import { normalizeDisplayList } from '../../utils/listNormalizer'
+import { normalizeDisplayList, phaseDeploymentRoadmap } from '../../utils/listNormalizer'
 
 interface ExecutiveSummaryProps {
   data: VerdictData
@@ -48,12 +48,53 @@ function SectionCard({
   )
 }
 
+function DeploymentRoadmap({
+  items,
+}: {
+  items: string[] | string | undefined
+}) {
+  const phases = phaseDeploymentRoadmap(items)
+
+  return (
+    <motion.div
+      className="glass-card p-5"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <Map size={16} style={{ color: '#EC4899' }} />
+        <h3 className="font-display font-semibold text-sentinel-text">Deployment Roadmap</h3>
+      </div>
+      {phases.length === 0 ? (
+        <p className="text-sm text-sentinel-muted">No deployment roadmap generated.</p>
+      ) : (
+        <div className="space-y-4">
+          {phases.map(phase => (
+            <div key={phase.title}>
+              <p className="text-sm font-display font-semibold text-sentinel-text mb-2">{phase.title}</p>
+              <ul className="space-y-2">
+                {phase.items.map((item, i) => (
+                  <li key={`${phase.title}-${i}`} className="flex gap-2 text-sm text-sentinel-muted leading-relaxed">
+                    <span className="text-sentinel-accent mt-1.5 flex-shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </motion.div>
+  )
+}
+
 export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
   const strengths = normalizeDisplayList(data.top_strengths)
   const weaknesses = normalizeDisplayList(data.top_weaknesses)
   const blocking = normalizeDisplayList(data.blocking_issues)
   const fixes = normalizeDisplayList(data.recommended_fixes)
-  const roadmap = normalizeDisplayList(data.deployment_roadmap)
+  const roadmap = data.roadmap ?? data.deployment_roadmap
 
   return (
     <div className="space-y-6">
@@ -104,15 +145,7 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
         />
       </div>
 
-      {roadmap.length > 0 && (
-        <SectionCard
-          icon={Map}
-          title="Deployment Roadmap"
-          items={roadmap}
-          color="#EC4899"
-          delay={0.5}
-        />
-      )}
+      <DeploymentRoadmap items={roadmap} />
     </div>
   )
 }

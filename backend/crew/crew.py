@@ -519,7 +519,8 @@ def run_evaluation(
     )
     computed["contradictions"] = contradictions
     computed["executive_summary"] = _build_executive_summary(computed, contradictions, failures)
-    computed["deployment_roadmap"] = _build_roadmap(computed, failures)
+    computed["roadmap"] = _build_roadmap(computed, failures)
+    computed["deployment_roadmap"] = computed["roadmap"]
     computed["recommended_fixes"] = list(computed.get("top_weaknesses", []))[:5]
     agent_complete(
         project_id,
@@ -593,7 +594,8 @@ def run_evaluation(
                 "top_strengths": computed.get("top_strengths", []),
                 "top_weaknesses": computed.get("top_weaknesses", []),
                 "recommended_fixes": computed.get("recommended_fixes", []),
-                "deployment_roadmap": computed.get("deployment_roadmap", []),
+                "roadmap": computed.get("roadmap", computed.get("deployment_roadmap", [])),
+                "deployment_roadmap": computed.get("deployment_roadmap", computed.get("roadmap", [])),
             }
         )
         narrative_parse_source = "computed"
@@ -709,25 +711,28 @@ def _build_roadmap(computed: dict[str, Any], failures: dict[str, str]) -> list[s
 
     if verdict == "ACCEPT":
         roadmap = [
-            "Phase 1: Final security scan and staging deployment",
-            "Phase 2: Load testing and observability setup",
-            "Phase 3: Production rollout with canary release",
+            "Run final security and dependency checks",
+            "Validate test coverage and documentation",
+            "Configure CI/CD pipeline",
+            "Prepare staged production rollout",
         ]
     elif verdict == "IMPROVE":
         roadmap = [
-            "Phase 1: Address blocking issues and re-run evaluation",
-            "Phase 2: Staged deployment with monitoring",
-            "Phase 3: Production after validation gates pass",
+            "Add automated tests",
+            "Improve documentation",
+            "Add CI/CD pipeline",
+            "Strengthen security controls",
         ]
     else:
         roadmap = [
-            "Phase 1: Resolve critical blockers before any deployment",
-            "Phase 2: Re-architecture review with engineering team",
-            "Phase 3: Re-submit for full Sentinel evaluation",
+            "Resolve critical blockers before deployment",
+            "Add missing project evidence",
+            "Re-run automated evaluation",
+            "Prepare deployment only after validation passes",
         ]
 
     for issue in blocking[:2]:
-        roadmap.insert(0, f"Blocker: {issue}")
+        roadmap.insert(0, f"Resolve blocker: {issue}")
     if failures:
         roadmap.append(f"Re-run failed agents: {', '.join(failures.keys())}")
     return roadmap[:6]
