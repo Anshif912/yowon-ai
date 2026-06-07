@@ -22,7 +22,7 @@ def create_chief_evaluation_agent(*, use_fallback: bool = False) -> Agent:
     logger.info('Chief model: %s (use_fallback=%s)', model_name, use_fallback)
     return Agent(
         role="Chief Evaluation Officer",
-        goal="Generate executive_summary, strengths, weaknesses, recommended_fixes, deployment_roadmap.",
+        goal="Generate executive_summary, strengths, weaknesses, recommended_fixes, roadmap, deployment_roadmap.",
         backstory=CHIEF_BACKSTORY,
         llm=get_llm("chief", use_fallback=use_fallback),
         verbose=False,

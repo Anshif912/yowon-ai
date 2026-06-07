@@ -199,7 +199,9 @@ def validate_chief_verdict(
     if not data.get("blocking_issues"):
         data["blocking_issues"] = computed.get("blocking_issues", [])
     if not data.get("deployment_roadmap"):
-        data["deployment_roadmap"] = computed.get("deployment_roadmap", [])
+        data["deployment_roadmap"] = computed.get("deployment_roadmap") or computed.get("roadmap", [])
+    if not data.get("roadmap"):
+        data["roadmap"] = data.get("deployment_roadmap", [])
     if not data.get("recommended_fixes"):
         data["recommended_fixes"] = computed.get("recommended_fixes", [])
 
@@ -224,7 +226,8 @@ def _computed_to_chief(computed: dict[str, Any]) -> ChiefVerdict:
         contradictions=computed.get("contradictions", []),
         blocking_issues=computed.get("blocking_issues", []),
         recommended_fixes=computed.get("recommended_fixes", []),
-        deployment_roadmap=computed.get("deployment_roadmap", []),
+        roadmap=computed.get("roadmap", computed.get("deployment_roadmap", [])),
+        deployment_roadmap=computed.get("deployment_roadmap", computed.get("roadmap", [])),
         agent_scores=AgentScores(**computed["agent_scores"]),
         raw_agent_scores=AgentScores(**computed.get("raw_agent_scores", computed["agent_scores"])),
         calibrated_agent_scores=AgentScores(**computed.get("calibrated_agent_scores", computed["agent_scores"])),

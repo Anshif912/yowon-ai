@@ -1,4 +1,5 @@
 import type { Evaluation, ReportData, VerdictData } from '../types'
+import { normalizeDisplayList } from './listNormalizer.ts'
 
 function extractJson(text: string): VerdictData | null {
   const fenced = text.match(/```json\s*([\s\S]*?)\s*```/)
@@ -95,6 +96,9 @@ export function enrichReport(raw: ReportData): ReportData {
       : null
 
   const agentScores = parsed?.agent_scores ?? buildAgentScores(parsed, raw.evaluations)
+  const parsedRoadmap = normalizeDisplayList(parsed?.roadmap ?? parsed?.deployment_roadmap)
+  const fallbackRoadmap = extractBullets(chief?.findings ?? '', ['roadmap', 'deploy', 'phase', 'next step'])
+  const roadmap = parsedRoadmap.length ? parsedRoadmap : fallbackRoadmap
 
   const verdict_data: VerdictData = {
     ...parsed,
@@ -109,10 +113,8 @@ export function enrichReport(raw: ReportData): ReportData {
       parsed?.recommended_fixes?.length
         ? parsed.recommended_fixes
         : extractBullets(chief?.findings ?? '', ['recommend', 'fix', 'improve', 'action']),
-    deployment_roadmap:
-      parsed?.deployment_roadmap?.length
-        ? parsed.deployment_roadmap
-        : extractBullets(chief?.findings ?? '', ['roadmap', 'deploy', 'phase', 'next step']),
+    roadmap,
+    deployment_roadmap: roadmap,
     agent_scores: agentScores,
     executive_summary: parsed?.executive_summary ?? extractSummary(chief?.findings ?? ''),
     top_strengths: parsed?.top_strengths?.length

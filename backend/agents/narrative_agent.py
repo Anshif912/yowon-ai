@@ -10,7 +10,8 @@ logger = get_logger(__name__)
 NARRATIVE_BACKSTORY = """
 You are the Narrative Officer. You synthesize pre-computed numeric scores and
 specialist key findings into concise narrative outputs: executive_summary,
-top_strengths, top_weaknesses, recommended_fixes, deployment_roadmap.
+top_strengths, top_weaknesses, recommended_fixes, roadmap, deployment_roadmap.
+Roadmap fields must be arrays of full action-item strings, never one string.
 Do NOT compute or change any numeric scores, verdicts, or risk levels.
 Output ONLY a single JSON object. No markdown or extra text.
 """
@@ -21,7 +22,7 @@ def create_narrative_agent(*, use_fallback: bool = False) -> Agent:
     logger.info("Narrative model: %s (use_fallback=%s)", model_name, use_fallback)
     return Agent(
         role="Narrative Officer",
-        goal="Generate executive_summary, top_strengths, top_weaknesses, recommended_fixes, deployment_roadmap.",
+        goal="Generate executive_summary, top_strengths, top_weaknesses, recommended_fixes, roadmap, deployment_roadmap.",
         backstory=NARRATIVE_BACKSTORY,
         llm=get_llm("chief", use_fallback=use_fallback),
         verbose=False,

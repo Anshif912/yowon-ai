@@ -80,3 +80,30 @@ def test_chief_verdict_string_roadmap_is_not_split_into_characters():
         "Phase 2",
         "Harden security",
     ]
+    assert verdict.roadmap == verdict.deployment_roadmap
+
+
+def test_chief_verdict_accepts_standard_roadmap_alias():
+    scores = {
+        "technical": 70,
+        "security": 70,
+        "scalability": 70,
+        "innovation": 70,
+        "presentation": 70,
+        "impact": 70,
+    }
+    verdict = ChiefVerdict(
+        overall_score=70,
+        risk_level="MEDIUM",
+        verdict="IMPROVE",
+        agent_scores=scores,
+        raw_agent_scores=scores,
+        calibrated_agent_scores=scores,
+        roadmap=[
+            "Add automated tests",
+            "Improve documentation",
+            "Add CI/CD pipeline",
+            "Strengthen security controls",
+        ],
+    )
+    assert verdict.deployment_roadmap == verdict.roadmap

@@ -304,7 +304,8 @@ def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, An
         "executive_summary": "REJECT - INSUFFICIENT PROJECT CONTENT. Evaluation stopped before scoring because no meaningful project files were detected.",
         "final_reason": reason,
         "recommended_fixes": ["Add source code, documentation, or presentation material before re-running evaluation."],
-        "deployment_roadmap": ["Add evaluable project content", "Re-submit for Sentinel evaluation"],
+        "roadmap": ["Add meaningful project files", "Re-submit for Sentinel evaluation"],
+        "deployment_roadmap": ["Add meaningful project files", "Re-submit for Sentinel evaluation"],
         "contradictions": [],
     }
 

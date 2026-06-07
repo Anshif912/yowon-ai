@@ -28,6 +28,7 @@ class ChiefVerdictModel(BaseModel):
     contradictions: list[str] = Field(default_factory=list)
     blocking_issues: list[str] = Field(default_factory=list)
     recommended_fixes: list[str] = Field(default_factory=list)
+    roadmap: list[str] = Field(default_factory=list)
     deployment_roadmap: list[str] = Field(default_factory=list)
     agent_scores: AgentScoresModel
 
@@ -172,13 +173,16 @@ def merge_chief_verdict(parsed: dict[str, Any], computed: dict[str, Any]) -> dic
         "contradictions": parsed.get("contradictions") or computed.get("contradictions") or [],
         "blocking_issues": parsed.get("blocking_issues") or computed.get("blocking_issues") or [],
         "recommended_fixes": _normalize_string_list(parsed.get("recommended_fixes")),
-        "deployment_roadmap": _normalize_string_list(parsed.get("deployment_roadmap")),
+        "roadmap": _normalize_string_list(parsed.get("roadmap") or parsed.get("deployment_roadmap")),
+        "deployment_roadmap": _normalize_string_list(parsed.get("deployment_roadmap") or parsed.get("roadmap")),
     }
 
     if not merged["recommended_fixes"]:
         merged["recommended_fixes"] = _default_fixes(agent_scores)
+    if not merged["roadmap"]:
+        merged["roadmap"] = _default_roadmap(merged["verdict"])
     if not merged["deployment_roadmap"]:
-        merged["deployment_roadmap"] = _default_roadmap(merged["verdict"])
+        merged["deployment_roadmap"] = list(merged["roadmap"])
 
     return merged
 
@@ -194,7 +198,7 @@ def _normalize_string_list(value: Any) -> list[str]:
             elif isinstance(item, dict):
                 out.append(str(item.get("fix") or item.get("step") or item))
         return out[:8]
-    return [str(value)]
+    return [line.strip(" -\t") for line in str(value).splitlines() if line.strip(" -\t")]
 
 
 def _fallback_summary(computed: dict[str, Any]) -> str:
@@ -222,19 +226,19 @@ def _default_fixes(scores: dict[str, int]) -> list[str]:
 def _default_roadmap(verdict: str) -> list[str]:
     if verdict == "ACCEPT":
         return [
-            "Phase 1: Staging deployment with synthetic load tests",
-            "Phase 2: Security review and secrets management hardening",
-            "Phase 3: Canary release to limited production traffic",
-            "Phase 4: Full rollout with observability dashboards",
+            "Run staging deployment with synthetic load tests",
+            "Harden security review and secrets management",
+            "Configure canary release to limited production traffic",
+            "Prepare full rollout with observability dashboards",
         ]
     if verdict == "REJECT":
         return [
-            "Phase 1: Address blocking security and stability issues",
-            "Phase 2: Re-run Sentinel evaluation after fixes",
-            "Phase 3: Pilot deploy only after score exceeds 50",
+            "Address blocking security and stability issues",
+            "Re-run Sentinel evaluation after fixes",
+            "Pilot deploy only after score exceeds 50",
         ]
     return [
-        "Phase 1: Fix top blocking issues identified by the jury",
-        "Phase 2: Staging deployment with integration tests",
-        "Phase 3: Re-evaluate and proceed to canary release",
+        "Fix top blocking issues identified by the jury",
+        "Run staging deployment with integration tests",
+        "Re-evaluate and proceed to canary release",
     ]
