@@ -319,29 +319,76 @@ def _format_report_text(
 ) -> str:
     if hasattr(report, "model_dump"):
         payload = report.model_dump()
-        raw_scores = raw_scores or {}
         calibrated_scores = calibrated_scores or {}
-        score_fields = {
-            "technical": ("technical_score",),
-            "security": ("security_score",),
-            "innovation": ("innovation_score", "scalability_score"),
-            "presentation": ("presentation_score",),
-            "risk": ("impact_score",),
-        }
-        dimensions = {
-            "technical": ("technical",), "security": ("security",),
-            "innovation": ("innovation", "scalability"),
-            "presentation": ("presentation",), "risk": ("impact",),
-        }
-        for field, dimension in zip(score_fields.get(name, ()), dimensions.get(name, ())):
-            payload[field] = calibrated_scores.get(dimension, payload.get(field, 0))
-        payload["raw_scores"] = {d: raw_scores.get(d, 0) for d in dimensions.get(name, ())}
-        payload["calibrated_scores"] = {d: calibrated_scores.get(d, 0) for d in dimensions.get(name, ())}
-        payload["calibration_reasons"] = {
-            d: (calibration_reasons or {}).get(d, []) for d in dimensions.get(name, ())
-        }
-        return json.dumps(payload, indent=2)
+        if name == "technical":
+            payload["technical_score"] = calibrated_scores.get("technical", payload.get("technical_score", 0))
+            return _professional_section("Technical Analysis", [
+                ("Technical Score", f"{payload.get('technical_score', 0)}/100"),
+                ("Strengths", payload.get("strengths", [])),
+                ("Weaknesses", payload.get("weaknesses", [])),
+                ("Risks", payload.get("risks", [])),
+                ("Confidence", f"{round(float(payload.get('confidence', 0)) * 100)}%"),
+            ])
+        if name == "security":
+            payload["security_score"] = calibrated_scores.get("security", payload.get("security_score", 0))
+            return _professional_section("Security Analysis", [
+                ("Security Score", f"{payload.get('security_score', 0)}/100"),
+                ("Risk Level", payload.get("risk_level", "MEDIUM")),
+                ("Findings", payload.get("critical_findings", [])),
+                ("Recommendations", _recommendations_from_findings(payload.get("critical_findings", []), "Run a security review and document controls.")),
+                ("Confidence", f"{round(float(payload.get('confidence', 0)) * 100)}%"),
+            ])
+        if name == "innovation":
+            payload["innovation_score"] = calibrated_scores.get("innovation", payload.get("innovation_score", 0))
+            payload["scalability_score"] = calibrated_scores.get("scalability", payload.get("scalability_score", 0))
+            return _professional_section("Innovation Analysis", [
+                ("Innovation Score", f"{payload.get('innovation_score', 0)}/100"),
+                ("Scalability Score", f"{payload.get('scalability_score', 0)}/100"),
+                ("Differentiators", payload.get("differentiators", [])),
+                ("Risks", [payload.get("scalability_risk", "")] if payload.get("scalability_risk") else []),
+                ("Recommendations", ["Document novelty, baseline comparison, and scale assumptions."]),
+                ("Confidence", f"{round(float(payload.get('confidence', 0)) * 100)}%"),
+            ])
+        if name == "presentation":
+            payload["presentation_score"] = calibrated_scores.get("presentation", payload.get("presentation_score", 0))
+            return _professional_section("Presentation Analysis", [
+                ("Presentation Score", f"{payload.get('presentation_score', 0)}/100"),
+                ("Strengths", payload.get("strengths", [])),
+                ("Improvements", payload.get("improvements", [])),
+                ("Confidence", f"{round(float(payload.get('confidence', 0)) * 100)}%"),
+            ])
+        if name == "risk":
+            payload["impact_score"] = calibrated_scores.get("impact", payload.get("impact_score", 0))
+            return _professional_section("Impact Analysis", [
+                ("Impact Score", f"{payload.get('impact_score', 0)}/100"),
+                ("Top Risks", payload.get("top_risks", [])),
+                ("Expected Impact", payload.get("failure_modes", [])),
+                ("Confidence", f"{round(float(payload.get('confidence', 0)) * 100)}%"),
+            ])
     return raw
+
+
+def _professional_section(title: str, fields: list[tuple[str, Any]]) -> str:
+    lines = [title]
+    for label, value in fields:
+        lines.append("")
+        lines.append(f"{label}:")
+        if isinstance(value, list):
+            items = [str(item).strip() for item in value if str(item).strip()]
+            if not items:
+                lines.append("- None evidenced.")
+            else:
+                lines.extend(f"- {item}" for item in items)
+        else:
+            text = str(value).strip() if value is not None else ""
+            lines.append(text or "None evidenced.")
+    return "\n".join(lines)
+
+
+def _recommendations_from_findings(findings: list[str], fallback: str) -> list[str]:
+    if not findings:
+        return [fallback]
+    return [f"Address finding: {item}" for item in findings[:5]]
 
 
 def run_evaluation(
@@ -604,19 +651,17 @@ def run_evaluation(
         "presentation": _format_report_text("presentation", presentation, raw_outputs["presentation"], raw_score_map, calibrated_score_map, calibration_reasons),
         "risk": _format_report_text("risk", risk, raw_outputs["risk"], raw_score_map, calibrated_score_map, calibration_reasons),
         "ppt": _format_report_text("presentation", presentation, raw_outputs["presentation"], raw_score_map, calibrated_score_map, calibration_reasons),
-        "impact": json.dumps(
-            {"impact_score": calibrated_score_map["impact"], "raw_impact_score": raw_score_map["impact"], "top_risks": risk.top_risks},
-            indent=2,
-        ),
+        "impact": _professional_section("Impact Analysis", [
+            ("Impact Score", f"{calibrated_score_map['impact']}/100"),
+            ("Top Risks", risk.top_risks),
+            ("Expected Impact", risk.failure_modes),
+        ]),
         "failure": "\n".join(f"- {m}" for m in risk.failure_modes),
-        "scalability": json.dumps(
-            {
-                "scalability_score": calibrated_score_map["scalability"],
-                "raw_scalability_score": raw_score_map["scalability"],
-                "scalability_risk": innovation.scalability_risk,
-            },
-            indent=2,
-        ),
+        "scalability": _professional_section("Scalability Assessment", [
+            ("Scalability Score", f"{calibrated_score_map['scalability']}/100"),
+            ("Risks", [innovation.scalability_risk] if innovation.scalability_risk else []),
+            ("Recommendations", ["Validate capacity assumptions with load tests and deployment evidence."]),
+        ]),
         "cross_exam": cross_exam,
         "chief_evaluation": json.dumps(verdict_dict, indent=2),
         "verdict": verdict_dict,

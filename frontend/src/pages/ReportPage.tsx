@@ -24,7 +24,7 @@ import { getDemoReport } from '../utils/demoData'
 import {
   getRadarData, computeConsensus, scoreColor,
 } from '../utils/reportParser'
-import type { AgentScores, Evaluation, ReportData } from '../types'
+import type { Evaluation, ReportData } from '../types'
 
 const AGENT_META: Record<string, { icon: ElementType; label: string; color: string }> = {
   engineering: { icon: Cpu, label: 'Engineering', color: '#A855F7' },
@@ -43,7 +43,7 @@ const AGENT_META: Record<string, { icon: ElementType; label: string; color: stri
   cross_exam: { icon: Activity, label: 'Cross Exam', color: '#8B5CF6' },
 }
 
-function AgentCard({ agentKey, evaluation, rawScore }: { agentKey: string; evaluation: Evaluation; rawScore?: number }) {
+function AgentCard({ agentKey, evaluation }: { agentKey: string; evaluation: Evaluation }) {
   const [expanded, setExpanded] = useState(false)
   const meta = AGENT_META[agentKey] || { icon: Shield, label: agentKey, color: '#64748B' }
   const Icon = meta.icon
@@ -78,11 +78,6 @@ function AgentCard({ agentKey, evaluation, rawScore }: { agentKey: string; evalu
                 <span className="text-xs font-mono" style={{ color: scoreColor(score) }}>
                   {score.toFixed(0)}/100
                 </span>
-                {rawScore != null && rawScore !== score && (
-                  <span className="text-[10px] font-mono text-sentinel-muted" title="Raw LLM score before evidence calibration">
-                    raw {rawScore.toFixed(0)}
-                  </span>
-                )}
               </div>
             )}
           </div>
@@ -103,14 +98,6 @@ function AgentCard({ agentKey, evaluation, rawScore }: { agentKey: string; evalu
       )}
     </motion.div>
   )
-}
-
-function getRawAgentScore(scores: AgentScores | undefined, agentKey: string): number | undefined {
-  const dimension = agentKey === 'risk' ? 'impact' : agentKey
-  if (!['technical', 'security', 'scalability', 'innovation', 'presentation', 'impact'].includes(dimension)) {
-    return undefined
-  }
-  return scores?.[dimension as keyof AgentScores]
 }
 
 interface ReportPageProps {
@@ -232,6 +219,19 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
           </motion.div>
         )}
 
+        {vd?.status === 'INSUFFICIENT_EVIDENCE' && (
+          <motion.div
+            className="glass-card border border-red-500/25 px-4 py-4 text-sm"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <p className="text-red-300 font-display font-semibold">Insufficient Evidence</p>
+            <p className="text-sentinel-muted text-sm mt-1">
+              {vd.final_reason || 'Repository contains no evaluable content.'}
+            </p>
+          </motion.div>
+        )}
+
         {/* Title */}
         <motion.div
           className="text-center"
@@ -329,16 +329,6 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                 <div><h3 className="text-amber-300 mb-2">Penalties</h3>{(vd?.penalties ?? []).map(x => <p key={`${x.dimension}-${x.factor}`} className="text-sentinel-muted mb-1">{x.dimension ? `${x.dimension}: ` : ''}{x.factor}{x.points != null ? ` (-${x.points})` : ''}</p>)}</div>
                 <div><h3 className="text-red-300 mb-2">Missing evidence</h3>{(vd?.missing_evidence ?? []).map(x => <p key={x} className="text-sentinel-muted mb-1">{x}</p>)}</div>
               </div>
-              {(vd?.calibration_adjustments ?? []).length > 0 && (
-                <div className="mt-5 pt-5 border-t border-white/5">
-                  <h3 className="text-amber-300 mb-2 text-sm">Calibration Adjustments</h3>
-                  {(vd?.calibration_adjustments ?? []).slice(0, 8).map(x => (
-                    <p key={`${x.dimension}-${x.factor}`} className="text-sentinel-muted text-sm mb-1">
-                      {x.dimension ? `${x.dimension}: ` : ''}{x.factor}{x.points != null ? ` (-${x.points})` : ''}
-                    </p>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* Analytics row */}
@@ -423,7 +413,6 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                     key={key}
                     agentKey={key}
                     evaluation={ev}
-                    rawScore={getRawAgentScore(vd?.raw_agent_scores, key)}
                   />
                 ))}
               </div>

@@ -13,14 +13,20 @@ export function useEvaluationPoll(
     if (!projectId) return
 
     let cancelled = false
+    let terminal = false
 
     const poll = async () => {
       try {
+        if (terminal) return
         const data = await getStatus(projectId)
         if (cancelled) return
         setStatus(data.status as ProjectStatus)
         setProjectName(data.name)
-        if (data.status === 'done') onComplete?.(projectId)
+        if (data.status === 'done') {
+          terminal = true
+          onComplete?.(projectId)
+        }
+        if (data.status === 'failed') terminal = true
       } catch {
         /* retry on next interval */
       }

@@ -160,6 +160,61 @@ def test_tiny_repository_stays_low_score():
     assert result["confidence"] <= 40
 
 
+def test_tiny_incomplete_project_score_ceiling():
+    tiny_incomplete = evidence_with(
+        repository_statistics={
+            "total_files": 6,
+            "code_files": 3,
+            "documentation_files": 1,
+            "presentation_files": 0,
+            "test_files": 0,
+            "configuration_files": 1,
+            "deployment_files": 0,
+            "source_modules": 1,
+            "meaningful_files": 6,
+            "repository_completeness_score": 42,
+        },
+        tiny_repository=True,
+        tiny_incomplete_project=True,
+        repository_completeness_score=42,
+        repository_coverage=42,
+        checks={
+            "architecture": False,
+            "multiple_components": False,
+            "tests": False,
+            "deployment": False,
+        },
+    )
+    result = compute_overall(*reports(95), project_type="Hackathon Project", evidence=tiny_incomplete)
+    assert result["overall_score"] <= 50
+    assert result["confidence"] <= 50
+
+
+def test_small_academic_project_score_ceiling():
+    small_academic = evidence_with(
+        repository_statistics={
+            "total_files": 12,
+            "code_files": 6,
+            "documentation_files": 2,
+            "presentation_files": 0,
+            "test_files": 1,
+            "configuration_files": 1,
+            "deployment_files": 0,
+            "source_modules": 2,
+            "meaningful_files": 10,
+            "repository_completeness_score": 64,
+        },
+        tiny_repository=False,
+        tiny_incomplete_project=False,
+        small_repository=True,
+        small_academic_project=True,
+        repository_completeness_score=64,
+        repository_coverage=64,
+    )
+    result = compute_overall(*reports(98), project_type="University Project", evidence=small_academic)
+    assert result["overall_score"] <= 70
+
+
 def test_startup_pitch_without_business_evidence_is_penalized():
     no_business = evidence_with(checks={
         "market_evidence": False,
@@ -209,6 +264,7 @@ def test_exceptional_score_requires_all_core_evidence():
     assert full["overall_score"] >= 90
     assert full["score_band"] == "Exceptional"
     assert missing_tests["overall_score"] <= 85
+    assert missing_tests["agent_scores"]["technical"] <= 70
 
 
 def test_confidence_tracks_evidence_completeness():

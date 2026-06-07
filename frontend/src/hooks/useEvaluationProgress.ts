@@ -134,6 +134,7 @@ export function useEvaluationProgress(
 
 
     let cancelled = false
+    let terminal = false
 
     let es: EventSource | null = null
 
@@ -142,6 +143,7 @@ export function useEvaluationProgress(
     const pollStatus = async () => {
 
       try {
+        if (terminal) return
 
         const data = await getStatus(projectId)
 
@@ -159,6 +161,10 @@ export function useEvaluationProgress(
         setReportError(re)
 
         applyStatus(data.status as ProjectStatus, { reportStatus: rs, reportError: re })
+        if (data.status === 'done' || data.status === 'failed') {
+          terminal = true
+          es?.close()
+        }
 
         if (data.progress) {
 
@@ -254,11 +260,17 @@ export function useEvaluationProgress(
 
       if (payload.status === 'done') {
 
+        terminal = true
+        es?.close()
         applyStatus('done', { reportStatus: rs, reportError: re })
 
       }
 
-      if (payload.status === 'failed') applyStatus('failed')
+      if (payload.status === 'failed') {
+        terminal = true
+        es?.close()
+        applyStatus('failed', { reportStatus: rs, reportError: re })
+      }
 
     })
 

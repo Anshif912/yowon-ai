@@ -164,10 +164,13 @@ def build_evidence_profile(ctx: dict[str, Any], parse_sources: dict[str, str] | 
         "competitive_analysis": any(x in evidence_text for x in ("competitor", "competitive", "alternative", "market map")),
         "contribution_readiness": any(x in evidence_text for x in ("contributing", "code of conduct", "issue template", "pull request", "license")),
     }
-    total_meaningful = stats["code_files"] + stats["documentation_files"] + stats["presentation_files"] + stats["configuration_files"]
-    empty_repository = (has_repo and not total_meaningful and not has_meaningful_text) or (
-        not has_repo and not has_meaningful_text
+    evaluable_files = (
+        stats["meaningful_files"]
+        + stats["code_files"]
+        + stats["documentation_files"]
+        + stats["presentation_files"]
     )
+    empty_repository = evaluable_files == 0 and not has_meaningful_text
     available = sum((repository_has_content, bool(description.strip()), bool(ctx.get("pdf")), bool(ctx.get("ppt")), security_evidence))
     repository_coverage = min(100, stats["repository_completeness_score"] if "repository_completeness_score" in stats else (
         min(35, stats["code_files"] * 6)
@@ -194,8 +197,17 @@ def build_evidence_profile(ctx: dict[str, Any], parse_sources: dict[str, str] | 
         "has_repository": has_repo,
         "repository_has_content": repository_has_content,
         "empty_repository": empty_repository,
-        "tiny_repository": 0 < stats["meaningful_files"] <= 3,
-        "small_repository": 4 <= stats["meaningful_files"] <= 8,
+        "trivial_repository": 0 < stats["meaningful_files"] <= 3 and completeness_score < 35,
+        "tiny_repository": 0 < stats["meaningful_files"] <= 8,
+        "tiny_incomplete_project": 0 < stats["meaningful_files"] <= 8 and (
+            completeness_score < 55
+            or not checks["architecture"]
+            or not checks["documentation"]
+            or not checks["tests"]
+        ),
+        "small_repository": 9 <= stats["meaningful_files"] <= 15,
+        "small_academic_project": 4 <= stats["meaningful_files"] <= 15 and rubric_like_academic(ctx.get("project_type")),
+        "complete_project": completeness_score >= 75 and stats["code_files"] >= 4 and checks["documentation"] and checks["tests"],
         "incomplete_project": not checks["source_code"] and not checks["documentation"],
         "data_availability": round(available / 5 * 100),
         "repository_coverage": repository_coverage,
@@ -205,11 +217,16 @@ def build_evidence_profile(ctx: dict[str, Any], parse_sources: dict[str, str] | 
     }
 
 
+def rubric_like_academic(project_type: str | None) -> bool:
+    return str(project_type or "").strip() in {"University Project", "Research Project", "Hackathon Project"}
+
+
 def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, Any] | None = None) -> dict[str, Any]:
     evidence = evidence or build_evidence_profile(ctx)
     zero_scores = {key: 0 for key in DIMENSIONS}
     reason = "Repository contains no evaluable content."
     return {
+        "status": "INSUFFICIENT_EVIDENCE",
         "overall_score": 0,
         "raw_weighted_score": 0,
         "verdict": "REJECT",
@@ -234,6 +251,7 @@ def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, An
         "top_strengths": [],
         "top_weaknesses": [reason],
         "executive_summary": "Evaluation rejected before agent execution. Repository contains no evaluable content.",
+        "final_reason": reason,
         "recommended_fixes": ["Add source code, documentation, or presentation material before re-running evaluation."],
         "deployment_roadmap": ["Add evaluable project content", "Re-submit for Sentinel evaluation"],
         "contradictions": [],
@@ -287,6 +305,7 @@ def calibrate_agent_scores(
         cap("security", 30, "No substantive repository evidence")
         cap("scalability", 35, "No substantive repository evidence")
     if not checks.get("tests"):
+        cap("technical", 70, "No test evidence: technical score capped at 70")
         deduct("technical", 8, "No test evidence")
     if not checks.get("security_practices"):
         deduct("security", 12, "No security-practice evidence")
@@ -385,10 +404,16 @@ def compute_overall(
     if missing_for_90 and overall > 85:
         penalties.append({"factor": f"Exceptional score gate missing: {', '.join(missing_for_90)}", "dimension": "overall"})
         overall = 85
-    if evidence.get("tiny_repository") and overall > 80:
-        penalties.append({"factor": "Tiny repository maximum score cap", "dimension": "overall"})
-        overall = 80
-    if evidence.get("small_repository") and overall > 75:
+    if evidence.get("trivial_repository") and overall > 25:
+        penalties.append({"factor": "1-3 trivial files maximum score cap", "dimension": "overall"})
+        overall = 25
+    elif evidence.get("tiny_incomplete_project") and overall > 50:
+        penalties.append({"factor": "Tiny incomplete project maximum score cap", "dimension": "overall"})
+        overall = 50
+    elif evidence.get("small_academic_project") and overall > 70:
+        penalties.append({"factor": "Small academic project maximum score cap", "dimension": "overall"})
+        overall = 70
+    elif evidence.get("small_repository") and overall > 75:
         penalties.append({"factor": "Small project maximum score cap", "dimension": "overall"})
         overall = 75
     if evidence.get("incomplete_project") and overall > 60:
@@ -397,9 +422,6 @@ def compute_overall(
     if evidence.get("empty_repository"):
         overall = 0
         penalties.append({"factor": "Repository contains no evaluable content.", "dimension": "overall"})
-    if evidence.get("tiny_repository") and evidence.get("repository_completeness_score", 0) < 25 and overall > 25:
-        penalties.append({"factor": "1-3 trivial files maximum score cap", "dimension": "overall"})
-        overall = 25
 
     overall = round(max(0, overall))
     label = _score_band(overall)
@@ -442,8 +464,10 @@ def _confidence(agent_map: dict[str, int], evidence: dict[str, Any]) -> int:
     )
     if evidence.get("empty_repository"):
         return min(confidence, 19)
-    if evidence.get("tiny_repository"):
+    if evidence.get("trivial_repository"):
         return min(confidence, 40)
+    if evidence.get("tiny_incomplete_project"):
+        return min(confidence, 50)
     if evidence.get("small_repository"):
         return min(confidence, 70)
     if evidence.get("repository_completeness_score", 0) >= 80 and evidence.get("data_availability", 0) >= 80:
