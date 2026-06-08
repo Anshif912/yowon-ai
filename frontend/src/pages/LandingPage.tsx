@@ -58,8 +58,8 @@ export default function LandingPage() {
           transition={{ duration: 0.6 }}
         >
           <Radio size={14} className="text-emerald-400 animate-pulse" />
-          <span className="text-xs font-mono text-sentinel-muted tracking-widest uppercase">
-            Multi-Agent AI · Deployment Intelligence
+          <span className="text-xs font-mono text-yowon-muted tracking-widest uppercase">
+            Multi-Agent AI Â· Deployment Intelligence
           </span>
         </motion.div>
 
@@ -71,7 +71,7 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              <span className="gradient-text">Project Sentinel</span>
+              <span className="gradient-text">YOWON AI</span>
             </motion.h1>
 
             <motion.p
@@ -80,17 +80,17 @@ export default function LandingPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
             >
-              Know if you&apos;re ready to deploy — before production does.
+              Know if you&apos;re ready to deploy â€” before production does.
             </motion.p>
 
             <motion.p
-              className="text-sentinel-muted text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+              className="text-yowon-muted text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
             >
               Upload code, docs, and decks. Our AI jury runs in parallel across engineering,
-              security, innovation, and risk — then delivers one clear deployment verdict.
+              security, innovation, and risk â€” then delivers one clear deployment verdict.
             </motion.p>
 
             <motion.div
@@ -99,12 +99,12 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
             >
-              <Link to="/submit" className="sentinel-btn-primary flex items-center justify-center gap-2 text-base px-8">
+              <Link to="/submit" className="yowon-btn-primary flex items-center justify-center gap-2 text-base px-8">
                 <Zap size={18} />
                 Start Evaluation
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/demo" className="sentinel-btn-ghost">
+              <Link to="/demo" className="yowon-btn-ghost">
                 <Play size={16} className="text-amber-400" />
                 View Demo
               </Link>
@@ -122,8 +122,8 @@ export default function LandingPage() {
                   className="glass-card p-3 sm:p-4 text-center !rounded-xl border-white/[0.06]"
                 >
                   <Icon size={16} className={`mx-auto mb-2 ${color}`} />
-                  <p className="text-xl sm:text-2xl font-display font-bold text-sentinel-text">{value}</p>
-                  <p className="text-[10px] sm:text-xs text-sentinel-muted mt-0.5 leading-tight">{label}</p>
+                  <p className="text-xl sm:text-2xl font-display font-bold text-yowon-text">{value}</p>
+                  <p className="text-[10px] sm:text-xs text-yowon-muted mt-0.5 leading-tight">{label}</p>
                 </div>
               ))}
             </motion.div>
@@ -137,13 +137,13 @@ export default function LandingPage() {
           >
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-amber-500/10 blur-2xl" />
             <div className="relative glass-card p-6 sm:p-8 neon-border">
-              <p className="text-xs font-mono text-sentinel-muted uppercase tracking-widest mb-4 text-center">
+              <p className="text-xs font-mono text-yowon-muted uppercase tracking-widest mb-4 text-center">
                 Live agent mesh
               </p>
               <NeuralNetwork />
               <ul className="mt-6 space-y-2">
                 {['Parallel specialist analysis', 'Cross-examined findings', 'Unified readiness score'].map(item => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-sentinel-muted">
+                  <li key={item} className="flex items-center gap-2 text-sm text-yowon-muted">
                     <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
                     {item}
                   </li>
@@ -168,8 +168,8 @@ export default function LandingPage() {
               <div className={`w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center mb-4 ${iconColor}`}>
                 <Icon size={22} />
               </div>
-              <h3 className="font-display font-semibold text-lg text-sentinel-text mb-2">{title}</h3>
-              <p className="text-sm text-sentinel-muted leading-relaxed">{desc}</p>
+              <h3 className="font-display font-semibold text-lg text-yowon-text mb-2">{title}</h3>
+              <p className="text-sm text-yowon-muted leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -183,10 +183,10 @@ export default function LandingPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-sentinel-text mb-3">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-yowon-text mb-3">
               Your AI Evaluation Jury
             </h2>
-            <p className="text-sentinel-muted max-w-lg mx-auto">
+            <p className="text-yowon-muted max-w-lg mx-auto">
               Ten specialized agents analyze every dimension of deployment readiness in parallel.
             </p>
           </motion.div>
@@ -205,10 +205,10 @@ export default function LandingPage() {
           <h2 className="text-2xl sm:text-3xl font-display font-bold mb-3">
             Ready for <span className="gradient-text">Deployment Intelligence</span>?
           </h2>
-          <p className="text-sentinel-muted mb-6 max-w-md mx-auto">
-            Get a board-ready verdict in minutes — not weeks of manual review cycles.
+          <p className="text-yowon-muted mb-6 max-w-md mx-auto">
+            Get a board-ready verdict in minutes â€” not weeks of manual review cycles.
           </p>
-          <Link to="/submit" className="sentinel-btn-primary inline-flex items-center gap-2">
+          <Link to="/submit" className="yowon-btn-primary inline-flex items-center gap-2">
             Launch Evaluation <ArrowRight size={16} />
           </Link>
         </motion.div>

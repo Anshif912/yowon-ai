@@ -1,5 +1,5 @@
 """
-config.py — Central configuration for Project Sentinel.
+config.py â€” Central configuration for YOWON AI.
 """
 
 import os
@@ -44,7 +44,7 @@ OLLAMA_PARALLEL: int = int(os.getenv("OLLAMA_PARALLEL", "2"))
 AGENT_MAX_RETRIES: int = int(os.getenv("AGENT_MAX_RETRIES", "2"))
 AGENT_RETRY_DELAY_SEC: float = float(os.getenv("AGENT_RETRY_DELAY_SEC", "1.5"))
 
-# CrewAI agent limits — single LLM pass, up to 10 minutes per agent
+# CrewAI agent limits â€” single LLM pass, up to 10 minutes per agent
 AGENT_MAX_ITER: int = int(os.getenv("AGENT_MAX_ITER", "1"))
 AGENT_MAX_EXECUTION_TIME: int = int(os.getenv("AGENT_MAX_EXECUTION_TIME", "600"))
 CHIEF_MAX_EXECUTION_TIME: int = int(os.getenv("CHIEF_MAX_EXECUTION_TIME", "600"))
@@ -63,10 +63,10 @@ CHIEF_MODEL_CHAIN: str = os.getenv(
 
 DATABASE_URL: str = os.getenv(
     "DATABASE_URL",
-    f"sqlite:///{BASE_DIR}/sentinel.db",
+    f"sqlite:///{BASE_DIR}/yowon.db",
 )
 
-CHROMA_COLLECTION_NAME: str = "sentinel_projects"
+CHROMA_COLLECTION_NAME: str = "yowon_projects"
 
 CORS_ORIGINS: list[str] = os.getenv(
     "CORS_ORIGINS",

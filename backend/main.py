@@ -1,5 +1,5 @@
 """
-main.py — FastAPI application for Project Sentinel.
+main.py â€” FastAPI application for YOWON AI.
 """
 from __future__ import annotations
 
@@ -53,8 +53,8 @@ setup_logging(LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
-    title="Project Sentinel API",
-    description="AI-Powered Deployment Readiness Evaluator",
+    title="YOWON AI API",
+    description="Autonomous AI Jury Platform",
     version="2.2.0",
 )
 
@@ -253,7 +253,7 @@ def _run_evaluation_background(project_id: str) -> None:
 
         verdict = results.get("verdict", {})
         if not verdict or verdict.get("overall_score") is None:
-            raise RuntimeError("Evaluation produced no verdict — cannot persist results")
+            raise RuntimeError("Evaluation produced no verdict â€” cannot persist results")
 
         score_map = _agent_score_map(verdict)
 
@@ -525,14 +525,14 @@ async def download_pdf(project_id: str, db: Session = Depends(get_db)):
     return FileResponse(
         path=str(pdf_path),
         media_type="application/pdf",
-        filename=f"sentinel_report_{project_id[:8]}.pdf",
+        filename=f"yowon_report_{project_id[:8]}.pdf",
     )
 
 
 @app.get("/", include_in_schema=False)
 async def root():
     return {
-        "service": "Project Sentinel API",
+        "service": "YOWON AI API",
         "version": "2.2.0",
         "docs": "/docs",
         "health": "/health",
@@ -544,7 +544,7 @@ async def health():
     report = run_preflight_checks()
     return {
         "status": "ok" if report.ok else "degraded",
-        "service": "Project Sentinel",
+        "service": "YOWON AI",
         "version": "2.3.0",
         "ollama_models": report.ollama_models,
         "errors": report.errors,

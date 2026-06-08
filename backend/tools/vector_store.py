@@ -1,12 +1,12 @@
 """
-vector_store.py — ChromaDB integration for Project Sentinel.
+vector_store.py â€” ChromaDB integration for YOWON AI.
 
 Stores project context documents as vector embeddings so agents can
 retrieve semantically-relevant snippets rather than reading the entire
 raw context every time.
 
 Collections:
-  - sentinel_projects  (one document per project)
+  - yowon_projects  (one document per project)
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ from chromadb.config import Settings
 from config import CHROMA_DIR, CHROMA_COLLECTION_NAME
 
 
-# ── Singleton client ─────────────────────────────────────────────────────────
+# â”€â”€ Singleton client â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 _client: Optional[chromadb.PersistentClient] = None
 
 
@@ -34,7 +34,7 @@ def _get_client() -> chromadb.PersistentClient:
 
 
 def _get_collection():
-    """Return (or create) the main Sentinel collection."""
+    """Return (or create) the main YOWON AI collection."""
     client = _get_client()
     return client.get_or_create_collection(
         name=CHROMA_COLLECTION_NAME,
@@ -42,7 +42,7 @@ def _get_collection():
     )
 
 
-# ── Public API ───────────────────────────────────────────────────────────────
+# â”€â”€ Public API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def store_project_context(project_id: str, text: str, metadata: dict | None = None) -> None:
     """

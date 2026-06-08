@@ -45,7 +45,7 @@ API_TERMS = ("fastapi", "flask", "django", "express", "router", "endpoint", "api
 
 
 def _clean_structure_item(item: str) -> str:
-    return str(item).replace("📁", "").replace("📄", "").strip()
+    return str(item).replace("ðŸ“", "").replace("ðŸ“„", "").strip()
 
 
 def _suffix(path: str) -> str:
@@ -304,8 +304,8 @@ def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, An
         "executive_summary": "REJECT - INSUFFICIENT PROJECT CONTENT. Evaluation stopped before scoring because no meaningful project files were detected.",
         "final_reason": reason,
         "recommended_fixes": ["Add source code, documentation, or presentation material before re-running evaluation."],
-        "roadmap": ["Add meaningful project files", "Re-submit for Sentinel evaluation"],
-        "deployment_roadmap": ["Add meaningful project files", "Re-submit for Sentinel evaluation"],
+        "roadmap": ["Add meaningful project files", "Re-submit for YOWON AI evaluation"],
+        "deployment_roadmap": ["Add meaningful project files", "Re-submit for YOWON AI evaluation"],
         "contradictions": [],
     }
 

@@ -1,5 +1,5 @@
 """
-tools/parser.py — Central data bundler for Project Sentinel.
+tools/parser.py â€” Central data bundler for YOWON AI.
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ def build_project_context(
 
 
 def context_to_text(ctx: dict[str, Any]) -> str:
-    """Flatten context for Chroma — compact summaries only."""
+    """Flatten context for Chroma â€” compact summaries only."""
     parts: list[str] = []
 
     parts.append(f"# Project: {ctx.get('project_name', 'Unknown')}")

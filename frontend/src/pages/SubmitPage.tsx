@@ -96,15 +96,15 @@ export default function SubmitPage() {
         >
           <div className="inline-flex items-center gap-2 glass-pill px-3 py-1.5 mb-4 border-pink-500/20">
             <Sparkles size={12} className="text-amber-400" />
-            <span className="text-[10px] font-mono text-sentinel-muted uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-yowon-muted uppercase tracking-widest">
               Evaluation intake
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-display font-bold mb-3">
             <span className="gradient-text">Submit Your Project</span>
           </h1>
-          <p className="text-sentinel-muted max-w-md mx-auto">
-            Tell us about your build. The AI jury needs at least one source — repo, description, or docs.
+          <p className="text-yowon-muted max-w-md mx-auto">
+            Tell us about your build. The AI jury needs at least one source â€” repo, description, or docs.
           </p>
         </motion.div>
 
@@ -134,7 +134,7 @@ export default function SubmitPage() {
                   </div>
                   <span
                     className={`text-[10px] sm:text-xs font-mono uppercase tracking-wider hidden sm:block ${
-                      active ? 'text-violet-300' : 'text-sentinel-muted'
+                      active ? 'text-violet-300' : 'text-yowon-muted'
                     }`}
                   >
                     {step.label}
@@ -143,7 +143,7 @@ export default function SubmitPage() {
                 {i < STEPS.length - 1 && (
                   <div
                     className={`w-8 sm:w-16 h-px mb-5 sm:mb-0 ${
-                      done ? 'bg-gradient-to-r from-emerald-500/60 to-violet-500/40' : 'bg-sentinel-border'
+                      done ? 'bg-gradient-to-r from-emerald-500/60 to-violet-500/40' : 'bg-yowon-border'
                     }`}
                   />
                 )}
@@ -167,41 +167,41 @@ export default function SubmitPage() {
             </h2>
 
             <div>
-              <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
+              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
                 Project Name <span className="text-pink-400">*</span>
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                placeholder="e.g. MediAssist — AI-Powered Triage App"
-                className="sentinel-input"
+                placeholder="e.g. MediAssist â€” AI-Powered Triage App"
+                className="yowon-input"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
+              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
                 Project Type <span className="text-pink-400">*</span>
               </label>
               <select
                 value={projectType}
                 onChange={e => setProjectType(e.target.value as ProjectType)}
-                className="sentinel-input"
+                className="yowon-input"
               >
                 {PROJECT_TYPES.map(type => <option key={type} value={type}>{type}</option>)}
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
+              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
                 Description
               </label>
               <textarea
                 value={description}
                 onChange={e => setDescription(e.target.value)}
                 placeholder="Describe what your project does, the problem it solves, and your tech stack..."
-                className="sentinel-input min-h-[100px] resize-y"
+                className="yowon-input min-h-[100px] resize-y"
                 rows={4}
               />
             </div>
@@ -221,33 +221,33 @@ export default function SubmitPage() {
             </h2>
 
             <div>
-              <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
+              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
                 GitHub Repository URL
               </label>
               <div className="relative">
-                <Github size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-sentinel-muted" />
+                <Github size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-yowon-muted" />
                 <input
                   type="url"
                   value={githubUrl}
                   onChange={e => setGithubUrl(e.target.value)}
                   placeholder="https://github.com/username/repository"
-                  className="sentinel-input pl-9"
+                  className="yowon-input pl-9"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
-                Demo Video URL <span className="text-xs text-sentinel-muted/80">(optional)</span>
+              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
+                Demo Video URL <span className="text-xs text-yowon-muted/80">(optional)</span>
               </label>
               <div className="relative">
-                <Link size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-sentinel-muted" />
+                <Link size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-yowon-muted" />
                 <input
                   type="url"
                   value={demoUrl}
                   onChange={e => setDemoUrl(e.target.value)}
                   placeholder="https://youtube.com/watch?v=..."
-                  className="sentinel-input pl-9"
+                  className="yowon-input pl-9"
                 />
               </div>
             </div>
@@ -298,7 +298,7 @@ export default function SubmitPage() {
 
           {loading && (
             <div className="glass-card p-4 border border-violet-500/20">
-              <div className="flex justify-between text-xs font-mono text-sentinel-muted mb-2">
+              <div className="flex justify-between text-xs font-mono text-yowon-muted mb-2">
                 <span>
                   {uploadPhase === 1 ? 'Uploading project...' :
                    uploadPhase === 2 ? 'Triggering evaluation...' :
@@ -306,7 +306,7 @@ export default function SubmitPage() {
                 </span>
                 <span className="text-violet-300">{uploadPhase * 33}%</span>
               </div>
-              <div className="h-1.5 rounded-full bg-sentinel-border overflow-hidden">
+              <div className="h-1.5 rounded-full bg-yowon-border overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400"
                   animate={{ width: `${uploadPhase * 33}%` }}
@@ -318,7 +318,7 @@ export default function SubmitPage() {
           <motion.button
             type="submit"
             disabled={loading}
-            className="sentinel-btn-primary w-full flex items-center justify-center gap-2 text-base"
+            className="yowon-btn-primary w-full flex items-center justify-center gap-2 text-base"
             whileHover={{ scale: loading ? 1 : 1.01 }}
             whileTap={{ scale: loading ? 1 : 0.99 }}
           >
@@ -335,8 +335,8 @@ export default function SubmitPage() {
             )}
           </motion.button>
 
-          <p className="text-center text-xs text-sentinel-muted/80 font-mono">
-            Encrypted upload · Parallel agent analysis · Verdict in minutes
+          <p className="text-center text-xs text-yowon-muted/80 font-mono">
+            Encrypted upload Â· Parallel agent analysis Â· Verdict in minutes
           </p>
         </form>
       </main>

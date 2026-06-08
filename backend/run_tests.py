@@ -4,7 +4,7 @@ import sys
 
 sys.path.insert(0, ".")
 
-from reports.report_generator import SentinelReport
+from reports.report_generator import YowonReport
 from validation.json_utils import extract_json, parse_agent_json
 from validation.schemas import TechnicalReport
 
@@ -38,10 +38,10 @@ report, source = parse_agent_json(
 )
 assert source == "llm" and report.technical_score == 81
 
-fixes_text = SentinelReport._format_fixes(["Fix validation", "Add monitoring"])
+fixes_text = YowonReport._format_fixes(["Fix validation", "Add monitoring"])
 assert "Fix validation" in fixes_text
 
-dict_fix = SentinelReport._format_fixes([{"priority": 1, "fix": "Patch auth", "effort": "low"}])
+dict_fix = YowonReport._format_fixes([{"priority": 1, "fix": "Patch auth", "effort": "low"}])
 assert "Patch auth" in dict_fix
 
 print("ALL TESTS PASSED")

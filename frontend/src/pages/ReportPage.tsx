@@ -63,10 +63,10 @@ function AgentCard({ agentKey, evaluation }: { agentKey: string; evaluation: Eva
             <Icon size={18} style={{ color: meta.color }} />
           </div>
           <div>
-            <h3 className="font-display font-semibold text-sentinel-text">{meta.label}</h3>
+            <h3 className="font-display font-semibold text-yowon-text">{meta.label}</h3>
             {evaluation.score !== null && (
               <div className="flex items-center gap-2 mt-1">
-                <div className="h-1.5 w-24 bg-sentinel-border rounded-full overflow-hidden">
+                <div className="h-1.5 w-24 bg-yowon-border rounded-full overflow-hidden">
                   <motion.div
                     className="h-full rounded-full"
                     style={{ background: scoreColor(score) }}
@@ -82,7 +82,7 @@ function AgentCard({ agentKey, evaluation }: { agentKey: string; evaluation: Eva
             )}
           </div>
         </div>
-        {expanded ? <ChevronUp size={16} className="text-sentinel-muted" /> : <ChevronDown size={16} className="text-sentinel-muted" />}
+        {expanded ? <ChevronUp size={16} className="text-yowon-muted" /> : <ChevronDown size={16} className="text-yowon-muted" />}
       </div>
 
       {expanded && evaluation.findings && (
@@ -91,7 +91,7 @@ function AgentCard({ agentKey, evaluation }: { agentKey: string; evaluation: Eva
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
         >
-          <pre className="text-xs text-sentinel-muted whitespace-pre-wrap font-mono leading-relaxed max-h-80 overflow-y-auto">
+          <pre className="text-xs text-yowon-muted whitespace-pre-wrap font-mono leading-relaxed max-h-80 overflow-y-auto">
             {evaluation.findings}
           </pre>
         </motion.div>
@@ -128,7 +128,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
       .catch((err: unknown) => {
         const code = (err as { code?: string })?.code
         const message = err instanceof Error ? err.message : 'Failed to load report'
-        setLoadError(code === 'EVALUATION_INCOMPLETE' ? 'Evaluation still in progress…' : message)
+        setLoadError(code === 'EVALUATION_INCOMPLETE' ? 'Evaluation still in progressâ€¦' : message)
         setLoading(false)
       })
   }, [projectId, demo])
@@ -143,7 +143,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
             />
-            <p className="text-sentinel-muted font-mono text-sm">Loading intelligence report...</p>
+            <p className="text-yowon-muted font-mono text-sm">Loading intelligence report...</p>
           </div>
         </div>
       </AppShell>
@@ -158,8 +158,8 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
             <p className="text-red-400 mb-2 font-display font-semibold">
               {loadError?.includes('in progress') ? 'Evaluation In Progress' : 'Failed to Load Report'}
             </p>
-            <p className="text-sentinel-muted text-sm mb-4">{loadError}</p>
-            <button onClick={() => navigate('/')} className="sentinel-btn-primary">Go Home</button>
+            <p className="text-yowon-muted text-sm mb-4">{loadError}</p>
+            <button onClick={() => navigate('/')} className="yowon-btn-primary">Go Home</button>
           </div>
         </div>
       </AppShell>
@@ -182,11 +182,11 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
       <NeuralOverlay />
 
       {/* Header */}
-      <div className="border-b border-white/5 bg-sentinel-bg/60 backdrop-blur-xl sticky top-0 z-40">
+      <div className="border-b border-white/5 bg-yowon-bg/60 backdrop-blur-xl sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <button
             onClick={() => navigate(demo ? '/' : '/submit')}
-            className="flex items-center gap-1.5 text-sentinel-muted hover:text-sentinel-text transition-colors text-sm"
+            className="flex items-center gap-1.5 text-yowon-muted hover:text-yowon-text transition-colors text-sm"
           >
             <ArrowLeft size={16} />
             <span className="font-display">{demo ? 'Back to Home' : 'New Evaluation'}</span>
@@ -213,8 +213,8 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
             animate={{ opacity: 1, y: 0 }}
           >
             <p className="text-amber-300 font-display font-semibold">Report Generation Failed</p>
-            <p className="text-sentinel-muted text-xs mt-1 font-mono">
-              {report.report_error || 'PDF export failed — scores and verdict below are still valid.'}
+            <p className="text-yowon-muted text-xs mt-1 font-mono">
+              {report.report_error || 'PDF export failed â€” scores and verdict below are still valid.'}
             </p>
           </motion.div>
         )}
@@ -226,7 +226,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
             animate={{ opacity: 1, y: 0 }}
           >
             <p className="text-red-300 font-display font-semibold">Insufficient Evidence</p>
-            <p className="text-sentinel-muted text-sm mt-1">
+            <p className="text-yowon-muted text-sm mt-1">
               No meaningful project files detected. Repository cannot be evaluated.
             </p>
           </motion.div>
@@ -238,10 +238,10 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.3em] mb-2">
+          <p className="text-xs font-mono text-yowon-muted uppercase tracking-[0.3em] mb-2">
             Deployment Readiness Report
           </p>
-          <h1 className="text-3xl sm:text-5xl font-display font-bold text-sentinel-text mb-2">
+          <h1 className="text-3xl sm:text-5xl font-display font-bold text-yowon-text mb-2">
             {report.project_name}
           </h1>
           <p className="text-sm text-violet-300 font-mono">{report.project_type ?? vd?.project_type}</p>
@@ -277,24 +277,24 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
 
             <div className="glass-card">
               <h2 className="font-display font-bold text-xl mb-4">Evaluation Context</h2>
-              <p className="text-sm text-sentinel-muted mb-2"><span className="text-sentinel-text">Project Type:</span> {vd?.project_type ?? report.project_type}</p>
-              <p className="text-sm text-sentinel-muted mb-4"><span className="text-sentinel-text">Evaluation Standard:</span> {vd?.evaluation_standard}</p>
+              <p className="text-sm text-yowon-muted mb-2"><span className="text-yowon-text">Project Type:</span> {vd?.project_type ?? report.project_type}</p>
+              <p className="text-sm text-yowon-muted mb-4"><span className="text-yowon-text">Evaluation Standard:</span> {vd?.evaluation_standard}</p>
               <div className="grid sm:grid-cols-3 gap-3 mb-4">
                 <div className="border border-white/5 rounded-lg p-3">
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-sentinel-muted">Score Band</p>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-yowon-muted">Score Band</p>
                   <p className="text-sm text-amber-300 mt-1">{vd?.score_band ?? 'Unknown'}</p>
                 </div>
                 <div className="border border-white/5 rounded-lg p-3">
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-sentinel-muted">Evidence Quality</p>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-yowon-muted">Evidence Quality</p>
                   <p className="text-sm text-violet-300 mt-1">{vd?.evidence_quality ?? 'Unknown'}</p>
                 </div>
                 <div className="border border-white/5 rounded-lg p-3">
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-sentinel-muted">Completeness</p>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-yowon-muted">Completeness</p>
                   <p className="text-sm text-emerald-300 mt-1">{vd?.repository_completeness_score ?? 0}/100</p>
                 </div>
               </div>
               {vd?.confidence_explanation && (
-                <p className="text-sm text-sentinel-muted mb-4"><span className="text-sentinel-text">Confidence:</span> {vd.confidence_explanation}</p>
+                <p className="text-sm text-yowon-muted mb-4"><span className="text-yowon-text">Confidence:</span> {vd.confidence_explanation}</p>
               )}
               <div className="flex flex-wrap gap-2">
                 {Object.entries(vd?.scoring_weights ?? {}).map(([name, weight]) => (
@@ -311,10 +311,10 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {Object.entries(vd.repository_statistics).map(([name, value]) => (
                     <div key={name} className="border border-white/5 rounded-lg p-3">
-                      <p className="text-[10px] font-mono uppercase tracking-widest text-sentinel-muted">
+                      <p className="text-[10px] font-mono uppercase tracking-widest text-yowon-muted">
                         {name.replace(/_/g, ' ')}
                       </p>
-                      <p className="text-lg font-mono text-sentinel-text mt-1">{value}</p>
+                      <p className="text-lg font-mono text-yowon-text mt-1">{value}</p>
                     </div>
                   ))}
                 </div>
@@ -323,18 +323,18 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
 
             <div className="glass-card border border-amber-500/20">
               <h2 className="font-display font-bold text-xl mb-4">Why did this project receive this score?</h2>
-              <p className="text-sm text-sentinel-muted mb-3">Calibration: <span className="text-amber-300">{vd?.score_band}</span></p>
+              <p className="text-sm text-yowon-muted mb-3">Calibration: <span className="text-amber-300">{vd?.score_band}</span></p>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
-                <div><h3 className="text-emerald-300 mb-2">Positive factors</h3>{(vd?.positive_factors ?? []).map(x => <p key={x} className="text-sentinel-muted mb-1">+ {x}</p>)}</div>
-                <div><h3 className="text-amber-300 mb-2">Penalties</h3>{(vd?.penalties ?? []).map(x => <p key={`${x.dimension}-${x.factor}`} className="text-sentinel-muted mb-1">{x.dimension ? `${x.dimension}: ` : ''}{x.factor}{x.points != null ? ` (-${x.points})` : ''}</p>)}</div>
-                <div><h3 className="text-red-300 mb-2">Missing evidence</h3>{(vd?.missing_evidence ?? []).map(x => <p key={x} className="text-sentinel-muted mb-1">{x}</p>)}</div>
+                <div><h3 className="text-emerald-300 mb-2">Positive factors</h3>{(vd?.positive_factors ?? []).map(x => <p key={x} className="text-yowon-muted mb-1">+ {x}</p>)}</div>
+                <div><h3 className="text-amber-300 mb-2">Penalties</h3>{(vd?.penalties ?? []).map(x => <p key={`${x.dimension}-${x.factor}`} className="text-yowon-muted mb-1">{x.dimension ? `${x.dimension}: ` : ''}{x.factor}{x.points != null ? ` (-${x.points})` : ''}</p>)}</div>
+                <div><h3 className="text-red-300 mb-2">Missing evidence</h3>{(vd?.missing_evidence ?? []).map(x => <p key={x} className="text-yowon-muted mb-1">{x}</p>)}</div>
               </div>
             </div>
 
             {/* Analytics row */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div className="glass-card lg:col-span-2">
-                <h3 className="text-xs font-mono text-sentinel-muted uppercase tracking-widest mb-4">
+                <h3 className="text-xs font-mono text-yowon-muted uppercase tracking-widest mb-4">
                   Agent Score Radar
                 </h3>
                 <ResponsiveContainer width="100%" height={260}>
@@ -361,7 +361,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
             {/* Bar chart + heatmap */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="glass-card">
-                <h3 className="text-xs font-mono text-sentinel-muted uppercase tracking-widest mb-6">
+                <h3 className="text-xs font-mono text-yowon-muted uppercase tracking-widest mb-6">
                   Score Distribution
                 </h3>
                 <ResponsiveContainer width="100%" height={220}>
@@ -391,8 +391,8 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                 </h3>
                 <ul className="space-y-2">
                   {vd.contradictions.map((c, i) => (
-                    <li key={i} className="text-sm text-sentinel-muted flex gap-2">
-                      <span className="text-purple-400">⚡</span> {c}
+                    <li key={i} className="text-sm text-yowon-muted flex gap-2">
+                      <span className="text-purple-400">âš¡</span> {c}
                     </li>
                   ))}
                 </ul>
@@ -404,7 +404,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
 
             {/* Agent details */}
             <div>
-              <h2 className="font-display font-bold text-xl text-sentinel-text mb-6">
+              <h2 className="font-display font-bold text-xl text-yowon-text mb-6">
                 Detailed Agent Reports
               </h2>
               <div className="space-y-3">
@@ -421,11 +421,11 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
             {/* PDF CTA */}
             {pdfId && (
               <div className="glass-card text-center py-12 border border-violet-500/10">
-                <Shield size={40} className="mx-auto mb-4 text-sentinel-accent" />
-                <h3 className="font-display font-bold text-xl text-sentinel-text mb-2">
+                <Shield size={40} className="mx-auto mb-4 text-yowon-accent" />
+                <h3 className="font-display font-bold text-xl text-yowon-text mb-2">
                   Export Full Intelligence Report
                 </h3>
-                <p className="text-sentinel-muted mb-6 text-sm max-w-md mx-auto">
+                <p className="text-yowon-muted mb-6 text-sm max-w-md mx-auto">
                   Download the complete PDF with executive summary, agent findings,
                   failure predictions, and deployment roadmap.
                 </p>
@@ -433,7 +433,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                   href={getPdfUrl(pdfId)}
                   target="_blank"
                   rel="noreferrer"
-                  className="sentinel-btn-primary inline-flex items-center gap-2"
+                  className="yowon-btn-primary inline-flex items-center gap-2"
                 >
                   <Download size={18} />
                   Download PDF Report

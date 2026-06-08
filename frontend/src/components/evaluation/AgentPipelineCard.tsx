@@ -41,7 +41,7 @@ export default function AgentPipelineCard({
               ? 'bg-emerald-500/15 border-emerald-500/30'
               : status === 'running'
                 ? 'bg-violet-500/15 border-violet-400/40'
-                : 'bg-sentinel-surface border-sentinel-border'
+                : 'bg-yowon-surface border-yowon-border'
           }`}
         >
           {status === 'completed' ? (
@@ -49,13 +49,13 @@ export default function AgentPipelineCard({
           ) : status === 'running' ? (
             <Loader2 size={16} className="text-violet-300 animate-spin" />
           ) : (
-            <Circle size={14} className="text-sentinel-muted" />
+            <Circle size={14} className="text-yowon-muted" />
           )}
         </div>
         {index < 9 && (
           <div
             className={`w-px h-6 mt-1 ${
-              status === 'completed' ? 'bg-emerald-500/30' : 'bg-sentinel-border'
+              status === 'completed' ? 'bg-emerald-500/30' : 'bg-yowon-border'
             }`}
           />
         )}
@@ -66,7 +66,7 @@ export default function AgentPipelineCard({
           <Icon size={14} style={{ color }} />
           <p
             className={`text-sm font-display font-semibold ${
-              status === 'running' ? 'text-violet-200' : 'text-sentinel-text'
+              status === 'running' ? 'text-violet-200' : 'text-yowon-text'
             }`}
           >
             {label}
@@ -84,11 +84,11 @@ export default function AgentPipelineCard({
             <span className="text-[10px] font-mono text-emerald-400/80 uppercase">Done</span>
           )}
           {status === 'waiting' && (
-            <span className="text-[10px] font-mono text-sentinel-muted uppercase">Waiting</span>
+            <span className="text-[10px] font-mono text-yowon-muted uppercase">Waiting</span>
           )}
         </div>
         {(status === 'running' || status === 'completed') && (
-          <p className="text-xs text-sentinel-muted mt-1">{description}</p>
+          <p className="text-xs text-yowon-muted mt-1">{description}</p>
         )}
       </div>
 

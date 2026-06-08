@@ -21,8 +21,8 @@ export default function ReadinessGauge({ score }: ReadinessGaugeProps) {
   return (
     <div className="glass-card p-5 h-full flex flex-col">
       <div className="flex items-center gap-2 mb-2">
-        <Gauge size={16} className="text-sentinel-accent" />
-        <span className="text-xs font-mono text-sentinel-muted uppercase tracking-widest">
+        <Gauge size={16} className="text-yowon-accent" />
+        <span className="text-xs font-mono text-yowon-muted uppercase tracking-widest">
           Deployment Readiness
         </span>
       </div>
@@ -84,7 +84,7 @@ export default function ReadinessGauge({ score }: ReadinessGaugeProps) {
         </svg>
       </div>
 
-      <p className="text-center text-xs text-sentinel-muted font-mono mt-1">
+      <p className="text-center text-xs text-yowon-muted font-mono mt-1">
         COCKPIT READINESS INDEX
       </p>
     </div>

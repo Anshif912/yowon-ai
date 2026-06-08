@@ -54,7 +54,7 @@ export default function FileDropZone({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-sentinel-muted mb-2 font-display">
+      <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
         {label}
       </label>
       <motion.div
@@ -63,7 +63,7 @@ export default function FileDropZone({
             ? 'border-violet-400/50 bg-violet-500/5 scale-[1.01]'
             : file
               ? 'border-emerald-500/40 bg-emerald-500/5'
-              : 'border-sentinel-border hover:border-pink-500/35'
+              : 'border-yowon-border hover:border-pink-500/35'
         }`}
         onDragOver={e => {
           e.preventDefault()
@@ -93,7 +93,7 @@ export default function FileDropZone({
                 <CheckCircle2 size={22} className="text-emerald-400 flex-shrink-0" />
                 <div className="text-left min-w-0">
                   <p className="text-sm font-medium text-emerald-400 truncate">{file.name}</p>
-                  <p className="text-xs text-sentinel-muted">
+                  <p className="text-xs text-yowon-muted">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export default function FileDropZone({
                   e.stopPropagation()
                   handleFile(null)
                 }}
-                className="p-1.5 rounded-lg hover:bg-white/5 text-sentinel-muted hover:text-red-400 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-white/5 text-yowon-muted hover:text-red-400 transition-colors"
               >
                 <X size={16} />
               </button>
@@ -113,19 +113,19 @@ export default function FileDropZone({
             <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <Icon
                 size={28}
-                className={`mx-auto mb-3 ${dragging ? 'text-violet-400' : 'text-sentinel-muted'}`}
+                className={`mx-auto mb-3 ${dragging ? 'text-violet-400' : 'text-yowon-muted'}`}
               />
-              <p className="text-sm text-sentinel-muted">
+              <p className="text-sm text-yowon-muted">
                 <Upload size={14} className="inline mr-1.5 -mt-0.5" />
                 Drag & drop or click to upload
               </p>
-              <p className="text-xs text-sentinel-muted/70 mt-1">{hint}</p>
+              <p className="text-xs text-yowon-muted/70 mt-1">{hint}</p>
             </motion.div>
           )}
         </AnimatePresence>
 
         {uploadProgress > 0 && uploadProgress < 100 && (
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-sentinel-border">
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-yowon-border">
             <motion.div
               className="h-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400"
               style={{ width: `${uploadProgress}%` }}

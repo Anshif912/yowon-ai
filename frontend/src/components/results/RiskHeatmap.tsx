@@ -8,7 +8,7 @@ interface RiskHeatmapProps {
 export default function RiskHeatmap({ categories }: RiskHeatmapProps) {
   return (
     <div className="glass-card p-5">
-      <h3 className="text-xs font-mono text-sentinel-muted uppercase tracking-widest mb-4">
+      <h3 className="text-xs font-mono text-yowon-muted uppercase tracking-widest mb-4">
         Risk Heatmap
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -28,11 +28,11 @@ export default function RiskHeatmap({ categories }: RiskHeatmapProps) {
                 background: `linear-gradient(135deg, ${color}${Math.round(intensity * 30).toString(16).padStart(2, '0')}, transparent)`,
               }}
             >
-              <p className="text-xs font-display text-sentinel-text">{cat.label}</p>
+              <p className="text-xs font-display text-yowon-text">{cat.label}</p>
               <p className="text-lg font-bold font-mono mt-1" style={{ color }}>
                 {Math.round(cat.score)}
               </p>
-              <p className="text-[10px] text-sentinel-muted font-mono">
+              <p className="text-[10px] text-yowon-muted font-mono">
                 Risk: {Math.round(risk)}%
               </p>
             </motion.div>

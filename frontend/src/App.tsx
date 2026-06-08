@@ -12,12 +12,12 @@ function PageLoader() {
   return (
     <div className="min-h-screen grid-bg flex flex-col items-center justify-center gap-4">
       <div className="relative w-14 h-14">
-        <div className="absolute inset-0 rounded-full border-4 border-sentinel-border" />
-        <div className="absolute inset-0 rounded-full border-4 border-t-sentinel-accent border-r-transparent border-b-transparent border-l-transparent animate-spin" />
-        <Shield size={22} className="absolute inset-0 m-auto text-sentinel-accent" />
+        <div className="absolute inset-0 rounded-full border-4 border-yowon-border" />
+        <div className="absolute inset-0 rounded-full border-4 border-t-yowon-accent border-r-transparent border-b-transparent border-l-transparent animate-spin" />
+        <Shield size={22} className="absolute inset-0 m-auto text-yowon-accent" />
       </div>
-      <p className="text-sentinel-muted text-sm font-display tracking-wide">
-        Initializing Sentinel...
+      <p className="text-yowon-muted text-sm font-display tracking-wide">
+        Initializing YOWON AI...
       </p>
     </div>
   )
@@ -27,13 +27,13 @@ function NotFoundPage() {
   return (
     <div className="min-h-screen grid-bg flex flex-col items-center justify-center gap-6 px-4 text-center">
       <h1
-        className="text-[8rem] leading-none font-bold font-display text-sentinel-border select-none"
+        className="text-[8rem] leading-none font-bold font-display text-yowon-border select-none"
         style={{ textShadow: '0 0 60px rgba(6,182,212,0.25)' }}
       >
         404
       </h1>
-      <p className="text-sentinel-muted max-w-sm">This page doesn't exist in the Sentinel network.</p>
-      <a href="/" className="sentinel-btn-primary">← Back to Command Center</a>
+      <p className="text-yowon-muted max-w-sm">This page doesn't exist in the YOWON AI network.</p>
+      <a href="/" className="yowon-btn-primary">â† Back to Command Center</a>
     </div>
   )
 }

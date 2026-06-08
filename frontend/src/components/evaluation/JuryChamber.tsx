@@ -76,11 +76,11 @@ export default function JuryChamber({ activeIndex, statuses }: JuryChamberProps)
                     ? 'text-emerald-400'
                     : status === 'running'
                       ? 'text-violet-300'
-                      : 'text-sentinel-muted'
+                      : 'text-yowon-muted'
                 }
               />
             </div>
-            <span className="text-[8px] font-mono text-sentinel-muted mt-1 whitespace-nowrap">
+            <span className="text-[8px] font-mono text-yowon-muted mt-1 whitespace-nowrap">
               {agent.label}
             </span>
           </motion.div>

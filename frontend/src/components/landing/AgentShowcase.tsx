@@ -37,10 +37,10 @@ export default function AgentShowcase() {
             />
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-display font-medium text-sentinel-text truncate">{label}</p>
+            <p className="text-sm font-display font-medium text-yowon-text truncate">{label}</p>
             <div className="flex items-center gap-1.5 mt-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono text-sentinel-muted uppercase tracking-wider">
+              <span className="text-[10px] font-mono text-yowon-muted uppercase tracking-wider">
                 Active
               </span>
             </div>
