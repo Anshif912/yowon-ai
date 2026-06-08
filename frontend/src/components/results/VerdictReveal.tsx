@@ -51,7 +51,7 @@ export default function VerdictReveal({ verdict, onRevealed }: VerdictRevealProp
               </span>
             </motion.div>
             <motion.p
-              className="text-sm text-sentinel-muted mt-4 font-mono"
+              className="text-sm text-yowon-muted mt-4 font-mono"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -66,7 +66,7 @@ export default function VerdictReveal({ verdict, onRevealed }: VerdictRevealProp
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             className="text-center"
           >
-            <p className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.3em] mb-4">
+            <p className="text-xs font-mono text-yowon-muted uppercase tracking-[0.3em] mb-4">
               Deployment Verdict
             </p>
             <VerdictBadge verdict={verdict} large animated />

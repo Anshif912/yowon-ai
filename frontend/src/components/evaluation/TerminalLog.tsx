@@ -18,7 +18,7 @@ export default function TerminalLog({ logs }: TerminalLogProps) {
     <div className="glass-card p-4">
       <div className="flex items-center gap-2 mb-3">
         <Terminal size={14} className="text-violet-400" />
-        <h2 className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.2em]">
+        <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em]">
           Live Agent Log
         </h2>
         <span className="ml-auto text-[10px] font-mono text-emerald-400/60">SSE STREAM</span>

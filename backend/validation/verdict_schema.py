@@ -205,7 +205,7 @@ def _fallback_summary(computed: dict[str, Any]) -> str:
     score = computed.get("overall_score", 50)
     verdict = computed.get("verdict", "IMPROVE")
     return (
-        f"Project Sentinel multi-agent jury completed evaluation with an overall score of "
+        f"YOWON AI multi-agent jury completed evaluation with an overall score of "
         f"{score}/100. Deployment recommendation: {verdict}."
     )
 
@@ -234,7 +234,7 @@ def _default_roadmap(verdict: str) -> list[str]:
     if verdict == "REJECT":
         return [
             "Address blocking security and stability issues",
-            "Re-run Sentinel evaluation after fixes",
+            "Re-run YOWON AI evaluation after fixes",
             "Pilot deploy only after score exceeds 50",
         ]
     return [

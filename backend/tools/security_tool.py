@@ -1,8 +1,8 @@
 """
-tools/security_tool.py — Static security analysis for Project Sentinel.
+tools/security_tool.py â€” Static security analysis for YOWON AI.
 
 Combines:
-  1. Bandit — SAST tool for Python code
+  1. Bandit â€” SAST tool for Python code
   2. Regex-based secret detection (hardcoded API keys, passwords, tokens)
   3. Dependency vulnerability notes (heuristic, no network call)
 """
@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 
-# ── Secret patterns ──────────────────────────────────────────────────────────
+# â”€â”€ Secret patterns â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 SECRET_PATTERNS: list[tuple[str, str]] = [
     (r"(?i)api[_\s-]?key\s*[:=]\s*['\"][\w\-]{16,}['\"]", "Hardcoded API key"),
     (r"(?i)secret[_\s-]?key\s*[:=]\s*['\"][\w\-]{16,}['\"]", "Hardcoded secret key"),
@@ -103,7 +103,7 @@ def _run_bandit(python_files: list[dict]) -> list[dict]:
 
 def _check_dependencies(dep_files: dict[str, str]) -> list[dict]:
     """
-    Heuristic dependency checks — flags known-risky patterns without network.
+    Heuristic dependency checks â€” flags known-risky patterns without network.
     Real production systems would integrate with safety or osv-scanner.
     """
     warnings: list[dict] = []
@@ -149,7 +149,7 @@ def run_security_analysis(
 
     Args:
         python_files: list of {"path": str, "content": str}
-        dep_files:    dict of filename → file content
+        dep_files:    dict of filename â†’ file content
 
     Returns:
         {
@@ -168,7 +168,7 @@ def run_security_analysis(
 
     dep_warnings = _check_dependencies(dep_files)
 
-    # ── Compute overall risk level ────────────────────────────────────────
+    # â”€â”€ Compute overall risk level â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     critical_count = sum(1 for i in bandit_issues if i.get("severity") == "HIGH")
     critical_count += len(secret_findings)
     critical_count += sum(1 for i in dep_warnings if i.get("severity") == "HIGH")

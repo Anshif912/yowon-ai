@@ -1,4 +1,4 @@
-"""Centralized logging for Project Sentinel evaluation pipeline."""
+"""Centralized logging for YOWON AI evaluation pipeline."""
 
 from __future__ import annotations
 
@@ -63,7 +63,7 @@ def timed_operation(
         ctx["elapsed_sec"] = round(elapsed, 2)
         ctx["error"] = str(exc)
         logger.exception(
-            "%s FAIL %s after %.2fs — %s",
+            "%s FAIL %s after %.2fs â€” %s",
             prefix,
             label,
             elapsed,

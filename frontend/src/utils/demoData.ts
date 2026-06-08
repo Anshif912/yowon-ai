@@ -2,7 +2,7 @@ import type { ReportData } from '../types'
 import { enrichReport } from './reportParser'
 
 const DEMO_RAW: ReportData = {
-  project_id: 'demo-sentinel-001',
+  project_id: 'demo-yowon-001',
   project_name: 'NeuralOps Command Center',
   status: 'done',
   overall_score: 82,

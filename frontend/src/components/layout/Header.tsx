@@ -7,7 +7,7 @@ export default function Header() {
   const isLanding = pathname === '/'
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-sentinel-bg/75 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-yowon-bg/75 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div
@@ -17,12 +17,12 @@ export default function Header() {
             <Shield size={18} className="text-white" />
           </motion.div>
           <div>
-            <span className="font-display font-bold text-lg text-sentinel-text tracking-tight">
-              Project Sentinel
+            <span className="font-display font-bold text-lg text-yowon-text tracking-tight">
+              YOWON AI
             </span>
             {!isLanding && (
-              <p className="text-[10px] text-sentinel-muted font-mono tracking-widest uppercase hidden sm:block">
-                Deployment Readiness Intelligence
+              <p className="text-[10px] text-yowon-muted font-mono tracking-widest uppercase hidden sm:block">
+                Autonomous AI Jury Platform
               </p>
             )}
           </div>
@@ -31,10 +31,10 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <div className="hidden md:flex items-center gap-2 glass-pill px-3 py-1.5 border-emerald-500/20">
             <Radio size={12} className="text-emerald-400 animate-pulse" />
-            <span className="text-xs font-mono text-sentinel-muted">SYSTEM ONLINE</span>
+            <span className="text-xs font-mono text-yowon-muted">SYSTEM ONLINE</span>
           </div>
           {pathname !== '/submit' && (
-            <Link to="/submit" className="sentinel-btn-primary text-sm py-2 px-4">
+            <Link to="/submit" className="yowon-btn-primary text-sm py-2 px-4">
               Start Evaluation
             </Link>
           )}

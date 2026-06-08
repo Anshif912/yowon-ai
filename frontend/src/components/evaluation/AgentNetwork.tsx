@@ -139,7 +139,7 @@ export default function AgentNetwork({ activeAgent, agentStates, statuses }: Age
                 style={{ color: status === 'waiting' ? '#64748B' : node.color }}
               />
             </div>
-            <span className="text-[8px] font-mono text-sentinel-muted mt-1 whitespace-nowrap">
+            <span className="text-[8px] font-mono text-yowon-muted mt-1 whitespace-nowrap">
               {node.label}
             </span>
             {agentStates?.[node.id]?.duration_sec != null && status === 'completed' && (

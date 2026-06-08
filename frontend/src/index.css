@@ -30,29 +30,29 @@
     @apply bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-full;
   }
 
-  .sentinel-card {
+  .yowon-card {
     @apply glass-card;
   }
 
-  .sentinel-input {
-    @apply w-full bg-sentinel-surface/90 border border-sentinel-border rounded-xl px-4 py-3
-           text-sentinel-text placeholder-sentinel-muted focus:outline-none
-           focus:border-sentinel-primary/50 focus:ring-1 focus:ring-sentinel-primary/25
+  .yowon-input {
+    @apply w-full bg-yowon-surface/90 border border-yowon-border rounded-xl px-4 py-3
+           text-yowon-text placeholder-yowon-muted focus:outline-none
+           focus:border-yowon-primary/50 focus:ring-1 focus:ring-yowon-primary/25
            transition-all duration-200 text-sm;
   }
 
-  .sentinel-btn-primary {
-    @apply bg-gradient-to-r from-sentinel-primary via-sentinel-secondary to-sentinel-accent
+  .yowon-btn-primary {
+    @apply bg-gradient-to-r from-yowon-primary via-yowon-secondary to-yowon-accent
            hover:from-violet-400 hover:via-pink-400 hover:to-amber-400
            text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200
            disabled:opacity-50 disabled:cursor-not-allowed font-display
            shadow-[0_4px_24px_rgba(168,85,247,0.35)] hover:shadow-[0_6px_32px_rgba(236,72,153,0.4)];
   }
 
-  .sentinel-btn-ghost {
+  .yowon-btn-ghost {
     @apply flex items-center justify-center gap-2 px-8 py-3 rounded-xl border border-white/10
-           bg-white/[0.04] hover:bg-white/[0.08] text-sentinel-text font-display font-semibold
-           transition-all hover:border-sentinel-primary/30;
+           bg-white/[0.04] hover:bg-white/[0.08] text-yowon-text font-display font-semibold
+           transition-all hover:border-yowon-primary/30;
   }
 
   .section-accent-violet {
@@ -175,7 +175,7 @@
 }
 
 .form-step-active {
-  @apply bg-gradient-to-r from-sentinel-primary to-sentinel-secondary text-white shadow-glow-violet;
+  @apply bg-gradient-to-r from-yowon-primary to-yowon-secondary text-white shadow-glow-violet;
 }
 
 .form-step-done {
@@ -183,5 +183,5 @@
 }
 
 .form-step-pending {
-  @apply bg-white/5 text-sentinel-muted border border-white/10;
+  @apply bg-white/5 text-yowon-muted border border-white/10;
 }

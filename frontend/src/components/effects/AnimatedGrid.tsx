@@ -14,7 +14,7 @@ export default function AnimatedGrid() {
         animate={{ backgroundPosition: ['0% 0%', '200% 0%'] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-sentinel-bg via-transparent to-sentinel-bg" />
+      <div className="absolute inset-0 bg-gradient-to-b from-yowon-bg via-transparent to-yowon-bg" />
     </div>
   )
 }

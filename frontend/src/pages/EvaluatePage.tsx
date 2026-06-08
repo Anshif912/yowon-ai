@@ -108,22 +108,22 @@ export default function EvaluatePage() {
           </h1>
           {status === 'done' && reportStatus === 'failed' && (
             <p className="text-amber-400/90 text-sm mt-2 max-w-lg mx-auto">
-              Verdict ready — PDF report generation failed. View results below.
+              Verdict ready â€” PDF report generation failed. View results below.
             </p>
           )}
           {status === 'done' && reportStatus === 'ready' && (
-            <p className="text-emerald-400/80 text-sm mt-2">Redirecting to intelligence report…</p>
+            <p className="text-emerald-400/80 text-sm mt-2">Redirecting to intelligence reportâ€¦</p>
           )}
 
           {projectName && (
-            <p className="text-sentinel-muted">
+            <p className="text-yowon-muted">
               Evaluating <span className="text-violet-300 font-medium">{projectName}</span>
-              {projectType && <span className="text-pink-300 font-mono text-xs"> · {projectType}</span>}
+              {projectType && <span className="text-pink-300 font-mono text-xs"> Â· {projectType}</span>}
             </p>
           )}
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-5 text-sm font-mono">
-            <span className="flex items-center gap-1.5 text-sentinel-muted glass-pill px-3 py-1.5">
+            <span className="flex items-center gap-1.5 text-yowon-muted glass-pill px-3 py-1.5">
               <Clock size={14} />
               {formatTime(elapsed)}
             </span>
@@ -150,7 +150,7 @@ export default function EvaluatePage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <div className="xl:col-span-1 space-y-1">
-            <h2 className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.2em] mb-4 px-1">
+            <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em] mb-4 px-1">
               Evaluation Pipeline
             </h2>
             {PIPELINE.map((agent, i) => (
@@ -168,7 +168,7 @@ export default function EvaluatePage() {
 
           <div className="xl:col-span-2 space-y-6">
             <div className="glass-card p-6 border border-violet-500/10">
-              <h2 className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.2em] mb-4 text-center">
+              <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em] mb-4 text-center">
                 AI Agent Network
               </h2>
               <AgentNetwork
@@ -197,12 +197,12 @@ export default function EvaluatePage() {
             <p className="text-amber-300 text-sm mb-2 font-display font-semibold">
               Report Generation Failed
             </p>
-            <p className="text-sentinel-muted text-xs mb-4 font-mono">
-              {reportError || 'PDF could not be built — JSON verdict is still available.'}
+            <p className="text-yowon-muted text-xs mb-4 font-mono">
+              {reportError || 'PDF could not be built â€” JSON verdict is still available.'}
             </p>
             <button
               onClick={() => navigate(`/report/${projectId}`)}
-              className="sentinel-btn-primary text-sm py-2 px-6"
+              className="yowon-btn-primary text-sm py-2 px-6"
             >
               View Verdict Report
             </button>
@@ -218,14 +218,14 @@ export default function EvaluatePage() {
             <p className="text-red-400 text-sm mb-4">
               Evaluation pipeline failed. Ensure Ollama is running with qwen2.5:3b and qwen3:8b pulled.
             </p>
-            <button onClick={() => navigate('/submit')} className="sentinel-btn-primary text-sm py-2 px-6">
+            <button onClick={() => navigate('/submit')} className="yowon-btn-primary text-sm py-2 px-6">
               Try Again
             </button>
           </motion.div>
         )}
 
-        <p className="text-center text-xs text-sentinel-muted mt-8 font-mono">
-          Target: &lt;60s evaluation · Real-time SSE progress · No simulated updates
+        <p className="text-center text-xs text-yowon-muted mt-8 font-mono">
+          Target: &lt;60s evaluation Â· Real-time SSE progress Â· No simulated updates
         </p>
       </main>
     </AppShell>

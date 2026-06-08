@@ -32,7 +32,7 @@ export default function ThreatRadar({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Radar size={16} className="text-red-400" />
-          <span className="text-xs font-mono text-sentinel-muted uppercase tracking-widest">
+          <span className="text-xs font-mono text-yowon-muted uppercase tracking-widest">
             Threat Radar
           </span>
         </div>

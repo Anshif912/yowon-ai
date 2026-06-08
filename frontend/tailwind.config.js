@@ -9,7 +9,7 @@ export default {
         body: ['"DM Sans"', 'sans-serif'],
       },
       colors: {
-        sentinel: {
+        yowon: {
           bg: '#0A0612',
           surface: '#12091F',
           card: '#1A1028',

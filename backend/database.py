@@ -1,5 +1,5 @@
 """
-database.py — SQLAlchemy setup for Project Sentinel.
+database.py â€” SQLAlchemy setup for YOWON AI.
 
 Tables:
   - projects     : Submitted project metadata
@@ -27,7 +27,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, relationship, sessionmaker
 from config import DATABASE_URL
 
 
-# ── Engine & Session factory ─────────────────────────────────────────────────
+# â”€â”€ Engine & Session factory â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 engine = create_engine(
     DATABASE_URL,
     connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {},
@@ -35,12 +35,12 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-# ── Base model ───────────────────────────────────────────────────────────────
+# â”€â”€ Base model â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 class Base(DeclarativeBase):
     pass
 
 
-# ── Models ───────────────────────────────────────────────────────────────────
+# â”€â”€ Models â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class Project(Base):
     """Represents a user-submitted project pending evaluation."""
@@ -106,7 +106,7 @@ class Report(Base):
         return f"<Report project={self.project_id} verdict={self.verdict}>"
 
 
-# ── Dependency helper ────────────────────────────────────────────────────────
+# â”€â”€ Dependency helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def get_db():
     """FastAPI dependency that yields a database session."""

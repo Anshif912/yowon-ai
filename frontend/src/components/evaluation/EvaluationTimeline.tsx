@@ -32,10 +32,10 @@ export default function EvaluationTimeline({ events = [], elapsedSeconds = 0 }: 
   if (displayEvents.length === 0) {
     return (
       <div className="glass-card p-4">
-        <h2 className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.2em] mb-3">
+        <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em] mb-3">
           Live Timeline
         </h2>
-        <p className="text-xs text-sentinel-muted font-mono">Awaiting agent events...</p>
+        <p className="text-xs text-yowon-muted font-mono">Awaiting agent events...</p>
       </div>
     )
   }
@@ -43,7 +43,7 @@ export default function EvaluationTimeline({ events = [], elapsedSeconds = 0 }: 
   return (
     <div className="glass-card p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xs font-mono text-sentinel-muted uppercase tracking-[0.2em]">
+        <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em]">
           Live Timeline
         </h2>
         <span className="text-[10px] font-mono text-violet-400/80">
@@ -70,14 +70,14 @@ export default function EvaluationTimeline({ events = [], elapsedSeconds = 0 }: 
               ) : (
                 <Loader2 size={12} className="text-violet-400 shrink-0 animate-spin" />
               )}
-              <span className="text-sentinel-muted w-20 shrink-0">{formatTime(event.ts)}</span>
+              <span className="text-yowon-muted w-20 shrink-0">{formatTime(event.ts)}</span>
               <span className={isFailed ? 'text-red-300/80' : 'text-violet-200/80'}>
                 {label}
                 {isComplete && event.duration_sec != null && (
-                  <span className="text-sentinel-muted ml-1">({event.duration_sec}s)</span>
+                  <span className="text-yowon-muted ml-1">({event.duration_sec}s)</span>
                 )}
                 {!isComplete && event.model && (
-                  <span className="text-sentinel-muted ml-1 text-[10px]">{event.model}</span>
+                  <span className="text-yowon-muted ml-1 text-[10px]">{event.model}</span>
                 )}
               </span>
             </motion.div>

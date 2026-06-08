@@ -1,8 +1,8 @@
-# Project Sentinel Codebase Audit
+# YOWON AI Codebase Audit
 
 ## Architecture Overview
 
-Project Sentinel is a React/Vite client backed by FastAPI, SQLAlchemy/SQLite, CrewAI-compatible
+YOWON AI is a React/Vite client backed by FastAPI, SQLAlchemy/SQLite, CrewAI-compatible
 Ollama agents, ChromaDB context storage, GitHub/PDF/PPT ingestion, deterministic scoring, and
 ReportLab PDF generation.
 

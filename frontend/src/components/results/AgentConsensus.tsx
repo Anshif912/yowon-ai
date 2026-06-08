@@ -11,8 +11,8 @@ export default function AgentConsensus({ score }: AgentConsensusProps) {
   return (
     <div className="glass-card p-5">
       <div className="flex items-center gap-2 mb-4">
-        <Users size={16} className="text-sentinel-primary" />
-        <span className="text-xs font-mono text-sentinel-muted uppercase tracking-widest">
+        <Users size={16} className="text-yowon-primary" />
+        <span className="text-xs font-mono text-yowon-muted uppercase tracking-widest">
           Agent Consensus
         </span>
       </div>
@@ -44,14 +44,14 @@ export default function AgentConsensus({ score }: AgentConsensusProps) {
       <div className="flex justify-between items-end">
         <div>
           <motion.span
-            className="text-3xl font-display font-bold text-sentinel-text"
+            className="text-3xl font-display font-bold text-yowon-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             {score}%
           </motion.span>
-          <p className="text-xs text-sentinel-muted mt-0.5">Inter-agent agreement</p>
+          <p className="text-xs text-yowon-muted mt-0.5">Inter-agent agreement</p>
         </div>
         <p className="text-xs font-mono text-emerald-400">
           {score >= 85 ? 'HIGH ALIGNMENT' : score >= 70 ? 'MODERATE' : 'DIVERGENT'}

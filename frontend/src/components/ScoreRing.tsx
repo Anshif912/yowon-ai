@@ -85,7 +85,7 @@ export default function ScoreRing({ score, size = 160, label }: ScoreRingProps) 
         />
       </div>
       {label && (
-        <span className="text-xs text-sentinel-muted font-display font-medium tracking-widest uppercase">
+        <span className="text-xs text-yowon-muted font-display font-medium tracking-widest uppercase">
           {label}
         </span>
       )}
