@@ -191,14 +191,22 @@ def _normalize_string_list(value: Any) -> list[str]:
     if not value:
         return []
     if isinstance(value, list):
+        if len(value) > 3 and all(isinstance(item, str) and len(item) <= 1 for item in value):
+            return _normalize_string_list("".join(value))
         out: list[str] = []
         for item in value:
             if isinstance(item, str):
-                out.append(item)
+                out.extend(_normalize_string_list(item))
             elif isinstance(item, dict):
-                out.append(str(item.get("fix") or item.get("step") or item))
-        return out[:8]
-    return [line.strip(" -\t") for line in str(value).splitlines() if line.strip(" -\t")]
+                out.extend(_normalize_string_list(str(item.get("fix") or item.get("step") or item.get("action") or item)))
+        return [item for item in dict.fromkeys(out) if len(item) > 1][:8]
+    text = re.sub(r"(?i)\s+(?=phase\s+\d+[:.\-])", "\n", str(value).strip())
+    text = re.sub(r"\s+(?=\d+[.)]\s+[A-Z])", "\n", text)
+    return [
+        re.sub(r"^\s*(?:[-*+]|->|=>|[0-9]+[.)]|[A-Za-z][.)])\s*", "", line).strip(" -\t")
+        for line in re.split(r"\r?\n|;", text)
+        if line.strip(" -\t")
+    ][:8]
 
 
 def _fallback_summary(computed: dict[str, Any]) -> str:

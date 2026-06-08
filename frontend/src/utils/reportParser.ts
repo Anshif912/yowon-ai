@@ -1,6 +1,25 @@
 import type { Evaluation, ReportData, VerdictData } from '../types'
 import { normalizeDisplayList } from './listNormalizer.ts'
 
+const DEFAULT_ROADMAP = [
+  'Stabilize evidence package with README, architecture notes, and setup instructions',
+  'Add automated tests and publish repeatable validation results',
+  'Harden security, dependency, and secrets-management controls',
+  'Prepare deployment assets, observability, and rollback steps',
+  'Re-run YOWON AI evaluation before production or demo release',
+]
+
+const DEFAULT_MISSING_EVIDENCE = [
+  'No testing evidence',
+  'No deployment evidence',
+  'No security evidence',
+  'No documentation evidence',
+  'No scalability evidence',
+  'No innovation evidence',
+]
+
+const DEFAULT_POSITIVE_FACTORS = ['Evidence profile generated']
+
 function extractJson(text: string): VerdictData | null {
   const fenced = text.match(/```json\s*([\s\S]*?)\s*```/)
   if (fenced) {
@@ -98,7 +117,15 @@ export function enrichReport(raw: ReportData): ReportData {
   const agentScores = parsed?.agent_scores ?? buildAgentScores(parsed, raw.evaluations)
   const parsedRoadmap = normalizeDisplayList(parsed?.roadmap ?? parsed?.deployment_roadmap)
   const fallbackRoadmap = extractBullets(chief?.findings ?? '', ['roadmap', 'deploy', 'phase', 'next step'])
-  const roadmap = parsedRoadmap.length ? parsedRoadmap : fallbackRoadmap
+  const roadmap = parsedRoadmap.length ? parsedRoadmap : fallbackRoadmap.length ? fallbackRoadmap : DEFAULT_ROADMAP
+  const missingEvidence = normalizeDisplayList(parsed?.missing_evidence).length
+    ? normalizeDisplayList(parsed?.missing_evidence)
+    : DEFAULT_MISSING_EVIDENCE
+  const positiveFactors = normalizeDisplayList(parsed?.positive_factors).length
+    ? normalizeDisplayList(parsed?.positive_factors)
+    : deriveStrengths(raw.evaluations).length
+      ? deriveStrengths(raw.evaluations)
+      : DEFAULT_POSITIVE_FACTORS
 
   const verdict_data: VerdictData = {
     ...parsed,
@@ -135,8 +162,8 @@ export function enrichReport(raw: ReportData): ReportData {
     repository_completeness_score: parsed?.repository_completeness_score ?? 0,
     evidence_quality: parsed?.evidence_quality,
     penalties: parsed?.penalties ?? [],
-    missing_evidence: parsed?.missing_evidence ?? [],
-    positive_factors: parsed?.positive_factors ?? [],
+    missing_evidence: missingEvidence,
+    positive_factors: positiveFactors,
   }
 
   return { ...raw, verdict_data }

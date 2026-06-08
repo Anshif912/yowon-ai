@@ -2,9 +2,47 @@
 
 from __future__ import annotations
 
-from typing import Literal
+import re
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+DEFAULT_ROADMAP = [
+    "Stabilize evidence package with README, architecture notes, and setup instructions",
+    "Add automated tests and publish repeatable validation results",
+    "Harden security, dependency, and secrets-management controls",
+    "Prepare deployment assets, observability, and rollback steps",
+    "Re-run YOWON AI evaluation before production or demo release",
+]
+
+
+def _normalize_string_list(value: Any) -> list[str]:
+    if not value:
+        return []
+    if isinstance(value, str):
+        text = re.sub(r"(?i)\s+(?=phase\s+\d+[:.\-])", "\n", value.strip())
+        text = re.sub(r"\s+(?=\d+[.)]\s+[A-Z])", "\n", text)
+        return [
+            re.sub(r"^\s*(?:[-*+]|->|=>|[0-9]+[.)]|[A-Za-z][.)])\s*", "", line).strip(" -\t")
+            for line in re.split(r"\r?\n|;", text)
+            if line.strip(" -\t")
+        ]
+    if isinstance(value, list):
+        if len(value) > 3 and all(isinstance(item, str) and len(item) <= 1 for item in value):
+            return _normalize_string_list("".join(value))
+        out: list[str] = []
+        for item in value:
+            if isinstance(item, dict):
+                fix = item.get("fix") or item.get("step") or item.get("action") or item.get("factor") or str(item)
+                effort = item.get("effort")
+                priority = item.get("priority")
+                text = f"[P{priority or '?'}] {fix} (effort: {effort or 'TBD'})" if effort or priority else str(fix)
+                out.extend(_normalize_string_list(text))
+            else:
+                out.extend(_normalize_string_list(str(item)))
+        return [item for item in dict.fromkeys(out) if len(item) > 1]
+    return _normalize_string_list(str(value))
 
 
 class TechnicalReport(BaseModel):
@@ -89,26 +127,7 @@ class ChiefVerdict(BaseModel):
     @field_validator("recommended_fixes", "roadmap", "deployment_roadmap", "confidence_sources", mode="before")
     @classmethod
     def coerce_fixes(cls, v):
-        if not v:
-            return []
-        if isinstance(v, str):
-            lines = [line.strip(" -\t") for line in v.splitlines() if line.strip(" -\t")]
-            return lines or [v]
-        out: list[str] = []
-        for item in v:
-            if isinstance(item, str):
-                out.append(item)
-            elif isinstance(item, dict):
-                fix = item.get("fix") or item.get("step") or str(item)
-                effort = item.get("effort")
-                priority = item.get("priority")
-                if effort or priority:
-                    out.append(f"[P{priority or '?'}] {fix} (effort: {effort or 'TBD'})")
-                else:
-                    out.append(str(fix))
-        if len(out) > 3 and all(len(item) == 1 for item in out):
-            return [line.strip(" -\t") for line in "".join(out).splitlines() if line.strip(" -\t")]
-        return out
+        return _normalize_string_list(v)
 
     @model_validator(mode="after")
     def sync_roadmap_aliases(self):
@@ -116,4 +135,11 @@ class ChiefVerdict(BaseModel):
             self.deployment_roadmap = list(self.roadmap)
         if self.deployment_roadmap and not self.roadmap:
             self.roadmap = list(self.deployment_roadmap)
+        if not self.roadmap and not self.deployment_roadmap:
+            self.roadmap = list(DEFAULT_ROADMAP)
+            self.deployment_roadmap = list(DEFAULT_ROADMAP)
+        if not self.positive_factors:
+            self.positive_factors = ["Evidence profile generated"]
+        if not self.missing_evidence:
+            self.missing_evidence = ["No additional missing evidence detected"]
         return self

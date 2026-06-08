@@ -96,3 +96,80 @@ def test_rejection_pdf_is_rejection_only(tmp_path, monkeypatch):
     assert "INSUFFICIENT_EVIDENCE" in text
     assert "Repository contains no evaluable content." in text
     assert "Technical Analysis" not in text
+
+
+def _case_results(project_type: str, *, score: int = 58, roadmap=None, missing=None, positives=None):
+    return {
+        "verdict": {
+            "overall_score": score,
+            "verdict": "IMPROVE" if score >= 50 else "REJECT",
+            "risk_level": "MEDIUM" if score >= 50 else "HIGH",
+            "project_type": project_type,
+            "evaluation_standard": "YOWON AI readiness rubric",
+            "score_band": "Functional",
+            "confidence": 52,
+            "confidence_explanation": "Synthetic validation case.",
+            "repository_statistics": {
+                "total_files": 6,
+                "code_files": 2,
+                "documentation_files": 1,
+                "presentation_files": 0,
+                "test_files": 0,
+                "deployment_files": 0,
+                "meaningful_files": 3,
+            },
+            "repository_completeness_score": 36,
+            "evidence_quality": "Functional",
+            "agent_scores": {
+                "technical": score,
+                "security": 42,
+                "scalability": 45,
+                "innovation": 50,
+                "presentation": 48,
+                "impact": 44,
+            },
+            "executive_summary": f"{project_type} validation report.",
+            "top_strengths": positives,
+            "top_weaknesses": missing,
+            "positive_factors": positives,
+            "missing_evidence": missing,
+            "deployment_roadmap": roadmap,
+            "recommended_fixes": ["Add tests", "Document deployment"],
+        },
+        "technical": "Repository has a small implementation with limited tests.",
+        "security": "No security evidence was available.",
+        "innovation": "Innovation evidence is limited.",
+        "impact": "Impact evidence is limited.",
+        "failure": ["Missing tests", "No deployment evidence"],
+        "scalability": "No scalability evidence was available.",
+        "ppt": "Documentation is partial.",
+        "cross_exam": "No major contradictions detected.",
+    }
+
+
+def test_pdf_generation_required_validation_cases(tmp_path, monkeypatch):
+    from reports import report_generator
+    from pypdf import PdfReader
+
+    monkeypatch.setattr(report_generator, "REPORT_DIR", tmp_path)
+    cases = [
+        ("Empty Repository", _case_results("Hackathon Project", score=0, roadmap="", missing=[], positives=[])),
+        ("Small ML Project", _case_results("University Project", score=62, roadmap=list("Phase 1 - Add tests\nPhase 2 - Deploy"), positives=["Machine learning implementation"])),
+        ("Hackathon Project", _case_results("Hackathon Project", score=55, roadmap="Add tests\nAdd demo deployment")),
+        ("University Project", _case_results("University Project", score=64, roadmap=["Document methodology", "Add evaluation notebook"])),
+        ("Research Project", _case_results("Research Project", score=59, roadmap="Phase 1 - Add baselines; Phase 2 - Publish reproducibility package")),
+    ]
+
+    for name, results in cases:
+        path = report_generator.generate_report(name, name.lower().replace(" ", "-"), results)
+        text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
+        assert "YOWON AI" in text
+        assert "Executive Summary" in text
+        assert "Score Table" in text
+        assert "Category Score Chart" in text
+        assert "Missing Evidence" in text
+        assert "Positive Factors" in text
+        assert "Deployment Roadmap" in text
+        assert "Final Verdict" in text
+        assert "P h a s e" not in text
+        assert "No testing evidence" in text or "Machine learning implementation" in text

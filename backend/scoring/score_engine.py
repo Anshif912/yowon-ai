@@ -327,7 +327,7 @@ def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, An
         "repository_completeness_score": 0,
         "evidence_quality": "Incomplete",
         "penalties": [{"factor": reason, "dimension": "overall", "points": 100}],
-        "missing_evidence": [reason],
+        "missing_evidence": _missing_evidence_items(evidence),
         "positive_factors": ["Evidence profile generated"],
         "confidence_sources": _confidence_sources(evidence),
         "blocking_issues": [reason],
@@ -586,7 +586,7 @@ def compute_overall(
     strengths = [f"Strong {k} ({v}/100)" for k, v in calibrated_scores.items() if v >= 80][:5]
     positive_factors = _positive_factors(evidence, strengths)
     weaknesses = [f"Weak {k} ({v}/100)" for k, v in calibrated_scores.items() if v < 60][:5]
-    missing = list(dict.fromkeys(p["factor"] for p in penalties if p["factor"].startswith(("No ", "Insufficient"))))
+    missing = _missing_evidence_items(evidence, penalties)
 
     return {
         "overall_score": overall, "raw_weighted_score": round(sum(
@@ -640,6 +640,43 @@ def _positive_factors(evidence: dict[str, Any], score_strengths: list[str]) -> l
     if not factors:
         factors.append("Evidence profile generated")
     return list(dict.fromkeys(factors))[:8]
+
+
+def _missing_evidence_items(
+    evidence: dict[str, Any],
+    penalties: list[dict[str, Any]] | None = None,
+) -> list[str]:
+    """Return report-ready evidence gaps independently from score penalties."""
+    checks = evidence.get("checks", {})
+    missing: list[str] = []
+
+    if not checks.get("tests"):
+        missing.append("No testing evidence")
+    if not checks.get("deployment"):
+        missing.append("No deployment evidence")
+    if not checks.get("dependency_analysis") and not checks.get("security_practices"):
+        missing.append("No security evidence")
+    if not checks.get("documentation"):
+        missing.append("No documentation evidence")
+    if not checks.get("architecture") and not checks.get("multiple_components"):
+        missing.append("No scalability evidence")
+    if not checks.get("innovation_evidence"):
+        missing.append("No innovation evidence")
+
+    for item in penalties or []:
+        factor = str(item.get("factor", "")).strip()
+        if factor.startswith(("No ", "Insufficient")):
+            missing.append(factor)
+
+    if evidence.get("empty_repository"):
+        missing.extend([
+            "No source-code evidence",
+            "Repository contains no evaluable content.",
+        ])
+
+    if not missing:
+        missing.append("No additional missing evidence detected")
+    return list(dict.fromkeys(missing))[:10]
 
 
 def _confidence_sources(evidence: dict[str, Any]) -> list[str]:

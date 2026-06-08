@@ -363,6 +363,42 @@ def test_positive_factors_generated_from_repository_evidence():
     assert "Backend architecture present" in result["positive_factors"]
 
 
+def test_missing_evidence_generated_separately_from_penalties():
+    evidence = {
+        "checks": {
+            "tests": False,
+            "deployment": False,
+            "dependency_analysis": False,
+            "security_practices": False,
+            "documentation": False,
+            "architecture": False,
+            "multiple_components": False,
+            "innovation_evidence": False,
+        },
+        "repository_statistics": {},
+        "data_availability": 30,
+        "repository_coverage": 20,
+        "repository_completeness_score": 20,
+        "json_validity": 100,
+    }
+    result = compute_overall(
+        TechnicalReport(technical_score=60),
+        SecurityReport(security_score=60),
+        InnovationReport(innovation_score=60, scalability_score=60),
+        PresentationReport(presentation_score=60),
+        RiskReport(impact_score=60),
+        project_type="Hackathon Project",
+        evidence=evidence,
+    )
+    assert "No testing evidence" in result["missing_evidence"]
+    assert "No deployment evidence" in result["missing_evidence"]
+    assert "No security evidence" in result["missing_evidence"]
+    assert "No documentation evidence" in result["missing_evidence"]
+    assert "No scalability evidence" in result["missing_evidence"]
+    assert "No innovation evidence" in result["missing_evidence"]
+    assert result["missing_evidence"] != result["penalties"]
+
+
 def test_university_ai_project_not_penalized_like_startup():
     university_ai = evidence_with(
         checks={
