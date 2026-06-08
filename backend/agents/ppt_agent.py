@@ -7,7 +7,10 @@ Optimized for local Ollama models.
 """
 
 from crewai import Agent
-from llm_utils import get_llm
+from llm_utils import get_crewai_llm, get_model_name
+from logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 PPT_AGENT_BACKSTORY = """
@@ -55,11 +58,12 @@ Maximum 200 words.
 
 
 def create_ppt_agent() -> Agent:
+    logger.info("[PRESENTATION] Agent initialized model=%s", get_model_name("specialist"))
     return Agent(
         role="Pitch Coach & Presentation Evaluator",
         goal=PPT_AGENT_GOAL,
         backstory=PPT_AGENT_BACKSTORY,
-        llm=get_llm(),
+        llm=get_crewai_llm(),
         verbose=False,
         allow_delegation=False,
         max_iter=3,

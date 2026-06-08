@@ -6,11 +6,14 @@ import time
 from typing import Any, Callable
 
 from langchain_core.messages import HumanMessage, SystemMessage
+from crewai import LLM
 from langchain_ollama import ChatOllama
 
 from config import (
     AGENT_MAX_RETRIES,
+    AGENT_MAX_EXECUTION_TIME,
     AGENT_RETRY_DELAY_SEC,
+    CHIEF_MAX_EXECUTION_TIME,
     OLLAMA_CHIEF_MODEL,
     OLLAMA_CHIEF_NUM_PREDICT,
     OLLAMA_FALLBACK_MODEL,
@@ -44,7 +47,7 @@ def is_crew_abort_output(raw: str) -> bool:
     return any(p in lower for p in CREW_ABORT_PHRASES)
 
 
-def get_llm(role: str = "specialist", *, use_fallback: bool = False) -> ChatOllama:
+def _profile(role: str = "specialist", *, use_fallback: bool = False) -> dict[str, Any]:
     profiles: dict[str, dict[str, Any]] = {
         "specialist": {
             "model": OLLAMA_FALLBACK_MODEL if use_fallback else OLLAMA_SPECIALIST_MODEL,
@@ -65,8 +68,36 @@ def get_llm(role: str = "specialist", *, use_fallback: bool = False) -> ChatOlla
             "num_predict": OLLAMA_CHIEF_NUM_PREDICT,
         },
     }
-    cfg = profiles.get(role, profiles["specialist"])
+    return profiles.get(role, profiles["specialist"])
+
+
+def get_llm(role: str = "specialist", *, use_fallback: bool = False) -> ChatOllama:
+    """Return LangChain ChatOllama for direct non-CrewAI invocations."""
+    cfg = _profile(role, use_fallback=use_fallback)
     return ChatOllama(base_url=OLLAMA_HOST, **cfg)
+
+
+def get_crewai_llm(role: str = "specialist", *, use_fallback: bool = False) -> LLM:
+    """Return a CrewAI-native LLM compatible with CrewAI Agent(llm=...)."""
+    cfg = _profile(role, use_fallback=use_fallback)
+    model_name = str(cfg["model"])
+    crew_model = model_name if model_name.startswith(("ollama/", "ollama_chat/")) else f"ollama/{model_name}"
+    max_tokens = cfg.get("num_predict")
+    logger.info(
+        "CrewAI LLM initialized role=%s model=%s base_url=%s use_fallback=%s",
+        role,
+        crew_model,
+        OLLAMA_HOST,
+        use_fallback,
+    )
+    return LLM(
+        model=crew_model,
+        base_url=OLLAMA_HOST,
+        temperature=cfg.get("temperature"),
+        max_tokens=max_tokens,
+        timeout=AGENT_MAX_EXECUTION_TIME if role != "chief" else CHIEF_MAX_EXECUTION_TIME,
+        num_ctx=cfg.get("num_ctx"),
+    )
 
 
 def get_model_name(role: str = "specialist", *, use_fallback: bool = False) -> str:

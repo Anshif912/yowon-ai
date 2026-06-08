@@ -11,7 +11,10 @@ Optimized for local Ollama models.
 """
 
 from crewai import Agent
-from llm_utils import get_llm
+from llm_utils import get_crewai_llm, get_model_name
+from logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 RISK_IMPACT_AGENT_BACKSTORY = """
@@ -67,11 +70,12 @@ Maximum 300 words.
 
 
 def create_risk_impact_agent() -> Agent:
+    logger.info("[RISK] Agent initialized model=%s", get_model_name("specialist"))
     return Agent(
         role="Real-World Impact Analyst & Veteran CTO Failure Analyst",
         goal=RISK_IMPACT_AGENT_GOAL,
         backstory=RISK_IMPACT_AGENT_BACKSTORY,
-        llm=get_llm(),
+        llm=get_crewai_llm(),
         verbose=False,
         allow_delegation=False,
         max_iter=3,
