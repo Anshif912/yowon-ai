@@ -12,7 +12,7 @@ const JUDGES = [
   {
     name: 'Security Judge',
     icon: ShieldCheck,
-    color: '#A855F7',
+    color: '#7C3AED',
     finding: 'Assesses exposed secrets, dependency risk, authentication posture, and reliability hazards.',
   },
   {
@@ -24,13 +24,13 @@ const JUDGES = [
   {
     name: 'Presentation Judge',
     icon: Presentation,
-    color: '#F59E0B',
+    color: '#00FFA3',
     finding: 'Evaluates pitch clarity, documentation quality, roadmap quality, and executive readiness.',
   },
   {
     name: 'Risk Judge',
     icon: Scale,
-    color: '#10B981',
+    color: '#00FFA3',
     finding: 'Forecasts impact, operational risk, failure modes, and confidence limits from available evidence.',
   },
 ]
@@ -40,7 +40,7 @@ export default function JuryDashboardPage() {
     <AppShell particles>
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 space-y-8">
         <section className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 glass-pill px-3 py-1.5 mb-4 border-violet-500/20">
+          <div className="inline-flex items-center gap-2 glass-pill px-3 py-1.5 mb-4 border-cyan-300/20">
             <Brain size={13} className="text-cyan-300" />
             <span className="text-[10px] font-mono text-yowon-muted uppercase tracking-widest">AI Jury Dashboard</span>
           </div>

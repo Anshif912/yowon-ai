@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowRight, Play, Zap, Radio, Shield, Clock, Layers, Sparkles,
-  CheckCircle2, GitBranch, FileSearch,
+  CheckCircle2, GitBranch, FileSearch, Trophy, Scale, Network, Gauge,
 } from 'lucide-react'
 import AppShell from '../components/layout/AppShell'
 import NeuralNetwork from '../components/landing/NeuralNetwork'
@@ -11,9 +11,9 @@ import ScanLine from '../components/effects/ScanLine'
 import NeuralOverlay from '../components/effects/NeuralOverlay'
 
 const STATS = [
-  { value: '10', label: 'AI Specialists', icon: Layers, color: 'text-violet-400' },
-  { value: '6', label: 'Readiness Dimensions', icon: FileSearch, color: 'text-pink-400' },
-  { value: '<5m', label: 'To Verdict', icon: Clock, color: 'text-amber-400' },
+  { value: '10', label: 'AI Specialists', icon: Layers, color: 'text-cyan-300' },
+  { value: '6', label: 'Readiness Dimensions', icon: FileSearch, color: 'text-emerald-300' },
+  { value: '<5m', label: 'To Verdict', icon: Clock, color: 'text-violet-300' },
 ]
 
 const FEATURES = [
@@ -21,45 +21,51 @@ const FEATURES = [
     icon: GitBranch,
     title: 'Repo & Code Analysis',
     desc: 'Architecture, quality signals, and deployment blockers from your GitHub repo.',
-    gradient: 'from-violet-500/20 to-violet-500/5',
-    iconColor: 'text-violet-400',
+    gradient: 'from-cyan-400/15 to-cyan-400/5',
+    iconColor: 'text-cyan-300',
   },
   {
     icon: Shield,
     title: 'Security & Risk Jury',
     desc: 'OWASP-style review plus failure-mode forecasting before you ship.',
-    gradient: 'from-pink-500/20 to-pink-500/5',
-    iconColor: 'text-pink-400',
+    gradient: 'from-emerald-400/15 to-emerald-400/5',
+    iconColor: 'text-emerald-300',
   },
   {
     icon: Sparkles,
     title: 'Executive Verdict',
     desc: 'A single deployment readiness score with clear accept, improve, or reject guidance.',
-    gradient: 'from-amber-500/20 to-amber-500/5',
-    iconColor: 'text-amber-400',
+    gradient: 'from-violet-500/20 to-violet-500/5',
+    iconColor: 'text-violet-300',
   },
 ]
+
+const DNA = [
+  { label: 'Architecture', value: 84 },
+  { label: 'Security', value: 76 },
+  { label: 'Novelty', value: 68 },
+  { label: 'Evidence', value: 72 },
+]
+
+const JUDGE_FLOW = ['Technical', 'Security', 'Innovation', 'Risk', 'Chief Verdict']
 
 export default function LandingPage() {
   return (
     <AppShell showHeader={false} particles>
       <div className="fixed inset-0 pointer-events-none -z-[5] bg-aurora-radial mission-control-bg" />
-      <div className="hero-orb w-[420px] h-[420px] -top-32 -left-24 bg-violet-600/30" />
-      <div className="hero-orb w-[360px] h-[360px] top-1/4 -right-20 bg-pink-600/25" />
-      <div className="hero-orb w-[280px] h-[280px] bottom-32 left-1/3 bg-amber-500/15" />
       <ScanLine />
       <NeuralOverlay />
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-20">
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-16">
         <motion.div
-          className="inline-flex items-center gap-2 glass-pill px-4 py-2 mb-8 border-violet-500/20"
+          className="inline-flex items-center gap-2 glass-pill px-4 py-2 mb-8 border-cyan-300/20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Radio size={14} className="text-emerald-400 animate-pulse" />
+          <Radio size={14} className="text-yowon-secondary animate-pulse" />
           <span className="text-xs font-mono text-yowon-muted tracking-widest uppercase">
-            Multi-Agent AI - Deployment Intelligence
+            Enterprise AI Evaluation Network
           </span>
         </motion.div>
 
@@ -80,7 +86,7 @@ export default function LandingPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.25 }}
             >
-              Know if you&apos;re ready to deploy before production does.
+            Autonomous AI Jury Platform
             </motion.p>
 
             <motion.p
@@ -89,8 +95,8 @@ export default function LandingPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
             >
-              Upload code, docs, and decks. Our AI jury runs in parallel across engineering,
-              security, innovation, and risk, then delivers one clear deployment verdict.
+              Judge-grade project intelligence for teams that need a defensible verdict,
+              benchmark context, and an action path from prototype to release.
             </motion.p>
 
             <motion.div
@@ -105,11 +111,11 @@ export default function LandingPage() {
                 <ArrowRight size={16} />
               </Link>
               <Link to="/demo" className="yowon-btn-ghost">
-                <Play size={16} className="text-amber-400" />
+                <Play size={16} className="text-cyan-300" />
                 View Demo
               </Link>
               <Link to="/jury" className="yowon-btn-ghost">
-                <Shield size={16} className="text-cyan-300" />
+                <Shield size={16} className="text-emerald-300" />
                 AI Jury
               </Link>
             </motion.div>
@@ -139,21 +145,85 @@ export default function LandingPage() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="relative"
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-amber-500/10 blur-2xl" />
-            <div className="relative glass-card p-6 sm:p-8 neon-border">
+            <div className="relative glass-card p-6 sm:p-8 neon-border overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
               <p className="text-xs font-mono text-yowon-muted uppercase tracking-widest mb-4 text-center">
-                Live agent mesh
+                Judge Simulation
               </p>
               <NeuralNetwork />
-              <ul className="mt-6 space-y-2">
-                {['Parallel specialist analysis', 'Cross-examined findings', 'Unified readiness score'].map(item => (
+              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                {JUDGE_FLOW.slice(0, 3).map(item => (
                   <li key={item} className="flex items-center gap-2 text-sm text-yowon-muted">
-                    <CheckCircle2 size={14} className="text-emerald-400 shrink-0" />
+                    <CheckCircle2 size={14} className="text-yowon-secondary shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="px-4 sm:px-6 pb-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-4 gap-4">
+          <motion.div
+            className="glass-card lg:col-span-2"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="font-display font-semibold text-yowon-text">Project DNA</h2>
+              <Network size={18} className="text-cyan-300" />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {DNA.map(item => (
+                <div key={item.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <div className="flex items-center justify-between text-sm mb-2">
+                    <span className="text-yowon-muted">{item.label}</span>
+                    <span className="font-mono text-cyan-300">{item.value}</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                    <motion.div
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-300 to-emerald-300"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.value}%` }}
+                      viewport={{ once: true }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="glass-card"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="font-display font-semibold">Benchmark</h2>
+              <Scale size={18} className="text-emerald-300" />
+            </div>
+            <p className="text-4xl font-display font-bold text-yowon-text">Top 12%</p>
+            <p className="text-sm text-yowon-muted mt-2">Global readiness percentile after rubric calibration.</p>
+          </motion.div>
+
+          <motion.div
+            className="glass-card"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="font-display font-semibold">Ranking</h2>
+              <Trophy size={18} className="text-violet-300" />
+            </div>
+            <p className="text-4xl font-display font-bold text-yowon-text">#48</p>
+            <p className="text-sm text-yowon-muted mt-2">Global ranking indicator for comparable submissions.</p>
           </motion.div>
         </div>
       </section>
@@ -198,6 +268,33 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section className="py-20 px-4 sm:px-6 border-t border-white/5">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-4">
+          <div className="glass-card lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <Gauge className="text-cyan-300" />
+              <h2 className="text-2xl font-display font-bold">Readiness Ladder</h2>
+            </div>
+            {['Evidence', 'Architecture', 'Security', 'Deployment'].map((step, index) => (
+              <div key={step} className="flex items-center gap-4 py-3 border-t border-white/5 first:border-t-0">
+                <span className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center font-mono text-cyan-300">
+                  {index + 1}
+                </span>
+                <span className="text-yowon-text">{step}</span>
+                <div className="ml-auto h-px w-24 bg-gradient-to-r from-cyan-300/60 to-emerald-300/20 hidden sm:block" />
+              </div>
+            ))}
+          </div>
+          <div className="glass-card border-violet-400/20">
+            <Sparkles className="text-violet-300 mb-4" />
+            <h2 className="font-display text-xl font-bold mb-3">AI Recommendation Engine</h2>
+            <p className="text-sm text-yowon-muted leading-relaxed">
+              Generates prioritized fixes, evidence gaps, and deployment roadmap steps from the same jury verdict.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 px-4 text-center border-t border-white/5">
         <motion.div
           className="glass-card max-w-2xl mx-auto p-10 relative overflow-hidden"
@@ -205,7 +302,7 @@ export default function LandingPage() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-300 via-emerald-300 to-violet-500" />
           <h2 className="text-2xl sm:text-3xl font-display font-bold mb-3">
             Ready for <span className="gradient-text">Deployment Intelligence</span>?
           </h2>

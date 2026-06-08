@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   Clock, CheckCircle, XCircle, Brain, Cpu, Shield, Presentation,
-  Lightbulb, Globe, Gavel, Activity,
+  Lightbulb, Globe, Gavel, Activity, Scale, Fingerprint, Trophy,
 } from 'lucide-react'
 import AppShell from '../components/layout/AppShell'
 import AgentPipelineCard from '../components/evaluation/AgentPipelineCard'
@@ -15,13 +15,19 @@ import { useEvaluationProgress } from '../hooks/useEvaluationProgress'
 import type { AgentStatus } from '../types'
 
 const PIPELINE = [
-  { id: 'coordinator', label: 'Coordinator', desc: 'Parsing inputs and building evaluation context', icon: Brain, color: '#818CF8' },
-  { id: 'technical', label: 'Engineering Agent', desc: 'Analyzing architecture and code quality', icon: Cpu, color: '#A855F7' },
+  { id: 'coordinator', label: 'Coordinator', desc: 'Parsing inputs and building evaluation context', icon: Brain, color: '#00E5FF' },
+  { id: 'technical', label: 'Engineering Agent', desc: 'Analyzing architecture and code quality', icon: Cpu, color: '#00E5FF' },
   { id: 'security', label: 'Security Agent', desc: 'Auditing OWASP risks and static scan findings', icon: Shield, color: '#EF4444' },
-  { id: 'presentation', label: 'Presentation Agent', desc: 'Reviewing pitch deck and documentation', icon: Presentation, color: '#A78BFA' },
-  { id: 'innovation', label: 'Innovation Agent', desc: 'Assessing novelty and scalability readiness', icon: Lightbulb, color: '#F59E0B' },
-  { id: 'risk', label: 'Risk Agent', desc: 'Forecasting impact and failure modes', icon: Globe, color: '#10B981' },
-  { id: 'chief', label: 'Chief Evaluator', desc: 'Cross-examining specialists and rendering verdict', icon: Gavel, color: '#14B8A6' },
+  { id: 'presentation', label: 'Presentation Agent', desc: 'Reviewing pitch deck and documentation', icon: Presentation, color: '#7C3AED' },
+  { id: 'innovation', label: 'Innovation Agent', desc: 'Assessing novelty and scalability readiness', icon: Lightbulb, color: '#00FFA3' },
+  { id: 'risk', label: 'Risk Agent', desc: 'Forecasting impact and failure modes', icon: Globe, color: '#00FFA3' },
+  { id: 'chief', label: 'Chief Evaluator', desc: 'Cross-examining specialists and rendering verdict', icon: Gavel, color: '#7C3AED' },
+]
+
+const SIMULATION_STATS = [
+  { label: 'Judge Simulation', value: 'Active', icon: Scale, tone: 'text-cyan-300' },
+  { label: 'Project DNA', value: 'Mapping', icon: Fingerprint, tone: 'text-emerald-300' },
+  { label: 'Global Rank', value: 'Pending', icon: Trophy, tone: 'text-violet-300' },
 ]
 
 function resolveAgentStatus(
@@ -89,16 +95,16 @@ export default function EvaluatePage() {
           ) : (
             <motion.div
               className="relative w-20 h-20 mx-auto mb-4"
-              animate={{ boxShadow: ['0 0 20px rgba(6,182,212,0.2)', '0 0 50px rgba(6,182,212,0.4)', '0 0 20px rgba(6,182,212,0.2)'] }}
+              animate={{ boxShadow: ['0 0 20px rgba(0,229,255,0.2)', '0 0 50px rgba(0,255,163,0.34)', '0 0 20px rgba(0,229,255,0.2)'] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="absolute inset-0 rounded-full border-2 border-violet-500/30" />
-              <div className="absolute inset-0 rounded-full border-2 border-t-violet-400 border-r-transparent border-b-transparent border-l-transparent animate-spin" />
-              <Brain size={28} className="absolute inset-0 m-auto text-violet-300" />
+              <div className="absolute inset-0 rounded-full border-2 border-cyan-300/30" />
+              <div className="absolute inset-0 rounded-full border-2 border-t-cyan-300 border-r-transparent border-b-transparent border-l-transparent animate-spin" />
+              <Brain size={28} className="absolute inset-0 m-auto text-cyan-300" />
             </motion.div>
           )}
 
-          <p className="text-xs font-mono text-pink-400/70 uppercase tracking-[0.3em] mb-2">
+          <p className="text-xs font-mono text-cyan-300/80 uppercase tracking-[0.3em] mb-2">
             Mission Control
           </p>
           <h1 className="text-2xl sm:text-4xl font-display font-bold mb-2">
@@ -117,8 +123,8 @@ export default function EvaluatePage() {
 
           {projectName && (
             <p className="text-yowon-muted">
-              Evaluating <span className="text-violet-300 font-medium">{projectName}</span>
-              {projectType && <span className="text-pink-300 font-mono text-xs"> - {projectType}</span>}
+              Evaluating <span className="text-cyan-300 font-medium">{projectName}</span>
+              {projectType && <span className="text-emerald-300 font-mono text-xs"> - {projectType}</span>}
             </p>
           )}
 
@@ -127,11 +133,11 @@ export default function EvaluatePage() {
               <Clock size={14} />
               {formatTime(elapsed)}
             </span>
-            <span className="flex items-center gap-1.5 text-pink-400/90 glass-pill px-3 py-1.5">
+            <span className="flex items-center gap-1.5 text-cyan-300/90 glass-pill px-3 py-1.5">
               <Activity size={14} />
               {completionPct}% complete
             </span>
-            <span className="text-purple-300/80 glass-pill px-3 py-1.5 text-xs">
+            <span className="text-emerald-300/80 glass-pill px-3 py-1.5 text-xs">
               {progress.current_task ?? 'Initializing...'}
             </span>
           </div>
@@ -139,7 +145,7 @@ export default function EvaluatePage() {
           <div className="mt-4 max-w-md mx-auto">
             <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 rounded-full"
+                className="h-full bg-gradient-to-r from-cyan-300 via-emerald-300 to-violet-500 rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${completionPct}%` }}
                 transition={{ duration: 0.4 }}
@@ -147,6 +153,23 @@ export default function EvaluatePage() {
             </div>
           </div>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          {SIMULATION_STATS.map(({ label, value, icon: Icon, tone }) => (
+            <motion.div
+              key={label}
+              className="glass-card p-4 flex items-center justify-between"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-yowon-muted">{label}</p>
+                <p className={`text-lg font-display font-semibold ${tone}`}>{value}</p>
+              </div>
+              <Icon className={tone} size={24} />
+            </motion.div>
+          ))}
+        </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <div className="xl:col-span-1 space-y-1">
@@ -167,9 +190,9 @@ export default function EvaluatePage() {
           </div>
 
           <div className="xl:col-span-2 space-y-6">
-            <div className="glass-card p-6 border border-violet-500/10">
+            <div className="glass-card p-6 border border-cyan-300/10">
               <h2 className="text-xs font-mono text-yowon-muted uppercase tracking-[0.2em] mb-4 text-center">
-                AI Agent Network
+                Judge Simulation Network
               </h2>
               <AgentNetwork
                 activeAgent={activeAgent}

@@ -4,12 +4,12 @@ import {
 } from 'lucide-react'
 
 const AGENTS = [
-  { icon: Cpu, label: 'Technical Agent', color: '#A855F7', delay: 0 },
+  { icon: Cpu, label: 'Technical Agent', color: '#00E5FF', delay: 0 },
   { icon: Shield, label: 'Security Agent', color: '#EF4444', delay: 0.15 },
-  { icon: Lightbulb, label: 'Innovation Agent', color: '#F59E0B', delay: 0.3 },
-  { icon: Presentation, label: 'Presentation Agent', color: '#EC4899', delay: 0.45 },
+  { icon: Lightbulb, label: 'Innovation Agent', color: '#00FFA3', delay: 0.3 },
+  { icon: Presentation, label: 'Presentation Agent', color: '#7C3AED', delay: 0.45 },
   { icon: AlertTriangle, label: 'Risk Agent', color: '#F97316', delay: 0.6 },
-  { icon: Gavel, label: 'Verdict Agent', color: '#14B8A6', delay: 0.75 },
+  { icon: Gavel, label: 'Verdict Agent', color: '#00FFA3', delay: 0.75 },
 ]
 
 export default function AgentShowcase() {

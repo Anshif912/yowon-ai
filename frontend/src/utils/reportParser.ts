@@ -267,7 +267,7 @@ export function computeConsensus(agentScores: VerdictData['agent_scores']): numb
 }
 
 export function scoreColor(score: number): string {
-  if (score >= 80) return '#10B981'
+  if (score >= 80) return '#00FFA3'
   if (score >= 50) return '#F59E0B'
   return '#EF4444'
 }
