@@ -12,7 +12,7 @@ const EDGES = [
   [3, 8], [5, 6], [6, 7], [7, 8], [6, 9], [7, 9], [8, 9],
 ]
 
-const NODE_COLORS = ['#A855F7', '#EC4899', '#F59E0B', '#14B8A6', '#A855F7']
+const NODE_COLORS = ['#00E5FF', '#00FFA3', '#7C3AED', '#00E5FF', '#00FFA3']
 
 export default function NeuralNetwork() {
   return (
@@ -20,8 +20,8 @@ export default function NeuralNetwork() {
       <svg viewBox="0 0 500 200" className="w-full h-full">
         <defs>
           <radialGradient id="node-glow">
-            <stop offset="0%" stopColor="#EC4899" stopOpacity="1" />
-            <stop offset="100%" stopColor="#A855F7" stopOpacity="0" />
+            <stop offset="0%" stopColor="#00E5FF" stopOpacity="1" />
+            <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -32,7 +32,7 @@ export default function NeuralNetwork() {
             y1={NODES[a].y}
             x2={NODES[b].x}
             y2={NODES[b].y}
-            stroke="rgba(168,85,247,0.3)"
+            stroke="rgba(0,229,255,0.28)"
             strokeWidth="1"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1, opacity: [0.2, 0.65, 0.2] }}

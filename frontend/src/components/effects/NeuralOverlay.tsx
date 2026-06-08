@@ -6,9 +6,9 @@ export default function NeuralOverlay() {
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="neural-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#A855F7" stopOpacity="0.6" />
-            <stop offset="50%" stopColor="#EC4899" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.6" />
+            <stop offset="50%" stopColor="#00FFA3" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.24" />
           </linearGradient>
         </defs>
         {[

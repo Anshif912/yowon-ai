@@ -92,24 +92,24 @@ export default function SubmitPage() {
 
   return (
     <AppShell>
-      <div className="fixed inset-0 pointer-events-none -z-[5] bg-aurora-radial opacity-80" />
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16 relative">
+      <div className="fixed inset-0 pointer-events-none -z-[5] bg-aurora-radial opacity-90" />
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 relative">
         <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="inline-flex items-center gap-2 glass-pill px-3 py-1.5 mb-4 border-pink-500/20">
-            <Sparkles size={12} className="text-amber-400" />
+          <div className="inline-flex items-center gap-2 glass-pill px-3 py-1.5 mb-4 border-cyan-300/20">
+            <Sparkles size={12} className="text-cyan-300" />
             <span className="text-[10px] font-mono text-yowon-muted uppercase tracking-widest">
               Evaluation intake
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-display font-bold mb-3">
-            <span className="gradient-text">Submit Your Project</span>
+            <span className="gradient-text">Evaluation Intake</span>
           </h1>
           <p className="text-yowon-muted max-w-md mx-auto">
-            Tell us about your build. The AI jury needs at least one source: repo, description, or docs.
+            Register project evidence for YOWON AI&apos;s judge-grade readiness evaluation.
           </p>
         </motion.div>
 
@@ -139,7 +139,7 @@ export default function SubmitPage() {
                   </div>
                   <span
                     className={`text-[10px] sm:text-xs font-mono uppercase tracking-wider hidden sm:block ${
-                      active ? 'text-violet-300' : 'text-yowon-muted'
+                      active ? 'text-cyan-300' : 'text-yowon-muted'
                     }`}
                   >
                     {step.label}
@@ -148,7 +148,7 @@ export default function SubmitPage() {
                 {i < STEPS.length - 1 && (
                   <div
                     className={`w-8 sm:w-16 h-px mb-5 sm:mb-0 ${
-                      done ? 'bg-gradient-to-r from-emerald-500/60 to-violet-500/40' : 'bg-yowon-border'
+                      done ? 'bg-gradient-to-r from-emerald-300/70 to-cyan-300/50' : 'bg-yowon-border'
                     }`}
                   />
                 )}
@@ -159,21 +159,21 @@ export default function SubmitPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <motion.div
-            className="glass-card space-y-5 border-l-2 border-l-violet-500/50"
+            className="glass-card space-y-5 border-l-2 border-l-cyan-300/60"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
             <h2 className="font-display font-semibold text-lg flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-violet-500/15 flex items-center justify-center">
-                <BarChart3 size={16} className="text-violet-400" />
+                <span className="w-8 h-8 rounded-lg bg-cyan-300/10 flex items-center justify-center">
+                <BarChart3 size={16} className="text-cyan-300" />
               </span>
               Project Details
             </h2>
 
             <div>
               <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
-                Project Name <span className="text-pink-400">*</span>
+                Project Name <span className="text-cyan-300">*</span>
               </label>
               <input
                 type="text"
@@ -187,7 +187,7 @@ export default function SubmitPage() {
 
             <div>
               <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
-                Project Type <span className="text-pink-400">*</span>
+                Project Type <span className="text-cyan-300">*</span>
               </label>
               <select
                 value={projectType}
@@ -213,14 +213,14 @@ export default function SubmitPage() {
           </motion.div>
 
           <motion.div
-            className="glass-card space-y-5 border-l-2 border-l-pink-500/50"
+            className="glass-card space-y-5 border-l-2 border-l-emerald-300/60"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
             <h2 className="font-display font-semibold text-lg flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-pink-500/15 flex items-center justify-center">
-                <Github size={16} className="text-pink-400" />
+                <span className="w-8 h-8 rounded-lg bg-emerald-300/10 flex items-center justify-center">
+                <Github size={16} className="text-emerald-300" />
               </span>
               Code & Links
             </h2>
@@ -259,14 +259,14 @@ export default function SubmitPage() {
           </motion.div>
 
           <motion.div
-            className="glass-card space-y-5 border-l-2 border-l-amber-500/50"
+            className="glass-card space-y-5 border-l-2 border-l-violet-500/60"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             <h2 className="font-display font-semibold text-lg flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-amber-500/15 flex items-center justify-center">
-                <FileStack size={16} className="text-amber-400" />
+                <span className="w-8 h-8 rounded-lg bg-violet-500/15 flex items-center justify-center">
+                <FileStack size={16} className="text-violet-300" />
               </span>
               Documents
             </h2>
@@ -309,11 +309,11 @@ export default function SubmitPage() {
                    uploadPhase === 2 ? 'Triggering evaluation...' :
                    'Redirecting to live pipeline...'}
                 </span>
-                <span className="text-violet-300">{uploadPhase * 33}%</span>
+                <span className="text-cyan-300">{uploadPhase * 33}%</span>
               </div>
               <div className="h-1.5 rounded-full bg-yowon-border overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400"
+                  className="h-full bg-gradient-to-r from-cyan-300 via-emerald-300 to-violet-500"
                   animate={{ width: `${uploadPhase * 33}%` }}
                 />
               </div>
@@ -341,7 +341,7 @@ export default function SubmitPage() {
           </motion.button>
 
           <p className="text-center text-xs text-yowon-muted/80 font-mono">
-            Encrypted upload - Parallel agent analysis - Verdict in minutes
+            Encrypted intake - Parallel agent analysis - Verdict in minutes
           </p>
         </form>
       </main>

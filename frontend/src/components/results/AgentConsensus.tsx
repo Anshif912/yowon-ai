@@ -28,7 +28,7 @@ export default function AgentConsensus({ score }: AgentConsensusProps) {
               animate={{
                 scaleY: 1,
                 background: filled
-                  ? `linear-gradient(180deg, #A855F7, #EC4899)`
+                  ? `linear-gradient(180deg, #00E5FF, #00FFA3)`
                   : '#1E2D45',
               }}
               transition={{ delay: i * 0.08, duration: 0.4 }}

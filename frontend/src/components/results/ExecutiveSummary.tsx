@@ -63,7 +63,7 @@ function DeploymentRoadmap({
       transition={{ delay: 0.5 }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <Map size={16} style={{ color: '#EC4899' }} />
+        <Map size={16} style={{ color: '#00E5FF' }} />
         <h3 className="font-display font-semibold text-yowon-text">Deployment Roadmap</h3>
       </div>
       {phases.length === 0 ? (
@@ -141,14 +141,14 @@ export default function ExecutiveSummary({ data }: ExecutiveSummaryProps) {
           icon={Wrench}
           title="Recommended Fixes"
           items={fixes}
-          color="#A855F7"
+          color="#7C3AED"
           delay={0.4}
         />
         <SectionCard
           icon={CheckCircle2}
           title="Confidence Sources"
           items={confidenceSources}
-          color="#14B8A6"
+          color="#00FFA3"
           delay={0.45}
         />
       </div>
