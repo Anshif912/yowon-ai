@@ -65,6 +65,9 @@ def test_pdf_report_does_not_render_raw_debug_json(tmp_path, monkeypatch):
     }
 
     path = report_generator.generate_report("Demo", "test-report", results)
+    assert report_generator.validate_pdf_file(path) > 0
+    with open(path, "rb") as handle:
+        assert handle.read(5) == b"%PDF-"
     text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
     assert "Raw Agent Scores" not in text
     assert "raw_agent_scores" not in text
@@ -92,6 +95,7 @@ def test_rejection_pdf_is_rejection_only(tmp_path, monkeypatch):
         },
     }
     path = report_generator.generate_report("Empty", "empty-report", results)
+    assert report_generator.validate_pdf_file(path) > 0
     text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
     assert "INSUFFICIENT_EVIDENCE" in text
     assert "Repository contains no evaluable content." in text
@@ -162,6 +166,9 @@ def test_pdf_generation_required_validation_cases(tmp_path, monkeypatch):
 
     for name, results in cases:
         path = report_generator.generate_report(name, name.lower().replace(" ", "-"), results)
+        assert report_generator.validate_pdf_file(path) > 0
+        with open(path, "rb") as handle:
+            assert handle.read(5) == b"%PDF-"
         text = "\n".join(page.extract_text() or "" for page in PdfReader(path).pages)
         assert "YOWON AI" in text
         assert "Executive Summary" in text
@@ -173,3 +180,13 @@ def test_pdf_generation_required_validation_cases(tmp_path, monkeypatch):
         assert "Final Verdict" in text
         assert "P h a s e" not in text
         assert "No testing evidence" in text or "Machine learning implementation" in text
+
+
+def test_pdf_validation_rejects_corrupt_file(tmp_path):
+    from reports import report_generator
+    import pytest
+
+    corrupt = tmp_path / "corrupt.pdf"
+    corrupt.write_text("not a real pdf", encoding="utf-8")
+    with pytest.raises(report_generator.PDFGenerationError):
+        report_generator.validate_pdf_file(corrupt)

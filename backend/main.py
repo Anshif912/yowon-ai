@@ -33,7 +33,7 @@ from database import Evaluation, Project, Report, get_db, init_db
 from tools.parser import build_project_context, context_to_text
 from tools.vector_store import store_project_context
 from crew.crew import run_evaluation
-from reports.report_generator import generate_report
+from reports.report_generator import PDFGenerationError, generate_report, validate_pdf_file
 from scoring.rubrics import PROJECT_TYPES, normalize_project_type
 from progress import (
     PHASE_BUILD_CONTEXT,
@@ -293,10 +293,12 @@ def _run_evaluation_background(project_id: str) -> None:
                 report_id=report_id,
                 evaluation_results=results,
             )
+            validate_pdf_file(pdf_path)
         except Exception as pdf_exc:
             logger.exception("PDF generation failed for %s", project_id)
             report_status = "failed"
             report_error = str(pdf_exc)
+            pdf_path = None
 
         db.add(
             Report(
@@ -521,6 +523,12 @@ async def download_pdf(project_id: str, db: Session = Depends(get_db)):
     pdf_path = Path(report.pdf_path)
     if not pdf_path.exists():
         raise HTTPException(status_code=404, detail="PDF file not found on disk")
+    try:
+        size = validate_pdf_file(pdf_path)
+        logger.info("[PDF] Validation passed report_id=%s bytes=%d", report.id, size)
+    except PDFGenerationError as exc:
+        logger.error("[PDF] Validation failed report_id=%s path=%s error=%s", report.id, pdf_path, exc)
+        raise HTTPException(status_code=503, detail=f"PDF file is invalid: {exc}") from exc
 
     return FileResponse(
         path=str(pdf_path),
