@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 import httpx
+from crewai import BaseLLM
 
 from config import (
     CHROMA_DIR,
@@ -14,6 +15,7 @@ from config import (
     OLLAMA_SPECIALIST_MODEL,
 )
 from logging_config import get_logger
+from llm_utils import get_crewai_llm
 
 logger = get_logger(__name__)
 
@@ -71,6 +73,48 @@ def run_preflight_checks(*, require_github: bool = False) -> HealthReport:
             report.errors.append(
                 f"Ollama model {model!r} not found. Run: ollama pull {model}"
             )
+
+    # CrewAI LLM and Agent construction
+    try:
+        specialist_llm = get_crewai_llm("specialist")
+        chief_llm = get_crewai_llm("chief")
+        if not isinstance(specialist_llm, BaseLLM):
+            raise TypeError(f"specialist CrewAI LLM is {type(specialist_llm).__name__}, expected BaseLLM")
+        if not isinstance(chief_llm, BaseLLM):
+            raise TypeError(f"chief CrewAI LLM is {type(chief_llm).__name__}, expected BaseLLM")
+        logger.info("CrewAI LLM objects valid: specialist=%s chief=%s", type(specialist_llm).__name__, type(chief_llm).__name__)
+    except Exception as exc:
+        report.ok = False
+        report.errors.append(f"CrewAI LLM initialization failed: {exc}")
+        return report
+
+    try:
+        from agents.narrative_agent import create_narrative_agent
+        from agents.specialist_agents import (
+            create_innovation_agent,
+            create_presentation_agent,
+            create_risk_agent,
+            create_security_agent,
+            create_technical_agent,
+        )
+
+        factories = (
+            ("TECHNICAL", create_technical_agent),
+            ("SECURITY", create_security_agent),
+            ("INNOVATION", create_innovation_agent),
+            ("PRESENTATION", create_presentation_agent),
+            ("RISK", create_risk_agent),
+            ("NARRATIVE", create_narrative_agent),
+        )
+        for label, factory in factories:
+            agent = factory()
+            if not isinstance(agent.llm, BaseLLM):
+                raise TypeError(f"{label} Agent llm is {type(agent.llm).__name__}, expected BaseLLM")
+            logger.info("[%s] Agent creation health check passed model=%s", label, getattr(agent.llm, "model", "unknown"))
+    except Exception as exc:
+        report.ok = False
+        report.errors.append(f"CrewAI Agent creation failed: {exc}")
+        return report
 
     # Chroma directory writable
     try:

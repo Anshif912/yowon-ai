@@ -2,7 +2,7 @@
 
 from crewai import Agent
 from config import CHIEF_MAX_EXECUTION_TIME
-from llm_utils import get_llm, get_model_name
+from llm_utils import get_crewai_llm, get_model_name
 from logging_config import get_logger
 
 logger = get_logger(__name__)
@@ -19,12 +19,12 @@ Do not use tools. One response only.
 
 def create_chief_evaluation_agent(*, use_fallback: bool = False) -> Agent:
     model_name = get_model_name('chief', use_fallback=use_fallback)
-    logger.info('Chief model: %s (use_fallback=%s)', model_name, use_fallback)
+    logger.info('[CHIEF] Agent initialized model=%s use_fallback=%s', model_name, use_fallback)
     return Agent(
         role="Chief Evaluation Officer",
         goal="Generate executive_summary, strengths, weaknesses, recommended_fixes, roadmap, deployment_roadmap.",
         backstory=CHIEF_BACKSTORY,
-        llm=get_llm("chief", use_fallback=use_fallback),
+        llm=get_crewai_llm("chief", use_fallback=use_fallback),
         verbose=False,
         allow_delegation=False,
         # Single-pass LLM for narrative synthesis; allow longer execution time

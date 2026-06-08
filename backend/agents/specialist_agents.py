@@ -3,7 +3,10 @@
 from crewai import Agent
 
 from config import AGENT_MAX_EXECUTION_TIME, AGENT_MAX_ITER
-from llm_utils import get_llm
+from llm_utils import get_crewai_llm, get_model_name
+from logging_config import get_logger
+
+logger = get_logger(__name__)
 
 _COMMON = """
 Evaluate ONLY evidence in the input. Never invent files, metrics, or competitors.
@@ -17,17 +20,20 @@ Do not use tools. Do not ask questions. One response only.
 
 
 def _agent(
+    label: str,
     role: str,
     goal: str,
     backstory: str,
     *,
     use_fallback: bool = False,
 ) -> Agent:
+    model_name = get_model_name("specialist", use_fallback=use_fallback)
+    logger.info("[%s] Agent initialized model=%s", label, model_name)
     return Agent(
         role=role,
         goal=goal,
         backstory=backstory + _COMMON,
-        llm=get_llm("specialist", use_fallback=use_fallback),
+        llm=get_crewai_llm("specialist", use_fallback=use_fallback),
         verbose=False,
         allow_delegation=False,
         # Enforce single-pass, long-running allowance for specialists
@@ -38,6 +44,7 @@ def _agent(
 
 def create_technical_agent(*, use_fallback: bool = False) -> Agent:
     return _agent(
+        "TECHNICAL",
         "Principal Software Engineer",
         "Return JSON with technical_score, strengths, weaknesses, risks, confidence.",
         "You assess architecture, code quality, and deployment readiness.",
@@ -47,6 +54,7 @@ def create_technical_agent(*, use_fallback: bool = False) -> Agent:
 
 def create_security_agent(*, use_fallback: bool = False) -> Agent:
     return _agent(
+        "SECURITY",
         "Application Security Auditor",
         "Return JSON with security_score, risk_level, critical_findings, confidence.",
         "You audit OWASP risks, secrets, and dependency issues from static scan data.",
@@ -56,6 +64,7 @@ def create_security_agent(*, use_fallback: bool = False) -> Agent:
 
 def create_innovation_agent(*, use_fallback: bool = False) -> Agent:
     return _agent(
+        "INNOVATION",
         "Technology Innovation Analyst",
         "Return JSON with innovation_score, scalability_score, differentiators, scalability_risk, confidence.",
         "You assess novelty, differentiation, and scale readiness.",
@@ -65,6 +74,7 @@ def create_innovation_agent(*, use_fallback: bool = False) -> Agent:
 
 def create_presentation_agent(*, use_fallback: bool = False) -> Agent:
     return _agent(
+        "PRESENTATION",
         "Pitch Coach",
         "Return JSON with presentation_score, strengths, improvements, confidence.",
         "You evaluate pitch clarity, problem/solution narrative, and deck quality.",
@@ -74,6 +84,7 @@ def create_presentation_agent(*, use_fallback: bool = False) -> Agent:
 
 def create_risk_agent(*, use_fallback: bool = False) -> Agent:
     return _agent(
+        "RISK",
         "Deployment Risk Analyst",
         "Return JSON with impact_score, failure_modes, top_risks, confidence.",
         "You predict real-world impact and failure modes under production stress.",

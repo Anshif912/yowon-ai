@@ -1,11 +1,11 @@
 from crewai import Agent, Task, Crew, Process
-from llm_utils import get_llm
+from llm_utils import get_crewai_llm
 
 agent = Agent(
     role="Technical Reviewer",
     goal="Analyze projects",
     backstory="Senior Software Architect",
-    llm=get_llm(),
+    llm=get_crewai_llm(),
     verbose=False
 )
 

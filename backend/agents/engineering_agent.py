@@ -11,7 +11,10 @@ Optimized for local Ollama models.
 """
 
 from crewai import Agent
-from llm_utils import get_llm
+from llm_utils import get_crewai_llm, get_model_name
+from logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 ENGINEERING_AGENT_BACKSTORY = """
@@ -52,11 +55,12 @@ Maximum 250 words.
 
 
 def create_engineering_agent() -> Agent:
+    logger.info("[ENGINEERING] Agent initialized model=%s", get_model_name("specialist"))
     return Agent(
         role="Principal Software Engineer & Application Security Expert",
         goal=ENGINEERING_AGENT_GOAL,
         backstory=ENGINEERING_AGENT_BACKSTORY,
-        llm=get_llm(),
+        llm=get_crewai_llm(),
         verbose=False,
         allow_delegation=False,
         max_iter=3,
