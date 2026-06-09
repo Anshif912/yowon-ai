@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 from github import Github, GithubException
+from security import validate_github_url
 from config import (
     GITHUB_TOKEN,
     MAX_ANALYZED_SOURCE_FILES,
@@ -115,7 +116,8 @@ def _limit_source_content(content: str) -> str:
 
 def _repo_name_from_url(url: str) -> str:
     """Extract 'owner/repo' from a GitHub URL."""
-    match = re.search(r"github\.com[:/]([^/]+/[^/]+?)(?:\.git)?$", url.rstrip("/"))
+    safe_url = validate_github_url(url)
+    match = re.search(r"github\.com[:/]([^/]+/[^/]+?)(?:\.git)?$", str(safe_url).rstrip("/"))
     if not match:
         raise ValueError(f"Cannot parse GitHub repo from URL: {url!r}")
     return match.group(1)

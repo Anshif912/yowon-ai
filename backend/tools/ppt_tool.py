@@ -17,6 +17,10 @@ from pptx import Presentation
 from pptx.enum.shapes import MSO_SHAPE_TYPE
 
 
+def _safe_text(value: str) -> str:
+    return "".join(ch for ch in str(value or "") if ch == "\n" or ch == "\t" or ord(ch) >= 32)
+
+
 def extract_ppt_data(ppt_path: str | Path) -> dict[str, Any]:
     """
     Parse a .pptx file and return structured slide content.
@@ -36,12 +40,12 @@ def extract_ppt_data(ppt_path: str | Path) -> dict[str, Any]:
     """
     path = Path(ppt_path)
     if not path.exists():
-        return {"error": f"File not found: {path}"}
+        return {"error": "PPT file not found"}
 
     try:
         prs = Presentation(str(path))
-    except Exception as exc:
-        return {"error": f"Could not open PPT: {exc}"}
+    except Exception:
+        return {"error": "Could not open PPT"}
 
     slides_data: list[dict] = []
     all_text_parts: list[str] = []
@@ -69,7 +73,7 @@ def extract_ppt_data(ppt_path: str | Path) -> dict[str, Any]:
                 continue
 
             for paragraph in shape.text_frame.paragraphs:
-                line = " ".join(run.text for run in paragraph.runs).strip()
+                line = _safe_text(" ".join(run.text for run in paragraph.runs)).strip()
                 if not line:
                     continue
                 slide_text_parts.append(line)
@@ -82,7 +86,7 @@ def extract_ppt_data(ppt_path: str | Path) -> dict[str, Any]:
         notes_text = ""
         if slide.has_notes_slide:
             notes_frame = slide.notes_slide.notes_text_frame
-            notes_text = notes_frame.text.strip() if notes_frame else ""
+            notes_text = _safe_text(notes_frame.text).strip() if notes_frame else ""
 
         slide_combined = "\n".join(slide_text_parts)
         slides_data.append({
