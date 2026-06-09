@@ -11,6 +11,8 @@ import uuid
 from pathlib import Path
 from typing import Optional
 
+from starlette.middleware.base import BaseHTTPMiddleware
+
 os.environ["OTEL_SDK_DISABLED"] = "true"
 os.environ["CREWAI_DISABLE_TELEMETRY"] = "true"
 os.environ.setdefault("OLLAMA_API_BASE", "http://localhost:11434")
@@ -22,13 +24,14 @@ from fastapi import (
     File,
     Form,
     HTTPException,
+    Request,
     UploadFile,
 )
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from sqlalchemy.orm import Session
 
-from config import CORS_ORIGINS, LOG_LEVEL, UPLOAD_DIR
+from config import CORS_ORIGINS, LOG_LEVEL
 from database import Evaluation, Project, Report, get_db, init_db
 from tools.parser import build_project_context, context_to_text
 from tools.vector_store import store_project_context
@@ -49,6 +52,16 @@ from progress import (
 )
 from health_check import run_preflight_checks
 from logging_config import setup_logging, timed_operation
+from security import (
+    check_rate_limit,
+    client_ip,
+    enforce_request_size,
+    redact_sensitive,
+    sanitize_project_name,
+    validate_and_save_upload,
+    validate_github_url,
+    validate_project_id,
+)
 
 setup_logging(LOG_LEVEL)
 logger = logging.getLogger(__name__)
@@ -66,6 +79,28 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        try:
+            await enforce_request_size(request)
+        except HTTPException as exc:
+            return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+        response = await call_next(request)
+        response.headers.setdefault("X-Content-Type-Options", "nosniff")
+        response.headers.setdefault("X-Frame-Options", "DENY")
+        response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+        return response
+
+
+app.add_middleware(SecurityHeadersMiddleware)
+
+
+@app.exception_handler(Exception)
+async def safe_exception_handler(request: Request, exc: Exception):
+    logger.exception("Unhandled error path=%s client=%s", request.url.path, client_ip(request))
+    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 
 @app.on_event("startup")
@@ -103,14 +138,9 @@ def _migrate_project_columns() -> None:
             conn.execute(text("ALTER TABLE projects ADD COLUMN project_type VARCHAR(50) NOT NULL DEFAULT 'Hackathon Project'"))
 
 
-def _save_upload(upload: UploadFile, project_id: str) -> str:
-    dest = UPLOAD_DIR / f"{project_id}_{upload.filename}"
-    dest.write_bytes(upload.file.read())
-    return str(dest)
-
-
 @app.post("/upload-project", summary="Upload project files and metadata")
 async def upload_project(
+    request: Request,
     name: str = Form(...),
     project_type: str = Form("Hackathon Project"),
     description: str = Form(""),
@@ -120,24 +150,36 @@ async def upload_project(
     ppt_file: Optional[UploadFile] = File(None),
     db: Session = Depends(get_db),
 ):
+    check_rate_limit("upload", client_ip(request))
     project_id = str(uuid.uuid4())
     pdf_path: Optional[str] = None
     ppt_path: Optional[str] = None
+    safe_name = sanitize_project_name(name)
+    safe_github_url = validate_github_url(github_url)
 
     if project_type not in PROJECT_TYPES:
         raise HTTPException(status_code=422, detail=f"Invalid project_type. Choose one of: {', '.join(PROJECT_TYPES)}")
 
-    if pdf_file and pdf_file.filename:
-        pdf_path = _save_upload(pdf_file, project_id)
-    if ppt_file and ppt_file.filename:
-        ppt_path = _save_upload(ppt_file, project_id)
+    try:
+        if pdf_file and pdf_file.filename:
+            pdf_path = await validate_and_save_upload(pdf_file, project_id, "pdf")
+        if ppt_file and ppt_file.filename:
+            ppt_path = await validate_and_save_upload(ppt_file, project_id, "ppt")
+    except HTTPException as exc:
+        logger.warning(
+            "Rejected upload client=%s project_id=%s reason=%s",
+            client_ip(request),
+            project_id,
+            redact_sensitive(str(exc.detail)),
+        )
+        raise
 
     project = Project(
         id=project_id,
-        name=name,
+        name=safe_name,
         project_type=normalize_project_type(project_type),
         description="",
-        github_url=github_url,
+        github_url=safe_github_url,
         demo_video_url=None,
         pdf_path=pdf_path,
         ppt_path=ppt_path,
@@ -351,9 +393,12 @@ def _run_evaluation_background(project_id: str) -> None:
 @app.post("/evaluate/{project_id}", summary="Trigger AI evaluation")
 async def trigger_evaluation(
     project_id: str,
+    request: Request,
     background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
+    validate_project_id(project_id)
+    check_rate_limit("evaluate", client_ip(request))
     project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -377,6 +422,7 @@ async def trigger_evaluation(
 
 @app.get("/status/{project_id}", summary="Check evaluation status")
 async def get_status(project_id: str, db: Session = Depends(get_db)):
+    validate_project_id(project_id)
     project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -406,6 +452,7 @@ async def get_status(project_id: str, db: Session = Depends(get_db)):
 
 @app.get("/progress/{project_id}", summary="Poll evaluation progress")
 async def get_evaluation_progress(project_id: str, db: Session = Depends(get_db)):
+    validate_project_id(project_id)
     progress = get_progress(project_id)
     if progress.get("status") == "unknown":
         project = db.query(Project).filter(Project.id == project_id).first()
@@ -438,6 +485,7 @@ async def get_evaluation_progress(project_id: str, db: Session = Depends(get_db)
 
 @app.get("/progress/{project_id}/stream", summary="SSE evaluation progress stream")
 async def progress_stream(project_id: str):
+    validate_project_id(project_id)
     async def event_generator():
         last_payload = ""
         while True:
@@ -463,6 +511,7 @@ async def progress_stream(project_id: str):
 
 @app.get("/report/{project_id}", summary="Get full evaluation report as JSON")
 async def get_report(project_id: str, db: Session = Depends(get_db)):
+    validate_project_id(project_id)
     project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -528,6 +577,7 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
 
 @app.get("/report/{project_id}/pdf", summary="Download the PDF report")
 async def download_pdf(project_id: str, db: Session = Depends(get_db)):
+    validate_project_id(project_id)
     report = (
         db.query(Report)
         .filter(Report.project_id == project_id)
@@ -553,8 +603,8 @@ async def download_pdf(project_id: str, db: Session = Depends(get_db)):
         size = validate_pdf_file(pdf_path)
         logger.info("[PDF] Validation passed report_id=%s bytes=%d", report.id, size)
     except PDFGenerationError as exc:
-        logger.error("[PDF] Validation failed report_id=%s path=%s error=%s", report.id, pdf_path, exc)
-        raise HTTPException(status_code=503, detail=f"PDF file is invalid: {exc}") from exc
+        logger.error("[PDF] Validation failed report_id=%s error=%s", report.id, redact_sensitive(str(exc)))
+        raise HTTPException(status_code=503, detail="PDF file is invalid") from exc
 
     return FileResponse(
         path=str(pdf_path),

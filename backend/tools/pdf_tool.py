@@ -18,6 +18,10 @@ import fitz  # PyMuPDF
 from config import MAX_PDF_PAGES
 
 
+def _safe_text(value: str) -> str:
+    return "".join(ch for ch in str(value or "") if ch == "\n" or ch == "\t" or ord(ch) >= 32)
+
+
 def extract_pdf_data(pdf_path: str | Path) -> dict[str, Any]:
     """
     Parse a PDF file and return structured content.
@@ -33,7 +37,7 @@ def extract_pdf_data(pdf_path: str | Path) -> dict[str, Any]:
     """
     path = Path(pdf_path)
     if not path.exists():
-        return {"error": f"File not found: {path}"}
+        return {"error": "PDF file not found"}
 
     result: dict[str, Any] = {
         "metadata": {},
@@ -45,8 +49,8 @@ def extract_pdf_data(pdf_path: str | Path) -> dict[str, Any]:
 
     try:
         doc = fitz.open(str(path))
-    except Exception as exc:
-        return {"error": f"Could not open PDF: {exc}"}
+    except Exception:
+        return {"error": "Could not open PDF"}
 
     result["metadata"] = {k: v for k, v in doc.metadata.items() if v}
     result["page_count"] = doc.page_count
@@ -67,7 +71,7 @@ def extract_pdf_data(pdf_path: str | Path) -> dict[str, Any]:
                 continue
             for line in block.get("lines", []):
                 for span in line.get("spans", []):
-                    text = span.get("text", "").strip()
+                    text = _safe_text(span.get("text", "")).strip()
                     if not text:
                         continue
                     page_text_parts.append(text)

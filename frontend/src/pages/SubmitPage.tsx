@@ -46,8 +46,8 @@ export default function SubmitPage() {
     if (!githubUrl && !pdfFile && !pptFile) {
       return 'Provide at least a GitHub URL or document'
     }
-    if (githubUrl && !/^https?:\/\/.+/i.test(githubUrl)) {
-      return 'GitHub URL must be a valid http(s) URL'
+    if (githubUrl && !/^https?:\/\/github\.com\/[^/\s]+\/[^/\s]+\/?$/i.test(githubUrl.trim())) {
+      return 'GitHub URL must be a valid github.com repository URL'
     }
     return null
   }

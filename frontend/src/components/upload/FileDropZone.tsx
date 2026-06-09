@@ -21,15 +21,46 @@ export default function FileDropZone({
 }: FileDropZoneProps) {
   const [dragging, setDragging] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
+  const [error, setError] = useState<string | null>(null)
   const Icon = type === 'pdf' ? FileText : Presentation
+  const maxBytes = 50 * 1024 * 1024
+  const allowedExtensions = type === 'pdf' ? ['.pdf'] : ['.ppt', '.pptx']
+  const executableExtensions = ['.exe', '.bat', '.cmd', '.com', '.scr', '.ps1', '.sh', '.js', '.jar', '.msi']
+
+  const validateFile = (f: File): string | null => {
+    const lowerName = f.name.toLowerCase()
+    const parts = lowerName.split('.').filter(Boolean)
+    const finalExt = parts.length > 1 ? `.${parts[parts.length - 1]}` : ''
+    if (!allowedExtensions.includes(finalExt)) return `${label} must be ${allowedExtensions.join(' or ')}`
+    const earlierExts = parts.slice(1, -1).map(part => `.${part}`)
+    if (earlierExts.some(ext => executableExtensions.includes(ext))) return 'Executable or double-extension files are not allowed'
+    if (earlierExts.length && earlierExts.some(ext => !allowedExtensions.includes(ext))) return 'Double-extension files are not allowed'
+    if (f.size > maxBytes) return `${label} must be 50MB or smaller`
+    if (f.type && type === 'pdf' && !['application/pdf', 'application/x-pdf'].includes(f.type)) return 'Invalid PDF file type'
+    if (f.type && type === 'ppt' && ![
+      'application/vnd.ms-powerpoint',
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      'application/octet-stream',
+    ].includes(f.type)) return 'Invalid PowerPoint file type'
+    return null
+  }
 
   const handleFile = useCallback(
     (f: File | null) => {
       if (!f) {
         onFile(null)
         setUploadProgress(0)
+        setError(null)
         return
       }
+      const validationError = validateFile(f)
+      if (validationError) {
+        onFile(null)
+        setUploadProgress(0)
+        setError(validationError)
+        return
+      }
+      setError(null)
       setUploadProgress(0)
       const interval = setInterval(() => {
         setUploadProgress(prev => {
@@ -133,6 +164,7 @@ export default function FileDropZone({
           </div>
         )}
       </motion.div>
+      {error && <p className="text-xs text-red-400 mt-2">{error}</p>}
     </div>
   )
 }
