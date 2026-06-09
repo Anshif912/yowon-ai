@@ -134,11 +134,7 @@ export interface UploadProjectPayload {
   name: string
   project_type: ProjectType
 
-  description?: string
-
   github_url?: string
-
-  demo_video_url?: string
 
   pdf_file?: File
 

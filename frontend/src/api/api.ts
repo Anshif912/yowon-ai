@@ -15,9 +15,7 @@ export async function uploadProject(
   const form = new FormData()
   form.append('name', payload.name)
   form.append('project_type', payload.project_type)
-  if (payload.description) form.append('description', payload.description)
   if (payload.github_url) form.append('github_url', payload.github_url)
-  if (payload.demo_video_url) form.append('demo_video_url', payload.demo_video_url)
   if (payload.pdf_file) form.append('pdf_file', payload.pdf_file)
   if (payload.ppt_file) form.append('ppt_file', payload.ppt_file)
 
