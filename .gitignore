@@ -40,3 +40,4 @@ reports/
 
 backend/chroma_db/
 chroma_db/
+backend/repository_cache/

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
-  Github, Link, BarChart3, Zap, AlertCircle, FileStack, Sparkles,
+  Github, BarChart3, Zap, AlertCircle, FileStack, Sparkles,
   CheckCircle2, ClipboardCheck,
 } from 'lucide-react'
 import AppShell from '../components/layout/AppShell'
@@ -29,30 +29,25 @@ export default function SubmitPage() {
   const [uploadPhase, setUploadPhase] = useState(0)
 
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
   const [projectType, setProjectType] = useState<ProjectType>('Hackathon Project')
   const [githubUrl, setGithubUrl] = useState('')
-  const [demoUrl, setDemoUrl] = useState('')
   const [pdfFile, setPdfFile] = useState<File | null>(null)
   const [pptFile, setPptFile] = useState<File | null>(null)
 
   const activeStep =
     loading ? 4 :
-      projectType && (githubUrl || demoUrl || pdfFile || pptFile || description.trim()) && name.trim() ? 4 :
+      projectType && (githubUrl || pdfFile || pptFile) && name.trim() ? 4 :
         projectType && name.trim() ? 3 :
-          githubUrl || demoUrl || pdfFile || pptFile ? 2 :
+          githubUrl || pdfFile || pptFile ? 2 :
             1
 
   const validate = (): string | null => {
     if (!name.trim()) return 'Project name is required'
-    if (!githubUrl && !pdfFile && !pptFile && !description.trim()) {
-      return 'Provide at least a GitHub URL, description, or document'
+    if (!githubUrl && !pdfFile && !pptFile) {
+      return 'Provide at least a GitHub URL or document'
     }
     if (githubUrl && !/^https?:\/\/.+/i.test(githubUrl)) {
       return 'GitHub URL must be a valid http(s) URL'
-    }
-    if (demoUrl && !/^https?:\/\/.+/i.test(demoUrl)) {
-      return 'Demo video URL must be a valid http(s) URL'
     }
     return null
   }
@@ -70,9 +65,7 @@ export default function SubmitPage() {
       const { project_id } = await uploadProject({
         name: name.trim(),
         project_type: projectType,
-        description: description.trim() || undefined,
         github_url: githubUrl || undefined,
-        demo_video_url: demoUrl || undefined,
         pdf_file: pdfFile || undefined,
         ppt_file: pptFile || undefined,
       })
@@ -198,18 +191,6 @@ export default function SubmitPage() {
               </select>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
-                Description
-              </label>
-              <textarea
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                placeholder="Describe what your project does, the problem it solves, and your tech stack..."
-                className="yowon-input min-h-[100px] resize-y"
-                rows={4}
-              />
-            </div>
           </motion.div>
 
           <motion.div
@@ -241,21 +222,6 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-yowon-muted mb-2 font-display">
-                Demo Video URL <span className="text-xs text-yowon-muted/80">(optional)</span>
-              </label>
-              <div className="relative">
-                <Link size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-yowon-muted" />
-                <input
-                  type="url"
-                  value={demoUrl}
-                  onChange={e => setDemoUrl(e.target.value)}
-                  placeholder="https://youtube.com/watch?v=..."
-                  className="yowon-input pl-9"
-                />
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
