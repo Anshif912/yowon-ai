@@ -12,10 +12,12 @@ BASE_DIR = Path(__file__).parent
 UPLOAD_DIR = BASE_DIR / "uploads"
 REPORT_DIR = BASE_DIR / "reports"
 CHROMA_DIR = BASE_DIR / "chroma_db"
+REPOSITORY_CACHE_DIR = BASE_DIR / "repository_cache"
 
 UPLOAD_DIR.mkdir(exist_ok=True)
 REPORT_DIR.mkdir(exist_ok=True)
 CHROMA_DIR.mkdir(exist_ok=True)
+REPOSITORY_CACHE_DIR.mkdir(exist_ok=True)
 
 OPENROUTER_API_KEY: str = os.getenv("OPENROUTER_API_KEY", "")
 GITHUB_TOKEN: str = os.getenv("GITHUB_TOKEN", "")
@@ -74,6 +76,10 @@ CORS_ORIGINS: list[str] = os.getenv(
 ).split(",")
 
 MAX_GITHUB_FILE_BYTES: int = 1_000_000
+MAX_REPOSITORY_FILES: int = 300
+MAX_ANALYZED_SOURCE_FILES: int = 40
+MAX_LINES_PER_FILE: int = 300
+MAX_TOTAL_CODE_CHARS: int = 50000
 MAX_PDF_PAGES: int = 100
 MAX_CONTEXT_CHARS: int = int(os.getenv("MAX_CONTEXT_CHARS", "6000"))
 MAX_BRIEF_CHARS: int = int(os.getenv("MAX_BRIEF_CHARS", "1200"))

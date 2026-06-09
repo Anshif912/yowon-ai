@@ -240,6 +240,10 @@ def build_evidence_profile(ctx: dict[str, Any], parse_sources: dict[str, str] | 
         "database_evidence": bool(code_signals.get("database") or architecture_layers.get("database") or "Database" in evidence_found),
         "authentication_evidence": bool(code_signals.get("authentication") or architecture_layers.get("authentication") or "Authentication" in evidence_found),
         "custom_algorithm": bool(code_signals.get("custom_algorithm") or "Custom algorithm" in evidence_found),
+        "integration_evidence": bool(code_signals.get("integrations") or architecture_layers.get("integrations") or "External integrations" in evidence_found),
+        "queue_evidence": bool(code_signals.get("queue") or architecture_layers.get("queues") or "Queue/background jobs" in evidence_found),
+        "vector_database_evidence": bool(code_signals.get("vector_database") or architecture_layers.get("vector_databases") or "Vector database" in evidence_found),
+        "agent_system_evidence": bool(code_signals.get("agent_system") or architecture_layers.get("agent_systems") or "Agent system" in evidence_found),
     }
     evaluable_files = (
         stats["meaningful_files"]
@@ -308,6 +312,11 @@ def build_evidence_profile(ctx: dict[str, Any], parse_sources: dict[str, str] | 
         "code_reader": code,
         "architecture": architecture,
         "technical_evidence": technical_evidence,
+        "rest_apis_found": technical_evidence.get("rest_apis_found", []),
+        "database_usage": technical_evidence.get("database_usage", []),
+        "authentication_usage": technical_evidence.get("authentication_usage", []),
+        "integrations": technical_evidence.get("integrations", []),
+        "top_code_snippets": technical_evidence.get("top_code_snippets", []),
         "detected_technologies": detected_technologies,
         "detected_algorithms": detected_algorithms,
         "community_impact_score": _community_impact_score(gh),
@@ -352,6 +361,11 @@ def build_empty_repository_rejection(ctx: dict[str, Any], evidence: dict[str, An
         "architecture_summary": (evidence.get("architecture") or {}).get("summary", ""),
         "evidence_found": (evidence.get("technical_evidence") or {}).get("evidence_found", []),
         "evidence_missing": (evidence.get("technical_evidence") or {}).get("evidence_missing", []),
+        "rest_apis_found": evidence.get("rest_apis_found", []),
+        "database_usage": evidence.get("database_usage", []),
+        "authentication_usage": evidence.get("authentication_usage", []),
+        "integrations": evidence.get("integrations", []),
+        "top_code_snippets": evidence.get("top_code_snippets", []),
         "community_impact_score": evidence.get("community_impact_score", 0),
         "project_type_justification": (evidence.get("project_type_detection") or {}).get("justification", ""),
         "calibration_explanation": "Evaluation stopped because no meaningful project files were detected.",
@@ -437,6 +451,14 @@ def calibrate_agent_scores(
     if checks.get("custom_algorithm"):
         scores["innovation"] = min(100, scores["innovation"] + 6)
         reasons["innovation"].append("Custom algorithmic implementation detected (+6)")
+    if checks.get("integration_evidence"):
+        scores["technical"] = min(100, scores["technical"] + 3)
+        scores["impact"] = min(100, scores["impact"] + 2)
+        reasons["technical"].append("External integration evidence detected (+3)")
+    if checks.get("queue_evidence") or checks.get("vector_database_evidence") or checks.get("agent_system_evidence"):
+        scores["scalability"] = min(100, scores["scalability"] + 5)
+        scores["innovation"] = min(100, scores["innovation"] + 4)
+        reasons["scalability"].append("Advanced architecture component detected (+5)")
 
     if not checks.get("source_code"):
         cap("technical", 35, "Unable to verify source implementation from repository evidence")
@@ -462,7 +484,7 @@ def calibrate_agent_scores(
     if project_type not in ("University Project", "Research Project") and (
         not checks.get("impact_evidence") or not checks.get("adoption_evidence") or not checks.get("real_world_value")
     ):
-        if project_type == "Startup Pitch":
+        if project_type in ("Startup Pitch", "Startup Product"):
             cap("impact", 45, "Startup impact evidence unavailable: score capped at 45")
         else:
             uncertainty("impact", "Unable to determine impact level from repository evidence.")
@@ -508,7 +530,7 @@ def calibrate_agent_scores(
         if checks.get("novelty_evidence") and checks.get("baseline_comparison"):
             scores["innovation"] = min(100, scores["innovation"] + 5)
 
-    if project_type == "Startup Pitch":
+    if project_type in ("Startup Pitch", "Startup Product"):
         if not checks.get("market_evidence"):
             deduct("impact", 28, "No market or customer validation evidence")
         if not checks.get("business_model"):
@@ -527,6 +549,25 @@ def calibrate_agent_scores(
     if project_type == "Open Source Project" and not checks.get("contribution_readiness"):
         deduct("presentation", 10, "No contribution-readiness evidence")
         deduct("impact", 8, "No community-readiness evidence")
+    if project_type == "Open Source Project":
+        stats = evidence.get("repository_statistics", {})
+        if evidence.get("complete_project") or (
+            stats.get("meaningful_files", 0) >= 40
+            and checks.get("source_code")
+            and checks.get("documentation")
+            and checks.get("architecture")
+        ):
+            for dimension in ("technical", "scalability", "presentation"):
+                scores[dimension] = min(100, scores[dimension] + 5)
+            reasons["technical"].append("Open-source rubric: substantial implementation and documentation can score highly")
+        if evidence.get("community_impact_score", 0) >= 20:
+            scores["impact"] = min(100, scores["impact"] + 5)
+            reasons["impact"].append("Open-source rubric: community activity strengthens impact evidence (+5)")
+    if project_type in ("Corporate Project", "Enterprise System") and checks.get("deployment") and checks.get("authentication_evidence") and checks.get("database_evidence"):
+        scores["technical"] = min(100, scores["technical"] + 4)
+        scores["security"] = min(100, scores["security"] + 3)
+        scores["scalability"] = min(100, scores["scalability"] + 4)
+        reasons["technical"].append("Enterprise architecture evidence detected (+4)")
     if project_type == "University Project" and not checks.get("deployment"):
         for dimension in ("technical", "scalability", "impact"):
             reasons[dimension].append("University rubric: missing deployment is not heavily penalized")
@@ -824,7 +865,7 @@ def _confidence_explanation(confidence: int, evidence: dict[str, Any]) -> str:
 
 
 def _verdict(score: int, project_type: str) -> str:
-    if project_type == "Corporate Project":
+    if project_type in ("Corporate Project", "Enterprise System"):
         return "ACCEPT" if score >= 90 else "CONDITIONAL_APPROVE" if score >= 80 else "IMPROVE" if score >= 70 else "REJECT"
     return "ACCEPT" if score >= 85 else "CONDITIONAL_APPROVE" if score >= 70 else "IMPROVE" if score >= 50 else "REJECT"
 

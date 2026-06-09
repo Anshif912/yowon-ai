@@ -143,6 +143,7 @@ def _check_dependencies(dep_files: dict[str, str]) -> list[dict]:
 def run_security_analysis(
     python_files: list[dict],
     dep_files: dict[str, str],
+    source_files: list[dict] | None = None,
 ) -> dict[str, Any]:
     """
     Run full security analysis and return consolidated findings.
@@ -163,7 +164,7 @@ def run_security_analysis(
     bandit_issues = _run_bandit(python_files)
 
     secret_findings: list[dict] = []
-    for f in python_files:
+    for f in (source_files or python_files):
         secret_findings.extend(_detect_secrets(f["content"], f["path"]))
 
     dep_warnings = _check_dependencies(dep_files)
