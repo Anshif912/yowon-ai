@@ -12,11 +12,23 @@ Uses PyGithub to pull:
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+import hashlib
+import json
 import re
+import time
+from pathlib import Path
 from typing import Any
 
 from github import Github, GithubException
-from config import GITHUB_TOKEN, MAX_GITHUB_FILE_BYTES
+from config import (
+    GITHUB_TOKEN,
+    MAX_ANALYZED_SOURCE_FILES,
+    MAX_GITHUB_FILE_BYTES,
+    MAX_LINES_PER_FILE,
+    MAX_REPOSITORY_FILES,
+    MAX_TOTAL_CODE_CHARS,
+    REPOSITORY_CACHE_DIR,
+)
 
 SOURCE_EXTENSIONS = {
     ".py", ".js", ".jsx", ".ts", ".tsx", ".java", ".go", ".rs", ".cpp", ".c", ".cs",
@@ -29,6 +41,11 @@ CONFIG_FILENAMES = {
     "package.json", "requirements.txt", "requirements-dev.txt", "pyproject.toml",
     "pom.xml", "build.gradle", "go.mod", "cargo.toml", "gemfile", "pipfile",
     "tsconfig.json", "vite.config.ts", "docker-compose.yml",
+}
+STAGE_ONE_FILENAMES = {
+    "readme.md", "readme.rst", "readme.txt", "package.json", "requirements.txt",
+    "requirements-dev.txt", "pyproject.toml", "dockerfile", "docker-compose.yml",
+    "docker-compose.yaml", "go.mod", "cargo.toml", "pom.xml", "build.gradle",
 }
 DEPLOYMENT_TERMS = (
     "dockerfile", "docker-compose.yml", "vercel.json", "netlify.toml", "render.yaml",
@@ -43,6 +60,17 @@ GENERATED_TERMS = (
     "generated", "bundle.js", "bundle.css", ".min.js", ".min.css",
     "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "poetry.lock",
 )
+IMPORTANT_DIRS = (
+    "api", "routes", "services", "models", "agents", "core", "backend", "frontend",
+    "inference", "rag", "pipeline", "training", "auth", "database", "db", "server",
+    "app", "src", "lib", "controllers", "schemas", "workers", "queues",
+)
+IMPORTANT_FILENAMES = (
+    "main.py", "app.py", "server.py", "index.js", "index.ts", "api.py", "routes.py",
+    "manage.py", "settings.py", "database.py", "models.py", "auth.py", "pipeline.py",
+    "train.py", "inference.py", "dockerfile", "docker-compose.yml",
+)
+CACHE_TTL_SEC = 24 * 60 * 60
 
 
 @dataclass(frozen=True)
@@ -78,12 +106,49 @@ def _safe_decode(content_file) -> str:
         return f"[Could not decode file: {exc}]"
 
 
+def _limit_source_content(content: str) -> str:
+    lines = content.splitlines()
+    if len(lines) > MAX_LINES_PER_FILE:
+        content = "\n".join(lines[:MAX_LINES_PER_FILE]) + "\n...[truncated source file]"
+    return content
+
+
 def _repo_name_from_url(url: str) -> str:
     """Extract 'owner/repo' from a GitHub URL."""
     match = re.search(r"github\.com[:/]([^/]+/[^/]+?)(?:\.git)?$", url.rstrip("/"))
     if not match:
         raise ValueError(f"Cannot parse GitHub repo from URL: {url!r}")
     return match.group(1)
+
+
+def _cache_path(repo_name: str) -> Path:
+    digest = hashlib.sha256(repo_name.lower().encode("utf-8")).hexdigest()[:24]
+    return REPOSITORY_CACHE_DIR / f"{digest}.json"
+
+
+def _load_cached_repo(repo_name: str) -> dict[str, Any] | None:
+    path = _cache_path(repo_name)
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if time.time() - float(payload.get("cached_at", 0)) > CACHE_TTL_SEC:
+        return None
+    data = payload.get("data")
+    if isinstance(data, dict):
+        data["cache"] = {"hit": True, "cached_at": payload.get("cached_at")}
+        return data
+    return None
+
+
+def _store_cached_repo(repo_name: str, data: dict[str, Any]) -> None:
+    payload = {"cached_at": time.time(), "repo": repo_name, "data": data}
+    try:
+        _cache_path(repo_name).write_text(json.dumps(payload), encoding="utf-8")
+    except Exception:
+        pass
 
 
 def _suffix(path: str) -> str:
@@ -99,6 +164,63 @@ def _is_ignored_path(path: str) -> bool:
     if any(part in IGNORE_DIRS for part in parts):
         return True
     return any(term in p for term in GENERATED_TERMS)
+
+
+def _importance_score(path: str) -> int:
+    p = path.replace("\\", "/").strip("/").lower()
+    name = p.split("/")[-1]
+    parts = p.split("/")
+    score = 0
+    if name in IMPORTANT_FILENAMES:
+        score += 80
+    if _suffix(p) in SOURCE_EXTENSIONS:
+        score += 35
+    if any(part in IMPORTANT_DIRS for part in parts):
+        score += 45
+    if any(term in p for term in ("test", "spec", "__tests__")):
+        score += 12
+    if any(term in p for term in DEPLOYMENT_TERMS):
+        score += 18
+    if name in STAGE_ONE_FILENAMES:
+        score += 20
+    depth = max(0, len(parts) - 1)
+    return score - min(20, depth * 3)
+
+
+def _read_repo_file(repo, path: str) -> str:
+    content_file = repo.get_contents(path)
+    content = _safe_decode(content_file)
+    if _suffix(path) in SOURCE_EXTENSIONS:
+        content = _limit_source_content(content)
+    return content
+
+
+def _tree_file_paths(repo) -> list[str]:
+    try:
+        tree = repo.get_git_tree(repo.default_branch, recursive=True)
+        paths = [
+            item.path for item in tree.tree
+            if getattr(item, "type", "") == "blob"
+            and item.path
+            and not _is_ignored_path(item.path)
+        ]
+        return paths[:MAX_REPOSITORY_FILES]
+    except GithubException:
+        return []
+
+
+def _folder_structure_from_paths(paths: list[str]) -> list[str]:
+    entries: list[str] = []
+    seen_dirs: set[str] = set()
+    for path in paths:
+        parts = path.split("/")
+        for idx in range(1, len(parts)):
+            directory = "/".join(parts[:idx])
+            if directory not in seen_dirs:
+                seen_dirs.add(directory)
+                entries.append(f"{'  ' * (idx - 1)}[D] {directory}")
+        entries.append(f"{'  ' * (len(parts) - 1)}[F] {path}")
+    return entries[:MAX_REPOSITORY_FILES]
 
 
 def _build_repository_statistics(file_paths: list[str]) -> RepositoryMetrics:
@@ -149,8 +271,12 @@ def extract_github_data(github_url: str) -> dict[str, Any]:
       name, description, url, stars, forks, language, topics,
       readme, folder_structure, dependencies, python_files
     """
-    gh = _github_client()
     repo_name = _repo_name_from_url(github_url)
+    cached = _load_cached_repo(repo_name)
+    if cached:
+        return cached
+
+    gh = _github_client()
 
     try:
         repo = gh.get_repo(repo_name)
@@ -172,6 +298,9 @@ def extract_github_data(github_url: str) -> dict[str, Any]:
         "dependencies": {},
         "python_files": [],
         "source_files": [],
+        "analyzed_source_files": [],
+        "top_code_snippets": [],
+        "cache": {"hit": False},
     }
 
     # ── README ──────────────────────────────────────────────────────────────
@@ -181,82 +310,82 @@ def extract_github_data(github_url: str) -> dict[str, Any]:
     except GithubException:
         result["readme"] = "[No README found]"
 
-    # ── Folder structure (2 levels) ──────────────────────────────────────────
-    try:
-        root_contents = repo.get_contents("")
-        structure: list[str] = []
-        file_paths: list[str] = []
-        queue = list(root_contents)
-        depth_map: dict[str, int] = {item.path: 1 for item in root_contents}
-
-        while queue:
-            item = queue.pop(0)
-            depth = depth_map.get(item.path, 1)
-            if _is_ignored_path(item.path):
-                continue
-            prefix = "  " * (depth - 1)
-            icon = "📁" if item.type == "dir" else "📄"
-            structure.append(f"{prefix}{icon} {item.path}")
-            if item.type == "file":
-                file_paths.append(item.path)
-
-            if item.type == "dir":
-                try:
-                    children = repo.get_contents(item.path)
-                    for child in children:
-                        depth_map[child.path] = depth + 1
-                    queue.extend(children)
-                except GithubException:
-                    pass
-
-        result["folder_structure"] = structure[:200]  # Cap at 200 entries
-        result["repository_files"] = file_paths[:1000]
-        result["repository_statistics"] = _build_repository_statistics(file_paths).as_dict()
-    except GithubException:
-        pass
+    # Stage 2: repository map from the Git tree. This is much faster than
+    # walking directories with one API call per folder on large repositories.
+    file_paths = _tree_file_paths(repo)
+    if not file_paths:
+        try:
+            root_contents = repo.get_contents("")
+            file_paths = [
+                item.path for item in root_contents
+                if getattr(item, "type", "") == "file" and not _is_ignored_path(item.path)
+            ][:MAX_REPOSITORY_FILES]
+        except GithubException:
+            file_paths = []
+    result["folder_structure"] = _folder_structure_from_paths(file_paths)
+    result["repository_files"] = file_paths
+    result["repository_statistics"] = _build_repository_statistics(file_paths).as_dict()
 
     # ── Dependency files ──────────────────────────────────────────────────────
-    dep_files = [
-        "requirements.txt", "requirements-dev.txt",
-        "package.json", "package-lock.json",
-        "pom.xml", "build.gradle",
-        "Pipfile", "pyproject.toml",
-        "Gemfile", "go.mod",
+    stage_one_paths = [
+        path for path in file_paths
+        if path.lower().split("/")[-1] in STAGE_ONE_FILENAMES
+        or path.lower().startswith(".github/workflows/")
     ]
-    for fname in dep_files:
+    dep_files = sorted(set(stage_one_paths), key=lambda p: ("/" in p, p.lower()))
+    for fname in dep_files[:25]:
         try:
-            content_file = repo.get_contents(fname)
-            result["dependencies"][fname] = _safe_decode(content_file)
+            result["dependencies"][fname] = _read_repo_file(repo, fname)
         except GithubException:
             pass
 
-    # ── Python source files (up to 5 files for static analysis) ──────────────
-    try:
-        py_files: list[dict] = []
-        source_files: list[dict] = []
-        contents = repo.get_contents("")
-        queue = list(contents)
-        while queue and len(source_files) < 20:
-            item = queue.pop(0)
-            if _is_ignored_path(item.path):
-                continue
-            if item.type == "file" and _suffix(item.path) in SOURCE_EXTENSIONS:
-                sample = {
-                    "path": item.path,
-                    "content": _safe_decode(item),
-                }
-                source_files.append(sample)
-                if item.name.endswith(".py") and len(py_files) < 8:
-                    py_files.append(sample)
-            elif item.type == "dir":
-                try:
-                    queue.extend(repo.get_contents(item.path))
-                except GithubException:
-                    pass
-        result["python_files"] = py_files
-        result["source_files"] = source_files
-    except GithubException:
-        pass
+    # Stage 3: ranked source sampling. Reads only high-signal files and enforces
+    # repository, file, and total-code budgets for predictable evaluation time.
+    source_paths = [
+        path for path in file_paths
+        if _suffix(path) in SOURCE_EXTENSIONS and not _is_ignored_path(path)
+    ]
+    ranked_source_paths = sorted(
+        source_paths,
+        key=lambda path: (-_importance_score(path), path.count("/"), path.lower()),
+    )[:MAX_ANALYZED_SOURCE_FILES]
+
+    py_files: list[dict[str, Any]] = []
+    source_files: list[dict[str, Any]] = []
+    total_chars = 0
+    for path in ranked_source_paths:
+        if total_chars >= MAX_TOTAL_CODE_CHARS:
+            break
+        try:
+            content = _read_repo_file(repo, path)
+        except GithubException:
+            continue
+        remaining = max(0, MAX_TOTAL_CODE_CHARS - total_chars)
+        if len(content) > remaining:
+            content = content[:remaining] + "\n...[truncated total code budget]"
+        sample = {
+            "path": path,
+            "content": content,
+            "importance_score": _importance_score(path),
+        }
+        source_files.append(sample)
+        total_chars += len(content)
+        if path.lower().endswith(".py") and len(py_files) < MAX_ANALYZED_SOURCE_FILES:
+            py_files.append(sample)
+
+    result["python_files"] = py_files
+    result["source_files"] = source_files
+    result["analyzed_source_files"] = [
+        {"path": item["path"], "importance_score": item["importance_score"]}
+        for item in source_files
+    ]
+    result["top_code_snippets"] = [
+        {
+            "path": item["path"],
+            "snippet": "\n".join(str(item["content"]).splitlines()[:40]),
+        }
+        for item in source_files[:8]
+    ]
 
     try:
         result["contributors"] = repo.get_contributors().totalCount
@@ -271,4 +400,5 @@ def extract_github_data(github_url: str) -> dict[str, Any]:
     except Exception:
         result["open_issues"] = 0
 
+    _store_cached_repo(repo_name, result)
     return result

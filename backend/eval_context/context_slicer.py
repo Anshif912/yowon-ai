@@ -98,6 +98,21 @@ def _code_intelligence_digest(ctx: dict[str, Any]) -> str:
         "Evidence Found: " + ", ".join(evidence.get("evidence_found", [])),
         "Evidence Missing: " + ", ".join(evidence.get("evidence_missing", [])),
     ]
+    for label, key in (
+        ("REST APIs", "rest_apis_found"),
+        ("Database Usage", "database_usage"),
+        ("Authentication Usage", "authentication_usage"),
+        ("Integrations", "integrations"),
+    ):
+        values = evidence.get(key) or []
+        if values:
+            lines.append(label + ": " + " | ".join(str(item) for item in values[:4]))
+    snippets = evidence.get("top_code_snippets") or code.get("top_code_snippets") or []
+    if snippets:
+        snippet_lines = []
+        for item in snippets[:3]:
+            snippet_lines.append(f"{item.get('path')}:\n{str(item.get('snippet') or '')[:700]}")
+        lines.append("Top Code Snippets:\n" + "\n\n".join(snippet_lines))
     if detection:
         lines.append(
             f"Project Type Detector: {detection.get('project_type')} "

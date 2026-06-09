@@ -8,7 +8,10 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-SUPPORTED_SOURCE_EXTENSIONS = {".py", ".js", ".ts", ".tsx", ".java", ".cpp", ".go", ".ipynb"}
+SUPPORTED_SOURCE_EXTENSIONS = {
+    ".py", ".js", ".jsx", ".ts", ".tsx", ".java", ".cpp", ".c", ".cs", ".go",
+    ".rs", ".rb", ".php", ".kt", ".scala", ".sql", ".ipynb",
+}
 
 FRAMEWORK_PATTERNS: dict[str, tuple[str, ...]] = {
     "FastAPI": ("fastapi", "FastAPI("),
@@ -26,6 +29,14 @@ FRAMEWORK_PATTERNS: dict[str, tuple[str, ...]] = {
     "Pandas": ("pandas", "pd."),
     "SQLAlchemy": ("sqlalchemy",),
     "Prisma": ("prisma",),
+    "MongoDB": ("mongodb", "mongoose", "pymongo"),
+    "Redis": ("redis",),
+    "Celery": ("celery",),
+    "LangChain": ("langchain",),
+    "LlamaIndex": ("llama_index", "llamaindex"),
+    "CrewAI": ("crewai",),
+    "ChromaDB": ("chromadb", "chroma"),
+    "FAISS": ("faiss",),
 }
 
 ALGORITHM_PATTERNS: dict[str, tuple[str, ...]] = {
@@ -39,6 +50,8 @@ ALGORITHM_PATTERNS: dict[str, tuple[str, ...]] = {
     "Search/Ranking": ("rank", "tfidf", "bm25", "vector search"),
     "Graph Algorithm": ("networkx", "graph", "shortest_path"),
     "Optimization": ("linear programming", "optimizer", "gradient descent"),
+    "RAG": ("retriever", "retrieval", "rag", "vectorstore", "embedding"),
+    "Agent System": ("agent", "crew", "tool_call", "planner"),
 }
 
 PURPOSE_PATTERNS: dict[str, tuple[str, ...]] = {
@@ -82,6 +95,28 @@ def _source_text(source_files: list[dict[str, Any]]) -> str:
     return "\n".join(chunks)
 
 
+def _repo_text(ctx: dict[str, Any]) -> str:
+    gh = ctx.get("github") or {}
+    return "\n".join([
+        str(ctx.get("description") or ""),
+        str(gh.get("readme") or ""),
+        " ".join(gh.get("repository_files") or []),
+        " ".join(str(v)[:1200] for v in (gh.get("dependencies") or {}).values()),
+    ])
+
+
+def _regex_examples(pattern: str, text: str, *, limit: int = 8) -> list[str]:
+    examples: list[str] = []
+    for match in re.finditer(pattern, text, flags=re.I | re.M):
+        line = text[max(0, text.rfind("\n", 0, match.start()) + 1): text.find("\n", match.end())]
+        if not line:
+            line = match.group(0)
+        examples.append(line.strip()[:180])
+        if len(examples) >= limit:
+            break
+    return list(dict.fromkeys(examples))
+
+
 def _matches(text: str, patterns: dict[str, tuple[str, ...]]) -> list[str]:
     lower = text.lower()
     found: list[str] = []
@@ -99,16 +134,25 @@ def read_codebase(ctx: dict[str, Any]) -> dict[str, Any]:
         if _suffix(str(item.get("path") or "")) in SUPPORTED_SOURCE_EXTENSIONS
     ]
     text = _source_text(source_files)
+    repo_text = _repo_text(ctx)
     files = [str(item.get("path") or "") for item in source_files]
     extensions = Counter(_suffix(path) for path in files)
     lower = text.lower()
 
-    frameworks = _matches(text, FRAMEWORK_PATTERNS)
+    frameworks = _matches(text + "\n" + repo_text, FRAMEWORK_PATTERNS)
     algorithms = _matches(text, ALGORITHM_PATTERNS)
-    purpose_hits = _matches(text + "\n" + str(ctx.get("description") or "") + "\n" + str(gh.get("readme") or ""), PURPOSE_PATTERNS)
+    purpose_hits = _matches(text + "\n" + repo_text, PURPOSE_PATTERNS)
+
+    api_examples = _regex_examples(
+        r"@(app|router|bp)\.(get|post|put|delete|patch)\([^)]*\)|app\.(get|post|put|delete|patch)\([^)]*\)|router\.(get|post|put|delete|patch)\([^)]*\)",
+        text,
+    )
+    db_examples = _regex_examples(r"(create_engine|sequelize|mongoose|prisma|mongodb|postgres|mysql|sqlite|redis)\b[^;\n]*", text)
+    auth_examples = _regex_examples(r"\b(jwt|oauth|login|password|bcrypt|session|passport|permission|rbac|auth)\b[^;\n]*", text)
+    integration_examples = _regex_examples(r"\b(openai|stripe|twilio|sendgrid|s3|firebase|supabase|ollama|github|slack|webhook)\b[^;\n]*", text)
 
     signals = {
-        "rest_api": bool(re.search(r"@(app|router)\.(get|post|put|delete|patch)|app\.(get|post|put|delete)|fetch\(|axios\.", text)),
+        "rest_api": bool(api_examples or re.search(r"fetch\(|axios\.|express\(\)|FastAPI\(", text)),
         "database": any(term in lower for term in ("sqlalchemy", "mongoose", "prisma", "sqlite", "postgres", "mysql", "mongodb", "redis")),
         "authentication": any(term in lower for term in ("jwt", "oauth", "login", "password", "bcrypt", "session", "passport", "auth")),
         "ml_model": any(term in lower for term in ("fit(", "predict(", "torch", "tensorflow", "sklearn", "keras", "xgboost", "model.pkl")),
@@ -116,6 +160,10 @@ def read_codebase(ctx: dict[str, Any]) -> dict[str, Any]:
         "testing": any(term in lower for term in ("pytest", "unittest", "describe(", "it(", "@test", "assert ")),
         "security_implementation": any(term in lower for term in ("sanitize", "csrf", "cors", "encrypt", "hash", "permission", "role")),
         "deployment_pattern": any(term in "\n".join(gh.get("repository_files") or []).lower() for term in ("dockerfile", "render.yaml", "vercel.json", "netlify.toml", ".github/workflows")),
+        "integrations": bool(integration_examples),
+        "queue": any(term in lower for term in ("celery", "rq", "bullmq", "rabbitmq", "kafka", "pubsub", "queue")),
+        "vector_database": any(term in lower for term in ("chromadb", "faiss", "pinecone", "weaviate", "qdrant", "vectorstore")),
+        "agent_system": any(term in lower for term in ("crewai", "agent", "tool", "planner", "task", "crew.kickoff")),
     }
 
     complexity_points = (
@@ -135,6 +183,11 @@ def read_codebase(ctx: dict[str, Any]) -> dict[str, Any]:
         "frameworks": frameworks,
         "algorithms": algorithms,
         "signals": signals,
+        "api_examples": api_examples,
+        "database_examples": db_examples,
+        "auth_examples": auth_examples,
+        "integration_examples": integration_examples,
+        "top_code_snippets": gh.get("top_code_snippets") or [],
         "complexity": complexity,
         "summary": (
             f"{purpose}; complexity={complexity}; frameworks={', '.join(frameworks) or 'none detected'}; "
@@ -159,7 +212,10 @@ def summarize_architecture(ctx: dict[str, Any], code_summary: dict[str, Any] | N
         "api_layer": bool(signals.get("rest_api")),
         "deployment_layer": bool(signals.get("deployment_pattern")),
         "authentication": bool(signals.get("authentication")),
-        "integrations": any(term in _source_text(gh.get("source_files") or []).lower() for term in ("openai", "stripe", "twilio", "sendgrid", "s3", "firebase", "supabase")),
+        "integrations": bool(signals.get("integrations")),
+        "queues": bool(signals.get("queue")),
+        "vector_databases": bool(signals.get("vector_database")),
+        "agent_systems": bool(signals.get("agent_system")),
     }
     present = [name.replace("_", " ") for name, enabled in layers.items() if enabled]
     return {
@@ -206,6 +262,11 @@ def detect_project_type(ctx: dict[str, Any], code_summary: dict[str, Any] | None
         scores["Enterprise System"] += 4
     if layers.get("deployment_layer") and layers.get("authentication") and layers.get("database"):
         scores["Enterprise System"] += 2
+    if int(gh.get("stars") or 0) > 100 or stats.get("meaningful_files", 0) > 80:
+        scores["Open Source Project"] += 2
+    if layers.get("agent_systems") or layers.get("vector_databases"):
+        scores["Open Source Project"] += 1
+        scores["Startup Product"] += 1
     if stats.get("meaningful_files", 0) <= 12 and code_summary.get("complexity") in {"Medium", "High"}:
         scores["Hackathon Project"] += 1
 
@@ -235,6 +296,10 @@ def extract_technical_evidence(ctx: dict[str, Any], code_summary: dict[str, Any]
         "Docker/deployment": signals.get("deployment_pattern") or layers.get("deployment_layer"),
         "Testing": signals.get("testing"),
         "Security implementation": signals.get("security_implementation"),
+        "External integrations": signals.get("integrations") or layers.get("integrations"),
+        "Queue/background jobs": signals.get("queue") or layers.get("queues"),
+        "Vector database": signals.get("vector_database") or layers.get("vector_databases"),
+        "Agent system": signals.get("agent_system") or layers.get("agent_systems"),
     }
     for label, present in evidence_map.items():
         (found if present else missing).append(label)
@@ -245,4 +310,9 @@ def extract_technical_evidence(ctx: dict[str, Any], code_summary: dict[str, Any]
         "detected_technologies": sorted(set(code_summary.get("frameworks") or [])),
         "detected_algorithms": sorted(set(code_summary.get("algorithms") or [])),
         "architecture_summary": architecture.get("summary", ""),
+        "rest_apis_found": code_summary.get("api_examples", []),
+        "database_usage": code_summary.get("database_examples", []),
+        "authentication_usage": code_summary.get("auth_examples", []),
+        "integrations": code_summary.get("integration_examples", []),
+        "top_code_snippets": code_summary.get("top_code_snippets", []),
     }

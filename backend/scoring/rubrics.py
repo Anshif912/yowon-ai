@@ -9,10 +9,7 @@ PROJECT_TYPES = (
     "University Project", "Hackathon Project", "Startup Pitch", "Startup Product",
     "Research Project", "Corporate Project", "Enterprise System", "Open Source Project",
 )
-PROJECT_TYPE_ALIASES = {
-    "Startup Product": "Startup Pitch",
-    "Enterprise System": "Corporate Project",
-}
+PROJECT_TYPE_ALIASES = {}
 
 RUBRICS: dict[str, dict[str, Any]] = {
     "University Project": {
@@ -36,6 +33,13 @@ RUBRICS: dict[str, dict[str, Any]] = {
         "weights": {"innovation": .25, "technical": .20, "presentation": .15, "risk": .20, "business_feasibility": .20},
         "bands": {90: "Exceptional investment-ready pitch", 80: "Strong opportunity", 70: "Promising with validation gaps", 60: "Early concept", 0: "Needs major validation"},
     },
+    "Startup Product": {
+        "standard": "Product viability, implementation depth, user value, differentiation, and execution risk",
+        "focus": ["working product", "customer value", "technical execution", "go-to-market readiness"],
+        "avoid_expectations": ["enterprise compliance before scale evidence"],
+        "weights": {"technical": .25, "innovation": .20, "presentation": .15, "risk": .20, "business_feasibility": .20},
+        "bands": {90: "Exceptional product-ready startup", 80: "Strong product", 70: "Promising with validation gaps", 60: "Early product", 0: "Needs major validation"},
+    },
     "Research Project": {
         "standard": "Research novelty, academic contribution, experimental rigor, reproducibility, baseline benchmarking, and publication potential",
         "focus": [
@@ -52,6 +56,13 @@ RUBRICS: dict[str, dict[str, Any]] = {
         "avoid_expectations": [],
         "weights": {"technical": .30, "security": .30, "risk": .20, "innovation": .05, "presentation": .15},
         "bands": {90: "Production-ready", 80: "Strong", 70: "Needs improvements", 0: "Not deployment ready"},
+    },
+    "Enterprise System": {
+        "standard": "Enterprise-grade reliability, security, scalability, compliance, integration, and maintainability",
+        "focus": ["security", "scalability", "compliance", "integrations", "operational reliability"],
+        "avoid_expectations": [],
+        "weights": {"technical": .28, "security": .30, "risk": .18, "scalability": .14, "presentation": .10},
+        "bands": {90: "Enterprise-ready", 80: "Strong enterprise candidate", 70: "Needs hardening", 0: "Not enterprise-ready"},
     },
     "Open Source Project": {
         "standard": "Documentation, community readiness, code quality, maintainability, and contributor experience",
