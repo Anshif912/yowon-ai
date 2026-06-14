@@ -92,4 +92,4 @@ Environment variables in `backend/.env`:
 
 - Evaluation: < 60 seconds (with qwen2.5:3b specialists)
 - Progress updates: real-time via SSE (150ms server poll)
-- UI response: < 100ms (React memoization, no fake progress)
+- UI response: < 100ms (React memoization, no fake progress}
