@@ -36,7 +36,6 @@ Thumbs.db
 
 # Uploads / Generated Reports
 uploads/
-reports/
 
 backend/chroma_db/
 chroma_db/
