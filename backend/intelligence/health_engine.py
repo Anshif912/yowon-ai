@@ -55,11 +55,18 @@ class HealthEngine:
     def calculate_health(
         self,
         files: List[str],
-        dependencies: Dict[str, str],
+        dependencies: Any,
         security_findings: List[Dict[str, Any]],
         file_metrics: Dict[str, Dict[str, Any]] # Map of file -> metrics dict
     ) -> Dict[str, Any]:
         """Calculates 6 dimensions of repository health based on YAML configuration."""
+        from intelligence.utils import safe_list, safe_dict, safe_string, normalize_dependency_name, normalize_path
+        
+        # Normalize collections
+        files = [normalize_path(f) for f in safe_list(files)]
+        dependencies_list = safe_list(dependencies)
+        security_findings = safe_list(security_findings)
+        file_metrics = safe_dict(file_metrics)
         
         # 1. DOCUMENTATION
         has_readme = any(f.lower() == "readme.md" or f.lower().endswith("/readme.md") for f in files)
@@ -91,7 +98,13 @@ class HealthEngine:
             ratio_score = min(100.0, (len(test_files) / total_source_files) * 300) # 33% test files is 100 points
         
         test_frameworks = ("pytest", "unittest", "jest", "mocha", "vitest", "testing")
-        has_test_framework = any(any(fw in dep.lower() for fw in test_frameworks) for dep in dependencies)
+        has_test_framework = False
+        for dep in dependencies_list:
+            dep_name = normalize_dependency_name(dep)
+            if any(fw in dep_name for fw in test_frameworks):
+                has_test_framework = True
+                break
+                
         framework_score = 100.0 if (has_test_framework or len(test_files) > 0) else 0.0
 
         w_test = self.weights.get("testing", DEFAULT_WEIGHTS["testing"])

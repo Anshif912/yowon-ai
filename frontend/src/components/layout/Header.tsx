@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { CircuitBoard, Radio, Trophy, LayoutDashboard } from 'lucide-react'
+import { CircuitBoard, Radio, Trophy, LayoutDashboard, FolderGit2 } from 'lucide-react'
 
 const NAV_LINKS = [
+  { to: '/projects',    label: 'Projects', icon: FolderGit2 },
   { to: '/leaderboard', label: 'Rankings', icon: Trophy },
   { to: '/jury',        label: 'AI Jury',  icon: LayoutDashboard },
 ]

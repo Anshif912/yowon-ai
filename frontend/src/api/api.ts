@@ -6,8 +6,44 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
 export const api = axios.create({
   baseURL: API_BASE,
-  timeout: 60000,
+  timeout: 30000,
 })
+
+// Set default retry count (custom field used by the backoff interceptor)
+;(api.defaults as any).retry = 3
+
+// Request Logging
+api.interceptors.request.use((config) => {
+  console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, config.params || '')
+  return config
+}, (error) => {
+  console.error('[API Request Error]', error)
+  return Promise.reject(error)
+})
+
+// Exponential backoff retry interceptor
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const { config } = error
+    // Don't retry if request config didn't specify retry, or if it failed authentication / 404
+    if (!config || !config.retry || (error.response && [401, 403, 404].includes(error.response.status))) {
+      return Promise.reject(error)
+    }
+
+    config.retryCount = config.retryCount || 0
+    if (config.retryCount >= config.retry) {
+      return Promise.reject(error)
+    }
+
+    config.retryCount += 1
+    const backoffDelay = Math.min(1000 * 2 ** config.retryCount, 10000)
+    console.warn(`[API Retry] ${config.url} (Attempt ${config.retryCount} of ${config.retry}) after ${backoffDelay}ms`)
+
+    await new Promise((resolve) => setTimeout(resolve, backoffDelay))
+    return api(config)
+  }
+)
 
 export async function uploadProject(
   payload: UploadProjectPayload,

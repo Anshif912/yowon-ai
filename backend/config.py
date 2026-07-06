@@ -68,6 +68,8 @@ DATABASE_URL: str = os.getenv(
     f"sqlite:///{BASE_DIR}/yowon.db",
 )
 
+CHROMA_HOST: str = os.getenv("CHROMA_HOST", "")
+CHROMA_PORT: int = int(os.getenv("CHROMA_PORT", "8000"))
 CHROMA_COLLECTION_NAME: str = "yowon_projects"
 
 CORS_ORIGINS: list[str] = os.getenv(

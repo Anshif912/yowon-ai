@@ -6,6 +6,8 @@ from intelligence.evidence_engine import RULES_METADATA
 class RecommendationEngine:
     def generate_recommendations(self, evidence: List[EvidenceRecord]) -> List[RecommendationRecord]:
         """Generates prioritized, traceable recommendations linked directly to code evidence."""
+        from intelligence.utils import safe_list
+        evidence = safe_list(evidence)
         recommendations = []
         
         # Group evidence by rule_id

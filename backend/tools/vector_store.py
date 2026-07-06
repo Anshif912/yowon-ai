@@ -20,16 +20,24 @@ from config import CHROMA_DIR, CHROMA_COLLECTION_NAME
 
 
 # â”€â”€ Singleton client â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-_client: Optional[chromadb.PersistentClient] = None
+_client = None
 
 
-def _get_client() -> chromadb.PersistentClient:
+def _get_client():
     global _client
     if _client is None:
-        _client = chromadb.PersistentClient(
-            path=str(CHROMA_DIR),
-            settings=Settings(anonymized_telemetry=False),
-        )
+        from config import CHROMA_HOST, CHROMA_PORT
+        if CHROMA_HOST:
+            _client = chromadb.HttpClient(
+                host=CHROMA_HOST,
+                port=CHROMA_PORT,
+                settings=Settings(anonymized_telemetry=False),
+            )
+        else:
+            _client = chromadb.PersistentClient(
+                path=str(CHROMA_DIR),
+                settings=Settings(anonymized_telemetry=False),
+            )
     return _client
 
 

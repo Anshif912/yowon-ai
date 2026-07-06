@@ -15,14 +15,15 @@ from config import DATABASE_URL
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
-config = context.config
-
-# Set the database URL dynamically from the config module
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
-
-# Interpret the config file for Python logging.
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+if hasattr(context, "config") and context.config is not None:
+    config = context.config
+    # Set the database URL dynamically from the config module
+    config.set_main_option("sqlalchemy.url", DATABASE_URL)
+    # Interpret the config file for Python logging.
+    if config.config_file_name is not None:
+        fileConfig(config.config_file_name)
+else:
+    config = None
 
 # target_metadata maps schemas for autogenerating migrations
 target_metadata = Base.metadata

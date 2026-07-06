@@ -541,3 +541,27 @@ def test_penalty_cap_limits_stacked_deductions():
             if "(-" in item:
                 applied.append(int(item.rsplit("(-", 1)[1].split(")", 1)[0]))
     assert sum(applied) <= 45
+
+
+def test_score_engine_key_error_prevention():
+    # Pass None for presentation report and test a project type that includes/excludes presentation
+    t, s, i, _, r = reports(75)
+    evidence = {"checks": {}, "data_availability": 80}
+    
+    # Try Hackathon Project (presentation enabled) with presentation=None
+    result_hackathon = compute_overall(
+        t, s, i, None, r,
+        project_type="Hackathon Project",
+        evidence=evidence
+    )
+    assert result_hackathon["overall_score"] > 0
+    assert "presentation" in result_hackathon["agent_scores"]
+
+    # Try University Project (presentation disabled) with presentation=None
+    result_university = compute_overall(
+        t, s, i, None, r,
+        project_type="University Project",
+        evidence=evidence
+    )
+    assert result_university["overall_score"] > 0
+    assert "presentation" not in result_university["agent_scores"]

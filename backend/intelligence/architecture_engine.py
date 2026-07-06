@@ -4,6 +4,9 @@ from intelligence.models import EvidenceRecord
 class ArchitectureEngine:
     def analyze(self, evidence: List[EvidenceRecord], files: List[str]) -> Dict[str, Any]:
         """Dynamically builds layers and components based on triggered evidence and files."""
+        from intelligence.utils import safe_list, normalize_path
+        evidence = safe_list(evidence)
+        files = [normalize_path(f) for f in safe_list(files)]
         layers = {}
         
         # Deduce layers based on evidence rules
