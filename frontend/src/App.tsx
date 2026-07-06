@@ -9,6 +9,7 @@ const ReportPage = lazy(() => import('./pages/ReportPage'))
 const DemoPage = lazy(() => import('./pages/DemoPage'))
 const LeaderboardPage = lazy(() => import('./pages/LeaderboardPage'))
 const JuryDashboardPage = lazy(() => import('./pages/JuryDashboardPage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 
 function PageLoader() {
   return (
@@ -46,35 +47,44 @@ function RequireProjectId({ children }: { children: React.ReactNode }) {
   return hasId ? <>{children}</> : <Navigate to="/submit" replace />
 }
 
+import { QueryProvider } from './components/providers/QueryProvider'
+
 export default function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/submit" element={<SubmitPage />} />
-        <Route path="/demo" element={<DemoPage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
-        <Route path="/jury" element={<JuryDashboardPage />} />
-        <Route
-          path="/evaluate/:projectId"
-          element={
-            <RequireProjectId>
-              <EvaluatePage />
-            </RequireProjectId>
-          }
-        />
-        <Route
-          path="/report/:projectId"
-          element={
-            <RequireProjectId>
-              <ReportPage />
-            </RequireProjectId>
-          }
-        />
-        <Route path="/evaluate" element={<Navigate to="/submit" replace />} />
-        <Route path="/report" element={<Navigate to="/submit" replace />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <QueryProvider>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/submit" element={<SubmitPage />} />
+          <Route path="/demo" element={<DemoPage />} />
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/jury" element={<JuryDashboardPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route
+            path="/evaluate/:projectId"
+            element={
+              <RequireProjectId>
+                <EvaluatePage />
+              </RequireProjectId>
+            }
+          />
+          <Route
+            path="/report/:projectId"
+            element={<Navigate to="overview" replace />}
+          />
+          <Route
+            path="/report/:projectId/:section"
+            element={
+              <RequireProjectId>
+                <ReportPage />
+              </RequireProjectId>
+            }
+          />
+          <Route path="/evaluate" element={<Navigate to="/submit" replace />} />
+          <Route path="/report" element={<Navigate to="/submit" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </QueryProvider>
   )
 }

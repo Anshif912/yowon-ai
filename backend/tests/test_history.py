@@ -339,3 +339,67 @@ def test_github_webhook():
         
     finally:
         db.close()
+
+
+def test_report_endpoint_hardening():
+    db = TestingSessionLocal()
+    try:
+        # Create Project
+        project = Project(
+            id=str(uuid.uuid4()),
+            name="Harden Test Project",
+            project_type="Web App",
+            status="done"
+        )
+        db.add(project)
+        db.commit()
+
+        # Create Evaluation
+        evaluation = Evaluation(
+            evaluation_id=str(uuid.uuid4()),
+            project_id=project.id,
+            evaluation_status="Completed",
+            overall_score=85.0,
+            verdict="ACCEPT",
+            timestamp=datetime.utcnow()
+        )
+        db.add(evaluation)
+        db.commit()
+
+        # Create AgentEvaluation with malformed/unparseable findings (Issue 4)
+        ae = AgentEvaluation(
+            id=str(uuid.uuid4()),
+            evaluation_id=evaluation.evaluation_id,
+            agent_name="chief_evaluation",
+            score=85.0,
+            confidence=0.9,
+            execution_time=1.2,
+            summary="This is raw LLM text with no json markdown block and malformed dict structures that normally crash simple parsers.",
+            status="SUCCESS"
+        )
+        db.add(ae)
+
+        # Create Report object (to test report attribute lookups when report is not None)
+        report = Report(
+            report_id=str(uuid.uuid4()),
+            evaluation_id=evaluation.evaluation_id,
+            report_type="PDF",
+            file_path="/tmp/report.pdf",
+            checksum="sha-checksum",
+            version="1.0.0"
+        )
+        db.add(report)
+        db.commit()
+
+        # Trigger GET /report/{project_id}
+        response = client.get(f"/report/{project.id}")
+        assert response.status_code == 200
+        data = response.json()
+        assert data["project_id"] == project.id
+        assert data["overall_score"] == 85.0
+        assert data["verdict"] == "ACCEPT"
+        assert data["verdict_data"]["overall_score"] == 85.0
+        assert data["verdict_data"]["executive_summary"] is not None
+
+    finally:
+        db.close()

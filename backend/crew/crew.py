@@ -579,12 +579,26 @@ def run_evaluation(
 
     # key findings: short cross-exam or top lines from specialists
     key_findings = " | ".join((technical.strengths or [])[:2] + (security.critical_findings or [])[:2] + (innovation.differentiators or [])[:2])
+    
+    # Merge Repository Intelligence summaries into key findings for Chief Agent consumption
+    intel = ctx.get("repository_intelligence")
+    if intel:
+        health = intel.get("health") or {}
+        recs = intel.get("recommendations") or []
+        intel_findings = [
+            f"Static Analysis Health: {health.get('overall', 0)}/100",
+            f"Testing Health: {health.get('testing', 0)}/100",
+            f"Security Health: {health.get('security', 0)}/100"
+        ]
+        if recs:
+            # Safely get the first recommendation title/recs
+            rec_title = recs[0].get("title") or recs[0].get("recommendation", "")
+            if rec_title:
+                intel_findings.append(f"Top Recommendation: {rec_title}")
+        key_findings += " | " + " | ".join(intel_findings)
 
     insight_agent = create_insight_agent()
     narrative_task = create_narrative_task(insight_agent, numeric_payload, key_findings)
-
-    narrative_raw = ""
-    narrative_parse_source = "computed"
     try:
         with timed_operation(
             logger,

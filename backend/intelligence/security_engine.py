@@ -16,6 +16,11 @@ class SecurityEngine:
 
     def scan_file(self, file_path: str, content: str) -> List[Dict[str, Any]]:
         """Scan file content for secrets and unsafe APIs, caching the results."""
+        from intelligence.utils import safe_string, normalize_path
+        
+        file_path = normalize_path(file_path)
+        content = safe_string(content)
+        
         self.remove_file(file_path)
 
         file_findings = []

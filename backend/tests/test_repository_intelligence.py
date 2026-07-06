@@ -116,3 +116,25 @@ def test_health_engine():
     assert health["documentation"] > 30 # Has README
     assert health["deployment"] > 30 # Has Dockerfile
     assert health["testing"] > 30 # Has test_main.py and pytest
+
+def test_health_engine_with_structured_dependencies():
+    engine = HealthEngine()
+    files = ["README.md", "app/main.py", "tests/test_main.py", "Dockerfile"]
+    dependencies = [
+        {"name": "fastapi", "version": "0.100.0"},
+        {"package": "pytest", "version": "7.0.0"}
+    ]
+    security_findings = []
+    file_metrics = {
+        "app/main.py": {"complexity": {"maintainability_index": 85.0}}
+    }
+    
+    health = engine.calculate_health(
+        files=files,
+        dependencies=dependencies,
+        security_findings=security_findings,
+        file_metrics=file_metrics
+    )
+    
+    assert health["overall"] > 50
+    assert health["testing"] > 30 # Has test_main.py and pytest

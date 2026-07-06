@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: yowon-backend
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=sqlite:////app/database/yowon.db
+      - OLLAMA_HOST=http://ollama:11434
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+    volumes:
+      - yowon_database:/app/database
+      - yowon_uploads:/app/uploads
+      - yowon_reports:/app/reports
+      - yowon_repository_cache:/app/repository_cache
+    depends_on:
+      chromadb:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    networks:
+      - yowon_network
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: yowon-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - yowon_network
+
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: yowon-chromadb
+    restart: always
+    volumes:
+      - yowon_chroma_data:/chroma/data
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/data
+    networks:
+      - yowon_network
+    healthcheck:
+      test: ["CMD-SHELL", "cat /dev/null > /dev/tcp/127.0.0.1/8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: yowon-ollama
+    restart: always
+    volumes:
+      - yowon_ollama_data:/root/.ollama
+    networks:
+      - yowon_network
+    healthcheck:
+      test: ["CMD-SHELL", "cat /dev/null > /dev/tcp/127.0.0.1/11434"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ollama-init:
+    image: curlimages/curl:latest
+    container_name: yowon-ollama-init
+    volumes:
+      - ./ollama-init.sh:/app/ollama-init.sh
+    entrypoint: ["/bin/sh", "/app/ollama-init.sh"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    networks:
+      - yowon_network
+
+volumes:
+  yowon_database:
+  yowon_uploads:
+  yowon_reports:
+  yowon_repository_cache:
+  yowon_chroma_data:
+  yowon_ollama_data:
+
+networks:
+  yowon_network:
+    driver: bridge

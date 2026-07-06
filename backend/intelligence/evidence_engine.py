@@ -77,11 +77,23 @@ class EvidenceEngine:
     def analyze_repository(
         self,
         symbols: List[SymbolRecord],
-        dependencies: Dict[str, str], # Manifest dependencies (e.g. {"fastapi": "0.100.0"})
+        dependencies: Any,
         security_findings: List[Dict[str, Any]],
         file_imports: Dict[str, List[str]] # Mapping of file -> list of imports
     ) -> List[EvidenceRecord]:
         """Runs the rule engine on parsed repository data to extract evidence."""
+        from intelligence.utils import safe_list, safe_dict, normalize_dependency_name
+        
+        symbols = safe_list(symbols)
+        security_findings = safe_list(security_findings)
+        file_imports = safe_dict(file_imports)
+        
+        dep_names = set()
+        for dep in safe_list(dependencies):
+            name = normalize_dependency_name(dep)
+            if name:
+                dep_names.add(name)
+                
         self.evidence = []
 
         # 1. Map Security Findings into Evidence
@@ -123,7 +135,7 @@ class EvidenceEngine:
                 confidence = 0.55
                 if has_router_symbol and has_fastapi_import:
                     confidence = 0.95
-                if "fastapi" in dependencies:
+                if "fastapi" in dep_names:
                     confidence = 0.99
                 
                 # Pick one representative route/symbol for highlighting
@@ -152,7 +164,7 @@ class EvidenceEngine:
                 confidence = 0.55
                 if db_models and has_db_imports:
                     confidence = 0.95
-                if "sqlalchemy" in dependencies:
+                if "sqlalchemy" in dep_names:
                     confidence = 0.99
                 
                 rep_sym = db_models[0] if db_models else file_symbols[0]
@@ -177,7 +189,7 @@ class EvidenceEngine:
             has_jwt_import = any("jwt" in imp.lower() for imp in imports)
             if has_jwt_import:
                 confidence = 0.90
-                if "pyjwt" in dependencies or "jsonwebtoken" in dependencies:
+                if "pyjwt" in dep_names or "jsonwebtoken" in dep_names:
                     confidence = 0.99
                 
                 rep_sym = file_symbols[0] if file_symbols else None
@@ -202,7 +214,7 @@ class EvidenceEngine:
             if has_vdb_import:
                 matched_vdb = next(term for term in vdb_terms if any(term in imp.lower() for imp in imports))
                 confidence = 0.90
-                if matched_vdb in dependencies:
+                if matched_vdb in dep_names:
                     confidence = 0.99
 
                 rep_sym = file_symbols[0] if file_symbols else None
@@ -225,7 +237,7 @@ class EvidenceEngine:
             has_ollama_import = any("ollama" in imp.lower() for imp in imports)
             if has_ollama_import:
                 confidence = 0.90
-                if "ollama" in dependencies:
+                if "ollama" in dep_names:
                     confidence = 0.99
                 
                 rep_sym = file_symbols[0] if file_symbols else None
@@ -248,7 +260,7 @@ class EvidenceEngine:
             has_lc_import = any("langchain" in imp.lower() for imp in imports)
             if has_lc_import:
                 confidence = 0.90
-                if "langchain" in dependencies:
+                if "langchain" in dep_names:
                     confidence = 0.99
 
                 rep_sym = file_symbols[0] if file_symbols else None
@@ -271,7 +283,7 @@ class EvidenceEngine:
             has_celery_import = any("celery" in imp.lower() for imp in imports)
             if has_celery_import:
                 confidence = 0.90
-                if "celery" in dependencies:
+                if "celery" in dep_names:
                     confidence = 0.99
 
                 rep_sym = file_symbols[0] if file_symbols else None

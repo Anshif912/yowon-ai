@@ -65,21 +65,44 @@ def _security_digest(ctx: dict[str, Any]) -> str:
 
 def _doc_digest(ctx: dict[str, Any]) -> str:
     parts: list[str] = []
+    
+    # 1. Project info and Description (with demo video and github url if present)
+    if ctx.get("project_name"):
+        parts.append(f"Project Name: {ctx['project_name']}")
+    if ctx.get("description"):
+        parts.append(f"Project Description & Presentation Links:\n{ctx['description']}")
+        
+    # 2. PDF documentation
     pdf = ctx.get("pdf") or {}
     if pdf and not pdf.get("error"):
         parts.append(
-            f"PDF ({pdf.get('page_count', 0)} pages):\n"
-            f"{(pdf.get('full_text') or '')[:1200]}"
+            f"PDF Documentation ({pdf.get('page_count', 0)} pages):\n"
+            f"{(pdf.get('full_text') or '')[:3500]}"
         )
+        
+    # 3. PPT slides
     ppt = ctx.get("ppt") or {}
     if ppt and not ppt.get("error"):
         parts.append(
-            f"PPT ({ppt.get('slide_count', 0)} slides):\n"
-            f"{(ppt.get('full_text') or '')[:1200]}"
+            f"PPT Presentation/Pitch Deck ({ppt.get('slide_count', 0)} slides):\n"
+            f"{(ppt.get('full_text') or '')[:3500]}"
         )
-    if ctx.get("description"):
-        parts.append(f"Description:\n{ctx['description'][:500]}")
-    return "\n\n".join(parts) if parts else "[No presentation materials]"
+        
+    # 4. GitHub README
+    gh = ctx.get("github") or {}
+    if gh and not gh.get("error"):
+        if gh.get("readme"):
+            parts.append(f"GitHub README documentation:\n{gh['readme'][:2000]}")
+        # 5. UI screenshots/images
+        source_files = gh.get("source_files") or []
+        images = [f["path"] for f in source_files if isinstance(f, dict) and f.get("path") and any(str(f["path"]).lower().endswith(ext) for ext in (".png", ".jpg", ".jpeg", ".webp", ".gif"))]
+        if images:
+            parts.append(f"UI Screenshots and Design Assets found in Repository: {', '.join(images[:15])}")
+            
+    digest_text = "\n\n".join(parts)
+    if len(digest_text.strip()) < 100:
+        return "[No presentation materials]"
+    return digest_text
 
 
 def _code_intelligence_digest(ctx: dict[str, Any]) -> str:
@@ -121,6 +144,96 @@ def _code_intelligence_digest(ctx: dict[str, Any]) -> str:
     return "\n".join(line for line in lines if line.strip())
 
 
+def _repository_intelligence_digest(ctx: dict[str, Any], agent: str) -> str:
+    intel = ctx.get("repository_intelligence")
+    if not intel:
+        return ""
+        
+    lines = ["\n### STRUCTURED REPOSITORY INTELLIGENCE DETECTED:"]
+    
+    # 1. Health Scores
+    health = intel.get("health") or {}
+    if health:
+        lines.append(f"- Overall Codebase Health: {health.get('overall', 0)}/100")
+        lines.append(f"  * Documentation Health: {health.get('documentation', 0)}/100")
+        lines.append(f"  * Testing Health: {health.get('testing', 0)}/100")
+        lines.append(f"  * Security Health: {health.get('security', 0)}/100")
+        lines.append(f"  * Code Quality Health: {health.get('code_quality', 0)}/100")
+        
+    # 2. Technology & Architecture Graphs
+    if agent in ("technical", "innovation", "chief", "narrative"):
+        tech_graph = intel.get("technology_graph") or {}
+        if tech_graph.get("nodes"):
+            techs = [node.get("label") or node.get("id") or "" for node in tech_graph.get("nodes", []) if node.get("type") == "technology"]
+            techs = [str(t) for t in techs if t]
+            if techs:
+                lines.append(f"- Detected Tech Stack Nodes: {', '.join(techs)}")
+        arch_graph = intel.get("architecture_graph") or {}
+        if arch_graph.get("nodes"):
+            layers = [node.get("label") or node.get("id") or "" for node in arch_graph.get("nodes", []) if node.get("type") == "layer"]
+            layers = [str(l) for l in layers if l]
+            if layers:
+                lines.append(f"- Inferred Architecture Layers: {', '.join(layers)}")
+                
+    # 3. Dependency Warnings
+    if agent in ("security", "risk", "chief", "narrative"):
+        dep_graph = intel.get("dependency_graph") or {}
+        warnings = dep_graph.get("warnings") or []
+        if warnings:
+            lines.append("- Outdated/Vulnerable Dependency Signals:")
+            for w in warnings[:6]:
+                lines.append(f"  * {w.get('package')} ({w.get('current_version')}) -> {w.get('warning_type')}: {w.get('message')}")
+                
+    # 4. Complexity & Metrics
+    metrics = intel.get("metrics") or {}
+    if metrics:
+        total_loc = sum(m.get("loc", 0) for m in metrics.values())
+        avg_maintainability = sum(m.get("maintainability_index", 100) for m in metrics.values()) / (len(metrics) or 1)
+        lines.append(f"- Codebase Metrics Summary:")
+        lines.append(f"  * Total Lines of Code (LOC): {total_loc}")
+        lines.append(f"  * Average Maintainability Index: {avg_maintainability:.1f}/100")
+        
+    # 5. Evidence Records & Code Traces
+    evidence = intel.get("evidence") or []
+    if evidence:
+        lines.append("- Traceable Static Analysis Evidence:")
+        for ev in evidence:
+            rule_id = ev.get("rule_id", "")
+            is_relevant = False
+            if agent == "technical" and any(x in rule_id for x in ("FASTAPI", "SQLALCHEMY", "TREE", "METRICS")):
+                is_relevant = True
+            elif agent == "security" and any(x in rule_id for x in ("SECRET", "UNSAFE_API", "VULNERABILITY", "JWT")):
+                is_relevant = True
+            elif agent == "risk" and any(x in rule_id for x in ("AUTHENTICATION", "GATEWAY", "CELERY")):
+                is_relevant = True
+            elif agent in ("innovation", "chief", "narrative"):
+                is_relevant = True
+                
+            if is_relevant:
+                lines.append(f"  * [Evidence] File: {ev.get('file_path')} | Rule: {rule_id} | Confidence: {int(ev.get('confidence', 0)*100)}%")
+                
+    # 6. Recommendations
+    recommendations = intel.get("recommendations") or []
+    if recommendations:
+        lines.append("- Auto-Generated Recommendations:")
+        for rec in recommendations:
+            is_relevant = False
+            category = rec.get("category", "")
+            if agent == "technical" and category in ("IMPLEMENTATION", "ARCHITECTURE", "TESTING"):
+                is_relevant = True
+            elif agent == "security" and category == "SECURITY":
+                is_relevant = True
+            elif agent == "risk" and category in ("RISK", "SECURITY"):
+                is_relevant = True
+            elif agent in ("innovation", "chief", "narrative"):
+                is_relevant = True
+                
+            if is_relevant:
+                lines.append(f"  * [{rec.get('severity', 'LOW')}] {rec.get('title')}: {rec.get('recommendation')} (Expected Score Gain: +{rec.get('expected_score_gain', 1.0)})")
+
+    return "\n".join(lines)
+
+
 def slice_context_for_agent(ctx: dict[str, Any], agent: str) -> str:
     brief_parts: list[str] = [
         f"Project: {ctx.get('project_name', 'Unknown')}",
@@ -159,6 +272,11 @@ def slice_context_for_agent(ctx: dict[str, Any], agent: str) -> str:
         brief_parts.append(_gh_excerpt(ctx, readme_limit=600))
         brief_parts.append(_doc_digest(ctx))
         brief_parts.append(_code_intelligence_digest(ctx))
+
+    # Append structured repository intelligence digest to the agent slice
+    intel_digest = _repository_intelligence_digest(ctx, agent)
+    if intel_digest:
+        brief_parts.append(intel_digest)
 
     text = "\n\n".join(brief_parts)
     return truncate_text(text, MAX_AGENT_DIGEST_CHARS, label=f"digest:{agent}")

@@ -625,24 +625,34 @@ def compute_overall(
     rubric = get_rubric(rubric_type)
     presentation_enabled = is_presentation_enabled(submitted_project_type)
     raw_scores = {
-        "technical": technical.technical_score,
-        "security": security.security_score,
-        "scalability": innovation.scalability_score,
-        "innovation": innovation.innovation_score,
-        "impact": risk.impact_score,
+        "technical": getattr(technical, "technical_score", 0) if technical is not None else 0,
+        "security": getattr(security, "security_score", 0) if security is not None else 0,
+        "scalability": getattr(innovation, "scalability_score", 0) if innovation is not None else 0,
+        "innovation": getattr(innovation, "innovation_score", 0) if innovation is not None else 0,
+        "impact": getattr(risk, "impact_score", 0) if risk is not None else 0,
     }
     if presentation_enabled:
-        raw_scores["presentation"] = presentation.presentation_score
+        raw_scores["presentation"] = getattr(presentation, "presentation_score", 0) if presentation is not None else 0
     raw_scores = {k: max(0, min(100, int(v))) for k, v in raw_scores.items()}
     calibrated_scores, calibration_reasons = calibrate_agent_scores(
         raw_scores, evidence, rubric["project_type"], presentation_enabled=presentation_enabled
     )
     scoring_inputs = {
         **calibrated_scores,
-        "risk": calibrated_scores["impact"],
-        "business_feasibility": calibrated_scores["impact"],
+        "risk": calibrated_scores.get("impact", 0),
+        "business_feasibility": calibrated_scores.get("impact", 0),
     }
-    weighted_score = round(sum(scoring_inputs[k] * weight for k, weight in rubric["weights"].items()))
+
+    # 6. Add validation before compute_overall()
+    missing = set(rubric["weights"]) - set(scoring_inputs)
+    if missing:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.warning("Scoring inputs missing keys from rubric weights: %s. Populating safe defaults.", missing)
+        for key in missing:
+            scoring_inputs[key] = 0
+
+    weighted_score = round(sum(scoring_inputs.get(k, 0) * weight for k, weight in rubric["weights"].items()))
 
     penalties = [
         {"factor": reason, "dimension": dimension}
@@ -703,7 +713,7 @@ def compute_overall(
 
     return {
         "overall_score": overall, "raw_weighted_score": round(sum(
-            ({**raw_scores, "risk": raw_scores["impact"], "business_feasibility": raw_scores["impact"]})[k] * w
+            ({**raw_scores, "risk": raw_scores.get("impact", 0), "business_feasibility": raw_scores.get("impact", 0)}).get(k, 0) * w
             for k, w in rubric["weights"].items()
         )),
         "verdict": _verdict(overall, rubric["project_type"]),

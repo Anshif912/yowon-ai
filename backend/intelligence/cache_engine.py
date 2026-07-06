@@ -7,6 +7,10 @@ from typing import Dict, Any, Optional
 from sqlalchemy.orm import Session
 from database import RepositoryAnalysis
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 CACHE_DIR = Path("repository_cache/analysis_cache")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -26,6 +30,7 @@ class RepositoryAnalysisCache:
             if commit_sha in _memory_cache:
                 entry = _memory_cache[commit_sha]
                 if cls._is_valid(entry):
+                    logger.info(f"[Intel Cache] L1 Memory cache hit for commit={commit_sha}")
                     return entry["data"]
 
         # 2. Database Cache Lookup (Metadata validation)
@@ -33,13 +38,14 @@ class RepositoryAnalysisCache:
             RepositoryAnalysis.commit_sha == commit_sha,
             RepositoryAnalysis.analysis_version == cls.ANALYSIS_VERSION,
             RepositoryAnalysis.engine_version == cls.ENGINE_VERSION,
-            RepositoryAnalysis.status == "Completed"
+            RepositoryAnalysis.status.in_(["Completed", "COMPLETED"])
         ).first()
 
         if db_analysis:
             # If DB metadata is valid, try loading the actual artifacts from Disk
             disk_data = cls._load_from_disk(commit_sha)
             if disk_data:
+                logger.info(f"[Intel Cache] L2/L3 Hybrid DB+Disk cache hit for commit={commit_sha}")
                 # Cache to memory for future hits
                 with _memory_lock:
                     _memory_cache[commit_sha] = {
@@ -53,6 +59,7 @@ class RepositoryAnalysisCache:
         # 3. Disk Cache Lookup fallback
         disk_data = cls._load_from_disk(commit_sha)
         if disk_data:
+            logger.info(f"[Intel Cache] L3 Disk cache hit (DB missing/outdated) for commit={commit_sha}. Rebuilding DB cache record.")
             # If we find valid disk artifacts, rebuild DB cache record to stay synced
             try:
                 # Add/update DB record
@@ -62,14 +69,16 @@ class RepositoryAnalysisCache:
                     repository_snapshot_id=disk_data.get("repository_snapshot_id", ""),
                     analysis_version=cls.ANALYSIS_VERSION,
                     engine_version=cls.ENGINE_VERSION,
-                    status="Completed"
+                    status="COMPLETED"
                 )
                 db.add(analysis)
                 db.commit()
-            except Exception:
+            except Exception as e:
                 db.rollback()
+                logger.exception(f"[Intel Cache] Failed to rebuild database cache record for commit={commit_sha}: {e}")
             return disk_data
 
+        logger.info(f"[Intel Cache] Cache miss for commit={commit_sha}")
         return None
 
     @classmethod
@@ -98,13 +107,15 @@ class RepositoryAnalysisCache:
                 commit_sha=commit_sha,
                 analysis_version=cls.ANALYSIS_VERSION,
                 engine_version=cls.ENGINE_VERSION,
-                status="Completed",
+                status="COMPLETED",
                 expires_at=expires_at
             )
             db.add(analysis)
             db.commit()
-        except Exception:
+            logger.info(f"[Intel Cache] Successfully saved cache record to database for commit={commit_sha}")
+        except Exception as e:
             db.rollback()
+            logger.exception(f"[Intel Cache] Failed to save cache record to database for commit={commit_sha}: {e}")
 
     @classmethod
     def get_artifact(cls, commit_sha: str, artifact_name: str) -> Optional[Any]:
@@ -157,6 +168,14 @@ class RepositoryAnalysisCache:
                 data[art] = json.loads(file_path.read_text(encoding="utf-8"))
             except Exception:
                 return None
+
+        # Defensively load repository_snapshot_id if it exists
+        snap_file = folder / "repository_snapshot_id.json"
+        if snap_file.exists():
+            try:
+                data["repository_snapshot_id"] = json.loads(snap_file.read_text(encoding="utf-8"))
+            except Exception:
+                pass
         return data
 
     @classmethod
@@ -166,11 +185,10 @@ class RepositoryAnalysisCache:
         
         # Write separate JSON files
         for key, payload in data.items():
-            if isinstance(payload, dict) or isinstance(payload, list):
-                # If it's a model or data dict
+            if isinstance(payload, (dict, list, str)):
+                # If it's a model, data dict, list or primitive string
                 file_path = folder / f"{key}.json"
                 try:
-                    # Write with meta context
                     file_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
                 except Exception:
                     pass

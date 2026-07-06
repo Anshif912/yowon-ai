@@ -10,28 +10,39 @@ class MetricsEngine:
         symbols: List[SymbolRecord],
         imports_count: int, # Incoming import reference count
         security_findings: List[Dict[str, Any]],
-        has_test_file: bool
+        has_test_file: bool,
+        precalculated_complexity: Dict[str, Any] = None
     ) -> Dict[str, Any]:
         """Calculates complexity, risk, importance, and coverage metrics for a file."""
+        from intelligence.utils import safe_list, safe_string, normalize_path
+        
+        file_path = normalize_path(file_path)
+        content = safe_string(content)
+        symbols = safe_list(symbols)
+        security_findings = safe_list(security_findings)
+        
         lines = content.splitlines()
         loc = len(lines)
         size_bytes = len(content.encode("utf-8"))
         ext = file_path.split(".")[-1].lower() if "." in file_path else "unknown"
 
         # 1. Complexity (Cyclomatic, Cognitive, Maintainability)
-        from intelligence.parsers.parser_registry import ParserRegistry
-        parser = ParserRegistry.get_parser(file_path)
-        parser.load(content, file_path)
-        
-        comp_metrics = {
-            "function_count": 0,
-            "class_count": 0,
-            "cyclomatic_complexity": 1,
-            "cognitive_complexity": 0,
-            "nesting_depth": 0
-        }
-        if parser.parse():
-            comp_metrics = parser.get_complexity_metrics()
+        if precalculated_complexity:
+            comp_metrics = precalculated_complexity
+        else:
+            from intelligence.parsers.parser_registry import ParserRegistry
+            parser = ParserRegistry.get_parser(file_path)
+            parser.load(content, file_path)
+            
+            comp_metrics = {
+                "function_count": 0,
+                "class_count": 0,
+                "cyclomatic_complexity": 1,
+                "cognitive_complexity": 0,
+                "nesting_depth": 0
+            }
+            if parser.parse():
+                comp_metrics = parser.get_complexity_metrics()
 
         # Halstead / Maintainability Index
         # Maintainability Index = Max(0, (171 - 5.2 * ln(Volume) - 0.23 * CyclomaticComplexity - 16.2 * ln(LOC)) * 100 / 171)

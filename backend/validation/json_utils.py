@@ -49,13 +49,6 @@ def repair_json(text: str) -> str:
     return text
 
 
-def log_raw_output(label: str, raw: str, *, max_chars: int = 600) -> None:
-    preview = (raw or "").strip()
-    if len(preview) > max_chars:
-        preview = preview[:max_chars] + f"... [{len(raw)} chars total]"
-    logger.info("[%s] Raw LLM output preview: %s", label, preview or "(empty)")
-
-
 def extract_json(text: str, *, label: str = "agent") -> dict[str, Any] | None:
     """
     Parse the first JSON object from LLM output.
@@ -76,14 +69,6 @@ def extract_json(text: str, *, label: str = "agent") -> dict[str, Any] | None:
         candidates.append(brace.group(0))
 
     if not candidates:
-        print("\n" + "=" * 80)
-        print("AGENT:", label)
-        print("RAW OUTPUT:")
-        print(text)
-        print("=" * 80 + "\n")
-
-        log_raw_output(label, text)
-        
         logger.error("[%s] JSON extraction failed — no JSON object found in %d chars", label, len(text))
         return None
 
@@ -103,7 +88,6 @@ def extract_json(text: str, *, label: str = "agent") -> dict[str, Any] | None:
                 last_error = str(exc)
                 continue
 
-    log_raw_output(label, text)
     logger.error("[%s] JSON extraction failed — %s", label, last_error)
     return None
 
@@ -135,6 +119,22 @@ def parse_agent_json(
         logger.warning("[%s] Using explicit fallback — no parseable JSON", label)
         return model(**fallback), "fallback"
 
+    # Normalize score fields from shorter keys if necessary
+    for score_field, short_key in (
+        ("technical_score", "technical"),
+        ("security_score", "security"),
+        ("innovation_score", "innovation"),
+        ("presentation_score", "presentation"),
+        ("impact_score", "impact"),
+    ):
+        if score_field not in data and short_key in data:
+            val = data[short_key]
+            if isinstance(val, (int, float, str)):
+                try:
+                    data[score_field] = int(float(val))
+                except Exception:
+                    pass
+
     if not _has_required_score(model, data):
         logger.warning(
             "[%s] Parsed JSON missing required score field — merge with fallback",
@@ -157,6 +157,13 @@ def parse_agent_json(
         except ValidationError:
             logger.error("[%s] Merged agent JSON still invalid — full fallback", label)
             return model(**fallback), "fallback"
+
+
+def log_raw_output(label: str, raw: str, *, max_chars: int = 600) -> None:
+    preview = (raw or "").strip()
+    if len(preview) > max_chars:
+        preview = preview[:max_chars] + f"... [{len(raw)} chars total]"
+    logger.info("[%s] Raw LLM output preview: %s", label, preview or "(empty)")
 
 
 def validate_chief_verdict(

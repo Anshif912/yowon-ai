@@ -16,6 +16,8 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    Boolean,
+    UniqueConstraint,
     create_engine,
 )
 from sqlalchemy.orm import DeclarativeBase, Session, relationship, sessionmaker
@@ -282,6 +284,8 @@ class Report(Base):
     generated_at: datetime = Column(DateTime, default=datetime.utcnow)
     generation_time: Optional[float] = Column(Float, nullable=True)
     version: str = Column(String(20), default="1.0.0")
+    report_status: Optional[str] = Column(String(20), default="ready")
+    report_error: Optional[str] = Column(Text, nullable=True)
 
     evaluation = relationship("Evaluation", back_populates="reports")
 
@@ -302,6 +306,36 @@ class EvaluationEvent(Base):
     evaluation = relationship("Evaluation", back_populates="events")
 
 
+class KnowledgeGraphNode(Base):
+    """Represents a node in the repository knowledge graph."""
+
+    __tablename__ = "knowledge_graph_nodes"
+
+    node_id: str = Column(String(100), primary_key=True)
+    repository_snapshot_id: str = Column(String(36), ForeignKey("repository_snapshots.snapshot_id"), nullable=False, index=True)
+    commit_sha: str = Column(String(40), nullable=False, index=True)
+    label: str = Column(String(200), nullable=False)
+    type: str = Column(String(50), nullable=False)  # file | class | function | api | model | service | controller | library | env_var | docker_service
+    metadata_json: Optional[str] = Column(Text, nullable=True)  # JSON fields: description, metrics, evidence, recommendations, agent_comments, etc.
+
+    snapshot = relationship("RepositorySnapshot")
+
+
+class KnowledgeGraphEdge(Base):
+    """Represents a directed link/edge in the repository knowledge graph."""
+
+    __tablename__ = "knowledge_graph_edges"
+
+    edge_id: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_snapshot_id: str = Column(String(36), ForeignKey("repository_snapshots.snapshot_id"), nullable=False, index=True)
+    commit_sha: str = Column(String(40), nullable=False, index=True)
+    source: str = Column(String(100), nullable=False, index=True)
+    target: str = Column(String(100), nullable=False, index=True)
+    relation: str = Column(String(50), nullable=False)  # IMPORTS | CALLS | INHERITS | IMPLEMENTS | USES | CONNECTS_TO | DEPENDS_ON | GENERATES
+
+    snapshot = relationship("RepositorySnapshot")
+
+
 class RepositoryAnalysis(Base):
     """Represents historical static analysis results cache metadata for a snapshot."""
 
@@ -309,14 +343,47 @@ class RepositoryAnalysis(Base):
 
     analysis_id: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     repository_snapshot_id: str = Column(String(36), ForeignKey("repository_snapshots.snapshot_id"), nullable=False, index=True)
-    commit_sha: str = Column(String(40), nullable=False, index=True)
+    commit_sha: str = Column(String(40), nullable=False, index=True, unique=True)
     analysis_version: str = Column(String(50), nullable=False)
     engine_version: str = Column(String(50), nullable=False)
-    status: str = Column(String(20), default="Pending")  # Pending | Running | Completed | Failed
+    status: str = Column(String(50), default="Pending")  # e.g., QUEUED, Running, Completed, Failed
+    current_stage: Optional[str] = Column(String(100), nullable=True)
+    progress: int = Column(Integer, default=0)
+    started_at: Optional[datetime] = Column(DateTime, nullable=True)
+    ended_at: Optional[datetime] = Column(DateTime, nullable=True)
+    duration: Optional[float] = Column(Float, nullable=True)
+    error_message: Optional[str] = Column(Text, nullable=True)
+    completed_stages: Optional[str] = Column(Text, nullable=True)  # JSON-serialized list of stages completed
+    files_processed: int = Column(Integer, default=0)
+    current_module: Optional[str] = Column(String(100), nullable=True)
     created_at: datetime = Column(DateTime, default=datetime.utcnow)
     expires_at: Optional[datetime] = Column(DateTime, nullable=True)
 
     snapshot = relationship("RepositorySnapshot")
+
+
+class IntelligenceModuleStatus(Base):
+    """Tracks status, timings and stats of individual Repository Intelligence modules."""
+
+    __tablename__ = "intelligence_module_statuses"
+
+    id: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    analysis_id: str = Column(String(36), ForeignKey("repository_analyses.analysis_id", ondelete="CASCADE"), nullable=False, index=True)
+    module_name: str = Column(String(100), nullable=False)
+    status: str = Column(String(20), nullable=False)  # queued | running | completed | failed | skipped
+    started_at: Optional[datetime] = Column(DateTime, nullable=True)
+    finished_at: Optional[datetime] = Column(DateTime, nullable=True)
+    duration_seconds: Optional[float] = Column(Float, nullable=True)
+    error_message: Optional[str] = Column(Text, nullable=True)
+    cache_hit: bool = Column(Boolean, default=False)
+    files_processed: int = Column(Integer, default=0)
+
+    __table_args__ = (
+        UniqueConstraint('analysis_id', 'module_name', name='uq_analysis_module'),
+    )
+
+    analysis = relationship("RepositoryAnalysis")
+
 
 
 # ── Dependency helper ──────────────────────────────────────────────────────────
@@ -331,5 +398,78 @@ def get_db():
 
 
 def init_db() -> None:
-    """Create all tables if they don't already exist."""
+    """Create all tables and perform automatic schema migrations for missing columns/indexes."""
+    # 1. Create tables if they do not exist
     Base.metadata.create_all(bind=engine)
+
+    # 2. Inspect database for missing columns and run migrations dynamically
+    from sqlalchemy import inspect, text
+    insp = inspect(engine)
+
+    with engine.begin() as conn:
+        for table_name, table_obj in Base.metadata.tables.items():
+            try:
+                db_cols = {c["name"] for c in insp.get_columns(table_name)}
+            except Exception:
+                continue
+
+            # A. Remove obsolete columns (e.g. project_id in tables where it's not defined in ORM)
+            if "project_id" in db_cols and "project_id" not in table_obj.columns:
+                print(f"[MIGRATION] Recreating table '{table_name}' to remove obsolete column 'project_id'.")
+                old_table_name = f"{table_name}_old"
+                try:
+                    # Rename old table
+                    conn.execute(text(f"ALTER TABLE {table_name} RENAME TO {old_table_name}"))
+                    
+                    # Create new table using ORM metadata
+                    table_obj.create(bind=conn)
+                    
+                    # Retrieve columns of the new table
+                    new_cols = {c.name for c in table_obj.columns}
+                    
+                    # Intersection of columns
+                    common_cols = list(new_cols.intersection(db_cols))
+                    cols_str = ", ".join(f'"{c}"' for c in common_cols)
+                    
+                    # Copy data
+                    conn.execute(text(f"INSERT INTO {table_name} ({cols_str}) SELECT {cols_str} FROM {old_table_name}"))
+                    
+                    # Drop old table
+                    conn.execute(text(f"DROP TABLE {old_table_name}"))
+                    print(f"[MIGRATION] Successfully recreated table '{table_name}' to drop column 'project_id'.")
+                except Exception as e:
+                    print(f"[MIGRATION] Re-creating table '{table_name}' failed: {e}")
+                    try:
+                        conn.execute(text(f"DROP TABLE {old_table_name}"))
+                    except Exception:
+                        pass
+                
+                # Re-fetch database columns after potentially modifying the table
+                try:
+                    db_cols = {c["name"] for c in insp.get_columns(table_name)}
+                except Exception:
+                    continue
+
+            # B. Add missing columns
+            for col in table_obj.columns:
+                if col.name not in db_cols:
+                    col_name = col.name
+                    # Simplify column type string representation for SQLite ALTER TABLE
+                    col_type_str = str(col.type)
+                    if "VARCHAR" in col_type_str:
+                        col_type_str = "VARCHAR(255)"
+                    elif "DATETIME" in col_type_str:
+                        col_type_str = "DATETIME"
+                    elif "FLOAT" in col_type_str:
+                        col_type_str = "FLOAT"
+                    elif "INTEGER" in col_type_str:
+                        col_type_str = "INTEGER"
+                    elif "TEXT" in col_type_str:
+                        col_type_str = "TEXT"
+                        
+                    alter_query = f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_type_str}"
+                    try:
+                        conn.execute(text(alter_query))
+                        print(f"[MIGRATION] Added column '{col_name}' to table '{table_name}'.")
+                    except Exception as e:
+                        print(f"[MIGRATION] Failed to add column '{col_name}' to '{table_name}': {e}")
