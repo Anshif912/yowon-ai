@@ -83,7 +83,7 @@ def test_register_duplicate_fails(client):
         }
     )
     assert response.status_code == 400
-    assert "exists" in response.json()["message"]
+    assert "exists" in response.json()["detail"]
 
 
 def test_login_success(client, db_session):
@@ -170,7 +170,7 @@ def test_failed_login_lockout(client, db_session):
         }
     )
     assert response.status_code == 403
-    assert "locked" in response.json()["message"]
+    assert "locked" in response.json()["detail"]
 
 
 def test_logout_clears_cookies(client):

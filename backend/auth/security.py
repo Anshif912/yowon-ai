@@ -2,9 +2,9 @@ import os
 from datetime import datetime, timedelta
 from typing import Any, Dict, Optional
 import jwt
+import bcrypt
 from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
 from database import get_db, User
@@ -15,22 +15,25 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 15
 REFRESH_TOKEN_EXPIRE_DAYS = 7
 
-# Password hashing setup
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 # HTTP Bearer for extracting JWT authorization header
 reusable_oauth2 = HTTPBearer(auto_error=False)
 
 
 def hash_password(password: str) -> str:
-    """Hashes a plain password using bcrypt."""
-    return pwd_context.hash(password)
+    """Hashes a plain password using native bcrypt."""
+    # bcrypt max password length is 72 bytes
+    pwd_bytes = password.encode('utf-8')[:72]
+    salt = bcrypt.gensalt(rounds=12)
+    hashed = bcrypt.hashpw(pwd_bytes, salt)
+    return hashed.decode('utf-8')
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verifies a plain password against its bcrypt hash."""
+    """Verifies a plain password against its bcrypt hash using native bcrypt."""
     try:
-        return pwd_context.verify(plain_password, hashed_password)
+        pwd_bytes = plain_password.encode('utf-8')[:72]
+        hashed_bytes = hashed_password.encode('utf-8')
+        return bcrypt.checkpw(pwd_bytes, hashed_bytes)
     except Exception:
         return False
 

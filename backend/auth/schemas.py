@@ -1,16 +1,16 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
 
 
 class UserRegister(BaseModel):
-    email: EmailStr
+    email: str = Field(..., description="Email address of the user")
     password: str = Field(..., min_length=8, description="Password must be at least 8 characters long")
     full_name: str = Field(..., min_length=1, max_length=100)
 
 
 class UserLogin(BaseModel):
-    email: EmailStr
+    email: str
     password: str
 
 
@@ -52,11 +52,11 @@ class PasswordChange(BaseModel):
 
 
 class ForgotPasswordRequest(BaseModel):
-    email: EmailStr
+    email: str
 
 
 class ResetPasswordRequest(BaseModel):
-    email: EmailStr
+    email: str
     token: str
     new_password: str = Field(..., min_length=8)
 
