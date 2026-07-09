@@ -126,49 +126,27 @@ export default function LandingPage() {
   }
 
   return (
-    <AppShell showHeader={false} particles>
-      <div className="fixed inset-0 pointer-events-none -z-[5] bg-aurora-radial mission-control-bg" />
+    <AppShell showHeader={true} particles>
       <ScanLine />
       <NeuralOverlay />
 
       {/* =========================================
           HERO
       ========================================= */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-20 pb-12">
-
-        {/* Top bar */}
-        <motion.div
-          className="w-full max-w-7xl mx-auto flex items-center justify-between mb-12"
-          initial={{ opacity: 0, y: -16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 via-emerald-400 to-violet-600 flex items-center justify-center"
-              style={{ boxShadow: '0 0 14px rgba(0,229,255,0.30)' }}>
-              <Shield size={16} className="text-[#04111F]" />
-            </div>
-            <span className="font-display font-bold text-white tracking-tight">YOWON AI</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link to="/jury"        className="yowon-btn-ghost yowon-btn-sm hidden sm:flex">AI Jury</Link>
-            <Link to="/leaderboard" className="yowon-btn-ghost yowon-btn-sm hidden sm:flex">Rankings</Link>
-            <Link to="/submit"      className="yowon-btn-primary yowon-btn-sm">Start Evaluation</Link>
-          </div>
-        </motion.div>
+      <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 py-12 lg:py-16">
 
         {/* Hero grid */}
-        <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
+        <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
           {/* Left: Copy */}
-          <div>
+          <div className="lg:col-span-7">
             <motion.div
-              className="inline-flex items-center gap-2 glass-pill px-3.5 py-1.5 mb-6"
+              className="inline-flex items-center gap-2 glass-pill px-3.5 py-1.5 mb-6 border-white/[0.08]"
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Radio size={12} className="text-emerald-400 animate-pulse" />
+              <Radio size={12} className="text-cyan-400 animate-pulse" />
               <span className="text-[10px] font-mono text-yowon-muted tracking-[0.22em] uppercase">
                 Enterprise AI Evaluation Network
               </span>
@@ -185,7 +163,7 @@ export default function LandingPage() {
             </motion.h1>
 
             <motion.p
-              className="text-xl sm:text-2xl font-medium gradient-text-subtle mb-4 leading-snug"
+              className="text-xl sm:text-2xl font-bold text-white mb-6 leading-snug animate-pulse-slow"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.28 }}
@@ -215,11 +193,11 @@ export default function LandingPage() {
                 Start Evaluation
                 <ArrowRight size={15} />
               </Link>
-              <Link to="/demo" className="yowon-btn-ghost text-sm">
+              <Link to="/demo" className="yowon-btn-secondary text-sm">
                 View Demo Report
               </Link>
-              <Link to="/jury" className="yowon-btn-ghost text-sm">
-                <Shield size={14} className="text-emerald-400" />
+              <Link to="/jury" className="yowon-btn-secondary text-sm">
+                <Shield size={14} className="text-cyan-400" />
                 AI Jury
               </Link>
             </motion.div>
@@ -232,7 +210,7 @@ export default function LandingPage() {
               transition={{ delay: 0.58 }}
             >
               {STATS.map(({ value, label, icon: Icon, color }) => (
-                <div key={label} className="metric-card !p-3.5 text-center">
+                <div key={label} className="metric-card !p-3.5 text-center border-white/[0.08]">
                   <Icon size={14} className={`mx-auto mb-2 ${color}`} />
                   <p className="text-xl font-black tracking-tight text-white"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{value}</p>
@@ -247,15 +225,21 @@ export default function LandingPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="cyber-glow-card"
+            className="lg:col-span-5 cyber-glow-card relative"
           >
-            <div className="cyber-glow-inner !p-6">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent pointer-events-none" />
-              <p className="text-[10px] font-mono text-yowon-muted uppercase tracking-[0.25em] mb-4 text-center">
+            <div className="cyber-glow-inner !p-6 relative overflow-hidden rounded-2xl">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent pointer-events-none z-20" />
+
+              <p className="text-[10px] font-mono text-yowon-muted uppercase tracking-[0.25em] mb-4 text-center relative z-20">
                 Judge Simulation Network
               </p>
-              <NeuralNetwork />
-              <ul className="mt-5 grid grid-cols-3 gap-2">
+              
+              {/* Neural network canvas */}
+              <div className="relative z-10">
+                <NeuralNetwork />
+              </div>
+
+              <ul className="mt-5 grid grid-cols-3 gap-2 relative z-20">
                 {AGENTS.slice(0, 3).map(item => (
                   <li key={item.name} className="flex items-center gap-2 text-xs text-yowon-muted">
                     <CheckCircle2 size={12} className="text-emerald-400 shrink-0" />

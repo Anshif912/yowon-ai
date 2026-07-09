@@ -93,8 +93,6 @@ export default function SubmitPage() {
 
   return (
     <AppShell>
-      <div className="fixed inset-0 pointer-events-none -z-[5] bg-aurora-radial opacity-80" />
-
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14 relative">
 
         {/* Page Header */}

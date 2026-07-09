@@ -51,7 +51,6 @@
   line-height: 1.2;
   color: color-mix(in srgb, var(--accent-color) calc(var(--effect, 0) * 100%), var(--text-color));
   transform: translateX(calc(var(--effect, 0) * var(--max-shift)));
-  transition: color 0.15s ease-out;
 }
 
 .line-sidebar__index {
@@ -63,11 +62,9 @@
 
 .line-sidebar__icon {
   opacity: calc(0.6 + var(--effect, 0) * 0.4);
-  transition: color 0.15s ease-out;
 }
 
 .line-sidebar__text {
-  transition: color 0.15s ease-out;
 }
 
 .line-sidebar__marker {
