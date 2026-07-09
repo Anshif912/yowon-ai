@@ -383,9 +383,9 @@ function TechnologyGraphContent({ projectId, onSelectNode }: { projectId: string
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* SVG Canvas Area (7 cols) */}
-          <div className="lg:col-span-7 border border-white/5 bg-black/40 rounded-xl relative overflow-hidden min-h-[440px] select-none">
+          <div className="lg:col-span-7 border border-white/5 bg-black/40 rounded-xl relative overflow-hidden min-h-[600px] select-none">
             <svg
-              className="w-full h-full min-h-[440px]"
+              className="w-full h-full min-h-[600px]"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -439,12 +439,13 @@ function TechnologyGraphContent({ projectId, onSelectNode }: { projectId: string
                   {simNodes.map(node => {
                     const isSelected = selectedNode?.id === node.id
                     const color = getCategoryColor(node.metadata?.category)
-                    const radius = 10 + (node.metadata?.confidence || 1.0) * 12
+                    
+                    const blockW = 100
+                    const blockH = 26
 
                     return (
                       <g
                         key={node.id}
-                        transform={`translate(${node.x!}, ${node.y!})`}
                         onClick={() => {
                           setSelectedNode(node)
                           if (onSelectNode) onSelectNode(node.label)
@@ -457,30 +458,39 @@ function TechnologyGraphContent({ projectId, onSelectNode }: { projectId: string
                         onMouseLeave={() => setHoveredNodeId(null)}
                         style={{ cursor: 'pointer' }}
                       >
-                        <circle
-                          r={radius}
-                          fill={color}
-                          fillOpacity={0.15}
-                          stroke={isSelected ? '#fff' : color}
-                          strokeWidth={isSelected ? 2.5 : 1.5}
+                        <rect
+                          x={node.x! - blockW / 2}
+                          y={node.y! - blockH / 2}
+                          width={blockW}
+                          height={blockH}
+                          rx={5}
+                          fill="rgba(15, 23, 42, 0.9)"
+                          stroke={isSelected ? '#fff' : 'rgba(255,255,255,0.08)'}
+                          strokeWidth={isSelected ? 2 : 1}
+                          className="transition-colors duration-200"
                         />
-                        <circle
-                          r={4}
-                          fill={color}
+                        {/* Accent side bar */}
+                        <line
+                          x1={node.x! - blockW / 2 + 1.5}
+                          y1={node.y! - blockH / 2 + 2}
+                          x2={node.x! - blockW / 2 + 1.5}
+                          y2={node.y! + blockH / 2 - 2}
+                          stroke={color}
+                          strokeWidth={3}
                         />
-                        {(isSelected || hoveredNodeId === node.id || simNodes.length < 20 || zoom > 1.4) && (
-                          <text
-                            y={radius + 13}
-                            textAnchor="middle"
-                            fill={isSelected ? '#fff' : '#e4e4e7'}
-                            fontSize="9px"
-                            fontWeight="bold"
-                            fontFamily="monospace"
-                            className="pointer-events-none select-none"
-                          >
-                            {node.label}
-                          </text>
-                        )}
+                        <text
+                          x={node.x!}
+                          y={node.y! + 3}
+                          textAnchor="middle"
+                          fill={isSelected ? '#fff' : '#e4e4e7'}
+                          fontSize="8px"
+                          fontFamily="monospace"
+                          className="pointer-events-none select-none"
+                        >
+                          {node.label.length > 15 
+                            ? node.label.substring(0, 13) + '..' 
+                            : node.label}
+                        </text>
                       </g>
                     )
                   })}
