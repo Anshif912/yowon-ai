@@ -1,135 +1,146 @@
-from intelligence.parsers.parser_registry import ParserRegistry
-from intelligence.symbol_indexer import SymbolIndexer
-from intelligence.security_engine import SecurityEngine
-from intelligence.metrics_engine import MetricsEngine
-from intelligence.health_engine import HealthEngine
-
-MOCK_PYTHON_CODE = """
-import os
-import jwt
-from fastapi import APIRouter
-from sqlalchemy import Column, String
-
-router = APIRouter()
-
-class User(Base):
-    __tablename__ = "users"
-    id = Column(String, primary_key=True)
-
-@router.get("/users")
-def get_users():
-    # Helper call
-    val = eval("1 + 1")
-    key = "secret_api_key_xyz_12345"
-    return {"status": "ok"}
+"""
+test_repository_intelligence.py — Regression test suite for hardered Repository Intelligence system.
 """
 
-def test_python_parser_ast():
-    parser = ParserRegistry.get_parser("app/main.py")
-    parser.load(MOCK_PYTHON_CODE, "app/main.py")
-    assert parser.parse() is True
-    
-    symbols = parser.get_symbols()
-    assert len(symbols) > 0
-    # Should detect router route and User model class
-    sym_types = [s.type for s in symbols]
-    assert "route" in sym_types or "class" in sym_types or "model" in sym_types
+import pytest
+from pydantic import BaseModel
+from typing import List, Dict, Any
 
-    imports = parser.get_imports()
-    assert "jwt" in imports
-    assert "fastapi" in imports
+from intelligence.models import EvidenceRecord, RecommendationRecord, SymbolRecord
+from utils.serialization import to_dict, from_dict, to_json, from_json
+from intelligence.exceptions import RepositoryValidationError
+from intelligence.engine_contract import run_isolated_engine, EngineStatus
+from intelligence.orchestrator import RepositoryPlanner, ExecutionScheduler, DiagnosticsCollector, CacheManager
 
-def test_symbol_indexer():
-    indexer = SymbolIndexer()
-    indexer.index_file("app/main.py", MOCK_PYTHON_CODE)
-    
-    all_syms = indexer.get_all_symbols()
-    assert len(all_syms) > 0
-    
-    file_syms = indexer.get_file_symbols("app/main.py")
-    assert len(file_syms) == len(all_syms)
 
-    # Test incremental indexing (updating file content)
-    indexer.index_file("app/main.py", "class TestClass:\n    pass")
-    assert len(indexer.get_all_symbols()) == 1
-    assert indexer.get_all_symbols()[0].name == "TestClass"
+def test_pydantic_model_compatibility():
+    """Verify that models inherit from DictCompatibilityMixin and work with dictionary get/contains/keys."""
+    ev = EvidenceRecord(
+        rule_id="RULE_TEST_PERF",
+        parser="python",
+        language="python",
+        file_path="main.py",
+        line_start=10,
+        line_end=12,
+        column_start=0,
+        column_end=5,
+        matched_code_hash="abc123hash",
+        confidence=0.95,
+        severity="HIGH"
+    )
 
-def test_security_engine():
-    engine = SecurityEngine()
-    findings = engine.scan_file("app/main.py", MOCK_PYTHON_CODE)
-    
-    # Should detect raw secrets and unsafe eval() calls
-    finding_types = [f["type"] for f in findings]
-    assert "secret_leak" in finding_types
-    assert "unsafe_api" in finding_types
+    # 1. Attribute Access
+    assert ev.rule_id == "RULE_TEST_PERF"
+    assert ev.confidence == 0.95
 
-def test_metrics_engine():
-    engine = MetricsEngine()
-    findings = [{
-        "type": "unsafe_api",
-        "rule_id": "RULE_UNSAFE_API_EVAL",
-        "file_path": "app/main.py",
-        "line_start": 14,
-        "line_end": 14,
-        "column_start": 4,
-        "column_end": 8,
-        "description": "Unsafe API call: eval()",
-        "severity": "HIGH",
-        "confidence": 0.95
-    }]
-    
-    metrics = engine.calculate_file_metrics(
-        file_path="app/main.py",
-        content=MOCK_PYTHON_CODE,
-        symbols=[],
-        imports_count=2,
-        security_findings=findings,
-        has_test_file=True
+    # 2. Dictionary Get Compatibility
+    assert ev.get("rule_id") == "RULE_TEST_PERF"
+    assert ev.get("non_existent", "default_val") == "default_val"
+    assert ev["file_path"] == "main.py"
+
+    # 3. Contains & Keys check
+    assert "severity" in ev
+    assert "rule_id" in ev.keys()
+
+
+def test_central_serialization_layer():
+    """Verify that serialization.py properly transforms Pydantic models and parses back."""
+    ev = EvidenceRecord(
+        rule_id="RULE_TEST_PERF",
+        parser="python",
+        language="python",
+        file_path="main.py",
+        line_start=10,
+        line_end=12,
+        column_start=0,
+        column_end=5,
+        matched_code_hash="abc123hash",
+        confidence=0.95,
+        severity="HIGH"
+    )
+
+    # Serialize
+    d = to_dict(ev)
+    assert isinstance(d, dict)
+    assert d["rule_id"] == "RULE_TEST_PERF"
+    assert d["confidence"] == 0.95
+
+    # Deserialize
+    rebuilt = from_dict(EvidenceRecord, d)
+    assert isinstance(rebuilt, EvidenceRecord)
+    assert rebuilt.rule_id == "RULE_TEST_PERF"
+    assert rebuilt.confidence == 0.95
+
+
+def test_isolated_engine_failures():
+    """Verify that run_isolated_engine handles exceptions gracefully and collects timing delta."""
+    def buggy_engine():
+        raise ValueError("Simulated parsing crash")
+
+    # Run stage
+    res = run_isolated_engine(
+        name="buggy_ast_parser",
+        func=buggy_engine,
+        fallback_payload={"nodes": [], "edges": []}
+    )
+
+    # Asserts
+    assert res.status == EngineStatus.FAILED
+    assert "Simulated parsing crash" in res.errors[0]
+    assert res.payload == {"nodes": [], "edges": []}
+    assert res.duration >= 0.0
+    assert res.confidence == 0.0
+
+
+def test_repository_planner_routing():
+    """Verify that the planner detects AI libs, size and assigns pipelines correctly."""
+    # Fast Pipeline
+    fast_pipeline = RepositoryPlanner.plan(
+        scan_files=["main.py", "README.md"],
+        file_contents={"main.py": "print('hello')"},
+        detected_techs=["Python"],
+        total_loc=100
+    )
+    assert fast_pipeline == "FastPipeline"
+
+    # AI Pipeline
+    ai_pipeline = RepositoryPlanner.plan(
+        scan_files=["main.py", "agent.py"],
+        file_contents={"agent.py": "from crewai import Agent"},
+        detected_techs=["Python", "CrewAI"],
+        total_loc=500
+    )
+    assert ai_pipeline == "AIPipeline"
+
+    # Deep Pipeline
+    deep_pipeline = RepositoryPlanner.plan(
+        scan_files=[f"file_{i}.py" for i in range(600)],
+        file_contents={},
+        detected_techs=["Python"],
+        total_loc=60000
+    )
+    assert deep_pipeline == "DeepPipeline"
+
+
+def test_diagnostics_confidence_math():
+    """Verify that DiagnosticsCollector computes mathematical confidence correctly."""
+    scheduler = ExecutionScheduler()
+    # Mock some runs
+    scheduler.results["stage_1"] = run_isolated_engine(
+        "stage_1", lambda: "payload", quality_gate_min_confidence=0.0
     )
     
-    assert metrics["loc"] > 0
-    assert metrics["risk"] > 10 # Boosted by unsafe api finding
-    assert metrics["coverage"] == 90 # Map test file is true
-
-def test_health_engine():
-    engine = HealthEngine()
-    files = ["README.md", "app/main.py", "tests/test_main.py", "Dockerfile"]
-    dependencies = {"fastapi": "0.100.0", "pytest": "7.0.0"}
-    security_findings = []
-    file_metrics = {
-        "app/main.py": {"complexity": {"maintainability_index": 85.0}}
-    }
-    
-    health = engine.calculate_health(
-        files=files,
-        dependencies=dependencies,
-        security_findings=security_findings,
-        file_metrics=file_metrics
+    diag = DiagnosticsCollector.collect(
+        scan_files=["main.py", "utils.py"],
+        discovered_count=10,
+        loaded_count=8,  # 80% coverage
+        parsed_count=8,
+        total_loc=1000,
+        results=scheduler.results,
+        timeline=scheduler.get_timeline(),
+        cache_status="MISS"
     )
-    
-    assert health["overall"] > 50
-    assert health["documentation"] > 30 # Has README
-    assert health["deployment"] > 30 # Has Dockerfile
-    assert health["testing"] > 30 # Has test_main.py and pytest
 
-def test_health_engine_with_structured_dependencies():
-    engine = HealthEngine()
-    files = ["README.md", "app/main.py", "tests/test_main.py", "Dockerfile"]
-    dependencies = [
-        {"name": "fastapi", "version": "0.100.0"},
-        {"package": "pytest", "version": "7.0.0"}
-    ]
-    security_findings = []
-    file_metrics = {
-        "app/main.py": {"complexity": {"maintainability_index": 85.0}}
-    }
-    
-    health = engine.calculate_health(
-        files=files,
-        dependencies=dependencies,
-        security_findings=security_findings,
-        file_metrics=file_metrics
-    )
-    
-    assert health["overall"] > 50
-    assert health["testing"] > 30 # Has test_main.py and pytest
+    assert diag["repository_coverage"] == 80.0
+    assert diag["confidence"] > 0.5
+    assert "CONFIDENCE" in diag["confidence_label"]

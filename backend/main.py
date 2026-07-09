@@ -4016,3 +4016,27 @@ async def get_pipeline_timeline(id: str, db: Session = Depends(get_db)):
     timeline.sort(key=lambda x: x["timestamp"])
     return timeline
 
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="127.0.0.1",
+        port=8000,
+        reload=True,
+        reload_dirs=["backend"],
+        reload_excludes=[
+            "repository_cache",
+            "evaluation_cache",
+            "reports",
+            "graphs",
+            "knowledge",
+            "generated",
+            "uploads",
+            "logs",
+            "*.db",
+            "*.db-journal",
+            "*.sqlite"
+        ]
+    )
+

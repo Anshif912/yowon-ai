@@ -181,8 +181,8 @@ class ArchitectureEngine:
 
         # ── 2. Evidence-based classification ──────────────────────────────
         for ev in evidence:
-            rule_id = ev.rule_id if hasattr(ev, "rule_id") else str(ev.get("rule_id", ""))
-            ev_file = ev.file_path if hasattr(ev, "file_path") else str(ev.get("file_path", ""))
+            rule_id = getattr(ev, "rule_id", "")
+            ev_file = getattr(ev, "file_path", "")
             if not ev_file:
                 continue
 
