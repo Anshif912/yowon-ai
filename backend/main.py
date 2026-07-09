@@ -106,6 +106,9 @@ app = FastAPI(
     version="2.2.0",
 )
 
+from auth.routes import router as auth_router
+app.include_router(auth_router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
@@ -221,6 +224,33 @@ async def startup():
     init_db()
     _migrate_report_columns()
     _migrate_project_columns()
+    
+    # Seed default admin user when ENVIRONMENT=development and users table is empty
+    env = os.getenv("ENVIRONMENT", "development")
+    if env == "development":
+        from database import SessionLocal, User
+        from auth.security import hash_password
+        db = SessionLocal()
+        try:
+            admin_user = db.query(User).filter(User.email == "admin@yowon.ai").first()
+            if not admin_user:
+                logger.info("[STARTUP] Seeding default administrator account admin@yowon.ai")
+                admin = User(
+                    full_name="YOWON Administrator",
+                    email="admin@yowon.ai",
+                    password_hash=hash_password("YowonAdmin2026!"),
+                    role="admin",
+                    status="active",
+                    email_verified=True
+                )
+                db.add(admin)
+                db.commit()
+                logger.info("[STARTUP] Seeding complete.")
+        except Exception as e:
+            db.rollback()
+            logger.error(f"[STARTUP] Seeding failed: {e}")
+        finally:
+            db.close()
 
 
 def _migrate_report_columns() -> None:
