@@ -7,6 +7,7 @@ import {
   PanelLeftOpen, X, Wrench,
 } from 'lucide-react'
 import AppShell from '../components/layout/AppShell'
+import LineSidebar from '../components/report/LineSidebar'
 import VerdictReveal from '../components/results/VerdictReveal'
 import NeuralOverlay from '../components/effects/NeuralOverlay'
 import { getReport, getPdfUrl } from '../api/api'
@@ -77,7 +78,7 @@ function ReportSidebar({
 }) {
   return (
     <aside
-      className={`${mobile ? 'h-full w-[min(84vw,320px)]' : `sticky top-20 hidden h-[calc(100vh-6rem)] shrink-0 lg:block ${collapsed ? 'w-[76px]' : 'w-[260px]'}`} rounded-[8px] border border-cyan-300/10 bg-[#06101D]/88 p-3 shadow-[0_0_50px_rgba(0,229,255,0.07)] backdrop-blur-2xl`}
+      className={`${mobile ? 'h-full w-[min(84vw,320px)]' : `sticky top-20 hidden h-[calc(100vh-6rem)] shrink-0 lg:block ${collapsed ? 'w-[76px]' : 'w-[260px]'}`} glass-sidebar p-3`}
     >
       <div className="mb-4 flex items-center justify-between gap-2">
         {!collapsed || mobile ? (
@@ -86,7 +87,7 @@ function ReportSidebar({
             <p className="font-display text-sm font-semibold text-yowon-text">Results Navigator</p>
           </div>
         ) : (
-          <div className="h-9 w-9 rounded-lg border border-cyan-300/20 bg-cyan-300/10" />
+          <div className="h-9 w-9 rounded-lg border border-cyan-300/20 bg-cyan-300/10 flex items-center justify-center text-cyan-300 text-xs font-mono font-bold">Y</div>
         )}
         {!mobile && (
           <button
@@ -100,29 +101,14 @@ function ReportSidebar({
         )}
       </div>
 
-      <nav className="space-y-1">
-        {REPORT_SECTIONS.map(({ id, label, icon: Icon }) => {
-          const active = activeSection === id
-          return (
-            <button
-              key={id}
-              type="button"
-              onClick={() => onNavigate(id)}
-              className={`group flex min-h-11 w-full items-center gap-3 rounded-[8px] border px-3 py-2 text-left transition ${
-                active
-                  ? 'border-cyan-300/35 bg-cyan-300/12 text-cyan-100 shadow-[0_0_20px_rgba(0,229,255,0.14)]'
-                  : 'border-transparent text-yowon-muted hover:border-white/10 hover:bg-white/[0.04] hover:text-yowon-text'
-              }`}
-              aria-current={active ? 'true' : undefined}
-            >
-              <Icon size={17} className={active ? 'text-cyan-300' : 'text-yowon-muted group-hover:text-cyan-200'} />
-              {(!collapsed || mobile) && (
-                <span className="text-sm font-display">{label}</span>
-              )}
-            </button>
-          )
-        })}
-      </nav>
+      <div className="h-[calc(100%-4rem)] overflow-y-auto pr-1 scrollbar-thin">
+        <LineSidebar
+          items={REPORT_SECTIONS}
+          activeSection={activeSection}
+          onNavigate={onNavigate}
+          collapsed={!mobile && collapsed}
+        />
+      </div>
     </aside>
   )
 }
@@ -210,7 +196,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
       <NeuralOverlay />
 
       {/* Header */}
-      <div className="border-b border-cyan-300/10 bg-yowon-bg/75 backdrop-blur-2xl sticky top-0 z-40">
+      <div className="glass-header sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <button
             onClick={() => navigate(demo ? '/' : '/submit')}
@@ -295,7 +281,7 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
           >
             {mobileNavOpen && (
               <motion.div
-                className="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-md lg:hidden"
+                className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -306,13 +292,14 @@ export default function ReportPage({ demo = false }: ReportPageProps) {
                   initial={{ x: -320 }}
                   animate={{ x: 0 }}
                   exit={{ x: -320 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                   onClick={event => event.stopPropagation()}
                 >
                   <div className="mb-3 flex justify-end">
                     <button
                       type="button"
                       onClick={() => setMobileNavOpen(false)}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-slate-950/80 text-cyan-100"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg glass-toolbar text-cyan-100"
                       aria-label="Close report navigation"
                     >
                       <X size={18} />
