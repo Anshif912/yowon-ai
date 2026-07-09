@@ -490,6 +490,34 @@ class PipelineDiagnostic(Base):
     evaluation = relationship("Evaluation", back_populates="diagnostics")
 
 
+class User(Base):
+    """Represents a YOWON AI user account with authentication controls."""
+
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    uuid = Column(String(36), default=lambda: str(uuid.uuid4()), unique=True, index=True)
+    full_name = Column(String(255), nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    password_hash = Column(String(255), nullable=False)
+    avatar_url = Column(String(512), nullable=True)
+    role = Column(String(50), default="user", nullable=False)  # admin | manager | user
+    status = Column(String(50), default="active", nullable=False)  # active | suspended
+    email_verified = Column(Boolean, default=False, nullable=False)
+    
+    # Audit & Security tracking
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    last_login = Column(DateTime, nullable=True)
+    failed_login_attempts = Column(Integer, default=0, nullable=False)
+    account_locked = Column(Boolean, default=False, nullable=False)
+    
+    # Preferences & Customization
+    preferences = Column(Text, nullable=True)  # JSON-serialized string
+    timezone = Column(String(100), default="UTC", nullable=False)
+    language = Column(String(10), default="en", nullable=False)
+
+
 class EvaluationAudit(Base):
     __tablename__ = "evaluation_audits"
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
