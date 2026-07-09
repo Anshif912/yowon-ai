@@ -175,6 +175,22 @@ function TimelineContent({ projectId, demo }: { projectId: string; demo?: boolea
   const [selectedRunsForCompare, setSelectedRunsForCompare] = useState<string[]>([])
   const [showComparison, setShowComparison] = useState(false)
 
+  const items = useMemo(() => Array.isArray(timelineData) ? timelineData : [], [timelineData])
+
+  // Sort selected runs chronological order (run number ascending)
+  const sortedSelectedRuns = useMemo(() => {
+    if (selectedRunsForCompare.length !== 2) return []
+    const first = items.find(i => i.evaluation_id === selectedRunsForCompare[0])
+    const second = items.find(i => i.evaluation_id === selectedRunsForCompare[1])
+    if (!first || !second) return []
+    
+    const firstNum = first.evaluation_num || 0
+    const secondNum = second.evaluation_num || 0
+    return firstNum < secondNum 
+      ? [selectedRunsForCompare[0], selectedRunsForCompare[1]] 
+      : [selectedRunsForCompare[1], selectedRunsForCompare[0]]
+  }, [selectedRunsForCompare, items])
+
   if (isLoading) {
     return <TimelineSkeleton />
   }
@@ -182,8 +198,6 @@ function TimelineContent({ projectId, demo }: { projectId: string; demo?: boolea
   if (isError) {
     return <PanelErrorFallback name="Evaluation Timeline" error={error} refetch={refetch} />
   }
-
-  const items = Array.isArray(timelineData) ? timelineData : []
 
   const handleDelete = async (e: React.MouseEvent, evalId: string) => {
     e.stopPropagation()
@@ -219,20 +233,6 @@ function TimelineContent({ projectId, demo }: { projectId: string; demo?: boolea
 
   const trendItems = [...items].reverse()
   const maxScore = 100
-
-  // Sort selected runs chronological order (run number ascending)
-  const sortedSelectedRuns = useMemo(() => {
-    if (selectedRunsForCompare.length !== 2) return []
-    const first = items.find(i => i.evaluation_id === selectedRunsForCompare[0])
-    const second = items.find(i => i.evaluation_id === selectedRunsForCompare[1])
-    if (!first || !second) return []
-    
-    const firstNum = first.evaluation_num || 0
-    const secondNum = second.evaluation_num || 0
-    return firstNum < secondNum 
-      ? [selectedRunsForCompare[0], selectedRunsForCompare[1]] 
-      : [selectedRunsForCompare[1], selectedRunsForCompare[0]]
-  }, [selectedRunsForCompare, items])
 
   return (
     <DashboardSection id="timeline" title="Evaluation Timeline" icon={Activity} accent="amber">
