@@ -374,7 +374,7 @@ class RIResult:
                 symbols_flat = []
                 for s in data.get("symbols", []):
                     if isinstance(s, dict):
-                        symbols_flat.append(SymbolRecord(**{k: v for k, v in s.items() if k in SymbolRecord.__dataclass_fields__}))
+                        symbols_flat.append(SymbolRecord(**{k: v for k, v in s.items() if k in SymbolRecord.model_fields}))
                     elif hasattr(s, "name"):
                         symbols_flat.append(s)
 

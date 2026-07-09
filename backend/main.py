@@ -2458,16 +2458,36 @@ def make_artifact_response(
     if status_lower == "completed":
         data = RepositoryAnalysisCache.get_artifact(commit_sha, artifact_name)
         if data is None:
-            if response:
-                response.status_code = 404
+            logger.warning(f"[Intel Cache] Cache miss for completed analysis on commit={commit_sha}. Re-triggering background analysis self-healing.")
+            try:
+                # Reset status to running so frontend updates
+                analysis.status = "RUNNING"
+                db.commit()
+                
+                import threading
+                from database import SessionLocal
+                from intelligence.intelligence_service import run_repository_intelligence
+                
+                def rebuild_task():
+                    db_session = SessionLocal()
+                    try:
+                        run_repository_intelligence(commit_sha, evaluation.repository_snapshot_id, db_session)
+                    except Exception as e:
+                        logger.error(f"[Intel Cache] Self-healing build failed: {e}")
+                    finally:
+                        db_session.close()
+                
+                threading.Thread(target=rebuild_task, daemon=True).start()
+            except Exception as e:
+                logger.error(f"[Intel Cache] Failed to start self-healing thread: {e}")
+                
             return {
-                "success": False,
-                "status": "failed",
-                "error": {
-                    "code": "CACHE_MISS",
-                    "message": f"Artifact '{artifact_name}' missing from disk cache",
-                    "details": "Disk cache expired or was manually cleared"
-                }
+                "success": True,
+                "status": "running",
+                "progress": 30,
+                "current_stage": "Self-healing missing disk cache artifacts",
+                "completed_steps": [],
+                "estimated_remaining_seconds": 25
             }
             
         if extra_processing:
@@ -2849,7 +2869,7 @@ async def get_evaluation_architecture(id: str, db: Session = Depends(get_db)):
                             if isinstance(ev, dict):
                                 evidence.append(EvidenceRecord(**{
                                     k: v for k, v in ev.items()
-                                    if k in EvidenceRecord.__dataclass_fields__
+                                    if k in EvidenceRecord.model_fields
                                 }))
                         
                         scan = RepositoryScan(

@@ -32,15 +32,16 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
   }
 
   // Contract normalization
-  const status = (statusData?.status || 'unknown').toLowerCase()
+  const rootData = statusData?.data || statusData || {}
+  const status = (statusData?.status || rootData?.status || 'unknown').toLowerCase()
   
   // Extract diagnostics and quality payload
-  const diag = statusData?.diagnostics || {}
-  const quality = statusData?.quality || {}
-  const health = statusData?.health || {}
+  const diag = rootData.diagnostics || {}
+  const quality = rootData.quality || {}
+  const health = rootData.health || {}
 
-  const duration = diag.execution_time_seconds || statusData?.execution_duration || 0
-  const filesCount = diag.total_files || statusData?.files_processed || 0
+  const duration = diag.execution_time_seconds || rootData.execution_duration || 0
+  const filesCount = diag.total_files || rootData.files_processed || 0
   const dirsCount = diag.total_directories || 0
   const locCount = diag.total_loc || 0
   const astNodes = diag.total_ast_nodes || 0
@@ -51,12 +52,12 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
   const imports = diag.total_imports || 0
   const depsCount = diag.total_dependencies || 0
   const evidenceCount = diag.evidence_count || 0
-  const cacheLevel = diag.cache_level || statusData?.cache_status || 'MISS'
-  const commit = statusData?.commit_sha || 'Unknown'
-  const branch = statusData?.branch || 'main'
-  const engineVersion = diag.engine_version || statusData?.metadata?.engine_version || '2.0.0'
+  const cacheLevel = diag.cache_level || rootData.cache_status || 'MISS'
+  const commit = rootData.commit_sha || statusData?.commit_sha || 'Unknown'
+  const branch = rootData.branch || statusData?.branch || 'main'
+  const engineVersion = diag.engine_version || rootData.metadata?.engine_version || '2.0.0'
 
-  const overallHealth: number | null = health.overall ?? health.overall_score ?? null
+  const overallHealth: number | null = health.overall ?? health.overall_score ?? health.overall_health ?? null
   const overallQuality = quality.overall_score || 0
 
   // Stage durations
