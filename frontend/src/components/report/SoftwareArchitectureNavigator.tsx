@@ -119,7 +119,7 @@ export function SoftwareArchitectureNavigator({ projectId }: SoftwareArchitectur
   ]
 
   const capabilities = capData?.data || []
-  const overallHealth = healthData?.overall_health ?? healthData?.overall ?? '—'
+  const overallHealth = healthData?.data?.overall_health ?? healthData?.data?.overall ?? healthData?.overall_health ?? healthData?.overall ?? '—'
 
   return (
     <div className="space-y-6">
@@ -259,10 +259,15 @@ export function SoftwareArchitectureNavigator({ projectId }: SoftwareArchitectur
           </h3>
 
           {!highlightedNode ? (
-            <div className="flex flex-col items-center justify-center py-10 text-center space-y-2">
-              <Info className="text-yowon-muted/40" size={32} />
-              <p className="text-xs text-yowon-muted font-sans max-w-[200px] leading-relaxed">
-                Click any technology, API, agent, or database node in a graph to inspect its connected relations across the system.
+            <div className="flex flex-col items-center justify-center py-6 text-center space-y-3">
+              <div className="p-3 bg-violet-500/10 rounded-full border border-violet-500/20">
+                <Link2 className="text-violet-400" size={24} />
+              </div>
+              <h4 className="font-sans font-bold text-xs text-yowon-text">Multi-Dimensional Trace</h4>
+              <p className="text-[11px] text-yowon-muted font-sans max-w-[220px] leading-relaxed">
+                This is Project Sentinel's <strong>System-Wide Correlation Engine</strong>.
+                <br /><br />
+                Clicking any card in the <strong>Architecture</strong>, <strong>Technology</strong>, <strong>Dependency</strong>, or <strong>Knowledge</strong> graphs will automatically query the semantic index to trace and map all files, database tables, and AI agents connected to that node.
               </p>
             </div>
           ) : (

@@ -383,9 +383,9 @@ function KnowledgeGraphContent({ projectId, onSelectNode }: { projectId: string;
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* SVG Canvas Area (8 cols) */}
-          <div className="lg:col-span-8 border border-white/5 bg-black/40 rounded-xl relative overflow-hidden min-h-[440px] select-none">
+          <div className="lg:col-span-8 border border-white/5 bg-black/40 rounded-xl relative overflow-hidden min-h-[600px] select-none">
             <svg 
-              className="w-full h-full min-h-[440px]" 
+              className="w-full h-full min-h-[600px]" 
               onMouseDown={handleCanvasMouseDown}
               onMouseMove={handleCanvasMouseMove}
               onMouseUp={handleCanvasMouseUp}
@@ -435,12 +435,14 @@ function KnowledgeGraphContent({ projectId, onSelectNode }: { projectId: string;
                     const isSelected = selectedNode?.id === node.id
                     const isExpanded = expandedNodes.has(node.id)
                     const color = getNodeColor(node.type, isExpanded)
-                    const radius = node.type === 'repository' ? 14 : (node.type === 'subsystem' ? 10 : 6)
+                    const isMainNode = node.type === 'repository' || node.type === 'subsystem'
+                    
+                    const blockW = isMainNode ? 120 : 90
+                    const blockH = isMainNode ? 32 : 24
 
                     return (
                       <g
                         key={node.id}
-                        transform={`translate(${node.x!}, ${node.y!})`}
                         onClick={() => {
                           setSelectedNode(node)
                           if (onSelectNode) onSelectNode(node.label)
@@ -454,24 +456,40 @@ function KnowledgeGraphContent({ projectId, onSelectNode }: { projectId: string;
                         onMouseLeave={() => setHoveredNodeId(null)}
                         style={{ cursor: 'pointer' }}
                       >
-                        <circle
-                          r={radius}
-                          fill={color}
-                          stroke={isSelected ? '#22d3ee' : (isExpanded ? '#fbbf24' : 'rgba(255,255,255,0.1)')}
+                        <rect
+                          x={node.x! - blockW / 2}
+                          y={node.y! - blockH / 2}
+                          width={blockW}
+                          height={blockH}
+                          rx={5}
+                          fill="rgba(15, 23, 42, 0.9)"
+                          stroke={isSelected ? '#22d3ee' : (isExpanded ? '#fbbf24' : 'rgba(255,255,255,0.08)')}
                           strokeWidth={isSelected || isExpanded ? 2 : 1}
+                          className="transition-colors duration-200"
                         />
-                        {(node.type === 'repository' || node.type === 'subsystem' || isSelected || hoveredNodeId === node.id || simNodes.length < 30 || zoom > 1.4) && (
-                          <text
-                            y={radius + 12}
-                            textAnchor="middle"
-                            fill={isSelected ? '#22d3ee' : (hoveredNodeId === node.id ? '#fff' : '#94a3b8')}
-                            fontSize="8px"
-                            fontFamily="monospace"
-                            className="pointer-events-none select-none"
-                          >
-                            {node.label}
-                          </text>
-                        )}
+                        {/* Accent side bar */}
+                        <line
+                          x1={node.x! - blockW / 2 + 1.5}
+                          y1={node.y! - blockH / 2 + 2}
+                          x2={node.x! - blockW / 2 + 1.5}
+                          y2={node.y! + blockH / 2 - 2}
+                          stroke={color}
+                          strokeWidth={3}
+                        />
+                        <text
+                          x={node.x!}
+                          y={node.y! + 3}
+                          textAnchor="middle"
+                          fill={isSelected ? '#22d3ee' : '#e2e8f0'}
+                          fontSize={isMainNode ? '9px' : '8px'}
+                          fontWeight={isMainNode ? 'bold' : 'normal'}
+                          fontFamily="monospace"
+                          className="pointer-events-none select-none"
+                        >
+                          {node.label.length > (isMainNode ? 18 : 13) 
+                            ? node.label.substring(0, isMainNode ? 16 : 11) + '..' 
+                            : node.label}
+                        </text>
                       </g>
                     )
                   })}

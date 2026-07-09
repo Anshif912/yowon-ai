@@ -3213,8 +3213,14 @@ async def get_evaluation_evidence(id: str, page: int = 1, size: int = 50, db: Se
                 disp_cat = "Code Smells"
             
             # Build title & description
-            title = meta.get("description", ev.get("symbol_name", "Feature Detection"))
-            desc = f"Static analysis matched {rule_id} for symbol {ev.get('symbol_name') or 'unknown'}."
+            sym_name = ev.get('symbol_name') or ''
+            base_title = meta.get("description", "Feature Detection")
+            if sym_name:
+                title = f"{sym_name} — {base_title}"
+            else:
+                title = base_title
+            
+            desc = f"Detected {base_title} '{sym_name}' in {file_path.split('/')[-1] if '/' in file_path else file_path} at line {line_start}."
             why = f"Detected via {ev.get('parser', 'Parser')} based on code import or AST patterns matching {rule_id}."
             rec = meta.get("recommendation_template", "Harden configuration settings and adhere to clean code standards.")
             
@@ -3327,6 +3333,17 @@ async def get_evaluation_file_content(id: str, path: str, db: Session = Depends(
         contents = _load_source_contents_from_github_cache(evaluation.snapshot.repository.github_url)
         file_content = contents.get(path)
         
+    # 3. Fallback to local workspace files directly
+    if file_content is None:
+        from pathlib import Path
+        project_root = Path(__file__).resolve().parent.parent
+        local_path = project_root / path
+        if local_path.exists() and local_path.is_file():
+            try:
+                file_content = local_path.read_text(encoding="utf-8")
+            except Exception:
+                pass
+                
     if file_content is None:
         file_content = "// Content not cached in sample budget"
         

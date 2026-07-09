@@ -708,12 +708,15 @@ def _load_source_contents_from_github_cache(github_url: str) -> Dict[str, str]:
             payload = json.loads(path.read_text(encoding="utf-8"))
             data = payload.get("data", {})
             for item in data.get("source_files", []):
-                contents[item["path"]] = item.get("content", "")
+                clean_path = item["path"].replace("\\", "/").strip()
+                contents[clean_path] = item.get("content", "")
             for item in data.get("python_files", []):
-                contents[item["path"]] = item.get("content", "")
+                clean_path = item["path"].replace("\\", "/").strip()
+                contents[clean_path] = item.get("content", "")
             # Include dependencies text if available
             for dpath, dcontent in data.get("dependencies", {}).items():
-                contents[dpath] = dcontent
+                clean_path = dpath.replace("\\", "/").strip()
+                contents[clean_path] = dcontent
     except Exception:
         pass
     return contents
