@@ -52,38 +52,38 @@ RepositoryTreeNode.model_rebuild()
 
 class SymbolRecord(DictCompatibilityMixin, BaseModel):
     name: str
-    type: str  # "class" | "function" | "method" | "interface" | "route" | "decorator" | "model"
-    file_path: str
-    line_start: int
-    line_end: int
-    column_start: int
-    column_end: int
+    type: str = "function"  # "class" | "function" | "method" | "interface" | "route" | "decorator" | "model"
+    file_path: str = ""
+    line_start: int = 1
+    line_end: int = 1
+    column_start: int = 0
+    column_end: int = 0
     relationships: List[Dict[str, Any]] = Field(default_factory=list)
 
 class EvidenceRecord(DictCompatibilityMixin, BaseModel):
     rule_id: str
-    parser: str
-    language: str
+    parser: str = "unknown"
+    language: str = "unknown"
     symbol_name: Optional[str] = None
-    file_path: str
-    line_start: int
-    line_end: int
-    column_start: int
-    column_end: int
-    matched_code_hash: str
-    confidence: float
-    severity: str  # "INFO" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"
+    file_path: str = ""
+    line_start: int = 1
+    line_end: int = 1
+    column_start: int = 0
+    column_end: int = 0
+    matched_code_hash: str = ""
+    confidence: float = 1.0
+    severity: str = "INFO"  # "INFO" | "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"
 
 class TechnologyRecord(DictCompatibilityMixin, BaseModel):
     name: str
     version: Optional[str] = None
-    confidence: float
+    confidence: float = 1.0
     evidence_sources: List[str] = Field(default_factory=list)
 
 class GraphNode(DictCompatibilityMixin, BaseModel):
     id: str
-    label: str
-    type: str
+    label: str = ""
+    type: str = ""
     metadata: Dict[str, Any] = Field(default_factory=dict)
 
 class GraphEdge(DictCompatibilityMixin, BaseModel):
@@ -97,12 +97,12 @@ class RecommendationRecord(DictCompatibilityMixin, BaseModel):
     evidence_ids: List[str] = Field(default_factory=list)
     triggered_rule_ids: List[str] = Field(default_factory=list)
     affected_files: List[str] = Field(default_factory=list)
-    title: str
-    recommendation: str
-    severity: str
-    expected_score_gain: float
-    confidence: float
-    estimated_effort: str  # "LOW" | "MEDIUM" | "HIGH"
+    title: str = ""
+    recommendation: str = ""
+    severity: str = "INFO"
+    expected_score_gain: float = 0.0
+    confidence: float = 1.0
+    estimated_effort: str = "LOW"  # "LOW" | "MEDIUM" | "HIGH"
 
 from intelligence.canonical_models import (
     RepositoryIntelligenceSchemaException,
