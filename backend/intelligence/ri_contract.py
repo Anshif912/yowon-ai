@@ -16,6 +16,9 @@ import logging
 from dataclasses import dataclass, field, asdict
 from typing import Dict, List, Optional, Any
 
+from utils.serialization import to_dict, from_dict
+from intelligence.models import EvidenceRecord, RecommendationRecord, SymbolRecord
+
 logger = logging.getLogger(__name__)
 
 
@@ -226,9 +229,9 @@ class RIResult:
     knowledge_graph: Dict[str, Any] = field(default_factory=dict)
 
     # Analysis results
-    evidence: List[Dict[str, Any]] = field(default_factory=list)
-    recommendations: List[Dict[str, Any]] = field(default_factory=list)
-    symbols: List[Dict[str, Any]] = field(default_factory=list)
+    evidence: List[EvidenceRecord] = field(default_factory=list)
+    recommendations: List[RecommendationRecord] = field(default_factory=list)
+    symbols: List[SymbolRecord] = field(default_factory=list)
     metrics: Dict[str, Dict[str, Any]] = field(default_factory=dict)
     health: Dict[str, Any] = field(default_factory=dict)
     security_findings: Optional[List[Dict[str, Any]]] = field(default_factory=list)
@@ -269,9 +272,9 @@ class RIResult:
             "dependency_graph": self.dependency_graph,
             "call_graph": self.call_graph,
             "knowledge_graph": self.knowledge_graph,
-            "evidence": self.evidence,
-            "recommendations": self.recommendations,
-            "symbols": self.symbols,
+            "evidence": [to_dict(ev) for ev in self.evidence],
+            "recommendations": [to_dict(rec) for rec in self.recommendations],
+            "symbols": [to_dict(sym) for sym in self.symbols],
             "metrics": self.metrics,
             "health": self.health,
             "security_findings": self.security_findings,
@@ -450,6 +453,27 @@ class RIResult:
             except Exception:
                 pass
 
+        evidence_list = []
+        for ev in safe_list(data.get("evidence")):
+            try:
+                evidence_list.append(from_dict(EvidenceRecord, ev))
+            except Exception:
+                pass
+
+        recommendation_list = []
+        for rec in safe_list(data.get("recommendations")):
+            try:
+                recommendation_list.append(from_dict(RecommendationRecord, rec))
+            except Exception:
+                pass
+
+        symbol_list = []
+        for sym in safe_list(data.get("symbols")):
+            try:
+                symbol_list.append(from_dict(SymbolRecord, sym))
+            except Exception:
+                pass
+
         result = cls(
             repository_snapshot_id=str(data.get("repository_snapshot_id", "")),
             repository_tree=safe_list(data.get("repository_tree")),
@@ -458,9 +482,9 @@ class RIResult:
             dependency_graph=safe_dict(data.get("dependency_graph")),
             call_graph=safe_dict(data.get("call_graph")),
             knowledge_graph=safe_dict(data.get("knowledge_graph")),
-            evidence=safe_list(data.get("evidence")),
-            recommendations=safe_list(data.get("recommendations")),
-            symbols=safe_list(data.get("symbols")),
+            evidence=evidence_list,
+            recommendations=recommendation_list,
+            symbols=symbol_list,
             metrics=safe_dict(data.get("metrics")),
             health=safe_dict(data.get("health")),
             security_findings=data.get("security_findings"),

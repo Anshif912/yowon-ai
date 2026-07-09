@@ -38,6 +38,12 @@ from intelligence.knowledge_graph.knowledge_graph_builder import KnowledgeGraphB
 from intelligence.repository_scan import RepositoryScan
 from intelligence.semantic_index import SemanticIndex, TechDetection
 from intelligence.ri_contract import RIResult, RIDiagnosticsPayload, RIQualityScore
+from intelligence.orchestrator import (
+    RepositoryPlanner, ExecutionScheduler, ContextRouter, DiagnosticsCollector, CacheManager
+)
+from utils.serialization import to_dict, from_dict
+from intelligence.models import EvidenceRecord, RecommendationRecord, SymbolRecord
+from intelligence.exceptions import RepositoryValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -175,6 +181,10 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
     t_cache_read_end = time.perf_counter()
     cache_read_duration = t_cache_read_end - t_cache_read_start
 
+    # Versioned Cache/Schema Management validation
+    if cached_data:
+        cached_data = CacheManager.load_cache(cached_data)
+
     if cached_data:
         logger.info("[Intel] Cache hit for commit=%s", commit_sha)
         _sync_database_records(db, evaluation, cached_data.get("evidence", []), cached_data.get("recommendations", []))
@@ -280,8 +290,6 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
                 files=[],
                 file_contents={}
             )
-        completed_steps.append("Source Files Loaded")
-
         # ──────────────────────────────────────────────────────────────────────
         # Phase 2: Semantic Index (Single-pass shared AST index creation)
         # ──────────────────────────────────────────────────────────────────────
@@ -292,31 +300,62 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             status="INDEXING", current_stage="Building Semantic index (AST parsing)",
             progress=25, files_processed=len(scan.files), completed_stages=completed_steps
         )
-        t_idx_start = time.perf_counter()
-        semantic_index = SemanticIndex.build(scan)
-        t_idx_end = time.perf_counter()
+        
+        # Instantiate execution scheduler (Phase 5)
+        scheduler = ExecutionScheduler()
+
+        # Run semantic index build
+        scheduler.run_stage(
+            "symbol_indexing",
+            SemanticIndex.build,
+            fallback_payload=SemanticIndex(scan),
+            quality_gate_min_confidence=0.0,
+            scan=scan
+        )
+        semantic_index = scheduler.results["symbol_indexing"].payload
         completed_steps.append("Codebase Symbols Indexed")
         completed_steps.append("Ecosystem Indexing Complete")
+        
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="symbol_indexing",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_idx_end - t_idx_start, files_processed=len(scan.files)
+            duration_seconds=scheduler.results["symbol_indexing"].duration, files_processed=len(scan.files)
         )
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="ecosystem_parsing",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_idx_end - t_idx_start, files_processed=len(scan.files)
+            duration_seconds=scheduler.results["symbol_indexing"].duration, files_processed=len(scan.files)
         )
+
+        # Repository Planner (Phase 2)
+        detected_techs = semantic_index.get_tech_names()
+        planner_pipeline = RepositoryPlanner.plan(
+            scan_files=scan.files,
+            file_contents=scan.file_contents,
+            detected_techs=detected_techs,
+            total_loc=semantic_index.total_loc
+        )
+        logger.info(f"[Planner] Selected pipeline for execution: {planner_pipeline}")
 
         # ──────────────────────────────────────────────────────────────────────
         # Phase 3 & 4: Engine Runs consuming the index
         # ──────────────────────────────────────────────────────────────────────
 
         # Security Findings Scan
-        security_engine = SecurityEngine()
-        for fpath, fcontent in scan.file_contents.items():
-            security_engine.scan_file(fpath, fcontent)
-        security_findings = security_engine.get_all_findings()
+        def run_security_scan(scan_obj):
+            sec_engine = SecurityEngine()
+            for fpath, fcontent in scan_obj.file_contents.items():
+                sec_engine.scan_file(fpath, fcontent)
+            return sec_engine.get_all_findings()
+
+        scheduler.run_stage(
+            "security",
+            run_security_scan,
+            fallback_payload=[],
+            quality_gate_min_confidence=0.0,
+            scan_obj=scan
+        )
+        security_findings = scheduler.results["security"].payload
 
         # Evidence engine
         update_module_status(db, commit_sha, "compliance_rules", "running", started_at=datetime.utcnow())
@@ -325,22 +364,33 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             status="GENERATING_EVIDENCE", current_stage="Analyzing compliance patterns",
             progress=40, completed_stages=completed_steps
         )
-        t_comp_start = time.perf_counter()
-        evidence_engine = EvidenceEngine()
-        evidence_records = evidence_engine.analyze_repository(
-            symbols=semantic_index.get_all_symbols_flat(),
-            dependencies=semantic_index.get_all_deps(),
-            security_findings=security_findings,
-            file_imports=semantic_index.imports,
-            all_files=scan.files,
-            semantic_index=semantic_index
+
+        def run_evidence_engine(semantic_idx, sec_finds, scan_obj):
+            evidence_engine = EvidenceEngine()
+            return evidence_engine.analyze_repository(
+                symbols=semantic_idx.get_all_symbols_flat(),
+                dependencies=semantic_idx.get_all_deps(),
+                security_findings=sec_finds,
+                file_imports=semantic_idx.imports,
+                all_files=scan_obj.files,
+                semantic_index=semantic_idx
+            )
+
+        scheduler.run_stage(
+            "compliance_rules",
+            run_evidence_engine,
+            fallback_payload=[],
+            quality_gate_min_confidence=0.0,
+            semantic_idx=semantic_index,
+            sec_finds=security_findings,
+            scan_obj=scan
         )
-        t_comp_end = time.perf_counter()
+        evidence_records = scheduler.results["compliance_rules"].payload
         completed_steps.append("Compliance Rules Applied")
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="compliance_rules",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_comp_end - t_comp_start
+            duration_seconds=scheduler.results["compliance_rules"].duration
         )
 
         # Architecture layer mapping
@@ -350,15 +400,26 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             status="BUILDING_ARCHITECTURE", current_stage="Mapping layers",
             progress=55, completed_stages=completed_steps
         )
-        t_arch_start = time.perf_counter()
-        architecture_engine = ArchitectureEngine()
-        layers = architecture_engine.analyze(evidence_records, scan.files, semantic_index)
-        t_arch_end = time.perf_counter()
+
+        def run_arch_engine(ev_recs, scan_obj, semantic_idx):
+            architecture_engine = ArchitectureEngine()
+            return architecture_engine.analyze(ev_recs, scan_obj.files, semantic_idx)
+
+        scheduler.run_stage(
+            "architecture_mapping",
+            run_arch_engine,
+            fallback_payload={},
+            quality_gate_min_confidence=0.0,
+            ev_recs=evidence_records,
+            scan_obj=scan,
+            semantic_idx=semantic_index
+        )
+        layers = scheduler.results["architecture_mapping"].payload
         completed_steps.append("Architecture Mapped")
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="architecture_mapping",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_arch_end - t_arch_start
+            duration_seconds=scheduler.results["architecture_mapping"].duration
         )
 
         # Complexity metrics & codebase health
@@ -368,36 +429,42 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             status="CALCULATING_METRICS", current_stage="Computing metrics and health",
             progress=70, completed_stages=completed_steps
         )
-        t_metrics_start = time.perf_counter()
-        metrics_engine = MetricsEngine()
-        file_metrics = {}
-        for fpath in scan.files:
-            content = scan.file_contents.get(fpath, "")
-            f_symbols = semantic_index.symbols.get(fpath, [])
-            f_security = security_engine.get_findings_for_file(fpath)
-            imports_count = len(semantic_index.imports.get(fpath, []))
 
-            has_test_file = any(
-                fpath.split("/")[-1].split(".")[0] in tf.lower() and tf != fpath
-                for tf in scan.files if "test" in tf.lower()
-            )
-            file_metrics[fpath] = metrics_engine.calculate_file_metrics(
-                file_path=fpath, content=content, symbols=f_symbols,
-                imports_count=imports_count, security_findings=f_security,
-                has_test_file=has_test_file, precalculated_complexity=None
-            )
+        def run_metrics_engine(scan_obj, semantic_idx, sec_finds):
+            metrics_engine = MetricsEngine()
+            file_metrics = {}
+            for fpath in scan_obj.files:
+                content = scan_obj.file_contents.get(fpath, "")
+                f_symbols = semantic_idx.symbols.get(fpath, [])
+                f_security = [f for f in sec_finds if f.get("file_path") == fpath]
+                imports_count = len(semantic_idx.imports.get(fpath, []))
 
-        health_engine = HealthEngine()
-        health_scores = health_engine.calculate_health(
-            files=scan.files, dependencies=semantic_index.get_all_deps(),
-            security_findings=security_findings, file_metrics=file_metrics
+                has_test_file = any(
+                    fpath.split("/")[-1].split(".")[0] in tf.lower() and tf != fpath
+                    for tf in scan_obj.files if "test" in tf.lower()
+                )
+                file_metrics[fpath] = metrics_engine.calculate_file_metrics(
+                    file_path=fpath, content=content, symbols=f_symbols,
+                    imports_count=imports_count, security_findings=f_security,
+                    has_test_file=has_test_file, precalculated_complexity=None
+                )
+            return file_metrics
+
+        scheduler.run_stage(
+            "complexity_metrics",
+            run_metrics_engine,
+            fallback_payload={},
+            quality_gate_min_confidence=0.0,
+            scan_obj=scan,
+            semantic_idx=semantic_index,
+            sec_finds=security_findings
         )
-        t_metrics_end = time.perf_counter()
+        file_metrics = scheduler.results["complexity_metrics"].payload
         completed_steps.append("Metrics and Health Compiled")
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="complexity_metrics",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_metrics_end - t_metrics_start, files_processed=len(scan.files)
+            duration_seconds=scheduler.results["complexity_metrics"].duration, files_processed=len(scan.files)
         )
 
         # Build hierarchical folder tree
@@ -412,61 +479,125 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             status="BUILDING_GRAPHS", current_stage="Building semantic graphs",
             progress=85, completed_stages=completed_steps
         )
-        t_graphs_start = time.perf_counter()
 
-        recommendation_engine = RecommendationEngine()
-        recommendation_records = recommendation_engine.generate_recommendations(evidence_records)
+        def run_recommendations(ev_recs):
+            recommendation_engine = RecommendationEngine()
+            return recommendation_engine.generate_recommendations(ev_recs)
+
+        scheduler.run_stage(
+            "recommendations",
+            run_recommendations,
+            fallback_payload=[],
+            quality_gate_min_confidence=0.0,
+            ev_recs=evidence_records
+        )
+        recommendation_records = scheduler.results["recommendations"].payload
 
         # Architecture Graph
-        t_arch_g_start = time.perf_counter()
-        arch_builder = ArchitectureGraphBuilder()
-        arch_builder.build(layers)
-        arch_graph = arch_builder.serialize()
-        t_arch_g_end = time.perf_counter()
-        architecture_g_duration = t_arch_g_end - t_arch_g_start
+        def run_arch_graph(layers_data):
+            arch_builder = ArchitectureGraphBuilder()
+            arch_builder.build(layers_data)
+            return arch_builder.serialize()
+
+        scheduler.run_stage(
+            "architecture_graph",
+            run_arch_graph,
+            fallback_payload={"nodes": [], "edges": []},
+            quality_gate_min_confidence=0.0,
+            layers_data=layers
+        )
+        arch_graph = scheduler.results["architecture_graph"].payload
 
         # Technology Graph
-        t_tech_g_start = time.perf_counter()
-        tech_builder = TechnologyGraphBuilder()
-        tech_builder.build(semantic_index.technologies, semantic_index=semantic_index)
-        tech_graph = tech_builder.serialize()
-        t_tech_g_end = time.perf_counter()
-        technology_g_duration = t_tech_g_end - t_tech_g_start
+        def run_tech_graph(techs, semantic_idx):
+            tech_builder = TechnologyGraphBuilder()
+            tech_builder.build(techs, semantic_index=semantic_idx)
+            return tech_builder.serialize()
+
+        scheduler.run_stage(
+            "technology_graph",
+            run_tech_graph,
+            fallback_payload={"nodes": [], "edges": []},
+            quality_gate_min_confidence=0.0,
+            techs=semantic_index.technologies,
+            semantic_idx=semantic_index
+        )
+        tech_graph = scheduler.results["technology_graph"].payload
 
         # Dependency Graph
-        t_dep_g_start = time.perf_counter()
-        dep_builder = DependencyGraphBuilder()
-        dep_builder.build(semantic_index, scan.repository_name)
-        dep_graph = dep_builder.serialize()
-        t_dep_g_end = time.perf_counter()
-        dependency_g_duration = t_dep_g_end - t_dep_g_start
+        def run_dep_graph(semantic_idx, repo_name):
+            dep_builder = DependencyGraphBuilder()
+            dep_builder.build(semantic_idx, repo_name)
+            return dep_builder.serialize()
+
+        scheduler.run_stage(
+            "dependency_graph",
+            run_dep_graph,
+            fallback_payload={"nodes": [], "edges": []},
+            quality_gate_min_confidence=0.0,
+            semantic_idx=semantic_index,
+            repo_name=scan.repository_name
+        )
+        dep_graph = scheduler.results["dependency_graph"].payload
 
         # Call Graph
-        call_builder = CallGraphBuilder()
-        call_builder.build(semantic_index.imports, scan.files)
-        call_graph = call_builder.serialize()
+        def run_call_graph(file_imports, files):
+            call_builder = CallGraphBuilder()
+            call_builder.build(file_imports, files)
+            return call_builder.serialize()
 
-        # Knowledge Graph (AST-driven semantically connected)
-        t_kg_start = time.perf_counter()
-        kg_builder = KnowledgeGraphBuilder()
-        kg_nodes, kg_edges = kg_builder.build_graph(
+        scheduler.run_stage(
+            "call_graph",
+            run_call_graph,
+            fallback_payload={"nodes": [], "edges": []},
+            quality_gate_min_confidence=0.0,
+            file_imports=semantic_index.imports,
+            files=scan.files
+        )
+        call_graph = scheduler.results["call_graph"].payload
+
+        # Knowledge Graph (Hierarchical semantic concepts)
+        def run_knowledge_graph(files, file_contents, symbols, evidence, recommendations, semantic_idx):
+            kg_builder = KnowledgeGraphBuilder()
+            kg_nodes, kg_edges = kg_builder.build_graph(
+                files=files,
+                file_contents=file_contents,
+                symbols=symbols,
+                evidence=evidence,
+                recommendations=recommendations,
+                semantic_index=semantic_idx
+            )
+            return {"nodes": kg_nodes, "edges": kg_edges}
+
+        scheduler.run_stage(
+            "knowledge_graph",
+            run_knowledge_graph,
+            fallback_payload={"nodes": [], "edges": []},
+            quality_gate_min_confidence=0.0,
             files=scan.files,
             file_contents=scan.file_contents,
             symbols=semantic_index.get_all_symbols_flat(),
             evidence=evidence_records,
             recommendations=recommendation_records,
-            semantic_index=semantic_index
+            semantic_idx=semantic_index
         )
-        knowledge_graph = {"nodes": kg_nodes, "edges": kg_edges}
-        t_kg_end = time.perf_counter()
-        knowledge_g_duration = t_kg_end - t_kg_start
+        knowledge_graph = scheduler.results["knowledge_graph"].payload
 
         completed_steps.append("Critical Semantic Graphs Built")
-        t_graphs_end = time.perf_counter()
+        
+        # Calculate diagnostics timing
+        graph_duration = sum([
+            scheduler.results["architecture_graph"].duration,
+            scheduler.results["technology_graph"].duration,
+            scheduler.results["dependency_graph"].duration,
+            scheduler.results["call_graph"].duration,
+            scheduler.results["knowledge_graph"].duration
+        ])
+        
         update_module_status(
             db=db, commit_sha=commit_sha, module_name="semantic_graphs_critical",
             status="completed", finished_at=datetime.utcnow(),
-            duration_seconds=t_graphs_end - t_graphs_start
+            duration_seconds=graph_duration
         )
 
         # ──────────────────────────────────────────────────────────────────────
@@ -498,6 +629,25 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
         t_total_end = time.perf_counter()
         duration = t_total_end - t_start
 
+        # Calculate discovered/parsed metrics
+        discovered_count = len(snapshot.files) if getattr(snapshot, "files", None) else len(scan.files)
+        if discovered_count == 0:
+            discovered_count = len(scan.files)
+        loaded_count = len(scan.files)
+        parsed_count = len([f for f in scan.files if f in semantic_index.symbols or f in semantic_index.imports])
+
+        timeline_data = scheduler.get_timeline()
+        diagnostics_dict = DiagnosticsCollector.collect(
+            scan_files=scan.files,
+            discovered_count=discovered_count,
+            loaded_count=loaded_count,
+            parsed_count=parsed_count,
+            total_loc=semantic_index.total_loc,
+            results=scheduler.results,
+            timeline=timeline_data,
+            cache_status="MISS"
+        )
+
         diagnostics_payload = RIDiagnosticsPayload(
             repository_size_bytes=sum(len(content) for content in scan.file_contents.values()),
             total_directories=semantic_index.total_directories,
@@ -512,25 +662,26 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             total_models=len(semantic_index.models),
             architecture_nodes=len(arch_graph.get("nodes", [])),
             technology_nodes=len(tech_graph.get("nodes", [])),
-            knowledge_nodes=len(kg_nodes),
-            knowledge_edges=len(kg_edges),
+            knowledge_nodes=len(knowledge_graph.get("nodes", [])),
+            knowledge_edges=len(knowledge_graph.get("edges", [])),
             evidence_count=len(evidence_records),
             warnings=semantic_index.warnings,
             errors=[],
             cache_level="MISS",
             execution_time_seconds=duration,
-            memory_usage_mb=float(round(45.2 + (len(scan.files) * 0.12), 2)),
-            engine_version="2.0.0",
+            memory_usage_mb=diagnostics_dict["memory_usage_mb"],
+            engine_version="3.0.0",
             scan_duration=t_scan_end - t_scan_start,
-            index_duration=t_idx_end - t_idx_start,
-            evidence_duration=t_comp_end - t_comp_start,
-            knowledge_graph_duration=knowledge_g_duration,
-            architecture_duration=architecture_g_duration,
-            technology_duration=technology_g_duration,
-            dependency_duration=dependency_g_duration,
+            index_duration=scheduler.results["symbol_indexing"].duration,
+            evidence_duration=scheduler.results["compliance_rules"].duration,
+            knowledge_graph_duration=scheduler.results["knowledge_graph"].duration,
+            architecture_duration=scheduler.results["architecture_graph"].duration,
+            technology_duration=scheduler.results["technology_graph"].duration,
+            dependency_duration=scheduler.results["dependency_graph"].duration,
             cache_read_duration=0.0,
             cache_write_duration=0.0
         )
+        
         try:
             import os
             import psutil
@@ -553,9 +704,9 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
             dependency_graph=dep_graph,
             call_graph=call_graph,
             knowledge_graph=knowledge_graph,
-            evidence=[ev.model_dump() for ev in evidence_records],
-            recommendations=[rec.model_dump() for rec in recommendation_records],
-            symbols=[sym.model_dump() for sym in semantic_index.get_all_symbols_flat()],
+            evidence=evidence_records,
+            recommendations=recommendation_records,
+            symbols=semantic_index.get_all_symbols_flat(),
             metrics=file_metrics,
             health=v3_health,
             security_findings=security_findings,
@@ -574,10 +725,13 @@ def run_repository_intelligence(db: Session, evaluation: Any, snapshot_id: str) 
         )
         ri_result.quality = RIQualityScore.compute(ri_result)
 
-        # Simulate serialization to get cache write time
+        # Cache finalisation with version parameters injection
         t_cw_start = time.perf_counter()
-        _ = json.dumps(ri_result.to_cache_dict())
+        analysis_output = ri_result.to_cache_dict()
+        analysis_output = CacheManager.save_cache(analysis_output)
+        _ = json.dumps(analysis_output)
         t_cw_end = time.perf_counter()
+        
         cache_write_duration = t_cw_end - t_cw_start
         diagnostics_payload.cache_write_duration = cache_write_duration
 
@@ -1075,7 +1229,7 @@ def _compute_health_dashboard(idx: Any, scan: Any, ev_records: List[Any], securi
     # 8. Performance Health (deductions from performance evidence warnings)
     perf_deductions = sum(
         10.0 for ev in ev_records
-        if "perf" in str(ev.get("rule_id", "")).lower() or "speed" in str(ev.get("rule_id", "")).lower()
+        if "perf" in str(getattr(ev, "rule_id", "")).lower() or "speed" in str(getattr(ev, "rule_id", "")).lower()
     )
     perf_score = max(50.0, 100.0 - perf_deductions)
     
