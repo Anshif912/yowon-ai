@@ -1,8 +1,47 @@
-import React from 'react'
+import React, { createContext, useContext, useState, useCallback, useMemo } from 'react'
 import { AlertTriangle, RefreshCw, Download, Play, WifiOff } from 'lucide-react'
-import { useIntelStatus } from './queries'
-import { api } from '../../api/api'
+import { 
+  useIntelStatus, useArchitectureGraph, useTechnologyGraph, 
+  useDependencyGraph, useKnowledgeGraph, useRepositoryStory, useEvaluationReport 
+} from './queries'
 import { useQueryClient } from '@tanstack/react-query'
+import type { RKMModel, RKMEntity, RKMRelationship } from '../../types/rkm'
+
+export interface SelectedEntity {
+  id: string
+  type: RKMEntity['type']
+  label: string
+  metadata?: any
+}
+
+export interface SharedContextState {
+  rkm: RKMModel | null
+  selectedEntity: SelectedEntity | null
+  setSelectedEntity: (entity: SelectedEntity | null) => void
+  searchQuery: string
+  setSearchQuery: (q: string) => void
+  activeLayoutMode: 'logical' | 'physical' | 'runtime'
+  setActiveLayoutMode: (mode: 'logical' | 'physical' | 'runtime') => void
+  expandedNodes: Set<string>
+  toggleExpandedNode: (id: string) => void
+  cacheStatus: {
+    arch: string
+    tech: string
+    dep: string
+    know: string
+    report: string
+  }
+}
+
+const RepositoryIntelligenceContext = createContext<SharedContextState | undefined>(undefined)
+
+export function useSharedIntelligenceContext() {
+  const context = useContext(RepositoryIntelligenceContext)
+  if (!context) {
+    throw new Error('useSharedIntelligenceContext must be used within a RepositoryIntelligenceWrapper')
+  }
+  return context
+}
 
 interface RepositoryIntelligenceWrapperProps {
   projectId: string
@@ -10,11 +49,207 @@ interface RepositoryIntelligenceWrapperProps {
 }
 
 export function RepositoryIntelligenceWrapper({ projectId, children }: RepositoryIntelligenceWrapperProps) {
-  const { data: statusData, isLoading, isError, refetch } = useIntelStatus(projectId)
   const queryClient = useQueryClient()
 
-  // --- Loading: only show spinner on the very first load ---
-  if (isLoading && !statusData) {
+  // Eager Query Lifecycle - centrally cache all queries to form the RKM single source of truth
+  const { data: statusData, isLoading: isStatusLoading, isError, refetch } = useIntelStatus(projectId)
+  const { data: archRaw, isLoading: isArchLoading, error: archErr } = useArchitectureGraph(projectId)
+  const { data: techRaw, isLoading: isTechLoading, error: techErr } = useTechnologyGraph(projectId)
+  const { data: depRaw, isLoading: isDepLoading, error: depErr } = useDependencyGraph(projectId)
+  const { data: knowRaw, isLoading: isKnowLoading, error: knowErr } = useKnowledgeGraph(projectId, '', '', '', '', false)
+  const { data: storyRaw } = useRepositoryStory(projectId)
+  const { data: reportRaw, isLoading: isReportLoading } = useEvaluationReport(projectId)
+
+  // Context State
+  const [selectedEntity, setSelectedEntity] = useState<SelectedEntity | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [activeLayoutMode, setActiveLayoutMode] = useState<'logical' | 'physical' | 'runtime'>('logical')
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set())
+
+  const toggleExpandedNode = useCallback((id: string) => {
+    setExpandedNodes(prev => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
+  }, [])
+
+  // Cache hit/miss logging diagnostics helper
+  const cacheStatus = useMemo(() => {
+    return {
+      arch: queryClient.getQueryState(['architecture', projectId])?.status === 'success' ? 'HIT' : 'MISS',
+      tech: queryClient.getQueryState(['technology', projectId])?.status === 'success' ? 'HIT' : 'MISS',
+      dep: queryClient.getQueryState(['dependency', projectId])?.status === 'success' ? 'HIT' : 'MISS',
+      know: queryClient.getQueryState(['knowledge', projectId])?.status === 'success' ? 'HIT' : 'MISS',
+      report: queryClient.getQueryState(['report', projectId])?.status === 'success' ? 'HIT' : 'MISS',
+    }
+  }, [projectId, queryClient, archRaw, techRaw, depRaw, knowRaw, reportRaw])
+
+  // --- Construct Client-Side Repository Knowledge Model (RKM) from Centrally Cached Queries ---
+  const rkmModel = useMemo<RKMModel | null>(() => {
+    if (!statusData) return null
+
+    const arch = archRaw?.success ? archRaw.data : archRaw
+    const tech = techRaw?.success ? techRaw.data : techRaw
+    const dep = depRaw?.success ? depRaw.data : depRaw
+    const know = knowRaw?.success ? knowRaw.data : knowRaw
+    const report = reportRaw
+    const vd = report?.verdict_data
+
+    const entities: Record<string, RKMEntity> = {}
+    const relationships: RKMRelationship[] = []
+
+    // 1. Process Architecture Nodes
+    if (arch?.nodes) {
+      arch.nodes.forEach((n: any) => {
+        let type: RKMEntity['type'] = 'service'
+        const rawType = n.type?.toLowerCase()
+        if (rawType === 'database') type = 'database'
+        else if (rawType === 'frontend') type = 'subsystem'
+        else if (rawType === 'gateway') type = 'controller'
+        else if (rawType === 'infrastructure') type = 'deployment'
+
+        entities[n.id] = {
+          id: n.id,
+          label: n.label,
+          type,
+          purpose: n.metadata?.description || n.metadata?.purpose || 'Core architecture module.',
+          health: n.metadata?.health ?? 90,
+          complexity: n.metadata?.complexity ?? 4,
+          confidence: n.metadata?.confidence ?? 95,
+          evidence: n.metadata?.evidence || n.metadata?.sources || [],
+          technologies: n.metadata?.technologies || [],
+          dependencies: n.metadata?.dependencies || [],
+          files: n.metadata?.files || []
+        }
+      })
+    }
+
+    // 2. Process Tech Nodes
+    if (tech?.nodes) {
+      tech.nodes.forEach((n: any) => {
+        if (!entities[n.id]) {
+          entities[n.id] = {
+            id: n.id,
+            label: n.label,
+            type: 'technology',
+            purpose: n.metadata?.description || 'Ecosystem tech stack package.',
+            health: 95,
+            complexity: 2,
+            confidence: n.metadata?.confidence || 98,
+            evidence: n.metadata?.sources || [],
+            technologies: [],
+            dependencies: [],
+            files: n.metadata?.related_files || []
+          }
+        }
+      })
+    }
+
+    // 3. Process Dependency Nodes
+    if (dep?.nodes) {
+      dep.nodes.forEach((n: any) => {
+        if (!entities[n.id]) {
+          entities[n.id] = {
+            id: n.id,
+            label: n.label,
+            type: 'package',
+            purpose: n.metadata?.description || 'External module dependency.',
+            health: 90,
+            complexity: 3,
+            confidence: 95,
+            evidence: [],
+            technologies: [],
+            dependencies: [],
+            files: []
+          }
+        }
+      })
+    }
+
+    // 4. Process Knowledge Nodes
+    if (know?.nodes) {
+      know.nodes.forEach((n: any) => {
+        if (!entities[n.id]) {
+          let type: RKMEntity['type'] = 'class'
+          if (n.type === 'function') type = 'function'
+          else if (n.type === 'module') type = 'module'
+          else if (n.type === 'subsystem') type = 'subsystem'
+
+          entities[n.id] = {
+            id: n.id,
+            label: n.label,
+            type,
+            purpose: n.metadata?.purpose || 'Symbol registry entry.',
+            health: n.metadata?.health ?? 90,
+            complexity: n.metadata?.complexity ?? 3,
+            confidence: 95,
+            evidence: n.metadata?.evidence || [],
+            technologies: [],
+            dependencies: [],
+            files: []
+          }
+        }
+      })
+    }
+
+    // Process Edges & Types
+    const allEdges = [...(arch?.edges || []), ...(tech?.edges || []), ...(dep?.edges || []), ...(know?.edges || [])]
+    allEdges.forEach((e: any) => {
+      let type: RKMRelationship['type'] = 'DEPENDS_ON'
+      const tgtType = entities[e.target]?.type
+      if (tgtType === 'database') type = 'READS'
+      else if (tgtType === 'technology') type = 'USES'
+      else if (tgtType === 'api') type = 'CALLS'
+
+      relationships.push({
+        source: e.source,
+        target: e.target,
+        type,
+        label: e.label
+      })
+    })
+
+    // RKM VALIDATION CHECK (Ensure node entities actually resolved from parser indexes)
+    const nodeCount = Object.keys(entities).length
+    if (nodeCount === 0 && !isArchLoading && !isTechLoading && !isDepLoading && !isKnowLoading) {
+      console.warn('[RKM VALIDATION] Failed. No node entities mapped in RKMModel.');
+      return null
+    }
+
+    return {
+      metadata: {
+        projectId,
+        name: report?.project_name || statusData?.name || 'Workspace codebase',
+        projectType: report?.project_type || 'Unspecified',
+        riskLevel: vd?.risk_level || 'Medium',
+        overallScore: report?.overall_score || 0,
+        confidence: vd?.confidence || 0.8
+      },
+      entities,
+      relationships
+    }
+  }, [statusData, projectId, archRaw, techRaw, depRaw, knowRaw, reportRaw, isArchLoading, isTechLoading, isDepLoading, isKnowLoading])
+
+  const contextValue: SharedContextState = {
+    rkm: rkmModel,
+    selectedEntity,
+    setSelectedEntity,
+    searchQuery,
+    setSearchQuery,
+    activeLayoutMode,
+    setActiveLayoutMode,
+    expandedNodes,
+    toggleExpandedNode,
+    cacheStatus
+  }
+
+  // --- Loading: show spinner on initial loader ---
+  if (isStatusLoading && !statusData) {
     return (
       <div className="glass-card p-8 border border-white/5 space-y-6 text-center">
         <div className="relative w-12 h-12 mx-auto">
@@ -26,10 +261,10 @@ export function RepositoryIntelligenceWrapper({ projectId, children }: Repositor
     )
   }
 
-  // --- API Error: NEVER block children. Show degraded-mode banner then render ---
+  // --- API Error: NEVER block children ---
   if (isError) {
     return (
-      <>
+      <RepositoryIntelligenceContext.Provider value={contextValue}>
         <div className="glass-card p-4 border border-amber-500/15 bg-amber-950/[0.015] rounded-xl flex items-center gap-3 mb-4">
           <WifiOff size={16} className="text-amber-400 shrink-0" />
           <p className="text-xs text-amber-300 flex-1">
@@ -43,11 +278,11 @@ export function RepositoryIntelligenceWrapper({ projectId, children }: Repositor
           </button>
         </div>
         {children}
-      </>
+      </RepositoryIntelligenceContext.Provider>
     )
   }
 
-  // Normalize status to lowercase so backend casing (COMPLETED vs completed) doesn't matter
+  // Normalize status to lowercase
   const rawStatus = statusData?.status ?? ''
   const status = rawStatus.toLowerCase()
 
@@ -163,7 +398,7 @@ export function RepositoryIntelligenceWrapper({ projectId, children }: Repositor
             <div className="flex flex-wrap gap-2">
               {completedSteps.map((step: string) => (
                 <span key={step} className="glass-pill px-2.5 py-1 border border-emerald-500/10 bg-emerald-500/5 text-emerald-300 text-[10px] font-mono flex items-center gap-1.5">
-                  <span className="w-1 h-1 rounded-full bg-emerald-300" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
                   {step}
                 </span>
               ))}
@@ -174,6 +409,9 @@ export function RepositoryIntelligenceWrapper({ projectId, children }: Repositor
     )
   }
 
-  // completed, or any unrecognized status — always render children
-  return <>{children}</>
+  return (
+    <RepositoryIntelligenceContext.Provider value={contextValue}>
+      {children}
+    </RepositoryIntelligenceContext.Provider>
+  )
 }

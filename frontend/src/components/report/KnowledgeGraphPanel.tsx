@@ -1,607 +1,248 @@
-import React, { useState, useMemo, useEffect } from 'react'
-import { 
-  Cpu, Search, ZoomIn, ZoomOut, RefreshCw, GitCommit,
-  GitMerge, Layers, Info, HelpCircle
-} from 'lucide-react'
-import { useKnowledgeGraph } from './queries'
+import { useState, useMemo } from 'react'
+import { Brain, Search, ChevronRight, Box, Layers, Code2, Zap, Package } from 'lucide-react'
 import { DashboardSection } from './DashboardSection'
-import { GraphSkeleton } from './Skeletons'
-import { ErrorBoundary, PanelErrorFallback } from './ErrorBoundary'
-import { RepositoryIntelligenceWrapper } from './RepositoryIntelligenceWrapper'
-import { api } from '../../api/api'
+import { ErrorBoundary } from './ErrorBoundary'
+import { useSharedIntelligenceContext } from './RepositoryIntelligenceWrapper'
 
 interface KnowledgeGraphPanelProps {
   projectId: string
   onSelectNode?: (nodeName: string) => void
 }
 
-interface Node {
-  id: string
-  label: string
-  type: string
-  metadata?: any
-  x?: number
-  y?: number
-  vx?: number
-  vy?: number
-}
-
-interface Edge {
-  source: string
-  target: string
-  relation: string
-}
-
-function KnowledgeGraphContent({ projectId, onSelectNode }: { projectId: string; onSelectNode?: (nodeName: string) => void }) {
-  const [search, setSearch] = useState('')
-  const [selectedNode, setSelectedNode] = useState<any>(null)
-  
-  // Expanded nodes map (progressive drill-down)
-  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set<string>())
-  const [autoExpanded, setAutoExpanded] = useState(false)
-
-  // Pathfinder state
-  const [pathSource, setPathSource] = useState('')
-  const [pathTarget, setPathTarget] = useState('')
-  const [pathResult, setPathResult] = useState<any>(null)
-
-  // Zoom / Pan state
-  const [zoom, setZoom] = useState(1.0)
-  const [pan, setPan] = useState({ x: 0, y: 0 })
-  const [isDraggingCanvas, setIsDraggingCanvas] = useState(false)
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
-
-  // Force simulation nodes/edges
-  const [simNodes, setSimNodes] = useState<Node[]>([])
-  const [simEdges, setSimEdges] = useState<Edge[]>([])
-  const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null)
-  const [ticksCount, setTicksCount] = useState(0)
-  const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null)
-  
-  const { data: kgData, isLoading, isError, error, refetch } = useKnowledgeGraph(
-    projectId, '', '', '', '', false
-  )
-
-  const rawGraph = useMemo(() => {
-    const data = kgData?.success ? kgData.data : kgData
-    return data || { nodes: [], edges: [] }
-  }, [kgData])
-
-  // Get parent for file/symbol nodes
-  const getParentId = (nodeId: string, allEdges: Edge[]): string | null => {
-    const edge = allEdges.find(e => e.target === nodeId && (
-      e.relation === 'CONTAINS' || e.relation === 'DEFINES' || e.relation === 'EXPOSES' || e.relation === 'HAS_CAPABILITY'
-    ))
-    return edge ? edge.source : null
-  }
-
-  // Filter and build visible graph based on expansion state (Semantic Drill-down)
-  const visibleGraph = useMemo(() => {
-    if (!rawGraph.nodes || rawGraph.nodes.length === 0) return { nodes: [], edges: [] }
-
-    const allNodes: Node[] = rawGraph.nodes
-    const allEdges: Edge[] = rawGraph.edges
-
-    const isNodeVisible = (node: Node): boolean => {
-      const level = node.metadata?.level || 1
-      // Level 1 nodes (repository, capability, subsystem) are always visible
-      if (level === 1 || node.type === 'repository' || node.type === 'capability' || node.type === 'subsystem') {
-        return true
-      }
-      
-      const parentId = getParentId(node.id, allEdges)
-      if (!parentId) return false
-      
-      const parentNode = allNodes.find(n => n.id === parentId)
-      if (!parentNode) return false
-      
-      return isNodeVisible(parentNode) && expandedNodes.has(parentId)
-    }
-
-    const filteredNodes = allNodes.filter(n => {
-      if (search && !n.label.toLowerCase().includes(search.toLowerCase())) return false
-      return isNodeVisible(n)
-    })
-
-    const visibleNodeIds = new Set(filteredNodes.map(n => n.id))
-
-    const getVisibleAncestor = (id: string): string | null => {
-      if (visibleNodeIds.has(id)) return id
-      const parentId = getParentId(id, allEdges)
-      if (!parentId) return null
-      return getVisibleAncestor(parentId)
-    }
-
-    const reroutedEdges: Edge[] = []
-    const edgeKeys = new Set<string>()
-
-    allEdges.forEach(e => {
-      const srcVisible = getVisibleAncestor(e.source)
-      const tgtVisible = getVisibleAncestor(e.target)
-
-      if (srcVisible && tgtVisible && srcVisible !== tgtVisible) {
-        const key = `${srcVisible}->${tgtVisible}::${e.relation}`
-        if (!edgeKeys.has(key)) {
-          edgeKeys.add(key)
-          reroutedEdges.push({
-            source: srcVisible,
-            target: tgtVisible,
-            relation: e.relation
-          })
-        }
-      }
-    })
-
-    return {
-      nodes: filteredNodes,
-      edges: reroutedEdges
-    }
-  }, [rawGraph, expandedNodes, search])
-
-  // Reset and Auto expand root nodes
-  const resetLayout = () => {
-    setTicksCount(0)
-    setZoom(1.0)
-    setPan({ x: 0, y: 0 })
-    setSelectedNode(null)
-    setPathResult(null)
-    
-    if (visibleGraph.nodes.length === 0) return
-    const centerX = 360
-    const centerY = 240
-
-    const initialNodes = visibleGraph.nodes.map(n => {
-      const angle = Math.random() * 2 * Math.PI
-      const r = n.type === 'repository' ? 0 : 150
-      return {
-        ...n,
-        x: centerX + r * Math.cos(angle),
-        y: centerY + r * Math.sin(angle),
-        vx: 0,
-        vy: 0
-      }
-    })
-    setSimNodes(initialNodes)
-  }
-
-  // Handle data load and auto expand level 1 subsystems
-  useEffect(() => {
-    if (!autoExpanded && rawGraph.nodes && rawGraph.nodes.length > 0) {
-      const rootRepo = rawGraph.nodes.find((n: any) => n.type === 'repository')
-      const initialSet = new Set<string>()
-      if (rootRepo) {
-        initialSet.add(rootRepo.id)
-      }
-      // Auto expand first 2 subsystems
-      const subs = rawGraph.nodes.filter((n: any) => n.type === 'subsystem').slice(0, 3)
-      subs.forEach((s: any) => initialSet.add(s.id))
-      
-      setExpandedNodes(initialSet)
-      setAutoExpanded(true)
-    }
-  }, [rawGraph, autoExpanded])
-
-  useEffect(() => {
-    if (visibleGraph.nodes.length > 0) {
-      resetLayout()
-    }
-  }, [visibleGraph])
-
-  // Force simulation loop
-  useEffect(() => {
-    if (simNodes.length === 0 || ticksCount > 150) return
-
-    const centerX = 360
-    const centerY = 240
-    let currentNodes = [...simNodes]
-
-    const tick = () => {
-      // Repulsion
-      for (let i = 0; i < currentNodes.length; i++) {
-        for (let j = i + 1; j < currentNodes.length; j++) {
-          const na = currentNodes[i]
-          const nb = currentNodes[j]
-          const dx = nb.x! - na.x!
-          const dy = nb.y! - na.y!
-          const distSqr = dx * dx + dy * dy || 1
-          const dist = Math.sqrt(distSqr)
-          
-          const minD = na.type === 'repository' || nb.type === 'repository' ? 180 : (na.type === 'subsystem' || nb.type === 'subsystem' ? 150 : 120)
-          if (dist < minD) {
-            const force = (minD - dist) * 0.3
-            const fx = (dx / dist) * force
-            const fy = (dy / dist) * force
-            if (na.id !== draggedNodeId) { na.x! -= fx; na.y! -= fy }
-            if (nb.id !== draggedNodeId) { nb.x! += fx; nb.y! += fy }
-          }
-        }
-      }
-
-      // Attraction
-      simEdges.forEach(edge => {
-        const source = currentNodes.find(n => n.id === edge.source)
-        const target = currentNodes.find(n => n.id === edge.target)
-        if (!source || !target) return
-
-        const dx = target.x! - source.x!
-        const dy = target.y! - source.y!
-        const dist = Math.sqrt(dx * dx + dy * dy) || 1
-        
-        const force = (dist - 200) * 0.04
-        const fx = (dx / dist) * force
-        const fy = (dy / dist) * force
-
-        if (source.id !== draggedNodeId) { source.x! += fx; source.y! += fy }
-        if (target.id !== draggedNodeId) { target.x! -= fx; target.y! -= fy }
-      })
-
-      // Gravity
-      currentNodes.forEach(n => {
-        if (n.id === draggedNodeId) return
-        n.x! += (centerX - n.x!) * 0.005
-        n.y! += (centerY - n.y!) * 0.005
-      })
-
-      setSimNodes([...currentNodes])
-      setTicksCount(prev => prev + 1)
-    }
-
-    const timer = setInterval(tick, 1000 / 60)
-    return () => clearInterval(timer)
-  }, [simNodes, ticksCount, draggedNodeId])
-
-  // Pan handlers
-  const handleCanvasMouseDown = (e: React.MouseEvent<SVGSVGElement>) => {
-    if (e.target instanceof SVGElement && e.target.tagName === 'svg') {
-      setIsDraggingCanvas(true)
-      setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y })
-    }
-  }
-
-  const handleCanvasMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
-    if (isDraggingCanvas) {
-      setPan({ x: e.clientX - dragStart.x, y: e.clientY - dragStart.y })
-    } else if (draggedNodeId) {
-      const rect = e.currentTarget.getBoundingClientRect()
-      const mouseX = (e.clientX - rect.left - pan.x) / zoom
-      const mouseY = (e.clientY - rect.top - pan.y) / zoom
-      const nodeIndex = simNodes.findIndex(n => n.id === draggedNodeId)
-      if (nodeIndex !== -1) {
-        const updated = [...simNodes]
-        updated[nodeIndex].x = mouseX
-        updated[nodeIndex].y = mouseY
-        setSimNodes(updated)
-      }
-    }
-  }
-
-  const handleCanvasMouseUp = () => {
-    setIsDraggingCanvas(false)
-    setDraggedNodeId(null)
-  }
-
-  const handleNodeToggle = (nodeId: string) => {
-    setExpandedNodes(prev => {
-      const next = new Set(prev)
-      if (next.has(nodeId)) {
-        next.delete(nodeId)
-      } else {
-        next.add(nodeId)
-      }
-      return next
-    })
-    setTicksCount(0) // restart simulation to settle changes
-  }
-
-  const findShortestPath = async () => {
-    if (!pathSource || !pathTarget) return
-    try {
-      const res = await api.get(`/projects/${projectId}/knowledge-graph/path?source=${encodeURIComponent(pathSource)}&target=${encodeURIComponent(pathTarget)}`)
-      setPathResult(res.data)
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  const getNodeColor = (type: string, isExpanded: boolean) => {
-    if (type === 'repository') return '#06b6d4' // Cyan root
-    if (type === 'subsystem') return '#d97706' // Amber subsystems
-    if (type === 'capability') return '#ec4899' // Pink capabilities
-    if (type === 'file') return '#38bdf8' // Sky file
-    if (type === 'class') return '#a78bfa' // Purple class
-    if (type === 'function' || type === 'method') return '#34d399' // Emerald functions
-    if (type === 'route') return '#a75bfa' // Violet route
-    if (type === 'model') return '#fb7185' // Rose models
-    if (type === 'agent') return '#818cf8' // Indigo agents
-    if (type === 'tool') return '#fbbf24' // Yellow tools
-    return '#94a3b8'
-  }
-
-  return (
-    <DashboardSection id="knowledge-graph" title="Knowledge Graph" icon={Cpu} accent="amber">
-      <div className="glass-card min-h-[600px] flex flex-col">
-        
-        {/* Header / Filter Console */}
-        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 border-b border-white/5 pb-4 mb-4 font-mono">
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-yowon-muted font-bold">Semantic Project Knowledge Graph</p>
-            <h4 className="text-white text-xs mt-1">
-              Double-click nodes to Expand/Collapse levels (drill down).
-            </h4>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="relative">
-              <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-yowon-muted" />
-              <input
-                type="text"
-                placeholder="Search symbols..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded pl-8 pr-2.5 py-1 text-xs text-white focus:outline-none focus:border-amber-500/50 font-mono w-36"
-              />
-            </div>
-
-            <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-lg p-0.5">
-              <button onClick={() => setZoom(z => Math.min(2.0, z + 0.1))} className="p-1 text-yowon-muted hover:text-white rounded" title="Zoom In"><ZoomIn size={13} /></button>
-              <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-1 text-yowon-muted hover:text-white rounded" title="Zoom Out"><ZoomOut size={13} /></button>
-              <button onClick={resetLayout} className="p-1 text-yowon-muted hover:text-white rounded" title="Reset Layout"><RefreshCw size={13} /></button>
-            </div>
-          </div>
-        </div>
-
-        {/* Pathfinder tracing block */}
-        <div className="flex flex-wrap items-center gap-2.5 bg-white/[0.02] border border-white/5 rounded-xl p-3 mb-4 font-mono">
-          <span className="text-[10px] text-yowon-muted uppercase font-bold">Shortest Dependency Path:</span>
-          <input
-            type="text"
-            placeholder="Source (e.g. backend/main.py)"
-            value={pathSource}
-            onChange={(e) => setPathSource(e.target.value)}
-            className="bg-white/5 border border-white/10 rounded px-2 py-0.5 text-xs text-white focus:outline-none focus:border-amber-500/50 font-mono w-40"
-          />
-          <span className="text-[10px] text-yowon-muted">➔</span>
-          <input
-            type="text"
-            placeholder="Target (e.g. models)"
-            value={pathTarget}
-            onChange={(e) => setPathTarget(e.target.value)}
-            className="bg-white/5 border border-white/10 rounded px-2 py-0.5 text-xs text-white focus:outline-none focus:border-amber-500/50 font-mono w-40"
-          />
-          <button
-            onClick={findShortestPath}
-            className="bg-amber-500 hover:bg-amber-600 text-black text-[10px] font-mono px-3 py-1 rounded font-bold transition-all"
-          >
-            Trace Path
-          </button>
-          {pathResult && (
-            <button onClick={() => { setPathResult(null); setPathSource(''); setPathTarget('') }} className="text-[10px] text-red-400 hover:underline">Clear</button>
-          )}
-        </div>
-
-        {/* Canvas SVG Grid */}
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* SVG Canvas Area (8 cols) */}
-          <div className="lg:col-span-8 border border-white/5 bg-black/40 rounded-xl relative overflow-hidden min-h-[600px] select-none">
-            <svg 
-              className="w-full h-full min-h-[600px]" 
-              onMouseDown={handleCanvasMouseDown}
-              onMouseMove={handleCanvasMouseMove}
-              onMouseUp={handleCanvasMouseUp}
-              onMouseLeave={handleCanvasMouseUp}
-              style={{ cursor: isDraggingCanvas ? 'grabbing' : 'grab' }}
-            >
-              <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="18" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255, 255, 255, 0.15)" />
-                </marker>
-                <marker id="path-arrow" viewBox="0 0 10 10" refX="18" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b" />
-                </marker>
-              </defs>
-
-              <g transform={`translate(${pan.x}, ${pan.y}) scale(${zoom})`}>
-                {/* Render Edges */}
-                <g>
-                  {simEdges.map((edge: Edge, idx: number) => {
-                    const srcNode = simNodes.find(n => n.id === edge.source)
-                    const tgtNode = simNodes.find(n => n.id === edge.target)
-                    if (!srcNode || !tgtNode) return null
-
-                    const isPathEdge = pathResult?.edges?.some(
-                      (pe: any) => pe.source === edge.source && pe.target === edge.target
-                    )
-
-                    return (
-                      <g key={`edge-${idx}`}>
-                        <line
-                          x1={srcNode.x!}
-                          y1={srcNode.y!}
-                          x2={tgtNode.x!}
-                          y2={tgtNode.y!}
-                          stroke={isPathEdge ? '#f59e0b' : 'rgba(255, 255, 255, 0.08)'}
-                          strokeWidth={isPathEdge ? 2.5 : 1}
-                          markerEnd={isPathEdge ? "url(#path-arrow)" : "url(#arrow)"}
-                        />
-                      </g>
-                    )
-                  })}
-                </g>
-
-                {/* Render Nodes */}
-                <g>
-                  {simNodes.map(node => {
-                    const isSelected = selectedNode?.id === node.id
-                    const isExpanded = expandedNodes.has(node.id)
-                    const color = getNodeColor(node.type, isExpanded)
-                    const isMainNode = node.type === 'repository' || node.type === 'subsystem'
-                    
-                    const blockW = isMainNode ? 120 : 90
-                    const blockH = isMainNode ? 32 : 24
-
-                    return (
-                      <g
-                        key={node.id}
-                        onClick={() => {
-                          setSelectedNode(node)
-                          if (onSelectNode) onSelectNode(node.label)
-                        }}
-                        onDoubleClick={() => handleNodeToggle(node.id)}
-                        onMouseDown={e => {
-                          e.stopPropagation()
-                          setDraggedNodeId(node.id)
-                        }}
-                        onMouseEnter={() => setHoveredNodeId(node.id)}
-                        onMouseLeave={() => setHoveredNodeId(null)}
-                        style={{ cursor: 'pointer' }}
-                      >
-                        <rect
-                          x={node.x! - blockW / 2}
-                          y={node.y! - blockH / 2}
-                          width={blockW}
-                          height={blockH}
-                          rx={5}
-                          fill="rgba(15, 23, 42, 0.9)"
-                          stroke={isSelected ? '#22d3ee' : (isExpanded ? '#fbbf24' : 'rgba(255,255,255,0.08)')}
-                          strokeWidth={isSelected || isExpanded ? 2 : 1}
-                          className="transition-colors duration-200"
-                        />
-                        {/* Accent side bar */}
-                        <line
-                          x1={node.x! - blockW / 2 + 1.5}
-                          y1={node.y! - blockH / 2 + 2}
-                          x2={node.x! - blockW / 2 + 1.5}
-                          y2={node.y! + blockH / 2 - 2}
-                          stroke={color}
-                          strokeWidth={3}
-                        />
-                        <text
-                          x={node.x!}
-                          y={node.y! + 3}
-                          textAnchor="middle"
-                          fill={isSelected ? '#22d3ee' : '#e2e8f0'}
-                          fontSize={isMainNode ? '9px' : '8px'}
-                          fontWeight={isMainNode ? 'bold' : 'normal'}
-                          fontFamily="monospace"
-                          className="pointer-events-none select-none"
-                        >
-                          {node.label.length > (isMainNode ? 18 : 13) 
-                            ? node.label.substring(0, isMainNode ? 16 : 11) + '..' 
-                            : node.label}
-                        </text>
-                      </g>
-                    )
-                  })}
-                </g>
-              </g>
-            </svg>
-            
-          </div>
- 
-          {/* Right Side: Symbol Inspector (4 cols) */}
-          <div className="lg:col-span-4 border border-white/5 bg-white/[0.01] rounded-xl p-4 flex flex-col font-mono text-xs overflow-y-auto max-h-[440px]">
-            {selectedNode ? (
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                  <span className="text-[9px] text-cyan-300 font-bold uppercase tracking-wider bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded">
-                    {selectedNode.type.toUpperCase()}
-                  </span>
-                  <button
-                    onClick={() => handleNodeToggle(selectedNode.id)}
-                    className="text-[9px] text-yowon-muted hover:text-white"
-                  >
-                    {expandedNodes.has(selectedNode.id) ? 'COLLAPSE NODE' : 'DRILL DOWN'}
-                  </button>
-                </div>
- 
-                <div>
-                  <h4 className="text-white text-sm font-bold font-display">{selectedNode.label}</h4>
-                  <p className="text-[10px] text-yowon-muted mt-0.5">ID: {selectedNode.id.split('::').pop()}</p>
-                </div>
- 
-                <div className="space-y-3.5 pt-2 border-t border-white/5 leading-relaxed text-slate-300">
-                  {selectedNode.metadata?.description && (
-                    <div>
-                      <span className="text-yowon-muted text-[8px] block">SEMANTIC DETAILS</span>
-                      <p className="text-white/80 mt-1 text-[11px] font-sans">{selectedNode.metadata.description}</p>
-                    </div>
-                  )}
-
-                  {selectedNode.metadata?.language && (
-                    <div className="grid grid-cols-2 gap-2">
-                      <div>
-                        <span className="text-yowon-muted text-[8px] block">LANGUAGE</span>
-                        <span className="text-white font-bold block mt-0.5">{selectedNode.metadata.language}</span>
-                      </div>
-                      {selectedNode.metadata?.framework && (
-                        <div>
-                          <span className="text-yowon-muted text-[8px] block">FRAMEWORK</span>
-                          <span className="text-white font-bold block mt-0.5">{selectedNode.metadata.framework}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {selectedNode.metadata?.layer && (
-                    <div>
-                      <span className="text-yowon-muted text-[8px] block">ARCHITECTURAL LAYER</span>
-                      <span className="text-cyan-400 font-bold block mt-0.5">{selectedNode.metadata.layer.toUpperCase()}</span>
-                    </div>
-                  )}
-
-                  {selectedNode.metadata?.base_classes && selectedNode.metadata.base_classes.length > 0 && (
-                    <div>
-                      <span className="text-yowon-muted text-[8px] block">INHERITS FROM</span>
-                      <div className="flex flex-wrap gap-1 mt-1">
-                        {selectedNode.metadata.base_classes.map((cls: string) => (
-                          <span key={cls} className="text-[9px] bg-white/5 border border-white/10 rounded px-1.5 py-0.5 text-slate-300">{cls}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {selectedNode.metadata?.methods && selectedNode.metadata.methods.length > 0 && (
-                    <div>
-                      <span className="text-yowon-muted text-[8px] block">DECLARED METHODS ({selectedNode.metadata.methods.length})</span>
-                      <div className="max-h-24 overflow-y-auto pr-1 space-y-1 mt-1 text-[9.5px]">
-                        {selectedNode.metadata.methods.map((method: string) => (
-                          <div key={method} className="text-emerald-400 font-bold font-mono">ƒ {method}()</div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
- 
-                  {selectedNode.metadata?.file_path && (
-                    <div>
-                      <span className="text-yowon-muted text-[8px] block">DEFINED IN PATH</span>
-                      <p className="bg-black/25 p-2 rounded border border-white/5 break-all text-[10px] font-mono mt-1">
-                        {selectedNode.metadata.file_path}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center py-20 text-center text-yowon-muted">
-                <HelpCircle size={28} className="text-yowon-muted/30 mb-2" />
-                <p className="text-xs">Select any node in the graph to inspect AST details.</p>
-              </div>
-            )}
-          </div>
- 
-        </div>
-      </div>
-    </DashboardSection>
-  )
-}
-
 export default function KnowledgeGraphPanel({ projectId, onSelectNode }: KnowledgeGraphPanelProps) {
   return (
     <ErrorBoundary name="Knowledge Graph Panel">
-      <RepositoryIntelligenceWrapper projectId={projectId}>
-        <KnowledgeGraphContent projectId={projectId} onSelectNode={onSelectNode} />
-      </RepositoryIntelligenceWrapper>
+      <KnowledgeGraphContent projectId={projectId} onSelectNode={onSelectNode} />
     </ErrorBoundary>
+  )
+}
+
+const TYPE_CONFIG: Record<string, { color: string; bg: string; icon: any; label: string }> = {
+  subsystem:  { color: '#a855f7', bg: 'rgba(168,85,247,0.1)',  icon: Layers,  label: 'Subsystem'  },
+  module:     { color: '#3b82f6', bg: 'rgba(59,130,246,0.1)',  icon: Box,     label: 'Module'     },
+  class:      { color: '#06b6d4', bg: 'rgba(6,182,212,0.1)',   icon: Code2,   label: 'Class'      },
+  function:   { color: '#10b981', bg: 'rgba(16,185,129,0.1)',  icon: Zap,     label: 'Function'   },
+  package:    { color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  icon: Package, label: 'Package'    },
+}
+
+function KnowledgeGraphContent({ projectId, onSelectNode }: { projectId: string; onSelectNode?: (name: string) => void }) {
+  const context = useSharedIntelligenceContext()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedType, setSelectedType] = useState<string | null>(null)
+  const [expandedId, setExpandedId] = useState<string | null>(null)
+
+  const rkm = context.rkm
+
+  const allNodes = useMemo(() => {
+    if (!rkm) return []
+    const allowed = ['subsystem', 'module', 'class', 'function', 'package']
+    return Object.values(rkm.entities)
+      .filter(e => allowed.includes(e.type))
+      .sort((a, b) => {
+        const order = ['subsystem', 'module', 'class', 'package', 'function']
+        return order.indexOf(a.type) - order.indexOf(b.type)
+      })
+  }, [rkm])
+
+  const typeCounts = useMemo(() => {
+    const counts: Record<string, number> = {}
+    allNodes.forEach(n => { counts[n.type] = (counts[n.type] || 0) + 1 })
+    return counts
+  }, [allNodes])
+
+  const filtered = useMemo(() => {
+    return allNodes.filter(n => {
+      const matchType = !selectedType || n.type === selectedType
+      const matchSearch = !searchTerm || n.label.toLowerCase().includes(searchTerm.toLowerCase())
+      return matchType && matchSearch
+    })
+  }, [allNodes, searchTerm, selectedType])
+
+  const getEdgesForNode = (nodeId: string) => {
+    if (!rkm) return []
+    return rkm.relationships.filter(r => r.source === nodeId || r.target === nodeId).slice(0, 6)
+  }
+
+  const getNodeLabel = (id: string) => {
+    if (!rkm) return id
+    return rkm.entities[id]?.label || id
+  }
+
+  if (!rkm || allNodes.length === 0) {
+    return (
+      <DashboardSection id="knowledge" title="Knowledge Map" icon={Brain}>
+        <div className="p-10 text-center space-y-3 font-mono text-[10px] text-zinc-500">
+          <Brain size={24} className="mx-auto text-zinc-600" />
+          <p className="text-white font-bold text-xs">No Knowledge Data Available</p>
+          <p>The syntax parser could not traverse AST structures. Verify codebase folders are accessible.</p>
+        </div>
+      </DashboardSection>
+    )
+  }
+
+  return (
+    <DashboardSection id="knowledge" title="Knowledge Map" icon={Brain}>
+      <div className="space-y-5 font-mono text-[10px] text-white">
+
+        {/* Summary Stats Row */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          {Object.entries(TYPE_CONFIG).map(([type, cfg]) => {
+            const count = typeCounts[type] || 0
+            const Icon = cfg.icon
+            const isActive = selectedType === type
+            return (
+              <button
+                key={type}
+                onClick={() => setSelectedType(isActive ? null : type)}
+                className="flex flex-col items-start p-3 rounded-xl border transition-all text-left"
+                style={{
+                  borderColor: isActive ? cfg.color : 'rgba(255,255,255,0.06)',
+                  background: isActive ? cfg.bg : 'rgba(255,255,255,0.01)',
+                }}
+              >
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <Icon size={12} style={{ color: cfg.color }} />
+                  <span className="text-[9px] uppercase tracking-widest" style={{ color: cfg.color }}>{cfg.label}</span>
+                </div>
+                <span className="text-2xl font-bold text-white">{count}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Search + Filter */}
+        <div className="flex items-center gap-3">
+          <div className="relative flex-1">
+            <Search size={11} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+            <input
+              className="w-full bg-white/[0.02] border border-white/[0.07] rounded-lg pl-8 pr-3 py-2 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/50"
+              placeholder="Search modules, classes, functions..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+          </div>
+          {selectedType && (
+            <button
+              onClick={() => setSelectedType(null)}
+              className="text-[9px] text-zinc-400 hover:text-white border border-white/10 rounded px-2 py-1.5 transition-colors"
+            >
+              Clear filter
+            </button>
+          )}
+          <span className="text-[9px] text-zinc-600 whitespace-nowrap">{filtered.length} entries</span>
+        </div>
+
+        {/* Node Table */}
+        <div className="border border-white/[0.06] rounded-2xl overflow-hidden">
+          {/* Header */}
+          <div className="grid grid-cols-12 gap-0 px-4 py-2.5 border-b border-white/[0.05] bg-white/[0.02] text-[9px] text-zinc-500 uppercase tracking-widest">
+            <div className="col-span-1">Type</div>
+            <div className="col-span-4">Name</div>
+            <div className="col-span-3">Purpose</div>
+            <div className="col-span-2">Health</div>
+            <div className="col-span-2">Connections</div>
+          </div>
+
+          {/* Rows */}
+          <div className="divide-y divide-white/[0.03] max-h-[500px] overflow-y-auto custom-scrollbar">
+            {filtered.length === 0 && (
+              <div className="px-4 py-8 text-center text-zinc-600">No results match your search.</div>
+            )}
+            {filtered.map(node => {
+              const cfg = TYPE_CONFIG[node.type] || TYPE_CONFIG['module']
+              const Icon = cfg.icon
+              const edges = getEdgesForNode(node.id)
+              const isExpanded = expandedId === node.id
+              const health = node.health ?? 70
+              const healthColor = health >= 80 ? '#10b981' : health >= 60 ? '#f59e0b' : '#ef4444'
+
+              return (
+                <div key={node.id}>
+                  <div
+                    className="grid grid-cols-12 gap-0 px-4 py-3 hover:bg-white/[0.02] cursor-pointer transition-colors items-center"
+                    onClick={() => {
+                      setExpandedId(isExpanded ? null : node.id)
+                      if (onSelectNode) onSelectNode(node.label)
+                    }}
+                  >
+                    {/* Type badge */}
+                    <div className="col-span-1">
+                      <span
+                        className="inline-flex items-center justify-center w-6 h-6 rounded-md"
+                        style={{ background: cfg.bg }}
+                        title={cfg.label}
+                      >
+                        <Icon size={11} style={{ color: cfg.color }} />
+                      </span>
+                    </div>
+
+                    {/* Name */}
+                    <div className="col-span-4 flex items-center gap-2 min-w-0">
+                      <ChevronRight
+                        size={11}
+                        className="text-zinc-600 shrink-0 transition-transform"
+                        style={{ transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}
+                      />
+                      <span className="font-semibold text-white truncate text-xs" title={node.label}>
+                        {node.label}
+                      </span>
+                    </div>
+
+                    {/* Purpose */}
+                    <div className="col-span-3 text-zinc-500 truncate pr-2" title={(node as any).summary || (node as any).purpose || '—'}>
+                      {(node as any).summary || (node as any).purpose || <span className="text-zinc-700">—</span>}
+                    </div>
+
+                    {/* Health bar */}
+                    <div className="col-span-2 flex items-center gap-2">
+                      <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full transition-all"
+                          style={{ width: `${health}%`, background: healthColor }}
+                        />
+                      </div>
+                      <span className="text-[9px] shrink-0" style={{ color: healthColor }}>{health}%</span>
+                    </div>
+
+                    {/* Edge count */}
+                    <div className="col-span-2 text-zinc-500">
+                      <span className="text-[9px] font-mono">{edges.length} links</span>
+                    </div>
+                  </div>
+
+                  {/* Expanded: show relationships */}
+                  {isExpanded && edges.length > 0 && (
+                    <div className="px-10 pb-3 space-y-1.5 bg-white/[0.01]">
+                      {edges.map((edge, i) => {
+                        const otherNodeId = edge.source === node.id ? edge.target : edge.source
+                        const direction = edge.source === node.id ? '→' : '←'
+                        const otherNode = rkm?.entities[otherNodeId]
+                        const otherCfg = otherNode ? (TYPE_CONFIG[otherNode.type] || TYPE_CONFIG['module']) : TYPE_CONFIG['module']
+                        return (
+                          <div key={i} className="flex items-center gap-2 text-[9px] text-zinc-500">
+                            <span className="text-cyan-500">{direction}</span>
+                            <span className="text-[8px] px-1 rounded" style={{ color: otherCfg.color, background: otherCfg.bg }}>
+                              {otherNode?.type || 'node'}
+                            </span>
+                            <span className="text-zinc-400">{getNodeLabel(otherNodeId)}</span>
+                            {edge.label && (
+                              <span className="text-zinc-700 italic">({edge.label})</span>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        <p className="text-[9px] text-zinc-600 text-center">
+          Click any row to expand its dependency links · Total relationships: {rkm.relationships.length}
+        </p>
+      </div>
+    </DashboardSection>
   )
 }

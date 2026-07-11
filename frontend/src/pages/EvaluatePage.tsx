@@ -6,7 +6,6 @@ import {
   Lightbulb, Globe, Gavel, Activity, Scale, Fingerprint, Trophy,
   ChevronRight, Radio,
 } from 'lucide-react'
-import AppShell from '../components/layout/AppShell'
 import AgentPipelineCard from '../components/evaluation/AgentPipelineCard'
 import TerminalLog from '../components/evaluation/TerminalLog'
 import AgentNetwork from '../components/evaluation/AgentNetwork'
@@ -93,8 +92,9 @@ export default function EvaluatePage() {
   const isFailed = status === 'failed'
 
   return (
-    <AppShell particles={false}>
-      <NeuralOverlay />
+    <div className="flex-1 overflow-y-auto custom-scrollbar min-h-0">
+      <div className="relative font-mono text-xs text-white">
+        <NeuralOverlay />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
 
@@ -293,6 +293,7 @@ export default function EvaluatePage() {
           Target: &lt;60s evaluation · Real-time SSE progress · No simulated updates
         </p>
       </main>
-    </AppShell>
+    </div>
+  </div>
   )
 }

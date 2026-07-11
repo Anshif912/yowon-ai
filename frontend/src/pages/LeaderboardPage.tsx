@@ -20,13 +20,43 @@ export default function LeaderboardPage() {
   const [filter,   setFilter]   = useState('')
 
   useEffect(() => {
-    api.get<ProjectSummary[]>('/projects')
-      .then(({ data }) => {
-        const sorted = [...data]
-          .filter(p => p.status === 'completed' && p.overall_score != null)
+    api.get('/projects?page=1&size=100')
+      .then(async (res) => {
+        const projList = res.data?.projects || []
+        
+        const projectsWithScores = await Promise.all(
+          projList.map(async (p: any) => {
+            try {
+              const histRes = await api.get(`/projects/${p.id}/history`)
+              const history = histRes.data || []
+              const completedRuns = history.filter((e: any) => e.evaluation_status === 'Completed')
+              const latestRun = completedRuns[completedRuns.length - 1]
+              
+              if (latestRun) {
+                return {
+                  project_id: p.id,
+                  project_name: p.name,
+                  project_type: p.project_type,
+                  status: 'completed',
+                  overall_score: latestRun.overall_score,
+                  verdict: latestRun.verdict,
+                  created_at: latestRun.timestamp
+                }
+              }
+            } catch (err) {
+              console.error(err)
+            }
+            return null
+          })
+        )
+        
+        const sorted = projectsWithScores
+          .filter((p): p is ProjectSummary => p !== null)
           .sort((a, b) => (b.overall_score ?? 0) - (a.overall_score ?? 0))
+          
         setProjects(sorted)
       })
+      .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
 
