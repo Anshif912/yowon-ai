@@ -8,7 +8,7 @@ import {
   useCapabilities, useHealth, useTraceNodes, useTechnologyGraph, 
   useDependencyGraph, useArchitectureGraph, useEvidence 
 } from './queries'
-import ArchitectureGraphPanel from './ArchitectureGraphPanel'
+import { ArchitectureGraphPanel } from './ArchitectureGraphPanel'
 import TechnologyGraphPanel from './TechnologyGraphPanel'
 import DependencyGraphPanel from './DependencyGraphPanel'
 import KnowledgeGraphPanel from './KnowledgeGraphPanel'
@@ -17,7 +17,7 @@ import EvidenceExplorerPanel from './EvidenceExplorerPanel'
 import RecommendationsPanel from './RecommendationsPanel'
 import { RepositoryStoryPanel } from './RepositoryStoryPanel'
 import { ExecutiveSummaryPanel } from './ExecutiveSummaryPanel'
-import { ExecutionFlowPanel } from './ExecutionFlowPanel'
+import ExecutionFlowPanel from './ExecutionFlowPanel'
 import { AIAgentsPanel } from './AIAgentsPanel'
 import RepositoryTreePanel from './RepositoryTreePanel'
 import { CardSkeleton } from './Skeletons'
@@ -222,19 +222,19 @@ export function SoftwareArchitectureNavigator({ projectId }: SoftwareArchitectur
             {activeTab === 'architecture' && (
               <ArchitectureGraphPanel 
                 projectId={projectId} 
-                onSelectNode={(nodeName) => setHighlightedNode(nodeName)}
+                onSelectNode={(nodeName: string) => setHighlightedNode(nodeName)}
               />
             )}
             {activeTab === 'technology' && (
               <TechnologyGraphPanel 
                 projectId={projectId} 
-                onSelectNode={(nodeName) => setHighlightedNode(nodeName)}
+                onSelectNode={(nodeName: string) => setHighlightedNode(nodeName)}
               />
             )}
             {activeTab === 'dependencies' && (
               <DependencyGraphPanel 
                 projectId={projectId}
-                onSelectNode={(nodeName) => setHighlightedNode(nodeName)}
+                onSelectNode={(nodeName: string) => setHighlightedNode(nodeName)}
               />
             )}
             {activeTab === 'execution' && <ExecutionFlowPanel projectId={projectId} />}

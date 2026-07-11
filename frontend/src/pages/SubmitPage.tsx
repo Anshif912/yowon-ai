@@ -6,7 +6,6 @@ import {
   CheckCircle2, ClipboardCheck, Upload, FileText, ChevronRight,
   X, Eye,
 } from 'lucide-react'
-import AppShell from '../components/layout/AppShell'
 import FileDropZone from '../components/upload/FileDropZone'
 import { uploadProject, triggerEvaluation } from '../api/api'
 import type { ProjectType } from '../types'
@@ -92,8 +91,9 @@ export default function SubmitPage() {
   }
 
   return (
-    <AppShell>
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14 relative">
+    <div className="flex-1 overflow-y-auto p-6 custom-scrollbar min-h-0">
+      <div className="relative font-mono text-xs text-white">
+        <main className="max-w-5xl mx-auto px-4 sm:px-6 relative">
 
         {/* Page Header */}
         <motion.div
@@ -394,6 +394,7 @@ export default function SubmitPage() {
           </p>
         </form>
       </main>
-    </AppShell>
-  )
+    </div>
+  </div>
+)
 }

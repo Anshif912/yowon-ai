@@ -765,3 +765,448 @@
     background: none;
   }
 }
+
+/* ============================================================
+   YOWON AI v11 — SEMANTIC COLOR SYSTEM & PREMIUM TOKENS
+   Architecture: Blue | Technology: Purple | Security: Red
+   AI: Cyan | Infrastructure: Emerald | Knowledge: Violet
+   Performance: Orange | Deployment: Yellow
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ── Semantic dimension colors ── */
+    --c-arch:    #3B82F6;   /* Architecture → Blue    */
+    --c-tech:    #8B5CF6;   /* Technology   → Purple  */
+    --c-sec:     #EF4444;   /* Security     → Red     */
+    --c-perf:    #F97316;   /* Performance  → Orange  */
+    --c-ai:      #00E5FF;   /* AI/Intel     → Cyan    */
+    --c-infra:   #10B981;   /* Infra        → Emerald */
+    --c-deploy:  #EAB308;   /* Deployment   → Yellow  */
+    --c-know:    #A855F7;   /* Knowledge    → Violet  */
+
+    /* ── Sidebar tokens ── */
+    --sidebar-w:          280px;
+    --sidebar-w-collapsed: 72px;
+    --sidebar-bg:         rgba(5, 7, 10, 0.85);
+    --sidebar-border:     rgba(255,255,255,0.06);
+
+    /* ── Topbar tokens ── */
+    --topbar-h: 48px;
+    --topbar-bg: rgba(5, 7, 10, 0.80);
+
+    /* ── Content area ── */
+    --content-max-w: 1400px;
+    --content-pad:   2rem;
+  }
+}
+
+/* ============================================================
+   ACTS / INTELLIGENCE WORKSPACE
+   ============================================================ */
+
+/* Progress Rail — scroll spy vertical indicator */
+.progress-rail {
+  position: sticky;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 2rem;
+  padding-top: 0.5rem;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+.rail-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.rail-dot.active {
+  width: 10px;
+  height: 10px;
+  background: var(--c-ai);
+  border-color: var(--c-ai);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.rail-line {
+  width: 1px;
+  flex: 1;
+  min-height: 2rem;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Act section headers */
+.act-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.act-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  white-space: nowrap;
+}
+
+.act-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #F4F4F5;
+  letter-spacing: -0.02em;
+}
+
+.act-description {
+  font-size: 0.75rem;
+  color: #52525B;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PREMIUM DATA TABLE
+   ============================================================ */
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.75rem;
+}
+
+.data-table thead th {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #52525B;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: sticky;
+  top: 0;
+  background: rgba(5, 7, 10, 0.9);
+  backdrop-filter: blur(12px);
+  z-index: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.data-table thead th:hover { color: #A1A1AA; }
+
+.data-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: background 0.12s ease;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.data-table tbody tr:hover .row-actions {
+  opacity: 1;
+}
+
+.data-table tbody td {
+  padding: 0.625rem 1rem;
+  color: #A1A1AA;
+  vertical-align: middle;
+}
+
+.row-actions {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ============================================================
+   GRAPH SYSTEM — CANVAS & NODE VISUAL LANGUAGE
+   ============================================================ */
+
+/* Graph canvas wrapper */
+.graph-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: radial-gradient(ellipse at 50% 50%, rgba(15,18,28,1) 0%, rgba(5,7,10,1) 100%);
+  cursor: grab;
+}
+
+.graph-canvas-wrap:active { cursor: grabbing; }
+
+/* Floating Inspector */
+.floating-inspector {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 260px;
+  background: rgba(5, 7, 10, 0.95);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 0.875rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  z-index: 30;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.floating-inspector-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.floating-inspector-body {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Graph minimap */
+.graph-minimap {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 140px;
+  height: 90px;
+  background: rgba(5, 7, 10, 0.90);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  z-index: 30;
+}
+
+/* Cluster halo backgrounds */
+@keyframes cluster-breathe {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.25; transform: scale(1.02); }
+}
+
+.cluster-halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: cluster-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Node glow classes */
+.node-glow-arch    { filter: drop-shadow(0 0 8px rgba(59,130,246,0.7)); }
+.node-glow-tech    { filter: drop-shadow(0 0 8px rgba(139,92,246,0.7)); }
+.node-glow-sec     { filter: drop-shadow(0 0 8px rgba(239,68,68,0.7)); }
+.node-glow-ai      { filter: drop-shadow(0 0 8px rgba(0,229,255,0.7)); }
+.node-glow-infra   { filter: drop-shadow(0 0 8px rgba(16,185,129,0.7)); }
+.node-glow-know    { filter: drop-shadow(0 0 8px rgba(168,85,247,0.7)); }
+
+/* Animated edge dashes */
+@keyframes edge-flow {
+  to { stroke-dashoffset: -20; }
+}
+
+.edge-animated {
+  stroke-dasharray: 8 6;
+  animation: edge-flow 1.2s linear infinite;
+}
+
+/* Orbital animation for Technology Galaxy */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg); }
+}
+
+.orbit-node {
+  animation: orbit var(--orbit-dur, 20s) linear infinite;
+  transform-origin: 0 0;
+}
+
+/* Pipeline flow animation */
+@keyframes pipeline-flow {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+.pipeline-packet {
+  animation: pipeline-flow var(--flow-dur, 2s) ease-in-out infinite;
+  animation-delay: var(--flow-delay, 0s);
+}
+
+/* ============================================================
+   SIDEBAR v11 TOKENS
+   ============================================================ */
+
+.sidebar-nav-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  padding: 0 0.75rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.125rem;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5625rem 0.75rem;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #71717A;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(255,255,255,0.04);
+  color: #D4D4D8;
+  border-color: rgba(255,255,255,0.07);
+}
+
+.sidebar-nav-item.active {
+  background: rgba(0, 229, 255, 0.08);
+  color: #E0FBFF;
+  border-color: rgba(0, 229, 255, 0.18);
+  box-shadow:
+    0 0 20px rgba(0, 229, 255, 0.06),
+    inset 0 0 12px rgba(0, 229, 255, 0.04);
+}
+
+.sidebar-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  bottom: 0.375rem;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(180deg, #00E5FF, #00FFA3);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+}
+
+/* Score hierarchy */
+.score-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.score-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.score-secondary-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 0.875rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.score-secondary-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+}
+
+/* Breadcrumb nav */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #52525B;
+}
+
+.breadcrumb-nav a {
+  color: #71717A;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.breadcrumb-nav a:hover { color: #A1A1AA; }
+.breadcrumb-nav .current { color: #D4D4D8; font-weight: 500; }
+.breadcrumb-nav .sep { color: #3F3F46; }
+
+/* ============================================================
+   INTELLIGENCE WORKSPACE — ACT SECTIONS
+   ============================================================ */
+
+.act-section {
+  scroll-margin-top: 5rem;
+}
+
+.act-section + .act-section {
+  margin-top: 0;
+}
+
+.act-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+  margin: 3rem 0;
+}
+
+/* Graph search highlight */
+.node-highlighted circle,
+.node-highlighted ellipse {
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+.node-dimmed {
+  opacity: 0.2;
+}
+
+/* Reduced motion overrides for new animations */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-node,
+  .pipeline-packet,
+  .edge-animated,
+  .cluster-halo {
+    animation: none !important;
+  }
+}
