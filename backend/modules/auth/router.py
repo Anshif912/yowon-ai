@@ -255,7 +255,11 @@ def oauth_redirect(provider: str, request: Request):
         )
     
     # Construct callback redirect url pointing to this server callback route
-    redirect_uri = str(request.url_for("oauth_callback", provider=provider))
+    env_redirect = os.getenv(f"{provider.upper()}_REDIRECT_URI")
+    if env_redirect:
+        redirect_uri = env_redirect
+    else:
+        redirect_uri = str(request.url_for("oauth_callback", provider=provider))
     
     state = str(uuid.uuid4())
     auth_url = prov.get_auth_url(redirect_uri, state)
@@ -279,7 +283,12 @@ async def oauth_callback(
             detail=f"OAuth provider '{provider}' is not configured or enabled."
         )
         
-    redirect_uri = str(request.url_for("oauth_callback", provider=provider))
+    env_redirect = os.getenv(f"{provider.upper()}_REDIRECT_URI")
+    if env_redirect:
+        redirect_uri = env_redirect
+    else:
+        redirect_uri = str(request.url_for("oauth_callback", provider=provider))
+
     
     try:
         user_info = await prov.get_user_info(code, redirect_uri)
