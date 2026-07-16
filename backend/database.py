@@ -705,6 +705,41 @@ class AuditLog(Base):
     organization_id: Optional[str] = Column(String(36), nullable=True)
 
 
+# ── Copilot Memory Models ──────────────────────────────────────────────────────
+
+class CopilotSession(Base):
+    """Represents an AI Copilot conversation session per persona per workspace."""
+
+    __tablename__ = "copilot_sessions"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    workspace_id: str = Column(String(36), nullable=False, index=True)
+    user_id: str = Column(String(36), ForeignKey("users.uuid"), nullable=False, index=True)
+    persona_id: str = Column(String(50), nullable=False)  # cto | developer | judge | security | architect
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    last_active_at: datetime = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    summary: Optional[str] = Column(Text, nullable=True)  # Auto-generated session summary
+
+    messages = relationship("CopilotMessage", back_populates="session", cascade="all, delete-orphan", order_by="CopilotMessage.created_at")
+
+
+class CopilotMessage(Base):
+    """Represents a single message in a Copilot conversation session."""
+
+    __tablename__ = "copilot_messages"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    session_id: str = Column(String(36), ForeignKey("copilot_sessions.uuid"), nullable=False, index=True)
+    role: str = Column(String(20), nullable=False)  # user | assistant
+    content: str = Column(Text, nullable=False)
+    tool_calls_json: Optional[str] = Column(Text, nullable=True)  # JSON list of tools invoked
+    evidence_json: Optional[str] = Column(Text, nullable=True)    # JSON list of evidence records
+    execution_time_ms: Optional[int] = Column(Integer, nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    session = relationship("CopilotSession", back_populates="messages")
+
+
 class EvaluationAudit(Base):
     __tablename__ = "evaluation_audits"
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -715,8 +750,9 @@ class EvaluationAudit(Base):
     details = Column(Text, nullable=True)
     success = Column(Boolean, default=True)
     duration_seconds = Column(Float, nullable=False)
-    
+
     evaluation = relationship("Evaluation", back_populates="audits")
+
 
 
 # ── Teams Models ──────────────────────────────────────────────────────────────
