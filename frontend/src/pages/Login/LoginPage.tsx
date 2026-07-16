@@ -90,6 +90,9 @@ export default function LoginPage() {
     const meta = providersMetadata[providerKey] || { configured: false, status: 'Not Configured', tooltip: 'This authentication provider has not been configured by your administrator.' }
     const isConfigured = meta.configured
     
+    const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    const API_BASE = import.meta.env.VITE_API_URL || (isLocalhost ? 'http://localhost:8000' : 'http://127.0.0.1:8000')
+
     return (
       <div className="relative group" key={providerKey}>
         <button
@@ -97,11 +100,12 @@ export default function LoginPage() {
           disabled={!isConfigured || isSubmitLoading}
           onClick={() => {
             if (isConfigured) {
-              // Trigger redirect to OAuth flow URL
-              window.location.href = `/api/v1/auth/oauth/${providerKey}/redirect`
+              // Trigger redirect to OAuth flow URL on the backend
+              window.location.href = `${API_BASE}/api/v1/auth/oauth/${providerKey}/redirect`
             }
           }}
           className={`w-full flex items-center justify-center gap-2 py-2 bg-white/[0.01] border rounded-lg text-[10px] font-mono transition-all ${
+
             isConfigured 
               ? 'hover:bg-white/[0.04] border-white/10 text-slate-300 hover:text-white cursor-pointer' 
               : 'border-white/5 text-slate-600 cursor-not-allowed opacity-50'
