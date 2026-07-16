@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from database import get_db, User
 from auth.security import get_current_user
+from core.event_bus import publish as publish_event
 
 from .schemas import WebhookCreate, WebhookResponse, WebhookDeliveryResponse
 from .service import WebhookService
@@ -57,6 +58,12 @@ def register_webhook_endpoint(
         payload.target_url,
         payload.events
     )
+    publish_event("WEBHOOK_REGISTERED", {
+        "webhook_id": wh.uuid,
+        "workspace_id": resolve_workspace_id(x_workspace_id),
+        "target_url": payload.target_url,
+        "events": payload.events
+    })
     data = WebhookResponse.model_validate(wh).model_dump()
     return envelope_response(data)
 
@@ -105,4 +112,5 @@ def delete_webhook_endpoint(
         raise HTTPException(status_code=404, detail="Webhook not found")
     db.delete(wh)
     db.commit()
+    publish_event("WEBHOOK_DELETED", {"webhook_id": id})
     return envelope_response({"deleted": True})
