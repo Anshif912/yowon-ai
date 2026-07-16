@@ -4005,7 +4005,7 @@ async def get_pipeline_timeline(id: str, db: Session = Depends(get_db)):
 
 if __name__ == "__main__":
     import uvicorn
-    # Trigger uvicorn reload to pick up new Google & GitHub OAuth environment variables (with custom Redirect URIs)
+    # Trigger uvicorn reload to pick up new Google & GitHub OAuth environment variables (with custom Redirect URIs - v3)
     uvicorn.run(
         "main:app",
         host="127.0.0.1",

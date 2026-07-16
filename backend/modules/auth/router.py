@@ -244,11 +244,17 @@ def get_me(current_user: User = Depends(get_current_user)):
     """Returns profile details of the current authenticated user."""
     return current_user
 
+# Setup logger for auth router
+import logging
+auth_logger = logging.getLogger("yowon.auth.router")
+
 @router.get("/oauth/{provider}/redirect")
 def oauth_redirect(provider: str, request: Request):
     """Redirects the client to the configured third party OAuth provider login page."""
+    auth_logger.info(f"[OAuth Redirect] Initiated for provider={provider}")
     prov = provider_registry.get_provider(provider)
     if not prov or not prov.is_configured:
+        auth_logger.error(f"[OAuth Redirect] Provider not configured/enabled: provider={provider}")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"OAuth provider '{provider}' is not configured or enabled."
@@ -258,11 +264,14 @@ def oauth_redirect(provider: str, request: Request):
     env_redirect = os.getenv(f"{provider.upper()}_REDIRECT_URI")
     if env_redirect:
         redirect_uri = env_redirect
+        auth_logger.info(f"[OAuth Redirect] Using env-overridden redirect_uri={redirect_uri}")
     else:
         redirect_uri = str(request.url_for("oauth_callback", provider=provider))
+        auth_logger.info(f"[OAuth Redirect] Using dynamically-generated redirect_uri={redirect_uri}")
     
     state = str(uuid.uuid4())
     auth_url = prov.get_auth_url(redirect_uri, state)
+    auth_logger.info(f"[OAuth Redirect] Redirecting user to URL: {auth_url}")
     
     return RedirectResponse(auth_url)
 
@@ -276,8 +285,10 @@ async def oauth_callback(
     db: Session = Depends(get_db)
 ):
     """Exchanges code for credentials, matches/provisions user, creates active session, and redirects to dashboard."""
+    auth_logger.info(f"[OAuth Callback] Callback received for provider={provider}")
     prov = provider_registry.get_provider(provider)
     if not prov or not prov.is_configured:
+        auth_logger.error(f"[OAuth Callback] Provider not configured/enabled: provider={provider}")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"OAuth provider '{provider}' is not configured or enabled."
@@ -286,13 +297,16 @@ async def oauth_callback(
     env_redirect = os.getenv(f"{provider.upper()}_REDIRECT_URI")
     if env_redirect:
         redirect_uri = env_redirect
+        auth_logger.info(f"[OAuth Callback] Using env-overridden redirect_uri={redirect_uri}")
     else:
         redirect_uri = str(request.url_for("oauth_callback", provider=provider))
-
+        auth_logger.info(f"[OAuth Callback] Using dynamically-generated redirect_uri={redirect_uri}")
     
     try:
+        auth_logger.info(f"[OAuth Callback] Exchanging code for user profile info...")
         user_info = await prov.get_user_info(code, redirect_uri)
     except Exception as e:
+        auth_logger.error(f"[OAuth Callback] Code exchange failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"OAuth code exchange failed: {str(e)}"
@@ -302,21 +316,26 @@ async def oauth_callback(
     sso_provider = user_info["sso_provider"]
     sso_external_id = user_info["sso_external_id"]
     full_name = user_info["full_name"]
+    auth_logger.info(f"[OAuth Callback] Profile details retrieved: email={email}, provider={sso_provider}, external_id={sso_external_id}, name={full_name}")
     
     # Look for existing user
+    auth_logger.info(f"[OAuth Callback] Looking up user by SSO credentials...")
     user = db.query(User).filter(
         (User.sso_provider == sso_provider) & (User.sso_external_id == sso_external_id)
     ).first()
     
     if not user:
+        auth_logger.info(f"[OAuth Callback] SSO user match not found. Attempting lookup by email={email}...")
         # Fallback to look up by email
         user = db.query(User).filter(User.email == email).first()
         if user:
+            auth_logger.info(f"[OAuth Callback] Found existing user by email. Linking SSO provider={sso_provider} and external_id={sso_external_id}...")
             user.sso_provider = sso_provider
             user.sso_external_id = sso_external_id
             db.commit()
             
     if not user:
+        auth_logger.info(f"[OAuth Callback] User does not exist. Initiating dynamic provisioning...")
         # Register a new user dynamically (Anyone can create an account via OAuth)
         user = User(
             uuid=str(uuid.uuid4()),
@@ -334,6 +353,7 @@ async def oauth_callback(
         )
         db.add(user)
         db.flush()
+        auth_logger.info(f"[OAuth Callback] Provisioned User record: uuid={user.uuid}")
         
         # Create personal organization & workspace
         org_name = f"{full_name}'s Org"
@@ -346,6 +366,7 @@ async def oauth_callback(
         )
         db.add(org)
         db.flush()
+        auth_logger.info(f"[OAuth Callback] Provisioned Organization: uuid={org.uuid}, name='{org_name}'")
         
         org_member = OrganizationMember(
             id=str(uuid.uuid4()),
@@ -368,6 +389,7 @@ async def oauth_callback(
         )
         db.add(workspace)
         db.flush()
+        auth_logger.info(f"[OAuth Callback] Provisioned Workspace: id={workspace.workspace_id}, name='{workspace.name}'")
         
         ws_member = WorkspaceMember(
             workspace_id=workspace.workspace_id,
@@ -378,8 +400,10 @@ async def oauth_callback(
         )
         db.add(ws_member)
         db.commit()
+        auth_logger.info(f"[OAuth Callback] Provisioning complete.")
         
     # Standard active session creation
+    auth_logger.info(f"[OAuth Callback] Registering active user session...")
     service = AuthService(db)
     ip = request.client.host if request.client else None
     user_agent = request.headers.get("User-Agent")
@@ -394,13 +418,16 @@ async def oauth_callback(
         os_name=os_name,
         ip_address=ip
     )
+    auth_logger.info(f"[OAuth Callback] Session created: jti={jti}, client_ip={ip}")
     
+    auth_logger.info(f"[OAuth Callback] Issuing JWT tokens...")
     access_token = TokenService.create_access_token(user.uuid, user.role)
     refresh_token = TokenService.create_refresh_token(user.uuid, jti)
     
     # Redirect target dashboard
     frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
     redirect_resp = RedirectResponse(url=f"{frontend_url}/dashboard")
+    auth_logger.info(f"[OAuth Callback] Preparing redirect to Frontend URL: {frontend_url}/dashboard")
     
     is_secure = (
         request.url.scheme == "https"
@@ -427,5 +454,7 @@ async def oauth_callback(
         path="/",
         max_age=15 * 60
     )
+    auth_logger.info(f"[OAuth Callback] Auth cookies set (is_secure={is_secure}). Handshake successful.")
     
     return redirect_resp
+

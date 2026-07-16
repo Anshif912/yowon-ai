@@ -142,21 +142,27 @@ class AuthService:
 
     def authenticate_user(self, payload: UserLogin, ip_address: Optional[str], user_agent: Optional[str]) -> Dict[str, Any]:
         """Validates credentials, checks status locks, and spins up a UserSession."""
+        logger.info(f"[AuthService] User Login Request - email={payload.email}, ip={ip_address}")
+        
         user = self.repo.get_by_email(payload.email)
-
         if not user:
+            logger.warning(f"[AuthService] User Lookup Fail - Email not found: {payload.email}")
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Invalid email or password."
             )
+            
+        logger.info(f"[AuthService] User Lookup Success - uuid={user.uuid}, role={user.role}")
 
         if user.status == "LOCKED" or user.account_locked:
+            logger.warning(f"[AuthService] Login Aborted - Account locked: uuid={user.uuid}")
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Your account is temporarily locked. Please contact support."
             )
 
         if user.status.upper() != "ACTIVE":
+            logger.warning(f"[AuthService] Login Aborted - Account not active (status={user.status}): uuid={user.uuid}")
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Your account has been deactivated."
@@ -164,10 +170,11 @@ class AuthService:
 
         if not PasswordService.verify_password(payload.password, user.password_hash):
             user.failed_login_attempts += 1
+            logger.warning(f"[AuthService] Login Fail - Incorrect password: uuid={user.uuid}, failed_attempts={user.failed_login_attempts}")
             if user.failed_login_attempts >= 5:
                 user.account_locked = True
                 user.status = "LOCKED"
-                logger.error(f"Account locked for user email={user.email} due to consecutive failed attempts.")
+                logger.error(f"[AuthService] Account locked for user email={user.email} due to consecutive failed attempts.")
             self.db.commit()
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
@@ -178,6 +185,7 @@ class AuthService:
         user.failed_login_attempts = 0
         user.last_login = datetime.utcnow()
         self.db.commit()
+        logger.info(f"[AuthService] Password verified successfully: uuid={user.uuid}")
 
         jti = str(uuid.uuid4())
         browser, os_name = self._parse_user_agent(user_agent)
@@ -189,15 +197,18 @@ class AuthService:
             os_name=os_name,
             ip_address=ip_address
         )
+        logger.info(f"[AuthService] User Session Created - jti={jti}, device='{browser} on {os_name}'")
 
         access_token = TokenService.create_access_token(user.uuid, user.role)
         refresh_token = TokenService.create_refresh_token(user.uuid, jti)
+        logger.info(f"[AuthService] JWT Access and Refresh Tokens Issued - uuid={user.uuid}")
 
         return {
             "access_token": access_token,
             "refresh_token": refresh_token,
             "user": user
         }
+
 
     def rotate_session_token(self, refresh_token: str, ip_address: Optional[str]) -> Dict[str, Any]:
         """Validates rotated refresh tokens via active session entries."""

@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 import sys
 IS_TESTING = "pytest" in sys.modules or any("pytest" in arg for arg in sys.argv)
