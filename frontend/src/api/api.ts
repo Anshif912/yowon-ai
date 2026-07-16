@@ -2,7 +2,8 @@ import axios from 'axios'
 import type { EvaluationProgress, ReportData, UploadProjectPayload } from '../types'
 import { enrichReport } from '../utils/reportParser'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
+const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+const API_BASE = import.meta.env.VITE_API_URL || (isLocalhost ? 'http://localhost:8000' : 'http://127.0.0.1:8000')
 
 export const api = axios.create({
   baseURL: API_BASE,
@@ -23,7 +24,12 @@ api.interceptors.request.use((config) => {
 
 // Exponential backoff retry interceptor
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (response.data && response.data.apiVersion === 'v1' && response.data.data !== undefined) {
+      response.data = response.data.data
+    }
+    return response
+  },
   async (error) => {
     const { config } = error
     // Don't retry if request config didn't specify retry, or if it failed authentication / 404

@@ -246,10 +246,10 @@ export default function ProjectsPage() {
                     {/* Quick Access panel buttons */}
                     <div className="grid grid-cols-3 gap-2">
                       <Link
-                        to={`/intelligence/${proj.id}`}
+                        to={`/projects/${proj.id}`}
                         className="py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-cyan-500 hover:text-black font-bold text-center transition-all text-[9.5px] uppercase"
                       >
-                        Intel
+                        Open OS
                       </Link>
                       <Link
                         to={`/report/${proj.id}/overview`}
@@ -321,10 +321,10 @@ export default function ProjectsPage() {
                       </a>
                     )}
                     <Link
-                      to={`/intelligence/${proj.id}`}
+                      to={`/projects/${proj.id}`}
                       className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-cyan-500 hover:text-black font-bold transition-all text-[10px]"
                     >
-                      Workspace
+                      Open OS
                     </Link>
                     <Link
                       to={`/report/${proj.id}/overview`}

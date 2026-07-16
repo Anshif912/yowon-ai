@@ -91,6 +91,11 @@ MAX_BRIEF_CHARS: int = int(os.getenv("MAX_BRIEF_CHARS", "1200"))
 MAX_AGENT_DIGEST_CHARS: int = int(os.getenv("MAX_AGENT_DIGEST_CHARS", "2500"))
 
 # Thread pool / futures must allow full agent runtime
+MAX_CONTEXT_CHARS: int = int(os.getenv("MAX_CONTEXT_CHARS", "6000"))
+MAX_BRIEF_CHARS: int = int(os.getenv("MAX_BRIEF_CHARS", "1200"))
+MAX_AGENT_DIGEST_CHARS: int = int(os.getenv("MAX_AGENT_DIGEST_CHARS", "2500"))
+
+# Thread pool / futures must allow full agent runtime
 AGENT_TIMEOUT_SEC: int = int(os.getenv("AGENT_TIMEOUT_SEC", "600"))
 EVALUATION_TIMEOUT_SEC: int = int(os.getenv("EVALUATION_TIMEOUT_SEC", "3600"))
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
@@ -103,3 +108,10 @@ USE_DIRECT_LLM_PRIMARY: bool = os.getenv("USE_DIRECT_LLM_PRIMARY", "true").lower
     "true",
     "yes",
 )
+
+# ── Feature Flags ─────────────────────────────────────────────────────────────
+ENABLE_PROJECT_DNA: bool = os.getenv("ENABLE_PROJECT_DNA", "false").lower() in ("1", "true", "yes")
+ENABLE_ENTERPRISE_WORKSPACES: bool = os.getenv("ENABLE_ENTERPRISE_WORKSPACES", "true").lower() in ("1", "true", "yes")
+ENABLE_AI_COUNCIL: bool = os.getenv("ENABLE_AI_COUNCIL", "true").lower() in ("1", "true", "yes")
+ENABLE_LEADERBOARD: bool = os.getenv("ENABLE_LEADERBOARD", "true").lower() in ("1", "true", "yes")
+ENABLE_OWNERSHIP_ENGINE: bool = os.getenv("ENABLE_OWNERSHIP_ENGINE", "false").lower() in ("1", "true", "yes")

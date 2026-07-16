@@ -28,6 +28,7 @@ from fastapi import (
     HTTPException,
     Request,
     UploadFile,
+    Header,
 )
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
@@ -106,8 +107,69 @@ app = FastAPI(
     version="2.2.0",
 )
 
-from auth.routes import router as auth_router
+from fastapi.exceptions import RequestValidationError
+from core.middleware.exceptions import global_exception_handler, validation_exception_handler
+from core.middleware.correlation import CorrelationMiddleware
+from modules.identity.router import router as identity_router
+from modules.auth.router import router as auth_router
+from modules.organizations.router import router as org_router
+from modules.workspaces.router import router as ws_router
+from modules.teams.router import router as teams_router
+from modules.projects.router import router as projects_router
+from modules.ownership.router import router as ownership_router, timeline_router as project_timeline_router
+from modules.notifications.router import router as notifications_router
+from modules.project_dna.router import router as project_dna_router
+from modules.system.router import system_router
+from modules.decision_intelligence.router import router as decision_router
+from modules.governance.router import router as governance_router
+from modules.connectors.router import router as connectors_router
+from modules.plugin_framework.router import router as plugins_router
+from modules.marketplace.router import router as marketplace_router
+from modules.webhooks.router import router as webhooks_router
+from modules.observability.router import router as observability_router
+from modules.enterprise_ai.router import router as enterprise_ai_router
+from modules.vault.router import router as vault_router
+
+app.add_exception_handler(Exception, global_exception_handler)
+app.add_exception_handler(HTTPException, global_exception_handler)
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
+
+# Add CorrelationMiddleware
+app.add_middleware(CorrelationMiddleware)
+
+# Versioned APIs v1
+app.include_router(identity_router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(org_router, prefix="/api/v1")
+app.include_router(ws_router, prefix="/api/v1")
+app.include_router(teams_router, prefix="/api/v1")
+app.include_router(projects_router, prefix="/api/v1")
+app.include_router(ownership_router, prefix="/api/v1")
+app.include_router(project_timeline_router, prefix="/api/v1")
+app.include_router(notifications_router, prefix="/api/v1")
+app.include_router(project_dna_router, prefix="/api/v1")
+app.include_router(decision_router, prefix="/api/v1")
+app.include_router(governance_router, prefix="/api/v1")
+app.include_router(system_router, prefix="/api/v1")
+app.include_router(connectors_router, prefix="/api/v1")
+app.include_router(plugins_router, prefix="/api/v1")
+app.include_router(marketplace_router, prefix="/api/v1")
+app.include_router(webhooks_router, prefix="/api/v1")
+app.include_router(observability_router, prefix="/api/v1")
+app.include_router(enterprise_ai_router, prefix="/api/v1")
+app.include_router(vault_router, prefix="/api/v1")
+
+# Legacy Fallback APIs
+app.include_router(identity_router)
 app.include_router(auth_router)
+app.include_router(enterprise_ai_router)
+app.include_router(org_router)
+app.include_router(ws_router)
+app.include_router(teams_router)
+app.include_router(projects_router)
+app.include_router(ownership_router)
+app.include_router(project_timeline_router)
+app.include_router(system_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -125,6 +187,9 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         except HTTPException as exc:
             return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
         response = await call_next(request)
+        if request.url.path.startswith("/api/v1"):
+            response.headers["API-Version"] = "v1"
+            response.headers["Deprecation"] = "false"
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         response.headers.setdefault("X-Frame-Options", "DENY")
         response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
@@ -224,33 +289,6 @@ async def startup():
     init_db()
     _migrate_report_columns()
     _migrate_project_columns()
-    
-    # Seed default admin user when ENVIRONMENT=development and users table is empty
-    env = os.getenv("ENVIRONMENT", "development")
-    if env == "development":
-        from database import SessionLocal, User
-        from auth.security import hash_password
-        db = SessionLocal()
-        try:
-            admin_user = db.query(User).filter(User.email == "admin@yowon.ai").first()
-            if not admin_user:
-                logger.info("[STARTUP] Seeding default administrator account admin@yowon.ai")
-                admin = User(
-                    full_name="YOWON Administrator",
-                    email="admin@yowon.ai",
-                    password_hash=hash_password("YowonAdmin2026!"),
-                    role="admin",
-                    status="active",
-                    email_verified=True
-                )
-                db.add(admin)
-                db.commit()
-                logger.info("[STARTUP] Seeding complete.")
-        except Exception as e:
-            db.rollback()
-            logger.error(f"[STARTUP] Seeding failed: {e}")
-        finally:
-            db.close()
 
 
 def _migrate_report_columns() -> None:
@@ -291,9 +329,33 @@ async def upload_project(
     demo_video_url: Optional[str] = Form(None),
     pdf_file: Optional[UploadFile] = File(None),
     ppt_file: Optional[UploadFile] = File(None),
+    x_workspace_id: Optional[str] = Header(None),
     db: Session = Depends(get_db),
 ):
     check_rate_limit("upload", client_ip(request))
+    
+    # Resolve workspace context
+    workspace_id = x_workspace_id
+    if not workspace_id:
+        # Fallback to authenticating the user and getting their PERSONAL workspace
+        auth_header = request.headers.get("Authorization")
+        if auth_header and auth_header.startswith("Bearer "):
+            try:
+                token = auth_header.split(" ")[1]
+                from auth.security import get_current_user
+                user = get_current_user(token, db)
+                from database import Workspace, WorkspaceMember
+                personal_ws = db.query(Workspace).filter(
+                    Workspace.type == "PERSONAL",
+                    Workspace.workspace_id.in_(
+                        db.query(WorkspaceMember.workspace_id).filter(WorkspaceMember.user_id == user.uuid)
+                    )
+                ).first()
+                if personal_ws:
+                    workspace_id = personal_ws.workspace_id
+            except Exception:
+                pass
+
     project_id = str(uuid.uuid4())
     pdf_path: Optional[str] = None
     ppt_path: Optional[str] = None
@@ -344,6 +406,7 @@ async def upload_project(
 
     project = Project(
         id=project_id,
+        workspace_id=workspace_id,
         name=safe_name,
         project_type="Auto Detect" if project_type == "Auto Detect" else normalize_project_type(project_type),
         description="",
@@ -2047,84 +2110,7 @@ async def health():
 
 # ── New Persistent Project & Evaluation APIs ──────────────────────────────────
 
-@app.get("/projects", summary="List all projects with pagination, sorting, and search")
-async def list_projects(
-    page: int = 1,
-    limit: int = 10,
-    search: Optional[str] = None,
-    sort_by: str = "created_at",
-    order: str = "desc",
-    db: Session = Depends(get_db)
-):
-    query = db.query(Project)
-    if search:
-        query = query.filter(Project.name.ilike(f"%{search}%") | Project.description.ilike(f"%{search}%"))
-    
-    sort_col = getattr(Project, sort_by, Project.created_at)
-    if order.lower() == "desc":
-        query = query.order_by(sort_col.desc())
-    else:
-        query = query.order_by(sort_col.asc())
-        
-    total = query.count()
-    items = query.offset((page - 1) * limit).limit(limit).all()
-    
-    return {
-        "total": total,
-        "page": page,
-        "limit": limit,
-        "projects": [
-            {
-                "id": p.id,
-                "name": p.name,
-                "project_type": p.project_type,
-                "description": p.description,
-                "github_url": p.github_url,
-                "status": p.status,
-                "created_at": p.created_at.isoformat() if p.created_at else None,
-                "updated_at": p.updated_at.isoformat() if p.updated_at else None
-            }
-            for p in items
-        ]
-    }
-
-
-@app.get("/projects/{id}", summary="Get specific project and repository metadata")
-async def get_project_by_id(id: str, db: Session = Depends(get_db)):
-    validate_project_id(id)
-    project = db.query(Project).filter(Project.id == id).first()
-    if not project:
-        raise HTTPException(status_code=404, detail="Project not found")
-        
-    return {
-        "id": project.id,
-        "name": project.name,
-        "project_type": project.project_type,
-        "description": project.description,
-        "github_url": project.github_url,
-        "demo_video_url": project.demo_video_url,
-        "pdf_path": project.pdf_path,
-        "ppt_path": project.ppt_path,
-        "status": project.status,
-        "created_at": project.created_at.isoformat() if project.created_at else None,
-        "updated_at": project.updated_at.isoformat() if project.updated_at else None,
-        "repositories": [
-            {
-                "repository_id": r.repository_id,
-                "github_repository_id": r.github_repository_id,
-                "github_url": r.github_url,
-                "owner": r.owner,
-                "repository_name": r.repository_name,
-                "default_branch": r.default_branch,
-                "visibility": r.visibility,
-                "stars": r.stars,
-                "forks": r.forks,
-                "open_issues": r.open_issues,
-                "license": r.license
-            }
-            for r in project.repositories
-        ]
-    }
+# ── Projects and Registry endpoints are routed to projects router ─────────────────
 
 
 @app.get("/projects/{id}/history", summary="Get evaluation runs history list for a project")
@@ -4034,9 +4020,17 @@ if __name__ == "__main__":
             "generated",
             "uploads",
             "logs",
+            "temp",
+            "cache",
+            "__pycache__",
             "*.db",
             "*.db-journal",
-            "*.sqlite"
+            "*.sqlite",
+            "*.sqlite-journal",
+            "*-wal",
+            "*-shm",
+            "*.pyc",
+            "*.pyo"
         ]
     )
 

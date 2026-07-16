@@ -2,26 +2,23 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Shield, Mail, Lock, Eye, EyeOff, Loader2, 
-  AlertTriangle, Chrome, Github, Terminal, CheckCircle2, ChevronRight
+  AlertTriangle, Chrome, Github, Terminal, CheckCircle2, 
+  ChevronRight, KeyRound, Globe, Server
 } from 'lucide-react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../components/auth/AuthContext'
 import SoftAurora from '../../components/effects/SoftAurora'
 
 export default function LoginPage() {
-  const { login, register, isAuthenticated } = useAuth()
+  const { login, isAuthenticated, providersMetadata, platformInitialized } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
 
   // Routing query parameter parsing
   const params = new URLSearchParams(location.search)
-  const redirectTo = params.get('redirect_to') || '/submit'
-
-  // View state: login | register | forgot | check_email
-  const [mode, setMode] = useState<'login' | 'register' | 'forgot' | 'check_email'>('login')
+  const redirectTo = params.get('redirect_to') || '/dashboard'
 
   // Form fields state
-  const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -34,23 +31,25 @@ export default function LoginPage() {
   const [capsLockActive, setCapsLockActive] = useState(false)
   const [shakeTrigger, setShakeTrigger] = useState(false)
 
-  // Redirect if already logged in
+  // Redirect if already logged in or if platform requires bootstrap setup
   useEffect(() => {
-    if (isAuthenticated) {
+    if (!platformInitialized) {
+      navigate('/register-organization')
+    } else if (isAuthenticated) {
       navigate(redirectTo, { replace: true })
     }
-  }, [isAuthenticated, navigate, redirectTo])
+  }, [isAuthenticated, platformInitialized, navigate, redirectTo])
 
   // Caps lock detection
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.getModifierState && e.getModifierState('CapsLock')) {
+    if (e.getModifierState('CapsLock')) {
       setCapsLockActive(true)
     } else {
       setCapsLockActive(false)
     }
   }
 
-  // Handle Login & Register submit
+  // Handle Login submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setFormError(null)
@@ -58,40 +57,22 @@ export default function LoginPage() {
 
     // Form Validation
     if (!email) {
-      setFormError('Please enter your email address')
+      setFormError('Please enter your email address.')
       triggerErrorState()
       return
     }
     if (!password) {
-      setFormError('Please enter your password')
-      triggerErrorState()
-      return
-    }
-    if (mode === 'register' && !fullName) {
-      setFormError('Please enter your full name')
-      triggerErrorState()
-      return
-    }
-    if (password.length < 8) {
-      setFormError('Password must be at least 8 characters long')
+      setFormError('Please enter your password.')
       triggerErrorState()
       return
     }
 
     setIsSubmitLoading(true)
     try {
-      if (mode === 'login') {
-        await login(email, password, rememberMe)
-        setSuccessMsg('System authorization granted. Welcome back.')
-      } else if (mode === 'register') {
-        await register(fullName, email, password)
-        // Auto transition to login or show verification email message
-        setSuccessMsg('Account created successfully. Authenticating session...')
-        // Auto-login registered user
-        await login(email, password, rememberMe)
-      }
+      await login(email, password, rememberMe)
+      setSuccessMsg('Session authorized successfully. Access granted.')
     } catch (err: any) {
-      const serverMsg = err.response?.data?.detail || err.response?.data?.message || 'Authentication connection failed'
+      const serverMsg = err.response?.data?.detail || err.response?.data?.message || 'Authentication connection failed.'
       setFormError(serverMsg)
       triggerErrorState()
     } finally {
@@ -104,232 +85,176 @@ export default function LoginPage() {
     setTimeout(() => setShakeTrigger(false), 500)
   }
 
-  // Handle forgot password request
-  const handleForgotPassword = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email) {
-      setFormError('Please enter your email address')
-      triggerErrorState()
-      return
-    }
-    setIsSubmitLoading(true)
-    try {
-      // Mock call or routes
-      setMode('check_email')
-    } catch (err: any) {
-      setFormError(err.response?.data?.detail || 'Request failed')
-    } finally {
-      setIsSubmitLoading(false)
-    }
+  // OAuth Provider buttons helper
+  const renderProviderButton = (providerKey: string, icon: React.ReactNode, label: string) => {
+    const meta = providersMetadata[providerKey] || { configured: false, status: 'Not Configured', tooltip: 'This authentication provider has not been configured by your administrator.' }
+    const isConfigured = meta.configured
+    
+    return (
+      <div className="relative group" key={providerKey}>
+        <button
+          type="button"
+          disabled={!isConfigured || isSubmitLoading}
+          onClick={() => {
+            if (isConfigured) {
+              // Trigger redirect to OAuth flow URL
+              window.location.href = `/api/v1/auth/oauth/${providerKey}/redirect`
+            }
+          }}
+          className={`w-full flex items-center justify-center gap-2 py-2 bg-white/[0.01] border rounded-lg text-[10px] font-mono transition-all ${
+            isConfigured 
+              ? 'hover:bg-white/[0.04] border-white/10 text-slate-300 hover:text-white cursor-pointer' 
+              : 'border-white/5 text-slate-600 cursor-not-allowed opacity-50'
+          }`}
+        >
+          {icon}
+          <span>{label}</span>
+          {!isConfigured && <span className="ml-1 text-[8px] opacity-75 font-semibold">({meta.status})</span>}
+        </button>
+        
+        {!isConfigured && (
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 hidden group-hover:block bg-black/95 border border-white/10 text-slate-400 p-2 rounded text-[8px] leading-normal font-sans shadow-xl text-center z-50">
+            {meta.tooltip}
+          </div>
+        )}
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen relative flex items-center justify-center p-4 overflow-hidden select-none bg-[#07070a]">
-      {/* Dynamic Animated background context */}
-      <SoftAurora colorStops={['#00F5FF', '#8B5CF6', '#4F46E5']} speed={0.4} amplitude={1.0} />
-
-      {/* Main Glass Login Card container */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 15 }}
-        animate={{ 
-          opacity: 1, 
-          scale: 1, 
-          y: 0,
-          x: shakeTrigger ? [-8, 8, -6, 6, -4, 4, 0] : 0
-        }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="w-full max-w-[440px] z-10 glass-card bg-slate-950/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 space-y-6 relative overflow-hidden group hover:border-cyan-500/20 transition-all duration-300"
-        onKeyDown={handleKeyDown}
-      >
-        {/* Soft aura card header glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-20 pointer-events-none" />
-
-        {/* Branding/Header Section */}
-        <div className="text-center space-y-2.5">
-          <div className="inline-flex items-center justify-center p-3 bg-white/5 border border-white/10 rounded-2xl text-cyan-400 shadow-inner group-hover:text-cyan-300 transition-colors">
-            <Shield size={32} className="stroke-[1.5]" />
-          </div>
-          <div>
-            <h1 className="text-lg font-display font-bold tracking-[0.2em] text-white">YOWON AI</h1>
-            <p className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest mt-0.5">AI Operating System</p>
-          </div>
-          {mode === 'login' && <p className="text-xs text-slate-400 max-w-xs mx-auto">Authorize connection to establish sandbox session.</p>}
-          {mode === 'register' && <p className="text-xs text-slate-400 max-w-xs mx-auto">Register credentials to provision sandbox node.</p>}
-          {mode === 'forgot' && <p className="text-xs text-slate-400 max-w-xs mx-auto">Enter registration email to recover credentials.</p>}
-        </div>
-
-        {/* Status Messages */}
-        <AnimatePresence mode="wait">
-          {formError && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="bg-red-500/10 border border-red-500/25 p-3 rounded-lg flex items-start gap-2.5 text-red-300 text-xs font-mono"
-            >
-              <AlertTriangle size={14} className="shrink-0 mt-0.5" />
-              <span>{formError}</span>
-            </motion.div>
-          )}
-
-          {successMsg && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="bg-emerald-500/10 border border-emerald-500/25 p-3 rounded-lg flex items-start gap-2.5 text-emerald-300 text-xs font-mono"
-            >
-              <CheckCircle2 size={14} className="shrink-0 mt-0.5" />
-              <span>{successMsg}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Auth Forms */}
-        {mode === 'check_email' ? (
-          <div className="space-y-4 py-2 text-center font-mono">
-            <p className="text-xs text-slate-300">
-              An email containing password recovery tokens has been dispatched to:
-            </p>
-            <div className="bg-white/5 border border-white/10 px-3.5 py-2 rounded text-cyan-300 text-xs break-all select-all font-mono">
-              {email}
+    <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#05070a] px-4 py-12">
+      {/* Background Aurora effects */}
+      <SoftAurora colorStops={['#00e5ff', '#3B82F6', '#8B5CF6']} amplitude={1.2} />
+      
+      <AnimatePresence>
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className={`relative z-10 w-full max-w-sm bg-[#0c0d13]/80 border border-white/[0.06] rounded-2xl p-6 shadow-2xl backdrop-blur-xl ${shakeTrigger ? 'animate-shake' : ''}`}
+        >
+          {/* Brand Header */}
+          <div className="text-center space-y-2 mb-6">
+            <div className="w-10 h-10 mx-auto rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-cyan-500/10">
+              <Shield className="text-white w-5 h-5" />
             </div>
-            <button
-              onClick={() => setMode('login')}
-              className="w-full justify-center glass-pill hover:bg-white/5 text-xs text-cyan-400 mt-2 py-2"
-            >
-              Return to Login
-            </button>
+            <h1 className="text-xl font-bold font-display tracking-tight text-white uppercase">YOWON AI</h1>
+            <p className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">Enterprise Operating System</p>
+            <p className="text-[10.5px] text-slate-400 max-w-xs mx-auto">
+              Securely authenticate to your organization workspace.
+            </p>
           </div>
-        ) : (
-          <form onSubmit={mode === 'forgot' ? handleForgotPassword : handleSubmit} className="space-y-4">
-            {mode === 'register' && (
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Full Name</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
-                    <Terminal size={14} />
-                  </span>
-                  <input
-                    type="text"
-                    required
-                    disabled={isSubmitLoading}
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="e.g. Alexander Pierce"
-                    className="w-full pl-9 pr-4 py-2 bg-white/[0.02] border border-white/10 rounded-lg text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:bg-white/[0.04] transition-all disabled:opacity-50"
-                  />
-                </div>
-              </div>
-            )}
 
+          {/* Form Content */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Email Address</label>
+              <label className="text-[9.5px] font-mono text-slate-400 uppercase tracking-wider block">Email Address</label>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
-                  <Mail size={14} />
-                </span>
-                <input
-                  type="email"
-                  required
-                  disabled={isSubmitLoading}
-                  autoComplete="username email"
+                <input 
+                  type="email" 
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g. operator@yowon.ai"
-                  className="w-full pl-9 pr-4 py-2 bg-white/[0.02] border border-white/10 rounded-lg text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:bg-white/[0.04] transition-all disabled:opacity-50"
+                  onKeyDown={handleKeyDown}
+                  placeholder="e.g. administrator@yourorg.com"
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 pl-9 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-all font-mono"
                 />
+                <Mail className="absolute left-3 top-2.5 text-slate-500 w-4 h-4" />
               </div>
             </div>
 
-            {mode !== 'forgot' && (
-              <div className="space-y-1.5">
-                <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Password</label>
-                  {mode === 'login' && (
-                    <button
-                      type="button"
-                      disabled={isSubmitLoading}
-                      onClick={() => setMode('forgot')}
-                      className="text-[9.5px] font-mono text-cyan-400/80 hover:text-cyan-300"
-                    >
-                      Forgot?
-                    </button>
-                  )}
-                </div>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
-                    <Lock size={14} />
-                  </span>
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    required
-                    disabled={isSubmitLoading}
-                    autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Minimum 8 characters"
-                    className="w-full pl-9 pr-10 py-2 bg-white/[0.02] border border-white/10 rounded-lg text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:bg-white/[0.04] transition-all disabled:opacity-50"
-                  />
-                  <button
-                    type="button"
-                    tabIndex={-1}
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-500 hover:text-slate-300"
-                  >
-                    {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                  </button>
-                </div>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-[9.5px] font-mono text-slate-400 uppercase tracking-wider">Password</label>
+                <a href="/forgot-password" className="text-[9.5px] font-mono text-cyan-400 hover:text-cyan-300 hover:underline transition-all">Forgot?</a>
               </div>
-            )}
+              <div className="relative">
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Minimum 8 characters"
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 pl-9 pr-9 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 transition-all font-mono"
+                />
+                <Lock className="absolute left-3 top-2.5 text-slate-500 w-4 h-4" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-2.5 text-slate-500 hover:text-slate-300 transition-all"
+                >
+                  {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                </button>
+              </div>
+            </div>
 
-            {/* Caps Lock warning */}
+            {/* Caps Lock warning indicator */}
             {capsLockActive && (
-              <div className="flex items-center gap-1.5 text-[10px] text-amber-400 font-mono">
-                <AlertTriangle size={11} />
-                <span>Warning: Caps Lock is active.</span>
+              <div className="flex items-center gap-2 text-amber-500 font-mono text-[9px] uppercase px-1">
+                <AlertTriangle size={12} />
+                <span>Warning: Caps Lock is active</span>
               </div>
             )}
 
-            {mode === 'login' && (
-              <div className="flex items-center">
-                <label className="flex items-center gap-2 cursor-pointer text-slate-400 hover:text-slate-300 font-mono text-[10px] uppercase select-none">
-                  <input
-                    type="checkbox"
-                    checked={rememberMe}
-                    disabled={isSubmitLoading}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded bg-white/5 border border-white/10 text-cyan-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5"
-                  />
-                  <span>Remember session context</span>
-                </label>
+            <div className="flex items-center justify-between pt-1">
+              <label className="flex items-center gap-2 cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="rounded border-white/10 bg-black/40 text-cyan-500 focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5"
+                />
+                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wide">Remember Session Context</span>
+              </label>
+            </div>
+
+            {/* Error & Success indicators */}
+            {formError && (
+              <div className="flex items-start gap-2.5 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 font-sans text-xs">
+                <AlertTriangle size={14} className="shrink-0 mt-0.5" />
+                <p className="leading-relaxed">{formError}</p>
               </div>
             )}
 
-            {/* Submit Action Button */}
+            {successMsg && (
+              <div className="flex items-start gap-2.5 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 font-sans text-xs">
+                <CheckCircle2 size={14} className="shrink-0 mt-0.5" />
+                <p className="leading-relaxed">{successMsg}</p>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={isSubmitLoading}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold rounded-lg text-xs tracking-wider transition-all disabled:opacity-50 select-none cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 border border-white/10 rounded-lg text-[11px] font-mono text-white uppercase tracking-wider shadow-lg shadow-cyan-500/5 hover:shadow-cyan-400/10 transition-all cursor-pointer disabled:opacity-50"
             >
               {isSubmitLoading ? (
                 <>
-                  <Loader2 size={14} className="animate-spin" />
-                  <span>AUTHENTICATING NODE...</span>
+                  <Loader2 size={13} className="animate-spin" />
+                  <span>Authorizing...</span>
                 </>
               ) : (
                 <>
-                  <span className="uppercase">{mode === 'login' ? 'Establish Session' : mode === 'register' ? 'Provision Sandbox' : 'Recover Sandbox'}</span>
-                  <ChevronRight size={14} />
+                  <span>Sign In</span>
+                  <ChevronRight size={13} />
                 </>
               )}
             </button>
           </form>
-        )}
 
-        {/* Third Party OAuth layouts */}
-        {mode === 'login' && (
-          <div className="space-y-4">
+          {/* Trust Indicators */}
+          <div className="mt-6 border-t border-white/5 pt-4">
+            <div className="grid grid-cols-2 gap-2 text-[8px] font-mono text-slate-500 uppercase tracking-wider">
+              <div className="flex items-center gap-1.5"><KeyRound size={10} className="text-cyan-500" /><span>Enterprise Security</span></div>
+              <div className="flex items-center gap-1.5"><Globe size={10} className="text-cyan-500" /><span>Workspace Isolation</span></div>
+              <div className="flex items-center gap-1.5"><Terminal size={10} className="text-cyan-500" /><span>End-to-End Audit</span></div>
+              <div className="flex items-center gap-1.5"><Server size={10} className="text-cyan-500" /><span>RBAC Protected</span></div>
+            </div>
+          </div>
+
+          {/* Third Party OAuth layouts */}
+          <div className="space-y-4 mt-6">
             <div className="relative flex items-center justify-center">
               <div className="absolute border-t border-white/5 w-full" />
               <span className="relative px-3 bg-[#0c0d13] text-[9.5px] font-mono text-slate-500 uppercase tracking-wider">
@@ -338,57 +263,19 @@ export default function LoginPage() {
             </div>
             
             <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                disabled={isSubmitLoading}
-                onClick={() => setFormError('OAuth authentication integrations are locked in demo sandbox')}
-                className="flex items-center justify-center gap-2 py-2 bg-white/[0.01] hover:bg-white/[0.04] border border-white/10 rounded-lg text-[10px] font-mono text-slate-300 hover:text-white transition-all cursor-pointer"
-              >
-                <Chrome size={12} className="text-cyan-400" />
-                <span>Google</span>
-              </button>
-              <button
-                type="button"
-                disabled={isSubmitLoading}
-                onClick={() => setFormError('OAuth authentication integrations are locked in demo sandbox')}
-                className="flex items-center justify-center gap-2 py-2 bg-white/[0.01] hover:bg-white/[0.04] border border-white/10 rounded-lg text-[10px] font-mono text-slate-300 hover:text-white transition-all cursor-pointer"
-              >
-                <Github size={12} className="text-indigo-400" />
-                <span>GitHub</span>
-              </button>
+              {renderProviderButton("google", <Chrome size={12} className="text-cyan-400" />, "Google")}
+              {renderProviderButton("github", <Github size={12} className="text-indigo-400" />, "GitHub")}
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/[0.04] text-center">
+              <span className="text-[10px] text-slate-500">New to YOWON AI? </span>
+              <Link to="/register" className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 font-bold transition-colors">
+                CREATE ACCOUNT
+              </Link>
             </div>
           </div>
-        )}
-
-        {/* Switch forms footer */}
-        <div className="text-center font-mono text-[10.5px] border-t border-white/5 pt-4">
-          {mode === 'login' ? (
-            <p className="text-slate-500">
-              New node operator?{' '}
-              <button
-                type="button"
-                disabled={isSubmitLoading}
-                onClick={() => { setMode('register'); setFormError(null); }}
-                className="text-cyan-400 hover:text-cyan-300 underline font-bold"
-              >
-                Register Node Credentials
-              </button>
-            </p>
-          ) : (
-            <p className="text-slate-500">
-              Already possess clearance?{' '}
-              <button
-                type="button"
-                disabled={isSubmitLoading}
-                onClick={() => { setMode('login'); setFormError(null); }}
-                className="text-cyan-400 hover:text-cyan-300 underline font-bold"
-              >
-                Establish Connection
-              </button>
-            </p>
-          )}
-        </div>
-      </motion.div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }

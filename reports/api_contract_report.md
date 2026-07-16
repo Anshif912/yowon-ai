@@ -1,0 +1,39 @@
+# API Contract Verification Matrix
+
+| Method | Endpoint | Frontend | Backend | Request | Response | Auth | Status |
+|---|---|---|---|---|---|---|---|
+| POST | /api/v1/auth/register | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/auth/login | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/auth/refresh | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/auth/logout | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/organizations | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/organizations | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/workspaces | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/workspaces | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/teams | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/teams | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/teams/{team_id}/invite | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/teams/join | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/projects | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/projects | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/projects/{project_id} | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /upload-project | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /evaluate/{project_id} | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /status/{project_id} | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /report/{project_id} | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /report/{project_id}/pdf | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/notifications | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| PUT | /api/v1/notifications/{id}/read | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/evaluations/{id}/provenance | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/evaluations/{id}/diagnostics | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /api/v1/evaluations/{id}/replay | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/evaluations/{id}/health | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /api/v1/evaluations/{id}/timeline | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /projects/{project_id}/repository | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /projects/{project_id}/import | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /projects/{project_id}/ownership | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /projects/{project_id}/ownership/request | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /projects/{project_id}/ownership/transfer | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /projects/{project_id}/timeline | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| GET | /projects/{project_id}/comments | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |
+| POST | /projects/{project_id}/comments | ✓ | ✓ | ✓ | ✓ | ✓ | **PASS** |

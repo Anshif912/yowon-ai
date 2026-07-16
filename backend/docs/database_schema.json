@@ -1,0 +1,6190 @@
+{
+  "organizations": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "slug",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "industry",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "logo_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "website_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "country",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "parent_org_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "organizations.uuid"
+      ]
+    },
+    {
+      "name": "owner_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "organization_members": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "organization_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "organizations.uuid"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "joined_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "workspaces": [
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "organization_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "organizations.uuid"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "visibility",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "owner_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "preferences",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "team_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "teams.uuid"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "slug",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "project_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "github_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "demo_video_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "pdf_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ppt_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "visibility",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "tags",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "category",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "default_branch",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "readme_snapshot",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "current_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "updated_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "repositories": [
+    {
+      "name": "repository_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "github_repository_id",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "github_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "owner",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "default_branch",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "visibility",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "stars",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "forks",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "open_issues",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "license",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "topics",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "repository_snapshots": [
+    {
+      "name": "snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repositories.repository_id"
+      ]
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "tree_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "branch",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "readme_snapshot",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_statistics",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "folder_structure",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "technology_summary",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dependency_summary",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "architecture_summary",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_commit_timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "snapshot_timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "previous_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repositories.repository_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repositories.repository_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "repository_files": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "size_bytes",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "language",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "symbols_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "imports_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "exports_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dependencies_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "contributors_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_modified",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "repository_folders": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "evaluations": [
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_duration",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "overall_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "verdict",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_status",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "llm_model",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "embedding_model",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "prompt_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "rubric_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "analysis_engine_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "parser_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "rule_registry_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "scoring_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_session_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_fingerprint",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "tree_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "default_branch",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "snapshot_timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "agent_evaluations": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "agent_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "execution_time",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "summary",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "evidence": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "category",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "finding",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "file_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "line_start",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "line_end",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "severity",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "evidence_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "evidence.id"
+      ]
+    },
+    {
+      "name": "priority",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "category",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "recommendation",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "expected_score_gain",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "estimated_effort",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "reports": [
+    {
+      "name": "report_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "report_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "file_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "file_size",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "checksum",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "generated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "generation_time",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "report_status",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "report_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "evaluation_events": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "event_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "duration",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "event_metadata",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "knowledge_graph_nodes": [
+    {
+      "name": "node_id",
+      "type": "VARCHAR(100)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "label",
+      "type": "VARCHAR(200)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "metadata_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "knowledge_graph_edges": [
+    {
+      "name": "edge_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "source",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "target",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "relation",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "repository_analyses": [
+    {
+      "name": "analysis_id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "analysis_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "engine_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "current_stage",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "progress",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ended_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "duration",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "error_message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "completed_stages",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "files_processed",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "current_module",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "expires_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "intelligence_module_statuses": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "analysis_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "repository_analyses.analysis_id"
+      ]
+    },
+    {
+      "name": "module_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "finished_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "duration_seconds",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "error_message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "cache_hit",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "files_processed",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "score_provenance": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "dimension",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "originating_agent",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "weight",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "raw_score",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "calibrated_score",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "reasoning",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "provenance_evidence": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "provenance_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "score_provenance.id"
+      ]
+    },
+    {
+      "name": "rule_id",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "file_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "line_start",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "line_end",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "pipeline_stage_timings": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "stage",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "ended_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "duration_seconds",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "agent_prompt_metrics": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "agent_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "prompt_size_chars",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "completion_size_chars",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "latency_seconds",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "pipeline_diagnostics": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "files_scanned",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ignored_files",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "symbols_indexed",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_count",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "graph_nodes",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "graph_edges",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "cache_hit",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "memory_usage_mb",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "context_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "prompt_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "score_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "narrative_digest",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "parsing_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "graphs_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "scoring_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "cache_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "database_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "llm_error",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "subsystem_health_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "users": [
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "full_name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "password_hash",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "avatar_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "email_verified",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_login",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "failed_login_attempts",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "account_locked",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "preferences",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "timezone",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "language",
+      "type": "VARCHAR(10)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "sso_provider",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "sso_external_id",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "mfa_enabled",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "mfa_secret",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "scim_synced",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "external_subject_id",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "idp_tenant",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "provisioning_source",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "permissions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "scope",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "roles": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "role_permissions": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "role_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "roles.uuid"
+      ]
+    },
+    {
+      "name": "permission_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "permissions.uuid"
+      ]
+    }
+  ],
+  "workspace_members": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "joined_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "workspace_invitations": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "username",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "invite_code",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "invited_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "expires_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "sessions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "device_name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "browser",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "os",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ip_address",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "token_jti",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "last_active",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "is_revoked",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "last_password_change",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "auth_method",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "risk_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "trusted_device",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "audit_logs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "actor_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "event_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "target_entity",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "previous_values",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "new_values",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "correlation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "ip_address",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "user_agent",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "organization_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "evaluation_audits": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "evaluations.evaluation_id"
+      ]
+    },
+    {
+      "name": "stage",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "actor",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "details",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "success",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "duration_seconds",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "teams": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "avatar_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "slug",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "team_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deleted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "team_members": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "team_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "teams.uuid"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "joined_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "invitation_source",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "permission_overrides",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "team_invitations": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "team_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "teams.uuid"
+      ]
+    },
+    {
+      "name": "email",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "username",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "invite_code",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "role",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "invited_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "expires_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    }
+  ],
+  "project_versions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "tag",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "branch",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "commit_sha",
+      "type": "VARCHAR(40)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "snapshot_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "readme_snapshot",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_metadata": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "languages",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "frameworks",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ai_models",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deployment_targets",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "database_systems",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "cloud_providers",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_size",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "file_count",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "commit_count",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "contributors",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "webhook_enabled",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_commit_message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_sync_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "extracted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "sync_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "sync_duration_ms",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "sync_error_message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_sync_job_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_sources": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "source_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "connection_details",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_sync_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_attachments": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "file_path",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "file_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "uploaded_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "uploaded_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "checksum",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "mime_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "size_bytes",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "download_count",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "linked_project_version_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "linked_evaluation_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_comments": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "parent_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "project_comments.uuid"
+      ]
+    },
+    {
+      "name": "content",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "is_pinned",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "is_resolved",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_comment_revisions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "comment_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "project_comments.uuid"
+      ]
+    },
+    {
+      "name": "content",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "edited_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "revision_number",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "ownership_records": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "owner_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "team_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "teams.uuid"
+      ]
+    },
+    {
+      "name": "organization_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "organizations.uuid"
+      ]
+    },
+    {
+      "name": "ownership_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ownership_percentage",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "verification_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "joined_date",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "source",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "ownership_requests": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "reason",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "supporting_evidence",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "resolved_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "resolved_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    }
+  ],
+  "ownership_transfers": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "current_owner_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "recipient_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "verification_code",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "expires_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "completed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "ownership_reviews": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "request_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "ownership_requests.uuid"
+      ]
+    },
+    {
+      "name": "transfer_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "ownership_transfers.uuid"
+      ]
+    },
+    {
+      "name": "similarity_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "reviewer_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "ownership_activity": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "event_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "actor_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "details",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "feature_flags": [
+    {
+      "name": "id",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "key",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "enabled",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "scope",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "organization_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "notifications": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "title",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "category",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "priority",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "severity",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "is_read",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "action_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "background_jobs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "job_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "priority",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "progress",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "result",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "error_log",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "completed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "similarity_policies": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_architecture",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_technology",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_workflow",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_api",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_security",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_repository",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_deployment",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "weight_documentation",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "threshold_high_similarity",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ignored_paths",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ignored_extensions",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_dna_snapshots": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "repository_snapshots.snapshot_id"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "health",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "extraction_report",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dna_manifest",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "overall_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "architecture_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "technology_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dependency_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "api_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ai_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "security_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "workflow_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deployment_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "documentation_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "metrics_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_dna_features": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "dna_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "project_dna_snapshots.uuid"
+      ]
+    },
+    {
+      "name": "dimension",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "feature_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "feature_name",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "value",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_dna_fingerprints": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "dna_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "project_dna_snapshots.uuid"
+      ]
+    },
+    {
+      "name": "fingerprint_algorithm_version",
+      "type": "VARCHAR(20)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "architecture_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "technology_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dependency_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "workflow_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "api_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deployment_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "documentation_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "security_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ai_hash",
+      "type": "VARCHAR(64)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "comparison_sessions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "user_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "source_project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "target_project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "source_dna_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "project_dna_snapshots.uuid"
+      ]
+    },
+    {
+      "name": "target_dna_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "project_dna_snapshots.uuid"
+      ]
+    },
+    {
+      "name": "overall_similarity",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "risk_level",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "recommendation",
+      "type": "VARCHAR(255)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ai_summary",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "reviewer_decision",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "reviewer_comment",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "assigned_reviewer_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "comparison_evidence": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "session_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "comparison_sessions.uuid"
+      ]
+    },
+    {
+      "name": "dimension",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "reference_uri",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "severity",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "decision_policies": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "min_documentation_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "min_security_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "min_testing_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "min_innovation_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "max_similarity_threshold",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "decision_registry": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "latest_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "decision_snapshots": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "overall_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "engineering_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "security_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "architecture_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "innovation_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "business_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "deployment_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "maintainability_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "overall_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "agent_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dna_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "policy_confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "lifecycle_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "verdict",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "repository_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dna_snapshot_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "similarity_policy_version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "decision_policy_version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "agent_versions_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "llm_model_version",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "evaluation_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "decision_evidence_store": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "dimension",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "confidence",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "reference_uri",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "severity",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "executive_recommendations": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "category",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "title",
+      "type": "VARCHAR(200)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "priority",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "impact",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "estimated_effort",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "business_value",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "technical_value",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "suggested_owner",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "source_ids_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "dependencies_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_risks": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "risk_type",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "severity",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "likelihood",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "impact_description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "mitigation_strategy",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "evidence_reference",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "governance_workflows": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "step_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "assigned_to",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "reviewed_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "reviewer_comments",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "compliance_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "governance_audit_trails": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "action",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "actor_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "details",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "project_simulations": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "project_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "projects.id"
+      ]
+    },
+    {
+      "name": "inputs_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "predicted_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "actual_outcome_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "executive_kpi_registry": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "metric_date",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "metric_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "value",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "enterprise_connectors": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "connector_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "capabilities_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "connector_syncs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "connector_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "enterprise_connectors.uuid"
+      ]
+    },
+    {
+      "name": "sync_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "records_synced",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "error_message",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "finished_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "connector_jobs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "connector_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "enterprise_connectors.uuid"
+      ]
+    },
+    {
+      "name": "job_status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "finished_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "connector_job_steps": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "job_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "connector_jobs.uuid"
+      ]
+    },
+    {
+      "name": "step_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "completed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "connector_checkpoints": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "connector_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "enterprise_connectors.uuid"
+      ]
+    },
+    {
+      "name": "checkpoint_token",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_sync_timestamp",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "secrets_vault": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "connector_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "enterprise_connectors.uuid"
+      ]
+    },
+    {
+      "name": "encrypted_secret",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "secret_key_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "current_version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "expires_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "updated_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "secret_versions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "secret_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "secrets_vault.uuid"
+      ]
+    },
+    {
+      "name": "encrypted_secret",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "secret_access_logs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "secret_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "secrets_vault.uuid"
+      ]
+    },
+    {
+      "name": "actor_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "accessed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "secret_rotation_policies": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "secret_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "secrets_vault.uuid"
+      ]
+    },
+    {
+      "name": "rotation_days",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "last_rotated",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "next_rotation",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "platform_plugins": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "publisher",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "is_verified",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "permissions_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "sandboxed",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "plugin_versions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "plugin_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "platform_plugins.uuid"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "min_backend_version",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "plugin_permissions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "plugin_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "platform_plugins.uuid"
+      ]
+    },
+    {
+      "name": "permission_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "granted",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "plugin_executions": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "plugin_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "platform_plugins.uuid"
+      ]
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "memory_usage_mb",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "cpu_usage_percent",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "exit_code",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "started_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "ended_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "marketplace_items": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "item_type",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "publisher",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "trust_score",
+      "type": "FLOAT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "downloads",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "is_verified",
+      "type": "BOOLEAN",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "marketplace_installs": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "marketplace_item_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "marketplace_items.uuid"
+      ]
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "installed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "enterprise_webhooks": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "workspace_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "workspaces.workspace_id"
+      ]
+    },
+    {
+      "name": "target_url",
+      "type": "VARCHAR(512)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "events_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "hmac_key",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "created_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "webhook_deliveries": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "webhook_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "enterprise_webhooks.uuid"
+      ]
+    },
+    {
+      "name": "event_name",
+      "type": "VARCHAR(100)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "response_code",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR(50)",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "payload_json",
+      "type": "TEXT",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "retry_count",
+      "type": "INTEGER",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    },
+    {
+      "name": "attempted_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ],
+  "webhook_replays": [
+    {
+      "name": "uuid",
+      "type": "VARCHAR(36)",
+      "primary_key": true,
+      "nullable": false,
+      "foreign_key": []
+    },
+    {
+      "name": "delivery_id",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "webhook_deliveries.uuid"
+      ]
+    },
+    {
+      "name": "requested_by",
+      "type": "VARCHAR(36)",
+      "primary_key": false,
+      "nullable": false,
+      "foreign_key": [
+        "users.uuid"
+      ]
+    },
+    {
+      "name": "replayed_at",
+      "type": "DATETIME",
+      "primary_key": false,
+      "nullable": true,
+      "foreign_key": []
+    }
+  ]
+}

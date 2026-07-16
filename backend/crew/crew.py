@@ -110,6 +110,20 @@ def _parse_agent_json_strict(raw: str, model_cls, name: str):
                 except Exception:
                     pass
 
+    # Sanitize lists according to Pydantic maxItems constraints to avoid validation errors
+    try:
+        schema = model_cls.model_json_schema()
+        properties = schema.get("properties", {})
+        for k, prop in properties.items():
+            if k in data:
+                val = data[k]
+                if isinstance(val, list):
+                    max_items = prop.get("maxItems")
+                    if max_items is not None and len(val) > max_items:
+                        data[k] = val[:max_items]
+    except Exception:
+        pass
+
     # Check required score field is present
     score_field = AGENT_SCORE_FIELDS.get(model_cls.__name__)
     if score_field and (score_field not in data or not isinstance(data.get(score_field), (int, float))):

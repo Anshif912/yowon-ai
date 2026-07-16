@@ -17,6 +17,22 @@ import {
   Trophy,
   Gavel,
   Plus,
+  Users,
+  Home,
+  Link2,
+  Key,
+  ShoppingBag,
+  Blocks,
+  Webhook,
+  Activity,
+  Bot,
+  Search,
+  BarChart3,
+  Radio,
+  Network,
+  TrendingUp,
+  FolderOpen,
+  Scale,
 } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 import { api } from '../../api/api'
@@ -58,7 +74,7 @@ export default function Sidebar() {
   // Extract projectId from URL
   const pathParts = pathname.split('/')
   let urlProjectId = ''
-  if (pathParts[1] && ['intelligence', 'evaluate', 'report'].includes(pathParts[1])) {
+  if (pathParts[1] && ['intelligence', 'evaluate', 'report', 'authenticity'].includes(pathParts[1])) {
     urlProjectId = pathParts[2] || ''
   }
 
@@ -117,37 +133,167 @@ export default function Sidebar() {
           label: 'Projects',
           icon: FolderGit2,
           to: '/projects',
-          active: pathname.startsWith('/projects'),
+          active: pathname.startsWith('/projects') && !pathname.match(/\/projects\/.+/),
           color: '#3B82F6',
         },
         {
-          label: 'Submit Project',
-          icon: Plus,
-          to: '/submit',
-          active: pathname.startsWith('/submit'),
-          color: '#10B981',
+          label: 'Teams',
+          icon: Users,
+          to: '/teams',
+          active: pathname.startsWith('/teams'),
+          color: '#8B5CF6',
         },
       ]
     },
     {
-      label: 'Intelligence',
+      label: 'Repository',
       items: [
         {
           label: 'Repository Intel',
           icon: Brain,
           to: projectId ? `/intelligence/${projectId}` : '/projects',
-          active: pathname.startsWith('/intelligence'),
+          active: pathname.startsWith('/intelligence/') && !['copilot', 'search', 'predictions', 'digital-twin', 'executive'].includes(pathname.split('/')[2]),
           disabled: !projectId,
           color: '#8B5CF6',
           badge: 'AI',
         },
         {
-          label: 'Jury Report',
-          icon: FileText,
-          to: projectId ? `/report/${projectId}` : '/projects',
-          active: pathname.startsWith('/report'),
+          label: 'Project DNA',
+          icon: FolderOpen,
+          to: projectId ? `/intelligence/${projectId}/story` : '/projects',
+          active: pathname.startsWith('/intelligence/') && pathname.split('/')[3] === 'story',
           disabled: !projectId,
-          color: '#6366F1',
+          color: '#A855F7',
+        },
+        {
+          label: 'Authenticity',
+          icon: Shield,
+          to: projectId ? `/authenticity/${projectId}` : '/projects',
+          active: pathname.startsWith('/authenticity'),
+          disabled: !projectId,
+          color: '#EF4444',
+        },
+        {
+          label: 'Decision Intelligence',
+          icon: Gavel,
+          to: '/jury',
+          active: pathname.startsWith('/jury'),
+          color: '#F97316',
+        },
+        {
+          label: 'Governance',
+          icon: Scale,
+          to: '/leaderboard',
+          active: pathname.startsWith('/leaderboard'),
+          color: '#EAB308',
+        },
+      ]
+    },
+    {
+      label: 'Enterprise',
+      items: [
+        {
+          label: 'Enterprise Overview',
+          icon: Home,
+          to: '/enterprise',
+          active: pathname === '/enterprise',
+          color: '#10B981',
+        },
+        {
+          label: 'Connectors',
+          icon: Link2,
+          to: '/enterprise/connectors',
+          active: pathname.startsWith('/enterprise/connectors'),
+          color: '#3B82F6',
+        },
+        {
+          label: 'Secrets Vault',
+          icon: Key,
+          to: '/enterprise/secrets',
+          active: pathname.startsWith('/enterprise/secrets'),
+          color: '#EF4444',
+        },
+        {
+          label: 'Marketplace',
+          icon: ShoppingBag,
+          to: '/enterprise/marketplace',
+          active: pathname.startsWith('/enterprise/marketplace'),
+          color: '#F97316',
+        },
+        {
+          label: 'Plugins',
+          icon: Blocks,
+          to: '/enterprise/plugins',
+          active: pathname.startsWith('/enterprise/plugins'),
+          color: '#8B5CF6',
+        },
+        {
+          label: 'Webhooks',
+          icon: Webhook,
+          to: '/enterprise/webhooks',
+          active: pathname.startsWith('/enterprise/webhooks'),
+          color: '#00E5FF',
+        },
+        {
+          label: 'Operations',
+          icon: Activity,
+          to: '/enterprise/operations',
+          active: pathname.startsWith('/enterprise/operations'),
+          color: '#10B981',
+        },
+      ]
+    },
+    {
+      label: 'Enterprise AI',
+      items: [
+        {
+          label: 'AI Overview',
+          icon: Home,
+          to: '/intelligence',
+          active: pathname === '/intelligence',
+          color: '#00E5FF',
+        },
+        {
+          label: 'Copilot',
+          icon: Bot,
+          to: '/intelligence/copilot',
+          active: pathname.startsWith('/intelligence/copilot'),
+          color: '#8B5CF6',
+        },
+        {
+          label: 'Knowledge Search',
+          icon: Search,
+          to: '/intelligence/search',
+          active: pathname.startsWith('/intelligence/search'),
+          color: '#A855F7',
+        },
+        {
+          label: 'Predictions',
+          icon: BarChart3,
+          to: '/intelligence/predictions',
+          active: pathname.startsWith('/intelligence/predictions'),
+          color: '#EAB308',
+        },
+        {
+          label: 'Digital Twin',
+          icon: Radio,
+          to: '/intelligence/digital-twin',
+          active: pathname.startsWith('/intelligence/digital-twin'),
+          color: '#00E5FF',
+        },
+        {
+          label: 'Workflow Studio',
+          icon: Network,
+          to: '/enterprise/workflows',
+          active: pathname.startsWith('/enterprise/workflows'),
+          color: '#10B981',
+        },
+        {
+          label: 'Executive Dashboard',
+          icon: TrendingUp,
+          to: '/intelligence/executive',
+          active: pathname.startsWith('/intelligence/executive'),
+          color: '#EF4444',
         },
       ]
     },
@@ -155,18 +301,12 @@ export default function Sidebar() {
       label: 'Manage',
       items: [
         {
-          label: 'History',
-          icon: Clock,
-          to: '/history',
-          active: pathname.startsWith('/history'),
-          color: '#F97316',
-        },
-        {
-          label: 'Leaderboard',
-          icon: Trophy,
-          to: '/leaderboard',
-          active: pathname.startsWith('/leaderboard'),
-          color: '#EAB308',
+          label: 'Reports',
+          icon: FileText,
+          to: projectId ? `/report/${projectId}` : '/projects',
+          active: pathname.startsWith('/report'),
+          disabled: !projectId,
+          color: '#6366F1',
         },
         {
           label: 'Settings',

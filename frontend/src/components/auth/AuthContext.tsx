@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react'
 import { api } from '../../api/api'
 
 // Configure API to send cookies for HTTPOnly refresh tokens
@@ -19,13 +19,28 @@ export interface UserProfile {
   language: string
 }
 
+export type AuthPhase = 
+  | 'NEW'
+  | 'AUTHENTICATING'
+  | 'AUTHENTICATED'
+  | 'WORKSPACE_LOADING'
+  | 'PERMISSIONS_LOADING'
+  | 'READY'
+  | 'EXPIRED'
+  | 'LOGGED_OUT'
+
 interface AuthContextType {
   user: UserProfile | null
   isAuthenticated: boolean
   loading: boolean
+  authPhase: AuthPhase
+  platformInitialized: boolean
+  providers: string[]
+  providersMetadata: Record<string, any>
+  setAuthPhase: (phase: AuthPhase) => void
   login: (email: string, password: string, rememberMe: boolean) => Promise<UserProfile>
+  setupOrganization: (orgName: string, adminName: string, email: string, password: string) => Promise<UserProfile>
   register: (fullName: string, email: string, password: string) => Promise<UserProfile>
-  privateLogout?: () => Promise<void>
   logout: () => Promise<void>
   updateProfile: (profile: Partial<UserProfile>) => Promise<UserProfile>
   changePassword: (oldPassword: string, newPassword: string) => Promise<void>
@@ -50,9 +65,18 @@ api.interceptors.request.use((config) => {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
+  const [authPhase, setAuthPhase] = useState<AuthPhase>('AUTHENTICATING')
+  const [platformInitialized, setPlatformInitialized] = useState(true)
+  const [providers, setProviders] = useState<string[]>(['password'])
+  const [providersMetadata, setProvidersMetadata] = useState<Record<string, any>>({})
 
   // Token refresh scheduler reference
-  const refreshTimerRef = React.useRef<any>(null)
+  const refreshTimerRef = useRef<any>(null)
+  const userRef = useRef<UserProfile | null>(null)
+
+  useEffect(() => {
+    userRef.current = user
+  }, [user])
 
   const clearRefreshTimer = useCallback(() => {
     if (refreshTimerRef.current) {
@@ -78,23 +102,50 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.warn('[Auth] Silent refresh failed, logging out user', err)
         memoryAccessToken = null
         setUser(null)
+        setAuthPhase('EXPIRED')
       }
     }, intervalMs)
   }, [clearRefreshTimer])
 
   // Explicit checkSession to restore session on boot
   const checkSession = useCallback(async (): Promise<UserProfile | null> => {
+    // If session is already active (e.g. from dynamic login/registration), do nothing
+    if (memoryAccessToken) {
+      setLoading(false)
+      return userRef.current
+    }
+    
     try {
-      // Fetch fresh access token via refresh token cookie
+      // 1. Fetch bootstrap configuration (detect first startup / admin state)
+      const bootstrapRes = await api.get(`/auth/bootstrap?t=${Date.now()}`)
+      const isInitialized = bootstrapRes.data.platform_initialized
+      setPlatformInitialized(isInitialized)
+      setProviders(bootstrapRes.data.providers)
+      setProvidersMetadata(bootstrapRes.data.providers_metadata)
+
+      if (!isInitialized) {
+        setAuthPhase('NEW')
+        setUser(null)
+        memoryAccessToken = null
+        return null
+      }
+
+      // 2. Fetch fresh access token via refresh token cookie
       const res = await api.post('/auth/refresh')
-      memoryAccessToken = res.data.access_token
-      setUser(res.data.user)
-      scheduleSilentRefresh()
+      if (!memoryAccessToken) {
+        memoryAccessToken = res.data.access_token
+        setUser(res.data.user)
+        setAuthPhase('READY')
+        scheduleSilentRefresh()
+      }
       return res.data.user
     } catch (err) {
       console.log('[Auth] No active persistent session found.')
-      memoryAccessToken = null
-      setUser(null)
+      if (!memoryAccessToken) {
+        memoryAccessToken = null
+        setUser(null)
+        setAuthPhase('LOGGED_OUT')
+      }
       return null
     } finally {
       setLoading(false)
@@ -108,12 +159,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string, rememberMe: boolean): Promise<UserProfile> => {
     setLoading(true)
+    setAuthPhase('AUTHENTICATING')
     try {
       const res = await api.post('/auth/login', { email, password })
       memoryAccessToken = res.data.access_token
       setUser(res.data.user)
+      setAuthPhase('READY')
       
-      // Save remember preference (e.g. cookie duration is handled in backend)
       if (rememberMe) {
         localStorage.setItem('yowon_remember_me', 'true')
       } else {
@@ -125,18 +177,66 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err: any) {
       setUser(null)
       memoryAccessToken = null
+      setAuthPhase('LOGGED_OUT')
       throw err
     } finally {
       setLoading(false)
     }
   }
 
-  const register = async (fullName: string, email: string, password: string): Promise<UserProfile> => {
+  const setupOrganization = async (
+    orgName: string,
+    adminName: string,
+    email: string,
+    password: string
+  ): Promise<UserProfile> => {
     setLoading(true)
+    setAuthPhase('AUTHENTICATING')
     try {
-      const res = await api.post('/auth/register', { full_name: fullName, email, password })
-      return res.data
+      const res = await api.post('/auth/setup-organization', {
+        organization_name: orgName,
+        admin_name: adminName,
+        email,
+        password
+      })
+      memoryAccessToken = res.data.access_token
+      setUser(res.data.user)
+      setPlatformInitialized(true)
+      setAuthPhase('READY')
+      scheduleSilentRefresh()
+      return res.data.user
     } catch (err) {
+      setUser(null)
+      memoryAccessToken = null
+      setAuthPhase('NEW')
+      throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const register = async (
+    fullName: string,
+    email: string,
+    password: string
+  ): Promise<UserProfile> => {
+    setLoading(true)
+    setAuthPhase('AUTHENTICATING')
+    try {
+      const res = await api.post('/auth/register', {
+        full_name: fullName,
+        email,
+        password
+      })
+      memoryAccessToken = res.data.access_token
+      setUser(res.data.user)
+      setAuthPhase('READY')
+      scheduleSilentRefresh()
+      return res.data.user
+    } catch (err) {
+      setUser(null)
+      memoryAccessToken = null
+      setAuthPhase('LOGGED_OUT')
       throw err
     } finally {
       setLoading(false)
@@ -146,6 +246,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = async () => {
     clearRefreshTimer()
     setLoading(true)
+    setAuthPhase('LOGGED_OUT')
     try {
       await api.post('/auth/logout')
     } catch (err) {
@@ -180,7 +281,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user,
     isAuthenticated: !!user,
     loading,
+    authPhase,
+    platformInitialized,
+    providers,
+    providersMetadata,
+    setAuthPhase,
     login,
+    setupOrganization,
     register,
     logout,
     updateProfile,

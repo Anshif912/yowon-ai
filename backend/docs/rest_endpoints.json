@@ -1,0 +1,1982 @@
+[
+  {
+    "path": "/openapi.json",
+    "methods": [
+      "GET",
+      "HEAD"
+    ],
+    "name": "openapi",
+    "summary": ""
+  },
+  {
+    "path": "/docs",
+    "methods": [
+      "GET",
+      "HEAD"
+    ],
+    "name": "swagger_ui_html",
+    "summary": ""
+  },
+  {
+    "path": "/docs/oauth2-redirect",
+    "methods": [
+      "GET",
+      "HEAD"
+    ],
+    "name": "swagger_ui_redirect",
+    "summary": ""
+  },
+  {
+    "path": "/redoc",
+    "methods": [
+      "GET",
+      "HEAD"
+    ],
+    "name": "redoc_html",
+    "summary": ""
+  },
+  {
+    "path": "/api/v1/auth/me",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_me",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/profile",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_profile",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/change-password",
+    "methods": [
+      "PUT"
+    ],
+    "name": "change_password",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/bootstrap",
+    "methods": [
+      "GET"
+    ],
+    "name": "bootstrap",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/setup-organization",
+    "methods": [
+      "POST"
+    ],
+    "name": "setup_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/register",
+    "methods": [
+      "POST"
+    ],
+    "name": "register",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/login",
+    "methods": [
+      "POST"
+    ],
+    "name": "login",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/refresh",
+    "methods": [
+      "POST"
+    ],
+    "name": "refresh",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/logout",
+    "methods": [
+      "POST"
+    ],
+    "name": "logout",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/logout-all",
+    "methods": [
+      "POST"
+    ],
+    "name": "logout_all",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/me",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_me",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/oauth/{provider}/redirect",
+    "methods": [
+      "GET"
+    ],
+    "name": "oauth_redirect",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/auth/oauth/{provider}/callback",
+    "methods": [
+      "GET"
+    ],
+    "name": "oauth_callback",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_organizations",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations/{org_uuid}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations/{org_uuid}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations/{org_uuid}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/organizations/{org_uuid}/restore",
+    "methods": [
+      "POST"
+    ],
+    "name": "restore_organization",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_workspaces",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}/invite",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_invitation",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}/invitations",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_invitations",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/join",
+    "methods": [
+      "POST"
+    ],
+    "name": "join_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/reject",
+    "methods": [
+      "POST"
+    ],
+    "name": "reject_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/workspaces/{workspace_id}/leave",
+    "methods": [
+      "POST"
+    ],
+    "name": "leave_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_teams",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}/dashboard",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_team_dashboard",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}/invite",
+    "methods": [
+      "POST"
+    ],
+    "name": "invite_member",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/join",
+    "methods": [
+      "POST"
+    ],
+    "name": "join_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/teams/{team_id}/leave",
+    "methods": [
+      "POST"
+    ],
+    "name": "leave_team",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_projects",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_project",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_project",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_project",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/import",
+    "methods": [
+      "POST"
+    ],
+    "name": "import_repository",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/version",
+    "methods": [
+      "POST"
+    ],
+    "name": "commit_version",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/versions",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_versions",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/search",
+    "methods": [
+      "GET"
+    ],
+    "name": "search_workspace",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/files",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_files",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/repository",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_repository",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/dna",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_dna",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/deployments",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_deployments",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/attachments",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_attachments",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/attachments",
+    "methods": [
+      "POST"
+    ],
+    "name": "add_attachment",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/comments",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_comments",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/comments",
+    "methods": [
+      "POST"
+    ],
+    "name": "add_comment",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/ownership",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_ownership_shares",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/ownership/request",
+    "methods": [
+      "POST"
+    ],
+    "name": "submit_claim_request",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/ownership/verify",
+    "methods": [
+      "POST"
+    ],
+    "name": "verify_claim",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/ownership/transfer",
+    "methods": [
+      "POST"
+    ],
+    "name": "request_or_accept_transfer",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{project_id}/timeline",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_timeline_feed",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/notifications",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_notifications",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/notifications/{id}/read",
+    "methods": [
+      "PUT"
+    ],
+    "name": "mark_notification_as_read",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/dna/search",
+    "methods": [
+      "GET"
+    ],
+    "name": "search_dna_features",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/dna/matrix",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_similarity_matrix",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/dna/analytics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_dna_analytics",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/system/metrics/dna",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_system_dna_metrics",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/dna/policies",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_similarity_policies",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/dna/policies",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_similarity_policy",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/compare/{id}/bookmark",
+    "methods": [
+      "POST"
+    ],
+    "name": "toggle_session_bookmark",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/compare/{id}/action",
+    "methods": [
+      "POST"
+    ],
+    "name": "submit_reviewer_decision",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/generate",
+    "methods": [
+      "POST"
+    ],
+    "name": "generate_dna_snapshot_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/snapshots",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_dna_snapshots",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_latest_dna_snapshot",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/latest",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_latest_dna_snapshot",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/compare/{targetProjectId}",
+    "methods": [
+      "POST"
+    ],
+    "name": "compare_projects_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/similarity",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_similarity_history",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/authenticity",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_authenticity",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/fingerprints",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_fingerprints",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/evidence",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_comparison_evidence",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/evolution",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_evolution",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/diff",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_dna_diff",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/drift",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_dna_drift",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_dna_graph",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/projects/{id}/dna/export",
+    "methods": [
+      "GET"
+    ],
+    "name": "export_project_dna_package",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/projects/{id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_unified_project_decision_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/recommendations",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_recommendations_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/portfolio",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_portfolio_intelligence_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/risks",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_risks_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/projects/{id}/simulate",
+    "methods": [
+      "POST"
+    ],
+    "name": "simulate_decision_score_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/assistant/query",
+    "methods": [
+      "POST"
+    ],
+    "name": "ask_yowon_assistant_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/{id}/timeline",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_decision_timeline_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/{id}/graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_decision_graph_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/{id}/assign",
+    "methods": [
+      "POST"
+    ],
+    "name": "assign_recommendation_owner_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/{id}/verify",
+    "methods": [
+      "POST"
+    ],
+    "name": "verify_recommendation_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/{id}/replay",
+    "methods": [
+      "GET"
+    ],
+    "name": "replay_decision_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/portfolio/trends",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_portfolio_trends_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/portfolio/benchmarks",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_portfolio_benchmarks_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/policies/simulate",
+    "methods": [
+      "POST"
+    ],
+    "name": "simulate_policy_changes_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/reports/executive",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_executive_reports_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/reports/security",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_security_reports_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/reports/innovation",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_innovation_reports_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/decision/reports/governance",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_governance_reports_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/governance/projects/{id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_governance_workflow_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/governance/policies",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_governance_policies_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/governance/review",
+    "methods": [
+      "POST"
+    ],
+    "name": "submit_governance_review_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_health",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/metrics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_metrics",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_connectors_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_connector_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors/{id}/sync",
+    "methods": [
+      "POST"
+    ],
+    "name": "sync_connector_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors/{id}/diagnostics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_connector_diagnostics_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors/{id}/rotate-secret",
+    "methods": [
+      "POST"
+    ],
+    "name": "rotate_secret_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/connectors/{id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_connector_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/plugins",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_installed_plugins_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/plugins/install",
+    "methods": [
+      "POST"
+    ],
+    "name": "install_plugin_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/plugins/uninstall",
+    "methods": [
+      "POST"
+    ],
+    "name": "uninstall_plugin_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/marketplace",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_marketplace_items_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/marketplace",
+    "methods": [
+      "POST"
+    ],
+    "name": "publish_marketplace_item_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/webhooks",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_webhooks_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/webhooks",
+    "methods": [
+      "POST"
+    ],
+    "name": "register_webhook_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/webhooks/replays",
+    "methods": [
+      "POST"
+    ],
+    "name": "replay_delivery_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/webhooks/deliveries",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_webhook_deliveries",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/webhooks/{id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_webhook_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/system/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_system_health_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/system/metrics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_system_metrics_endpoint",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/enterprise-ai/copilot/query",
+    "methods": [
+      "POST"
+    ],
+    "name": "copilot_query",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/enterprise-ai/knowledge/search",
+    "methods": [
+      "GET"
+    ],
+    "name": "knowledge_search",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_secrets",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_secret",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets/{id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_secret_value",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets/{id}/rotate",
+    "methods": [
+      "POST"
+    ],
+    "name": "rotate_secret",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets/{id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_secret",
+    "summary": null
+  },
+  {
+    "path": "/api/v1/vault/secrets/{id}/logs",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_secret_access_logs",
+    "summary": null
+  },
+  {
+    "path": "/auth/me",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_me",
+    "summary": null
+  },
+  {
+    "path": "/auth/profile",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_profile",
+    "summary": null
+  },
+  {
+    "path": "/auth/change-password",
+    "methods": [
+      "PUT"
+    ],
+    "name": "change_password",
+    "summary": null
+  },
+  {
+    "path": "/auth/bootstrap",
+    "methods": [
+      "GET"
+    ],
+    "name": "bootstrap",
+    "summary": null
+  },
+  {
+    "path": "/auth/setup-organization",
+    "methods": [
+      "POST"
+    ],
+    "name": "setup_organization",
+    "summary": null
+  },
+  {
+    "path": "/auth/register",
+    "methods": [
+      "POST"
+    ],
+    "name": "register",
+    "summary": null
+  },
+  {
+    "path": "/auth/login",
+    "methods": [
+      "POST"
+    ],
+    "name": "login",
+    "summary": null
+  },
+  {
+    "path": "/auth/refresh",
+    "methods": [
+      "POST"
+    ],
+    "name": "refresh",
+    "summary": null
+  },
+  {
+    "path": "/auth/logout",
+    "methods": [
+      "POST"
+    ],
+    "name": "logout",
+    "summary": null
+  },
+  {
+    "path": "/auth/logout-all",
+    "methods": [
+      "POST"
+    ],
+    "name": "logout_all",
+    "summary": null
+  },
+  {
+    "path": "/auth/me",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_me",
+    "summary": null
+  },
+  {
+    "path": "/auth/oauth/{provider}/redirect",
+    "methods": [
+      "GET"
+    ],
+    "name": "oauth_redirect",
+    "summary": null
+  },
+  {
+    "path": "/auth/oauth/{provider}/callback",
+    "methods": [
+      "GET"
+    ],
+    "name": "oauth_callback",
+    "summary": null
+  },
+  {
+    "path": "/enterprise-ai/copilot/query",
+    "methods": [
+      "POST"
+    ],
+    "name": "copilot_query",
+    "summary": null
+  },
+  {
+    "path": "/enterprise-ai/knowledge/search",
+    "methods": [
+      "GET"
+    ],
+    "name": "knowledge_search",
+    "summary": null
+  },
+  {
+    "path": "/organizations",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_organizations",
+    "summary": null
+  },
+  {
+    "path": "/organizations",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_organization",
+    "summary": null
+  },
+  {
+    "path": "/organizations/{org_uuid}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_organization",
+    "summary": null
+  },
+  {
+    "path": "/organizations/{org_uuid}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_organization",
+    "summary": null
+  },
+  {
+    "path": "/organizations/{org_uuid}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_organization",
+    "summary": null
+  },
+  {
+    "path": "/organizations/{org_uuid}/restore",
+    "methods": [
+      "POST"
+    ],
+    "name": "restore_organization",
+    "summary": null
+  },
+  {
+    "path": "/workspaces",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_workspaces",
+    "summary": null
+  },
+  {
+    "path": "/workspaces",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}/invite",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_invitation",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}/invitations",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_invitations",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/join",
+    "methods": [
+      "POST"
+    ],
+    "name": "join_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/reject",
+    "methods": [
+      "POST"
+    ],
+    "name": "reject_workspace",
+    "summary": null
+  },
+  {
+    "path": "/workspaces/{workspace_id}/leave",
+    "methods": [
+      "POST"
+    ],
+    "name": "leave_workspace",
+    "summary": null
+  },
+  {
+    "path": "/teams",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_teams",
+    "summary": null
+  },
+  {
+    "path": "/teams",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_team",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_team",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}/dashboard",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_team_dashboard",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_team",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_team",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}/invite",
+    "methods": [
+      "POST"
+    ],
+    "name": "invite_member",
+    "summary": null
+  },
+  {
+    "path": "/teams/join",
+    "methods": [
+      "POST"
+    ],
+    "name": "join_team",
+    "summary": null
+  },
+  {
+    "path": "/teams/{team_id}/leave",
+    "methods": [
+      "POST"
+    ],
+    "name": "leave_team",
+    "summary": null
+  },
+  {
+    "path": "/projects",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_projects",
+    "summary": null
+  },
+  {
+    "path": "/projects",
+    "methods": [
+      "POST"
+    ],
+    "name": "create_project",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}",
+    "methods": [
+      "PUT"
+    ],
+    "name": "update_project",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_project",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/import",
+    "methods": [
+      "POST"
+    ],
+    "name": "import_repository",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/version",
+    "methods": [
+      "POST"
+    ],
+    "name": "commit_version",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/versions",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_versions",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/search",
+    "methods": [
+      "GET"
+    ],
+    "name": "search_workspace",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/files",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_files",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/repository",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_repository",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/dna",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_dna",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/deployments",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_deployments",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/attachments",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_attachments",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/attachments",
+    "methods": [
+      "POST"
+    ],
+    "name": "add_attachment",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/comments",
+    "methods": [
+      "GET"
+    ],
+    "name": "list_comments",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/comments",
+    "methods": [
+      "POST"
+    ],
+    "name": "add_comment",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/ownership",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_ownership_shares",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/ownership/request",
+    "methods": [
+      "POST"
+    ],
+    "name": "submit_claim_request",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/ownership/verify",
+    "methods": [
+      "POST"
+    ],
+    "name": "verify_claim",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/ownership/transfer",
+    "methods": [
+      "POST"
+    ],
+    "name": "request_or_accept_transfer",
+    "summary": null
+  },
+  {
+    "path": "/projects/{project_id}/timeline",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_timeline_feed",
+    "summary": null
+  },
+  {
+    "path": "/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_health",
+    "summary": null
+  },
+  {
+    "path": "/metrics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_metrics",
+    "summary": null
+  },
+  {
+    "path": "/upload-project",
+    "methods": [
+      "POST"
+    ],
+    "name": "upload_project",
+    "summary": "Upload project files and metadata"
+  },
+  {
+    "path": "/evaluate/{project_id}",
+    "methods": [
+      "POST"
+    ],
+    "name": "trigger_evaluation",
+    "summary": "Trigger AI evaluation"
+  },
+  {
+    "path": "/status/{project_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_status",
+    "summary": "Check evaluation status"
+  },
+  {
+    "path": "/progress/{project_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_progress",
+    "summary": "Poll evaluation progress"
+  },
+  {
+    "path": "/progress/{project_id}/stream",
+    "methods": [
+      "GET"
+    ],
+    "name": "progress_stream",
+    "summary": "SSE evaluation progress stream"
+  },
+  {
+    "path": "/projects/{project_id}/knowledge-graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_knowledge_graph",
+    "summary": "Get Repository Knowledge Graph"
+  },
+  {
+    "path": "/projects/{project_id}/knowledge-graph/path",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_knowledge_graph_path",
+    "summary": "Get shortest path between two nodes in Knowledge Graph"
+  },
+  {
+    "path": "/report/{project_id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_report",
+    "summary": "Get full evaluation report as JSON"
+  },
+  {
+    "path": "/report/{project_id}/pdf",
+    "methods": [
+      "GET"
+    ],
+    "name": "download_pdf",
+    "summary": "Download the PDF report"
+  },
+  {
+    "path": "/",
+    "methods": [
+      "GET"
+    ],
+    "name": "root",
+    "summary": null
+  },
+  {
+    "path": "/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "health",
+    "summary": null
+  },
+  {
+    "path": "/projects/{id}/history",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_project_evaluation_history",
+    "summary": "Get evaluation runs history list for a project"
+  },
+  {
+    "path": "/evaluations/{id}/history",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_history_by_eval_id",
+    "summary": "Get evaluation run history via evaluation ID"
+  },
+  {
+    "path": "/evaluations/{id}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_by_id",
+    "summary": "Get detailed evaluation run results, snapshot, evidence, recommendations, and events"
+  },
+  {
+    "path": "/evaluations/{id}",
+    "methods": [
+      "DELETE"
+    ],
+    "name": "delete_evaluation",
+    "summary": "Delete specific evaluation run"
+  },
+  {
+    "path": "/evaluations/{id}/compare/{other}",
+    "methods": [
+      "GET"
+    ],
+    "name": "compare_evaluations",
+    "summary": "Compare two evaluation runs and return structural differences"
+  },
+  {
+    "path": "/evaluations/{id}/repository-intelligence/status",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_repository_intelligence_status",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/repository-intelligence/stream",
+    "methods": [
+      "GET"
+    ],
+    "name": "stream_repository_intelligence_progress",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/repository-tree",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_tree",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/architecture",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_architecture",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/technology-graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_technology_graph",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/dependency-graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_dependency_graph",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/call-graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_call_graph",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/knowledge-graph",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_knowledge_graph",
+    "summary": "Get Knowledge Graph via Evaluation ID"
+  },
+  {
+    "path": "/evaluations/{id}/metrics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_metrics",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_health",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/capabilities",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_capabilities",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/execution-intelligence",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_execution_intelligence",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/ai-intelligence",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_ai_intelligence",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/dependency-intelligence",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_dependency_intelligence",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/repository-story",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_repository_story",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/executive-summary",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_executive_summary",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/trace-nodes",
+    "methods": [
+      "GET"
+    ],
+    "name": "trace_evaluation_nodes",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/heatmap",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_heatmap",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/evidence",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_evidence",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/recommendations",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_recommendations",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/timeline",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_timeline",
+    "summary": null
+  },
+  {
+    "path": "/evaluations/{id}/file/{path:path}",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_file_content",
+    "summary": null
+  },
+  {
+    "path": "/webhooks/github",
+    "methods": [
+      "POST"
+    ],
+    "name": "github_webhook",
+    "summary": "GitHub repository commit webhook endpoint"
+  },
+  {
+    "path": "/webhooks/gitlab",
+    "methods": [
+      "POST"
+    ],
+    "name": "gitlab_webhook",
+    "summary": "GitLab repository commit webhook endpoint"
+  },
+  {
+    "path": "/webhooks/bitbucket",
+    "methods": [
+      "POST"
+    ],
+    "name": "bitbucket_webhook",
+    "summary": "Bitbucket repository commit webhook endpoint"
+  },
+  {
+    "path": "/api/v1/evaluations/{id}/provenance",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_score_provenance",
+    "summary": "Get score provenance details"
+  },
+  {
+    "path": "/api/v1/evaluations/{id}/diagnostics",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_pipeline_diagnostics",
+    "summary": "Get pipeline diagnostics payload"
+  },
+  {
+    "path": "/api/v1/evaluations/{id}/replay",
+    "methods": [
+      "POST"
+    ],
+    "name": "replay_evaluation",
+    "summary": "Replay evaluation with exact original code snapshot & settings"
+  },
+  {
+    "path": "/api/v1/evaluations/{id}/health",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_evaluation_health_v1",
+    "summary": "Get overall Evaluation Health report object"
+  },
+  {
+    "path": "/api/v1/evaluations/{id}/timeline",
+    "methods": [
+      "GET"
+    ],
+    "name": "get_pipeline_timeline",
+    "summary": "Get detailed chronological pipeline execution timeline"
+  }
+]

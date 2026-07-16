@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { Search, ChevronRight, Home, Brain, FolderGit2, FileText, Slash, Plus, Folder, ChevronDown } from 'lucide-react'
 import { api } from '../../api/api'
 import { useAuth } from '../auth/AuthContext'
+import { useWorkspace } from '../auth/WorkspaceContext'
 
 interface Project {
   id: string
@@ -27,10 +28,13 @@ export default function Topbar() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const { user } = useAuth()
+  const { workspaces, currentWorkspace, selectWorkspace } = useWorkspace()
 
   const [projects, setProjects] = useState<Project[]>([])
   const [projectDropdownOpen, setProjectDropdownOpen] = useState(false)
+  const [workspaceDropdownOpen, setWorkspaceDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const workspaceDropdownRef = useRef<HTMLDivElement>(null)
 
   const pathParts = pathname.split('/').filter(Boolean)
   let activeProjectId = ''
@@ -38,8 +42,9 @@ export default function Topbar() {
     activeProjectId = pathParts[1] || ''
   }
 
-  // Load projects for dropdown
+  // Load projects for dropdown - reloads when workspace changes!
   useEffect(() => {
+    setProjects([])
     api.get('/projects?page=1&size=100')
       .then(res => {
         if (res.data?.projects) {
@@ -51,13 +56,16 @@ export default function Topbar() {
         }
       })
       .catch(() => {})
-  }, [])
+  }, [currentWorkspace])
 
   // Close dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setProjectDropdownOpen(false)
+      }
+      if (workspaceDropdownRef.current && !workspaceDropdownRef.current.contains(e.target as Node)) {
+        setWorkspaceDropdownOpen(false)
       }
     }
     document.addEventListener('mousedown', handler)
@@ -100,10 +108,64 @@ export default function Topbar() {
       }}
     >
       {/* Left: Breadcrumb */}
-      <nav className="breadcrumb-nav">
+      <nav className="breadcrumb-nav flex items-center gap-3">
         <Link to="/dashboard" className="text-zinc-600 hover:text-zinc-400 transition-colors">
           <Home size={12} />
         </Link>
+
+        <span className="sep text-zinc-800">/</span>
+
+        {/* Workspace Switcher */}
+        <div className="relative" ref={workspaceDropdownRef}>
+          <button
+            onClick={() => setWorkspaceDropdownOpen(!workspaceDropdownOpen)}
+            className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.02] border border-white/5 hover:border-white/15 text-zinc-300 transition-all cursor-pointer font-mono text-[10px] font-bold"
+          >
+            <Brain size={11} className="text-cyan-400" />
+            <span className="truncate max-w-[120px]">{currentWorkspace?.name || 'Workspace'}</span>
+            <ChevronDown size={8} className="opacity-60" />
+          </button>
+          {workspaceDropdownOpen && (
+            <div className="absolute left-0 top-7 w-60 bg-zinc-950/95 border border-white/10 rounded-xl shadow-2xl p-1.5 z-50 font-mono text-[11px]">
+              <div className="px-2.5 py-1.5 text-[9px] text-zinc-600 uppercase tracking-wider border-b border-white/5 mb-1 flex justify-between items-center">
+                <span>Switch Workspace</span>
+                {currentWorkspace?.type && (
+                  <span className="px-1 py-0.5 rounded bg-cyan-950 text-cyan-400 text-[8px] font-bold uppercase">{currentWorkspace.type}</span>
+                )}
+              </div>
+              <div className="max-h-44 overflow-y-auto space-y-0.5">
+                {workspaces.map(w => (
+                  <button
+                    key={w.workspace_id}
+                    onClick={() => {
+                      selectWorkspace(w.workspace_id)
+                      setWorkspaceDropdownOpen(false)
+                    }}
+                    className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-left cursor-pointer transition-colors ${
+                      w.workspace_id === currentWorkspace?.workspace_id
+                        ? 'bg-cyan-500/10 text-cyan-200 font-bold'
+                        : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <span className="truncate max-w-[140px]">{w.name}</span>
+                    <span className="text-[8px] px-1 py-0.5 rounded bg-zinc-800 text-zinc-500 uppercase font-black">{w.type.toLowerCase()}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="border-t border-white/5 pt-1 mt-1">
+                <Link
+                  to="/settings"
+                  onClick={() => setWorkspaceDropdownOpen(false)}
+                  className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors text-[10px]"
+                >
+                  <Plus size={11} />
+                  Manage Workspaces
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+
         {segments.map((seg, i) => (
           <span key={i} className="flex items-center gap-1.5">
             <span className="sep">

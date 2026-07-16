@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-07-11T18:09:07.552971",
+  "bulk_insert_duration_ms": 87.28790283203125,
+  "query_latency_ms": 2.5186538696289062,
+  "memory_before_mb": 361.953125,
+  "memory_after_mb": 364.53515625,
+  "memory_diff_mb": 2.58203125,
+  "cpu_utilization_start": 40.8,
+  "cpu_utilization_end": 27.9,
+  "projects_count": 100,
+  "workspaces_count": 20,
+  "teams_count": 50,
+  "repository_files_count": 500
+}

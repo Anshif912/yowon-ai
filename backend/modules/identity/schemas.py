@@ -2,17 +2,14 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field
 
-
 class UserRegister(BaseModel):
     email: str = Field(..., description="Email address of the user")
     password: str = Field(..., min_length=8, description="Password must be at least 8 characters long")
     full_name: str = Field(..., min_length=1, max_length=100)
 
-
 class UserLogin(BaseModel):
     email: str
     password: str
-
 
 class UserResponse(BaseModel):
     uuid: str
@@ -31,12 +28,10 @@ class UserResponse(BaseModel):
     class Config:
         from_attributes = True
 
-
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserResponse
-
 
 class ProfileUpdate(BaseModel):
     full_name: Optional[str] = None
@@ -45,21 +40,17 @@ class ProfileUpdate(BaseModel):
     timezone: Optional[str] = None
     language: Optional[str] = None
 
-
 class PasswordChange(BaseModel):
     old_password: str
     new_password: str = Field(..., min_length=8)
 
-
 class ForgotPasswordRequest(BaseModel):
     email: str
-
 
 class ResetPasswordRequest(BaseModel):
     email: str
     token: str
     new_password: str = Field(..., min_length=8)
-
 
 class VerifyEmailRequest(BaseModel):
     token: str

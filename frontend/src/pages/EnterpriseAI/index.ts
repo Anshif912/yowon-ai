@@ -1,0 +1,7 @@
+export { default as EnterpriseAIOverviewPage } from './EnterpriseAIOverviewPage'
+export { default as CopilotWorkspacePage } from './CopilotWorkspacePage'
+export { default as KnowledgeSearchPage } from './KnowledgeSearchPage'
+export { default as PredictionsPage } from './PredictionsPage'
+export { default as DigitalTwinPage } from './DigitalTwinPage'
+export { default as WorkflowStudioPage } from './WorkflowStudioPage'
+export { default as ExecutiveDashboardPage } from './ExecutiveDashboardPage'
