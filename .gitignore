@@ -109,3 +109,4 @@ ha_frontend_ref/
 .env.local
 *.local
 .env.*
+!.env.example
