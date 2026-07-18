@@ -238,3 +238,61 @@ export interface PipelineAgent {
 }
 
 
+export interface Recommendation {
+  level?: string
+  estimated_effort_days?: number
+  description: string
+  priority?: string
+}
+
+export interface Risk {
+  level: string
+  description: string
+  category?: string
+}
+
+export interface ArchitectureFinding {
+  pattern: string
+  description: string
+  files?: string[]
+}
+
+export interface Improvement {
+  level: string
+  description: string
+  estimated_effort_days?: number
+}
+
+export interface Decision {
+  status: string
+  final_reason: string
+  approved_by?: string
+}
+
+export interface Dependency {
+  name: string
+  type: string
+  version?: string
+}
+
+export interface Pattern {
+  name: string
+  type: string
+}
+
+export interface StoryNode {
+  uuid: string
+  title: string
+  content: string
+}
+
+export interface RepositoryInsight {
+  engineering: number
+  security: number
+  architecture: number
+  innovation: number
+  compliance: number
+}
+
+
+

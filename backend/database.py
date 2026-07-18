@@ -1680,6 +1680,288 @@ class WebhookReplay(Base):
     replayed_at: datetime = Column(DateTime, default=datetime.utcnow)
 
 
+class GitOrganization(Base):
+    """Represents a VCS organization/profile synced with YOWON AI."""
+    __tablename__ = "git_organizations"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    workspace_id: str = Column(String(36), ForeignKey("workspaces.workspace_id"), nullable=False, index=True)
+    provider_type: str = Column(String(50), default="github")
+    github_id: Optional[int] = Column(Integer, unique=True, nullable=True)
+    name: str = Column(String(255), nullable=False)
+    login: str = Column(String(100), unique=True, index=True, nullable=False)
+    avatar_url: Optional[str] = Column(String(512), nullable=True)
+    html_url: Optional[str] = Column(String(512), nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at: datetime = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+
+class GitRepository(Base):
+    """Represents a VCS repository synchronized with YOWON AI."""
+    __tablename__ = "git_repositories"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    organization_id: Optional[str] = Column(String(36), ForeignKey("git_organizations.uuid"), nullable=True, index=True)
+    workspace_id: str = Column(String(36), ForeignKey("workspaces.workspace_id"), nullable=False, index=True)
+    github_id: Optional[int] = Column(Integer, unique=True, nullable=True)
+    name: str = Column(String(255), nullable=False)
+    full_name: str = Column(String(255), unique=True, nullable=False)
+    description: Optional[str] = Column(Text, nullable=True)
+    html_url: str = Column(String(512), nullable=False)
+    private: bool = Column(Boolean, default=False, nullable=False)
+    language: Optional[str] = Column(String(100), nullable=True)
+    stars_count: int = Column(Integer, default=0, nullable=False)
+    forks_count: int = Column(Integer, default=0, nullable=False)
+    open_issues_count: int = Column(Integer, default=0, nullable=False)
+    watchers_count: int = Column(Integer, default=0, nullable=False)
+    size: int = Column(Integer, default=0, nullable=False)
+    default_branch: str = Column(String(100), default="main", nullable=False)
+    license: Optional[str] = Column(String(100), nullable=True)
+    is_archived: bool = Column(Boolean, default=False, nullable=False)
+    last_sync_at: Optional[datetime] = Column(DateTime, nullable=True)
+    last_commit_at: Optional[datetime] = Column(DateTime, nullable=True)
+    evaluation_policy: str = Column(String(50), default="MANUAL", nullable=False)
+    watchlist_active: bool = Column(Boolean, default=False, nullable=False)
+    watchlist_rules: Optional[str] = Column(Text, nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at: datetime = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+
+class GitBranch(Base):
+    """Represents a branch inside a GitRepository."""
+    __tablename__ = "git_branches"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    name: str = Column(String(255), nullable=False)
+    sha: str = Column(String(40), nullable=False)
+    is_default: bool = Column(Boolean, default=False, nullable=False)
+
+
+class GitCommit(Base):
+    """Represents a git commit log in a GitRepository."""
+    __tablename__ = "git_commits"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    sha: str = Column(String(40), index=True, nullable=False)
+    message: str = Column(Text, nullable=False)
+    author_name: str = Column(String(255), nullable=False)
+    author_email: str = Column(String(255), nullable=False)
+    author_date: datetime = Column(DateTime, nullable=False)
+    html_url: Optional[str] = Column(String(512), nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class GitPullRequest(Base):
+    """Represents a VCS Pull Request and associated risk impact metrics."""
+    __tablename__ = "git_pull_requests"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    github_id: int = Column(Integer, nullable=False)
+    number: int = Column(Integer, nullable=False)
+    title: str = Column(String(255), nullable=False)
+    state: str = Column(String(50), nullable=False)
+    user_login: str = Column(String(100), nullable=False)
+    html_url: str = Column(String(512), nullable=False)
+    merge_risk: float = Column(Float, default=0.0, nullable=False)
+    deployment_risk: float = Column(Float, default=0.0, nullable=False)
+    architecture_impact: Optional[str] = Column(Text, nullable=True)
+    security_impact: Optional[str] = Column(Text, nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at: datetime = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    closed_at: Optional[datetime] = Column(DateTime, nullable=True)
+    merged_at: Optional[datetime] = Column(DateTime, nullable=True)
+
+
+class GitIssue(Base):
+    """Represents a VCS Issue tracked for velocity estimations."""
+    __tablename__ = "git_issues"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    github_id: int = Column(Integer, nullable=False)
+    number: int = Column(Integer, nullable=False)
+    title: str = Column(String(255), nullable=False)
+    state: str = Column(String(50), nullable=False)
+    user_login: str = Column(String(100), nullable=False)
+    html_url: str = Column(String(512), nullable=False)
+    comments_count: int = Column(Integer, default=0, nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at: datetime = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    closed_at: Optional[datetime] = Column(DateTime, nullable=True)
+
+
+class GitRelease(Base):
+    """Represents a production software release tagging."""
+    __tablename__ = "git_releases"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    tag_name: str = Column(String(100), nullable=False)
+    name: Optional[str] = Column(String(255), nullable=True)
+    body: Optional[str] = Column(Text, nullable=True)
+    html_url: Optional[str] = Column(String(512), nullable=True)
+    published_at: Optional[datetime] = Column(DateTime, nullable=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class GitContributor(Base):
+    """Represents statistics for a single codebase contributor."""
+    __tablename__ = "git_contributors"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    login: str = Column(String(100), nullable=False)
+    avatar_url: Optional[str] = Column(String(512), nullable=True)
+    contributions: int = Column(Integer, default=0, nullable=False)
+    reviews_count: int = Column(Integer, default=0, nullable=False)
+    merge_rate: float = Column(Float, default=0.0, nullable=False)
+
+
+class RepositorySync(Base):
+    """History logs tracking metadata synchronizations sessions."""
+    __tablename__ = "repository_syncs"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    status: str = Column(String(50), default="PENDING", nullable=False)
+    logs: Optional[str] = Column(Text, nullable=True)
+    triggered_by: Optional[str] = Column(String(36), ForeignKey("users.uuid"), nullable=True)
+    started_at: Optional[datetime] = Column(DateTime, nullable=True)
+    completed_at: Optional[datetime] = Column(DateTime, nullable=True)
+
+
+class RepositoryPermission(Base):
+    """Enforces specific user-level repository access mappings."""
+    __tablename__ = "repository_permissions"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    user_id: str = Column(String(36), ForeignKey("users.uuid"), nullable=False, index=True)
+    permission: str = Column(String(50), default="pull", nullable=False)
+
+
+class RepositoryFavorite(Base):
+    """Stores repository bookmark flags per user."""
+    __tablename__ = "repository_favorites"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    user_id: str = Column(String(36), ForeignKey("users.uuid"), nullable=False, index=True)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class RepositoryEvaluationHistory(Base):
+    """Chronological evaluations score tracking index over time."""
+    __tablename__ = "repository_evaluation_history"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    evaluation_id: Optional[str] = Column(String(36), ForeignKey("evaluations.evaluation_id"), nullable=True, index=True)
+    branch: str = Column(String(255), nullable=False)
+    commit_sha: str = Column(String(40), nullable=False)
+    score: Optional[int] = Column(Integer, nullable=True)
+    security_score: Optional[int] = Column(Integer, nullable=True)
+    architecture_score: Optional[int] = Column(Integer, nullable=True)
+    compliance_score: Optional[int] = Column(Integer, nullable=True)
+    technical_debt_hours: Optional[int] = Column(Integer, nullable=True)
+    status: str = Column(String(50), default="PENDING", nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class RepositoryWebhook(Base):
+    """Webhook credentials registered for live VCS push events."""
+    __tablename__ = "repository_webhooks"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    github_webhook_id: Optional[int] = Column(Integer, nullable=True)
+    secret: str = Column(String(255), nullable=False)
+    active: bool = Column(Boolean, default=True, nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class RepositoryCloneCache(Base):
+    """Maintains statistics of local workspace clone storage allocations."""
+    __tablename__ = "repository_clone_caches"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, unique=True, index=True)
+    path: str = Column(String(512), nullable=False)
+    size_bytes: int = Column(Integer, default=0, nullable=False)
+    last_accessed_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class RepositoryMetadata(Base):
+    """Generic configuration tag value mappings."""
+    __tablename__ = "repository_metadata"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    key: str = Column(String(100), nullable=False)
+    value: str = Column(Text, nullable=False)
+
+
+class RepositoryStatistics(Base):
+    """Aggregated health, risk, and debt intelligence metrics."""
+    __tablename__ = "repository_statistics"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, unique=True, index=True)
+    health_score: int = Column(Integer, default=100, nullable=False)
+    risk_index: int = Column(Integer, default=0, nullable=False)
+    velocity: int = Column(Integer, default=0, nullable=False)
+    technical_debt: int = Column(Integer, default=0, nullable=False)
+    coverage: int = Column(Integer, default=0, nullable=False)
+    active_contributors: int = Column(Integer, default=0, nullable=False)
+    security_issues_count: int = Column(Integer, default=0, nullable=False)
+    deployment_readiness: float = Column(Float, default=100.0, nullable=False)
+    deployment_confidence: float = Column(Float, default=100.0, nullable=False)
+    estimated_remediation_cost: float = Column(Float, default=0.0, nullable=False)
+    ai_summary: Optional[str] = Column(Text, nullable=True)
+    radar_engineering: int = Column(Integer, default=100, nullable=False)
+    radar_security: int = Column(Integer, default=100, nullable=False)
+    radar_architecture: int = Column(Integer, default=100, nullable=False)
+    radar_innovation: int = Column(Integer, default=100, nullable=False)
+    radar_compliance: int = Column(Integer, default=100, nullable=False)
+    created_at: datetime = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class RepositoryLanguage(Base):
+    """Language distribution percentages."""
+    __tablename__ = "repository_languages"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    language: str = Column(String(100), nullable=False)
+    percentage: float = Column(Float, nullable=False)
+    bytes: int = Column(Integer, nullable=False)
+
+
+class RepositoryTag(Base):
+    """Tracks tagged versions in the codebase repository."""
+    __tablename__ = "repository_tags"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    tag_name: str = Column(String(100), nullable=False)
+
+
+class RepositoryBranchProtection(Base):
+    """Branch protection policies configured in target VCS repository."""
+    __tablename__ = "repository_branch_protections"
+
+    uuid: str = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    repository_id: str = Column(String(36), ForeignKey("git_repositories.uuid"), nullable=False, index=True)
+    branch_name: str = Column(String(100), nullable=False)
+    requires_status_checks: bool = Column(Boolean, default=False, nullable=False)
+    requires_approvals: bool = Column(Boolean, default=False, nullable=False)
+    is_admin_enforced: bool = Column(Boolean, default=False, nullable=False)
+
+
 # ── Dependency helper ──────────────────────────────────────────────────────────
 
 def get_db():

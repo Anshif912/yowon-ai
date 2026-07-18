@@ -3,7 +3,8 @@ import { FileText, BookOpen, ChevronDown, ChevronUp } from 'lucide-react'
 import { useRepositoryStory } from './queries'
 import { DashboardSection } from './DashboardSection'
 import { CardSkeleton } from './Skeletons'
-import { ErrorBoundary } from './ErrorBoundary'
+import { StoryErrorBoundary } from './StoryErrorBoundary'
+import { StoryValueRenderer } from './StoryValueRenderer'
 
 interface RepositoryStoryPanelProps {
   projectId: string
@@ -12,16 +13,16 @@ interface RepositoryStoryPanelProps {
 interface StorySection {
   title: string
   subtitle: string
-  content: string
+  content: any
   files: string[]
   evidence: string[]
 }
 
 export function RepositoryStoryPanel({ projectId }: RepositoryStoryPanelProps) {
   return (
-    <ErrorBoundary name="Repository Story Panel">
+    <StoryErrorBoundary projectId={projectId}>
       <RepositoryStoryContent projectId={projectId} />
-    </ErrorBoundary>
+    </StoryErrorBoundary>
   )
 }
 
@@ -156,7 +157,9 @@ function RepositoryStoryContent({ projectId }: { projectId: string }) {
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                   <h4 className="text-[9.5px]">{sec.title}</h4>
                 </div>
-                <p className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">{sec.content}</p>
+                <div className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">
+                  <StoryValueRenderer value={sec.content} />
+                </div>
               </div>
 
               {/* Clickable Provenance */}
@@ -189,7 +192,9 @@ function RepositoryStoryContent({ projectId }: { projectId: string }) {
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                     <h4 className="text-[9.5px]">{sec.title}</h4>
                   </div>
-                  <p className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">{sec.content}</p>
+                  <div className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">
+                    <StoryValueRenderer value={sec.content} />
+                  </div>
                 </div>
 
                 <div className="pt-2 border-t border-white/[0.03] flex flex-wrap gap-1.5">

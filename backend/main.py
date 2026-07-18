@@ -129,6 +129,8 @@ from modules.webhooks.router import router as webhooks_router
 from modules.observability.router import router as observability_router
 from modules.enterprise_ai.router import router as enterprise_ai_router
 from modules.vault.router import router as vault_router
+from modules.git.router import router as git_router
+from modules.git.webhooks import router as git_webhooks_router
 
 app.add_exception_handler(Exception, global_exception_handler)
 app.add_exception_handler(HTTPException, global_exception_handler)
@@ -158,6 +160,8 @@ app.include_router(webhooks_router, prefix="/api/v1")
 app.include_router(observability_router, prefix="/api/v1")
 app.include_router(enterprise_ai_router, prefix="/api/v1")
 app.include_router(vault_router, prefix="/api/v1")
+app.include_router(git_router, prefix="/api/v1")
+app.include_router(git_webhooks_router, prefix="/api/v1")
 
 # Legacy Fallback APIs
 app.include_router(identity_router)
@@ -3068,13 +3072,27 @@ async def get_evaluation_repository_story(id: str, db: Session = Depends(get_db)
         tech_debt = "High"
         debt_value = 35.0
         
+    architecture = f"The codebase architecture contains {len(arch.get('nodes', []))} defined layers and is structured as a standard modular application."
+    execution = "Uses a clean gateway routing system coordinating REST controllers and service execution pipelines."
+    technology = f"Primary technologies include: {', '.join(n.get('label','') for n in tech.get('nodes', [])[:6])}."
+    security = f"Security audit findings count: {len([e for e in evidence if e.get('severity') == 'HIGH'])} critical/high warnings."
+    deployment = "Containerized Docker configuration detected for automated environment builds."
+    future_improvements = "Isolate authentication dependencies and introduce automated unit tests metrics compilation."
+
     story = {
         "purpose": purpose,
-        "architecture": f"The codebase architecture contains {len(arch.get('nodes', []))} defined layers and is structured as a standard modular application.",
-        "execution": "Uses a clean gateway routing system coordinating REST controllers and service execution pipelines.",
-        "technology": f"Primary technologies include: {', '.join(n.get('label','') for n in tech.get('nodes', [])[:6])}.",
-        "security": f"Security audit findings count: {len([e for e in evidence if e.get('severity') == 'HIGH'])} critical/high warnings.",
-        "deployment": "Containerized Docker configuration detected for automated environment builds.",
+        "business_goal": "Automates static code intelligence metrics compilation to deliver direct verdict telemetry.",
+        "architecture": architecture,
+        "architecture_pattern": architecture,
+        "execution": execution,
+        "main_workflow": execution,
+        "technology": technology,
+        "technology_decisions": technology,
+        "security": security,
+        "security_overview": security,
+        "deployment": deployment,
+        "deployment_model": deployment,
+        "future_improvements": future_improvements,
         "ai": "Agentic system design using CrewAI/LangChain frameworks for modular agent execution loops." if any("ai" in str(c).lower() for c in tech.get("nodes", [])) else "Non-agentic standard service architecture.",
         "strengths": strengths,
         "weaknesses": weaknesses,
@@ -3085,6 +3103,12 @@ async def get_evaluation_repository_story(id: str, db: Session = Depends(get_db)
             "description": "Calculated based on architecture smell patterns and class coupling ratios."
         }
     }
+    
+    # Developer Diagnostics
+    logger.info(f"[DeveloperDiagnostics] Story payload for evaluation_id={id} resolved. Keys: {list(story.keys())}")
+    for key, val in story.items():
+        logger.info(f"  Field key='{key}' -> type={type(val).__name__}")
+        
     return {"success": True, "data": story}
 
 

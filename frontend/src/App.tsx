@@ -50,6 +50,7 @@ const PredictionsPage          = lazy(() => import('./pages/EnterpriseAI/Predict
 const DigitalTwinPage          = lazy(() => import('./pages/EnterpriseAI/DigitalTwinPage'))
 const WorkflowStudioPage       = lazy(() => import('./pages/EnterpriseAI/WorkflowStudioPage'))
 const ExecutiveDashboardPage   = lazy(() => import('./pages/EnterpriseAI/ExecutiveDashboardPage'))
+const RepositoryDetailsPage    = lazy(() => import('./pages/Git/RepositoryDetailsPage'))
 
 /**
  * Page-level loading fallback.
@@ -209,6 +210,7 @@ export default function App() {
               <Route path="/intelligence/digital-twin" element={<DigitalTwinPage />} />
               <Route path="/enterprise/workflows"     element={<WorkflowStudioPage />} />
               <Route path="/intelligence/executive"   element={<ExecutiveDashboardPage />} />
+              <Route path="/repositories/:id"         element={<RepositoryDetailsPage />} />
             </Route>
 
             {/* Redirections */}
