@@ -111,3 +111,4 @@ ha_frontend_ref/
 .env.*
 !.env.example
 rewrite.py
+git_rewrite.py
