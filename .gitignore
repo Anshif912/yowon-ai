@@ -110,3 +110,4 @@ ha_frontend_ref/
 *.local
 .env.*
 !.env.example
+rewrite.py
