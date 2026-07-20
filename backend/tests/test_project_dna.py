@@ -260,7 +260,7 @@ def test_reviewer_decision_submission_api(client, db_session):
     # POST verdict
     res = client.post("/api/v1/projects/compare/reviewer-action-session/action?decision=ACCEPT&comment=ApprovedOriginal")
     assert res.status_code == 200
-    data = res.json()["data"]
+    data = res.json()
     assert data["reviewer_decision"] == "ACCEPT"
     assert data["reviewer_comment"] == "ApprovedOriginal"
 
@@ -290,7 +290,7 @@ def test_policy_versioning(client, db_session):
 
     res = client.get("/api/v1/projects/dna/policies")
     assert res.status_code == 200
-    policies = res.json()["data"]
+    policies = res.json()
     matched = [p for p in policies if p["uuid"] == "versioned-policy-1"]
     assert len(matched) == 1
     assert matched[0]["version"] == 2
@@ -352,14 +352,14 @@ def test_dna_drift_and_diff_apis(client, db_session):
     # Verify diff API
     res_diff = client.get("/api/v1/projects/drift-proj/dna/diff?snapshot_a=snap-drift-a&snapshot_b=snap-drift-b")
     assert res_diff.status_code == 200
-    diff_data = res_diff.json()["data"]
+    diff_data = res_diff.json()
     assert len(diff_data["added_features"]) == 1
     assert len(diff_data["modified_features"]) == 1
 
     # Verify drift API
     res_drift = client.get("/api/v1/projects/drift-proj/dna/drift?from_version=v1&to_version=v2")
     assert res_drift.status_code == 200
-    drift_data = res_drift.json()["data"]
+    drift_data = res_drift.json()
     assert drift_data["from_version"] == "v1"
     assert drift_data["to_version"] == "v2"
     assert drift_data["drift_score"] > 0.0
@@ -369,14 +369,14 @@ def test_dna_graph_and_export_apis(client, db_session):
     # Verify graph API
     res_graph = client.get("/api/v1/projects/drift-proj/dna/graph?snapshot_id=snap-drift-b")
     assert res_graph.status_code == 200
-    graph_data = res_graph.json()["data"]
+    graph_data = res_graph.json()
     assert len(graph_data["nodes"]) > 0
     assert len(graph_data["edges"]) > 0
 
     # Verify export API
     res_export = client.get("/api/v1/projects/drift-proj/dna/export?snapshot_id=snap-drift-b&format=json")
     assert res_export.status_code == 200
-    export_data = res_export.json()["data"]
+    export_data = res_export.json()
     assert export_data["snapshot_details"]["project_name"] == "Drift Project"
     assert len(export_data["extracted_features"]) > 0
 
@@ -384,7 +384,7 @@ def test_dna_graph_and_export_apis(client, db_session):
 def test_dna_observability_metrics_api(client, db_session):
     res = client.get("/api/v1/projects/system/metrics/dna")
     assert res.status_code == 200
-    metrics = res.json()["data"]
+    metrics = res.json()
     assert "average_dna_generation_time_ms" in metrics
     assert "cache_hit_ratio" in metrics
     assert "queue_length" in metrics

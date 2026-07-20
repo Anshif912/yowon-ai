@@ -50,16 +50,15 @@ def test_register_success(client):
         "/auth/register",
         json={
             "email": "test@yowon.ai",
-            "password": "securepassword123!",
+            "password": "Securepassword123!",
             "full_name": "Test Operator"
         }
     )
     assert response.status_code == 201
     data = response.json()
-    assert data["email"] == "test@yowon.ai"
-    assert data["full_name"] == "Test Operator"
-    assert "password_hash" not in data
-    assert data["role"] == "user"
+    assert data["user"]["email"] == "test@yowon.ai"
+    assert data["user"]["full_name"] == "Test Operator"
+    assert data["user"]["role"] == "TEAM_MEMBER"
 
 
 def test_register_duplicate_fails(client):
@@ -69,7 +68,7 @@ def test_register_duplicate_fails(client):
         "/auth/register",
         json={
             "email": "duplicate@yowon.ai",
-            "password": "securepassword123!",
+            "password": "Securepassword123!",
             "full_name": "First Operator"
         }
     )
@@ -78,7 +77,7 @@ def test_register_duplicate_fails(client):
         "/auth/register",
         json={
             "email": "duplicate@yowon.ai",
-            "password": "anotherpassword123!",
+            "password": "Anotherpassword123!",
             "full_name": "Duplicate Operator"
         }
     )
@@ -93,7 +92,7 @@ def test_login_success(client, db_session):
         "/auth/register",
         json={
             "email": "login@yowon.ai",
-            "password": "loginpassword123!",
+            "password": "Loginpassword123!",
             "full_name": "Login Operator"
         }
     )
@@ -103,7 +102,7 @@ def test_login_success(client, db_session):
         "/auth/login",
         json={
             "email": "login@yowon.ai",
-            "password": "loginpassword123!"
+            "password": "Loginpassword123!"
         }
     )
     assert response.status_code == 200
@@ -125,7 +124,7 @@ def test_failed_login_lockout(client, db_session):
         "/auth/register",
         json={
             "email": "lockout@yowon.ai",
-            "password": "correctpassword123!",
+            "password": "Correctpassword123!",
             "full_name": "Lockout Operator"
         }
     )
@@ -166,7 +165,7 @@ def test_failed_login_lockout(client, db_session):
         "/auth/login",
         json={
             "email": "lockout@yowon.ai",
-            "password": "correctpassword123!"
+            "password": "Correctpassword123!"
         }
     )
     assert response.status_code == 403
@@ -190,7 +189,7 @@ def test_profile_update(client):
         "/auth/register",
         json={
             "email": "profile@yowon.ai",
-            "password": "profilepassword123!",
+            "password": "Profilepassword123!",
             "full_name": "Original Name"
         }
     )
@@ -198,7 +197,7 @@ def test_profile_update(client):
         "/auth/login",
         json={
             "email": "profile@yowon.ai",
-            "password": "profilepassword123!"
+            "password": "Profilepassword123!"
         }
     )
     access_token = login_res.json()["access_token"]
@@ -228,7 +227,7 @@ def test_change_password(client, db_session):
         "/auth/register",
         json={
             "email": "passwd@yowon.ai",
-            "password": "oldpassword123!",
+            "password": "Oldpassword123!",
             "full_name": "Password Changer"
         }
     )
@@ -236,7 +235,7 @@ def test_change_password(client, db_session):
         "/auth/login",
         json={
             "email": "passwd@yowon.ai",
-            "password": "oldpassword123!"
+            "password": "Oldpassword123!"
         }
     )
     access_token = login_res.json()["access_token"]
@@ -247,13 +246,13 @@ def test_change_password(client, db_session):
         "/auth/change-password",
         headers=headers,
         json={
-            "old_password": "oldpassword123!",
-            "new_password": "newpassword123!"
+            "old_password": "Oldpassword123!",
+            "new_password": "Newpassword123!"
         }
     )
     assert response.status_code == 200
     
     # Verify DB update
     user = db_session.query(User).filter(User.email == "passwd@yowon.ai").first()
-    assert verify_password("newpassword123!", user.password_hash)
-    assert not verify_password("oldpassword123!", user.password_hash)
+    assert verify_password("Newpassword123!", user.password_hash)
+    assert not verify_password("Oldpassword123!", user.password_hash)

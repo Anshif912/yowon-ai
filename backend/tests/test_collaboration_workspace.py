@@ -49,13 +49,13 @@ def test_collaboration_workspace_full_flow(client, db_session):
         "/api/v1/auth/login",
         json={"email": "creator@yowon.ai", "password": "Password123!"}
     )
-    token = login_res.json()["data"]["access_token"]
+    token = login_res.json()["access_token"]
     auth_headers = {"Authorization": f"Bearer {token}"}
 
     # 2. Retrieve the automatically bootstrapped PERSONAL workspace
     ws_res = client.get("/api/v1/workspaces", headers=auth_headers)
-    assert len(ws_res.json()["data"]) == 1
-    workspace_id = ws_res.json()["data"][0]["workspace_id"]
+    assert len(ws_res.json()) == 1
+    workspace_id = ws_res.json()[0]["workspace_id"]
     
     # Bind headers with X-Workspace-ID
     ws_headers = {**auth_headers, "X-Workspace-ID": workspace_id}
@@ -67,7 +67,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         json={"name": "Phoenix Alpha", "description": "Core engine developers", "team_type": "DEVELOPMENT"}
     )
     assert team_res.status_code == 201
-    team = team_res.json()["data"]
+    team = team_res.json()
     assert team["name"] == "Phoenix Alpha"
     assert team["slug"] == "phoenix-alpha"
     team_id = team["uuid"]
@@ -79,7 +79,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         json={"email": "collaborator@yowon.ai", "role": "Developer"}
     )
     assert invite_res.status_code == 200
-    invite_code = invite_res.json()["data"]["invite_code"]
+    invite_code = invite_res.json()["invite_code"]
 
     # 5. Register User B (Collaborator) and join the team
     client.post(
@@ -90,7 +90,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         "/api/v1/auth/login",
         json={"email": "collaborator@yowon.ai", "password": "Password123!"}
     )
-    collab_token = collab_login.json()["data"]["access_token"]
+    collab_token = collab_login.json()["access_token"]
     collab_headers = {"Authorization": f"Bearer {collab_token}"}
 
     # Accept team invite
@@ -99,7 +99,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         headers=collab_headers
     )
     assert join_res.status_code == 200
-    assert join_res.json()["data"]["role"] == "Developer"
+    assert join_res.json()["role"] == "Developer"
 
     # 6. Create a Project in the registry workspace
     proj_res = client.post(
@@ -116,7 +116,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         }
     )
     assert proj_res.status_code == 201
-    project = proj_res.json()["data"]
+    project = proj_res.json()
     assert project["status"] == "REGISTERED"
     project_id = project["id"]
 
@@ -125,8 +125,8 @@ def test_collaboration_workspace_full_flow(client, db_session):
         f"/api/v1/projects/{project_id}/ownership",
         headers=ws_headers
     )
-    assert len(ownership_res.json()["data"]) == 1
-    owner_rec = ownership_res.json()["data"][0]
+    assert len(ownership_res.json()) == 1
+    owner_rec = ownership_res.json()[0]
     assert owner_rec["ownership_percentage"] == 100.0
     assert owner_rec["verification_status"] == "Verified"
 
@@ -137,7 +137,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         json={"repository_url": "https://github.com/yowon-ai/aegis-core", "default_branch": "main"}
     )
     assert import_res.status_code == 200
-    assert import_res.json()["data"]["status"] == "DEVELOPMENT"
+    assert import_res.json()["status"] == "DEVELOPMENT"
 
     # Verify connection details metadata
     conn_res = client.get(
@@ -145,8 +145,8 @@ def test_collaboration_workspace_full_flow(client, db_session):
         headers=ws_headers
     )
     assert conn_res.status_code == 200
-    assert conn_res.json()["data"]["connection_status"] == "CONNECTED"
-    assert conn_res.json()["data"]["commit_count"] == 34
+    assert conn_res.json()["connection_status"] == "CONNECTED"
+    assert conn_res.json()["commit_count"] == 34
 
     # 8. Create a release tag version snapshot
     ver_res = client.post(
@@ -161,7 +161,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         }
     )
     assert ver_res.status_code == 200
-    assert ver_res.json()["data"]["version"] == "1.0.0"
+    assert ver_res.json()["version"] == "1.0.0"
 
     # 9. Test secure ownership transfer code handshake
     # Retrieve user B (collaborator) UUID from database
@@ -174,7 +174,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         json={"recipient_id": user_b.uuid}
     )
     assert tx_res.status_code == 200
-    verification_code = tx_res.json()["data"]["verification_code"]
+    verification_code = tx_res.json()["verification_code"]
 
     # Collaborator accepts transfer using the code
     accept_res = client.post(
@@ -182,14 +182,14 @@ def test_collaboration_workspace_full_flow(client, db_session):
         headers=collab_headers
     )
     assert accept_res.status_code == 200
-    assert accept_res.json()["data"]["status"] == "ACCEPTED"
+    assert accept_res.json()["status"] == "ACCEPTED"
 
     # Verify ownership is transferred
     shares_res = client.get(
         f"/api/v1/projects/{project_id}/ownership",
         headers=ws_headers
     )
-    assert shares_res.json()["data"][0]["owner_id"] == user_b.uuid
+    assert shares_res.json()[0]["owner_id"] == user_b.uuid
 
     # 10. Submission of claim request and conflict classification
     claim_res = client.post(
@@ -198,7 +198,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         json={"reason": "Original author registry claim", "supporting_evidence": "git commits mapping"}
     )
     assert claim_res.status_code == 200
-    assert claim_res.json()["data"]["status"] == "PENDING"
+    assert claim_res.json()["status"] == "PENDING"
 
     # 11. Run universal workspace search
     search_res = client.get(
@@ -206,7 +206,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         headers=ws_headers
     )
     assert search_res.status_code == 200
-    assert len(search_res.json()["data"]) >= 1
+    assert len(search_res.json()) >= 1
 
     # 12. Retrieve consolidated workspace timeline feed
     timeline_res = client.get(
@@ -214,7 +214,7 @@ def test_collaboration_workspace_full_flow(client, db_session):
         headers=ws_headers
     )
     assert timeline_res.status_code == 200
-    event_types = [item["event_type"] for item in timeline_res.json()["data"]]
+    event_types = [item["event_type"] for item in timeline_res.json()]
     assert "Project Created" in event_types
     assert "Repository Imported" in event_types
 

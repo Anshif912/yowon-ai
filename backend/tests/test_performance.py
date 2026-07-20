@@ -76,11 +76,11 @@ def test_concurrent_invitations(client):
         "/api/v1/auth/login",
         json={"email": "creator@yowon.ai", "password": "Password123!"}
     )
-    token = login_res.json()["data"]["access_token"]
+    token = login_res.json()["access_token"]
 
     # Get personal workspace list
     ws_res = client.get("/api/v1/workspaces", headers={"Authorization": f"Bearer {token}"})
-    workspace_id = ws_res.json()["data"][0]["workspace_id"]
+    workspace_id = ws_res.json()[0]["workspace_id"]
 
     # Send 50 invitations concurrently in thread pool
     headers = {"Authorization": f"Bearer {token}"}
