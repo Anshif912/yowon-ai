@@ -184,7 +184,7 @@ def toggle_session_bookmark(
 @router.post("/compare/{id}/action", response_model=ComparisonSessionResponse)
 def submit_reviewer_decision(
     id: str,
-    decision: str = Query(..., regex="^(PENDING|DISMISS|REVIEW_REQUIRED|ACCEPT)$"),
+    decision: str = Query(..., pattern="^(PENDING|DISMISS|REVIEW_REQUIRED|ACCEPT)$"),
     comment: Optional[str] = Query(None),
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
