@@ -66,10 +66,22 @@ export default function Sidebar() {
     localStorage.getItem('yowon_sidebar_collapsed') === 'true'
   )
   const [activeProject, setActiveProject] = useState<Project | null>(null)
+  
+  // Judge/Demo Mode state
+  const [judgeMode, setJudgeMode] = useState(() => {
+    const val = localStorage.getItem('yowon_judge_mode')
+    return val !== 'false' // default is true
+  })
 
   useEffect(() => {
     localStorage.setItem('yowon_sidebar_collapsed', String(collapsed))
   }, [collapsed])
+
+  useEffect(() => {
+    localStorage.setItem('yowon_judge_mode', String(judgeMode))
+    // Dispatch a custom event to notify other components (like Command Palette)
+    window.dispatchEvent(new Event('yowon_judge_mode_changed'))
+  }, [judgeMode])
 
   // Extract projectId from URL
   const pathParts = pathname.split('/')
@@ -118,206 +130,257 @@ export default function Sidebar() {
 
   const projectId = urlProjectId || activeProject?.id || ''
 
-  const navGroups: NavGroup[] = [
-    {
-      label: 'Workspace',
-      items: [
+  // Compile navigation links dynamically
+  const navGroups: NavGroup[] = judgeMode
+    ? [
         {
-          label: 'Dashboard',
-          icon: LayoutDashboard,
-          to: '/dashboard',
-          active: pathname.startsWith('/dashboard'),
-          color: '#00E5FF',
-        },
-        {
-          label: 'Projects',
-          icon: FolderGit2,
-          to: '/projects',
-          active: pathname.startsWith('/projects') && !pathname.match(/\/projects\/.+/),
-          color: '#3B82F6',
-        },
-        {
-          label: 'Teams',
-          icon: Users,
-          to: '/teams',
-          active: pathname.startsWith('/teams'),
-          color: '#8B5CF6',
-        },
+          label: 'AI Command OS',
+          items: [
+            {
+              label: 'Home',
+              icon: Home,
+              to: '/dashboard', // The Home Command Center will map to dashboard page
+              active: pathname === '/dashboard' || pathname === '/',
+              color: '#00E5FF'
+            },
+            {
+              label: 'Repositories',
+              icon: FolderGit2,
+              to: '/projects',
+              active: pathname.startsWith('/projects') || pathname.startsWith('/repositories'),
+              color: '#3B82F6'
+            },
+            {
+              label: 'Intelligence',
+              icon: Brain,
+              to: '/intelligence',
+              active: pathname === '/intelligence' || pathname.startsWith('/intelligence/copilot') || pathname.startsWith('/intelligence/search') || pathname.startsWith('/intelligence/predictions') || pathname.startsWith('/intelligence/digital-twin'),
+              color: '#8B5CF6'
+            },
+            {
+              label: 'Evaluate',
+              icon: Play,
+              to: '/submit',
+              active: pathname.startsWith('/submit') || pathname.startsWith('/evaluate'),
+              color: '#EAB308'
+            },
+            {
+              label: 'Dashboard',
+              icon: TrendingUp,
+              to: '/intelligence/executive',
+              active: pathname.startsWith('/intelligence/executive'),
+              color: '#EF4444'
+            },
+            {
+              label: 'Settings',
+              icon: Settings,
+              to: '/settings',
+              active: pathname.startsWith('/settings'),
+              color: '#71717A'
+            }
+          ]
+        }
       ]
-    },
-    {
-      label: 'Repository',
-      items: [
+    : [
         {
-          label: 'Repository Intel',
-          icon: Brain,
-          to: projectId ? `/intelligence/${projectId}` : '/projects',
-          active: pathname.startsWith('/intelligence/') && !['copilot', 'search', 'predictions', 'digital-twin', 'executive'].includes(pathname.split('/')[2]),
-          disabled: !projectId,
-          color: '#8B5CF6',
-          badge: 'AI',
+          label: 'Workspace',
+          items: [
+            {
+              label: 'Dashboard',
+              icon: LayoutDashboard,
+              to: '/dashboard',
+              active: pathname === '/dashboard',
+              color: '#00E5FF',
+            },
+            {
+              label: 'Projects',
+              icon: FolderGit2,
+              to: '/projects',
+              active: pathname.startsWith('/projects') && !pathname.match(/\/projects\/.+/),
+              color: '#3B82F6',
+            },
+            {
+              label: 'Teams',
+              icon: Users,
+              to: '/teams',
+              active: pathname.startsWith('/teams'),
+              color: '#8B5CF6',
+            },
+          ]
         },
         {
-          label: 'Project DNA',
-          icon: FolderOpen,
-          to: projectId ? `/intelligence/${projectId}/story` : '/projects',
-          active: pathname.startsWith('/intelligence/') && pathname.split('/')[3] === 'story',
-          disabled: !projectId,
-          color: '#A855F7',
+          label: 'Repository',
+          items: [
+            {
+              label: 'Repository Intel',
+              icon: Brain,
+              to: projectId ? `/intelligence/${projectId}` : '/projects',
+              active: pathname.startsWith('/intelligence/') && !['copilot', 'search', 'predictions', 'digital-twin', 'executive'].includes(pathname.split('/')[2]),
+              disabled: !projectId,
+              color: '#8B5CF6',
+              badge: 'AI',
+            },
+            {
+              label: 'Project DNA',
+              icon: FolderOpen,
+              to: projectId ? `/intelligence/${projectId}/story` : '/projects',
+              active: pathname.startsWith('/intelligence/') && pathname.split('/')[3] === 'story',
+              disabled: !projectId,
+              color: '#A855F7',
+            },
+            {
+              label: 'Authenticity',
+              icon: Shield,
+              to: projectId ? `/authenticity/${projectId}` : '/projects',
+              active: pathname.startsWith('/authenticity'),
+              disabled: !projectId,
+              color: '#EF4444',
+            },
+            {
+              label: 'Decision Intelligence',
+              icon: Gavel,
+              to: '/jury',
+              active: pathname.startsWith('/jury'),
+              color: '#F97316',
+            },
+            {
+              label: 'Governance',
+              icon: Scale,
+              to: '/leaderboard',
+              active: pathname.startsWith('/leaderboard'),
+              color: '#EAB308',
+            },
+          ]
         },
         {
-          label: 'Authenticity',
-          icon: Shield,
-          to: projectId ? `/authenticity/${projectId}` : '/projects',
-          active: pathname.startsWith('/authenticity'),
-          disabled: !projectId,
-          color: '#EF4444',
+          label: 'Enterprise',
+          items: [
+            {
+              label: 'Enterprise Overview',
+              icon: Home,
+              to: '/enterprise',
+              active: pathname === '/enterprise',
+              color: '#10B981',
+            },
+            {
+              label: 'Connectors',
+              icon: Link2,
+              to: '/enterprise/connectors',
+              active: pathname.startsWith('/enterprise/connectors'),
+              color: '#3B82F6',
+            },
+            {
+              label: 'Secrets Vault',
+              icon: Key,
+              to: '/enterprise/secrets',
+              active: pathname.startsWith('/enterprise/secrets'),
+              color: '#EF4444',
+            },
+            {
+              label: 'Marketplace',
+              icon: ShoppingBag,
+              to: '/enterprise/marketplace',
+              active: pathname.startsWith('/enterprise/marketplace'),
+              color: '#F97316',
+            },
+            {
+              label: 'Plugins',
+              icon: Blocks,
+              to: '/enterprise/plugins',
+              active: pathname.startsWith('/enterprise/plugins'),
+              color: '#8B5CF6',
+            },
+            {
+              label: 'Webhooks',
+              icon: Webhook,
+              to: '/enterprise/webhooks',
+              active: pathname.startsWith('/enterprise/webhooks'),
+              color: '#00E5FF',
+            },
+            {
+              label: 'Operations',
+              icon: Activity,
+              to: '/enterprise/operations',
+              active: pathname.startsWith('/enterprise/operations'),
+              color: '#10B981',
+            },
+          ]
         },
         {
-          label: 'Decision Intelligence',
-          icon: Gavel,
-          to: '/jury',
-          active: pathname.startsWith('/jury'),
-          color: '#F97316',
+          label: 'Enterprise AI',
+          items: [
+            {
+              label: 'AI Overview',
+              icon: Home,
+              to: '/intelligence',
+              active: pathname === '/intelligence',
+              color: '#00E5FF',
+            },
+            {
+              label: 'Copilot',
+              icon: Bot,
+              to: '/intelligence/copilot',
+              active: pathname.startsWith('/intelligence/copilot'),
+              color: '#8B5CF6',
+            },
+            {
+              label: 'Knowledge Search',
+              icon: Search,
+              to: '/intelligence/search',
+              active: pathname.startsWith('/intelligence/search'),
+              color: '#A855F7',
+            },
+            {
+              label: 'Predictions',
+              icon: BarChart3,
+              to: '/intelligence/predictions',
+              active: pathname.startsWith('/intelligence/predictions'),
+              color: '#EAB308',
+            },
+            {
+              label: 'Digital Twin',
+              icon: Radio,
+              to: '/intelligence/digital-twin',
+              active: pathname.startsWith('/intelligence/digital-twin'),
+              color: '#00E5FF',
+            },
+            {
+              label: 'Workflow Studio',
+              icon: Network,
+              to: '/enterprise/workflows',
+              active: pathname.startsWith('/enterprise/workflows'),
+              color: '#10B981',
+            },
+            {
+              label: 'Executive Dashboard',
+              icon: TrendingUp,
+              to: '/intelligence/executive',
+              active: pathname.startsWith('/intelligence/executive'),
+              color: '#EF4444',
+            },
+          ]
         },
         {
-          label: 'Governance',
-          icon: Scale,
-          to: '/leaderboard',
-          active: pathname.startsWith('/leaderboard'),
-          color: '#EAB308',
-        },
+          label: 'Manage',
+          items: [
+            {
+              label: 'Reports',
+              icon: FileText,
+              to: projectId ? `/report/${projectId}` : '/projects',
+              active: pathname.startsWith('/report'),
+              disabled: !projectId,
+              color: '#6366F1',
+            },
+            {
+              label: 'Settings',
+              icon: Settings,
+              to: '/settings',
+              active: pathname.startsWith('/settings'),
+              color: '#71717A',
+            },
+          ]
+        }
       ]
-    },
-    {
-      label: 'Enterprise',
-      items: [
-        {
-          label: 'Enterprise Overview',
-          icon: Home,
-          to: '/enterprise',
-          active: pathname === '/enterprise',
-          color: '#10B981',
-        },
-        {
-          label: 'Connectors',
-          icon: Link2,
-          to: '/enterprise/connectors',
-          active: pathname.startsWith('/enterprise/connectors'),
-          color: '#3B82F6',
-        },
-        {
-          label: 'Secrets Vault',
-          icon: Key,
-          to: '/enterprise/secrets',
-          active: pathname.startsWith('/enterprise/secrets'),
-          color: '#EF4444',
-        },
-        {
-          label: 'Marketplace',
-          icon: ShoppingBag,
-          to: '/enterprise/marketplace',
-          active: pathname.startsWith('/enterprise/marketplace'),
-          color: '#F97316',
-        },
-        {
-          label: 'Plugins',
-          icon: Blocks,
-          to: '/enterprise/plugins',
-          active: pathname.startsWith('/enterprise/plugins'),
-          color: '#8B5CF6',
-        },
-        {
-          label: 'Webhooks',
-          icon: Webhook,
-          to: '/enterprise/webhooks',
-          active: pathname.startsWith('/enterprise/webhooks'),
-          color: '#00E5FF',
-        },
-        {
-          label: 'Operations',
-          icon: Activity,
-          to: '/enterprise/operations',
-          active: pathname.startsWith('/enterprise/operations'),
-          color: '#10B981',
-        },
-      ]
-    },
-    {
-      label: 'Enterprise AI',
-      items: [
-        {
-          label: 'AI Overview',
-          icon: Home,
-          to: '/intelligence',
-          active: pathname === '/intelligence',
-          color: '#00E5FF',
-        },
-        {
-          label: 'Copilot',
-          icon: Bot,
-          to: '/intelligence/copilot',
-          active: pathname.startsWith('/intelligence/copilot'),
-          color: '#8B5CF6',
-        },
-        {
-          label: 'Knowledge Search',
-          icon: Search,
-          to: '/intelligence/search',
-          active: pathname.startsWith('/intelligence/search'),
-          color: '#A855F7',
-        },
-        {
-          label: 'Predictions',
-          icon: BarChart3,
-          to: '/intelligence/predictions',
-          active: pathname.startsWith('/intelligence/predictions'),
-          color: '#EAB308',
-        },
-        {
-          label: 'Digital Twin',
-          icon: Radio,
-          to: '/intelligence/digital-twin',
-          active: pathname.startsWith('/intelligence/digital-twin'),
-          color: '#00E5FF',
-        },
-        {
-          label: 'Workflow Studio',
-          icon: Network,
-          to: '/enterprise/workflows',
-          active: pathname.startsWith('/enterprise/workflows'),
-          color: '#10B981',
-        },
-        {
-          label: 'Executive Dashboard',
-          icon: TrendingUp,
-          to: '/intelligence/executive',
-          active: pathname.startsWith('/intelligence/executive'),
-          color: '#EF4444',
-        },
-      ]
-    },
-    {
-      label: 'Manage',
-      items: [
-        {
-          label: 'Reports',
-          icon: FileText,
-          to: projectId ? `/report/${projectId}` : '/projects',
-          active: pathname.startsWith('/report'),
-          disabled: !projectId,
-          color: '#6366F1',
-        },
-        {
-          label: 'Settings',
-          icon: Settings,
-          to: '/settings',
-          active: pathname.startsWith('/settings'),
-          color: '#71717A',
-        },
-      ]
-    }
-  ]
 
   const handleLogout = async () => {
     await logout()
@@ -489,7 +552,44 @@ export default function Sidebar() {
       </div>
 
       {/* ── Bottom User Section ── */}
-      <div className="shrink-0 border-t border-white/[0.05] p-3 space-y-2">
+      <div className="shrink-0 border-t border-white/[0.05] p-3 space-y-2.5">
+        {/* Judge Mode Switcher */}
+        {!collapsed ? (
+          <div className="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-white/[0.02] border border-white/[0.04] select-none">
+            <div className="flex items-center gap-2">
+              <Shield size={12} className={judgeMode ? 'text-cyan-400 animate-pulse' : 'text-zinc-600'} />
+              <span className="text-[9px] font-mono uppercase tracking-wider text-zinc-400">Judge Mode</span>
+            </div>
+            <button
+              onClick={() => setJudgeMode(!judgeMode)}
+              className={`w-7 h-4 rounded-full relative p-0.5 transition-colors duration-150 cursor-pointer ${judgeMode ? 'bg-cyan-500' : 'bg-zinc-800'}`}
+              title="Toggle Judge/Demo Mode"
+            >
+              <div className={`w-3 h-3 rounded-full bg-black shadow transition-transform duration-150 ${judgeMode ? 'translate-x-3' : 'translate-x-0'}`} />
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setJudgeMode(!judgeMode)}
+            className={`w-8 h-8 mx-auto rounded-xl border flex items-center justify-center cursor-pointer transition-all ${
+              judgeMode 
+                ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400' 
+                : 'bg-zinc-950 border-white/[0.06] text-zinc-600'
+            }`}
+            title={`Judge Mode: ${judgeMode ? 'On' : 'Off'}`}
+          >
+            <Shield size={14} className={judgeMode ? 'animate-pulse' : ''} />
+          </button>
+        )}
+
+        {/* Ctrl + K command palette hint */}
+        {!collapsed && (
+          <div className="flex items-center justify-between px-2 text-[9px] font-mono text-zinc-500">
+            <span>Actions menu</span>
+            <span className="bg-white/5 border border-white/10 px-1 py-0.5 rounded text-[8px]">Ctrl + K</span>
+          </div>
+        )}
+
         {/* User profile card */}
         {user && (
           <div className={`flex items-center gap-2.5 ${collapsed ? 'justify-center' : ''}`}>

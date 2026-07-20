@@ -1,313 +1,266 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   Search,
-  Folder,
-  Terminal,
-  Cpu,
-  Brain,
+  FolderGit2,
+  Play,
+  Bot,
+  BookOpen,
+  TrendingUp,
+  Shield,
   Layers,
-  Sparkles,
-  Settings,
-  HelpCircle,
-  FileText
+  ArrowRight,
+  Terminal
 } from 'lucide-react'
 import { api } from '../../api/api'
 
-interface CommandItem {
-  icon: any
-  title: string
-  subtitle: string
-  action: () => void
-  category: string
+interface CommandPaletteProps {
+  onClose?: () => void
 }
 
-export default function CommandPalette() {
+interface CommandItem {
+  id: string
+  label: string
+  subtitle: string
+  icon: React.ElementType
+  action: () => void
+  color?: string
+}
+
+export function CommandPalette({ onClose }: CommandPaletteProps) {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<CommandItem[]>([])
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  
+  const [repos, setRepos] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const listRef = useRef<HTMLDivElement>(null)
+  
+  const [judgeMode, setJudgeMode] = useState(() => {
+    return localStorage.getItem('yowon_judge_mode') !== 'false'
+  })
 
-  // Listen for Ctrl+K / Cmd+K and custom event
+  // Listen to judge mode changes from other components
+  useEffect(() => {
+    const handleJudgeModeChanged = () => {
+      setJudgeMode(localStorage.getItem('yowon_judge_mode') !== 'false')
+    }
+    window.addEventListener('yowon_judge_mode_changed', handleJudgeModeChanged)
+    return () => {
+      window.removeEventListener('yowon_judge_mode_changed', handleJudgeModeChanged)
+    }
+  }, [])
+
+  // Listen for Ctrl+K globally
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
-        setIsOpen(prev => !prev)
+        setIsOpen((prev) => !prev)
       }
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         setIsOpen(false)
       }
     }
-
-    const handleCustomToggle = () => {
-      setIsOpen(prev => !prev)
-    }
-
     window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('toggle-command-palette', handleCustomToggle)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('toggle-command-palette', handleCustomToggle)
-    }
-  }, [isOpen])
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
-  // Focus input on open
+  // Focus input when opened
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50)
+      fetchRepos()
+    } else {
       setQuery('')
-      setSelectedIndex(0)
     }
   }, [isOpen])
 
-  // Static core commands
-  const coreCommands: CommandItem[] = [
-    {
-      icon: Folder,
-      title: 'Go to Projects',
-      subtitle: 'Browse all analyzed repositories',
-      action: () => navigate('/projects'),
-      category: 'Navigation'
-    },
-    {
-      icon: Terminal,
-      title: 'Analyze New Repository',
-      subtitle: 'Upload or clone codebase for evaluation',
-      action: () => navigate('/submit'),
-      category: 'Navigation'
-    },
-    {
-      icon: Settings,
-      title: 'Operator Settings',
-      subtitle: 'Edit clearance name, timezone, preferences, or password',
-      action: () => navigate('/settings'),
-      category: 'Navigation'
-    },
-    {
-      icon: HelpCircle,
-      title: 'Open AI Jury Chamber',
-      subtitle: 'Meet the 7 autonomous AI agents',
-      action: () => navigate('/jury'),
-      category: 'Navigation'
-    }
-  ]
-
-  // Dynamic query search
-  useEffect(() => {
-    if (!isOpen) return
-
-    const activeProjectId = localStorage.getItem('yowon_active_project_id') || ''
-
-    // Quick filter core commands
-    const filteredCore = coreCommands.filter(c => 
-      c.title.toLowerCase().includes(query.toLowerCase()) ||
-      c.subtitle.toLowerCase().includes(query.toLowerCase())
-    )
-
-    // Append project-specific workspace actions if project exists
-    const projectActions: CommandItem[] = []
-    if (activeProjectId) {
-      const paths = [
-        { title: 'Open Software Intelligence', path: `/intelligence/${activeProjectId}`, icon: Brain, subtitle: 'View graphs, diagnostics, architecture metrics' },
-        { title: 'Open AI Jury Verdict', path: `/report/${activeProjectId}/overview`, icon: FileText, subtitle: 'Overall verdict, Innovation, and agent findings' },
-        { title: 'View Code Metrics', path: `/intelligence/${activeProjectId}#metrics`, icon: Layers, subtitle: 'LOC count, language distribution, hotspots' },
-        { title: 'Open Diagnostics Workspace', path: `/intelligence/${activeProjectId}#diagnostics`, icon: Cpu, subtitle: 'Parsing logs, execution durations, LLM latency' }
-      ]
-      paths.forEach(p => {
-        if (p.title.toLowerCase().includes(query.toLowerCase()) || p.subtitle.toLowerCase().includes(query.toLowerCase())) {
-          projectActions.push({
-            icon: p.icon,
-            title: p.title,
-            subtitle: p.subtitle,
-            action: () => {
-              navigate(p.path)
-              // Scroll to hash if exists
-              if (p.path.includes('#')) {
-                const hash = p.path.split('#')[1]
-                setTimeout(() => {
-                  document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
-                }, 200)
-              }
-            },
-            category: 'Active Project Workspace'
-          })
-        }
-      })
-    }
-
-    // Fetch projects dynamically matching query
-    if (query.trim().length > 1) {
-      api.get(`/projects?page=1&size=5&search=${encodeURIComponent(query)}`)
-        .then(res => {
-          if (res.data && res.data.items) {
-            const projectResults = res.data.items.map((item: any) => ({
-              icon: Folder,
-              title: `Select Project: ${item.name}`,
-              subtitle: `Switch current workspace context (${item.project_type || 'Unspecified'})`,
-              action: () => {
-                localStorage.setItem('yowon_active_project_id', item.id)
-                navigate(`/intelligence/${item.id}`)
-              },
-              category: 'Projects'
-            }))
-            setResults([...projectActions, ...filteredCore, ...projectResults])
-          } else {
-            setResults([...projectActions, ...filteredCore])
-          }
-        })
-        .catch(() => {
-          setResults([...projectActions, ...filteredCore])
-        })
-    } else {
-      setResults([...projectActions, ...filteredCore])
-    }
-  }, [query, isOpen])
-
-  // Key navigation
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault()
-      setSelectedIndex(prev => (prev + 1) % Math.max(1, results.length))
-      // Scroll into view
-      setTimeout(() => {
-        const selectedEl = listRef.current?.querySelector('[aria-selected="true"]')
-        selectedEl?.scrollIntoView({ block: 'nearest' })
-      }, 10)
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault()
-      setSelectedIndex(prev => (prev - 1 + results.length) % Math.max(1, results.length))
-      setTimeout(() => {
-        const selectedEl = listRef.current?.querySelector('[aria-selected="true"]')
-        selectedEl?.scrollIntoView({ block: 'nearest' })
-      }, 10)
-    } else if (e.key === 'Enter') {
-      e.preventDefault()
-      if (results[selectedIndex]) {
-        results[selectedIndex].action()
-        setIsOpen(false)
+  // Fetch repositories for search context
+  const fetchRepos = async () => {
+    try {
+      setLoading(true)
+      const res = await api.get('/git/repositories')
+      if (Array.isArray(res.data)) {
+        setRepos(res.data)
       }
+    } catch (err) {
+      console.error('Failed to load repositories in command palette:', err)
+    } finally {
+      setLoading(false)
     }
   }
 
+  // Handle click outside to close
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen])
+
+  const toggleJudgeModeAction = () => {
+    const newVal = !judgeMode
+    localStorage.setItem('yowon_judge_mode', String(newVal))
+    window.dispatchEvent(new Event('yowon_judge_mode_changed'))
+    setJudgeMode(newVal)
+    setIsOpen(false)
+  }
+
+  // Define static commands
+  const commands: CommandItem[] = [
+    {
+      id: 'goto-home',
+      label: 'Navigate to AI Command Center',
+      subtitle: 'Open the main system dashboard overview',
+      icon: TrendingUp,
+      action: () => { navigate('/dashboard'); setIsOpen(false); },
+      color: 'text-cyan-400'
+    },
+    {
+      id: 'run-eval',
+      label: 'Run New Codebase Evaluation',
+      subtitle: 'Upload a ZIP archive or connect a repository for analysis',
+      icon: Play,
+      action: () => { navigate('/submit'); setIsOpen(false); },
+      color: 'text-yellow-400'
+    },
+    {
+      id: 'open-copilot',
+      label: 'Open AI Copilot Chat Workspace',
+      subtitle: 'Ask the intelligence engine details about active repositories',
+      icon: Bot,
+      action: () => { navigate('/intelligence'); setIsOpen(false); },
+      color: 'text-violet-400'
+    },
+    {
+      id: 'toggle-judge',
+      label: `Toggle Judge/Demo Mode (${judgeMode ? 'Currently Active' : 'Inactive'})`,
+      subtitle: 'Hide or reveal full enterprise connector configurations',
+      icon: Shield,
+      action: toggleJudgeModeAction,
+      color: 'text-emerald-400'
+    }
+  ]
+
+  // Filter items based on query
+  const filteredCommands = commands.filter(cmd =>
+    cmd.label.toLowerCase().includes(query.toLowerCase()) ||
+    cmd.subtitle.toLowerCase().includes(query.toLowerCase())
+  )
+
+  const filteredRepos = repos.filter(repo =>
+    repo.name.toLowerCase().includes(query.toLowerCase()) ||
+    repo.full_name.toLowerCase().includes(query.toLowerCase())
+  )
+
+  if (!isOpen) return null
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4">
-          {/* Backdrop blur */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/60 backdrop-blur-sm px-4">
+      <div
+        ref={containerRef}
+        className="w-full max-w-xl bg-zinc-950/95 border border-white/[0.08] rounded-2xl shadow-2xl flex flex-col overflow-hidden max-h-[460px] animate-in fade-in zoom-in-95 duration-150"
+        style={{
+          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 229, 255, 0.03)'
+        }}
+      >
+        {/* Search header */}
+        <div className="flex items-center px-4 py-3.5 border-b border-white/[0.05] gap-3">
+          <Search size={16} className="text-cyan-400 shrink-0" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Type a command or repository name..."
+            className="flex-1 bg-transparent border-0 outline-none text-white text-xs font-mono placeholder-zinc-600 focus:ring-0 p-0"
           />
-
-          {/* Palette Dialog */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: -10 }}
-            transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="relative w-full max-w-xl glass-card bg-slate-950/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl p-0 overflow-hidden font-mono text-xs"
-          >
-            {/* Search Input bar */}
-            <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5">
-              <Search size={16} className="text-cyan-400 shrink-0" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search projects, diagnostics, metrics, or run shortcut commands..."
-                className="w-full bg-transparent text-white placeholder-slate-500 focus:outline-none text-xs"
-              />
-              <span className="text-[10px] text-slate-500 border border-white/10 px-1.5 py-0.5 rounded uppercase">ESC</span>
-            </div>
-
-            {/* Results scroll pane */}
-            <div
-              ref={listRef}
-              className="max-h-[360px] overflow-y-auto p-2 space-y-3 custom-scrollbar"
-            >
-              {results.length > 0 ? (
-                // Group by category
-                Object.entries(
-                  results.reduce((acc, item) => {
-                    acc[item.category] = acc[item.category] || []
-                    acc[item.category].push(item)
-                    return acc
-                  }, {} as Record<string, CommandItem[]>)
-                ).map(([category, items]) => (
-                  <div key={category} className="space-y-1">
-                    <div className="px-2.5 py-1 text-[9px] text-yowon-muted uppercase tracking-wider font-bold">
-                      {category}
-                    </div>
-                    {items.map((item, idx) => {
-                      const absoluteIndex = results.indexOf(item)
-                      const isSelected = absoluteIndex === selectedIndex
-                      const Icon = item.icon
-                      
-                      return (
-                        <button
-                          key={item.title}
-                          onClick={() => {
-                            item.action()
-                            setIsOpen(false)
-                          }}
-                          aria-selected={isSelected}
-                          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all ${
-                            isSelected
-                              ? 'bg-cyan-500/10 text-cyan-200 border border-cyan-500/15'
-                              : 'border border-transparent text-slate-300 hover:text-white hover:bg-white/5'
-                          }`}
-                        >
-                          <div className={`p-1.5 rounded-lg border ${
-                            isSelected ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400' : 'bg-white/5 border-white/5 text-slate-400'
-                          }`}>
-                            <Icon size={14} />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="font-semibold text-white truncate">{item.title}</p>
-                            <p className="text-[10px] text-yowon-muted truncate">{item.subtitle}</p>
-                          </div>
-                          {isSelected && (
-                            <span className="text-[9px] bg-cyan-400/20 text-cyan-300 border border-cyan-400/30 px-1.5 py-0.5 rounded font-bold uppercase tracking-widest shrink-0">
-                              Execute
-                            </span>
-                          )}
-                        </button>
-                      )
-                    })}
-                  </div>
-                ))
-              ) : (
-                <div className="py-8 text-center text-yowon-muted italic">
-                  No matching workspace actions or projects found.
-                </div>
-              )}
-            </div>
-
-            {/* Footer hints */}
-            <div className="flex items-center justify-between px-4 py-2 bg-slate-900/60 border-t border-white/5 text-[9px] text-slate-500">
-              <div className="flex items-center gap-3">
-                <span>↑↓ Navigate</span>
-                <span>Enter Select</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Sparkles size={10} className="text-cyan-400" />
-                <span>YOWON Command center</span>
-              </div>
-            </div>
-          </motion.div>
+          <span className="text-[9px] font-mono text-zinc-500 bg-white/5 border border-white/10 px-2 py-0.5 rounded shrink-0">ESC</span>
         </div>
-      )}
-    </AnimatePresence>
+
+        {/* Results body */}
+        <div className="flex-1 overflow-y-auto p-2 space-y-2.5 custom-scrollbar min-h-[200px]">
+          {/* Static Commands Group */}
+          {filteredCommands.length > 0 && (
+            <div className="space-y-1">
+              <span className="text-[8px] font-mono uppercase tracking-widest text-zinc-600 px-2.5 block mb-1">
+                System Commands
+              </span>
+              {filteredCommands.map((cmd) => (
+                <button
+                  key={cmd.id}
+                  onClick={cmd.action}
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.03] border border-transparent hover:border-white/[0.04] transition-all text-left group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white/[0.02] border border-white/[0.04] flex items-center justify-center group-hover:bg-white/[0.04] group-hover:border-white/[0.06] transition-all">
+                      <cmd.icon size={14} className={cmd.color} />
+                    </div>
+                    <div>
+                      <h4 className="text-[11px] font-semibold text-white tracking-wide">{cmd.label}</h4>
+                      <p className="text-[9px] text-zinc-500 font-sans leading-relaxed mt-0.5">{cmd.subtitle}</p>
+                    </div>
+                  </div>
+                  <ArrowRight size={10} className="text-zinc-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Repositories Group */}
+          {filteredRepos.length > 0 && (
+            <div className="space-y-1">
+              <span className="text-[8px] font-mono uppercase tracking-widest text-zinc-600 px-2.5 block mb-1 mt-1.5">
+                Repositories
+              </span>
+              {filteredRepos.map((repo) => (
+                <button
+                  key={repo.uuid}
+                  onClick={() => {
+                    navigate(`/repositories/${repo.uuid}`)
+                    setIsOpen(false)
+                  }}
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.03] border border-transparent hover:border-white/[0.04] transition-all text-left group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white/[0.02] border border-white/[0.04] flex items-center justify-center group-hover:bg-white/[0.04]">
+                      <FolderGit2 size={14} className="text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="text-[11px] font-semibold text-white tracking-wide">{repo.full_name}</h4>
+                      <p className="text-[9px] text-zinc-500 font-sans leading-relaxed mt-0.5 truncate max-w-sm">
+                        Health: {repo.statistics?.health_score || 80}% • {repo.html_url}
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight size={10} className="text-zinc-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Empty state */}
+          {filteredCommands.length === 0 && filteredRepos.length === 0 && (
+            <div className="py-12 text-center space-y-2">
+              <Terminal size={24} className="text-zinc-700 mx-auto" />
+              <p className="text-xs text-zinc-500 font-mono">No matching commands or codebases found.</p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer info bar */}
+        <div className="px-4 py-2 bg-black/40 border-t border-white/[0.04] flex items-center justify-between text-[8.5px] font-mono text-zinc-600">
+          <span>Use <span className="text-zinc-500">↑↓</span> to navigate</span>
+          <span>Press <span className="text-zinc-500">Enter</span> to select</span>
+        </div>
+      </div>
+    </div>
   )
 }
+export default CommandPalette

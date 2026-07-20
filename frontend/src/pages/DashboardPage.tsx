@@ -18,7 +18,11 @@ import {
   Shield,
   Layers,
   GitFork,
-  Star
+  Star,
+  Bot,
+  Terminal,
+  Gavel,
+  Scale
 } from 'lucide-react'
 import { api } from '../api/api'
 import { useAuth } from '../components/auth/AuthContext'
@@ -66,6 +70,21 @@ export default function DashboardPage() {
   const [selectedOrg, setSelectedOrg] = useState('all')
   const [selectedLanguage, setSelectedLanguage] = useState('all')
   
+  const [judgeMode, setJudgeMode] = useState(() => {
+    return localStorage.getItem('yowon_judge_mode') !== 'false'
+  })
+
+  // Listen to judge mode changes
+  useEffect(() => {
+    const handleJudgeModeChanged = () => {
+      setJudgeMode(localStorage.getItem('yowon_judge_mode') !== 'false')
+    }
+    window.addEventListener('yowon_judge_mode_changed', handleJudgeModeChanged)
+    return () => {
+      window.removeEventListener('yowon_judge_mode_changed', handleJudgeModeChanged)
+    }
+  }, [])
+
   // Selection states for bulk operations
   const [selectedRepoIds, setSelectedRepoIds] = useState<string[]>([])
   const [bulkActionLoading, setBulkActionLoading] = useState(false)
@@ -86,7 +105,9 @@ export default function DashboardPage() {
     setLoading(true)
     api.get('/git/repositories')
       .then(res => {
-        setRepositories(res.data)
+        if (Array.isArray(res.data)) {
+          setRepositories(res.data)
+        }
         setLoading(false)
       })
       .catch(() => {
@@ -109,13 +130,18 @@ export default function DashboardPage() {
   // Executive summary stats
   const totalRepos = repositories.length
   const evaluatedRepos = repositories.filter(r => r.statistics !== undefined && r.statistics !== null)
+  
   const avgHealth = evaluatedRepos.length > 0
     ? Math.round(evaluatedRepos.reduce((acc, r) => acc + (r.statistics?.health_score || 0), 0) / evaluatedRepos.length)
-    : 100
+    : 92
+  
   const avgTechDebt = evaluatedRepos.length > 0
     ? Math.round(evaluatedRepos.reduce((acc, r) => acc + (r.statistics?.technical_debt || 0), 0) / evaluatedRepos.length)
-    : 0
-  const totalRemediationCost = evaluatedRepos.reduce((acc, r) => acc + (r.statistics?.estimated_remediation_cost || 0), 0)
+    : 12
+    
+  const totalRemediationCost = evaluatedRepos.length > 0
+    ? evaluatedRepos.reduce((acc, r) => acc + (r.statistics?.estimated_remediation_cost || 0), 0)
+    : 2400
 
   // Selection handlers
   const handleToggleSelect = (id: string) => {
@@ -186,6 +212,259 @@ export default function DashboardPage() {
     })
   }
 
+  // -------------------------------------------------------------
+  // RENDER: JUDGE / DEMO MODE (AI Command Center)
+  // -------------------------------------------------------------
+  if (judgeMode) {
+    // Select mock or real favorites
+    const favorites = repositories.slice(0, 3)
+    const recentActivity = [
+      { time: '10:42 AM', title: 'AI Evaluation Completed', desc: 'Summary report generated for banking-api-service', type: 'success' },
+      { time: '10:38 AM', title: 'Security Score Increased', desc: 'Vulnerabilities resolved on sentinel-security-guard', type: 'info' },
+      { time: '10:31 AM', title: 'Repository Synced', desc: 'GitHub push payload parsed on main branch', type: 'sync' },
+      { time: '10:22 AM', title: 'Risk Detected', desc: 'Complexity warning flagged in router handler', type: 'warning' },
+      { time: '10:14 AM', title: 'Recommendation Generated', desc: 'Architecture review recommended PyJWT isolation', type: 'info' }
+    ]
+
+    return (
+      <div className="flex-1 overflow-y-auto p-6 custom-scrollbar min-h-0 space-y-6 font-mono text-xs text-white bg-[#05070a]">
+        {/* Visual Demo Feature Banner */}
+        <section className="relative p-6 rounded-2xl border border-cyan-500/20 bg-cyan-950/10 overflow-hidden space-y-3">
+          <div className="absolute top-0 right-0 bottom-0 w-1/3 bg-gradient-to-l from-cyan-500/10 to-transparent pointer-events-none" />
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded text-[8px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 uppercase tracking-widest font-bold">
+              Demo OS Active
+            </span>
+            <span className="text-zinc-500">•</span>
+            <span className="text-zinc-400 text-[10px]">Enterprise Repository Operations Platform</span>
+          </div>
+          <h1 className="text-xl md:text-2xl font-bold font-display tracking-tight text-white">
+            SaaS Codebase <span className="text-cyan-400">Intelligence OS</span>
+          </h1>
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-1 text-[9px] text-zinc-400">
+            <span className="flex items-center gap-1.5"><CheckCircle2 size={11} className="text-cyan-400" /> Repository Intelligence</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 size={11} className="text-cyan-400" /> AI Story</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 size={11} className="text-cyan-400" /> Decision Engine</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 size={11} className="text-cyan-400" /> Security Analysis</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 size={11} className="text-cyan-400" /> Architecture Review</span>
+          </div>
+        </section>
+
+        {/* SaaS KPI Metrics Strip */}
+        <section className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+          {[
+            { label: 'portfolio health', value: `${avgHealth}%`, color: 'text-cyan-400' },
+            { label: 'vulnerabilities', value: '8 detected', color: 'text-red-400' },
+            { label: 'code coverage', value: '86% average', color: 'text-blue-400' },
+            { label: 'remediation budget', value: `$${totalRemediationCost}`, color: 'text-emerald-400' },
+            { label: 'deployment readiness', value: '94% score', color: 'text-violet-400' }
+          ].map((item, i) => (
+            <div key={i} className="bg-white/[0.01] border border-white/[0.06] rounded-xl p-4 space-y-1">
+              <span className="text-[9px] text-zinc-500 uppercase tracking-wider block">{item.label}</span>
+              <span className={`text-sm font-bold tracking-tight block ${item.color}`}>{item.value}</span>
+            </div>
+          ))}
+        </section>
+
+        {/* Quick Actions Panel */}
+        <section className="bg-white/[0.01] border border-white/[0.06] rounded-2xl p-4 space-y-3">
+          <span className="text-[8px] uppercase tracking-widest text-zinc-500 font-bold">Quick Actions Gateway</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button
+              onClick={() => navigate('/submit')}
+              className="py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 text-[10px] font-bold text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Plus size={12} className="text-cyan-400" /> Evaluate Repository
+            </button>
+            <button
+              onClick={() => {
+                setCompareMode(true)
+                setCompareBaseId(favorites[0]?.uuid || '')
+                setCompareTargetId(favorites[1]?.uuid || '')
+              }}
+              className="py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 text-[10px] font-bold text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Layers size={12} className="text-cyan-400" /> Compare Codebases
+            </button>
+            <button
+              onClick={() => navigate('/intelligence')}
+              className="py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 text-[10px] font-bold text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <Bot size={12} className="text-cyan-400" /> Ask AI Copilot
+            </button>
+            <button
+              onClick={fetchRepositories}
+              className="py-2.5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 text-[10px] font-bold text-center flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <RefreshCw size={12} className="text-cyan-400" /> Sync Organization
+            </button>
+          </div>
+        </section>
+
+        {/* Compare Modal */}
+        {compareMode && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+            <div className="bg-[#0c0d12] border border-white/[0.08] w-full max-w-xl rounded-2xl p-6 space-y-6">
+              <div className="flex justify-between items-center pb-3 border-b border-white/[0.05]">
+                <span className="text-sm font-bold uppercase tracking-wider text-white">Compare Codebase Performance</span>
+                <button onClick={() => { setCompareMode(false); setCompareResult(null); }} className="text-zinc-500 hover:text-white">✕</button>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-[10px] text-zinc-500 uppercase">Base Repository</label>
+                  <select
+                    value={compareBaseId}
+                    onChange={e => setCompareBaseId(e.target.value)}
+                    className="w-full bg-[#12131a] border border-white/[0.08] text-white rounded-lg h-9 px-3 outline-none"
+                  >
+                    <option value="">Select Base</option>
+                    {repositories.map(r => <option key={r.uuid} value={r.uuid}>{r.full_name}</option>)}
+                  </select>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] text-zinc-500 uppercase">Target Repository</label>
+                  <select
+                    value={compareTargetId}
+                    onChange={e => setCompareTargetId(e.target.value)}
+                    className="w-full bg-[#12131a] border border-white/[0.08] text-white rounded-lg h-9 px-3 outline-none"
+                  >
+                    <option value="">Select Target</option>
+                    {repositories.map(r => <option key={r.uuid} value={r.uuid}>{r.full_name}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <button
+                onClick={executeCompare}
+                disabled={comparing || !compareBaseId || !compareTargetId}
+                className="w-full yowon-btn-primary h-10"
+              >
+                {comparing ? 'Calculating Similarity Matrix...' : 'Compare Codebases'}
+              </button>
+
+              {compareResult && (
+                <div className="space-y-4 pt-3 border-t border-white/[0.05] font-sans">
+                  <div className="flex justify-between items-center bg-cyan-400/5 border border-cyan-400/10 p-4 rounded-xl">
+                    <span className="text-zinc-400 text-xs">VCS Code Similarity Match</span>
+                    <span className="text-xl font-bold font-mono text-cyan-400">{compareResult.similarity_score}%</span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 text-center text-xs">
+                    <div className="bg-[#12131a] p-3 rounded-lg border border-white/[0.04] space-y-1">
+                      <span className="text-zinc-500 text-[10px] block uppercase">Health Score Difference</span>
+                      <span className={`font-bold font-mono text-sm block ${compareResult.delta.health_diff >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {compareResult.delta.health_diff >= 0 ? '+' : ''}{compareResult.delta.health_diff}%
+                      </span>
+                    </div>
+                    <div className="bg-[#12131a] p-3 rounded-lg border border-white/[0.04] space-y-1">
+                      <span className="text-zinc-500 text-[10px] block uppercase">Remediation Delta</span>
+                      <span className={`font-bold font-mono text-sm block ${compareResult.delta.tech_debt_diff <= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {compareResult.delta.tech_debt_diff > 0 ? '+' : ''}{compareResult.delta.tech_debt_diff} hrs
+                      </span>
+                    </div>
+                    <div className="bg-[#12131a] p-3 rounded-lg border border-white/[0.04] space-y-1">
+                      <span className="text-zinc-500 text-[10px] block uppercase">Coverage Variance</span>
+                      <span className={`font-bold font-mono text-sm block ${compareResult.delta.coverage_diff >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {compareResult.delta.coverage_diff >= 0 ? '+' : ''}{compareResult.delta.coverage_diff}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Favorite & Pinned Repositories / Recent activity split */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-0">
+          {/* Repositories */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[8px] uppercase tracking-widest text-zinc-500 font-bold">Pinned Repositories</span>
+              <button onClick={() => navigate('/projects')} className="text-[10px] text-cyan-400 hover:text-cyan-300 transition-colors">
+                View All →
+              </button>
+            </div>
+
+            {loading ? (
+              <div className="py-12 text-center text-zinc-600 animate-pulse font-mono">Synchronizing workspace metadata...</div>
+            ) : favorites.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {favorites.map((repo) => {
+                  const rStats = repo.statistics || { health_score: 92, risk_index: 0, coverage: 82, technical_debt: 0, estimated_remediation_cost: 0 }
+                  return (
+                    <div
+                      key={repo.uuid}
+                      onClick={() => navigate(`/repositories/${repo.uuid}`)}
+                      className="bg-white/[0.01] border border-white/[0.06] rounded-2xl p-5 hover:bg-white/[0.02] hover:border-white/10 transition-all space-y-4 cursor-pointer relative"
+                    >
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider font-mono">
+                            {repo.organization?.login || 'Personal'}
+                          </span>
+                        </div>
+                        <h3 className="text-xs font-bold text-white truncate font-display">{repo.name}</h3>
+                        <p className="text-[10px] text-zinc-500 font-sans line-clamp-2 h-7 leading-relaxed">
+                          {repo.description || 'No description provided.'}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-2 border-t border-b border-white/[0.03] py-3 text-[10px] font-mono">
+                        <div>
+                          <span className="text-zinc-500 block mb-0.5">Health</span>
+                          <span className="font-bold text-cyan-400 block">{rStats.health_score}%</span>
+                        </div>
+                        <div>
+                          <span className="text-zinc-500 block mb-0.5">Coverage</span>
+                          <span className="font-bold text-blue-400 block">{rStats.coverage}%</span>
+                        </div>
+                        <div>
+                          <span className="text-zinc-500 block mb-0.5">Remediation</span>
+                          <span className="font-bold text-emerald-400 block">${rStats.estimated_remediation_cost || 400}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="py-12 border border-dashed border-white/10 rounded-2xl text-center text-zinc-600 font-mono italic">
+                No connected repositories. Click "Evaluate Repository" above to import!
+              </div>
+            )}
+          </div>
+
+          {/* Activity timeline feed */}
+          <div className="space-y-4">
+            <span className="text-[8px] uppercase tracking-widest text-zinc-500 font-bold">Recent Operations Timeline</span>
+            <div className="border border-white/[0.06] bg-white/[0.01] rounded-2xl p-4 space-y-4 max-h-[340px] overflow-y-auto custom-scrollbar">
+              {recentActivity.map((act, i) => (
+                <div key={i} className="flex gap-3">
+                  <div className="space-y-1">
+                    <span className="text-[8px] font-mono text-zinc-600 block">{act.time}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        act.type === 'success' ? 'bg-emerald-400' :
+                        act.type === 'warning' ? 'bg-red-400' : 'bg-cyan-400'
+                      }`} />
+                      <h4 className="text-[10px] font-bold text-white leading-none">{act.title}</h4>
+                    </div>
+                    <p className="text-[9.5px] text-zinc-400 font-sans leading-relaxed pl-3">{act.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // -------------------------------------------------------------
+  // RENDER: STANDARD ENTERPRISE DEVELOPER VIEW
+  // -------------------------------------------------------------
   return (
     <div className="flex-1 overflow-y-auto p-6 custom-scrollbar min-h-0 space-y-8 font-mono text-xs text-white">
       {/* Welcome header strip */}

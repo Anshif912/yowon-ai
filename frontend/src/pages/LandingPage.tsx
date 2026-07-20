@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowRight, Zap, Radio, Shield, Clock, Layers, Sparkles,
@@ -12,6 +12,7 @@ import NeuralNetwork from '../components/landing/NeuralNetwork'
 import AgentShowcase from '../components/landing/AgentShowcase'
 import ScanLine from '../components/effects/ScanLine'
 import NeuralOverlay from '../components/effects/NeuralOverlay'
+import { useAuth } from '../components/auth/AuthContext'
 
 const STATS = [
   { value: '8',   label: 'Council Agents',       icon: Layers,      color: 'text-cyan-300' },
@@ -76,8 +77,17 @@ const fadeUp = {
 }
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+  const { user } = useAuth()
   const [progress, setProgress] = useState(3)
   const [loaded, setLoaded] = useState(false)
+
+  // Redirect if logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard')
+    }
+  }, [user, navigate])
 
   // Simulation loading progress
   useEffect(() => {
