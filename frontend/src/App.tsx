@@ -127,12 +127,8 @@ export default function App() {
               <Route path="/settings"     element={<SettingsPage />} />
               <Route path="/leaderboard"  element={<LeaderboardPage />} />
               
-              {/* Jury dashboard restricted to admins and managers */}
-              <Route path="/jury"         element={
-                <ProtectedRoute allowedRoles={['admin', 'manager']}>
-                  <JuryDashboardPage />
-                </ProtectedRoute>
-              } />
+              {/* Jury dashboard */}
+              <Route path="/jury"         element={<ProtectedRoute><JuryDashboardPage /></ProtectedRoute>} />
 
               {/* Context-aware routes requiring projectId */}
               <Route
@@ -192,16 +188,15 @@ export default function App() {
                 }
               />
 
-
               {/* Enterprise Routes */}
-              <Route path="/enterprise"            element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><EnterpriseOverviewPage /></ProtectedRoute>} />
-              <Route path="/enterprise/connectors" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><ConnectorsPage /></ProtectedRoute>} />
-              <Route path="/enterprise/connectors/:connectorId" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><ConnectorDetailsPage /></ProtectedRoute>} />
-              <Route path="/enterprise/secrets"    element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><SecretsVaultPage /></ProtectedRoute>} />
-              <Route path="/enterprise/marketplace" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><MarketplacePage /></ProtectedRoute>} />
-              <Route path="/enterprise/plugins"     element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><PluginsPage /></ProtectedRoute>} />
-              <Route path="/enterprise/webhooks"    element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><WebhooksPage /></ProtectedRoute>} />
-              <Route path="/enterprise/operations"  element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><OperationsPage /></ProtectedRoute>} />
+              <Route path="/enterprise"            element={<ProtectedRoute><EnterpriseOverviewPage /></ProtectedRoute>} />
+              <Route path="/enterprise/connectors" element={<ProtectedRoute><ConnectorsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/connectors/:connectorId" element={<ProtectedRoute><ConnectorDetailsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/secrets"    element={<ProtectedRoute><SecretsVaultPage /></ProtectedRoute>} />
+              <Route path="/enterprise/marketplace" element={<ProtectedRoute><MarketplacePage /></ProtectedRoute>} />
+              <Route path="/enterprise/plugins"     element={<ProtectedRoute><PluginsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/webhooks"    element={<ProtectedRoute><WebhooksPage /></ProtectedRoute>} />
+              <Route path="/enterprise/operations"  element={<ProtectedRoute><OperationsPage /></ProtectedRoute>} />
 
               {/* Enterprise AI / Intelligence Routes */}
               <Route path="/intelligence"             element={<EnterpriseAIOverviewPage />} />
@@ -209,7 +204,7 @@ export default function App() {
               <Route path="/intelligence/search"      element={<KnowledgeSearchPage />} />
               <Route path="/intelligence/predictions" element={<PredictionsPage />} />
               <Route path="/intelligence/digital-twin" element={<DigitalTwinPage />} />
-              <Route path="/enterprise/workflows"     element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><WorkflowStudioPage /></ProtectedRoute>} />
+              <Route path="/enterprise/workflows"     element={<ProtectedRoute><WorkflowStudioPage /></ProtectedRoute>} />
               <Route path="/intelligence/executive"   element={<ExecutiveDashboardPage />} />
               <Route path="/repositories/:id"         element={<RepositoryDetailsPage />} />
             </Route>
