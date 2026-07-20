@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Github, BarChart3, Zap, AlertCircle, FileStack, Sparkles,
   CheckCircle2, ClipboardCheck, Upload, FileText, ChevronRight,
-  X, Eye, Search, Star, GitBranch, Globe, Lock, RefreshCw, Play
+  X, Eye, Search, Star, GitBranch, Globe, Lock, RefreshCw, Play, Key
 } from 'lucide-react'
 import FileDropZone from '../components/upload/FileDropZone'
 import { uploadProject, triggerEvaluation, api } from '../api/api'
@@ -59,20 +59,59 @@ export default function SubmitPage() {
   const fetchRepos = async () => {
     setLoadingRepos(true)
     setError(null)
+    const storedToken = localStorage.getItem('yowon_github_token')
+
     try {
+      // 1. Try backend git/repositories first
       const res = await api.get('/git/repositories')
-      setRepos(res.data || [])
-    } catch (err: any) {
-      console.warn('Repository list fetch fallback:', err)
-      // Fallback empty list or silence warning to prevent UI distraction
-      setRepos([])
-    } finally {
-      setLoadingRepos(false)
+      if (res.data && res.data.length > 0) {
+        setRepos(res.data)
+        setLoadingRepos(false)
+        return
+      }
+    } catch (err) {}
+
+    // 2. If PAT token exists, fetch directly from GitHub API
+    if (storedToken) {
+      try {
+        const ghRes = await fetch('https://api.github.com/user/repos?type=all&per_page=100&sort=updated', {
+          headers: { Authorization: `Bearer ${storedToken}` }
+        })
+        if (ghRes.ok) {
+          const raw = await ghRes.json()
+          const mapped = raw.map((repo: any) => ({
+            uuid: String(repo.id),
+            name: repo.name,
+            full_name: repo.full_name,
+            owner: repo.owner?.login || 'user',
+            avatar_url: repo.owner?.avatar_url,
+            description: repo.description || 'GitHub Repository',
+            html_url: repo.html_url,
+            clone_url: repo.clone_url,
+            language: repo.language || 'TypeScript',
+            visibility: repo.private ? 'Private' : 'Public',
+            default_branch: repo.default_branch || 'main',
+            stars_count: repo.stargazers_count || 0,
+            open_issues_count: repo.open_issues_count || 0,
+            updated_at: repo.updated_at
+          }))
+          setRepos(mapped)
+          setLoadingRepos(false)
+          return
+        }
+      } catch (err) {
+        console.warn('GitHub PAT fetch failed:', err)
+      }
     }
+
+    setRepos([])
+    setLoadingRepos(false)
   }
 
   useEffect(() => {
     fetchRepos()
+    window.addEventListener('yowon_github_token_updated', fetchRepos)
+    return () => window.removeEventListener('yowon_github_token_updated', fetchRepos)
   }, [])
 
   // Local filtering lists
@@ -387,9 +426,32 @@ export default function SubmitPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="glass-card py-16 text-center border-dashed border-white/10">
-                    <p className="text-slate-400 italic text-sm">No repositories synchronized.</p>
-                    <p className="text-slate-500 text-[11px] mt-1">Try to refresh or register a GitHub connection tunnel in settings.</p>
+                  <div className="glass-card py-16 text-center border-dashed border-white/10 flex flex-col items-center justify-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                      <Github size={24} />
+                    </div>
+                    <div>
+                      <p className="text-white font-bold text-sm">No GitHub Repositories Loaded</p>
+                      <p className="text-slate-400 text-xs mt-1 max-w-md mx-auto font-sans leading-relaxed">
+                        Add a <strong>GitHub Personal Access Token (PAT)</strong> in Settings to automatically sync your public and private repositories for 1-click evaluation.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 mt-2">
+                      <button
+                        onClick={() => navigate('/settings')}
+                        className="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-cyan-500 hover:bg-cyan-400 text-black rounded-xl cursor-pointer transition-all flex items-center gap-2"
+                      >
+                        <Key size={13} />
+                        Configure GitHub PAT in Settings
+                      </button>
+                      <button
+                        onClick={fetchRepos}
+                        className="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 rounded-xl cursor-pointer transition-all flex items-center gap-2"
+                      >
+                        <RefreshCw size={13} className={loadingRepos ? 'animate-spin' : ''} />
+                        Refresh Repositories
+                      </button>
+                    </div>
                   </div>
                 )}
               </motion.div>
