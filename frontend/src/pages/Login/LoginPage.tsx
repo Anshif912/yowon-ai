@@ -100,8 +100,8 @@ export default function LoginPage() {
           disabled={!isConfigured || isSubmitLoading}
           onClick={() => {
             if (isConfigured) {
-              // Trigger redirect to OAuth flow URL on the backend
-              window.location.href = `${API_BASE}/api/v1/auth/oauth/${providerKey}/redirect`
+              // Trigger redirect to OAuth flow URL on the backend with redirect_to path
+              window.location.href = `${API_BASE}/api/v1/auth/oauth/${providerKey}/redirect?redirect_to=${encodeURIComponent(redirectTo)}`
             }
           }}
           className={`w-full flex items-center justify-center gap-2 py-2 bg-white/[0.01] border rounded-lg text-[10px] font-mono transition-all ${

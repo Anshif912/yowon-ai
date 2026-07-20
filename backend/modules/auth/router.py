@@ -249,9 +249,9 @@ import logging
 auth_logger = logging.getLogger("yowon.auth.router")
 
 @router.get("/oauth/{provider}/redirect")
-def oauth_redirect(provider: str, request: Request):
+def oauth_redirect(provider: str, request: Request, redirect_to: Optional[str] = None):
     """Redirects the client to the configured third party OAuth provider login page."""
-    auth_logger.info(f"[OAuth Redirect] Initiated for provider={provider}")
+    auth_logger.info(f"[OAuth Redirect] Initiated for provider={provider}, redirect_to={redirect_to}")
     prov = provider_registry.get_provider(provider)
     if not prov or not prov.is_configured:
         auth_logger.error(f"[OAuth Redirect] Provider not configured/enabled: provider={provider}")
@@ -269,7 +269,8 @@ def oauth_redirect(provider: str, request: Request):
         redirect_uri = str(request.url_for("oauth_callback", provider=provider))
         auth_logger.info(f"[OAuth Redirect] Using dynamically-generated redirect_uri={redirect_uri}")
     
-    state = str(uuid.uuid4())
+    nonce = str(uuid.uuid4())
+    state = f"{nonce}:{redirect_to or '/dashboard'}"
     auth_url = prov.get_auth_url(redirect_uri, state)
     auth_logger.info(f"[OAuth Redirect] Redirecting user to URL: {auth_url}")
     
@@ -424,10 +425,20 @@ async def oauth_callback(
     access_token = TokenService.create_access_token(user.uuid, user.role)
     refresh_token = TokenService.create_refresh_token(user.uuid, jti)
     
-    # Redirect target dashboard
+    # Redirect target dashboard / previous page
     frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
-    redirect_resp = RedirectResponse(url=f"{frontend_url}/dashboard")
-    auth_logger.info(f"[OAuth Callback] Preparing redirect to Frontend URL: {frontend_url}/dashboard")
+    redirect_target = "/dashboard"
+    if state and ":" in state:
+        parts = state.split(":", 1)
+        if len(parts) == 2:
+            redirect_target = parts[1]
+
+    # Clean redirect target to prevent open redirect vulnerabilities
+    if not redirect_target.startswith("/"):
+        redirect_target = "/dashboard"
+
+    redirect_resp = RedirectResponse(url=f"{frontend_url}{redirect_target}")
+    auth_logger.info(f"[OAuth Callback] Preparing redirect to Frontend URL: {frontend_url}{redirect_target}")
     
     is_secure = (
         request.url.scheme == "https"
