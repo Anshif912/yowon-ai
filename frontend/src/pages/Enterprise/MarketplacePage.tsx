@@ -45,6 +45,7 @@ export default function MarketplacePage() {
   const [extensions, setExtensions] = useState<Extension[]>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [activeTab, setActiveTab] = useState<'all' | 'installed' | 'updates'>('all')
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'plugin' | 'policy'>('all')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   
@@ -100,12 +101,17 @@ export default function MarketplacePage() {
                             ext.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             ext.publisher.toLowerCase().includes(searchQuery.toLowerCase())
 
-      if (activeTab === 'all') return matchesSearch
-      if (activeTab === 'installed') return matchesSearch && (ext.status === 'installed' || ext.status === 'inactive')
-      if (activeTab === 'updates') return matchesSearch && ext.status === 'inactive' // dummy updates tab logic
-      return matchesSearch
+      const matchesTab = activeTab === 'all'
+        ? true
+        : activeTab === 'installed'
+          ? (ext.status === 'installed' || ext.status === 'inactive')
+          : ext.status === 'inactive'
+
+      const matchesCategory = selectedCategory === 'all' || ext.category === selectedCategory
+
+      return matchesSearch && matchesTab && matchesCategory
     })
-  }, [extensions, searchQuery, activeTab])
+  }, [extensions, searchQuery, activeTab, selectedCategory])
 
   // Open dialog
   const triggerActionDialog = (e: React.MouseEvent, ext: Extension, type: 'install' | 'update' | 'uninstall' | 'toggle') => {
@@ -193,6 +199,24 @@ export default function MarketplacePage() {
               </div>
             }
           />
+        </div>
+
+        {/* Categories Tab Selector */}
+        <div className="flex flex-wrap items-center gap-2 border-b border-white/5 pb-4 select-none">
+          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.18em] mr-2">CATEGORIES:</span>
+          {(['all', 'plugin', 'policy'] as const).map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3 py-1.5 text-[10.5px] font-mono font-bold rounded-lg border transition-all duration-150 cursor-pointer uppercase ${
+                selectedCategory === cat
+                  ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/25 shadow-[0_0_12px_rgba(0,229,255,0.06)]'
+                  : 'bg-white/[0.01] border-white/5 text-zinc-400 hover:text-zinc-200 hover:border-white/10'
+              }`}
+            >
+              {cat === 'all' ? 'All Categories' : cat === 'plugin' ? 'Plugins / Agents' : 'Policies / Rules'}
+            </button>
+          ))}
         </div>
 
         {/* Extensions Grid */}

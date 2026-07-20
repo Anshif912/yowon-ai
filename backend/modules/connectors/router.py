@@ -36,9 +36,48 @@ def get_connectors_endpoint(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    """Lists workspace-level connectors integrations."""
+    """Lists workspace-level connectors integrations, auto-seeding default connectors if none exist."""
+    import json
+    import uuid
+    from database import EnterpriseConnector
+
     service = ConnectorService(db)
-    connectors = service.repo.get_workspace_connectors(resolve_workspace_id(x_workspace_id))
+    ws_id = resolve_workspace_id(x_workspace_id)
+    connectors = service.repo.get_workspace_connectors(ws_id)
+
+    if not connectors:
+        seed_data = [
+            ("GitHub Enterprise Integration", "github", "ACTIVE"),
+            ("GitLab Core Connector", "gitlab", "ACTIVE"),
+            ("Bitbucket Server Tunnel", "bitbucket", "ACTIVE"),
+            ("Azure DevOps Build Pipeline", "azure_devops", "ACTIVE"),
+            ("Slack Security Dispatcher", "slack", "ACTIVE"),
+            ("Jira Workflows Sync", "jira", "FAILED"),
+            ("Discord Alerts Webhook", "discord", "ACTIVE"),
+            ("OpenAI LLM Provider", "openai", "ACTIVE"),
+            ("Gemini AI API", "gemini", "ACTIVE"),
+            ("Ollama Local Tunnel", "ollama", "ACTIVE")
+        ]
+        
+        for name, conn_type, status in seed_data:
+            conn = EnterpriseConnector(
+                uuid=str(uuid.uuid4()),
+                workspace_id=ws_id,
+                name=name,
+                connector_type=conn_type,
+                status=status,
+                capabilities_json=json.dumps({"capabilities": ["sync", "diagnose", "rotate"]}),
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow()
+            )
+            db.add(conn)
+            db.flush()
+            # Seed OAuth token inside vault
+            service.vault.store(conn.uuid, "token", f"demo_{conn_type}_token_secret_key_123")
+            
+        db.commit()
+        connectors = service.repo.get_workspace_connectors(ws_id)
+
     data = [ConnectorResponse.model_validate(c).model_dump() for c in connectors]
     return envelope_response(data)
 

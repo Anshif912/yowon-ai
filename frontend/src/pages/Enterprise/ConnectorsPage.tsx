@@ -17,7 +17,11 @@ import {
   ExternalLink,
   Power,
   ShieldAlert,
-  Info
+  Info,
+  Gitlab,
+  Bot,
+  Sparkles,
+  Cpu
 } from 'lucide-react'
 import {
   PageHeader,
@@ -114,9 +118,16 @@ import { useWorkspace } from '../../components/auth/WorkspaceContext'
 
 const PROVIDER_ICONS: Record<string, any> = {
   github: GitBranch,
+  gitlab: Gitlab,
+  bitbucket: GitBranch,
+  azure_devops: Cpu,
   slack: Slack,
   jira: AlertTriangle,
   teams: MessageSquare,
+  discord: MessageSquare,
+  openai: Sparkles,
+  gemini: Sparkles,
+  ollama: Bot,
   confluence: BookOpen,
   gcal: Calendar
 }
@@ -494,9 +505,15 @@ export default function ConnectorsPage() {
                   className="w-full px-3 py-2 text-xs text-white bg-zinc-900 border border-white/10 rounded-lg focus:border-cyan-500/50 outline-none"
                 >
                   <option value="github">GitHub</option>
+                  <option value="gitlab">GitLab</option>
+                  <option value="bitbucket">Bitbucket</option>
+                  <option value="azure_devops">Azure DevOps</option>
                   <option value="slack">Slack</option>
                   <option value="jira">Jira</option>
-                  <option value="teams">Microsoft Teams</option>
+                  <option value="discord">Discord</option>
+                  <option value="openai">OpenAI</option>
+                  <option value="gemini">Gemini</option>
+                  <option value="ollama">Ollama</option>
                 </select>
               </div>
 
