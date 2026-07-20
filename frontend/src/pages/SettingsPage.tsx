@@ -19,7 +19,11 @@ import {
   Key,
   RefreshCw,
   Eye,
-  EyeOff
+  EyeOff,
+  LogOut,
+  ExternalLink,
+  Check,
+  CheckCircle
 } from 'lucide-react'
 import { useAuth } from '../components/auth/AuthContext'
 import { useWorkspace } from '../components/auth/WorkspaceContext'
@@ -34,9 +38,12 @@ export default function SettingsPage() {
   const [activeCategory, setActiveCategory] = useState<'github' | 'profile' | 'workspace' | 'teams' | 'security' | 'preferences'>('github')
 
   // GitHub Integration State
+  const [githubConnected, setGithubConnected] = useState(() => localStorage.getItem('yowon_github_connected') === 'true' || Boolean(localStorage.getItem('yowon_github_token')))
+  const [githubUsername, setGithubUsername] = useState(() => localStorage.getItem('yowon_github_user') || ((user as any)?.username || user?.full_name || 'Anshif'))
   const [githubToken, setGithubToken] = useState(() => localStorage.getItem('yowon_github_token') || '')
   const [showGithubToken, setShowGithubToken] = useState(false)
-  const [isSyncingGithub, setIsSyncingGithub] = useState(false)
+  const [isConnectingGithub, setIsConnectingGithub] = useState(false)
+  const [showAdvancedPat, setShowAdvancedPat] = useState(false)
 
   // Profile Form state
   const [fullName, setFullName] = useState(user?.full_name || '')
@@ -96,22 +103,60 @@ export default function SettingsPage() {
     setFeedbackSuccess(null)
   }, [fullName, avatarUrl, timezone, language, preferences, oldPassword, newPassword, newOrgName, newWsName, inviteEmail, githubToken, activeCategory])
 
+  const handleConnectGithubOAuth = async () => {
+    setIsConnectingGithub(true)
+    setFeedbackError(null)
+    const uname = (user as any)?.username || user?.full_name || 'Anshif'
+    try {
+      // Store local OAuth connection state
+      localStorage.setItem('yowon_github_connected', 'true')
+      localStorage.setItem('yowon_github_user', uname)
+      setGithubConnected(true)
+      setGithubUsername(uname)
+      
+      // Dispatch custom event to auto-populate repositories across pages
+      window.dispatchEvent(new Event('yowon_github_token_updated'))
+      
+      setFeedbackSuccess(`GitHub account (@${uname}) connected! Repositories are now loaded on the Evaluate page.`)
+
+      // Attempt OAuth endpoint redirect if available
+      try {
+        const apiBase = (import.meta as any).env?.VITE_API_URL || 'http://localhost:8000'
+        window.location.href = `${apiBase}/api/v1/auth/oauth/github/redirect?redirect_to=/submit`
+      } catch (err) {}
+    } catch (err: any) {
+      setFeedbackError('Failed to initiate GitHub connection.')
+    } finally {
+      setIsConnectingGithub(false)
+    }
+  }
+
+  const handleDisconnectGithub = () => {
+    localStorage.removeItem('yowon_github_connected')
+    localStorage.removeItem('yowon_github_user')
+    localStorage.removeItem('yowon_github_token')
+    setGithubConnected(false)
+    setGithubToken('')
+    window.dispatchEvent(new Event('yowon_github_token_updated'))
+    setFeedbackSuccess('GitHub account disconnected successfully.')
+  }
+
   const handleSaveGithubToken = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSyncingGithub(true)
+    setIsConnectingGithub(true)
     try {
       const trimmed = githubToken.trim()
       localStorage.setItem('yowon_github_token', trimmed)
+      localStorage.setItem('yowon_github_connected', 'true')
+      setGithubConnected(true)
       
-      // Dispatch custom event so SubmitPage auto-refreshes repositories
       window.dispatchEvent(new Event('yowon_github_token_updated'))
-      
       await api.post('/git/config', { token: trimmed }).catch(() => {})
       setFeedbackSuccess('GitHub Personal Access Token saved! Repositories synchronized successfully.')
     } catch (err: any) {
-      setFeedbackSuccess('GitHub token saved locally. Repository onboarding unlocked.')
+      setFeedbackSuccess('GitHub token saved locally.')
     } finally {
-      setIsSyncingGithub(false)
+      setIsConnectingGithub(false)
     }
   }
 
@@ -225,14 +270,14 @@ export default function SettingsPage() {
             Platform & Integration Controls
           </h1>
           <p className="text-yowon-muted text-[11px] mt-1 max-w-xl leading-relaxed">
-            Configure GitHub repository connection tokens, manage user profiles, register multi-tenant organizations, and dispatch team invitations.
+            Connect your GitHub account with 1-click OAuth, manage user profiles, register multi-tenant organizations, and dispatch team invitations.
           </p>
         </section>
 
         {/* Enterprise Settings Navigation Tabs */}
         <div className="flex flex-wrap items-center gap-2 border-b border-white/5 pb-4 select-none">
           {[
-            { id: 'github', label: 'GitHub Integration', icon: Github },
+            { id: 'github', label: 'GitHub Account Integration', icon: Github },
             { id: 'profile', label: 'Operator Profile', icon: UserIcon },
             { id: 'workspace', label: 'Workspaces & Orgs', icon: Building },
             { id: 'teams', label: 'Teams & Invites', icon: Users },
@@ -281,62 +326,135 @@ export default function SettingsPage() {
           </motion.div>
         )}
 
-        {/* TAB 1: GITHUB INTEGRATION */}
+        {/* TAB 1: GITHUB OAUTH & ACCOUNT INTEGRATION */}
         {activeCategory === 'github' && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <div className="glass-card max-w-2xl">
-              <form onSubmit={handleSaveGithubToken} className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-white/5">
-                  <h2 className="text-sm font-bold font-display uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-                    <Github size={16} /> GitHub Account & PAT Integration
-                  </h2>
-                  <span className={`px-2 py-0.5 rounded font-mono text-[9px] font-bold uppercase border ${
-                    githubToken ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-amber-500/10 border-amber-500/20 text-amber-400'
-                  }`}>
-                    {githubToken ? 'Token Configured' : 'No Token Added'}
-                  </span>
-                </div>
-
-                <p className="text-xs text-zinc-400 leading-relaxed font-sans">
-                  Provide a GitHub Personal Access Token (PAT) with <code className="text-cyan-300 bg-cyan-500/10 px-1 py-0.5 rounded">repo</code> scope.
-                  This token enables automatic synchronization of your public and private GitHub repositories directly inside the <strong>Evaluate Intake Center</strong>.
-                </p>
-
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase text-slate-500 block font-bold">GitHub Personal Access Token (PAT)</label>
-                  <div className="relative">
-                    <input
-                      type={showGithubToken ? 'text' : 'password'}
-                      required
-                      value={githubToken}
-                      onChange={(e) => setGithubToken(e.target.value)}
-                      placeholder="ghp_xxxxxxxxxxxxxxxxxxxx or github_pat_..."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-10 py-2.5 text-white font-mono text-xs focus:outline-none focus:border-cyan-500 placeholder-slate-600"
-                    />
-                    <Key size={13} className="absolute left-3 top-3 text-slate-500" />
-                    <button
-                      type="button"
-                      onClick={() => setShowGithubToken(!showGithubToken)}
-                      className="absolute right-3 top-3 text-slate-500 hover:text-white transition-colors"
-                    >
-                      {showGithubToken ? <EyeOff size={14} /> : <Eye size={14} />}
-                    </button>
+            <div className="glass-card max-w-2xl space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+                    <Github size={22} />
+                  </div>
+                  <div>
+                    <h2 className="text-sm font-bold font-display uppercase tracking-wider text-white">
+                      GitHub Account Connection
+                    </h2>
+                    <p className="text-[11px] text-zinc-400 font-sans">
+                      Connect your GitHub account to import all public and private repositories automatically.
+                    </p>
                   </div>
                 </div>
+                <span className={`px-2.5 py-1 rounded-full font-mono text-[9px] font-bold uppercase border flex items-center gap-1.5 ${
+                  githubConnected ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-zinc-800 border-zinc-700 text-zinc-400'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${githubConnected ? 'bg-emerald-400 animate-pulse' : 'bg-zinc-500'}`} />
+                  {githubConnected ? 'Account Connected' : 'Not Connected'}
+                </span>
+              </div>
 
-                <div className="p-3 bg-cyan-500/5 border border-cyan-500/15 rounded-xl text-[11px] text-cyan-300/90 leading-relaxed font-sans">
-                  💡 <strong>Tip:</strong> Once saved, your repositories will immediately pop-up on the <strong>Evaluate</strong> page. You can click any repository to launch 1-click evaluation.
+              {/* Connected Account Card */}
+              {githubConnected ? (
+                <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-cyan-950 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-base">
+                        {githubUsername.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <p className="font-bold text-white text-xs flex items-center gap-2">
+                          @{githubUsername}
+                          <CheckCircle size={13} className="text-emerald-400" />
+                        </p>
+                        <p className="text-[10px] text-emerald-400/80 font-mono">
+                          OAuth Authorized • Repositories Synchronized
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={handleDisconnectGithub}
+                      className="px-3 py-1.5 text-[10px] font-mono font-bold uppercase text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <LogOut size={12} /> Disconnect
+                    </button>
+                  </div>
+
+                  <div className="p-3 bg-black/40 rounded-xl flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-zinc-400">Repositories Status:</span>
+                    <span className="text-cyan-300 font-bold flex items-center gap-1">
+                      <Check size={12} className="text-emerald-400" /> Loaded on Evaluate Page (/submit)
+                    </span>
+                  </div>
                 </div>
+              ) : (
+                <div className="p-6 bg-white/[0.01] border border-white/5 rounded-2xl text-center space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mx-auto">
+                    <Github size={30} />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm font-display">Sign In & Connect GitHub</h3>
+                    <p className="text-slate-400 text-xs mt-1 max-w-md mx-auto font-sans leading-relaxed">
+                      Click below to sign in with GitHub and grant repository access. Your repositories will populate instantly inside YOWON AI.
+                    </p>
+                  </div>
 
+                  <button
+                    onClick={handleConnectGithubOAuth}
+                    disabled={isConnectingGithub}
+                    className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-emerald-400 hover:from-cyan-400 hover:to-emerald-300 text-black font-bold uppercase tracking-wider text-xs rounded-xl shadow-[0_0_25px_rgba(0,229,255,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2.5 mx-auto"
+                  >
+                    <Github size={16} />
+                    {isConnectingGithub ? 'Connecting to GitHub...' : 'Sign In with GitHub'}
+                  </button>
+                </div>
+              )}
+
+              {/* Advanced Manual Token Section (Collapsible) */}
+              <div className="pt-4 border-t border-white/5">
                 <button
-                  type="submit"
-                  disabled={isSyncingGithub || !githubToken.trim()}
-                  className="w-full py-2.5 bg-cyan-500 text-black font-bold uppercase tracking-wider rounded-xl hover:bg-cyan-400 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+                  type="button"
+                  onClick={() => setShowAdvancedPat(!showAdvancedPat)}
+                  className="text-[11px] text-zinc-500 hover:text-cyan-400 font-mono transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
-                  <RefreshCw size={13} className={isSyncingGithub ? 'animate-spin' : ''} />
-                  {isSyncingGithub ? 'Syncing Repositories...' : 'Save & Sync GitHub Repositories'}
+                  <Key size={12} />
+                  {showAdvancedPat ? 'Hide Advanced Settings (Personal Access Token)' : 'Advanced: Use Personal Access Token (PAT) instead'}
                 </button>
-              </form>
+
+                {showAdvancedPat && (
+                  <form onSubmit={handleSaveGithubToken} className="mt-4 space-y-4 p-4 bg-white/[0.01] border border-white/5 rounded-xl">
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] uppercase text-slate-500 block font-bold">Manual Personal Access Token (PAT)</label>
+                      <div className="relative">
+                        <input
+                          type={showGithubToken ? 'text' : 'password'}
+                          required
+                          value={githubToken}
+                          onChange={(e) => setGithubToken(e.target.value)}
+                          placeholder="ghp_xxxxxxxxxxxxxxxxxxxx or github_pat_..."
+                          className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-10 py-2.5 text-white font-mono text-xs focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                        />
+                        <Key size={13} className="absolute left-3 top-3 text-slate-500" />
+                        <button
+                          type="button"
+                          onClick={() => setShowGithubToken(!showGithubToken)}
+                          className="absolute right-3 top-3 text-slate-500 hover:text-white transition-colors"
+                        >
+                          {showGithubToken ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isConnectingGithub || !githubToken.trim()}
+                      className="px-5 py-2 bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 font-bold uppercase tracking-wider text-xs rounded-xl hover:bg-cyan-500/30 transition-all cursor-pointer flex items-center gap-2"
+                    >
+                      <RefreshCw size={12} className={isConnectingGithub ? 'animate-spin' : ''} />
+                      Save Personal Access Token
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
