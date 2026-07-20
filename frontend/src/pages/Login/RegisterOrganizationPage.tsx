@@ -9,7 +9,7 @@ import { useAuth } from '../../components/auth/AuthContext'
 import SoftAurora from '../../components/effects/SoftAurora'
 
 export default function RegisterOrganizationPage() {
-  const { setupOrganization, platformInitialized } = useAuth()
+  const { setupOrganization, platformInitialized, isAuthenticated, user } = useAuth()
   const navigate = useNavigate()
 
   // Wizard Steps: 1: License, 2: Organization, 3: Administrator, 4: Complete
@@ -27,12 +27,12 @@ export default function RegisterOrganizationPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
-  // Block accessing installer if platform is already initialized
+  // Block accessing installer if platform is already initialized and user is NOT logged in
   useEffect(() => {
-    if (platformInitialized) {
+    if (platformInitialized && !isAuthenticated) {
       navigate('/login')
     }
-  }, [platformInitialized, navigate])
+  }, [platformInitialized, isAuthenticated, navigate])
 
   const handleNextStep = () => {
     setErrorMsg(null)

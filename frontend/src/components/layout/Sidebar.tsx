@@ -185,8 +185,8 @@ export default function Sidebar() {
         {
           label: 'Organizations',
           icon: FolderOpen,
-          to: '/register-organization',
-          active: pathname.startsWith('/register-organization'),
+          to: '/organizations',
+          active: pathname.startsWith('/organizations') || pathname.startsWith('/register-organization'),
           color: '#00E5FF',
         },
         {

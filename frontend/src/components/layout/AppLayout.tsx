@@ -14,8 +14,8 @@ export default function AppLayout() {
         {/* Sticky top bar context switcher */}
         <Topbar />
 
-        {/* Fixed layout content wrapper */}
-        <main className="flex-1 relative overflow-hidden flex flex-col min-h-0">
+        {/* Scrollable layout content wrapper */}
+        <main className="flex-1 relative overflow-y-auto flex flex-col min-h-0 custom-scrollbar">
           <Outlet />
         </main>
       </div>

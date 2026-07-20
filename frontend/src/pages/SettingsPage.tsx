@@ -25,6 +25,9 @@ export default function SettingsPage() {
   const { workspaces, createWorkspace, currentWorkspace } = useWorkspace()
   const isAdmin = user && ['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN'].includes(user.role)
 
+  // Active Category tab state
+  const [activeCategory, setActiveCategory] = useState<'profile' | 'workspace' | 'teams' | 'security' | 'preferences'>('profile')
+
   // Profile Form state
   const [fullName, setFullName] = useState(user?.full_name || '')
   const [avatarUrl, setAvatarUrl] = useState(user?.avatar_url || '')
@@ -195,6 +198,34 @@ export default function SettingsPage() {
           Manage YOWON AI access credentials, register organizations, create workspaces, and dispatch workspace invitations.
         </p>
       </section>
+
+      {/* Enterprise Settings Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-white/5 pb-4 select-none">
+        {[
+          { id: 'profile', label: 'Operator Profile', icon: UserIcon },
+          { id: 'workspace', label: 'Workspaces & Orgs', icon: Building },
+          { id: 'teams', label: 'Teams & Invites', icon: Users },
+          { id: 'security', label: 'Security & Credentials', icon: Lock },
+          { id: 'preferences', label: 'AI Preferences & System', icon: Brain },
+        ].map((tab) => {
+          const Icon = tab.icon
+          const isActive = activeCategory === tab.id
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveCategory(tab.id as any)}
+              className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider border transition-all duration-150 flex items-center gap-2 cursor-pointer ${
+                isActive
+                  ? 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300 shadow-[0_0_15px_rgba(0,229,255,0.1)]'
+                  : 'bg-white/[0.02] border-white/5 text-zinc-400 hover:text-white hover:border-white/10'
+              }`}
+            >
+              <Icon size={14} className={isActive ? 'text-cyan-400' : 'text-zinc-500'} />
+              {tab.label}
+            </button>
+          )
+        })}
+      </div>
 
       {/* Status Alerts */}
       {feedbackError && (

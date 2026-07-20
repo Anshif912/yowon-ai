@@ -189,6 +189,7 @@ export default function App() {
               />
 
               {/* Enterprise Routes */}
+              <Route path="/organizations"         element={<ProtectedRoute><RegisterOrganizationPage /></ProtectedRoute>} />
               <Route path="/enterprise"            element={<ProtectedRoute><EnterpriseOverviewPage /></ProtectedRoute>} />
               <Route path="/enterprise/connectors" element={<ProtectedRoute><ConnectorsPage /></ProtectedRoute>} />
               <Route path="/enterprise/connectors/:connectorId" element={<ProtectedRoute><ConnectorDetailsPage /></ProtectedRoute>} />
