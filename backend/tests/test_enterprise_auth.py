@@ -27,17 +27,20 @@ def setup_db():
     yield
     Base.metadata.drop_all(bind=engine)
 
-def override_get_db():
-    try:
-        db = TestingSessionLocal()
-        yield db
-    finally:
-        db.close()
+@pytest.fixture(name="client")
+def fixture_client():
+    def override_get_db():
+        try:
+            db = TestingSessionLocal()
+            yield db
+        finally:
+            db.close()
+    app.dependency_overrides[get_db] = override_get_db
+    yield TestClient(app)
+    app.dependency_overrides.clear()
 
-app.dependency_overrides[get_db] = override_get_db
-client = TestClient(app)
 
-def test_bootstrap_first_startup_and_installation_wizard():
+def test_bootstrap_first_startup_and_installation_wizard(client):
     # 1. Verify /bootstrap flags first startup correctly
     res = client.get("/api/v1/auth/bootstrap")
     assert res.status_code == 200
@@ -75,7 +78,7 @@ def test_bootstrap_first_startup_and_installation_wizard():
     assert res.json().get("detail") == "Installation Already Completed."
 
 
-def test_standard_login_and_logout_flow():
+def test_standard_login_and_logout_flow(client):
     # Setup database with user manually
     db = TestingSessionLocal()
     from modules.auth.password_service import PasswordService
