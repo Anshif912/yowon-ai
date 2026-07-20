@@ -93,7 +93,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const intervalMs = 14 * 60 * 1000 
     refreshTimerRef.current = setTimeout(async () => {
       try {
-        console.log('[Auth] Performing silent session refresh...')
+        if (import.meta.env.DEV) {
+          console.log('[Auth] Performing silent session refresh...')
+        }
         const res = await api.post('/auth/refresh')
         memoryAccessToken = res.data.access_token
         setUser(res.data.user)
@@ -140,7 +142,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       return res.data.user
     } catch (err) {
-      console.log('[Auth] No active persistent session found.')
+      if (import.meta.env.DEV) {
+        console.log('[Auth] No active persistent session found.')
+      }
       if (!memoryAccessToken) {
         memoryAccessToken = null
         setUser(null)

@@ -15,10 +15,14 @@ export const api = axios.create({
 
 // Request Logging
 api.interceptors.request.use((config) => {
-  console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, config.params || '')
+  if (import.meta.env.DEV) {
+    console.log(`[API Request] ${config.method?.toUpperCase()} ${config.url}`, config.params || '')
+  }
   return config
 }, (error) => {
-  console.error('[API Request Error]', error)
+  if (import.meta.env.DEV) {
+    console.error('[API Request Error]', error)
+  }
   return Promise.reject(error)
 })
 
