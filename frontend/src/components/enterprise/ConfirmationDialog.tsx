@@ -12,6 +12,7 @@ export interface ConfirmationDialogProps {
   cancelText?: string
   intent?: 'danger' | 'warning' | 'info' | 'success'
   loading?: boolean
+  children?: React.ReactNode
 }
 
 const intentConfig = {
@@ -55,11 +56,12 @@ export default function ConfirmationDialog({
   cancelText = 'Cancel',
   intent = 'info',
   loading = false,
+  children,
 }: ConfirmationDialogProps) {
   
   const config = intentConfig[intent]
   const Icon = config.icon
-
+  
   // Keybindings: Escape to close, Enter to confirm
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -111,6 +113,13 @@ export default function ConfirmationDialog({
                 </p>
               </div>
             </div>
+
+            {/* Custom Children Input Slot */}
+            {children && (
+              <div className="mt-2 w-full">
+                {children}
+              </div>
+            )}
 
             {/* Actions Footer */}
             <div className="flex items-center justify-end gap-3 mt-4">

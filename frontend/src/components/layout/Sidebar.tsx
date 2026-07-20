@@ -475,14 +475,21 @@ export default function Sidebar() {
         </AnimatePresence>
 
         {/* Navigation Groups */}
-        {navGroups.map((group) => (
-          <div key={group.label} className="space-y-0.5">
-            {/* Group label */}
-            {!collapsed && (
-              <div className="sidebar-nav-group-label px-4 mb-1">
-                {group.label}
-              </div>
-            )}
+        {navGroups
+          .filter((group) => {
+            if (group.label === 'Enterprise') {
+              return user && ['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN'].includes(user.role)
+            }
+            return true
+          })
+          .map((group) => (
+            <div key={group.label} className="space-y-0.5">
+              {/* Group label */}
+              {!collapsed && (
+                <div className="sidebar-nav-group-label px-4 mb-1">
+                  {group.label}
+                </div>
+              )}
 
             <nav className="space-y-0.5 px-2">
               {group.items.map((item) => {

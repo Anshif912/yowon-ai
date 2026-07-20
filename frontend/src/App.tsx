@@ -192,15 +192,16 @@ export default function App() {
                 }
               />
 
+
               {/* Enterprise Routes */}
-              <Route path="/enterprise"            element={<EnterpriseOverviewPage />} />
-              <Route path="/enterprise/connectors" element={<ConnectorsPage />} />
-              <Route path="/enterprise/connectors/:connectorId" element={<ConnectorDetailsPage />} />
-              <Route path="/enterprise/secrets"    element={<SecretsVaultPage />} />
-              <Route path="/enterprise/marketplace" element={<MarketplacePage />} />
-              <Route path="/enterprise/plugins"     element={<PluginsPage />} />
-              <Route path="/enterprise/webhooks"    element={<WebhooksPage />} />
-              <Route path="/enterprise/operations"  element={<OperationsPage />} />
+              <Route path="/enterprise"            element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><EnterpriseOverviewPage /></ProtectedRoute>} />
+              <Route path="/enterprise/connectors" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><ConnectorsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/connectors/:connectorId" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><ConnectorDetailsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/secrets"    element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><SecretsVaultPage /></ProtectedRoute>} />
+              <Route path="/enterprise/marketplace" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><MarketplacePage /></ProtectedRoute>} />
+              <Route path="/enterprise/plugins"     element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><PluginsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/webhooks"    element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><WebhooksPage /></ProtectedRoute>} />
+              <Route path="/enterprise/operations"  element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><OperationsPage /></ProtectedRoute>} />
 
               {/* Enterprise AI / Intelligence Routes */}
               <Route path="/intelligence"             element={<EnterpriseAIOverviewPage />} />
@@ -208,7 +209,7 @@ export default function App() {
               <Route path="/intelligence/search"      element={<KnowledgeSearchPage />} />
               <Route path="/intelligence/predictions" element={<PredictionsPage />} />
               <Route path="/intelligence/digital-twin" element={<DigitalTwinPage />} />
-              <Route path="/enterprise/workflows"     element={<WorkflowStudioPage />} />
+              <Route path="/enterprise/workflows"     element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN']}><WorkflowStudioPage /></ProtectedRoute>} />
               <Route path="/intelligence/executive"   element={<ExecutiveDashboardPage />} />
               <Route path="/repositories/:id"         element={<RepositoryDetailsPage />} />
             </Route>

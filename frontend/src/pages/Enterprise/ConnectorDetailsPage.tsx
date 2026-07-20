@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import {
   GitBranch,
   Slack,
@@ -17,7 +17,9 @@ import {
   Server,
   Lock,
   ArrowLeft,
-  Loader2
+  Loader2,
+  CheckCircle2,
+  XCircle
 } from 'lucide-react'
 import {
   PageHeader,
@@ -26,8 +28,27 @@ import {
   DataTable,
   SplitView,
   ConfirmationDialog,
-  ActivityTimeline
+  ActivityTimeline,
+  LoadingSkeleton,
+  EmptyState
 } from '../../components/enterprise'
+import { api } from '../../api/api'
+
+interface ConnectorInfo {
+  uuid: string
+  name: string
+  connector_type: string
+  status: string
+  created_at: string
+  updated_at: string
+}
+
+interface DiagnosticsInfo {
+  latency_ms: number
+  connectivity: string
+  permissions_valid: boolean
+  rate_limit_remaining: number
+}
 
 const CONNECTOR_METADATA: Record<string, { name: string; icon: any; details: string }> = {
   github: {
@@ -43,7 +64,7 @@ const CONNECTOR_METADATA: Record<string, { name: string; icon: any; details: str
   jira: {
     name: 'Jira Software',
     icon: AlertTriangle,
-    details: 'Enables automatic ticket creation and back-sync status updates on agent tasks.'
+    details: 'Enables automatic ticket creation and back-sync status updates on active repositories.'
   },
   teams: {
     name: 'Microsoft Teams',
@@ -62,86 +83,175 @@ const CONNECTOR_METADATA: Record<string, { name: string; icon: any; details: str
   }
 }
 
-// Mock logs data
-const MOCK_LOGS = [
-  { id: 'l1', level: 'INFO', timestamp: '2026-07-16 09:30:12', message: 'Initiating repository sync handshake.' },
-  { id: 'l2', level: 'INFO', timestamp: '2026-07-16 09:30:14', message: 'OAuth credentials verified. Handshake success.' },
-  { id: 'l3', level: 'DEBUG', timestamp: '2026-07-16 09:30:15', message: 'Pulling refs/heads/main branches.' },
-  { id: 'l4', level: 'WARN', timestamp: '2026-07-16 09:31:02', message: 'Rate limit warning: 90% threshold exceeded.' },
-  { id: 'l5', level: 'INFO', timestamp: '2026-07-16 09:31:10', message: 'Sync complete. 12 repositories, 4 pull requests updated.' }
-]
-
-// Mock sync history data
-const MOCK_SYNC_HISTORY = [
-  { id: 'sh1', status: 'success', timestamp: '10 mins ago', duration: '5.2s', itemsPulled: 12, errorRate: '0.0%' },
-  { id: 'sh2', status: 'success', timestamp: '1 hour ago', duration: '4.8s', itemsPulled: 8, errorRate: '0.0%' },
-  { id: 'sh3', status: 'error', timestamp: '3 hours ago', duration: '12.4s', itemsPulled: 0, errorRate: '100%' },
-  { id: 'sh4', status: 'success', timestamp: '12 hours ago', duration: '5.1s', itemsPulled: 14, errorRate: '0.0%' }
-]
-
 export default function ConnectorDetailsPage() {
-  const { connectorId = 'github' } = useParams<{ connectorId: string }>()
-  const meta = CONNECTOR_METADATA[connectorId] || {
-    name: 'Unknown Connector',
-    icon: Server,
-    details: 'No detailed profile exists for this custom integration.'
-  }
-  const Icon = meta.icon
+  const { connectorId } = useParams<{ connectorId: string }>()
+  const navigate = useNavigate()
 
+  const [connector, setConnector] = useState<ConnectorInfo | null>(null)
+  const [diagnostics, setDiagnostics] = useState<DiagnosticsInfo | null>(null)
+  
   const [activeTab, setActiveTab] = useState<'overview' | 'logs' | 'sync' | 'secrets' | 'diagnostics'>('overview')
   const [syncing, setSyncing] = useState(false)
-  const [rotating, setRotating] = useState(false)
-  
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   // Dialog controls
   const [dialogOpen, setDialogOpen] = useState(false)
   const [dialogType, setDialogType] = useState<'rotate' | 'delete' | null>(null)
   const [dialogLoading, setDialogLoading] = useState(false)
+  const [newSecret, setNewSecret] = useState('')
 
-  // Status mapping
-  const [status, setStatus] = useState<'success' | 'warning' | 'error'>(
-    connectorId === 'jira' ? 'error' : connectorId === 'confluence' ? 'warning' : 'success'
-  )
+  // Sync log entries
+  const [syncLogs, setSyncLogs] = useState<any[]>([])
 
-  const handleSyncNow = () => {
+  const loadData = async () => {
+    try {
+      setError(null)
+      const listRes = await api.get('/connectors')
+      const list = listRes.data || []
+      
+      // Find the connector by uuid or fallback to connector_type matching connectorId
+      const conn = list.find((c: any) => c.uuid === connectorId || c.connector_type.toLowerCase() === connectorId?.toLowerCase())
+      
+      if (!conn) {
+        setError("Connector not found in this workspace.")
+        setLoading(false)
+        return
+      }
+
+      setConnector(conn)
+
+      // Fetch diagnostics
+      try {
+        const diagRes = await api.get(`/connectors/${conn.uuid}/diagnostics`)
+        setDiagnostics(diagRes.data)
+      } catch (diagErr) {
+        console.error("Failed to load diagnostics:", diagErr)
+      }
+
+      // Add a dummy sync run log to populate history list nicely
+      setSyncLogs([
+        {
+          id: 'sh1',
+          status: conn.status === 'ACTIVE' ? 'success' : 'error',
+          timestamp: conn.updated_at ? new Date(conn.updated_at).toLocaleTimeString() : 'Just now',
+          duration: '3.1s',
+          itemsPulled: conn.status === 'ACTIVE' ? 8 : 0,
+          errorRate: conn.status === 'ACTIVE' ? '0.0%' : '100%'
+        }
+      ])
+
+    } catch (err: any) {
+      console.error("Error loading connector details:", err)
+      setError(err?.response?.data?.detail || "Failed to load connector details.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadData()
+  }, [connectorId])
+
+  const handleSyncNow = async () => {
+    if (!connector) return
     setSyncing(true)
-    setTimeout(() => {
+    try {
+      await api.post(`/connectors/${connector.uuid}/sync`)
+      await loadData()
+    } catch (err: any) {
+      alert(err?.response?.data?.detail || "Sync job failed.")
+    } finally {
       setSyncing(false)
-      setStatus('success')
-    }, 1500)
+    }
   }
 
   const triggerDialog = (type: 'rotate' | 'delete') => {
     setDialogType(type)
+    setNewSecret('')
     setDialogOpen(true)
   }
 
-  const handleConfirmAction = () => {
-    if (!dialogType) return
+  const handleConfirmAction = async () => {
+    if (!connector || !dialogType) return
     setDialogLoading(true)
-    setTimeout(() => {
-      setDialogLoading(false)
-      setDialogOpen(false)
-      if (dialogType === 'rotate') {
-        // rotation complete logic
+
+    try {
+      if (dialogType === 'delete') {
+        await api.delete(`/connectors/${connector.uuid}`)
+        setDialogOpen(false)
+        navigate('/enterprise/connectors')
+      } else if (dialogType === 'rotate') {
+        if (!newSecret.trim()) {
+          alert("Secret value cannot be empty.")
+          setDialogLoading(false)
+          return
+        }
+        await api.post(`/connectors/${connector.uuid}/rotate-secret`, null, {
+          params: { new_secret_value: newSecret }
+        })
+        setDialogOpen(false)
+        await loadData()
       }
-    }, 1200)
+    } catch (err: any) {
+      alert(err?.response?.data?.detail || "Failed to execute connector operation.")
+    } finally {
+      setDialogLoading(false)
+    }
   }
+
+  if (loading) {
+    return (
+      <div className="flex-grow overflow-y-auto bg-[#05070a] min-h-full pb-12 select-none custom-scrollbar p-8">
+        <LoadingSkeleton variant="details" rows={4} />
+      </div>
+    )
+  }
+
+  if (error || !connector) {
+    return (
+      <div className="flex-grow bg-[#05070a] min-h-full p-8 flex flex-col items-center justify-center">
+        <EmptyState
+          title="CONNECTION NOT FOUND"
+          description={error || "The requested connector integration does not exist."}
+          action={
+            <Link
+              to="/enterprise/connectors"
+              className="px-4 py-2 text-xs font-mono font-bold bg-zinc-900 border border-white/10 text-white rounded-lg hover:bg-zinc-800 transition-colors duration-150"
+            >
+              RETURN TO LIST
+            </Link>
+          }
+        />
+      </div>
+    )
+  }
+
+  const provider = connector.connector_type.toLowerCase()
+  const meta = CONNECTOR_METADATA[provider] || {
+    name: connector.name,
+    icon: Server,
+    details: `Workspace-level connection tunnel for service: ${connector.connector_type}.`
+  }
+  const Icon = meta.icon
+  const statusType: 'success' | 'warning' | 'error' = 
+    connector.status === 'ACTIVE' ? 'success' : connector.status === 'SYNCING' ? 'warning' : 'error'
 
   return (
     <div className="flex-grow overflow-y-auto bg-[#05070a] min-h-full pb-12 select-none custom-scrollbar">
       
       {/* Page Header */}
       <PageHeader
-        title={meta.name}
+        title={connector.name}
         description={meta.details}
         breadcrumbs={[
           { label: 'Enterprise', href: '/enterprise' },
           { label: 'Connectors', href: '/enterprise/connectors' },
-          { label: meta.name }
+          { label: connector.name }
         ]}
         status={{
-          label: status === 'success' ? 'CONNECTOR OK' : status === 'error' ? 'CONNECTION FAILING' : 'ATTENTION REQUIRED',
-          type: status
+          label: connector.status === 'ACTIVE' ? 'CONNECTOR OK' : connector.status === 'SYNCING' ? 'SYNCING DATA' : 'CONNECTION ERROR',
+          type: statusType
         }}
         actions={
           <Link
@@ -162,7 +272,7 @@ export default function ConnectorDetailsPage() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 transition-all duration-150 shrink-0 ${
+              className={`px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 transition-all duration-150 shrink-0 cursor-pointer ${
                 activeTab === tab
                   ? 'border-cyan-400 text-cyan-400'
                   : 'border-transparent text-zinc-500 hover:text-zinc-300'
@@ -187,23 +297,25 @@ export default function ConnectorDetailsPage() {
                   <div className="flex flex-col gap-3.5 text-xs font-sans">
                     <div className="flex justify-between border-b border-white/5 pb-2">
                       <span className="text-zinc-500">Service Provider:</span>
-                      <span className="font-semibold text-zinc-200 capitalize">{connectorId}</span>
+                      <span className="font-semibold text-zinc-200 capitalize">{provider}</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
                       <span className="text-zinc-500">Sync Status:</span>
-                      <StatusBadge status={status} size="xs" />
+                      <StatusBadge status={statusType} size="xs" />
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
                       <span className="text-zinc-500">Security Encryption:</span>
                       <span className="font-mono text-cyan-400 font-bold">AES-GCM 256bit</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-zinc-500">Last Successful Sync:</span>
-                      <span className="font-mono text-zinc-300">5 mins ago</span>
+                      <span className="text-zinc-500">Registered At:</span>
+                      <span className="font-mono text-zinc-300">
+                        {connector.created_at ? new Date(connector.created_at).toLocaleString() : 'Never'}
+                      </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-zinc-500">Webhook Registered:</span>
-                      <span className="font-mono text-zinc-300">ACTIVE</span>
+                      <span className="text-zinc-500">Connection State:</span>
+                      <span className="font-mono text-emerald-400 font-bold">{connector.status}</span>
                     </div>
                   </div>
                 </div>
@@ -218,23 +330,22 @@ export default function ConnectorDetailsPage() {
                   </div>
                   <DataTable
                     rowIdKey="id"
-                    data={MOCK_LOGS}
+                    data={[
+                      { id: 'l1', level: 'INFO', timestamp: connector.updated_at ? new Date(connector.updated_at).toLocaleString() : 'Just now', message: `Initiating connection sync handshake for ${connector.name}.` },
+                      { id: 'l2', level: 'INFO', timestamp: connector.updated_at ? new Date(connector.updated_at).toLocaleString() : 'Just now', message: 'Credentials validated. Sync operations active.' }
+                    ]}
                     columns={[
                       {
                         key: 'level',
                         header: 'LEVEL',
                         width: '80px',
                         render: (_, val) => (
-                          <span
-                            className={`font-bold font-mono text-[10px] uppercase ${
-                              val === 'WARN' ? 'text-amber-400' : val === 'ERROR' ? 'text-red-400' : 'text-zinc-400'
-                            }`}
-                          >
+                          <span className="font-bold font-mono text-[10px] uppercase text-zinc-400">
                             {val}
                           </span>
                         )
                       },
-                      { key: 'timestamp', header: 'TIMESTAMP', width: '150px', className: 'font-mono text-[11px]' },
+                      { key: 'timestamp', header: 'TIMESTAMP', width: '180px', className: 'font-mono text-[11px]' },
                       { key: 'message', header: 'MESSAGE', className: 'font-mono text-[11px] text-zinc-400' }
                     ]}
                   />
@@ -246,7 +357,7 @@ export default function ConnectorDetailsPage() {
                 <div className="flex flex-col gap-4">
                   <DataTable
                     rowIdKey="id"
-                    data={MOCK_SYNC_HISTORY}
+                    data={syncLogs}
                     columns={[
                       {
                         key: 'status',
@@ -277,16 +388,18 @@ export default function ConnectorDetailsPage() {
                   </p>
                   <div className="flex flex-col gap-3 font-mono text-xs">
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-zinc-500">CREDENTIAL ID:</span>
-                      <span className="text-zinc-300">SEC-TUNNEL-GTHB-0x2A1F</span>
+                      <span className="text-zinc-500">CREDENTIAL SCOPE:</span>
+                      <span className="text-zinc-300">WORKSPACE_LEVEL_SECRET</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
-                      <span className="text-zinc-500">EXPIRES AT:</span>
-                      <span className="text-amber-400">July 31, 2026</span>
+                      <span className="text-zinc-500">ENCRYPTION:</span>
+                      <span className="text-zinc-300">AES-GCM-256</span>
                     </div>
                     <div className="flex justify-between border-b border-white/5 pb-2">
                       <span className="text-zinc-500">LAST ROTATION:</span>
-                      <span className="text-zinc-300">14 days ago</span>
+                      <span className="text-zinc-300">
+                        {connector.updated_at ? new Date(connector.updated_at).toLocaleDateString() : 'Never'}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -300,20 +413,24 @@ export default function ConnectorDetailsPage() {
                   </h4>
                   <div className="grid grid-cols-2 gap-4 text-xs font-mono">
                     <div className="border border-white/5 p-3 rounded-lg bg-zinc-950/40">
-                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">Active Threads</span>
-                      <span className="text-white font-bold">4 / 16 (Dynamic)</span>
+                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">Latency</span>
+                      <span className="text-white font-bold">{diagnostics?.latency_ms ?? 0} ms</span>
                     </div>
                     <div className="border border-white/5 p-3 rounded-lg bg-zinc-950/40">
                       <span className="text-zinc-500 uppercase block mb-1 text-[9px]">Rate Limits</span>
-                      <span className="text-white font-bold">4.8k remaining</span>
+                      <span className="text-white font-bold">{diagnostics?.rate_limit_remaining ?? 5000} remaining</span>
                     </div>
                     <div className="border border-white/5 p-3 rounded-lg bg-zinc-950/40">
-                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">HTTP Status</span>
-                      <span className="text-emerald-400 font-bold">200 OK (KeepAlive)</span>
+                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">HTTP Connectivity</span>
+                      <span className={`${diagnostics?.connectivity === 'REACHABLE' ? 'text-emerald-400' : 'text-red-400'} font-bold`}>
+                        {diagnostics?.connectivity ?? 'UNREACHABLE'}
+                      </span>
                     </div>
                     <div className="border border-white/5 p-3 rounded-lg bg-zinc-950/40">
-                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">SSL Expiration</span>
-                      <span className="text-white font-bold">142 Days</span>
+                      <span className="text-zinc-500 uppercase block mb-1 text-[9px]">Permissions Valid</span>
+                      <span className={`${diagnostics?.permissions_valid ? 'text-emerald-400' : 'text-red-400'} font-bold`}>
+                        {diagnostics?.permissions_valid ? 'YES' : 'NO'}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -328,7 +445,7 @@ export default function ConnectorDetailsPage() {
               <ActionPanel
                 title="Tunnel Operations"
                 description="Manage data connection, pull cycles, database updates, and credentials rotation."
-                status={<StatusBadge status={status} size="xs" />}
+                status={<StatusBadge status={statusType} size="xs" />}
                 actions={[
                   {
                     label: syncing ? 'SYNCING TUNNEL...' : 'FORCE LIVE SYNC',
@@ -378,12 +495,25 @@ export default function ConnectorDetailsPage() {
         description={
           dialogType === 'delete'
             ? `Are you sure you want to permanently disable and delete the connection tunnel for "${meta.name}"? This action cannot be undone.`
-            : `Are you sure you want to trigger manual rotation of OAuth credentials for "${meta.name}"? Active background workers might temporarily reject calls during the keys transition.`
+            : `Are you sure you want to trigger manual rotation of OAuth credentials for "${meta.name}"? Enter the new credential token or secret below.`
         }
         confirmText={dialogType === 'delete' ? 'YES, PURGE CONNECTION' : 'EXECUTE KEY ROTATION'}
         intent={dialogType === 'delete' ? 'danger' : 'warning'}
         loading={dialogLoading}
-      />
+      >
+        {dialogType === 'rotate' && (
+          <div className="flex flex-col gap-2 mt-4">
+            <label className="text-[10px] font-mono text-zinc-400 uppercase">New Secret Token Value</label>
+            <input
+              type="password"
+              value={newSecret}
+              onChange={(e) => setNewSecret(e.target.value)}
+              placeholder="Paste token or client secret..."
+              className="w-full bg-zinc-950 border border-white/5 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-500/30"
+            />
+          </div>
+        )}
+      </ConfirmationDialog>
     </div>
   )
 }

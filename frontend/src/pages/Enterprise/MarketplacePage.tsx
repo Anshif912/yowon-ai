@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import {
   Download,
   ShieldCheck,
@@ -13,7 +13,10 @@ import {
   Package,
   Layers,
   ArrowDownToLine,
-  Trash
+  Trash,
+  ToggleLeft,
+  ToggleRight,
+  AlertTriangle
 } from 'lucide-react'
 import {
   PageHeader,
@@ -23,6 +26,7 @@ import {
   ConfirmationDialog,
   LoadingSkeleton
 } from '../../components/enterprise'
+import { api } from '../../api/api'
 
 interface Extension {
   id: string
@@ -33,100 +37,60 @@ interface Extension {
   downloads: string
   rating: string
   description: string
-  status: 'installed' | 'update_available' | 'not_installed'
-  category: 'scanners' | 'connectors' | 'analytics'
+  status: 'installed' | 'inactive' | 'not_installed'
+  category: string
 }
 
-const INITIAL_EXTENSIONS: Extension[] = [
-  {
-    id: 'ext-1',
-    name: 'CodeQL Security Scanner',
-    version: 'v2.1.4',
-    publisher: 'YOWON Core',
-    isVerified: true,
-    downloads: '12.8k',
-    rating: '4.9',
-    description: 'Deep code analysis agent plugin using semantic AST analysis patterns to capture vulnerabilities.',
-    status: 'installed',
-    category: 'scanners'
-  },
-  {
-    id: 'ext-2',
-    name: 'SonarQube Integration Tunnel',
-    version: 'v1.0.8',
-    publisher: 'SonarSource',
-    isVerified: true,
-    downloads: '8.4k',
-    rating: '4.7',
-    description: 'Synchronizes quality gates telemetry and static analysis reports into active repositories workspaces.',
-    status: 'update_available',
-    category: 'connectors'
-  },
-  {
-    id: 'ext-3',
-    name: 'Trivy Container Inspector',
-    version: 'v3.0.2',
-    publisher: 'Aqua Security',
-    isVerified: true,
-    downloads: '6.1k',
-    rating: '4.8',
-    description: 'Scans docker images filesystems and packages repositories for active OS dependencies CVE exploits.',
-    status: 'installed',
-    category: 'scanners'
-  },
-  {
-    id: 'ext-4',
-    name: 'OpenAI GPT-4o Connector',
-    version: 'v1.4.0',
-    publisher: 'OpenAI Verified',
-    isVerified: true,
-    downloads: '25.4k',
-    rating: '5.0',
-    description: 'Enables advanced language synthesis models with workspace context window optimization.',
-    status: 'installed',
-    category: 'connectors'
-  },
-  {
-    id: 'ext-5',
-    name: 'LLM Response Hallucination Filter',
-    version: 'v0.9.1',
-    publisher: 'YOWON Labs',
-    isVerified: false,
-    downloads: '1.2k',
-    rating: '4.2',
-    description: 'Experimental filter calculating token probabilities to flag potential reasoning errors.',
-    status: 'not_installed',
-    category: 'analytics'
-  },
-  {
-    id: 'ext-6',
-    name: 'Kubernetes Cluster Telemetry',
-    version: 'v1.2.0',
-    publisher: 'CNCF Verified',
-    isVerified: true,
-    downloads: '4.9k',
-    rating: '4.6',
-    description: 'Aggregates node loads, service events, and pod states straight into your system logs.',
-    status: 'not_installed',
-    category: 'analytics'
-  }
-]
-
 export default function MarketplacePage() {
-  const [extensions, setExtensions] = useState<Extension[]>(INITIAL_EXTENSIONS)
+  const [extensions, setExtensions] = useState<Extension[]>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [activeTab, setActiveTab] = useState<'all' | 'installed' | 'updates'>('all')
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   
   // Confirmation Dialog
   const [dialogOpen, setDialogOpen] = useState(false)
-  const [dialogType, setDialogType] = useState<'install' | 'update' | 'uninstall' | null>(null)
+  const [dialogType, setDialogType] = useState<'install' | 'update' | 'uninstall' | 'toggle' | null>(null)
   const [selectedExt, setSelectedExt] = useState<Extension | null>(null)
   const [dialogLoading, setDialogLoading] = useState(false)
 
+  // Fetch extensions
+  const fetchExtensions = async () => {
+    try {
+      setError(null)
+      const res = await api.get('/marketplace')
+      const raw = res.data || []
+      
+      const mapped: Extension[] = raw.map((item: any) => ({
+        id: item.uuid,
+        name: item.name,
+        version: 'v1.0.0',
+        publisher: item.publisher,
+        isVerified: item.is_verified,
+        downloads: item.downloads >= 1000 ? `${(item.downloads/1000).toFixed(1)}k` : String(item.downloads),
+        rating: item.trust_score ? item.trust_score.toFixed(1) : '5.0',
+        description: item.item_type === 'plugin'
+          ? `Verified ${item.name} agent extension providing real-time data ingestion and workflow triggers.`
+          : `Customized policy rules package defining automated validation and scan postures.`,
+        status: item.status as any, // 'installed' | 'inactive' | 'not_installed'
+        category: item.item_type
+      }))
+      setExtensions(mapped)
+    } catch (err: any) {
+      console.error("Error fetching extensions:", err)
+      setError(err?.response?.data?.detail || "Failed to load extensions catalog.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchExtensions()
+  }, [])
+
   const handleReload = () => {
     setLoading(true)
-    setTimeout(() => setLoading(false), 700)
+    fetchExtensions()
   }
 
   // Filter logic
@@ -137,14 +101,14 @@ export default function MarketplacePage() {
                             ext.publisher.toLowerCase().includes(searchQuery.toLowerCase())
 
       if (activeTab === 'all') return matchesSearch
-      if (activeTab === 'installed') return matchesSearch && (ext.status === 'installed' || ext.status === 'update_available')
-      if (activeTab === 'updates') return matchesSearch && ext.status === 'update_available'
+      if (activeTab === 'installed') return matchesSearch && (ext.status === 'installed' || ext.status === 'inactive')
+      if (activeTab === 'updates') return matchesSearch && ext.status === 'inactive' // dummy updates tab logic
       return matchesSearch
     })
   }, [extensions, searchQuery, activeTab])
 
   // Open dialog
-  const triggerActionDialog = (e: React.MouseEvent, ext: Extension, type: 'install' | 'update' | 'uninstall') => {
+  const triggerActionDialog = (e: React.MouseEvent, ext: Extension, type: 'install' | 'update' | 'uninstall' | 'toggle') => {
     e.preventDefault()
     e.stopPropagation()
     setSelectedExt(ext)
@@ -153,25 +117,30 @@ export default function MarketplacePage() {
   }
 
   // Confirm dialog execution
-  const handleConfirmAction = () => {
+  const handleConfirmAction = async () => {
     if (!selectedExt || !dialogType) return
     setDialogLoading(true)
 
-    setTimeout(() => {
-      setExtensions(prev =>
-        prev.map(ext => {
-          if (ext.id !== selectedExt.id) return ext
-          if (dialogType === 'install') return { ...ext, status: 'installed' as const }
-          if (dialogType === 'update') return { ...ext, status: 'installed' as const, version: 'vLatest' }
-          if (dialogType === 'uninstall') return { ...ext, status: 'not_installed' as const }
-          return ext
-        })
-      )
-      setDialogLoading(false)
+    try {
+      if (dialogType === 'install') {
+        await api.post(`/marketplace/${selectedExt.id}/install`)
+      } else if (dialogType === 'uninstall') {
+        await api.post(`/marketplace/${selectedExt.id}/uninstall`)
+      } else if (dialogType === 'toggle') {
+        await api.post(`/marketplace/${selectedExt.id}/toggle`)
+      }
+      
+      // Refresh extensions state
+      await fetchExtensions()
       setDialogOpen(false)
       setSelectedExt(null)
       setDialogType(null)
-    }, 1200)
+    } catch (err: any) {
+      console.error(`Error performing action ${dialogType}:`, err)
+      alert(err?.response?.data?.detail || `Failed to perform ${dialogType} action on extension.`)
+    } finally {
+      setDialogLoading(false)
+    }
   }
 
   return (
@@ -190,6 +159,14 @@ export default function MarketplacePage() {
 
       <div className="max-w-[1600px] mx-auto px-6 py-6 sm:px-8 sm:py-8 flex flex-col gap-6">
         
+        {error && (
+          <div className="border border-red-500/20 bg-red-500/5 rounded-xl p-4 flex items-center gap-3 text-red-400 text-xs font-mono">
+            <AlertTriangle size={16} />
+            <span>{error}</span>
+            <button onClick={handleReload} className="underline hover:text-red-300 ml-auto cursor-pointer">Retry</button>
+          </div>
+        )}
+
         {/* Search & Tabs bar */}
         <div className="flex flex-col gap-4">
           <SearchToolbar
@@ -204,7 +181,7 @@ export default function MarketplacePage() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-2.5 py-1 text-[10px] font-mono font-bold rounded-md uppercase transition-colors duration-150 ${
+                    className={`px-2.5 py-1 text-[10px] font-mono font-bold rounded-md uppercase transition-colors duration-150 cursor-pointer ${
                       activeTab === tab
                         ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'
                         : 'text-zinc-500 hover:text-zinc-300 border border-transparent'
@@ -242,6 +219,12 @@ export default function MarketplacePage() {
                         {ext.isVerified && (
                           <ShieldCheck size={14} className="text-cyan-400 shrink-0" />
                         )}
+                        {ext.status === 'installed' && (
+                          <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded font-mono text-[8px] uppercase font-bold">Active</span>
+                        )}
+                        {ext.status === 'inactive' && (
+                          <span className="px-1.5 py-0.5 bg-zinc-800 text-zinc-400 border border-zinc-700 rounded font-mono text-[8px] uppercase font-bold">Disabled</span>
+                        )}
                       </div>
                       <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest leading-none mt-0.5">
                         PUBLISHER: {ext.publisher}
@@ -270,7 +253,7 @@ export default function MarketplacePage() {
                       <span className="font-bold text-zinc-300">{ext.version}</span>
                     </div>
                     <div>
-                      <span className="text-[9px] text-zinc-500 uppercase block mb-0.5">RATING</span>
+                      <span className="text-[9px] text-zinc-500 uppercase block mb-0.5">TRUST SCORE</span>
                       <span className="font-bold text-zinc-300">★ {ext.rating}</span>
                     </div>
                   </div>
@@ -286,25 +269,25 @@ export default function MarketplacePage() {
                     {ext.status === 'not_installed' && (
                       <button
                         onClick={(e) => triggerActionDialog(e, ext, 'install')}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-mono font-bold bg-cyan-400 hover:bg-cyan-300 text-black rounded-lg transition-colors duration-150"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-mono font-bold bg-cyan-400 hover:bg-cyan-300 text-black rounded-lg transition-colors duration-150 cursor-pointer"
                       >
                         <ArrowDownToLine size={12} />
                         INSTALL
                       </button>
                     )}
 
-                    {ext.status === 'update_available' && (
+                    {ext.status === 'inactive' && (
                       <>
                         <button
-                          onClick={(e) => triggerActionDialog(e, ext, 'update')}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-mono font-bold bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 rounded-lg transition-colors duration-150"
+                          onClick={(e) => triggerActionDialog(e, ext, 'toggle')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[10px] font-mono font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 rounded-lg transition-colors duration-150 cursor-pointer"
                         >
-                          <RotateCw size={11} className="animate-pulse" />
-                          UPDATE
+                          <ToggleRight size={12} />
+                          ENABLE
                         </button>
                         <button
                           onClick={(e) => triggerActionDialog(e, ext, 'uninstall')}
-                          className="p-1.5 text-zinc-500 hover:text-red-400 border border-white/5 hover:border-red-500/20 rounded-lg hover:bg-red-500/5 transition-all duration-150"
+                          className="p-1.5 text-zinc-500 hover:text-red-400 border border-white/5 hover:border-red-500/20 rounded-lg hover:bg-red-500/5 transition-all duration-150 cursor-pointer"
                         >
                           <Trash size={12} />
                         </button>
@@ -312,13 +295,22 @@ export default function MarketplacePage() {
                     )}
 
                     {ext.status === 'installed' && (
-                      <button
-                        onClick={(e) => triggerActionDialog(e, ext, 'uninstall')}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-mono font-bold border border-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/5 hover:border-red-500/20 rounded-lg transition-all duration-150"
-                      >
-                        <Trash size={11} />
-                        UNINSTALL
-                      </button>
+                      <>
+                        <button
+                          onClick={(e) => triggerActionDialog(e, ext, 'toggle')}
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[10px] font-mono font-bold bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-zinc-750 rounded-lg transition-colors duration-150 cursor-pointer"
+                        >
+                          <ToggleLeft size={12} />
+                          DISABLE
+                        </button>
+                        <button
+                          onClick={(e) => triggerActionDialog(e, ext, 'uninstall')}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-mono font-bold border border-zinc-850 text-zinc-500 hover:text-red-400 hover:bg-red-500/5 hover:border-red-500/20 rounded-lg transition-all duration-150 cursor-pointer"
+                        >
+                          <Trash size={11} />
+                          UNINSTALL
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -335,7 +327,7 @@ export default function MarketplacePage() {
                   setSearchQuery('')
                   setActiveTab('all')
                 }}
-                className="px-4 py-2 text-xs font-mono font-bold bg-zinc-900 border border-white/10 text-white rounded-lg hover:bg-zinc-800 transition-colors duration-150"
+                className="px-4 py-2 text-xs font-mono font-bold bg-zinc-900 border border-white/10 text-white rounded-lg hover:bg-zinc-800 transition-colors duration-150 cursor-pointer"
               >
                 RESET SEARCH
               </button>
@@ -353,19 +345,19 @@ export default function MarketplacePage() {
         title={
           dialogType === 'install'
             ? 'Install Marketplace Extension?'
-            : dialogType === 'update'
-            ? 'Install Extension Update?'
+            : dialogType === 'toggle'
+            ? `${selectedExt?.status === 'installed' ? 'Disable' : 'Enable'} Marketplace Extension?`
             : 'Uninstall Extension from Workspace?'
         }
         description={
           dialogType === 'install'
             ? `Are you sure you want to install and activate "${selectedExt?.name}"? It will be granted permissions matching its publisher scope.`
-            : dialogType === 'update'
-            ? `Are you sure you want to update "${selectedExt?.name}" to the latest verified version? This might cause a brief 5-second service refresh.`
+            : dialogType === 'toggle'
+            ? `Are you sure you want to ${selectedExt?.status === 'installed' ? 'disable' : 'enable'} "${selectedExt?.name}"?`
             : `Are you sure you want to uninstall "${selectedExt?.name}"? You will lose its custom scanners telemetry configuration data.`
         }
         confirmText={
-          dialogType === 'install' ? 'CONFIRM INSTALL' : dialogType === 'update' ? 'APPLY UPDATE' : 'YES, UNINSTALL'
+          dialogType === 'install' ? 'CONFIRM INSTALL' : dialogType === 'toggle' ? (selectedExt?.status === 'installed' ? 'DISABLE' : 'ENABLE') : 'YES, UNINSTALL'
         }
         intent={dialogType === 'uninstall' ? 'danger' : 'info'}
         loading={dialogLoading}

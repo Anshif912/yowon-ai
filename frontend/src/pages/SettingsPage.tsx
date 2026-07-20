@@ -23,6 +23,7 @@ import { api } from '../api/api'
 export default function SettingsPage() {
   const { user, updateProfile, changePassword } = useAuth()
   const { workspaces, createWorkspace, currentWorkspace } = useWorkspace()
+  const isAdmin = user && ['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN'].includes(user.role)
 
   // Profile Form state
   const [fullName, setFullName] = useState(user?.full_name || '')
@@ -355,143 +356,145 @@ export default function SettingsPage() {
       </div>
 
       {/* Enterprise Multi-Tenancy Forms Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Create Organization */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card"
-        >
-          <form onSubmit={handleCreateOrg} className="space-y-4">
-            <h2 className="text-sm font-bold font-display uppercase tracking-wider text-cyan-400 flex items-center gap-2 pb-3 border-b border-white/5">
-              <Building size={16} /> Create Organization / Department
-            </h2>
+      {isAdmin && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Create Organization */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glass-card"
+          >
+            <form onSubmit={handleCreateOrg} className="space-y-4">
+              <h2 className="text-sm font-bold font-display uppercase tracking-wider text-cyan-400 flex items-center gap-2 pb-3 border-b border-white/5">
+                <Building size={16} /> Create Organization / Department
+              </h2>
 
-            <div className="space-y-1.5">
-              <label className="text-[10px] uppercase text-slate-500 block">Organization Name</label>
-              <input
-                type="text"
-                required
-                value={newOrgName}
-                onChange={(e) => setNewOrgName(e.target.value)}
-                placeholder="e.g. Acme Corp"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[10px] uppercase text-slate-500 block">Unique Slug (URL component)</label>
-              <input
-                type="text"
-                required
-                value={newOrgSlug}
-                onChange={(e) => setNewOrgSlug(e.target.value)}
-                placeholder="e.g. acme-corp"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[10px] uppercase text-slate-500 block">Description</label>
-              <textarea
-                value={newOrgDesc}
-                onChange={(e) => setNewOrgDesc(e.target.value)}
-                placeholder="Provide a brief summary of this organization unit..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600 h-20 resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isCreatingOrg}
-              className="w-full py-2.5 bg-cyan-500 text-black font-bold uppercase tracking-wider rounded-xl hover:bg-cyan-400 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
-            >
-              {isCreatingOrg ? 'Creating Organization...' : 'Create Organization'}
-            </button>
-          </form>
-        </motion.div>
-
-        {/* Create Workspace */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card"
-        >
-          <form onSubmit={handleCreateWs} className="space-y-4">
-            <h2 className="text-sm font-bold font-display uppercase tracking-wider text-indigo-400 flex items-center gap-2 pb-3 border-b border-white/5">
-              <Brain size={16} /> Create Collaboration Workspace
-            </h2>
-
-            <div className="space-y-1.5">
-              <label className="text-[10px] uppercase text-slate-500 block">Workspace Name</label>
-              <input
-                type="text"
-                required
-                value={newWsName}
-                onChange={(e) => setNewWsName(e.target.value)}
-                placeholder="e.g. Q3 Hackathon Group"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase text-slate-500 block">Workspace Type</label>
-                <select
-                  value={newWsType}
-                  onChange={(e) => setNewWsType(e.target.value)}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
-                >
-                  <option value="HACKATHON">Hackathon</option>
-                  <option value="UNIVERSITY">University</option>
-                  <option value="RESEARCH">Research</option>
-                  <option value="COMPANY">Company</option>
-                  <option value="STARTUP">Startup</option>
-                  <option value="PERSONAL">Personal</option>
-                </select>
+                <label className="text-[10px] uppercase text-slate-500 block">Organization Name</label>
+                <input
+                  type="text"
+                  required
+                  value={newOrgName}
+                  onChange={(e) => setNewOrgName(e.target.value)}
+                  placeholder="e.g. Acme Corp"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] uppercase text-slate-500 block">Visibility Scope</label>
-                <select
-                  value={newWsVisibility}
-                  onChange={(e) => setNewWsVisibility(e.target.value)}
-                  className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
-                >
-                  <option value="PRIVATE">Private</option>
-                  <option value="PUBLIC">Public</option>
-                  <option value="INVITE_ONLY">Invite Only</option>
-                </select>
+                <label className="text-[10px] uppercase text-slate-500 block">Unique Slug (URL component)</label>
+                <input
+                  type="text"
+                  required
+                  value={newOrgSlug}
+                  onChange={(e) => setNewOrgSlug(e.target.value)}
+                  placeholder="e.g. acme-corp"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                />
               </div>
-            </div>
 
-            <div className="space-y-1.5">
-              <label className="text-[10px] uppercase text-slate-500 block">Associated Organization</label>
-              <select
-                value={newWsOrgId}
-                onChange={(e) => setNewWsOrgId(e.target.value)}
-                className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase text-slate-500 block">Description</label>
+                <textarea
+                  value={newOrgDesc}
+                  onChange={(e) => setNewOrgDesc(e.target.value)}
+                  placeholder="Provide a brief summary of this organization unit..."
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600 h-20 resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isCreatingOrg}
+                className="w-full py-2.5 bg-cyan-500 text-black font-bold uppercase tracking-wider rounded-xl hover:bg-cyan-400 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
               >
-                <option value="">None (Personal Default)</option>
-                {orgs.map(org => (
-                  <option key={org.uuid} value={org.uuid}>{org.name}</option>
-                ))}
-              </select>
-            </div>
+                {isCreatingOrg ? 'Creating Organization...' : 'Create Organization'}
+              </button>
+            </form>
+          </motion.div>
 
-            <button
-              type="submit"
-              disabled={isCreatingWs}
-              className="w-full py-2.5 bg-indigo-500 text-black font-bold uppercase tracking-wider rounded-xl hover:bg-indigo-400 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
-            >
-              {isCreatingWs ? 'Creating Workspace...' : 'Create Workspace'}
-            </button>
-          </form>
-        </motion.div>
-      </div>
+          {/* Create Workspace */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glass-card"
+          >
+            <form onSubmit={handleCreateWs} className="space-y-4">
+              <h2 className="text-sm font-bold font-display uppercase tracking-wider text-indigo-400 flex items-center gap-2 pb-3 border-b border-white/5">
+                <Brain size={16} /> Create Collaboration Workspace
+              </h2>
+
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase text-slate-500 block">Workspace Name</label>
+                <input
+                  type="text"
+                  required
+                  value={newWsName}
+                  onChange={(e) => setNewWsName(e.target.value)}
+                  placeholder="e.g. Q3 Hackathon Group"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 placeholder-slate-600"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase text-slate-500 block">Workspace Type</label>
+                  <select
+                    value={newWsType}
+                    onChange={(e) => setNewWsType(e.target.value)}
+                    className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
+                  >
+                    <option value="HACKATHON">Hackathon</option>
+                    <option value="UNIVERSITY">University</option>
+                    <option value="RESEARCH">Research</option>
+                    <option value="COMPANY">Company</option>
+                    <option value="STARTUP">Startup</option>
+                    <option value="PERSONAL">Personal</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-[10px] uppercase text-slate-500 block">Visibility Scope</label>
+                  <select
+                    value={newWsVisibility}
+                    onChange={(e) => setNewWsVisibility(e.target.value)}
+                    className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
+                  >
+                    <option value="PRIVATE">Private</option>
+                    <option value="PUBLIC">Public</option>
+                    <option value="INVITE_ONLY">Invite Only</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase text-slate-500 block">Associated Organization</label>
+                <select
+                  value={newWsOrgId}
+                  onChange={(e) => setNewWsOrgId(e.target.value)}
+                  className="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 cursor-pointer"
+                >
+                  <option value="">None (Personal Default)</option>
+                  {orgs.map(org => (
+                    <option key={org.uuid} value={org.uuid}>{org.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isCreatingWs}
+                className="w-full py-2.5 bg-indigo-500 text-black font-bold uppercase tracking-wider rounded-xl hover:bg-indigo-400 transition-all disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
+              >
+                {isCreatingWs ? 'Creating Workspace...' : 'Create Workspace'}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      )}
 
       {/* Workspace Membership Invitations Panel */}
-      {currentWorkspace && (
+      {isAdmin && currentWorkspace && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
