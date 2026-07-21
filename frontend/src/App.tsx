@@ -42,6 +42,12 @@ const MarketplacePage        = lazy(() => import('./pages/Enterprise/Marketplace
 const PluginsPage            = lazy(() => import('./pages/Enterprise/PluginsPage'))
 const WebhooksPage           = lazy(() => import('./pages/Enterprise/WebhooksPage'))
 const OperationsPage         = lazy(() => import('./pages/Enterprise/OperationsPage'))
+const MembersPage            = lazy(() => import('./pages/Enterprise/MembersPage'))
+const RBACPage               = lazy(() => import('./pages/Enterprise/RBACPage'))
+const OrganizationsPage      = lazy(() => import('./pages/Enterprise/OrganizationsPage'))
+const AuditLogsPage          = lazy(() => import('./pages/Enterprise/AuditLogsPage'))
+const PolicyCenterPage       = lazy(() => import('./pages/Enterprise/PolicyCenterPage'))
+const SystemHealthPage       = lazy(() => import('./pages/Enterprise/SystemHealthPage'))
 
 const EnterpriseAIOverviewPage = lazy(() => import('./pages/EnterpriseAI/EnterpriseAIOverviewPage'))
 const CopilotWorkspacePage     = lazy(() => import('./pages/EnterpriseAI/CopilotWorkspacePage'))
@@ -189,7 +195,10 @@ export default function App() {
               />
 
               {/* Enterprise Routes */}
-              <Route path="/organizations"         element={<ProtectedRoute><RegisterOrganizationPage /></ProtectedRoute>} />
+              <Route path="/organizations"         element={<ProtectedRoute><OrganizationsPage /></ProtectedRoute>} />
+              <Route path="/members font"          element={<ProtectedRoute><MembersPage /></ProtectedRoute>} />
+              <Route path="/members"               element={<ProtectedRoute><MembersPage /></ProtectedRoute>} />
+              <Route path="/rbac"                  element={<ProtectedRoute><RBACPage /></ProtectedRoute>} />
               <Route path="/enterprise"            element={<ProtectedRoute><EnterpriseOverviewPage /></ProtectedRoute>} />
               <Route path="/enterprise/connectors" element={<ProtectedRoute><ConnectorsPage /></ProtectedRoute>} />
               <Route path="/enterprise/connectors/:connectorId" element={<ProtectedRoute><ConnectorDetailsPage /></ProtectedRoute>} />
@@ -198,6 +207,10 @@ export default function App() {
               <Route path="/enterprise/plugins"     element={<ProtectedRoute><PluginsPage /></ProtectedRoute>} />
               <Route path="/enterprise/webhooks"    element={<ProtectedRoute><WebhooksPage /></ProtectedRoute>} />
               <Route path="/enterprise/operations"  element={<ProtectedRoute><OperationsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/audit font" element={<ProtectedRoute><AuditLogsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/audit"      element={<ProtectedRoute><AuditLogsPage /></ProtectedRoute>} />
+              <Route path="/enterprise/policies"   element={<ProtectedRoute><PolicyCenterPage /></ProtectedRoute>} />
+              <Route path="/enterprise/health"     element={<ProtectedRoute><SystemHealthPage /></ProtectedRoute>} />
 
               {/* Enterprise AI / Intelligence Routes */}
               <Route path="/intelligence"             element={<EnterpriseAIOverviewPage />} />
