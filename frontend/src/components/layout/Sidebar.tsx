@@ -33,6 +33,16 @@ import {
   TrendingUp,
   FolderOpen,
   Scale,
+  Building2,
+  UserCheck,
+  Lock,
+  Workflow,
+  ShieldAlert,
+  Cpu,
+  User,
+  Globe,
+  Sliders,
+  ShieldCheck
 } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 import { api } from '../../api/api'
@@ -79,7 +89,6 @@ export default function Sidebar() {
 
   useEffect(() => {
     localStorage.setItem('yowon_judge_mode', String(judgeMode))
-    // Dispatch a custom event to notify other components (like Command Palette)
     window.dispatchEvent(new Event('yowon_judge_mode_changed'))
   }, [judgeMode])
 
@@ -98,42 +107,25 @@ export default function Sidebar() {
           setActiveProject({
             id: res.data.project_id,
             name: res.data.name,
-            project_type: res.data.project_type || 'Unspecified'
+            project_type: res.data.project_type || 'Repository'
           })
         }
-      } catch (err) {
-        try {
-          const evalRes = await api.get(`/evaluations/${id}`)
-          if (evalRes.data && evalRes.data.project_id) {
-            const pId = evalRes.data.project_id
-            const res = await api.get(`/status/${pId}`)
-            if (res.data) {
-              setActiveProject({
-                id: res.data.project_id,
-                name: res.data.name,
-                project_type: res.data.project_type || 'Unspecified'
-              })
-            }
-          }
-        } catch {}
+      } catch (e) {
+        console.error('Failed to fetch project info for sidebar:', e)
       }
     }
 
     if (urlProjectId) {
-      localStorage.setItem('yowon_active_project_id', urlProjectId)
       fetchProject(urlProjectId)
-    } else {
-      const storedId = localStorage.getItem('yowon_active_project_id')
-      if (storedId && !activeProject) fetchProject(storedId)
     }
   }, [urlProjectId])
 
   const projectId = urlProjectId || activeProject?.id || ''
 
-  // Compile navigation links dynamically
+  // Compile Enterprise Operating System navigation links
   const navGroups: NavGroup[] = [
     {
-      label: 'Main Command OS',
+      label: 'MAIN COMMAND',
       items: [
         {
           label: 'Home',
@@ -173,7 +165,82 @@ export default function Sidebar() {
       ]
     },
     {
-      label: 'Repository Analysis',
+      label: 'ENTERPRISE DOMAIN',
+      items: [
+        {
+          label: 'Enterprise Hub',
+          icon: Globe,
+          to: '/enterprise',
+          active: pathname === '/enterprise',
+          color: '#00FFA3'
+        },
+        {
+          label: 'Organizations',
+          icon: Building2,
+          to: '/organizations',
+          active: pathname.startsWith('/organizations'),
+          color: '#3B82F6'
+        },
+        {
+          label: 'Teams',
+          icon: Users,
+          to: '/teams',
+          active: pathname.startsWith('/teams'),
+          color: '#8B5CF6'
+        },
+        {
+          label: 'Members',
+          icon: UserCheck,
+          to: '/members',
+          active: pathname.startsWith('/members'),
+          color: '#EC4899'
+        },
+        {
+          label: 'Roles & RBAC',
+          icon: Lock,
+          to: '/rbac',
+          active: pathname.startsWith('/rbac'),
+          color: '#F59E0B'
+        },
+        {
+          label: 'Connectors',
+          icon: Link2,
+          to: '/enterprise/connectors',
+          active: pathname.startsWith('/enterprise/connectors'),
+          color: '#10B981'
+        },
+        {
+          label: 'Secrets Vault',
+          icon: Key,
+          to: '/enterprise/secrets',
+          active: pathname.startsWith('/enterprise/secrets'),
+          color: '#EF4444'
+        },
+        {
+          label: 'Webhooks',
+          icon: Webhook,
+          to: '/enterprise/webhooks',
+          active: pathname.startsWith('/enterprise/webhooks'),
+          color: '#00E5FF'
+        },
+        {
+          label: 'Workflow Studio',
+          icon: Workflow,
+          to: '/enterprise/workflows',
+          active: pathname.startsWith('/enterprise/workflows'),
+          color: '#8B5CF6'
+        },
+        {
+          label: 'Marketplace',
+          icon: ShoppingBag,
+          to: '/enterprise/marketplace',
+          active: pathname.startsWith('/enterprise/marketplace'),
+          color: '#F59E0B'
+        }
+      ]
+    },
+    {
+      label: 'INTELLIGENCE & AI',
       items: [
         {
           label: 'Authenticity Engine',
@@ -190,30 +257,44 @@ export default function Sidebar() {
           color: '#F97316'
         },
         {
-          label: 'Leaderboard',
-          icon: Scale,
-          to: '/leaderboard',
-          active: pathname.startsWith('/leaderboard'),
-          color: '#EAB308'
-        },
-        {
           label: 'AI Copilot',
           icon: Bot,
           to: '/intelligence/copilot',
           active: pathname.startsWith('/intelligence/copilot'),
-          color: '#8B5CF6'
+          color: '#00E5FF'
         }
       ]
     },
     {
-      label: 'Platform & Controls',
+      label: 'ADMINISTRATION',
       items: [
+        {
+          label: 'Audit Logs',
+          icon: FileText,
+          to: '/enterprise/audit',
+          active: pathname.startsWith('/enterprise/audit'),
+          color: '#9CA3AF'
+        },
+        {
+          label: 'Policy Center',
+          icon: ShieldCheck,
+          to: '/enterprise/policies',
+          active: pathname.startsWith('/enterprise/policies'),
+          color: '#10B981'
+        },
+        {
+          label: 'System Health',
+          icon: Activity,
+          to: '/enterprise/health',
+          active: pathname.startsWith('/enterprise/health'),
+          color: '#3B82F6'
+        },
         {
           label: 'Settings',
           icon: Settings,
           to: '/settings',
           active: pathname.startsWith('/settings'),
-          color: '#10B981'
+          color: '#6B7280'
         }
       ]
     }
