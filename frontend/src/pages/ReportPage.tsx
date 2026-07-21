@@ -146,8 +146,11 @@ export default function ReportPage() {
   const report = reportData
   const vd = report?.verdict_data as any
   
-  const overallScore = report?.overall_score ?? vd?.overall_score ?? 0
-  const confidence = Math.round((vd?.confidence ?? 0.94) * 100)
+  const rawScore = report?.overall_score ?? vd?.overall_score ?? 0
+  const overallScore = Math.max(0, Math.min(100, Math.round(rawScore > 1 ? rawScore : rawScore * 100)))
+  
+  const rawConf = vd?.confidence ?? 0.94
+  const confidence = Math.max(0, Math.min(100, Math.round(rawConf > 1 ? rawConf : rawConf * 100)))
   const verdict = (vd?.overall_verdict || 'Good').toUpperCase()
 
   const verdictColors: Record<string, string> = {
@@ -497,11 +500,11 @@ export default function ReportPage() {
               </h3>
               <div className="space-y-5">
                 {[
-                  { label: 'Technical Quality Index', value: overallScore + 2, target: 'metrics' },
-                  { label: 'Innovation Coverage', value: confidence, target: 'technology' },
-                  { label: 'Security & Vulnerability Posture', value: overallScore - 4, target: 'evidence' },
-                  { label: 'Architecture Layers Separation', value: overallScore + 4, target: 'architecture' },
-                  { label: 'Dependencies import loop checks', value: overallScore - 6, target: 'dependency' }
+                  { label: 'Technical Quality Index', value: Math.max(0, Math.min(100, overallScore + 2)), target: 'metrics' },
+                  { label: 'Innovation Coverage', value: Math.max(0, Math.min(100, confidence)), target: 'technology' },
+                  { label: 'Security & Vulnerability Posture', value: Math.max(0, Math.min(100, overallScore - 4)), target: 'evidence' },
+                  { label: 'Architecture Layers Separation', value: Math.max(0, Math.min(100, overallScore + 4)), target: 'architecture' },
+                  { label: 'Dependencies import loop checks', value: Math.max(0, Math.min(100, overallScore - 6)), target: 'dependency' }
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-2">
                     <div className="flex justify-between items-center text-[12px]">
