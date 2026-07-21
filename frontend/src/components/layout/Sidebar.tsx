@@ -150,18 +150,18 @@ export default function Sidebar() {
           color: '#3B82F6'
         },
         {
-          label: 'Intelligence',
-          icon: Brain,
-          to: '/intelligence',
-          active: pathname === '/intelligence',
-          color: '#8B5CF6'
-        },
-        {
-          label: 'Evaluate',
+          label: 'Evaluate Intake',
           icon: Play,
           to: '/submit',
           active: pathname.startsWith('/submit') || pathname.startsWith('/evaluate'),
           color: '#EAB308'
+        },
+        {
+          label: 'Repository Intelligence',
+          icon: Brain,
+          to: '/intelligence',
+          active: pathname === '/intelligence',
+          color: '#8B5CF6'
         },
         {
           label: 'Executive View',
@@ -173,162 +173,47 @@ export default function Sidebar() {
       ]
     },
     {
-      label: 'Workspace & Teams',
+      label: 'Repository Analysis',
       items: [
         {
-          label: 'Enterprise Hub',
-          icon: Home,
-          to: '/enterprise',
-          active: pathname === '/enterprise',
-          color: '#10B981',
-        },
-        {
-          label: 'Organizations',
-          icon: FolderOpen,
-          to: '/organizations',
-          active: pathname.startsWith('/organizations') || pathname.startsWith('/register-organization'),
-          color: '#00E5FF',
-        },
-        {
-          label: 'Teams & Members',
-          icon: Users,
-          to: '/teams',
-          active: pathname.startsWith('/teams'),
-          color: '#8B5CF6',
-        }
-      ]
-    },
-    {
-      label: 'Integrations & Ecosystem',
-      items: [
-        {
-          label: 'Connectors',
-          icon: Link2,
-          to: '/enterprise/connectors',
-          active: pathname.startsWith('/enterprise/connectors'),
-          color: '#3B82F6',
-        },
-        {
-          label: 'Marketplace',
-          icon: ShoppingBag,
-          to: '/enterprise/marketplace',
-          active: pathname.startsWith('/enterprise/marketplace'),
-          color: '#F97316',
-        },
-        {
-          label: 'Plugins',
-          icon: Blocks,
-          to: '/enterprise/plugins',
-          active: pathname.startsWith('/enterprise/plugins'),
-          color: '#8B5CF6',
-        },
-        {
-          label: 'Webhooks',
-          icon: Webhook,
-          to: '/enterprise/webhooks',
-          active: pathname.startsWith('/enterprise/webhooks'),
-          color: '#00E5FF',
-        },
-        {
-          label: 'Workflow Studio',
-          icon: Network,
-          to: '/enterprise/workflows',
-          active: pathname.startsWith('/enterprise/workflows'),
-          color: '#10B981',
-        }
-      ]
-    },
-    {
-      label: 'Security & Operations',
-      items: [
-        {
-          label: 'Secrets Vault',
-          icon: Key,
-          to: '/enterprise/secrets',
-          active: pathname.startsWith('/enterprise/secrets'),
-          color: '#EF4444',
-        },
-        {
-          label: 'Audit & Operations',
-          icon: Activity,
-          to: '/enterprise/operations',
-          active: pathname.startsWith('/enterprise/operations'),
-          color: '#10B981',
-        },
-        {
-          label: 'Authenticity',
+          label: 'Authenticity Engine',
           icon: Shield,
           to: projectId ? `/authenticity/${projectId}` : '/projects',
           active: pathname.startsWith('/authenticity'),
-          disabled: !projectId,
-          color: '#EF4444',
+          color: '#EF4444'
         },
         {
           label: 'Decision Jury',
           icon: Gavel,
           to: '/jury',
           active: pathname.startsWith('/jury'),
-          color: '#F97316',
+          color: '#F97316'
         },
         {
           label: 'Leaderboard',
           icon: Scale,
           to: '/leaderboard',
           active: pathname.startsWith('/leaderboard'),
-          color: '#EAB308',
-        }
-      ]
-    },
-    {
-      label: 'AI Workspace',
-      items: [
+          color: '#EAB308'
+        },
         {
-          label: 'Copilot',
+          label: 'AI Copilot',
           icon: Bot,
           to: '/intelligence/copilot',
           active: pathname.startsWith('/intelligence/copilot'),
-          color: '#8B5CF6',
-        },
-        {
-          label: 'Knowledge Search',
-          icon: Search,
-          to: '/intelligence/search',
-          active: pathname.startsWith('/intelligence/search'),
-          color: '#A855F7',
-        },
-        {
-          label: 'Predictions',
-          icon: BarChart3,
-          to: '/intelligence/predictions',
-          active: pathname.startsWith('/intelligence/predictions'),
-          color: '#EAB308',
-        },
-        {
-          label: 'Digital Twin',
-          icon: Radio,
-          to: '/intelligence/digital-twin',
-          active: pathname.startsWith('/intelligence/digital-twin'),
-          color: '#00E5FF',
+          color: '#8B5CF6'
         }
       ]
     },
     {
-      label: 'System & Admin',
+      label: 'Platform & Controls',
       items: [
-        {
-          label: 'Reports',
-          icon: FileText,
-          to: projectId ? `/report/${projectId}` : '/projects',
-          active: pathname.startsWith('/report'),
-          disabled: !projectId,
-          color: '#6366F1',
-        },
         {
           label: 'Settings',
           icon: Settings,
           to: '/settings',
           active: pathname.startsWith('/settings'),
-          color: '#71717A',
+          color: '#10B981'
         }
       ]
     }
