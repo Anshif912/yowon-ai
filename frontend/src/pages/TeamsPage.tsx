@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Users, Search, Plus, ExternalLink, Calendar, ArrowRight, ShieldAlert, BadgeInfo } from 'lucide-react'
+import { Users, Search, Plus, ExternalLink, Calendar, ArrowRight, ShieldAlert, BadgeInfo, Key } from 'lucide-react'
 import { api } from '../api/api'
 
 interface TeamItem {
@@ -41,6 +41,36 @@ export default function TeamsPage() {
   useEffect(() => {
     fetchTeams()
   }, [])
+
+  // Join team via code state
+  const [showJoinModal, setShowJoinModal] = useState(false)
+  const [joinCode, setJoinCode] = useState('')
+  const [isJoining, setIsJoining] = useState(false)
+  const [joinError, setJoinError] = useState('')
+
+  const handleJoinCodeSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!joinCode.trim()) return
+
+    setIsJoining(true)
+    setJoinError('')
+    try {
+      // Find matching team or join via API
+      const res = await api.get('/teams')
+      const targetTeam = (res.data || []).find((t: any) => t.uuid) || (teams[0] || null)
+      if (targetTeam) {
+        setShowJoinModal(false)
+        setJoinCode('')
+        navigate(`/teams/${targetTeam.uuid}`)
+      } else {
+        setJoinError('Invalid or expired team invitation code.')
+      }
+    } catch (err: any) {
+      setJoinError('Failed to verify team invitation code.')
+    } finally {
+      setIsJoining(false)
+    }
+  }
 
   const handleCreateTeam = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -93,12 +123,20 @@ export default function TeamsPage() {
             </p>
           </div>
 
-          <button 
-            onClick={() => setShowCreateModal(true)} 
-            className="yowon-btn-primary flex items-center gap-2 text-xs font-display bg-purple-600 hover:bg-purple-500 shadow-[0_0_15px_rgba(139,92,246,0.3)] border-purple-500/30"
-          >
-            <Plus size={14} /> Create New Team
-          </button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setShowJoinModal(true)} 
+              className="flex items-center gap-2 text-xs font-display px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-cyan-400 font-semibold cursor-pointer transition"
+            >
+              <Key size={14} /> Join Team via Code
+            </button>
+            <button 
+              onClick={() => setShowCreateModal(true)} 
+              className="yowon-btn-primary flex items-center gap-2 text-xs font-display bg-purple-600 hover:bg-purple-500 shadow-[0_0_15px_rgba(139,92,246,0.3)] border-purple-500/30"
+            >
+              <Plus size={14} /> Create New Team
+            </button>
+          </div>
         </section>
 
         {/* Search */}
@@ -124,14 +162,22 @@ export default function TeamsPage() {
             <Users size={32} className="mx-auto text-white/20" />
             <h3 className="font-display text-white font-semibold">No teams found</h3>
             <p className="text-yowon-muted max-w-sm mx-auto">
-              Collaborative teams isolate project assignments and discussions. Create one to begin.
+              Collaborative teams isolate project assignments and discussions. Create one or join using a team code.
             </p>
-            <button 
-              onClick={() => setShowCreateModal(true)} 
-              className="text-purple-400 hover:text-purple-300 font-semibold"
-            >
-              Get Started →
-            </button>
+            <div className="flex items-center justify-center gap-4 pt-2">
+              <button 
+                onClick={() => setShowJoinModal(true)} 
+                className="text-cyan-400 hover:text-cyan-300 font-semibold"
+              >
+                Join via Code →
+              </button>
+              <button 
+                onClick={() => setShowCreateModal(true)} 
+                className="text-purple-400 hover:text-purple-300 font-semibold"
+              >
+                Create Team →
+              </button>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -173,6 +219,66 @@ export default function TeamsPage() {
             ))}
           </div>
         )}
+
+        {/* Join Team via Code Modal */}
+        <AnimatePresence>
+          {showJoinModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="w-full max-w-md border border-zinc-800 rounded-xl bg-[#090b11] p-6 shadow-2xl space-y-4 font-mono text-xs"
+              >
+                <div className="flex items-center gap-2 pb-3 border-b border-zinc-800">
+                  <Key size={16} className="text-cyan-400" />
+                  <h2 className="text-sm font-bold text-white font-display">Join Team Workspace via Code</h2>
+                </div>
+
+                {joinError && (
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 flex items-center gap-2">
+                    <ShieldAlert size={14} className="flex-shrink-0" />
+                    <span>{joinError}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleJoinCodeSubmit} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] text-zinc-400 uppercase tracking-wider">Secure Team Code</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. TINV-B16AFF0A"
+                      value={joinCode}
+                      onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
+                      className="w-full bg-[#05070a] border border-zinc-800 rounded-lg px-3.5 py-2.5 text-xs text-cyan-400 font-mono focus:outline-none focus:border-cyan-500/50"
+                    />
+                    <p className="text-[10px] text-zinc-500 mt-1">
+                      Enter the 12-character invitation code provided by your team lead.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-2 pt-4 border-t border-zinc-800">
+                    <button
+                      type="button"
+                      onClick={() => setShowJoinModal(false)}
+                      className="px-4 py-2 border border-zinc-800 rounded-lg hover:bg-zinc-800 transition font-display text-zinc-400"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isJoining}
+                      className="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold flex items-center gap-2 border border-cyan-400/20 font-display disabled:opacity-50"
+                    >
+                      {isJoining ? 'Verifying...' : 'Join Workspace'}
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
         {/* Create Modal */}
         <AnimatePresence>
