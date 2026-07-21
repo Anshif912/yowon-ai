@@ -79,7 +79,7 @@ class ContextBuilder:
             if ctx["project_ids"]:
                 evals = db.query(Evaluation).filter(
                     Evaluation.project_id.in_(ctx["project_ids"])
-                ).order_by(Evaluation.created_at.desc()).limit(10).all()
+                ).order_by(Evaluation.timestamp.desc()).limit(10).all()
                 ctx["evaluations"] = [
                     {
                         "id": e.evaluation_id,
@@ -88,8 +88,8 @@ class ContextBuilder:
                             (p["name"] for p in ctx["projects"] if p["id"] == e.project_id), "unknown"
                         ),
                         "overall_score": getattr(e, "overall_score", None),
-                        "status": e.status,
-                        "created_at": e.created_at.isoformat() if e.created_at else None,
+                        "status": getattr(e, "evaluation_status", "Completed"),
+                        "created_at": e.timestamp.isoformat() if getattr(e, "timestamp", None) else None,
                     }
                     for e in evals
                 ]
@@ -115,7 +115,7 @@ class ContextBuilder:
             corpus = []
             if ctx["project_ids"]:
                 snaps = db.query(RepositorySnapshot).filter(
-                    RepositorySnapshot.project_id.in_(ctx["project_ids"])
+                    RepositorySnapshot.repository_id.in_(ctx["project_ids"])
                 ).limit(5).all()
                 snap_ids = [s.snapshot_id for s in snaps]
                 if snap_ids:
@@ -125,14 +125,14 @@ class ContextBuilder:
                     corpus = [
                         {
                             "id": f.file_id,
-                            "title": f.file_name,
-                            "content": (f.content or "")[:1000],
-                            "file_path": f.file_path,
-                            "project_id": f.project_id,
+                            "title": getattr(f, "file_name", "file"),
+                            "content": (getattr(f, "content", "") or "")[:1000],
+                            "file_path": getattr(f, "file_path", ""),
+                            "project_id": getattr(f, "project_id", ""),
                             "score": 0.8,
                             "freshness": 0.9
                         }
-                        for f in files if f.content
+                        for f in files if getattr(f, "content", None)
                     ]
             ctx["knowledge_corpus"] = corpus
             ctx["documents"] = corpus[:20]
@@ -145,25 +145,25 @@ class ContextBuilder:
 
         # 4. DNA records
         try:
-            from database import ProjectDNA
+            from database import ProjectDNASnapshot
             dna_records = []
             if ctx["project_ids"]:
-                dna_list = db.query(ProjectDNA).filter(
-                    ProjectDNA.project_id.in_(ctx["project_ids"])
+                dna_list = db.query(ProjectDNASnapshot).filter(
+                    ProjectDNASnapshot.project_id.in_(ctx["project_ids"])
                 ).limit(10).all()
                 for dna in dna_list:
                     features = {}
-                    if hasattr(dna, "features_json") and dna.features_json:
+                    if hasattr(dna, "extraction_report") and dna.extraction_report:
                         import json
                         try:
-                            features = json.loads(dna.features_json)
+                            features = json.loads(dna.extraction_report) if isinstance(dna.extraction_report, str) else dna.extraction_report
                         except Exception:
                             features = {}
                     proj_name = next(
                         (p["name"] for p in ctx["projects"] if p["id"] == dna.project_id), "unknown"
                     )
                     dna_records.append({
-                        "id": dna.dna_id if hasattr(dna, "dna_id") else str(dna.project_id),
+                        "id": getattr(dna, "snapshot_id", str(dna.project_id)),
                         "project_id": dna.project_id,
                         "project_name": proj_name,
                         "features": features,
@@ -188,12 +188,11 @@ class ContextBuilder:
 
         # 5. Vault inspection summary
         try:
-            from datetime import timezone
             secrets = db.query(SecretsVault).limit(50).all()
             stale_threshold = datetime.utcnow() - timedelta(days=30)
             stale = [
                 s for s in secrets
-                if s.last_rotated_at and s.last_rotated_at < stale_threshold
+                if getattr(s, "created_at", None) and getattr(s, "created_at") < stale_threshold
             ]
             ctx["vault_summary"] = {
                 "total_secrets": len(secrets),
