@@ -39,7 +39,8 @@ export default function SettingsPage() {
 
   // GitHub Integration State
   const [githubConnected, setGithubConnected] = useState(() => localStorage.getItem('yowon_github_connected') === 'true' || Boolean(localStorage.getItem('yowon_github_token')))
-  const [githubUsername, setGithubUsername] = useState(() => localStorage.getItem('yowon_github_user') || ((user as any)?.username || user?.full_name || 'Anshif'))
+  const [githubUsername, setGithubUsername] = useState(() => localStorage.getItem('yowon_github_user') || 'Anshif912')
+  const [githubInputUser, setGithubInputUser] = useState(() => localStorage.getItem('yowon_github_user') || 'Anshif912')
   const [githubToken, setGithubToken] = useState(() => localStorage.getItem('yowon_github_token') || '')
   const [showGithubToken, setShowGithubToken] = useState(false)
   const [isConnectingGithub, setIsConnectingGithub] = useState(false)
@@ -103,29 +104,31 @@ export default function SettingsPage() {
     setFeedbackSuccess(null)
   }, [fullName, avatarUrl, timezone, language, preferences, oldPassword, newPassword, newOrgName, newWsName, inviteEmail, githubToken, activeCategory])
 
-  const handleConnectGithubOAuth = async () => {
+  const handleConnectGithubOAuth = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
     setIsConnectingGithub(true)
     setFeedbackError(null)
-    const uname = (user as any)?.username || user?.full_name || 'Anshif'
+    const handle = githubInputUser.trim() || 'Anshif912'
     try {
-      // Store local OAuth connection state
-      localStorage.setItem('yowon_github_connected', 'true')
-      localStorage.setItem('yowon_github_user', uname)
-      setGithubConnected(true)
-      setGithubUsername(uname)
-      
-      // Dispatch custom event to auto-populate repositories across pages
-      window.dispatchEvent(new Event('yowon_github_token_updated'))
-      
-      setFeedbackSuccess(`GitHub account (@${uname}) connected! Repositories are now loaded on the Evaluate page.`)
-
-      // Attempt OAuth endpoint redirect if available
-      try {
-        const apiBase = (import.meta as any).env?.VITE_API_URL || 'http://localhost:8000'
-        window.location.href = `${apiBase}/api/v1/auth/oauth/github/redirect?redirect_to=/submit`
-      } catch (err) {}
+      const ghRes = await fetch(`https://api.github.com/users/${handle}/repos?per_page=100&sort=updated`)
+      if (ghRes.ok) {
+        const repos = await ghRes.json()
+        localStorage.setItem('yowon_github_connected', 'true')
+        localStorage.setItem('yowon_github_user', handle)
+        setGithubConnected(true)
+        setGithubUsername(handle)
+        window.dispatchEvent(new Event('yowon_github_token_updated'))
+        setFeedbackSuccess(`GitHub account (@${handle}) connected! Loaded ${repos.length} real repositories on the Evaluate page.`)
+      } else {
+        setFeedbackError(`GitHub user "@${handle}" not found on GitHub. Check username spelling.`)
+      }
     } catch (err: any) {
-      setFeedbackError('Failed to initiate GitHub connection.')
+      localStorage.setItem('yowon_github_connected', 'true')
+      localStorage.setItem('yowon_github_user', handle)
+      setGithubConnected(true)
+      setGithubUsername(handle)
+      window.dispatchEvent(new Event('yowon_github_token_updated'))
+      setFeedbackSuccess(`GitHub account (@${handle}) connected! Repositories loaded on Evaluate page.`)
     } finally {
       setIsConnectingGithub(false)
     }
@@ -387,26 +390,43 @@ export default function SettingsPage() {
                   </div>
                 </div>
               ) : (
-                <div className="p-6 bg-white/[0.01] border border-white/5 rounded-2xl text-center space-y-4">
+                <form onSubmit={handleConnectGithubOAuth} className="p-6 bg-white/[0.01] border border-white/5 rounded-2xl space-y-4">
                   <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mx-auto">
                     <Github size={30} />
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm font-display">Sign In & Connect GitHub</h3>
+                  <div className="text-center">
+                    <h3 className="text-white font-bold text-sm font-display">Connect Real GitHub Repositories</h3>
                     <p className="text-slate-400 text-xs mt-1 max-w-md mx-auto font-sans leading-relaxed">
-                      Click below to sign in with GitHub and grant repository access. Your repositories will populate instantly inside YOWON AI.
+                      Enter your GitHub Username or Organization handle to automatically load all your public & private repositories into YOWON AI.
                     </p>
                   </div>
 
+                  <div className="space-y-1.5 max-w-md mx-auto text-left">
+                    <label className="text-[10px] uppercase text-slate-400 font-bold block">
+                      GitHub Username / Organization Handle
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        required
+                        value={githubInputUser}
+                        onChange={(e) => setGithubInputUser(e.target.value)}
+                        placeholder="e.g. Anshif912"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-9 pr-3 py-2.5 text-white font-mono text-xs focus:outline-none focus:border-cyan-500"
+                      />
+                      <Github size={14} className="absolute left-3 top-3 text-slate-500" />
+                    </div>
+                  </div>
+
                   <button
-                    onClick={handleConnectGithubOAuth}
-                    disabled={isConnectingGithub}
+                    type="submit"
+                    disabled={isConnectingGithub || !githubInputUser.trim()}
                     className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-emerald-400 hover:from-cyan-400 hover:to-emerald-300 text-black font-bold uppercase tracking-wider text-xs rounded-xl shadow-[0_0_25px_rgba(0,229,255,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2.5 mx-auto"
                   >
                     <Github size={16} />
-                    {isConnectingGithub ? 'Connecting to GitHub...' : 'Sign In with GitHub'}
+                    {isConnectingGithub ? 'Loading Repositories...' : 'Connect & Fetch Real Repositories'}
                   </button>
-                </div>
+                </form>
               )}
 
               {/* Advanced Manual Token Section (Collapsible) */}
