@@ -8,6 +8,7 @@ const API_BASE = import.meta.env.VITE_API_URL || (isLocalhost ? 'http://localhos
 export const api = axios.create({
   baseURL: API_BASE,
   timeout: 30000,
+  withCredentials: true,
 })
 
 // Set default retry count (custom field used by the backoff interceptor)
