@@ -293,6 +293,95 @@ async def startup():
     init_db()
     _migrate_report_columns()
     _migrate_project_columns()
+    _seed_default_user()
+
+
+def _seed_default_user():
+    from database import SessionLocal, User, Organization, OrganizationMember, Workspace, WorkspaceMember
+    from modules.auth.password_service import PasswordService
+    from datetime import datetime
+    import uuid
+
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter(User.email == "anshif@yowon.ai").first()
+        if not user:
+            # Create User
+            user_uuid = str(uuid.uuid4())
+            user = User(
+                uuid=user_uuid,
+                full_name="Anshif",
+                email="anshif@yowon.ai",
+                password_hash=PasswordService.hash_password("Password123!"),
+                role="admin",
+                status="active",
+                email_verified=True,
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow()
+            )
+            db.add(user)
+            db.flush()
+
+            # Create Organization
+            org_uuid = str(uuid.uuid4())
+            org = Organization(
+                uuid=org_uuid,
+                name="YOWON AI Org",
+                slug="yowon-ai-org",
+                owner_id=user_uuid,
+                created_at=datetime.utcnow()
+            )
+            db.add(org)
+            db.flush()
+
+            # Organization Member
+            org_member = OrganizationMember(
+                id=str(uuid.uuid4()),
+                organization_id=org_uuid,
+                user_id=user_uuid,
+                role="owner",
+                joined_at=datetime.utcnow()
+            )
+            db.add(org_member)
+
+            # Create Workspace
+            ws_id = "default-ws"
+            workspace = db.query(Workspace).filter(Workspace.workspace_id == ws_id).first()
+            if not workspace:
+                workspace = Workspace(
+                    workspace_id=ws_id,
+                    organization_id=org_uuid,
+                    name="Personal Workspace",
+                    description="Your personal workspace context",
+                    type="PERSONAL",
+                    visibility="PRIVATE",
+                    owner_id=user_uuid,
+                    created_at=datetime.utcnow()
+                )
+                db.add(workspace)
+                db.flush()
+
+            # Workspace Member
+            ws_member = db.query(WorkspaceMember).filter(
+                WorkspaceMember.workspace_id == ws_id,
+                WorkspaceMember.user_id == user_uuid
+            ).first()
+            if not ws_member:
+                ws_member = WorkspaceMember(
+                    workspace_id=ws_id,
+                    user_id=user_uuid,
+                    role="WORKSPACE_ADMIN",
+                    status="ACCEPTED",
+                    joined_at=datetime.utcnow()
+                )
+                db.add(ws_member)
+
+            db.commit()
+    except Exception as e:
+        db.rollback()
+        print(f"Failed to seed default user: {e}")
+    finally:
+        db.close()
 
 
 def _migrate_report_columns() -> None:
