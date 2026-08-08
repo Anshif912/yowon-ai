@@ -1,17 +1,13 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from './AuthContext'
+import AuthProgressOverlay from './AuthProgressOverlay'
 
 export default function GuestRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, loading } = useAuth()
+  const { isAuthenticated, loading, authPhase } = useAuth()
   const location = useLocation()
   
   if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-[#07070a] text-slate-300 font-mono text-xs">
-        <div className="w-6 h-6 border-2 border-cyan-400 border-t-transparent animate-spin rounded-full" />
-        <span>Authenticating...</span>
-      </div>
-    )
+    return <AuthProgressOverlay phase={authPhase} />
   }
 
   if (isAuthenticated) {

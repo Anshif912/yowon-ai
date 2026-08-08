@@ -6,6 +6,8 @@ import { useAuth } from '../../components/auth/AuthContext'
 import { useWorkspace } from '../../components/auth/WorkspaceContext'
 import SoftAurora from '../../components/effects/SoftAurora'
 
+const AURORA_COLORS: [string, string, string] = ['#00e5ff', '#3B82F6', '#8B5CF6'];
+
 export default function LoadingWorkspacePage() {
   const { authPhase, setAuthPhase } = useAuth()
   const { currentWorkspace, loading: workspaceLoading } = useWorkspace()
@@ -56,7 +58,7 @@ export default function LoadingWorkspacePage() {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#05070a] px-4">
-      <SoftAurora colorStops={['#00e5ff', '#3B82F6', '#8B5CF6']} amplitude={1.0} />
+      <SoftAurora colorStops={AURORA_COLORS} amplitude={1.0} />
 
       <div className="relative z-10 w-full max-w-sm bg-[#0c0d13]/90 border border-white/[0.06] rounded-2xl p-6 shadow-2xl backdrop-blur-xl text-center space-y-6">
         {/* Brand Header */}

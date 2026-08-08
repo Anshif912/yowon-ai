@@ -2,14 +2,37 @@ import axios from 'axios'
 import type { EvaluationProgress, ReportData, UploadProjectPayload } from '../types'
 import { enrichReport } from '../utils/reportParser'
 
-const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-const API_BASE = import.meta.env.VITE_API_URL || (isLocalhost ? 'http://localhost:8000' : 'http://127.0.0.1:8000')
+const API_BASE = import.meta.env.VITE_API_URL || '/api/v1'
+
+
+
 
 export const api = axios.create({
   baseURL: API_BASE,
   timeout: 30000,
   withCredentials: true,
 })
+
+export function extractErrorMessage(err: any): string {
+  if (err?.response) {
+    const status = err.response.status
+    const detail = err.response.data?.detail || err.response.data?.message
+    if (typeof detail === 'string' && detail.trim()) {
+      return detail
+    }
+    if (status === 400) return 'Invalid request parameters or payload.'
+    if (status === 401) return 'Invalid email or password.'
+    if (status === 403) return 'Access denied. You do not have required permissions.'
+    if (status === 404) return 'Requested API endpoint or resource not found (404).'
+    if (status === 409) return 'Account or resource already exists (409 conflict).'
+    if (status >= 500) return 'Internal server error (500). Please try again.'
+  }
+  if (err?.message === 'Network Error' || !err?.response) {
+    return 'Unable to reach backend server at 127.0.0.1:8000. Check server connectivity.'
+  }
+  return err?.message || 'An unexpected error occurred.'
+}
+
 
 // Set default retry count (custom field used by the backoff interceptor)
 ;(api.defaults as any).retry = 3
@@ -86,6 +109,10 @@ export async function getStatus(
   report_error?: string | null
   name: string
   project_type?: string
+  project_domain?: string
+  evaluation_profile?: string
+  evaluation_goal?: string
+  repository_maturity?: string
   project_id: string
   progress?: EvaluationProgress
 }> {

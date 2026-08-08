@@ -129,17 +129,13 @@ export default function ConnectorDetailsPage() {
         console.error("Failed to load diagnostics:", diagErr)
       }
 
-      // Add a dummy sync run log to populate history list nicely
-      setSyncLogs([
-        {
-          id: 'sh1',
-          status: conn.status === 'ACTIVE' ? 'success' : 'error',
-          timestamp: conn.updated_at ? new Date(conn.updated_at).toLocaleTimeString() : 'Just now',
-          duration: '3.1s',
-          itemsPulled: conn.status === 'ACTIVE' ? 8 : 0,
-          errorRate: conn.status === 'ACTIVE' ? '0.0%' : '100%'
-        }
-      ])
+      // Fetch sync logs
+      try {
+        const syncRes = await api.get(`/connectors/${conn.uuid}/sync-logs`)
+        setSyncLogs(syncRes.data || [])
+      } catch (syncErr) {
+        setSyncLogs([])
+      }
 
     } catch (err: any) {
       console.error("Error loading connector details:", err)

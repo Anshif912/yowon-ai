@@ -9,6 +9,11 @@ import { DashboardSection } from './DashboardSection'
 import { EvidenceSkeleton } from './Skeletons'
 import { ErrorBoundary, PanelErrorFallback } from './ErrorBoundary'
 import { RepositoryIntelligenceWrapper } from './RepositoryIntelligenceWrapper'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 
 interface EvidenceExplorerPanelProps {
   projectId: string
@@ -90,13 +95,13 @@ function EvidenceExplorerContent({ projectId }: { projectId: string }) {
   }
 
   return (
-    <DashboardSection id="evidence" title="Evidence Explorer" icon={FileText} accent="cyan">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <DashboardSection id="evidence" title="Evidence Explorer" icon={FileText}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 select-text">
         
         {/* Left Side: Categories & Evidence Lists (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="flex items-center justify-between">
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-yowon-muted">
+          <div className="flex items-center justify-between select-none">
+            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-zinc-500 font-bold">
               Categorized Evidence — {total} total records
             </p>
             {/* Pagination */}
@@ -105,19 +110,19 @@ function EvidenceExplorerContent({ projectId }: { projectId: string }) {
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="px-2 py-0.5 bg-white/5 border border-white/10 rounded disabled:opacity-40 text-slate-300 hover:text-white hover:bg-white/10 transition-all"
+                  className="px-2 py-0.5 bg-zinc-900 border border-zinc-800 rounded disabled:opacity-40 text-slate-350 hover:text-white hover:bg-zinc-800 transition-all cursor-pointer"
                 >Prev</button>
-                <span className="text-yowon-muted">{page}/{totalPages}</span>
+                <span className="text-zinc-500 font-bold">{page}/{totalPages}</span>
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="px-2 py-0.5 bg-white/5 border border-white/10 rounded disabled:opacity-40 text-slate-300 hover:text-white hover:bg-white/10 transition-all"
+                  className="px-2 py-0.5 bg-zinc-900 border border-zinc-800 rounded disabled:opacity-40 text-slate-355 hover:text-white hover:bg-zinc-800 transition-all cursor-pointer"
                 >Next</button>
               </div>
             )}
           </div>
           
-          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1">
+          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
             {CATEGORIES.map(cat => {
               const list = groupedEvidence[cat.name] || []
               if (list.length === 0) return null
@@ -125,64 +130,68 @@ function EvidenceExplorerContent({ projectId }: { projectId: string }) {
               const Icon = cat.icon
 
               return (
-                <div key={cat.name} className="glass-card p-0 border border-white/5 overflow-hidden">
-                  {/* Category Header */}
-                  <button
-                    onClick={() => toggleCategory(cat.name)}
-                    className="w-full flex items-center justify-between p-3.5 bg-white/[0.02] hover:bg-white/[0.04] border-b border-white/5 transition-all"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className={`p-1.5 rounded-lg border ${cat.color}`}>
-                        <Icon size={14} />
-                      </div>
-                      <span className="text-white text-xs font-bold font-display">{cat.name}</span>
-                      <span className="text-[10px] font-mono bg-white/5 px-2 py-0.5 rounded text-yowon-muted font-bold">
-                        {list.length}
-                      </span>
-                    </div>
-                    {isExpanded ? <ChevronDown size={14} className="text-yowon-muted" /> : <ChevronRight size={14} className="text-yowon-muted" />}
-                  </button>
-
-                  {/* Category Items List */}
-                  {isExpanded && (
-                    <div className="divide-y divide-white/5 font-mono text-xs">
-                      {list.map((ev, idx) => {
-                        const isSelected = selectedItem?.rule_id === ev.rule_id && selectedItem?.file_path === ev.file_path
-                        return (
-                          <div
-                            key={idx}
-                            onClick={() => setSelectedItem(ev)}
-                            className={`p-3 flex justify-between items-center cursor-pointer transition-all hover:bg-white/[0.02] ${
-                              isSelected ? 'bg-cyan-500/5 border-l-2 border-cyan-400 pl-2.5' : ''
-                            }`}
-                          >
-                            <div className="space-y-1 max-w-[70%]">
-                              <span className="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 border border-cyan-500/20 px-1.5 py-0.5 rounded">
-                                {ev.rule_id}
-                              </span>
-                              <p className="text-white text-[11px] font-bold truncate mt-1">{ev.title}</p>
-                              <p className="text-[10px] text-yowon-muted truncate">{ev.file_path}</p>
-                            </div>
-
-                            <div className="text-right shrink-0">
-                              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                                ev.severity === 'CRITICAL' || ev.severity === 'HIGH'
-                                  ? 'bg-red-500/10 text-red-400 border border-red-500/25'
-                                  : ev.severity === 'MEDIUM'
-                                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/25'
-                                    : 'bg-slate-500/10 text-slate-300 border border-slate-500/25'
-                              }`}>
-                                {ev.severity}
-                              </span>
-                              <span className="text-[10px] text-emerald-400 font-bold block mt-1">
-                                {Math.round((ev.confidence ?? 0) * 100)}%
-                              </span>
-                            </div>
+                <div key={cat.name} className="flex flex-col">
+                  <PremiumWorkspaceCard accent="security" className="!p-0 overflow-hidden">
+                    <WorkspaceBody className="!p-0">
+                      {/* Category Header */}
+                      <button
+                        onClick={() => toggleCategory(cat.name)}
+                        className="w-full flex items-center justify-between p-3.5 bg-zinc-900/40 hover:bg-zinc-850/30 transition-all cursor-pointer select-none"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className={`p-1.5 rounded-lg border ${cat.color}`}>
+                            <Icon size={14} />
                           </div>
-                        )
-                      })}
-                    </div>
-                  )}
+                          <span className="text-white text-xs font-bold font-display">{cat.name}</span>
+                          <span className="text-[10px] font-mono bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded text-zinc-500 font-bold">
+                            {list.length}
+                          </span>
+                        </div>
+                        {isExpanded ? <ChevronDown size={14} className="text-zinc-500" /> : <ChevronRight size={14} className="text-zinc-500" />}
+                      </button>
+
+                      {/* Category Items List */}
+                      {isExpanded && (
+                        <div className="divide-y divide-white/[0.03] font-mono text-xs">
+                          {list.map((ev, idx) => {
+                            const isSelected = selectedItem?.rule_id === ev.rule_id && selectedItem?.file_path === ev.file_path
+                            return (
+                              <div
+                                key={idx}
+                                onClick={() => setSelectedItem(ev)}
+                                className={`p-3 flex justify-between items-center cursor-pointer transition-all hover:bg-white/[0.02] ${
+                                  isSelected ? 'bg-cyan-500/5 border-l-2 border-cyan-400 pl-2.5' : ''
+                                }`}
+                              >
+                                <div className="space-y-1 max-w-[70%]">
+                                  <span className="text-[9px] text-cyan-300 font-bold bg-cyan-500/10 border border-cyan-500/20 px-1.5 py-0.5 rounded">
+                                    {ev.rule_id}
+                                  </span>
+                                  <p className="text-white text-[11px] font-bold truncate mt-1">{ev.title}</p>
+                                  <p className="text-[10px] text-zinc-500 truncate">{ev.file_path}</p>
+                                </div>
+
+                                <div className="text-right shrink-0 select-none">
+                                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                                    ev.severity === 'CRITICAL' || ev.severity === 'HIGH'
+                                      ? 'bg-red-500/10 text-red-400 border border-red-500/25'
+                                      : ev.severity === 'MEDIUM'
+                                        ? 'bg-amber-500/10 text-amber-400 border border-amber-500/25'
+                                        : 'bg-zinc-800 text-zinc-400 border border-zinc-800'
+                                  }`}>
+                                    {ev.severity}
+                                  </span>
+                                  <span className="text-[10px] text-emerald-400 font-bold block mt-1">
+                                    {Math.round((ev.confidence ?? 0) * 100)}%
+                                  </span>
+                                </div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </WorkspaceBody>
+                  </PremiumWorkspaceCard>
                 </div>
               )
             })}
@@ -190,99 +199,107 @@ function EvidenceExplorerContent({ projectId }: { projectId: string }) {
         </div>
 
         {/* Right Side: Selected Evidence Inspector (5 cols) */}
-        <div className="lg:col-span-5">
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-yowon-muted mb-4">Evidence Inspector</p>
+        <div className="lg:col-span-5 flex flex-col">
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-zinc-500 mb-4 font-bold select-none">Evidence Inspector</p>
           
           {selectedItem ? (
-            <div className="glass-card space-y-4 font-sans text-xs text-slate-300 border border-cyan-500/10 shadow-lg shadow-cyan-500/5">
-              <div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[9px] font-mono text-cyan-300 font-bold bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded">
-                      {selectedItem.rule_id}
-                    </span>
-                    <span className="text-[10px] font-mono text-yowon-muted">CONFIDENCE {Math.round((selectedItem.confidence ?? 0) * 100)}%</span>
-                  </div>
-                <h4 className="text-white text-sm font-bold font-display mt-2.5 leading-snug">{selectedItem.title}</h4>
-              </div>
-
-              {/* Inspector fields */}
-              <div className="space-y-3.5 border-t border-white/5 pt-3.5">
-                <div>
-                  <span className="text-[9px] font-mono text-yowon-muted uppercase block">WHAT WAS DETECTED</span>
-                  <p className="text-slate-200 mt-1 leading-relaxed font-sans">{selectedItem.title}</p>
-                </div>
-
-                {selectedItem.why_detected && (
+            <div className="flex flex-col">
+              <PremiumWorkspaceCard accent="security">
+                <WorkspaceBody className="space-y-4 font-sans text-xs text-slate-350">
                   <div>
-                    <span className="text-[9px] font-mono text-yowon-muted uppercase block">WHY IT WAS DETECTED</span>
-                    <p className="text-slate-300 mt-1 leading-relaxed font-sans">{selectedItem.why_detected}</p>
-                  </div>
-                )}
-
-                {selectedItem.recommendation && (
-                  <div>
-                    <span className="text-[9px] font-mono text-yowon-muted uppercase block">RECOMMENDED ACTION</span>
-                    <p className="text-slate-300 mt-1 leading-relaxed bg-white/5 border border-white/10 rounded-lg p-2.5 font-mono text-[10.5px]">
-                      {selectedItem.recommendation}
-                    </p>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <span className="text-[9px] font-mono text-yowon-muted uppercase block">Severity</span>
-                    <span className={`text-[10px] font-mono font-bold mt-1 inline-block px-1.5 py-0.5 rounded ${
-                      selectedItem.severity === 'CRITICAL' || selectedItem.severity === 'HIGH'
-                        ? 'bg-red-500/10 text-red-400 border border-red-500/20'
-                        : selectedItem.severity === 'MEDIUM'
-                          ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                          : 'bg-slate-500/10 text-slate-300 border border-slate-500/20'
-                    }`}>
-                      {selectedItem.severity}
-                    </span>
+                    <div className="flex items-center justify-between gap-2 select-none">
+                      <span className="text-[9px] font-mono text-cyan-300 font-bold bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded">
+                        {selectedItem.rule_id}
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500 font-bold">CONFIDENCE {Math.round((selectedItem.confidence ?? 0) * 100)}%</span>
+                    </div>
+                    <h4 className="text-white text-sm font-bold font-display mt-2.5 leading-snug">{selectedItem.title}</h4>
                   </div>
 
-                  <div>
-                    <span className="text-[9px] font-mono text-yowon-muted uppercase block">Source Parser</span>
-                    <span className="text-slate-300 font-mono mt-1 block">{selectedItem.source}</span>
-                  </div>
-                </div>
+                  {/* Inspector fields */}
+                  <div className="space-y-3.5 border-t border-white/[0.04] pt-3.5">
+                    <div>
+                      <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">WHAT WAS DETECTED</span>
+                      <p className="text-zinc-200 mt-1 leading-relaxed font-sans">{selectedItem.title}</p>
+                    </div>
 
-                <div>
-                  <span className="text-[9px] font-mono text-yowon-muted uppercase block">Traced File Path</span>
-                  <div className="flex items-center justify-between gap-2 mt-1 bg-black/20 border border-white/5 rounded px-2 py-1.5 font-mono text-[10px]">
-                    <span className="truncate text-slate-300 max-w-[80%]">{selectedItem.file_path}</span>
-                    {selectedItem.line_start && (
-                      <span className="text-cyan-400 font-bold shrink-0">L{selectedItem.line_start}</span>
+                    {selectedItem.why_detected && (
+                      <div>
+                        <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">WHY IT WAS DETECTED</span>
+                        <p className="text-zinc-350 mt-1 leading-relaxed font-sans">{selectedItem.why_detected}</p>
+                      </div>
+                    )}
+
+                    {selectedItem.recommendation && (
+                      <div>
+                        <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">RECOMMENDED ACTION</span>
+                        <p className="text-zinc-300 mt-1 leading-relaxed bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 font-mono text-[10.5px]">
+                          {selectedItem.recommendation}
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">Severity</span>
+                        <span className={`text-[10px] font-mono font-bold mt-1 inline-block px-1.5 py-0.5 rounded select-none ${
+                          selectedItem.severity === 'CRITICAL' || selectedItem.severity === 'HIGH'
+                            ? 'bg-red-500/10 text-red-400 border border-red-500/20'
+                            : selectedItem.severity === 'MEDIUM'
+                              ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                              : 'bg-zinc-850 text-zinc-400 border border-zinc-800'
+                        }`}>
+                          {selectedItem.severity}
+                        </span>
+                      </div>
+
+                      <div>
+                        <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">Source Parser</span>
+                        <span className="text-zinc-350 font-mono mt-1 block">{selectedItem.source}</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">Traced File Path</span>
+                      <div className="flex items-center justify-between gap-2 mt-1 bg-zinc-900 border border-zinc-800 rounded px-2 py-1.5 font-mono text-[10px]">
+                        <span className="truncate text-zinc-350 max-w-[80%]">{selectedItem.file_path}</span>
+                        {selectedItem.line_start && (
+                          <span className="text-cyan-400 font-bold shrink-0">L{selectedItem.line_start}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Linked Artifacts */}
+                    {((selectedItem.linked_technologies && selectedItem.linked_technologies.length > 0) || 
+                      (selectedItem.linked_components && selectedItem.linked_components.length > 0)) && (
+                      <div className="space-y-2 border-t border-white/[0.04] pt-3.5">
+                        <span className="text-[9px] font-mono text-zinc-550 uppercase block font-bold select-none">Linked Systems Map</span>
+                        <div className="flex flex-wrap gap-1.5 select-none">
+                          {selectedItem.linked_technologies?.map((t: string) => (
+                            <span key={t} className="text-[9px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20 px-2 py-0.5 rounded">
+                              {t}
+                            </span>
+                          ))}
+                          {selectedItem.linked_components?.map((c: string) => (
+                            <span key={c} className="text-[9px] font-mono bg-violet-500/10 text-violet-300 border border-violet-500/20 px-2 py-0.5 rounded">
+                              {c}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     )}
                   </div>
-                </div>
-
-                {/* Linked Artifacts */}
-                {((selectedItem.linked_technologies && selectedItem.linked_technologies.length > 0) || 
-                  (selectedItem.linked_components && selectedItem.linked_components.length > 0)) && (
-                  <div className="space-y-2 border-t border-white/5 pt-3.5">
-                    <span className="text-[9px] font-mono text-yowon-muted uppercase block">Linked Systems Map</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {selectedItem.linked_technologies?.map((t: string) => (
-                        <span key={t} className="text-[9px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20 px-2 py-0.5 rounded">
-                          {t}
-                        </span>
-                      ))}
-                      {selectedItem.linked_components?.map((c: string) => (
-                        <span key={c} className="text-[9px] font-mono bg-violet-500/10 text-violet-300 border border-violet-500/20 px-2 py-0.5 rounded">
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+                </WorkspaceBody>
+              </PremiumWorkspaceCard>
             </div>
           ) : (
-            <div className="glass-card flex flex-col items-center justify-center py-20 text-center text-yowon-muted">
-              <HelpCircle size={28} className="text-yowon-muted/30 mb-2" />
-              <p className="text-xs">Select any evidence row in the categories view to inspect its AST rules trace.</p>
+            <div className="flex flex-col">
+              <PremiumWorkspaceCard accent="security" className="!p-8 text-center flex flex-col items-center justify-center select-none">
+                <WorkspaceBody>
+                  <HelpCircle size={28} className="text-zinc-650 mb-2" />
+                  <p className="text-xs text-zinc-500 font-mono leading-relaxed">Select any evidence row in the categories view to inspect its AST rules trace.</p>
+                </WorkspaceBody>
+              </PremiumWorkspaceCard>
             </div>
           )}
         </div>

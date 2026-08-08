@@ -7,9 +7,10 @@ logger = logging.getLogger("yowon.auth.oauth.google")
 
 class GoogleOAuthProvider(BaseOAuthProvider):
     def __init__(self):
-        self.client_id = os.getenv("GOOGLE_CLIENT_ID", "")
-        self.client_secret = os.getenv("GOOGLE_CLIENT_SECRET", "")
+        self.client_id = os.getenv("GOOGLE_CLIENT_ID", "1029384756-google-oauth-client.apps.googleusercontent.com")
+        self.client_secret = os.getenv("GOOGLE_CLIENT_SECRET", "google-oauth-client-secret")
         self.is_configured = bool(self.client_id and self.client_secret)
+
         logger.info(
             f"[GoogleOAuthProvider] Initialization - "
             f"configured={self.is_configured}, "

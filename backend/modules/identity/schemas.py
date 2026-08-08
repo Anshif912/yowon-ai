@@ -54,3 +54,10 @@ class ResetPasswordRequest(BaseModel):
 
 class VerifyEmailRequest(BaseModel):
     token: str
+
+class RoleUpdate(BaseModel):
+    role: str = Field(..., description="Target user role (e.g. SUPER_ADMIN, ORG_OWNER, WORKSPACE_ADMIN, TEAM_MEMBER, GUEST)")
+
+class RolePermissionsUpdate(BaseModel):
+    permissions: dict[str, bool]
+

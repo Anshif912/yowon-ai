@@ -50,6 +50,31 @@ def _normalize_string_list(value: Any) -> list[str]:
     return _normalize_string_list(str(value))
 
 
+class EvidenceItem(BaseModel):
+    id: str = ""
+    source: str = ""
+    confidence: float = 0.0
+    finding: str = ""
+    file_path: str | None = None
+    line_range: str | None = None
+
+
+
+class StructuredReasoningSection(BaseModel):
+    title: str = ""
+    summary: str = ""
+    executive_takeaway: str = ""
+    positive_findings: list[str] = Field(default_factory=list)
+    negative_findings: list[str] = Field(default_factory=list)
+    technical_observations: list[str] = Field(default_factory=list)
+    business_implications: list[str] = Field(default_factory=list)
+    deployment_readiness: str = ""
+    confidence: str = ""
+    recommended_actions: list[str] = Field(default_factory=list)
+    evidence: list[EvidenceItem] = Field(default_factory=list)
+    priority: str = "medium"
+
+
 class TechnicalReport(BaseModel):
     technical_score: int = Field(ge=0, le=100)
     strengths: list[str] = Field(default_factory=list, max_length=3)
@@ -140,6 +165,7 @@ class ChiefVerdict(BaseModel):
     calibration_explanation: str = ""
     project_type_justification: str = ""
     community_impact_score: int = Field(ge=0, le=100, default=0)
+    reasoning_sections: dict[str, StructuredReasoningSection] = Field(default_factory=dict)
 
     @field_validator("recommended_fixes", "roadmap", "deployment_roadmap", "confidence_sources", mode="before")
     @classmethod
@@ -160,3 +186,11 @@ class ChiefVerdict(BaseModel):
         if not self.missing_evidence:
             self.missing_evidence = ["No additional missing evidence detected"]
         return self
+
+
+class ProjectContextRequest(BaseModel):
+    project_type: str
+    project_domain: str | None = None
+    evaluation_profile: str | None = None
+    evaluation_goal: str | None = None
+    repository_maturity: str | None = None

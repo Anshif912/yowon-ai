@@ -25,14 +25,10 @@ uniform float uStarSpeed;
 uniform float uDensity;
 uniform float uHueShift;
 uniform float uSpeed;
-uniform vec2 uMouse;
 uniform float uGlowIntensity;
 uniform float uSaturation;
-uniform bool uMouseRepulsion;
 uniform float uTwinkleIntensity;
 uniform float uRotationSpeed;
-uniform float uRepulsionStrength;
-uniform float uMouseActiveFactor;
 uniform float uAutoCenterRepulsion;
 uniform bool uTransparent;
 
@@ -126,22 +122,12 @@ vec3 StarLayer(vec2 uv) {
 void main() {
   vec2 focalPx = uFocal * uResolution.xy;
   vec2 uv = (vUv * uResolution.xy - focalPx) / uResolution.y;
-
-  vec2 mouseNorm = uMouse - vec2(0.5);
   
   if (uAutoCenterRepulsion > 0.0) {
     vec2 centerUV = vec2(0.0, 0.0);
     float centerDist = length(uv - centerUV);
     vec2 repulsion = normalize(uv - centerUV) * (uAutoCenterRepulsion / (centerDist + 0.1));
     uv += repulsion * 0.05;
-  } else if (uMouseRepulsion) {
-    vec2 mousePosUV = (uMouse * uResolution.xy - focalPx) / uResolution.y;
-    float mouseDist = length(uv - mousePosUV);
-    vec2 repulsion = normalize(uv - mousePosUV) * (uRepulsionStrength / (mouseDist + 0.1));
-    uv += repulsion * 0.05 * uMouseActiveFactor;
-  } else {
-    vec2 mouseOffset = mouseNorm * 0.1 * uMouseActiveFactor;
-    uv += mouseOffset;
   }
 
   float autoRotAngle = uTime * uRotationSpeed;
@@ -168,7 +154,7 @@ void main() {
     gl_FragColor = vec4(col, 1.0);
   }
 }
-`;
+`
 
 export interface GalaxyProps extends HTMLAttributes<HTMLDivElement> {
   focal?: [number, number]
@@ -178,11 +164,8 @@ export interface GalaxyProps extends HTMLAttributes<HTMLDivElement> {
   hueShift?: number
   disableAnimation?: boolean
   speed?: number
-  mouseInteraction?: boolean
   glowIntensity?: number
   saturation?: number
-  mouseRepulsion?: boolean
-  repulsionStrength?: number
   twinkleIntensity?: number
   rotationSpeed?: number
   autoCenterRepulsion?: number
@@ -197,11 +180,8 @@ export default function Galaxy({
   hueShift = 140,
   disableAnimation = false,
   speed = 1.0,
-  mouseInteraction = true,
   glowIntensity = 0.3,
   saturation = 0.0,
-  mouseRepulsion = true,
-  repulsionStrength = 2,
   twinkleIntensity = 0.3,
   rotationSpeed = 0.1,
   autoCenterRepulsion = 0,
@@ -209,10 +189,6 @@ export default function Galaxy({
   ...rest
 }: GalaxyProps) {
   const ctnDom = useRef<HTMLDivElement>(null)
-  const targetMousePos = useRef({ x: 0.5, y: 0.5 })
-  const smoothMousePos = useRef({ x: 0.5, y: 0.5 })
-  const targetMouseActive = useRef(0.0)
-  const smoothMouseActive = useRef(0.0)
 
   useEffect(() => {
     if (!ctnDom.current) return
@@ -248,6 +224,14 @@ export default function Galaxy({
     window.addEventListener('resize', resize, false)
     resize()
 
+    // Support prefers-reduced-motion by throttling animation
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let reducedMotion = motionQuery.matches
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      reducedMotion = e.matches
+    }
+    motionQuery.addEventListener('change', handleMotionChange)
+
     const geometry = new Triangle(gl)
     program = new Program(gl, {
       vertex: vertexShader,
@@ -263,16 +247,10 @@ export default function Galaxy({
         uDensity: { value: density },
         uHueShift: { value: hueShift },
         uSpeed: { value: speed },
-        uMouse: {
-          value: new Float32Array([smoothMousePos.current.x, smoothMousePos.current.y])
-        },
         uGlowIntensity: { value: glowIntensity },
         uSaturation: { value: saturation },
-        uMouseRepulsion: { value: mouseRepulsion },
         uTwinkleIntensity: { value: twinkleIntensity },
         uRotationSpeed: { value: rotationSpeed },
-        uRepulsionStrength: { value: repulsionStrength },
-        uMouseActiveFactor: { value: 0.0 },
         uAutoCenterRepulsion: { value: autoCenterRepulsion },
         uTransparent: { value: transparent }
       }
@@ -283,45 +261,18 @@ export default function Galaxy({
 
     function update(t: number) {
       animateId = requestAnimationFrame(update)
-      if (document.hidden) return // Suspension when tab hidden
+      if (document.hidden) return // Pause rendering when tab hidden
 
       if (!disableAnimation) {
-        program.uniforms.uTime.value = t * 0.001
-        program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0
+        const timeFactor = reducedMotion ? 0.05 : 1.0
+        program.uniforms.uTime.value = t * 0.001 * timeFactor
+        program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed * timeFactor) / 10.0
       }
-
-      const lerpFactor = 0.05
-      smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor
-      smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor
-
-      smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor
-
-      program.uniforms.uMouse.value[0] = smoothMousePos.current.x
-      program.uniforms.uMouse.value[1] = smoothMousePos.current.y
-      program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current
 
       renderer.render({ scene: mesh })
     }
     animateId = requestAnimationFrame(update)
     ctn.appendChild(gl.canvas)
-
-    function handleMouseMove(e: MouseEvent) {
-      if (!ctn) return
-      const rect = ctn.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width
-      const y = 1.0 - (e.clientY - rect.top) / rect.height
-      targetMousePos.current = { x, y }
-      targetMouseActive.current = 1.0
-    }
-
-    function handleMouseLeave() {
-      targetMouseActive.current = 0.0
-    }
-
-    if (mouseInteraction) {
-      window.addEventListener('mousemove', handleMouseMove, { passive: true })
-      document.addEventListener('mouseleave', handleMouseLeave)
-    }
 
     const handleVisibility = () => {
       if (document.hidden) {
@@ -336,10 +287,7 @@ export default function Galaxy({
       cancelAnimationFrame(animateId)
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', handleVisibility)
-      if (mouseInteraction) {
-        window.removeEventListener('mousemove', handleMouseMove)
-        document.removeEventListener('mouseleave', handleMouseLeave)
-      }
+      motionQuery.removeEventListener('change', handleMotionChange)
       if (gl.canvas.parentElement === ctn) {
         ctn.removeChild(gl.canvas)
       }
@@ -353,13 +301,10 @@ export default function Galaxy({
     hueShift,
     disableAnimation,
     speed,
-    mouseInteraction,
     glowIntensity,
     saturation,
-    mouseRepulsion,
     twinkleIntensity,
     rotationSpeed,
-    repulsionStrength,
     autoCenterRepulsion,
     transparent
   ])

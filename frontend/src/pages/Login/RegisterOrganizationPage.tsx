@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Shield, Building2, User, Mail, Lock, Loader2, 
-  CheckCircle2, AlertTriangle, ChevronRight, ChevronLeft, Key
+  CheckCircle2, AlertTriangle, ChevronRight, ChevronLeft
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../components/auth/AuthContext'
 import SoftAurora from '../../components/effects/SoftAurora'
 
+const AURORA_COLORS: [string, string, string] = ['#6366f1', '#8B5CF6', '#3B82F6'];
+
 export default function RegisterOrganizationPage() {
-  const { setupOrganization, platformInitialized, isAuthenticated, user } = useAuth()
+  const { setupOrganization, platformInitialized, isAuthenticated } = useAuth()
   const navigate = useNavigate()
 
   // Wizard Steps: 1: License, 2: Organization, 3: Administrator, 4: Complete
@@ -69,6 +71,10 @@ export default function RegisterOrganizationPage() {
       setErrorMsg('Please specify a password.')
       return
     }
+    if (password.length < 12) {
+      setErrorMsg('Password must be at least 12 characters long for Zero Trust security compliance.')
+      return
+    }
     if (password !== confirmPassword) {
       setErrorMsg('Passwords do not match.')
       return
@@ -77,9 +83,21 @@ export default function RegisterOrganizationPage() {
     setIsLoading(true)
     try {
       await setupOrganization(orgName, adminName, email, password)
-      setStep(4)
+      navigate('/dashboard')
     } catch (err: any) {
-      const serverMsg = err.response?.data?.detail || err.response?.data?.message || 'Failed to initialize platform setup.'
+      let serverMsg = 'Failed to initialize platform setup.'
+      if (err.response?.data?.detail) {
+        const detail = err.response.data.detail
+        if (Array.isArray(detail)) {
+          serverMsg = detail.map((d: any) => `${d.loc?.[d.loc.length - 1] || 'field'}: ${d.msg}`).join(', ')
+        } else if (typeof detail === 'string') {
+          serverMsg = detail
+        } else if (detail.message) {
+          serverMsg = detail.message
+        }
+      } else if (err.response?.data?.message) {
+        serverMsg = err.response.data.message
+      }
       setErrorMsg(serverMsg)
     } finally {
       setIsLoading(false)
@@ -88,7 +106,7 @@ export default function RegisterOrganizationPage() {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#05070a] px-4 py-12">
-      <SoftAurora colorStops={['#6366f1', '#8B5CF6', '#3B82F6']} amplitude={1.0} />
+      <SoftAurora colorStops={AURORA_COLORS} amplitude={1.0} />
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -178,6 +196,7 @@ export default function RegisterOrganizationPage() {
                   <input 
                     type="text" 
                     value={orgName}
+                    disabled={isLoading}
                     onChange={(e) => setOrgName(e.target.value)}
                     placeholder="e.g. Acme Corporation"
                     className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 pl-9 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono"
@@ -221,6 +240,7 @@ export default function RegisterOrganizationPage() {
                   <input 
                     type="text" 
                     value={adminName}
+                    disabled={isLoading}
                     onChange={(e) => setAdminName(e.target.value)}
                     placeholder="e.g. Jane Doe"
                     className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 pl-9 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono"
@@ -235,6 +255,7 @@ export default function RegisterOrganizationPage() {
                   <input 
                     type="email" 
                     value={email}
+                    disabled={isLoading}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="e.g. admin@yourorg.com"
                     className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 pl-9 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono"
@@ -250,6 +271,7 @@ export default function RegisterOrganizationPage() {
                     <input 
                       type="password" 
                       value={password}
+                      disabled={isLoading}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="8+ characters"
                       className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono"
@@ -262,6 +284,7 @@ export default function RegisterOrganizationPage() {
                     <input 
                       type="password" 
                       value={confirmPassword}
+                      disabled={isLoading}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Repeat password"
                       className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-all font-mono"

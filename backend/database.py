@@ -19,7 +19,9 @@ from sqlalchemy import (
     Boolean,
     UniqueConstraint,
     create_engine,
+    event,
 )
+from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Session, relationship, sessionmaker
 
 from config import DATABASE_URL
@@ -30,6 +32,14 @@ engine = create_engine(
     DATABASE_URL,
     connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {},
 )
+
+@event.listens_for(Engine, "connect")
+def set_sqlite_pragma(dbapi_connection, connection_record):
+    if "sqlite" in DATABASE_URL:
+        cursor = dbapi_connection.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.close()
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
@@ -104,6 +114,10 @@ class Project(Base):
     name: str = Column(String(255), nullable=False)
     slug: Optional[str] = Column(String(255), nullable=True, index=True)
     project_type: str = Column(String(50), nullable=False, default="Hackathon Project")
+    project_domain: Optional[str] = Column(String(100), nullable=True)
+    evaluation_profile: Optional[str] = Column(String(100), nullable=True)
+    evaluation_goal: Optional[str] = Column(String(100), nullable=True)
+    repository_maturity: Optional[str] = Column(String(50), nullable=True)
     description: Optional[str] = Column(Text, nullable=True)
     github_url: Optional[str] = Column(String(512), nullable=True)
     demo_video_url: Optional[str] = Column(String(512), nullable=True)
@@ -271,6 +285,26 @@ class Evaluation(Base):
     verdict: Optional[str] = Column(String(20), nullable=True)  # ACCEPT | IMPROVE | REJECT
     confidence: Optional[float] = Column(Float, nullable=True)
     evaluation_status: str = Column(String(20), default="Pending")  # Pending | Running | Completed | Failed | Cancelled
+
+    # YOWON AI RC v3 Onboarding & Context Profile
+    project_type: Optional[str] = Column(String(50), nullable=True)
+    project_domain: Optional[str] = Column(String(100), nullable=True)
+    evaluation_profile: Optional[str] = Column(String(100), nullable=True)
+    evaluation_goal: Optional[str] = Column(String(100), nullable=True)
+    repository_maturity: Optional[str] = Column(String(50), nullable=True)
+
+    # Replayability, Debate, Consensus & Governance
+    initial_evaluations: Optional[str] = Column(Text, nullable=True) # JSON
+    evidence_graph: Optional[str] = Column(Text, nullable=True)      # JSON
+    debates: Optional[str] = Column(Text, nullable=True)             # JSON
+    criticisms: Optional[str] = Column(Text, nullable=True)          # JSON
+    consensus_decisions: Optional[str] = Column(Text, nullable=True) # JSON
+    confidence_model: Optional[str] = Column(Text, nullable=True)    # JSON
+    score_evolution: Optional[str] = Column(Text, nullable=True)     # JSON
+    rule_violations: Optional[str] = Column(Text, nullable=True)     # JSON
+    trade_offs: Optional[str] = Column(Text, nullable=True)          # JSON
+    governance_log: Optional[str] = Column(Text, nullable=True)      # JSON
+    benchmarks: Optional[str] = Column(Text, nullable=True)          # JSON
 
     # Explainable AI & Reproducibility parameters
     llm_model: Optional[str] = Column(String(100), nullable=True)
@@ -584,6 +618,10 @@ class User(Base):
     last_login = Column(DateTime, nullable=True)
     failed_login_attempts = Column(Integer, default=0, nullable=False)
     account_locked = Column(Boolean, default=False, nullable=False)
+    last_password_change = Column(DateTime, nullable=True)
+    password_reset_count = Column(Integer, default=0, nullable=False)
+    password_reset_at = Column(DateTime, nullable=True)
+
     
     # Preferences & Customization
     preferences = Column(Text, nullable=True)  # JSON-serialized string
@@ -1962,6 +2000,62 @@ class RepositoryBranchProtection(Base):
     is_admin_enforced: bool = Column(Boolean, default=False, nullable=False)
 
 
+# ── Password Reset Models ──────────────────────────────────────────────────────
+
+class PasswordResetSession(Base):
+    """Tracks a single password reset flow per user. One active session at a time."""
+
+    __tablename__ = "password_reset_sessions"
+
+    id           = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id      = Column(String(36), ForeignKey("users.uuid", ondelete="CASCADE"), nullable=False, index=True)
+    email        = Column(String(255), nullable=False, index=True)
+    status       = Column(String(30), default="PENDING", nullable=False)
+    # PENDING | OTP_VERIFIED | COMPLETED | EXPIRED | INVALIDATED
+    email_status = Column(String(20), default="EMAIL_PENDING", nullable=False)
+    # EMAIL_PENDING | EMAIL_SENT | EMAIL_FAILED
+    created_at   = Column(DateTime, default=datetime.utcnow, nullable=False)
+    expires_at   = Column(DateTime, nullable=False)
+
+
+class PasswordResetOTP(Base):
+    """Stores a hashed OTP tied to a reset session. New row per resend."""
+
+    __tablename__ = "password_reset_otps"
+
+    id             = Column(Integer, primary_key=True, autoincrement=True)
+    session_id     = Column(String(36), ForeignKey("password_reset_sessions.id", ondelete="CASCADE"), nullable=False, index=True)
+    otp_hash       = Column(String(64), nullable=False)  # HMAC-SHA256 hex
+    attempts       = Column(Integer, default=0, nullable=False)
+    resend_count   = Column(Integer, default=0, nullable=False)
+    last_resend_at = Column(DateTime, nullable=True)
+    is_used        = Column(Boolean, default=False, nullable=False)
+    is_expired     = Column(Boolean, default=False, nullable=False)
+    created_at     = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class PasswordResetJTI(Base):
+    """Stores used JWT IDs for reset tokens to prevent replay attacks."""
+
+    __tablename__ = "password_reset_jtis"
+
+    jti        = Column(String(36), primary_key=True)
+    session_id = Column(String(36), ForeignKey("password_reset_sessions.id", ondelete="CASCADE"), nullable=False)
+    used_at    = Column(DateTime, nullable=True)  # None = not yet used
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class UserPasswordHistory(Base):
+    """Stores past password hashes to prevent reuse (last 5 passwords)."""
+    __tablename__ = "user_password_histories"
+
+    id            = Column(Integer, primary_key=True, autoincrement=True)
+    user_uuid     = Column(String(36), ForeignKey("users.uuid", ondelete="CASCADE"), nullable=False, index=True)
+    password_hash = Column(String(255), nullable=False)
+    created_at    = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+
 # ── Dependency helper ──────────────────────────────────────────────────────────
 
 def get_db():
@@ -2049,3 +2143,20 @@ def init_db() -> None:
                         print(f"[MIGRATION] Added column '{col_name}' to table '{table_name}'.")
                     except Exception as e:
                         print(f"[MIGRATION] Failed to add column '{col_name}' to '{table_name}': {e}")
+
+    # 3. Startup cleanup of expired password reset sessions and OTPs older than 7 days
+    try:
+        db_session = SessionLocal()
+        from datetime import datetime, timedelta
+        cutoff = datetime.utcnow() - timedelta(days=7)
+        deleted_otps = db_session.query(PasswordResetOTP).filter(PasswordResetOTP.created_at < cutoff).delete(synchronize_session=False)
+        deleted_jtis = db_session.query(PasswordResetJTI).filter(PasswordResetJTI.created_at < cutoff).delete(synchronize_session=False)
+        deleted_sessions = db_session.query(PasswordResetSession).filter(PasswordResetSession.created_at < cutoff).delete(synchronize_session=False)
+        db_session.commit()
+        if deleted_otps or deleted_jtis or deleted_sessions:
+            print(f"[STARTUP CLEANUP] Removed expired data older than 7 days: {deleted_otps} OTPs, {deleted_jtis} JTIs, {deleted_sessions} sessions.")
+    except Exception as e:
+        print(f"[STARTUP CLEANUP] Failed to run expired reset cleanup: {e}")
+    finally:
+        db_session.close()
+

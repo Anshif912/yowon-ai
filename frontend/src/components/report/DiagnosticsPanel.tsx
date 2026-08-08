@@ -9,6 +9,11 @@ import { CardSkeleton } from './Skeletons'
 import { ErrorBoundary, PanelErrorFallback } from './ErrorBoundary'
 import type { RKMEntity } from '../../types/rkm'
 import { useSharedIntelligenceContext } from './RepositoryIntelligenceWrapper'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 
 interface DiagnosticsPanelProps {
   projectId: string
@@ -44,7 +49,7 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
   const engineVersion = diag.engine_version || rootData.metadata?.engine_version || '2.0.0'
 
   const overallHealth: number | null = health.overall ?? health.overall_score ?? health.overall_health ?? null
-  const score = overallHealth !== null ? overallHealth : 90
+  const score = overallHealth ?? null
 
   // Calculate client render time
   const renderDuration = Math.round(performance.now() - renderStart)
@@ -66,67 +71,96 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
   }, [entitiesList])
 
   return (
-    <DashboardSection id="diagnostics" title="Diagnostics & Telemetry" icon={SettingsIcon} accent="cyan">
-      <div className="space-y-6 font-mono text-[10px] text-white">
+    <DashboardSection id="diagnostics" title="Diagnostics & Telemetry" icon={SettingsIcon}>
+      <div className="space-y-6 font-mono text-[10px] text-white select-text">
         
         {/* Header telemetry info */}
-        <div className="space-y-1.5 pb-3 border-b border-white/[0.04] text-zinc-500 font-sans">
+        <div className="space-y-1.5 pb-3 border-b border-white/[0.04] text-zinc-500 font-sans select-none">
           Diagnostic logs mapping client cache hits, execution logs, and Software OS model validation.
         </div>
 
         {/* 1. Model Validation State Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
-          <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-            <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">RKM Build Diagnostics</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+            <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">RKM Build Diagnostics</span>
             <div className="space-y-2">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Repository Loaded:</span>
-                <span className="text-emerald-400 font-bold">YES</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className={status === 'completed' || status === 'success' || rootData.status ? "text-emerald-400" : "text-amber-400"}>
+                    {status === 'completed' || status === 'success' || rootData.status ? 'YES' : 'PENDING'}
+                  </span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">RKM Model Built:</span>
-                <span className="text-emerald-400 font-bold">{rkm ? 'YES' : 'NO'}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-emerald-400">{rkm ? 'YES' : 'NO'}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Validation Status:</span>
-                <span className="text-emerald-400 font-bold">{rkm ? 'VERIFIED' : 'FAILED'}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-emerald-400">{rkm ? 'VERIFIED' : 'FAILED'}</span>
+                  <span className="text-[8px] text-amber-500/80 bg-amber-500/5 border border-amber-500/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Rule</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-            <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">Model Metrics</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+            <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">Model Metrics</span>
             <div className="space-y-2">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">RKM Node Count:</span>
-                <span className="text-cyan-300 font-bold">{nodeCount}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{nodeCount}</span>
+                  <span className="text-[8px] text-violet-400 bg-violet-400/5 border border-violet-400/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">KG</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">RKM Edge Count:</span>
-                <span className="text-cyan-300 font-bold">{edgeCount}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{edgeCount}</span>
+                  <span className="text-[8px] text-violet-400 bg-violet-400/5 border border-violet-400/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">KG</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Confidence Ratio:</span>
-                <span className="text-cyan-300 font-bold">95.8%</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{rootData.confidence ? `${rootData.confidence}%` : '—'}</span>
+                  <span className="text-[8px] text-amber-500/80 bg-amber-500/5 border border-amber-500/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Rule</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-            <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">Query Cache Telemetry</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+            <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">Query Cache Telemetry</span>
             <div className="space-y-2">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Architecture:</span>
-                <span className="text-cyan-300 font-bold">{context.cacheStatus.arch}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{context.cacheStatus.arch}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Technology:</span>
-                <span className="text-cyan-300 font-bold">{context.cacheStatus.tech}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{context.cacheStatus.tech}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Dependency:</span>
-                <span className="text-cyan-300 font-bold">{context.cacheStatus.dep}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-350">{context.cacheStatus.dep}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
             </div>
           </div>
@@ -137,46 +171,67 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           {/* Engine Parameters */}
-          <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-            <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">Analysis Engine Parameters</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+            <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">Analysis Engine Parameters</span>
             <div className="space-y-2.5">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Backend API Status:</span>
-                <span className="text-emerald-400 font-bold flex items-center gap-1">
-                  <Wifi size={10} />
-                  CONNECTED (200 OK)
-                </span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className={statusData ? "text-emerald-400 flex items-center gap-1" : "text-amber-400 flex items-center gap-1"}>
+                    <Wifi size={10} />
+                    {statusData ? 'CONNECTED (200 OK)' : 'UNAVAILABLE'}
+                  </span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Total lines of code:</span>
-                <span className="text-zinc-300 font-bold">{locCount || '12,488'} LOC</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-zinc-300">{locCount > 0 ? locCount.toLocaleString() : '—'} LOC</span>
+                  <span className="text-[8px] text-cyan-400 bg-cyan-400/5 border border-cyan-400/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">AST</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Files parsed count:</span>
-                <span className="text-zinc-300 font-bold">{filesCount || 124} Files</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-zinc-300">{filesCount > 0 ? filesCount : '—'} Files</span>
+                  <span className="text-[8px] text-cyan-400 bg-cyan-400/5 border border-cyan-400/10 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">AST</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Engine Version:</span>
-                <span className="text-zinc-300 font-bold">v{engineVersion}</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-zinc-300">v{engineVersion}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Performance durations */}
-          <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-            <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">Performance & Latency</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+            <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">Performance & Latency</span>
             <div className="space-y-2.5">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Backend static scan time:</span>
-                <span className="text-zinc-300 font-bold">{duration || '2.8'}s</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-zinc-300">{duration > 0 ? `${duration.toFixed(2)}s` : '—'}</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Client-side render duration:</span>
-                <span className="text-cyan-300 font-bold">{renderDuration}ms</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-cyan-300">{renderDuration}ms</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Repository Branch Sha:</span>
-                <span className="text-zinc-500 font-mono text-[9px] truncate max-w-[150px]">{commit.slice(0, 7)} [{branch}]</span>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className="text-zinc-500 font-mono text-[9px] truncate max-w-[150px]">{commit.slice(0, 7)} [{branch}]</span>
+                  <span className="text-[8px] text-zinc-650 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5 rounded font-normal uppercase tracking-wider font-mono select-none">Det</span>
+                </div>
               </div>
             </div>
           </div>
@@ -184,21 +239,21 @@ function DiagnosticsContent({ projectId }: { projectId: string }) {
         </div>
 
         {/* 3. Capabilities and missing entities logs */}
-        <div className="p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] space-y-3">
-          <span className="text-[8px] text-zinc-500 uppercase tracking-widest block font-bold">Semantic Entity Audits</span>
+        <div className="p-5 bg-white/[0.01] rounded-xl space-y-3">
+          <span className="text-[8.5px] text-zinc-500 uppercase tracking-widest block font-bold select-none">Semantic Entity Audits</span>
           
           <div className="space-y-2 font-sans text-zinc-400 text-[9.5px]">
             <div>
-              <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Detected Capabilities</span>
+              <span className="text-[8.5px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Detected Capabilities</span>
               {detectedCapabilities.length === 0 ? (
-                <span>Autonomous Pipeline Scanning, Static rules checks, Consensus score compilation.</span>
+                <span>Repository Intelligence not yet available</span>
               ) : (
                 <span>{detectedCapabilities.join(', ')}</span>
               )}
             </div>
 
-            <div className="pt-1.5">
-              <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Missing Entities</span>
+            <div className="pt-1.5 border-t border-white/[0.04]">
+              <span className="text-[8.5px] font-mono text-zinc-555 uppercase tracking-widest block mb-1">Missing Entities</span>
               {missingEntities.length === 0 ? (
                 <span className="text-emerald-400 font-mono">None. Core types (Service, Database, Technology) successfully indexed.</span>
               ) : (

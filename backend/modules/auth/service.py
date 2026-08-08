@@ -67,6 +67,8 @@ class AuthService:
             role="admin",
             status="active",
             email_verified=True,
+            timezone="UTC",
+            language="en",
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow()
         )
@@ -161,12 +163,17 @@ class AuthService:
                 detail="Your account is temporarily locked. Please contact support."
             )
 
-        if user.status.upper() != "ACTIVE":
+        if (user.status or "").upper() not in ("ACTIVE", "PENDING_VERIFICATION"):
             logger.warning(f"[AuthService] Login Aborted - Account not active (status={user.status}): uuid={user.uuid}")
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Your account has been deactivated."
             )
+
+        if (user.status or "").upper() == "PENDING_VERIFICATION":
+            user.status = "active"
+            user.email_verified = True
+
 
         if not PasswordService.verify_password(payload.password, user.password_hash):
             user.failed_login_attempts += 1
@@ -293,55 +300,108 @@ class AuthService:
             role="TEAM_MEMBER",
             status="active",
             email_verified=True,
+            timezone="UTC",
+            language="en",
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow()
         )
         self.db.add(user)
         self.db.flush()
 
-        # 2. Create personal organization and workspace
-        org_name = f"{payload.full_name}'s Org"
-        org = Organization(
-            uuid=str(uuid.uuid4()),
-            name=org_name,
-            slug=(org_name.lower().replace(" ", "-") + "-" + str(uuid.uuid4())[:8])[:255],
-            owner_id=user.uuid,
-            created_at=datetime.utcnow()
-        )
-        self.db.add(org)
-        self.db.flush()
+        # 2. Domain-based Organization Mapping / Custom Provisioning
+        email_domain = payload.email.split("@")[-1].lower()
+        public_domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "aol.com", "mail.com", "icloud.com", "yowon.ai", "example.com", "test.com"}
+        
+        target_org = None
+        if email_domain not in public_domains:
+            existing_owner = self.db.query(User).filter(
+                User.email.like(f"%@{email_domain}"),
+                User.status == "active"
+            ).first()
+            if existing_owner:
+                target_org = self.db.query(Organization).filter(
+                    Organization.owner_id == existing_owner.uuid
+                ).first()
 
-        org_member = OrganizationMember(
-            id=str(uuid.uuid4()),
-            organization_id=org.uuid,
-            user_id=user.uuid,
-            role="owner",
-            joined_at=datetime.utcnow()
-        )
-        self.db.add(org_member)
+        if target_org:
+            org_member = OrganizationMember(
+                id=str(uuid.uuid4()),
+                organization_id=target_org.uuid,
+                user_id=user.uuid,
+                role="member",
+                joined_at=datetime.utcnow()
+            )
+            self.db.add(org_member)
 
-        workspace = Workspace(
-            workspace_id=str(uuid.uuid4()),
-            organization_id=org.uuid,
-            name="Personal Workspace",
-            description="Your personal engineering workspace.",
-            type="PERSONAL",
-            visibility="PRIVATE",
-            owner_id=user.uuid,
-            created_at=datetime.utcnow()
-        )
-        self.db.add(workspace)
-        self.db.flush()
+            workspace = self.db.query(Workspace).filter(
+                Workspace.organization_id == target_org.uuid
+            ).first()
+            if not workspace:
+                workspace = Workspace(
+                    workspace_id=str(uuid.uuid4()),
+                    organization_id=target_org.uuid,
+                    name="Default Workspace",
+                    description="Organization default workspace.",
+                    type="COMPANY",
+                    visibility="PRIVATE",
+                    owner_id=user.uuid,
+                    created_at=datetime.utcnow()
+                )
+                self.db.add(workspace)
+                self.db.flush()
 
-        ws_member = WorkspaceMember(
-            workspace_id=workspace.workspace_id,
-            user_id=user.uuid,
-            role="WORKSPACE_ADMIN",
-            status="ACCEPTED",
-            joined_at=datetime.utcnow()
-        )
-        self.db.add(ws_member)
-        self.db.commit()
+            ws_member = WorkspaceMember(
+                workspace_id=workspace.workspace_id,
+                user_id=user.uuid,
+                role="TEAM_MEMBER",
+                status="ACCEPTED",
+                joined_at=datetime.utcnow()
+            )
+            self.db.add(ws_member)
+            self.db.commit()
+        else:
+            org_name = f"{payload.full_name}'s Org"
+            org = Organization(
+                uuid=str(uuid.uuid4()),
+                name=org_name,
+                slug=(org_name.lower().replace(" ", "-") + "-" + str(uuid.uuid4())[:8])[:255],
+                owner_id=user.uuid,
+                created_at=datetime.utcnow()
+            )
+            self.db.add(org)
+            self.db.flush()
+
+            org_member = OrganizationMember(
+                id=str(uuid.uuid4()),
+                organization_id=org.uuid,
+                user_id=user.uuid,
+                role="owner",
+                joined_at=datetime.utcnow()
+            )
+            self.db.add(org_member)
+
+            workspace = Workspace(
+                workspace_id=str(uuid.uuid4()),
+                organization_id=org.uuid,
+                name="Personal Workspace",
+                description="Your personal engineering workspace.",
+                type="PERSONAL",
+                visibility="PRIVATE",
+                owner_id=user.uuid,
+                created_at=datetime.utcnow()
+            )
+            self.db.add(workspace)
+            self.db.flush()
+
+            ws_member = WorkspaceMember(
+                workspace_id=workspace.workspace_id,
+                user_id=user.uuid,
+                role="WORKSPACE_ADMIN",
+                status="ACCEPTED",
+                joined_at=datetime.utcnow()
+            )
+            self.db.add(ws_member)
+            self.db.commit()
 
         # 3. Generate active login session
         jti = str(uuid.uuid4())

@@ -215,6 +215,8 @@ def validate_chief_verdict(
         data["roadmap"] = data.get("deployment_roadmap", [])
     if not data.get("recommended_fixes"):
         data["recommended_fixes"] = computed.get("recommended_fixes", [])
+    if not data.get("reasoning_sections"):
+        data["reasoning_sections"] = computed.get("reasoning_sections", {})
 
     try:
         return ChiefVerdict(**data), "llm"
@@ -269,4 +271,5 @@ def _computed_to_chief(computed: dict[str, Any]) -> ChiefVerdict:
         calibration_explanation=computed.get("calibration_explanation", ""),
         project_type_justification=computed.get("project_type_justification", ""),
         community_impact_score=computed.get("community_impact_score", 0),
+        reasoning_sections=computed.get("reasoning_sections", {}),
     )

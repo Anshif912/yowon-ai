@@ -124,7 +124,11 @@ class HealthEngine:
 
         secrets_score = max(0.0, 100.0 - secrets_deductions)
         unsafe_api_score = max(0.0, 100.0 - unsafe_api_deductions)
-        vulnerabilities_score = 100.0 # Placeholder for CVE scans
+        vulnerabilities_deductions = 0.0
+        for f in security_findings:
+            if f.get("type") in ("vulnerability", "cve") or "cve" in f.get("description", "").lower():
+                vulnerabilities_deductions += 25.0 if f.get("severity") == "CRITICAL" else (15.0 if f.get("severity") == "HIGH" else 5.0)
+        vulnerabilities_score = max(0.0, 100.0 - vulnerabilities_deductions)
 
         w_sec = self.weights.get("security", DEFAULT_WEIGHTS["security"])
         security_score = (

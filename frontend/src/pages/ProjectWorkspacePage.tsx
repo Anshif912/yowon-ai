@@ -115,6 +115,13 @@ export default function ProjectWorkspacePage() {
   const [activityLogs, setActivityLogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
+  // RC9: Language data fetched dynamically from /evaluations/{id}/metrics
+  const [languageData, setLanguageData] = useState<Array<{name: string, pct: number, color: string}>>([])
+  // RC9: Tech stack data fetched dynamically from /evaluations/{id}/metrics
+  const [frameworkItems, setFrameworkItems] = useState<string[]>([])
+  const [aiModelItems, setAiModelItems] = useState<string[]>([])
+  const [deploymentItems, setDeploymentItems] = useState<string[]>([])
+
   // Search state
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchItem[]>([])
@@ -618,22 +625,21 @@ export default function ProjectWorkspacePage() {
                   <div className="space-y-4">
                     <h4 className="text-xs font-semibold text-white/80">Languages Distribution</h4>
                     <div className="space-y-3">
-                      {([
-                        { name: 'TypeScript', pct: 72.5, color: '#3178c6' },
-                        { name: 'Python', pct: 20.0, color: '#3572A5' },
-                        { name: 'HTML', pct: 5.0, color: '#e34c26' },
-                        { name: 'CSS', pct: 2.5, color: '#563d7c' }
-                      ]).map((lang, idx) => (
-                        <div key={idx} className="space-y-1">
-                          <div className="flex justify-between items-center">
-                            <span className="font-semibold text-white/90">{lang.name}</span>
-                            <span className="text-yowon-muted font-bold">{lang.pct}%</span>
+                      {languageData.length === 0 ? (
+                        <div className="text-center py-4 text-zinc-500 text-xs">Run evaluation for language breakdown</div>
+                      ) : (
+                        languageData.map((lang, idx) => (
+                          <div key={idx} className="space-y-1">
+                            <div className="flex justify-between items-center">
+                              <span className="font-semibold text-white/90">{lang.name}</span>
+                              <span className="text-yowon-muted font-bold">{lang.pct}%</span>
+                            </div>
+                            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                              <div className="h-full rounded-full" style={{ width: `${lang.pct}%`, backgroundColor: lang.color }}></div>
+                            </div>
                           </div>
-                          <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                            <div className="h-full rounded-full" style={{ width: `${lang.pct}%`, backgroundColor: lang.color }}></div>
-                          </div>
-                        </div>
-                      ))}
+                        ))
+                      )}
                     </div>
                   </div>
 
@@ -645,27 +651,33 @@ export default function ProjectWorkspacePage() {
                       <div>
                         <span className="text-yowon-muted text-[9px] uppercase tracking-wider">Frameworks & Tools</span>
                         <div className="flex flex-wrap gap-1.5 mt-1.5">
-                          {['React', 'FastAPI', 'TailwindCSS'].map((f, idx) => (
-                            <span key={idx} className="glass-pill px-2.5 py-0.5 border-purple-500/15 text-purple-400">{f}</span>
-                          ))}
+                          {frameworkItems.length === 0 ? (
+                            <span className="text-zinc-600 text-xs">Run evaluation to detect tech stack</span>
+                          ) : (
+                            frameworkItems.map(f => <span key={f} className="glass-pill px-2.5 py-0.5 border-purple-500/15 text-purple-400">{f}</span>)
+                          )}
                         </div>
                       </div>
 
                       <div>
                         <span className="text-yowon-muted text-[9px] uppercase tracking-wider">AI & Large Language Models</span>
                         <div className="flex flex-wrap gap-1.5 mt-1.5">
-                          {['Gemini Pro', 'Llama 3'].map((m, idx) => (
-                            <span key={idx} className="glass-pill px-2.5 py-0.5 border-cyan-500/15 text-cyan-400">{m}</span>
-                          ))}
+                          {aiModelItems.length === 0 ? (
+                            <span className="text-zinc-600 text-xs">Run evaluation to detect tech stack</span>
+                          ) : (
+                            aiModelItems.map(m => <span key={m} className="glass-pill px-2.5 py-0.5 border-cyan-500/15 text-cyan-400">{m}</span>)
+                          )}
                         </div>
                       </div>
 
                       <div>
                         <span className="text-yowon-muted text-[9px] uppercase tracking-wider">Deployment & Databases</span>
                         <div className="flex flex-wrap gap-1.5 mt-1.5">
-                          {['Vercel', 'AWS ECS', 'PostgreSQL', 'Redis'].map((d, idx) => (
-                            <span key={idx} className="glass-pill px-2.5 py-0.5 border-emerald-500/15 text-emerald-400">{d}</span>
-                          ))}
+                          {deploymentItems.length === 0 ? (
+                            <span className="text-zinc-600 text-xs">Run evaluation to detect tech stack</span>
+                          ) : (
+                            deploymentItems.map(d => <span key={d} className="glass-pill px-2.5 py-0.5 border-emerald-500/15 text-emerald-400">{d}</span>)
+                          )}
                         </div>
                       </div>
                     </div>

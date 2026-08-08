@@ -42,10 +42,12 @@ import {
   User,
   Globe,
   Sliders,
-  ShieldCheck
+  ShieldCheck,
+  XCircle
 } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 import { api } from '../../api/api'
+import { useEvaluationLock } from '../../hooks/useEvaluationLock'
 
 interface Project {
   id: string
@@ -76,6 +78,13 @@ export default function Sidebar() {
     localStorage.getItem('yowon_sidebar_collapsed') === 'true'
   )
   const [activeProject, setActiveProject] = useState<Project | null>(null)
+  
+  const { isLocked, activeEvaluationId, currentStage, progress, unlock } = useEvaluationLock()
+  
+  // Only consider the lock active when we are actually on the evaluate page.
+  // This prevents stale localStorage locks from hiding the sidebar on other pages.
+  const isOnEvaluatePage = pathname.startsWith('/evaluate')
+  const lockActive = isLocked && isOnEvaluatePage
   
   // Judge/Demo Mode state
   const [judgeMode, setJudgeMode] = useState(() => {
@@ -121,6 +130,40 @@ export default function Sidebar() {
   }, [urlProjectId])
 
   const projectId = urlProjectId || activeProject?.id || ''
+
+  const executionGroup: NavGroup = {
+    label: 'EXECUTION NAVIGATOR',
+    items: [
+      {
+        label: 'Current Evaluation',
+        icon: Radio,
+        to: `/evaluate/${activeEvaluationId}`,
+        active: pathname === `/evaluate/${activeEvaluationId}` && !window.location.hash,
+        color: '#00E5FF'
+      },
+      {
+        label: 'Evaluation Pipeline',
+        icon: Workflow,
+        to: `/evaluate/${activeEvaluationId}`,
+        active: pathname === `/evaluate/${activeEvaluationId}` && !window.location.hash,
+        color: '#3B82F6'
+      },
+      {
+        label: 'Live Logs',
+        icon: FileText,
+        to: `/evaluate/${activeEvaluationId}#logs`,
+        active: pathname === `/evaluate/${activeEvaluationId}` && window.location.hash === '#logs',
+        color: '#EAB308'
+      },
+      {
+        label: 'Cancel Evaluation',
+        icon: XCircle,
+        to: '#cancel',
+        active: false,
+        color: '#EF4444'
+      }
+    ]
+  }
 
   // Compile Enterprise Operating System navigation links
   const navGroups: NavGroup[] = [
@@ -305,6 +348,17 @@ export default function Sidebar() {
     navigate('/login')
   }
 
+  // Clear stale lock if we navigate away from the evaluate route without unlocking
+  useEffect(() => {
+    if (!isOnEvaluatePage && isLocked) {
+      unlock()
+    }
+  }, [isOnEvaluatePage, isLocked, unlock])
+
+  if (lockActive) {
+    return null
+  }
+
   const sidebarW = collapsed ? 72 : 280
 
   return (
@@ -353,6 +407,39 @@ export default function Sidebar() {
       {/* ── Scrollable Nav Area ── */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden py-3 space-y-4 custom-scrollbar">
 
+        {lockActive && !collapsed && (
+          <div className="mx-2 mb-3 rounded-xl border border-amber-500/30 bg-amber-950/20 p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="text-[9px] font-bold text-amber-400 uppercase tracking-widest font-mono">Evaluation Running</span>
+            </div>
+            <p className="text-[9px] text-zinc-500 font-mono mb-2 leading-relaxed truncate">
+              {currentStage || 'Processing...'}
+            </p>
+            {/* Progress bar */}
+            <div className="h-1 bg-white/5 rounded-full overflow-hidden mb-2">
+              <div 
+                className="h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-full transition-all duration-500"
+                style={{ width: `${progress || 0}%` }}
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[8px] text-zinc-600 font-mono">{Math.round(progress || 0)}% complete</span>
+              <button
+                onClick={() => {
+                  if (activeEvaluationId) {
+                    // Navigate to the running evaluation
+                    window.location.href = `/evaluate/${activeEvaluationId}`
+                  }
+                }}
+                className="text-[8px] text-cyan-400 hover:text-cyan-300 font-mono transition-colors"
+              >
+                View Pipeline →
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Active Project Card */}
         <AnimatePresence>
           {!collapsed && activeProject && (
@@ -393,7 +480,7 @@ export default function Sidebar() {
         </AnimatePresence>
 
         {/* Navigation Groups */}
-        {navGroups
+        {(lockActive ? [executionGroup] : navGroups)
           .filter((group) => {
             if (group.label === 'Enterprise') {
               return user && ['SUPER_ADMIN', 'ORG_OWNER', 'WORKSPACE_ADMIN'].includes(user.role)
@@ -403,7 +490,7 @@ export default function Sidebar() {
           .map((group) => (
             <div key={group.label} className="space-y-0.5">
               {/* Group label */}
-              {!collapsed && (
+              {!lockActive && !collapsed && (
                 <div className="sidebar-nav-group-label px-4 mb-1">
                   {group.label}
                 </div>
@@ -411,16 +498,33 @@ export default function Sidebar() {
 
             <nav className="space-y-0.5 px-2">
               {group.items.map((item) => {
-                const Icon = item.icon
+                const Icon = item.icon as React.FC<{ size?: number; className?: string }>
                 const isActive = item.active
                 const color = item.color || '#71717A'
+                
+                const isNavDisabled = lockActive && !item.to.startsWith('/evaluate') && item.to !== '#cancel'
 
                 return (
-                  <div key={item.label} className="relative group">
+                  <div key={item.label} className={`relative group ${isNavDisabled ? 'pointer-events-none opacity-30' : ''}`}>
                     <Link
                       to={item.to}
                       className={`sidebar-nav-item ${isActive ? 'active' : ''} ${item.disabled ? 'opacity-40 pointer-events-none' : ''}`}
-                      onClick={e => { if (item.disabled) e.preventDefault() }}
+                      onClick={async e => {
+                        if (item.disabled) e.preventDefault()
+                        if (item.to === '#cancel') {
+                          e.preventDefault()
+                          const confirmAbort = window.confirm("Repository evaluation is currently running. Leaving now may interrupt analysis. Are you sure you want to abort the evaluation?")
+                          if (confirmAbort) {
+                            try {
+                              await api.post(`/evaluate/${activeEvaluationId}/abort`)
+                              unlock()
+                              navigate('/submit')
+                            } catch (err) {
+                              console.error("Failed to abort:", err)
+                            }
+                          }
+                        }
+                      }}
                     >
                       {/* Active left bar is rendered by CSS ::before on .active */}
 
@@ -550,17 +654,19 @@ export default function Sidebar() {
         )}
 
         {/* Collapse toggle */}
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className={`flex items-center justify-center h-8 rounded-xl border border-white/[0.06] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-all cursor-pointer ${collapsed ? 'w-full' : 'w-full'}`}
-        >
-          {collapsed ? <ChevronRight size={14} /> : (
-            <div className="flex items-center gap-2 text-[10px] font-mono text-zinc-600">
-              <ChevronLeft size={14} />
-              <span>Collapse</span>
-            </div>
-          )}
-        </button>
+        {!lockActive && (
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className={`flex items-center justify-center h-8 rounded-xl border border-white/[0.06] text-zinc-500 hover:text-white hover:bg-white/[0.04] transition-all cursor-pointer ${collapsed ? 'w-full' : 'w-full'}`}
+          >
+            {collapsed ? <ChevronRight size={14} /> : (
+              <div className="flex items-center gap-2 text-[10px] font-mono text-zinc-600">
+                <ChevronLeft size={14} />
+                <span>Collapse</span>
+              </div>
+            )}
+          </button>
+        )}
       </div>
     </motion.aside>
   )

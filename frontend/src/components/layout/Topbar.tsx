@@ -4,6 +4,7 @@ import { Search, ChevronRight, Home, Brain, FolderGit2, FileText, Slash, Plus, F
 import { api } from '../../api/api'
 import { useAuth } from '../auth/AuthContext'
 import { useWorkspace } from '../auth/WorkspaceContext'
+import { useEvaluationLock } from '../../hooks/useEvaluationLock'
 
 interface Project {
   id: string
@@ -29,6 +30,7 @@ export default function Topbar() {
   const { pathname } = useLocation()
   const { user } = useAuth()
   const { workspaces, currentWorkspace, selectWorkspace } = useWorkspace()
+  const { isLocked } = useEvaluationLock()
 
   const [projects, setProjects] = useState<Project[]>([])
   const [projectDropdownOpen, setProjectDropdownOpen] = useState(false)
@@ -109,16 +111,23 @@ export default function Topbar() {
     >
       {/* Left: Breadcrumb */}
       <nav className="breadcrumb-nav flex items-center gap-3">
-        <Link to="/dashboard" className="text-zinc-600 hover:text-zinc-400 transition-colors">
+        <Link to="/dashboard" className={`text-zinc-600 hover:text-zinc-400 transition-colors ${isLocked ? 'pointer-events-none opacity-30' : ''}`}>
           <Home size={12} />
         </Link>
 
         <span className="sep text-zinc-800">/</span>
 
+        {isLocked && (
+          <div className="flex items-center gap-2 px-2 py-0.5 rounded border border-amber-500/25 bg-amber-500/5 text-amber-400 font-mono text-[9px] font-bold uppercase tracking-wider animate-pulse shrink-0 mr-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+            <span>Mission Control</span>
+          </div>
+        )}
+
         {/* Workspace Switcher */}
-        <div className="relative" ref={workspaceDropdownRef}>
+        <div className={`relative ${isLocked ? 'pointer-events-none opacity-40' : ''}`} ref={workspaceDropdownRef}>
           <button
-            onClick={() => setWorkspaceDropdownOpen(!workspaceDropdownOpen)}
+            onClick={() => !isLocked && setWorkspaceDropdownOpen(!workspaceDropdownOpen)}
             className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.02] border border-white/5 hover:border-white/15 text-zinc-300 transition-all cursor-pointer font-mono text-[10px] font-bold"
           >
             <Brain size={11} className="text-cyan-400" />
@@ -181,9 +190,9 @@ export default function Topbar() {
 
         {/* Project switcher in breadcrumb — only on project-scoped pages */}
         {activeProjectId && (
-          <div className="relative" ref={dropdownRef}>
+          <div className={`relative ${isLocked ? 'pointer-events-none opacity-40' : ''}`} ref={dropdownRef}>
             <button
-              onClick={() => setProjectDropdownOpen(!projectDropdownOpen)}
+              onClick={() => !isLocked && setProjectDropdownOpen(!projectDropdownOpen)}
               className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer"
             >
               <ChevronDown size={10} />
@@ -234,8 +243,8 @@ export default function Topbar() {
       <div className="flex items-center gap-2">
         {/* Global search shortcut */}
         <button
-          onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-          className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-white/[0.06] bg-white/[0.02] text-zinc-500 hover:text-white hover:border-white/10 transition-all cursor-pointer text-xs"
+          onClick={() => !isLocked && window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+          className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-white/[0.06] bg-white/[0.02] text-zinc-500 hover:text-white hover:border-white/10 transition-all cursor-pointer text-xs ${isLocked ? 'pointer-events-none opacity-30' : ''}`}
         >
           <Search size={12} />
           <span className="hidden sm:inline text-[11px]">Search</span>

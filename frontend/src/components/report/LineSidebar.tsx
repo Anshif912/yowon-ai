@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect, type ElementType } from 'react'
+import React, { useRef, useState, useCallback, useEffect, type ElementType } from 'react'
 import './LineSidebar.css'
 
 const FALLOFF_CURVES = {
@@ -159,7 +159,8 @@ const LineSidebar = ({
         onPointerLeave={handlePointerLeave}
       >
         {items.map((item, index) => {
-          const Icon = item.icon
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const I = item.icon as any
           const active = activeIndex === index
           return (
             <li
@@ -178,8 +179,8 @@ const LineSidebar = ({
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 )}
-                {Icon && (
-                  <Icon
+                {I && (
+                  <I
                     size={16}
                     className={`line-sidebar__icon shrink-0 ${active ? 'text-cyan-300' : 'text-yowon-muted'}`}
                   />

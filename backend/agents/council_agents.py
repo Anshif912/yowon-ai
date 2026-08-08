@@ -66,14 +66,6 @@ def create_innovation_agent(*, use_fallback: bool = False) -> Agent:
     )
 
 
-def create_presentation_agent(*, use_fallback: bool = False) -> Agent:
-    return _agent(
-        "SHOWCASE",
-        "Pitch Coach",
-        "Return JSON with presentation_score, strengths, improvements, confidence.",
-        get_template_and_meta("presentation_agent")["template"],
-        use_fallback=use_fallback,
-    )
 
 
 def create_risk_agent(*, use_fallback: bool = False) -> Agent:

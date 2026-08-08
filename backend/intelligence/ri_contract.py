@@ -357,8 +357,8 @@ class RIResult:
                     knowledge_nodes=len((data.get("knowledge_graph") or {}).get("nodes", [])),
                     knowledge_edges=len((data.get("knowledge_graph") or {}).get("edges", [])),
                     evidence_count=len(data.get("evidence") or []),
-                    execution_time_seconds=15.4,
-                    memory_usage_mb=75.6,
+                    execution_time_seconds=0.0,  # unknown - not measured in this path
+                    memory_usage_mb=0.0,         # unknown - not measured in this path
                     engine_version="2.0.0"
                 )
             except Exception:

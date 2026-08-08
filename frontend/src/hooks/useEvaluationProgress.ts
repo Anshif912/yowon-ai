@@ -78,6 +78,10 @@ export function useEvaluationProgress(
 
   const [projectName, setProjectName] = useState('')
   const [projectType, setProjectType] = useState('')
+  const [projectDomain, setProjectDomain] = useState('')
+  const [evaluationProfile, setEvaluationProfile] = useState('')
+  const [evaluationGoal, setEvaluationGoal] = useState('')
+  const [repositoryMaturity, setRepositoryMaturity] = useState('')
 
   const [progress, setProgress] = useState<EvaluationProgress>(DEFAULT_PROGRESS)
 
@@ -151,6 +155,10 @@ export function useEvaluationProgress(
 
         setProjectName(data.name)
         setProjectType(data.project_type ?? '')
+        setProjectDomain(data.project_domain ?? '')
+        setEvaluationProfile(data.evaluation_profile ?? '')
+        setEvaluationGoal(data.evaluation_goal ?? '')
+        setRepositoryMaturity(data.repository_maturity ?? '')
 
         const rs = (data.report_status ?? data.progress?.report_status ?? 'pending') as ReportStatus
 
@@ -195,6 +203,8 @@ export function useEvaluationProgress(
             agent_states: data.progress!.agent_states,
 
             events: data.progress!.events,
+            correlation_id: data.progress!.correlation_id,
+            task_id: data.progress!.task_id,
 
           }))
 
@@ -251,6 +261,8 @@ export function useEvaluationProgress(
         agent_states: payload.agent_states ?? prev.agent_states,
 
         events: payload.events ?? prev.events,
+        correlation_id: payload.correlation_id ?? prev.correlation_id,
+        task_id: payload.task_id ?? prev.task_id,
 
       }))
 
@@ -290,7 +302,18 @@ export function useEvaluationProgress(
 
 
 
-  return { status, reportStatus, reportError, projectName, projectType, progress }
+  return { 
+    status, 
+    reportStatus, 
+    reportError, 
+    projectName, 
+    projectType, 
+    projectDomain, 
+    evaluationProfile, 
+    evaluationGoal, 
+    repositoryMaturity, 
+    progress 
+  }
 
 }
 

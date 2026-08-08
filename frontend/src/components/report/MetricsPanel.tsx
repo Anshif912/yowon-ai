@@ -8,6 +8,11 @@ import { DashboardSection } from './DashboardSection'
 import { MetricsSkeleton } from './Skeletons'
 import { ErrorBoundary, PanelErrorFallback } from './ErrorBoundary'
 import { RepositoryIntelligenceWrapper } from './RepositoryIntelligenceWrapper'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 
 interface MetricsPanelProps {
   projectId: string
@@ -191,56 +196,54 @@ function MetricsContent({ projectId }: { projectId: string }) {
 
   if (!stats) {
     return (
-      <DashboardSection id="metrics" title="Code Metrics" icon={FileText} accent="emerald">
-        <div className="glass-card py-24 text-center text-yowon-muted">
-          No metrics logs are available for this codebase.
-        </div>
+      <DashboardSection id="metrics" title="Code Metrics" icon={FileText}>
+        <PremiumWorkspaceCard accent="business" className="!p-16 text-center select-none">
+          <WorkspaceBody>
+            <p className="text-sm text-zinc-500 font-mono">No metrics logs are available for this codebase.</p>
+          </WorkspaceBody>
+        </PremiumWorkspaceCard>
       </DashboardSection>
     )
   }
 
   return (
-    <DashboardSection id="metrics" title="Code Metrics" icon={FileText} accent="emerald">
-      <div className="space-y-6">
+    <DashboardSection id="metrics" title="Code Metrics" icon={FileText}>
+      <div className="space-y-6 select-text">
         
         {/* Row 1: Calculated KPI statistics */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="glass-card hover:border-emerald-500/20 transition-all">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase tracking-wider block">Total Files</span>
-            <span className="text-xl font-bold text-white block mt-1">{stats.totalFiles} files</span>
-            <span className="text-[9px] text-yowon-muted font-mono block mt-1">Average Size: {formatBytes(stats.avgFileSize)}</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider block font-bold select-none">Total Files</span>
+            <span className="text-xl font-bold text-white block mt-1 font-display leading-none">{stats.totalFiles} files</span>
+            <span className="text-[9px] text-zinc-500 font-mono block mt-2 select-none">Avg Size: {formatBytes(stats.avgFileSize)}</span>
           </div>
 
-          <div className="glass-card hover:border-emerald-500/20 transition-all">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase tracking-wider block">Lines of Code (LOC)</span>
-            <span className="text-xl font-bold text-white block mt-1">{stats.totalLoc.toLocaleString()}</span>
-            <span className="text-[9px] text-yowon-muted font-mono block mt-1">Total size: {formatBytes(stats.totalSizeBytes)}</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase tracking-wider block font-bold select-none">Lines of Code (LOC)</span>
+            <span className="text-xl font-bold text-white block mt-1 font-display leading-none">{stats.totalLoc.toLocaleString()}</span>
+            <span className="text-[9px] text-zinc-500 font-mono block mt-2 select-none">Total size: {formatBytes(stats.totalSizeBytes)}</span>
           </div>
 
-          <div className="glass-card hover:border-emerald-500/20 transition-all">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase tracking-wider block">Average Complexity</span>
-            <span className="text-xl font-bold text-white block mt-1">{stats.avgComplexity.toFixed(2)}</span>
-            <span className="text-[9px] text-yowon-muted font-mono block mt-1">Total Cyclomatic: {stats.totalComplexity}</span>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase tracking-wider block font-bold select-none">Average Complexity</span>
+            <span className="text-xl font-bold text-white block mt-1 font-display leading-none">{stats.avgComplexity.toFixed(2)}</span>
+            <span className="text-[9px] text-zinc-500 font-mono block mt-2 select-none">Total Cyclomatic: {stats.totalComplexity}</span>
           </div>
 
-          <div className="glass-card hover:border-emerald-500/20 transition-all">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase tracking-wider block">AST Scope Metrics</span>
-            <span className="text-xl font-bold text-white block mt-1">
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase tracking-wider block font-bold select-none">AST Scope Metrics</span>
+            <span className="text-xl font-bold text-white block mt-1 font-display leading-none">
               {stats.totalFunctions} / {stats.totalClasses}
             </span>
-            <span className="text-[9px] text-yowon-muted font-mono block mt-1">Functions / Classes defined</span>
+            <span className="text-[9px] text-zinc-500 font-mono block mt-2 select-none">Functions / Classes defined</span>
           </div>
         </div>
 
         {/* Row 2: Language breakdown bar */}
-        <div className="glass-card space-y-4">
-          <div className="flex justify-between items-center pb-2 border-b border-white/5">
-            <span className="font-display font-semibold text-xs text-white">Language Breakdown</span>
-            <span className="text-[10px] font-mono text-yowon-muted">PERCENTAGE BY LINES OF CODE</span>
-          </div>
-          
+        <div className="p-5 bg-white/[0.01] rounded-xl space-y-4">
+          <p className="text-[8.5px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-bold">Language Breakdown</p>
           {/* Stacked bar */}
-          <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden flex">
+          <div className="h-3 w-full bg-zinc-950 rounded-full overflow-hidden flex select-none">
             {stats.languages.map((l) => (
               <div 
                 key={l.name}
@@ -252,12 +255,12 @@ function MetricsContent({ projectId }: { projectId: string }) {
           </div>
 
           {/* Legend */}
-          <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1 select-none">
             {stats.languages.map((l) => (
               <div key={l.name} className="flex items-center gap-2 text-[10px] font-mono">
                 <span className={`w-2 h-2 rounded-full ${getLanguageColor(l.name)}`} />
                 <span className="text-white font-bold">{l.name}</span>
-                <span className="text-yowon-muted">({l.percentage.toFixed(1)}%, {l.count} files)</span>
+                <span className="text-zinc-500 font-bold">({l.percentage.toFixed(1)}%, {l.count} files)</span>
               </div>
             ))}
           </div>
@@ -265,71 +268,72 @@ function MetricsContent({ projectId }: { projectId: string }) {
 
         {/* Row 3: Structure anomalies */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-card space-y-2">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase block">Largest File</span>
-            <p className="text-xs font-bold text-white truncate" title={stats.largestFile.path}>{stats.largestFile.path.split('/').pop()}</p>
-            <p className="text-[10px] text-cyan-300 font-mono">{stats.largestFile.loc} Lines of Code</p>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase block font-bold select-none">Largest File</span>
+            <p className="text-xs font-bold text-white truncate leading-snug" title={stats.largestFile.path}>{stats.largestFile.path.split('/').pop()}</p>
+            <p className="text-[10px] text-cyan-300 font-mono font-bold mt-1 select-none">{stats.largestFile.loc} Lines of Code</p>
           </div>
 
-          <div className="glass-card space-y-2">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase block">Most Complex File</span>
-            <p className="text-xs font-bold text-white truncate" title={stats.mostComplexFile.path}>{stats.mostComplexFile.path.split('/').pop()}</p>
-            <p className="text-[10px] text-amber-400 font-mono">Cyclomatic Complexity: {stats.mostComplexFile.complexity}</p>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase block font-bold select-none">Most Complex File</span>
+            <p className="text-xs font-bold text-white truncate leading-snug" title={stats.mostComplexFile.path}>{stats.mostComplexFile.path.split('/').pop()}</p>
+            <p className="text-[10px] text-amber-400 font-mono font-bold mt-1 select-none">Cyclomatic Complexity: {stats.mostComplexFile.complexity}</p>
           </div>
 
-          <div className="glass-card space-y-2">
-            <span className="text-[10px] text-yowon-muted font-mono uppercase block">Deepest Directory</span>
-            <p className="text-xs font-bold text-white truncate" title={stats.deepestPath.path}>{stats.deepestPath.path.split('/').slice(-3).join('/')}</p>
-            <p className="text-[10px] text-indigo-400 font-mono">Depth: {stats.deepestPath.depth} folder levels</p>
+          <div className="p-5 bg-white/[0.01] rounded-xl space-y-2">
+            <span className="text-[10px] text-zinc-550 font-mono uppercase block font-bold select-none">Deepest Directory</span>
+            <p className="text-xs font-bold text-white truncate leading-snug" title={stats.deepestPath.path}>{stats.deepestPath.path.split('/').slice(-3).join('/')}</p>
+            <p className="text-[10px] text-indigo-400 font-mono font-bold mt-1 select-none">Depth: {stats.deepestPath.depth} folder levels</p>
           </div>
         </div>
 
         {/* Row 4: Searchable file explorer metrics table */}
-        <div className="glass-card space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-white/5">
-            <span className="font-display font-semibold text-xs text-white">Full File Metrics Registry</span>
-            
+        <div className="p-5 bg-white/[0.01] rounded-xl space-y-4">
+          <p className="text-[8.5px] font-mono uppercase tracking-[0.25em] text-zinc-500 font-bold">Full File Metrics Registry</p>
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-3 border-b border-white/[0.04] select-none">
             {/* Filters */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="relative">
-                <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-yowon-muted" />
+            <div className="flex flex-wrap items-center gap-3 w-full justify-between">
+              <div className="relative flex-1 max-w-xs">
+                <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-500" />
                 <input
                   type="text"
                   placeholder="Search file path..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-white/5 border border-white/10 rounded pl-7 pr-2.5 py-1 text-[10px] text-white focus:outline-none focus:border-cyan-500/50 w-44 font-mono"
+                  className="w-full bg-zinc-900 border border-zinc-800 focus:border-cyan-500/40 text-zinc-200 pl-8 pr-3 py-1.5 text-[10.5px] rounded-lg outline-none transition-colors font-mono"
                 />
               </div>
 
-              <select
-                value={langFilter}
-                onChange={(e) => setLangFilter(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded px-2 py-1 text-[10px] text-white focus:outline-none focus:border-cyan-500/50 font-mono"
-              >
-                <option value="ALL">All Languages</option>
-                {stats.languages.map(l => (
-                  <option key={l.name} value={l.name}>{l.name}</option>
-                ))}
-              </select>
+              <div className="flex gap-2">
+                <select
+                  value={langFilter}
+                  onChange={(e) => setLangFilter(e.target.value)}
+                  className="bg-zinc-900 border border-zinc-800 text-zinc-350 px-3 py-1.5 rounded-lg text-[10px] focus:outline-none focus:border-cyan-500/40 font-mono cursor-pointer"
+                >
+                  <option value="ALL">All Languages</option>
+                  {stats.languages.map(l => (
+                    <option key={l.name} value={l.name}>{l.name}</option>
+                  ))}
+                </select>
 
-              <select
-                value={riskFilter}
-                onChange={(e) => setRiskFilter(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded px-2 py-1 text-[10px] text-white focus:outline-none focus:border-cyan-500/50 font-mono"
-              >
-                <option value="ALL">All Risk Levels</option>
-                <option value="HIGH">High Risk (&ge;60)</option>
-                <option value="MEDIUM">Medium Risk (30-59)</option>
-                <option value="LOW">Low Risk (&lt;30)</option>
-              </select>
+                <select
+                  value={riskFilter}
+                  onChange={(e) => setRiskFilter(e.target.value)}
+                  className="bg-zinc-900 border border-zinc-800 text-zinc-350 px-3 py-1.5 rounded-lg text-[10px] focus:outline-none focus:border-cyan-500/40 font-mono cursor-pointer"
+                >
+                  <option value="ALL">All Risk Levels</option>
+                  <option value="HIGH">High Risk (&ge;60)</option>
+                  <option value="MEDIUM">Medium Risk (30-59)</option>
+                  <option value="LOW">Low Risk (&lt;30)</option>
+                </select>
+              </div>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left font-mono text-[10px]">
               <thead>
-                <tr className="border-b border-white/10 text-yowon-muted">
+                <tr className="border-b border-white/[0.04] text-zinc-500 select-none">
                   <th className="pb-2 font-semibold">FILE PATH</th>
                   <th className="pb-2 font-semibold">LANGUAGE</th>
                   <th className="pb-2 font-semibold">LOC</th>
@@ -348,9 +352,9 @@ function MetricsContent({ projectId }: { projectId: string }) {
                   return (
                     <tr key={path} className="hover:bg-white/[0.01]">
                       <td className="py-2.5 text-white truncate max-w-xs font-semibold" title={path}>{path}</td>
-                      <td className="py-2.5 text-yowon-muted">{lang}</td>
+                      <td className="py-2.5 text-zinc-400">{lang}</td>
                       <td className="py-2.5 text-cyan-400 font-bold">{data.loc}</td>
-                      <td className="py-2.5 text-slate-300">{cyclo}</td>
+                      <td className="py-2.5 text-slate-350">{cyclo}</td>
                       <td className={`py-2.5 font-bold ${mi >= 70 ? 'text-emerald-400' : mi >= 50 ? 'text-amber-400' : 'text-red-400'}`}>
                         {mi}%
                       </td>
@@ -363,7 +367,7 @@ function MetricsContent({ projectId }: { projectId: string }) {
               </tbody>
             </table>
             {filteredFiles.length === 0 && (
-              <div className="py-8 text-center text-yowon-muted">No files matched your filters.</div>
+              <div className="py-8 text-center text-zinc-500 select-none">No files matched your filters.</div>
             )}
           </div>
         </div>

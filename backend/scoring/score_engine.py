@@ -637,106 +637,121 @@ def compute_overall(
     evidence = evidence or {"checks": {}, "data_availability": 0, "repository_coverage": 0, "json_validity": 0}
     submitted_project_type = evidence.get("submitted_project_type") or project_type
     rubric_type = submitted_project_type if submitted_project_type and submitted_project_type != "Auto Detect" else project_type
-    rubric = get_rubric(rubric_type)
+    rubric = get_rubric(rubric_type, evaluation_goal=evidence.get("evaluation_goal"))
     
-    raw_scores = {
-        "technical": int(getattr(technical, "technical_score")),
-        "security": int(getattr(security, "security_score")),
-        "scalability": int(getattr(innovation, "scalability_score", getattr(innovation, "innovation_score"))),
-        "innovation": int(getattr(innovation, "innovation_score")),
-        "impact": int(getattr(risk, "impact_score")),
-    }
-    if presentation_enabled:
-        raw_scores["presentation"] = int(getattr(presentation, "presentation_score"))
-    raw_scores = {k: max(0, min(100, int(v))) for k, v in raw_scores.items()}
-    calibrated_scores, calibration_reasons = calibrate_agent_scores(
-        raw_scores, evidence, rubric["project_type"], presentation_enabled=presentation_enabled
-    )
+    consensus_scores = evidence.get("consensus_scores")
+    if consensus_scores:
+        calibrated_scores = {
+            "technical": consensus_scores.get("Forge", 75),
+            "security": consensus_scores.get("Sentinel", 75),
+            "reliability": consensus_scores.get("Guardian", 75),
+            "innovation": consensus_scores.get("Visionary", 75),
+            "impact": consensus_scores.get("Guardian", 75),
+            "scalability": consensus_scores.get("Visionary", 75)
+        }
+        raw_scores = {
+            "technical": consensus_scores.get("Forge", 75),
+            "security": consensus_scores.get("Sentinel", 75),
+            "scalability": consensus_scores.get("Visionary", 75),
+            "innovation": consensus_scores.get("Visionary", 75),
+            "impact": consensus_scores.get("Guardian", 75)
+        }
+        calibration_reasons = {
+            "technical": [], "security": [], "innovation": [], "impact": [], "presentation": []
+        }
+    else:
+        raw_scores = {
+            "technical": int(getattr(technical, "technical_score")),
+            "security": int(getattr(security, "security_score")),
+            "scalability": int(getattr(innovation, "scalability_score", getattr(innovation, "innovation_score"))),
+            "innovation": int(getattr(innovation, "innovation_score")),
+            "impact": int(getattr(risk, "impact_score")),
+        }
+        if presentation_enabled:
+            raw_scores["presentation"] = int(getattr(presentation, "presentation_score"))
+        raw_scores = {k: max(0, min(100, int(v))) for k, v in raw_scores.items()}
+        calibrated_scores, calibration_reasons = calibrate_agent_scores(
+            raw_scores, evidence, rubric["project_type"], presentation_enabled=presentation_enabled
+        )
+
     scoring_inputs = {
-        **calibrated_scores,
-        "risk": calibrated_scores.get("impact", 0),
-        "business_feasibility": calibrated_scores.get("impact", 0),
+        "technical": calibrated_scores.get("technical", 75),
+        "security": calibrated_scores.get("security", 75),
+        "impact": calibrated_scores.get("reliability", calibrated_scores.get("impact", 75)),
+        "innovation": calibrated_scores.get("innovation", 75),
     }
 
-    # Verify that no required keys from rubric weights are missing from calibrated scores
-    missing = set(rubric["weights"]) - set(scoring_inputs)
+    rubric_weights = rubric.get("weights", {})
+    mapped_weights = {
+        "technical": rubric_weights.get("architecture", 0.3),
+        "security": rubric_weights.get("security", 0.3),
+        "impact": rubric_weights.get("reliability", 0.25),
+        "innovation": rubric_weights.get("innovation", 0.15)
+    }
+
+    # Verify that no required keys are missing
+    missing = set(mapped_weights) - set(scoring_inputs)
     if missing:
-        raise EvaluationIncompleteException(f"Scoring incomplete: Rubric weight dimensions {missing} could not be calculated.")
+        raise EvaluationIncompleteException(f"Scoring incomplete: Rubric weights could not be calculated.")
 
     # Build detailed Score Provenance hierarchy
     provenance = {}
+    tech_confidence = float(getattr(technical, "confidence", min(0.95, evidence.get("data_availability", 50) / 100.0)))
     provenance["technical"] = {
         "originating_agent": "Forge (Technical Specialist)",
-        "weight": rubric["weights"].get("technical", 0.3),
-        "raw_score": int(getattr(technical, "technical_score")),
+        "weight": mapped_weights.get("technical", 0.3),
+        "raw_score": int(raw_scores["technical"]),
         "calibrated_score": int(calibrated_scores["technical"]),
-        "confidence": float(getattr(technical, "confidence", 0.85)),
-        "reasoning": "Calibrated based on codebase size, architecture mapping, and dependencies.",
-        "evidence": [
-            {
-                "rule_id": reason.split(" (")[0] if " (" in reason else reason,
-                "confidence": 0.85
-            }
-            for reason in calibration_reasons.get("technical", [])
-        ]
+        "confidence": tech_confidence if tech_confidence <= 1 else tech_confidence / 100.0,
+        "reasoning": f"Score derived from {evidence.get('repository_statistics', {}).get('code_files', 0)} source files, and automated agent checks.",
+        "evidence": []
     }
+    sec_confidence = float(getattr(security, "confidence", min(0.95, evidence.get("data_availability", 50) / 100.0)))
     provenance["security"] = {
         "originating_agent": "Sentinel (Security Specialist)",
-        "weight": rubric["weights"].get("security", 0.15),
-        "raw_score": int(getattr(security, "security_score")),
+        "weight": mapped_weights.get("security", 0.15),
+        "raw_score": int(raw_scores["security"]),
         "calibrated_score": int(calibrated_scores["security"]),
-        "confidence": float(getattr(security, "confidence", 0.85)),
-        "reasoning": "Calibrated based on critical/high vulnerabilities and secrets scan.",
-        "evidence": [
-            {
-                "rule_id": reason.split(" (")[0] if " (" in reason else reason,
-                "confidence": 0.85
-            }
-            for reason in calibration_reasons.get("security", [])
-        ]
+        "confidence": sec_confidence if sec_confidence <= 1 else sec_confidence / 100.0,
+        "reasoning": f"Score derived from security static checks and scan results.",
+        "evidence": []
     }
+    inn_confidence = float(getattr(innovation, "confidence", min(0.95, evidence.get("data_availability", 50) / 100.0)))
     provenance["innovation"] = {
         "originating_agent": "Visionary (Innovation Specialist)",
-        "weight": rubric["weights"].get("innovation", 0.25),
-        "raw_score": int(getattr(innovation, "innovation_score")),
+        "weight": mapped_weights.get("innovation", 0.25),
+        "raw_score": int(raw_scores["innovation"]),
         "calibrated_score": int(calibrated_scores["innovation"]),
-        "confidence": float(getattr(innovation, "confidence", 0.85)),
-        "reasoning": "Calibrated based on novelty, differentiators, and algorithms.",
-        "evidence": [
-            {
-                "rule_id": reason.split(" (")[0] if " (" in reason else reason,
-                "confidence": 0.85
-            }
-            for reason in calibration_reasons.get("innovation", [])
-        ]
+        "confidence": inn_confidence if inn_confidence <= 1 else inn_confidence / 100.0,
+        "reasoning": f"Score derived from active frameworks and differentiators.",
+        "evidence": []
     }
+    risk_confidence = float(getattr(risk, "confidence", min(0.95, evidence.get("data_availability", 50) / 100.0)))
     provenance["impact"] = {
         "originating_agent": "Guardian (Risk Specialist)",
-        "weight": rubric["weights"].get("impact", rubric["weights"].get("risk", rubric["weights"].get("business_feasibility", 0.2))),
-        "raw_score": int(getattr(risk, "impact_score")),
+        "weight": mapped_weights.get("impact", 0.2),
+        "raw_score": int(raw_scores["impact"]),
         "calibrated_score": int(calibrated_scores["impact"]),
-        "confidence": float(getattr(risk, "confidence", 0.85)),
-        "reasoning": "Calibrated based on operational, development, and license risk.",
-        "evidence": [
-            {
-                "rule_id": reason.split(" (")[0] if " (" in reason else reason,
-                "confidence": 0.85
-            }
-            for reason in calibration_reasons.get("impact", [])
-        ]
+        "confidence": risk_confidence if risk_confidence <= 1 else risk_confidence / 100.0,
+        "reasoning": f"Score derived from operational readiness and failure mode metrics.",
+        "evidence": []
     }
+
+    weighted_score = round(sum(scoring_inputs.get(k, 0) * w for k, w in mapped_weights.items()))
+
     if presentation_enabled:
+        pres_confidence = float(getattr(presentation, "confidence", min(0.95, evidence.get("data_availability", 50) / 100.0)))
         provenance["presentation"] = {
             "originating_agent": "Showcase (Presentation Specialist)",
             "weight": rubric["weights"].get("presentation", 0.1),
             "raw_score": int(getattr(presentation, "presentation_score")),
             "calibrated_score": int(calibrated_scores["presentation"]),
-            "confidence": float(getattr(presentation, "confidence", 0.85)),
-            "reasoning": "Calibrated based on pitch deck slide quality and readme coverage.",
+            "confidence": pres_confidence if pres_confidence <= 1 else pres_confidence / 100.0,
+            "reasoning": f"Score derived from {evidence.get('repository_statistics', {}).get('documentation_files', 0)} documentation files and project README completeness checks.",
             "evidence": [
                 {
                     "rule_id": reason.split(" (")[0] if " (" in reason else reason,
-                    "confidence": 0.85
+                    "confidence": pres_confidence if pres_confidence <= 1 else pres_confidence / 100.0
                 }
                 for reason in calibration_reasons.get("presentation", [])
             ]
@@ -803,7 +818,16 @@ def compute_overall(
 
     return {
         "overall_score": overall, "raw_weighted_score": round(sum(
-            ({**raw_scores, "risk": raw_scores.get("impact", 0), "business_feasibility": raw_scores.get("impact", 0)}).get(k, 0) * w
+            ({
+                "architecture": raw_scores.get("technical", 75),
+                "security": raw_scores.get("security", 75),
+                "reliability": raw_scores.get("impact", 75),
+                "innovation": raw_scores.get("innovation", 75),
+                "technical": raw_scores.get("technical", 75),
+                "impact": raw_scores.get("impact", 75),
+                "scalability": raw_scores.get("scalability", 75),
+                "business_feasibility": raw_scores.get("impact", 75)
+            }).get(k, 0) * w
             for k, w in rubric["weights"].items()
         )),
         "verdict": _verdict(overall, rubric["project_type"]),

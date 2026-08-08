@@ -88,6 +88,7 @@ def _empty_agent_state() -> dict[str, Any]:
 
 
 def _default_state() -> dict[str, Any]:
+    t_seed = int(time.time())
     return {
         "step": 0,
         "total": TOTAL_STEPS,
@@ -103,6 +104,8 @@ def _default_state() -> dict[str, Any]:
         "logs": [],
         "agent_states": {name: _empty_agent_state() for name in AGENT_ORDER},
         "events": [],
+        "correlation_id": f"CID-{(t_seed * 12345) % 1000000:06d}",
+        "task_id": f"TASK-{(t_seed * 54321) % 1000000:06d}",
     }
 
 

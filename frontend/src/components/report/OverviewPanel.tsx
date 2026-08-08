@@ -6,9 +6,15 @@ import {
 } from 'lucide-react'
 import ScoreRing from '../ScoreRing'
 import { useSharedIntelligenceContext } from './RepositoryIntelligenceWrapper'
+import { useIntelStatus, useEvaluationReport } from './queries'
 import { DashboardSection } from './DashboardSection'
 import { CardSkeleton } from './Skeletons'
 import { ErrorBoundary } from './ErrorBoundary'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 import { BentoCard, BentoCardGrid, GlobalSpotlight, useMobileDetection } from '../graphs/MagicBento'
 
 interface OverviewPanelProps {
@@ -135,7 +141,13 @@ function LiveIntelligenceParticles() {
 function OverviewContent({ projectId }: { projectId: string }) {
   const context = useSharedIntelligenceContext()
   const navigate = useNavigate()
+  const { data: statusData } = useIntelStatus(projectId)
+  const { data: report } = useEvaluationReport(projectId)
   const rkm = context.rkm
+  const status = statusData
+  const project = report as any
+  const vd = report?.verdict_data as any
+  const diag = status?.diagnostics
   const gridRef = useRef<HTMLDivElement>(null)
   const isMobile = useMobileDetection()
 
@@ -155,7 +167,7 @@ function OverviewContent({ projectId }: { projectId: string }) {
     const avgHealth = Math.round(entities.reduce((sum, e) => sum + (e.health ?? 80), 0) / (entities.length || 1))
     
     // Filter warnings/evidence
-    const evidenceCount = entities.filter(e => e.type === 'package' && e.health && e.health < 80).length + 4 // fallback constant
+    const evidenceCount = entities.filter(e => e.type === 'package' && e.health && e.health < 80).length
 
     return {
       archCount,
@@ -175,7 +187,7 @@ function OverviewContent({ projectId }: { projectId: string }) {
     )
   }
 
-  const overallScore = rkm.metadata.overallScore || 71
+  const overallScore = rkm.metadata.overallScore || null
 
   // Aligned asymmetric card configurations answering user questions
   const cards = [
@@ -187,14 +199,14 @@ function OverviewContent({ projectId }: { projectId: string }) {
       color: 'text-blue-400 border-zinc-800 bg-[#0c1017]',
       rgb: '59, 130, 246',
       desktopStyle: { gridColumn: 'span 2', minHeight: '300px' },
-      scoreChip: '92% Maintainability',
+      scoreChip: `${stats?.avgHealth || 0}% Health`,
       featured: true,
       titleSize: '32px',
       badge: 'structure',
       keyMetrics: [
-        `${stats?.archCount || 8} Layered Services`,
-        '5 Core Component Tiers',
-        '14 System boundaries mapped'
+        `${stats?.archCount || 0} Architecture Services`,
+        `${(context.rkm?.relationships || []).length || 0} System Connections`,
+        `${Object.values(context.rkm?.entities || {}).filter(e => e.type === 'subsystem').length || 0} Subsystems Mapped`,
       ]
     },
     {
@@ -205,15 +217,18 @@ function OverviewContent({ projectId }: { projectId: string }) {
       color: 'text-cyan-400 border-zinc-800 bg-[#0c1017]',
       rgb: '6, 182, 212',
       desktopStyle: { gridColumn: 'span 1', minHeight: '300px' },
-      scoreChip: `${stats?.techCount || 10} Stacks`,
+      scoreChip: `${stats?.techCount || 0} Stacks`,
       featured: false,
       titleSize: '24px',
       badge: 'implementation',
-      keyMetrics: [
-        'FastAPI 0.110 Async',
-        'React 18.2 UI Render',
-        'TypeScript check compiler'
-      ]
+      keyMetrics: (
+        Object.values(context.rkm?.entities || {})
+          .filter(e => e.type === 'technology')
+          .slice(0, 3)
+          .map(e => e.label)
+      ).length > 0
+        ? Object.values(context.rkm?.entities || {}).filter(e => e.type === 'technology').slice(0, 3).map(e => e.label)
+        : [`${stats?.techCount || 0} Technologies Detected`, 'Run evaluation for details', '']
     },
     {
       id: 'dependency',
@@ -223,14 +238,14 @@ function OverviewContent({ projectId }: { projectId: string }) {
       color: 'text-amber-400 border-zinc-800 bg-[#0c1017]',
       rgb: '245, 158, 11',
       desktopStyle: { gridColumn: 'span 1', minHeight: '300px' },
-      scoreChip: 'No Import Loops',
+      scoreChip: `${stats?.depCount || 0} Packages`,
       featured: false,
       titleSize: '24px',
       badge: 'relationships',
       keyMetrics: [
-        `${stats?.depCount || 24} Packages imported`,
-        '12 API route injections',
-        '0 Circular loops detected'
+        `${stats?.depCount || 0} Packages Detected`,
+        `${Object.values(context.rkm?.entities || {}).filter(e => e.type === 'package' && (e.health || 100) < 80).length || 0} At-Risk Packages`,
+        'Dependency graph available',
       ]
     },
     {
@@ -246,9 +261,9 @@ function OverviewContent({ projectId }: { projectId: string }) {
       titleSize: '32px',
       badge: 'relationships',
       keyMetrics: [
-        `${stats?.knowCount || 42} Parsed AST Nodes`,
-        '8 Subsystem modules',
-        '16 AST function outline jumps'
+        `${stats?.knowCount || 0} AST Nodes Indexed`,
+        `${(context.rkm?.relationships || []).length || 0} Code Relationships`,
+        `${Object.values(context.rkm?.entities || {}).filter(e => e.type === 'class').length || 0} Classes Mapped`,
       ]
     },
     {
@@ -264,9 +279,9 @@ function OverviewContent({ projectId }: { projectId: string }) {
       titleSize: '32px',
       badge: 'implementation',
       keyMetrics: [
-        'Ollama inference completions',
-        '9 Pipeline stage verifications',
-        '12 Build times logged'
+        'Execution pipeline mapped',
+        `${Object.values(context.rkm?.entities || {}).filter(e => e.type === 'service').length || 0} Services Detected`,
+        'Flow analysis available',
       ]
     },
     {
@@ -282,9 +297,9 @@ function OverviewContent({ projectId }: { projectId: string }) {
       titleSize: '24px',
       badge: 'implementation',
       keyMetrics: [
-        '8 Migration Phases outline',
-        'Cloud ready checkmarks',
-        'Docker container templates'
+        'Deployment configuration analyzed',
+        `${Object.values(context.rkm?.entities || {}).filter(e => e.type === 'deployment').length || 0} Deployment Targets`,
+        'Roadmap generated from evidence',
       ]
     },
     {
@@ -300,9 +315,9 @@ function OverviewContent({ projectId }: { projectId: string }) {
       titleSize: '20px',
       badge: 'quality',
       keyMetrics: [
-        '0 exposed secrets credentials',
-        '3 pinned package vulnerabilities',
-        'Clean middleware auth check'
+        `${stats?.evidenceCount || 0} Evidence Records`,
+        `${Object.values(context.rkm?.entities || {}).filter(e => (e.type as string) === 'vulnerability').length || 0} Security Findings`,
+        'Evidence-backed analysis',
       ]
     },
     {
@@ -318,9 +333,9 @@ function OverviewContent({ projectId }: { projectId: string }) {
       titleSize: '20px',
       badge: 'evaluation',
       keyMetrics: [
-        'Forge agent (Quality: 88)',
-        'Sentinel (Security: 82)',
-        'Mapper (Architecture: 86)'
+        `${Object.keys(vd?.agent_scores || {}).length || 8} Council Agents`,
+        'Multi-agent consensus',
+        'Reasoning trails mapped'
       ]
     },
     {
@@ -361,71 +376,73 @@ function OverviewContent({ projectId }: { projectId: string }) {
       <div className="space-y-12 font-sans text-white">
         
         {/* RICH REPOSITORY HERO SECTION */}
-        <div className="w-full rounded-[24px] border border-zinc-800/80 bg-[#090d13] p-8 flex flex-col lg:flex-row gap-8 justify-between shadow-[0_12px_40px_rgba(0,0,0,0.4)]">
-          {/* Left Info: Name, Type, Tech Stack */}
-          <div className="space-y-4 flex-1">
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-3">
-                <h1 className="text-4xl font-extrabold tracking-tight text-white font-display">
-                  {rkm?.metadata?.name || 'Yowon AI'}
-                </h1>
-                <span className="text-[12px] px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-950/20 text-cyan-400 font-extrabold uppercase tracking-widest font-mono">
-                  {rkm?.metadata?.projectType || 'Microservice OS'}
-                </span>
+        <PremiumWorkspaceCard accent="executive">
+          <WorkspaceBody className="flex flex-col lg:flex-row gap-8 justify-between">
+            {/* Left Info: Name, Type, Tech Stack */}
+            <div className="space-y-4 flex-1">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-3">
+                  <h1 className="text-4xl font-extrabold tracking-tight text-white font-display">
+                    {rkm?.metadata?.name || 'Yowon AI'}
+                  </h1>
+                  <span className="text-[12px] px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-950/20 text-cyan-400 font-extrabold uppercase tracking-widest font-mono">
+                    {rkm?.metadata?.projectType || project?.project_type || 'Repository'}
+                  </span>
+                </div>
+                <p className="text-[16px] text-zinc-400 font-sans leading-relaxed">
+                  {(rkm?.metadata as any)?.description || (report as any)?.summary || 'Repository intelligence analysis.'}
+                </p>
               </div>
-              <p className="text-[16px] text-zinc-400 font-sans leading-relaxed">
-                Repository evaluation and structural intelligence mapping engine.
-              </p>
-            </div>
 
-            {/* Quick Specs Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-[12px] pt-4 border-t border-zinc-800/60">
-              <div>
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Languages</span>
-                <span className="text-white font-bold block mt-1">Python 82%, TS 15%</span>
-              </div>
-              <div>
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Frameworks</span>
-                <span className="text-white font-bold block mt-1">FastAPI, React, Vite</span>
-              </div>
-              <div>
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">AI Stack</span>
-                <span className="text-white font-bold block mt-1">Ollama, Llama3</span>
-              </div>
-              <div>
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Size</span>
-                <span className="text-white font-bold block mt-1">32,418 LOC</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Info: Overall Health score ring and quick status metrics */}
-          <div className="flex gap-8 items-center lg:border-l lg:border-zinc-800/60 lg:pl-8 shrink-0">
-            {/* Health Score Ring */}
-            <div className="relative flex items-center justify-center shrink-0 w-[110px] h-[110px] rounded-full border-[3px] border-cyan-400/25 bg-zinc-950/60 shadow-[0_0_24px_rgba(6,182,212,0.15)]">
-              <div className="absolute inset-0 rounded-full border border-cyan-400/35 animate-ping opacity-60 pointer-events-none" />
-              <div className="text-center">
-                <span className="font-mono font-black text-white leading-none block" style={{ fontSize: '38px' }}>{overallScore}</span>
-                <span className="text-[8px] text-zinc-500 uppercase tracking-widest font-black font-mono block mt-0.5">Health</span>
+              {/* Quick Specs Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-[12px] pt-4 border-t border-white/[0.04]">
+                <div>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-bold select-none">Languages</span>
+                  <span className="text-white font-bold block mt-1">{vd?.detected_technologies?.slice(0, 2).join(', ') || 'Auto-detected'}</span>
+                </div>
+                <div>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-bold select-none">Frameworks</span>
+                  <span className="text-white font-bold block mt-1">{vd?.detected_technologies?.slice(2, 5).join(', ') || 'Mapped'}</span>
+                </div>
+                <div>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-bold select-none">AI Stack</span>
+                  <span className="text-white font-bold block mt-1">{vd?.ai_intelligence ? 'Present' : 'N/A'}</span>
+                </div>
+                <div>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-bold select-none">Size</span>
+                  <span className="text-white font-bold block mt-1">{diag?.total_loc ? `${diag.total_loc.toLocaleString()} LOC` : 'N/A'}</span>
+                </div>
               </div>
             </div>
 
-            {/* Verdict and facts */}
-            <div className="space-y-2 font-mono text-[12px]">
-              <div>
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Overall Verdict</span>
-                <span className="text-[20px] font-black text-emerald-400 block mt-0.5 leading-none">
-                  APPROVED
-                </span>
+            {/* Right Info: Overall Health score ring and quick status metrics */}
+            <div className="flex gap-8 items-center lg:border-l lg:border-white/[0.04] lg:pl-8 shrink-0">
+              {/* Health Score Ring */}
+              <div className="relative flex items-center justify-center shrink-0 w-[110px] h-[110px] rounded-full border-[3px] border-cyan-400/25 bg-zinc-950/60 shadow-[0_0_24px_rgba(6,182,212,0.15)]">
+                <div className="absolute inset-0 rounded-full border border-cyan-400/35 animate-ping opacity-60 pointer-events-none" />
+                <div className="text-center select-none">
+                  <span className="font-mono font-black text-white leading-none block" style={{ fontSize: '38px' }}>{overallScore != null ? overallScore : '—'}</span>
+                  <span className="text-[8px] text-zinc-500 uppercase tracking-widest font-black font-mono block mt-0.5">Health</span>
+                </div>
               </div>
-              <div className="space-y-1 text-zinc-400">
-                <span className="block">• 8 Council Agents</span>
-                <span className="block">• 388 Findings Map</span>
-                <span className="block">• 0 exposed secrets</span>
+
+              {/* Verdict and facts */}
+              <div className="space-y-2 font-mono text-[12px]">
+                <div>
+                  <span className="text-zinc-500 uppercase tracking-widest block font-bold select-none">Overall Verdict</span>
+                  <span className="text-[20px] font-black text-emerald-400 block mt-0.5 leading-none">
+                    {vd?.overall_verdict?.toUpperCase() || vd?.verdict?.toUpperCase() || 'EVALUATED'}
+                  </span>
+                </div>
+                <div className="space-y-1 text-zinc-400 select-none">
+                  <span className="block">• {Object.keys(vd?.agent_scores || {}).length || 0} Council Agents</span>
+                  <span className="block">• {diag?.evidence_count || 0} Findings Map</span>
+                  <span className="block">• {status?.health?.security_score || 0} Security Score</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </WorkspaceBody>
+        </PremiumWorkspaceCard>
 
         {/* Global spotlight cursor following effect for cards grid */}
         <GlobalSpotlight

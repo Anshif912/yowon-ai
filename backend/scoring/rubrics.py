@@ -4,105 +4,93 @@ from __future__ import annotations
 
 from typing import Any
 
-DEFAULT_PROJECT_TYPE = "Hackathon Project"
-PROJECT_TYPES = (
-    "University Project", "Hackathon Project", "Startup Pitch", "Startup Product",
-    "Research Project", "Corporate Project", "Enterprise System", "Open Source Project",
-)
-PROJECT_TYPE_ALIASES = {}
-
-
-def is_presentation_enabled(project_type: str | None) -> bool:
-    """Presentation scoring is enabled only for the user's selected hackathon type."""
-    return str(project_type or "").strip() == "Hackathon Project"
+DEFAULT_PROJECT_TYPE = "Other"
 
 RUBRICS: dict[str, dict[str, Any]] = {
-    "University Project": {
-        "standard": "Academic quality, learning outcomes, correctness, and clear communication",
-        "focus": ["technical correctness", "academic rigor", "innovation", "risk"],
-        "avoid_expectations": ["Kubernetes", "CI/CD", "enterprise security", "large-scale deployment"],
-        "weights": {"technical": .35, "innovation": .25, "risk": .20, "security": .20},
-        "bands": {90: "Exceptional academic project", 80: "Excellent", 70: "Good", 60: "Average", 0: "Needs improvement"},
+    "Backend API": {
+        "standard": "API design, authentication, authorization, caching, scalability, concurrency, database design, logging, and observability",
+        "focus": ["API Design", "Authentication", "Authorization", "Caching", "Scalability", "Concurrency", "Database Design", "Logging & Observability"],
+        "avoid_expectations": ["UI interface", "client-side assets bundle optimization", "responsive styles"],
+        "weights": {"architecture": 0.35, "security": 0.35, "reliability": 0.20, "innovation": 0.10},
     },
-    "Hackathon Project": {
-        "standard": "Prototype quality, innovation, demo readiness, and execution under time constraints",
-        "focus": ["innovation", "prototype quality", "demo readiness"],
-        "avoid_expectations": ["production-scale operations", "complete compliance program"],
-        "weights": {"technical": .30, "innovation": .25, "security": .15, "risk": .20, "presentation": .10},
-        "bands": {90: "Exceptional hackathon project", 80: "Strong finalist", 70: "Competitive prototype", 60: "Promising prototype", 0: "Needs improvement"},
+    "Frontend Web": {
+        "standard": "Accessibility, performance, SEO, UX, state management, responsive design, component architecture, and bundle optimization",
+        "focus": ["Accessibility", "Performance", "SEO", "UX", "State Management", "Responsive Design", "Component Architecture", "Bundle Optimization"],
+        "avoid_expectations": ["database design", "distributed caching", "backend message queues"],
+        "weights": {"architecture": 0.40, "innovation": 0.30, "reliability": 0.20, "security": 0.10},
     },
-    "Startup Pitch": {
-        "standard": "Market viability, business model, differentiation, evidence, and execution risk",
-        "focus": ["market viability", "business model", "product differentiation", "execution risk"],
-        "avoid_expectations": ["enterprise operations before product-market evidence"],
-        "weights": {"innovation": .30, "technical": .25, "risk": .25, "business_feasibility": .20},
-        "bands": {90: "Exceptional investment-ready pitch", 80: "Strong opportunity", 70: "Promising with validation gaps", 60: "Early concept", 0: "Needs major validation"},
+    "AI / Machine Learning": {
+        "standard": "Model architecture, training pipeline, inference optimization, ML testing, experiment tracking, reproducibility, and responsible AI",
+        "focus": ["Model Architecture", "Training Pipeline", "Inference Optimization", "ML Testing", "Experiment Tracking", "Reproducibility", "Responsible AI"],
+        "avoid_expectations": ["client-side UI features", "complex user authorization models", "large dataset file storage in repo"],
+        "weights": {"architecture": 0.40, "innovation": 0.30, "reliability": 0.20, "security": 0.10},
     },
-    "Startup Product": {
-        "standard": "Product viability, implementation depth, user value, differentiation, and execution risk",
-        "focus": ["working product", "customer value", "technical execution", "go-to-market readiness"],
-        "avoid_expectations": ["enterprise compliance before scale evidence"],
-        "weights": {"technical": .30, "innovation": .25, "risk": .25, "business_feasibility": .20},
-        "bands": {90: "Exceptional product-ready startup", 80: "Strong product", 70: "Promising with validation gaps", 60: "Early product", 0: "Needs major validation"},
+    "LLM Application": {
+        "standard": "Prompt engineering, prompt templates versioning, vector caching database, agent orchestration systems, and context size optimization",
+        "focus": ["Prompt Templates", "Vector Store Caching", "Orchestration & Agents", "Context Window Management", "Structured Outputs Verification"],
+        "avoid_expectations": ["deep neural network training", "custom GPUs hardware benchmarks"],
+        "weights": {"architecture": 0.35, "innovation": 0.35, "reliability": 0.15, "security": 0.15},
     },
-    "Research Project": {
-        "standard": "Research novelty, academic contribution, experimental rigor, reproducibility, baseline benchmarking, and publication potential",
-        "focus": [
-            "novelty", "research contribution", "experimental rigor",
-            "reproducibility", "baseline benchmarking", "publication potential",
-        ],
-        "avoid_expectations": ["commercial deployment unless claimed", "large code volume", "UI polish"],
-        "weights": {"innovation": .40, "technical": .30, "impact": .25, "security": .05},
-        "bands": {90: "Publication-grade contribution", 80: "Strong research project", 70: "Sound with revision needed", 60: "Preliminary study", 0: "Methodology needs improvement"},
+    "Library / SDK": {
+        "standard": "Clean public API contracts, backward compatibility checks, versioning documentation, package health, and developer experience",
+        "focus": ["API design", "backward compatibility", "documentation quality", "package setup and size", "types validation"],
+        "avoid_expectations": ["user authorization sessions", "relational database performance metrics", "Docker container environments"],
+        "weights": {"architecture": 0.45, "reliability": 0.30, "innovation": 0.15, "security": 0.10},
     },
-    "Corporate Project": {
-        "standard": "Production readiness, security, scalability, compliance, reliability, and maintainability",
-        "focus": ["security", "scalability", "compliance", "reliability", "maintainability"],
+    "CLI Tool": {
+        "standard": "Terminal interface UX, arguments parsing logic, stderr handling, automated command verification, and packages distribution style",
+        "focus": ["Terminal UX", "Argument parsing", "Error codes", "Documentation", "Package distribution"],
+        "avoid_expectations": ["web dashboard interfaces", "OAuth2 authorization schemes", "cloud deployment pipelines"],
+        "weights": {"architecture": 0.40, "reliability": 0.30, "innovation": 0.20, "security": 0.10},
+    },
+    "Full Stack": {
+        "standard": "Decoupled server and client components, session authorizations, database caching layers, and responsive UI interfaces",
+        "focus": ["API routes", "database indexing", "client-side state", "bundle optimization", "routing security"],
         "avoid_expectations": [],
-        "weights": {"technical": .35, "security": .35, "risk": .20, "innovation": .10},
-        "bands": {90: "Production-ready", 80: "Strong", 70: "Needs improvements", 0: "Not deployment ready"},
+        "weights": {"architecture": 0.30, "security": 0.30, "reliability": 0.25, "innovation": 0.15},
     },
-    "Enterprise System": {
-        "standard": "Enterprise-grade reliability, security, scalability, compliance, integration, and maintainability",
-        "focus": ["security", "scalability", "compliance", "integrations", "operational reliability"],
+    "Other": {
+        "standard": "General engineering architecture quality, security baselines, and reliability measures",
+        "focus": ["code organization", "dependencies health", "security controls", "error bounds"],
         "avoid_expectations": [],
-        "weights": {"technical": .32, "security": .32, "risk": .20, "scalability": .16},
-        "bands": {90: "Enterprise-ready", 80: "Strong enterprise candidate", 70: "Needs hardening", 0: "Not enterprise-ready"},
-    },
-    "Open Source Project": {
-        "standard": "Documentation, community readiness, code quality, maintainability, and contributor experience",
-        "focus": ["documentation", "community readiness", "code quality", "maintainability"],
-        "avoid_expectations": ["enterprise compliance unless claimed"],
-        "weights": {"technical": .35, "innovation": .20, "security": .20, "impact": .15, "scalability": .10},
-        "bands": {90: "Exceptional community-ready project", 80: "Strong open source project", 70: "Useful with maintenance gaps", 60: "Early-stage project", 0: "Needs improvement"},
-    },
+        "weights": {"architecture": 0.30, "security": 0.30, "reliability": 0.25, "innovation": 0.15},
+    }
 }
 
+PROJECT_TYPES = tuple(RUBRICS.keys())
+
+GOAL_ADJUSTMENTS = {
+    "Security Audit": {"security": 0.50, "architecture": 0.25, "reliability": 0.15, "innovation": 0.10},
+    "Production Readiness": {"reliability": 0.40, "security": 0.30, "architecture": 0.20, "innovation": 0.10},
+    "Architecture Review": {"architecture": 0.50, "reliability": 0.25, "security": 0.15, "innovation": 0.10},
+    "Technical Due Diligence": {"architecture": 0.35, "reliability": 0.35, "security": 0.20, "innovation": 0.10},
+    "Hackathon Evaluation": {"innovation": 0.50, "architecture": 0.25, "security": 0.15, "reliability": 0.10},
+}
+
+def is_presentation_enabled(project_type: str | None) -> bool:
+    # Completely disabled for all evaluations in RC v3!
+    return False
 
 def normalize_project_type(project_type: str | None) -> str:
-    normalized = PROJECT_TYPE_ALIASES.get(str(project_type or "").strip(), project_type)
-    return normalized if normalized in RUBRICS else DEFAULT_PROJECT_TYPE
+    cleaned = str(project_type or "").strip()
+    return cleaned if cleaned in RUBRICS else DEFAULT_PROJECT_TYPE
 
+def get_rubric(project_type: str | None, evaluation_goal: str | None = None) -> dict[str, Any]:
+    norm_type = normalize_project_type(project_type)
+    rubric = dict(RUBRICS[norm_type])
+    
+    # Adjust weights based on goal
+    if evaluation_goal in GOAL_ADJUSTMENTS:
+        rubric["weights"] = GOAL_ADJUSTMENTS[evaluation_goal]
+        
+    return {"project_type": norm_type, **rubric}
 
-def get_rubric(project_type: str | None) -> dict[str, Any]:
-    normalized = normalize_project_type(project_type)
-    return {"project_type": normalized, **RUBRICS[normalized]}
-
-
-def rubric_prompt(project_type: str | None) -> str:
-    rubric = get_rubric(project_type)
+def rubric_prompt(project_type: str | None, evaluation_goal: str | None = None) -> str:
+    rubric = get_rubric(project_type, evaluation_goal)
     weights = ", ".join(f"{k}={int(v * 100)}%" for k, v in rubric["weights"].items())
     avoid = ", ".join(rubric["avoid_expectations"]) or "none"
-    research_rules = ""
-    if rubric["project_type"] == "Research Project":
-        research_rules = (
-            "\nRESEARCH_EVIDENCE_REQUIRED: baseline comparison, experimental results, "
-            "novel contribution, reproducibility details, and publication potential. "
-            "Do not reward code volume, deployment readiness, or UI polish as substitutes."
-        )
     return (
         f"PROJECT_TYPE: {rubric['project_type']}\nEVALUATION_STANDARD: {rubric['standard']}\n"
         f"FOCUS: {', '.join(rubric['focus'])}\nDO_NOT_EXPECT: {avoid}\nSCORING_WEIGHTS: {weights}\n"
-        "Judge only against this context. Scores above 90 require exceptional explicit evidence."
-        f"{research_rules}"
+        "Evaluate strictly within this engineering context. Output structured reasoning only."
     )

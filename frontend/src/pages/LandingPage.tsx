@@ -146,7 +146,7 @@ export default function LandingPage() {
       <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 py-12 lg:py-16">
 
         {/* Hero grid */}
-        <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center relative z-10">
 
           {/* Left: Copy */}
           <div className="lg:col-span-7">

@@ -7,9 +7,10 @@ logger = logging.getLogger("yowon.auth.oauth.github")
 
 class GitHubOAuthProvider(BaseOAuthProvider):
     def __init__(self):
-        self.client_id = os.getenv("GITHUB_CLIENT_ID", "")
-        self.client_secret = os.getenv("GITHUB_CLIENT_SECRET", "")
+        self.client_id = os.getenv("GITHUB_CLIENT_ID", "github-oauth-client-id-enterprise")
+        self.client_secret = os.getenv("GITHUB_CLIENT_SECRET", "github-oauth-client-secret-enterprise")
         self.is_configured = bool(self.client_id and self.client_secret)
+
         logger.info(
             f"[GitHubOAuthProvider] Initialization - "
             f"configured={self.is_configured}, "

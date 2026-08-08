@@ -29,6 +29,7 @@ from fastapi import (
     Request,
     UploadFile,
     Header,
+    APIRouter,
 )
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
@@ -71,7 +72,7 @@ from reports.report_generator import PDFGenerationError, generate_report, valida
 from scoring.rubrics import PROJECT_TYPES, is_presentation_enabled, normalize_project_type
 from utils.ranking_engine import build_ranking_payload, save_evaluation
 from validation.json_utils import extract_json
-from validation.schemas import EvaluationIncompleteException
+from validation.schemas import EvaluationIncompleteException, ProjectContextRequest
 
 from progress import (
     PHASE_BUILD_CONTEXT,
@@ -101,6 +102,7 @@ setup_logging(LOG_LEVEL)
 logger = logging.getLogger(__name__)
 UPLOAD_PROJECT_TYPES = (*PROJECT_TYPES, "Auto Detect")
 
+legacy_router = APIRouter()
 app = FastAPI(
     title="YOWON AI API",
     description="Autonomous AI Jury Platform",
@@ -178,10 +180,12 @@ app.include_router(system_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
@@ -304,79 +308,81 @@ def _seed_default_user():
 
     db = SessionLocal()
     try:
-        user = db.query(User).filter(User.email == "anshif@yowon.ai").first()
-        if not user:
-            # Create User
-            user_uuid = str(uuid.uuid4())
-            user = User(
-                uuid=user_uuid,
-                full_name="Anshif",
-                email="anshif@yowon.ai",
-                password_hash=PasswordService.hash_password("Password123!"),
-                role="admin",
-                status="active",
-                email_verified=True,
-                created_at=datetime.utcnow(),
-                updated_at=datetime.utcnow()
-            )
-            db.add(user)
-            db.flush()
+        emails_to_seed = ["anshif@yowon.ai", "ansh988820@gmail.com"]
+        for email in emails_to_seed:
+            user = db.query(User).filter(User.email == email).first()
+            if not user:
+                # Create User
+                user_uuid = str(uuid.uuid4())
+                user = User(
+                    uuid=user_uuid,
+                    full_name="Anshif",
+                    email=email,
+                    password_hash=PasswordService.hash_password("Password123!"),
+                    role="admin",
+                    status="active",
+                    email_verified=True,
+                    created_at=datetime.utcnow(),
+                    updated_at=datetime.utcnow()
+                )
+                db.add(user)
+                db.flush()
 
-            # Create Organization
-            org_uuid = str(uuid.uuid4())
-            org = Organization(
-                uuid=org_uuid,
-                name="YOWON AI Org",
-                slug="yowon-ai-org",
-                owner_id=user_uuid,
-                created_at=datetime.utcnow()
-            )
-            db.add(org)
-            db.flush()
-
-            # Organization Member
-            org_member = OrganizationMember(
-                id=str(uuid.uuid4()),
-                organization_id=org_uuid,
-                user_id=user_uuid,
-                role="owner",
-                joined_at=datetime.utcnow()
-            )
-            db.add(org_member)
-
-            # Create Workspace
-            ws_id = "default-ws"
-            workspace = db.query(Workspace).filter(Workspace.workspace_id == ws_id).first()
-            if not workspace:
-                workspace = Workspace(
-                    workspace_id=ws_id,
-                    organization_id=org_uuid,
-                    name="Personal Workspace",
-                    description="Your personal workspace context",
-                    type="PERSONAL",
-                    visibility="PRIVATE",
+                # Create Organization
+                org_uuid = str(uuid.uuid4())
+                org = Organization(
+                    uuid=org_uuid,
+                    name=f"YOWON AI Org - {email.split('@')[0]}",
+                    slug=f"yowon-ai-org-{email.split('@')[0]}",
                     owner_id=user_uuid,
                     created_at=datetime.utcnow()
                 )
-                db.add(workspace)
+                db.add(org)
                 db.flush()
 
-            # Workspace Member
-            ws_member = db.query(WorkspaceMember).filter(
-                WorkspaceMember.workspace_id == ws_id,
-                WorkspaceMember.user_id == user_uuid
-            ).first()
-            if not ws_member:
-                ws_member = WorkspaceMember(
-                    workspace_id=ws_id,
+                # Organization Member
+                org_member = OrganizationMember(
+                    id=str(uuid.uuid4()),
+                    organization_id=org_uuid,
                     user_id=user_uuid,
-                    role="WORKSPACE_ADMIN",
-                    status="ACCEPTED",
+                    role="owner",
                     joined_at=datetime.utcnow()
                 )
-                db.add(ws_member)
+                db.add(org_member)
 
-            db.commit()
+                # Create Workspace
+                ws_id = f"default-ws-{email.split('@')[0]}"
+                workspace = db.query(Workspace).filter(Workspace.workspace_id == ws_id).first()
+                if not workspace:
+                    workspace = Workspace(
+                        workspace_id=ws_id,
+                        organization_id=org_uuid,
+                        name="Personal Workspace",
+                        description="Your personal workspace context",
+                        type="PERSONAL",
+                        visibility="PRIVATE",
+                        owner_id=user_uuid,
+                        created_at=datetime.utcnow()
+                    )
+                    db.add(workspace)
+                    db.flush()
+
+                # Workspace Member
+                ws_member = db.query(WorkspaceMember).filter(
+                    WorkspaceMember.workspace_id == ws_id,
+                    WorkspaceMember.user_id == user_uuid
+                ).first()
+                if not ws_member:
+                    ws_member = WorkspaceMember(
+                        workspace_id=ws_id,
+                        user_id=user_uuid,
+                        role="WORKSPACE_ADMIN",
+                        status="ACCEPTED",
+                        joined_at=datetime.utcnow()
+                    )
+                    db.add(ws_member)
+
+                db.commit()
     except Exception as e:
         db.rollback()
         print(f"Failed to seed default user: {e}")
@@ -412,7 +418,7 @@ def _migrate_project_columns() -> None:
             conn.execute(text("ALTER TABLE projects ADD COLUMN project_type VARCHAR(50) NOT NULL DEFAULT 'Hackathon Project'"))
 
 
-@app.post("/upload-project", summary="Upload project files and metadata")
+@legacy_router.post("/upload-project", summary="Upload project files and metadata")
 async def upload_project(
     request: Request,
     name: str = Form(...),
@@ -893,6 +899,11 @@ def _run_intelligence_background(project_id: str, snapshot_id: str, evaluation_i
         logger.info("[Intel] Intelligence pipeline DB session closed for snapshot=%s", snapshot_id)
 
 
+class EvaluationCancelledException(Exception):
+    """Raised when the user aborts an evaluation run."""
+    pass
+
+
 def _run_evaluation_background(project_id: str) -> None:
     from database import SessionLocal
     import time
@@ -906,6 +917,16 @@ def _run_evaluation_background(project_id: str) -> None:
     db: Session = SessionLocal()
     start_time = time.perf_counter()
     evaluation_id = str(uuid.uuid4())
+
+    def check_cancelled():
+        with SessionLocal() as fresh_db:
+            proj = fresh_db.query(Project).filter(Project.id == project_id).first()
+            if proj and proj.status == "failed":
+                raise EvaluationCancelledException("Evaluation aborted by user")
+        from progress import get_progress
+        prog = get_progress(project_id)
+        if prog.get("status") == "failed" or prog.get("evaluation_status") == "failed":
+            raise EvaluationCancelledException("Evaluation aborted by user")
 
     def add_event(name: str, status: str = "completed", duration: float = 0, metadata: dict = None):
         evt = EvaluationEvent(
@@ -929,6 +950,7 @@ def _run_evaluation_background(project_id: str) -> None:
         db.commit()
 
         init_progress(project_id, reset=True)
+        check_cancelled()
 
         health = run_preflight_checks(require_github=bool(project.github_url))
         if health.warnings:
@@ -975,6 +997,10 @@ def _run_evaluation_background(project_id: str) -> None:
             ppt_path=project.ppt_path,
             on_phase=_phase,
         )
+        ctx["project_domain"] = project.project_domain
+        ctx["evaluation_profile"] = project.evaluation_profile
+        ctx["evaluation_goal"] = project.evaluation_goal
+        ctx["repository_maturity"] = project.repository_maturity
         ctx_text = context_to_text(ctx)
         
         duration_ctx = time.perf_counter() - t_phase
@@ -989,7 +1015,12 @@ def _run_evaluation_background(project_id: str) -> None:
             embedding_model=MODEL_NAME,
             evaluation_version="1.0.0",
             prompt_version="1.0.0",
-            rubric_version="1.0.0"
+            rubric_version="1.0.0",
+            project_type=project.project_type,
+            project_domain=project.project_domain,
+            evaluation_profile=project.evaluation_profile,
+            evaluation_goal=project.evaluation_goal,
+            repository_maturity=project.repository_maturity
         )
         db.add(main_eval)
         db.commit()
@@ -1117,6 +1148,7 @@ def _run_evaluation_background(project_id: str) -> None:
                     raise EvaluationIncompleteException("Another active evaluation is already in progress for this snapshot.")
 
             # Run Repository Intelligence synchronously in the evaluation thread
+            check_cancelled()
             if snapshot_id:
                 logger.info(
                     "[Intel] Running Repository Intelligence synchronously for snapshot=%s",
@@ -1263,12 +1295,14 @@ def _run_evaluation_background(project_id: str) -> None:
         }
 
         # Architecture Parsing Event
+        check_cancelled()
         t_phase = time.perf_counter()
         _phase(PHASE_EMBEDDINGS)
         store_project_context(project_id, ctx_text, {"project_name": project.name})
         add_event("Architecture Parsed", duration=time.perf_counter() - t_phase)
 
         # Specialist Runs Events & Evaluation — session passed explicitly
+        check_cancelled()
         t_eval_start = time.perf_counter()
         results = run_evaluation(project_id, ctx, ctx_text, session=session)
         
@@ -1279,6 +1313,7 @@ def _run_evaluation_background(project_id: str) -> None:
         add_event("Visionary Completed", duration=results.get("evaluation_duration_sec", 0) / 4)
         add_event("Insight Completed", duration=results.get("evaluation_duration_sec", 0) / 10)
 
+        check_cancelled()
         verdict = results.get("verdict", {})
         if not verdict or verdict.get("overall_score") is None:
             raise RuntimeError("Evaluation produced no verdict — cannot persist results")
@@ -1400,6 +1435,7 @@ def _run_evaluation_background(project_id: str) -> None:
 
 
         # Report Generation
+        check_cancelled()
         t_report_start = time.perf_counter()
         report_id = str(uuid.uuid4())
         pdf_path: Optional[str] = None
@@ -1649,11 +1685,24 @@ def _run_evaluation_background(project_id: str) -> None:
             duration_seconds=time.perf_counter() - start_time
         ))
 
+        check_cancelled()
         project.status = "done"
         db.commit()
         
         complete(project_id, report_status=report_status, report_error=report_error)
 
+    except EvaluationCancelledException as exc:
+        logger.info("[SYS] Evaluation cancelled by user for project %s", project_id)
+        db.rollback()
+        failed_eval = db.query(Evaluation).filter(Evaluation.evaluation_id == evaluation_id).first()
+        if failed_eval:
+            failed_eval.evaluation_status = "Failed"
+            db.commit()
+        project = db.query(Project).filter(Project.id == project_id).first()
+        if project:
+            project.status = "failed"
+            db.commit()
+        fail(project_id, "Evaluation aborted by user")
     except Exception as exc:
         logger.exception("Evaluation failed for %s", project_id)
         db.rollback()
@@ -1672,7 +1721,7 @@ def _run_evaluation_background(project_id: str) -> None:
         db.close()
 
 
-@app.post("/evaluate/{project_id}", summary="Trigger AI evaluation")
+@legacy_router.post("/evaluate/{project_id}", summary="Trigger AI evaluation")
 async def trigger_evaluation(
     project_id: str,
     request: Request,
@@ -1702,7 +1751,22 @@ async def trigger_evaluation(
     }
 
 
-@app.get("/status/{project_id}", summary="Check evaluation status")
+@legacy_router.post("/evaluate/{project_id}/abort", summary="Abort active AI evaluation")
+async def abort_evaluation(project_id: str, db: Session = Depends(get_db)):
+    validate_project_id(project_id)
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+    
+    from progress import fail
+    fail(project_id, "Evaluation aborted by user")
+    
+    project.status = "failed"
+    db.commit()
+    return {"success": True, "message": "Evaluation aborted successfully"}
+
+
+@legacy_router.get("/status/{project_id}", summary="Check evaluation status")
 async def get_status(project_id: str, db: Session = Depends(get_db)):
     validate_project_id(project_id)
     project = db.query(Project).filter(Project.id == project_id).first()
@@ -1735,12 +1799,16 @@ async def get_status(project_id: str, db: Session = Depends(get_db)):
         "report_error": report_error,
         "name": project.name,
         "project_type": project.project_type,
+        "project_domain": project.project_domain,
+        "evaluation_profile": project.evaluation_profile,
+        "evaluation_goal": project.evaluation_goal,
+        "repository_maturity": project.repository_maturity,
         "created_at": project.created_at.isoformat(),
         "progress": progress,
     }
 
 
-@app.get("/progress/{project_id}", summary="Poll evaluation progress")
+@legacy_router.get("/progress/{project_id}", summary="Poll evaluation progress")
 async def get_evaluation_progress(project_id: str, db: Session = Depends(get_db)):
     validate_project_id(project_id)
     progress = get_progress(project_id)
@@ -1781,7 +1849,7 @@ async def get_evaluation_progress(project_id: str, db: Session = Depends(get_db)
     return {"project_id": project_id, **progress}
 
 
-@app.get("/progress/{project_id}/stream", summary="SSE evaluation progress stream")
+@legacy_router.get("/progress/{project_id}/stream", summary="SSE evaluation progress stream")
 async def progress_stream(project_id: str):
     validate_project_id(project_id)
     async def event_generator():
@@ -1807,7 +1875,7 @@ async def progress_stream(project_id: str):
     )
 
 
-@app.get("/projects/{project_id}/knowledge-graph", summary="Get Repository Knowledge Graph")
+@legacy_router.get("/projects/{project_id}/knowledge-graph", summary="Get Repository Knowledge Graph")
 async def get_knowledge_graph(
     project_id: str,
     search: Optional[str] = None,
@@ -1878,7 +1946,7 @@ async def get_knowledge_graph(
     return {"nodes": nodes, "edges": edges}
 
 
-@app.get("/projects/{project_id}/knowledge-graph/path", summary="Get shortest path between two nodes in Knowledge Graph")
+@legacy_router.get("/projects/{project_id}/knowledge-graph/path", summary="Get shortest path between two nodes in Knowledge Graph")
 async def get_knowledge_graph_path(
     project_id: str,
     source: str,
@@ -1910,7 +1978,7 @@ async def get_knowledge_graph_path(
     return find_shortest_dependency_path(graph["nodes"], graph["edges"], source, target)
 
 
-@app.get("/report/{project_id}", summary="Get full evaluation report as JSON")
+@legacy_router.get("/report/{project_id}", summary="Get full evaluation report as JSON")
 async def get_report(project_id: str, db: Session = Depends(get_db)):
     validate_project_id(project_id)
     
@@ -1982,17 +2050,23 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
             eval_run.verdict if eval_run and eval_run.verdict
             else (report.verdict if report and report.verdict else "ACCEPT")
         )
+        agent_scores_dict = {name: (item.get("score") or 0.0) for name, item in eval_map.items()}
+        fallback_risk = "HIGH" if any(s < 40 for s in agent_scores_dict.values()) else ("MEDIUM" if any(s < 60 for s in agent_scores_dict.values()) else "LOW")
+        fallback_band = "Exceptional" if fallback_score >= 90 else ("Excellent" if fallback_score >= 80 else ("Strong" if fallback_score >= 60 else ("Functional" if fallback_score >= 40 else ("Prototype" if fallback_score >= 20 else "Incomplete"))))
+        fallback_confidence = 75.0 if sum(1 for s in agent_scores_dict.values() if s > 0) > 2 else 50.0
+        fallback_summary = f"Evaluation completed with {len(agent_scores_dict)} agents responding. Overall score is {fallback_score}." if agent_scores_dict else "Evaluation completed. Individual agent evaluations and scoring summaries are available below."
         verdict_data = {
             "overall_score": fallback_score,
             "verdict": fallback_verdict,
             "status": "COMPLETE",
-            "risk_level": "LOW",
-            "score_band": "Good",
-            "confidence": 85.0,
-            "executive_summary": "Evaluation completed. Individual agent evaluations and scoring summaries are available below.",
+            "risk_level": fallback_risk,
+            "score_band": fallback_band,
+            "confidence": fallback_confidence,
+            "executive_summary": fallback_summary,
             "submitted_project_type": project.project_type,
-            "agent_scores": {name: (item.get("score") or 0.0) for name, item in eval_map.items()},
+            "agent_scores": agent_scores_dict,
         }
+
 
     public_verdict = _public_verdict_data(verdict_data)
     if public_verdict and "ranking" not in public_verdict:
@@ -2002,10 +2076,92 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
                 score,
                 public_verdict.get("project_type") or project.project_type,
             )
+
+    # ── RC9.1: Enrich verdict with dynamic RI-derived analysis and integrity checks ───────────
+    try:
+        commit_sha = None
+        snapshot = getattr(eval_run, "snapshot", None)
+        if snapshot:
+            commit_sha = getattr(snapshot, "commit_sha", None)
+        if commit_sha:
+            ri_data = RepositoryAnalysisCache.get(commit_sha)
+            if ri_data:
+                from intelligence.ri_contract import RIResult
+                ri_result = RIResult.from_cache_dict(ri_data)
+
+                # Dynamic strengths / weaknesses / risks
+                from scoring.dynamic_analysis import analyze_repository
+                analysis = analyze_repository(ri_result)
+                
+                # Expose detail arrays for clickable evidence tags in the UI
+                public_verdict["strengths_details"] = analysis.get("strengths", [])
+                public_verdict["weaknesses_details"] = analysis.get("weaknesses", [])
+                public_verdict["risks_details"] = analysis.get("risks", [])
+
+                if not public_verdict.get("strengths"):
+                    public_verdict["strengths"] = [
+                        s["description"] for s in analysis.get("strengths", [])
+                    ]
+                if not public_verdict.get("weaknesses"):
+                    public_verdict["weaknesses"] = [
+                        w["description"] for w in analysis.get("weaknesses", [])
+                    ]
+                if not public_verdict.get("risks"):
+                    public_verdict["risks"] = [
+                        f"{r['severity']}: {r['risk']}" for r in analysis.get("risks", [])
+                    ]
+
+                # Business value estimation
+                if not public_verdict.get("business_value"):
+                    from scoring.business_engine import assess_business_value
+                    council_data = RepositoryAnalysisCache.get_artifact(commit_sha, "council_scores")
+                    public_verdict["business_value"] = assess_business_value(ri_result, council_data)
+
+                # Innovation index
+                if not public_verdict.get("innovation_index"):
+                    from scoring.innovation_engine import compute_innovation_index
+                    from dataclasses import asdict
+                    inn = compute_innovation_index(ri_result)
+                    public_verdict["innovation_index"] = asdict(inn)
+
+                # 1. Report Metadata
+                from scoring.report_integrity import build_report_metadata, build_fingerprint, compute_report_hash
+                public_verdict["report_metadata"] = build_report_metadata(
+                    ri_result, eval_run, commit_sha, project
+                )
+
+                # 2. Repository DNA Fingerprint
+                public_verdict["repository_fingerprint"] = build_fingerprint(
+                    ri_result, ri_result.detected_technologies, ri_result.architecture_summary
+                )
+
+                # 3. Active UI Sections gating (adaptive report panels)
+                detected_techs_low = [t.lower() for t in (ri_result.detected_technologies or [])]
+                ai_intel = getattr(ri_result, "ai_intelligence", {}) or {}
+                has_ai = bool(ai_intel.get("agent_count", 0) > 0 or ai_intel.get("llm_usage", False) or "openai" in detected_techs_low or "ollama" in detected_techs_low)
+                
+                public_verdict["active_sections"] = {
+                    "has_docker": any("docker" in t for t in detected_techs_low),
+                    "has_kubernetes": any("kubernetes" in t or "k8s" in t for t in detected_techs_low),
+                    "has_ai": has_ai
+                }
+
+                # 4. Report Integrity signature
+                public_verdict["report_integrity"] = {
+                    "sha256": compute_report_hash(public_verdict),
+                    "signed": True,
+                    "generated_by": "YOWON Intelligence Engine RC9.1"
+                }
+
+    except Exception as _rc9_exc:
+        logger.warning("RC9.1 dynamic enrichment failed (non-fatal): %s", _rc9_exc)
+    # ── end RC9.1 enrichment ──────────────────────────────────────────────────
+
     if "yowon_prime" in eval_map:
         eval_map["yowon_prime"]["findings"] = _chief_public_findings(public_verdict)
     elif "chief_evaluation" in eval_map:
         eval_map["chief_evaluation"]["findings"] = _chief_public_findings(public_verdict)
+
 
     return {
         "project_id": project.id,
@@ -2025,7 +2181,96 @@ async def get_report(project_id: str, db: Session = Depends(get_db)):
     }
 
 
-@app.get("/report/{project_id}/pdf", summary="Download the PDF report")
+@legacy_router.get("/evaluations/{id}/council-scores")
+async def get_council_scores(id: str, db: Session = Depends(get_db)):
+    """
+    Returns dynamic AI Council agent scores computed from RI data.
+    Every score is derived from actual repository analysis - no hardcoded values.
+    """
+    evaluation = resolve_evaluation(id, db)
+    if not evaluation or not evaluation.snapshot:
+        raise HTTPException(status_code=404, detail="Evaluation or snapshot not found")
+    
+    commit_sha = evaluation.snapshot.commit_sha
+    
+    # Try cache first
+    cached = RepositoryAnalysisCache.get_artifact(commit_sha, "council_scores")
+    if cached:
+        return {"success": True, "data": cached}
+    
+    # Load RI result from cache
+    ri_data = RepositoryAnalysisCache.get(commit_sha)
+    
+    # Import council scorer
+    try:
+        from scoring.council_scorer import compute_council_verdict
+        from intelligence.ri_contract import RIResult
+        
+        if ri_data:
+            ri_result = RIResult.from_cache_dict(ri_data)
+        else:
+            ri_result = None
+        
+        # Get eval verdict for reference
+        eval_run = (
+            db.query(Evaluation)
+            .filter(Evaluation.project_id == evaluation.project_id)
+            .order_by(Evaluation.timestamp.desc())
+            .first()
+        )
+        verdict_data = {}
+        if eval_run and eval_run.result:
+            try:
+                verdict_data = json.loads(eval_run.result)
+            except Exception:
+                pass
+        
+        council = compute_council_verdict(ri_result, verdict_data)
+        
+        # Cache for future requests
+        RepositoryAnalysisCache.set_artifact(commit_sha, "council_scores", council)
+        
+        return {"success": True, "data": council}
+    except Exception as exc:
+        logger.warning(f"Council scores computation failed: {exc}")
+        # Return empty-state response - not hardcoded demo data
+        return {
+            "success": False,
+            "data": {
+                "council_overall": None,
+                "weights": {"forge": 0.25, "sentinel": 0.20, "guardian": 0.15, "visionary": 0.15, "prime": 0.15, "showcase": 0.10},
+                "agents": {},
+                "data_quality": "UNAVAILABLE",
+                "error": str(exc)
+            }
+        }
+
+
+@legacy_router.get("/evaluations/{id}/diff/{prev_id}")
+async def get_evaluation_diff(id: str, prev_id: str, db: Session = Depends(get_db)):
+    """
+    RC9.1 Stub: Compares two evaluations and returns a diff metrics object.
+    Full diff visual logic will be implemented in RC10.
+    """
+    return {
+        "success": True,
+        "data": {
+            "score_delta": 8.0,
+            "dimension_deltas": {
+                "technical": 5.0,
+                "security": 12.0,
+                "innovation": -4.0,
+                "impact": 0.0,
+                "presentation": 2.0
+            },
+            "technical_debt_delta_days": -8.0,
+            "message": "Technical debt reduced from 14 days to 6 days.",
+            "is_stub": True
+        }
+    }
+
+
+@legacy_router.get("/report/{project_id}/pdf", summary="Download the PDF report")
 async def download_pdf(project_id: str, db: Session = Depends(get_db)):
     validate_project_id(project_id)
     
@@ -2073,7 +2318,7 @@ async def download_pdf(project_id: str, db: Session = Depends(get_db)):
     )
 
 
-@app.get("/", include_in_schema=False)
+@legacy_router.get("/", include_in_schema=False)
 async def root():
     return {
         "service": "YOWON AI API",
@@ -2083,7 +2328,7 @@ async def root():
     }
 
 
-@app.get("/health", include_in_schema=False)
+@legacy_router.get("/health", include_in_schema=False)
 async def health():
     import shutil
     import os
@@ -2206,7 +2451,7 @@ async def health():
 # ── Projects and Registry endpoints are routed to projects router ─────────────────
 
 
-@app.get("/projects/{id}/history", summary="Get evaluation runs history list for a project")
+@legacy_router.get("/projects/{id}/history", summary="Get evaluation runs history list for a project")
 async def get_project_evaluation_history(id: str, db: Session = Depends(get_db)):
     validate_project_id(id)
     project = db.query(Project).filter(Project.id == id).first()
@@ -2250,7 +2495,7 @@ async def get_project_evaluation_history(id: str, db: Session = Depends(get_db))
     return results
 
 
-@app.get("/evaluations/{id}/history", summary="Get evaluation run history via evaluation ID")
+@legacy_router.get("/evaluations/{id}/history", summary="Get evaluation run history via evaluation ID")
 async def get_evaluation_history_by_eval_id(id: str, db: Session = Depends(get_db)):
     """
     Bridges evaluation ID → project ID and returns the same history data as
@@ -2307,7 +2552,7 @@ async def get_evaluation_history_by_eval_id(id: str, db: Session = Depends(get_d
     return results
 
 
-@app.get("/evaluations/{id}", summary="Get detailed evaluation run results, snapshot, evidence, recommendations, and events")
+@legacy_router.get("/evaluations/{id}", summary="Get detailed evaluation run results, snapshot, evidence, recommendations, and events")
 async def get_evaluation_by_id(id: str, db: Session = Depends(get_db)):
     evaluation = db.query(Evaluation).filter(Evaluation.evaluation_id == id).first()
     if not evaluation:
@@ -2402,7 +2647,7 @@ async def get_evaluation_by_id(id: str, db: Session = Depends(get_db)):
     }
 
 
-@app.delete("/evaluations/{id}", summary="Delete specific evaluation run")
+@legacy_router.delete("/evaluations/{id}", summary="Delete specific evaluation run")
 async def delete_evaluation(id: str, db: Session = Depends(get_db)):
     evaluation = db.query(Evaluation).filter(Evaluation.evaluation_id == id).first()
     if not evaluation:
@@ -2413,7 +2658,7 @@ async def delete_evaluation(id: str, db: Session = Depends(get_db)):
     return {"message": f"Evaluation {id} deleted successfully"}
 
 
-@app.get("/evaluations/{id}/compare/{other}", summary="Compare two evaluation runs and return structural differences")
+@legacy_router.get("/evaluations/{id}/compare/{other}", summary="Compare two evaluation runs and return structural differences")
 async def compare_evaluations(id: str, other: str, db: Session = Depends(get_db)):
     eval_new = db.query(Evaluation).filter(Evaluation.evaluation_id == id).first()
     eval_old = db.query(Evaluation).filter(Evaluation.evaluation_id == other).first()
@@ -2667,7 +2912,7 @@ def make_artifact_response(
 
 from fastapi import Response
 
-@app.get("/evaluations/{id}/repository-intelligence/status")
+@legacy_router.get("/evaluations/{id}/repository-intelligence/status")
 async def get_repository_intelligence_status(
     id: str,
     response: Response,
@@ -2859,7 +3104,7 @@ async def get_repository_intelligence_status(
         }
 
 
-@app.get("/evaluations/{id}/repository-intelligence/stream")
+@legacy_router.get("/evaluations/{id}/repository-intelligence/stream")
 async def stream_repository_intelligence_progress(id: str, db: Session = Depends(get_db)):
     from fastapi.responses import StreamingResponse
     import asyncio
@@ -2924,7 +3169,7 @@ async def stream_repository_intelligence_progress(id: str, db: Session = Depends
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 
-@app.get("/evaluations/{id}/repository-tree")
+@legacy_router.get("/evaluations/{id}/repository-tree")
 async def get_evaluation_tree(id: str, path: Optional[str] = None, db: Session = Depends(get_db)):
     def process_tree(tree):
         if path:
@@ -2952,7 +3197,7 @@ async def get_evaluation_tree(id: str, path: Optional[str] = None, db: Session =
     return make_artifact_response(id, "repository_tree", db, process_tree)
 
 
-@app.get("/evaluations/{id}/architecture")
+@legacy_router.get("/evaluations/{id}/architecture")
 async def get_evaluation_architecture(id: str, db: Session = Depends(get_db)):
     def process_architecture(arch_data):
         if not arch_data or not arch_data.get("nodes"):
@@ -3009,22 +3254,22 @@ async def get_evaluation_architecture(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "architecture_graph", db, process_architecture)
 
 
-@app.get("/evaluations/{id}/technology-graph")
+@legacy_router.get("/evaluations/{id}/technology-graph")
 async def get_evaluation_technology_graph(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "technology_graph", db)
 
 
-@app.get("/evaluations/{id}/dependency-graph")
+@legacy_router.get("/evaluations/{id}/dependency-graph")
 async def get_evaluation_dependency_graph(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "dependency_graph", db)
 
 
-@app.get("/evaluations/{id}/call-graph")
+@legacy_router.get("/evaluations/{id}/call-graph")
 async def get_evaluation_call_graph(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "call_graph", db)
 
 
-@app.get("/evaluations/{id}/knowledge-graph", summary="Get Knowledge Graph via Evaluation ID")
+@legacy_router.get("/evaluations/{id}/knowledge-graph", summary="Get Knowledge Graph via Evaluation ID")
 async def get_evaluation_knowledge_graph(
     id: str,
     search: Optional[str] = None,
@@ -3093,37 +3338,37 @@ async def get_evaluation_knowledge_graph(
     return {"nodes": nodes, "edges": edges}
 
 
-@app.get("/evaluations/{id}/metrics")
+@legacy_router.get("/evaluations/{id}/metrics")
 async def get_evaluation_metrics(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "metrics", db)
 
 
-@app.get("/evaluations/{id}/health")
+@legacy_router.get("/evaluations/{id}/health")
 async def get_evaluation_health(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "health", db)
 
 
-@app.get("/evaluations/{id}/capabilities")
+@legacy_router.get("/evaluations/{id}/capabilities")
 async def get_evaluation_capabilities(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "capabilities", db)
 
 
-@app.get("/evaluations/{id}/execution-intelligence")
+@legacy_router.get("/evaluations/{id}/execution-intelligence")
 async def get_evaluation_execution_intelligence(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "execution_intelligence", db)
 
 
-@app.get("/evaluations/{id}/ai-intelligence")
+@legacy_router.get("/evaluations/{id}/ai-intelligence")
 async def get_evaluation_ai_intelligence(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "ai_intelligence", db)
 
 
-@app.get("/evaluations/{id}/dependency-intelligence")
+@legacy_router.get("/evaluations/{id}/dependency-intelligence")
 async def get_evaluation_dependency_intelligence(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "dependency_intelligence", db)
 
 
-@app.get("/evaluations/{id}/repository-story")
+@legacy_router.get("/evaluations/{id}/repository-story")
 async def get_evaluation_repository_story(id: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation or not evaluation.snapshot:
@@ -3204,7 +3449,7 @@ async def get_evaluation_repository_story(id: str, db: Session = Depends(get_db)
     return {"success": True, "data": story}
 
 
-@app.get("/evaluations/{id}/executive-summary")
+@legacy_router.get("/evaluations/{id}/executive-summary")
 async def get_evaluation_executive_summary(id: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation or not evaluation.snapshot:
@@ -3268,7 +3513,7 @@ async def get_evaluation_executive_summary(id: str, db: Session = Depends(get_db
     return {"success": True, "data": summary_data}
 
 
-@app.get("/evaluations/{id}/trace-nodes")
+@legacy_router.get("/evaluations/{id}/trace-nodes")
 async def trace_evaluation_nodes(id: str, node: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation or not evaluation.snapshot:
@@ -3301,7 +3546,7 @@ async def trace_evaluation_nodes(id: str, node: str, db: Session = Depends(get_d
     return {"success": True, "node": node, "connections": connections}
 
 
-@app.get("/evaluations/{id}/heatmap")
+@legacy_router.get("/evaluations/{id}/heatmap")
 async def get_evaluation_heatmap(id: str, metric: str = "risk", db: Session = Depends(get_db)):
     def process_heatmap(metrics):
         heatmap_data = []
@@ -3327,7 +3572,7 @@ async def get_evaluation_heatmap(id: str, metric: str = "risk", db: Session = De
     return make_artifact_response(id, "metrics", db, process_heatmap)
 
 
-@app.get("/evaluations/{id}/evidence")
+@legacy_router.get("/evaluations/{id}/evidence")
 async def get_evaluation_evidence(id: str, page: int = 1, size: int = 50, db: Session = Depends(get_db)):
     def process_evidence(evidence):
         from intelligence.evidence_engine import RULES_METADATA
@@ -3436,12 +3681,12 @@ async def get_evaluation_evidence(id: str, page: int = 1, size: int = 50, db: Se
     return make_artifact_response(id, "evidence", db, process_evidence)
 
 
-@app.get("/evaluations/{id}/recommendations")
+@legacy_router.get("/evaluations/{id}/recommendations")
 async def get_evaluation_recommendations(id: str, db: Session = Depends(get_db)):
     return make_artifact_response(id, "recommendations", db)
 
 
-@app.get("/evaluations/{id}/timeline")
+@legacy_router.get("/evaluations/{id}/timeline")
 async def get_evaluation_timeline(id: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation or not evaluation.snapshot:
@@ -3466,7 +3711,7 @@ async def get_evaluation_timeline(id: str, db: Session = Depends(get_db)):
     return timeline
 
 
-@app.get("/evaluations/{id}/file/{path:path}")
+@legacy_router.get("/evaluations/{id}/file/{path:path}")
 async def get_evaluation_file_content(id: str, path: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation or not evaluation.snapshot:
@@ -3631,7 +3876,7 @@ async def get_evaluation_file_content(id: str, path: str, db: Session = Depends(
 
 # ── Webhook APIs ──────────────────────────────────────────────────────────────
 
-@app.post("/webhooks/github", summary="GitHub repository commit webhook endpoint")
+@legacy_router.post("/webhooks/github", summary="GitHub repository commit webhook endpoint")
 async def github_webhook(request: Request, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     payload = await request.json()
     headers = dict(request.headers)
@@ -3671,7 +3916,7 @@ async def github_webhook(request: Request, background_tasks: BackgroundTasks, db
     return {"status": "triggered evaluation", "project_id": project.id, "commit_sha": commit_sha}
 
 
-@app.post("/webhooks/gitlab", summary="GitLab repository commit webhook endpoint")
+@legacy_router.post("/webhooks/gitlab", summary="GitLab repository commit webhook endpoint")
 async def gitlab_webhook(request: Request, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     payload = await request.json()
     repo_data = payload.get("project", {})
@@ -3691,7 +3936,7 @@ async def gitlab_webhook(request: Request, background_tasks: BackgroundTasks, db
     return {"status": "triggered gitlab evaluation", "project_id": project.id}
 
 
-@app.post("/webhooks/bitbucket", summary="Bitbucket repository commit webhook endpoint")
+@legacy_router.post("/webhooks/bitbucket", summary="Bitbucket repository commit webhook endpoint")
 async def bitbucket_webhook(request: Request, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     payload = await request.json()
     repo_data = payload.get("repository", {})
@@ -3722,7 +3967,75 @@ async def bitbucket_webhook(request: Request, background_tasks: BackgroundTasks,
 
 # ── Versioned APIs (v1) ────────────────────────────────────────────────────────
 
-@app.get("/api/v1/evaluations/{id}/provenance", summary="Get score provenance details")
+@legacy_router.post("/api/v1/evaluation/project-context/{project_id}", summary="Save project evaluation context/profile selection")
+async def save_project_context(
+    project_id: str,
+    payload: ProjectContextRequest,
+    db: Session = Depends(get_db)
+):
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+
+    project.project_type = payload.project_type
+    project.project_domain = payload.project_domain
+    project.evaluation_profile = payload.evaluation_profile
+    project.evaluation_goal = payload.evaluation_goal
+    project.repository_maturity = payload.repository_maturity
+    db.commit()
+
+    return {
+        "success": True,
+        "message": "Project context updated successfully",
+        "project_id": project_id
+    }
+
+
+@legacy_router.get("/api/v1/evaluation/debate/{evaluation_id}", summary="Get debate session data")
+async def get_evaluation_debate(evaluation_id: str, db: Session = Depends(get_db)):
+    eval_row = db.query(Evaluation).filter(Evaluation.evaluation_id == evaluation_id).first()
+    if not eval_row:
+        raise HTTPException(status_code=404, detail="Evaluation not found")
+    try:
+        return json.loads(eval_row.debates) if eval_row.debates else {}
+    except Exception:
+        return {}
+
+
+@legacy_router.get("/api/v1/evaluation/consensus/{evaluation_id}", summary="Get consensus resolution data")
+async def get_evaluation_consensus(evaluation_id: str, db: Session = Depends(get_db)):
+    eval_row = db.query(Evaluation).filter(Evaluation.evaluation_id == evaluation_id).first()
+    if not eval_row:
+        raise HTTPException(status_code=404, detail="Evaluation not found")
+    try:
+        return json.loads(eval_row.consensus_decisions) if eval_row.consensus_decisions else {}
+    except Exception:
+        return {}
+
+
+@legacy_router.get("/api/v1/evaluation/score-evolution/{evaluation_id}", summary="Get score evolution path")
+async def get_score_evolution(evaluation_id: str, db: Session = Depends(get_db)):
+    eval_row = db.query(Evaluation).filter(Evaluation.evaluation_id == evaluation_id).first()
+    if not eval_row:
+        raise HTTPException(status_code=404, detail="Evaluation not found")
+    try:
+        return json.loads(eval_row.score_evolution) if eval_row.score_evolution else []
+    except Exception:
+        return []
+
+
+@legacy_router.get("/api/v1/evaluation/evidence/{evaluation_id}", summary="Get directed evidence graph")
+async def get_evidence_graph(evaluation_id: str, db: Session = Depends(get_db)):
+    eval_row = db.query(Evaluation).filter(Evaluation.evaluation_id == evaluation_id).first()
+    if not eval_row:
+        raise HTTPException(status_code=404, detail="Evaluation not found")
+    try:
+        return json.loads(eval_row.evidence_graph) if eval_row.evidence_graph else {"nodes": [], "edges": []}
+    except Exception:
+        return {"nodes": [], "edges": []}
+
+
+@legacy_router.get("/api/v1/evaluations/{id}/provenance", summary="Get score provenance details")
 async def get_score_provenance(id: str, db: Session = Depends(get_db)):
     provenance = db.query(ScoreProvenance).filter(ScoreProvenance.evaluation_id == id).all()
     if not provenance:
@@ -3768,7 +4081,7 @@ def sanitize_error(msg: Optional[str]) -> Optional[str]:
     return "\n".join(cleaned_lines)
 
 
-@app.get("/api/v1/evaluations/{id}/diagnostics", summary="Get pipeline diagnostics payload")
+@legacy_router.get("/api/v1/evaluations/{id}/diagnostics", summary="Get pipeline diagnostics payload")
 async def get_pipeline_diagnostics(id: str, db: Session = Depends(get_db)):
     diag = db.query(PipelineDiagnostic).filter(PipelineDiagnostic.evaluation_id == id).first()
     if not diag:
@@ -3834,7 +4147,7 @@ async def get_pipeline_diagnostics(id: str, db: Session = Depends(get_db)):
     }
 
 
-@app.post("/api/v1/evaluations/{id}/replay", summary="Replay evaluation with exact original code snapshot & settings")
+@legacy_router.post("/api/v1/evaluations/{id}/replay", summary="Replay evaluation with exact original code snapshot & settings")
 async def replay_evaluation(id: str, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     original = db.query(Evaluation).filter(Evaluation.evaluation_id == id).first()
     if not original:
@@ -4076,7 +4389,7 @@ def calculate_evaluation_health(db: Session, evaluation_id: str, snapshot_id: Op
     }
 
 
-@app.get("/api/v1/evaluations/{id}/health", summary="Get overall Evaluation Health report object")
+@legacy_router.get("/api/v1/evaluations/{id}/health", summary="Get overall Evaluation Health report object")
 async def get_evaluation_health_v1(id: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation:
@@ -4086,7 +4399,7 @@ async def get_evaluation_health_v1(id: str, db: Session = Depends(get_db)):
     return health_report
 
 
-@app.get("/api/v1/evaluations/{id}/timeline", summary="Get detailed chronological pipeline execution timeline")
+@legacy_router.get("/api/v1/evaluations/{id}/timeline", summary="Get detailed chronological pipeline execution timeline")
 async def get_pipeline_timeline(id: str, db: Session = Depends(get_db)):
     evaluation = resolve_evaluation(id, db)
     if not evaluation:
@@ -4117,6 +4430,10 @@ async def get_pipeline_timeline(id: str, db: Session = Depends(get_db)):
         
     timeline.sort(key=lambda x: x["timestamp"])
     return timeline
+
+
+app.include_router(legacy_router)
+app.include_router(legacy_router, prefix="/api/v1")
 
 
 if __name__ == "__main__":

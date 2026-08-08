@@ -10,6 +10,18 @@ export function useEvaluationReport(projectId: string) {
   })
 }
 
+export function useCouncilScores(projectId: string) {
+  return useQuery({
+    queryKey: ['council-scores', projectId],
+    queryFn: async ({ signal }) => {
+      const res = await api.get(`/evaluations/${projectId}/council-scores`, { signal })
+      return res.data
+    },
+    enabled: !!projectId,
+    staleTime: 10 * 60 * 1000,
+  })
+}
+
 export function useRepositoryTree(projectId: string, path?: string) {
   const evalId = projectId
   return useQuery({

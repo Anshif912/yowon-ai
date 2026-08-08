@@ -256,3 +256,103 @@ def test_change_password(client, db_session):
     user = db_session.query(User).filter(User.email == "passwd@yowon.ai").first()
     assert verify_password("Newpassword123!", user.password_hash)
     assert not verify_password("Oldpassword123!", user.password_hash)
+
+
+def test_oauth_google_flow(client, db_session, monkeypatch):
+    """Verifies that Google OAuth redirect constructs correct URLs and callback provisions sessions."""
+    # 1. Verify Redirect URL generation
+    response = client.get("/api/v1/auth/oauth/google/redirect?redirect_to=/dashboard", follow_redirects=False)
+    assert response.status_code in (302, 307)
+    location = response.headers.get("location", "")
+    assert "accounts.google.com" in location
+    assert "client_id=" in location
+    assert "redirect_uri=" in location
+    assert "scope=" in location
+    assert "state=" in location
+
+    # 2. Mock Google userinfo retrieval
+    from modules.auth.oauth.google import GoogleOAuthProvider
+    async def mock_get_user_info(self, code: str, redirect_uri: str):
+        return {
+            "email": "test-google@yowon.ai",
+            "full_name": "Google Operator",
+            "sso_provider": "google",
+            "sso_external_id": "google-external-12345"
+        }
+    monkeypatch.setattr(GoogleOAuthProvider, "get_user_info", mock_get_user_info)
+
+    # 3. Verify Callback URL exchanges code and provisions user session
+    callback_resp = client.get(
+        "/api/v1/auth/oauth/google/callback",
+        params={
+            "code": "test-google-code-123",
+            "state": "test-nonce:/dashboard"
+        },
+        follow_redirects=False
+    )
+    assert callback_resp.status_code in (302, 307)
+    target = callback_resp.headers.get("location", "")
+    assert "/dashboard" in target
+
+    # Verify session cookies are set correctly
+    cookies = callback_resp.cookies
+    assert "access_token" in cookies
+    assert "refresh_token" in cookies
+
+    # Verify user was created in the database
+    user = db_session.query(User).filter(User.email == "test-google@yowon.ai").first()
+    assert user is not None
+    assert user.full_name == "Google Operator"
+    assert user.sso_provider == "google"
+    assert user.sso_external_id == "google-external-12345"
+    assert user.email_verified
+
+
+def test_oauth_github_flow(client, db_session, monkeypatch):
+    """Verifies that GitHub OAuth redirect constructs correct URLs and callback provisions sessions."""
+    # 1. Verify Redirect URL generation
+    response = client.get("/api/v1/auth/oauth/github/redirect?redirect_to=/dashboard", follow_redirects=False)
+    assert response.status_code in (302, 307)
+    location = response.headers.get("location", "")
+    assert "github.com/login/oauth/authorize" in location
+    assert "client_id=" in location
+    assert "redirect_uri=" in location
+    assert "state=" in location
+
+    # 2. Mock GitHub userinfo retrieval
+    from modules.auth.oauth.github import GitHubOAuthProvider
+    async def mock_get_user_info(self, code: str, redirect_uri: str):
+        return {
+            "email": "test-github@yowon.ai",
+            "full_name": "GitHub Operator",
+            "sso_provider": "github",
+            "sso_external_id": "github-external-12345"
+        }
+    monkeypatch.setattr(GitHubOAuthProvider, "get_user_info", mock_get_user_info)
+
+    # 3. Verify Callback URL exchanges code and provisions user session
+    callback_resp = client.get(
+        "/api/v1/auth/oauth/github/callback",
+        params={
+            "code": "test-github-code-123",
+            "state": "test-nonce:/dashboard"
+        },
+        follow_redirects=False
+    )
+    assert callback_resp.status_code in (302, 307)
+    target = callback_resp.headers.get("location", "")
+    assert "/dashboard" in target
+
+    # Verify session cookies are set correctly
+    cookies = callback_resp.cookies
+    assert "access_token" in cookies
+    assert "refresh_token" in cookies
+
+    # Verify user was created in the database
+    user = db_session.query(User).filter(User.email == "test-github@yowon.ai").first()
+    assert user is not None
+    assert user.full_name == "GitHub Operator"
+    assert user.sso_provider == "github"
+    assert user.sso_external_id == "github-external-12345"
+    assert user.email_verified
+

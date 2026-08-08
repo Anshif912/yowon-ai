@@ -47,12 +47,10 @@ export const RenderingManager = memo(function RenderingManager() {
           inset:         0,
           zIndex:        -45,
           pointerEvents: 'none',
-          opacity:       0.65, // Atmospheric opacity matched to demo
+          opacity:       1.0,
         }}
       >
         <Galaxy
-          mouseRepulsion={true}
-          mouseInteraction={true}
           density={1.2}
           glowIntensity={0.6}
           saturation={0.5}

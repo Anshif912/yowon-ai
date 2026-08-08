@@ -5,8 +5,9 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 
 from database import get_db, User
-from auth.security import get_current_user
+from auth.security import get_current_user, RoleChecker
 from core.security.secrets.vault import SecretsVaultService
+
 from core.event_bus import publish as publish_event
 from .schemas import SecretCreate, SecretRotate, SecretResponse, SecretAccessLogResponse
 
@@ -46,7 +47,7 @@ def list_secrets(
 def create_secret(
     payload: SecretCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(RoleChecker(["admin", "SUPER_ADMIN", "ORG_OWNER", "WORKSPACE_ADMIN", "security engineer"]))
 ):
     """Manually registers a new secret key value inside the vault."""
     vault_service = SecretsVaultService(db)
@@ -86,7 +87,7 @@ def rotate_secret(
     id: str,
     payload: SecretRotate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(RoleChecker(["admin", "SUPER_ADMIN", "ORG_OWNER", "WORKSPACE_ADMIN", "security engineer"]))
 ):
     """Rotates credentials and increments model versions."""
     vault_service = SecretsVaultService(db)
@@ -106,8 +107,9 @@ def rotate_secret(
 def delete_secret(
     id: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(RoleChecker(["admin", "SUPER_ADMIN", "ORG_OWNER", "WORKSPACE_ADMIN", "security engineer"]))
 ):
+
     """Revokes and purges a secret from the vault."""
     vault_service = SecretsVaultService(db)
     try:

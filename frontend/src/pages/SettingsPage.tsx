@@ -39,8 +39,8 @@ export default function SettingsPage() {
 
   // GitHub Integration State
   const [githubConnected, setGithubConnected] = useState(() => localStorage.getItem('yowon_github_connected') === 'true' || Boolean(localStorage.getItem('yowon_github_token')))
-  const [githubUsername, setGithubUsername] = useState(() => localStorage.getItem('yowon_github_user') || 'Anshif912')
-  const [githubInputUser, setGithubInputUser] = useState(() => localStorage.getItem('yowon_github_user') || 'Anshif912')
+  const [githubUsername, setGithubUsername] = useState(() => localStorage.getItem('yowon_github_user') || '')
+  const [githubInputUser, setGithubInputUser] = useState(() => localStorage.getItem('yowon_github_user') || '')
   const [githubToken, setGithubToken] = useState(() => localStorage.getItem('yowon_github_token') || '')
   const [showGithubToken, setShowGithubToken] = useState(false)
   const [isConnectingGithub, setIsConnectingGithub] = useState(false)
@@ -108,7 +108,7 @@ export default function SettingsPage() {
     if (e) e.preventDefault()
     setIsConnectingGithub(true)
     setFeedbackError(null)
-    const handle = githubInputUser.trim() || 'Anshif912'
+    const handle = githubInputUser.trim()
     try {
       const ghRes = await fetch(`https://api.github.com/users/${handle}/repos?per_page=100&sort=updated`)
       if (ghRes.ok) {

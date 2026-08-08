@@ -112,3 +112,7 @@ ha_frontend_ref/
 !.env.example
 rewrite.py
 git_rewrite.py
+
+# ── Local Development / Scratch Scripts ──────────────────────────────
+check_*.py
+debug_*.py

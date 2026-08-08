@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import { api } from '../../api/api'
+import { authOrchestrator } from '../../services/auth/AuthOrchestrator'
 
 // Configure API to send cookies for HTTPOnly refresh tokens
 api.defaults.withCredentials = true
@@ -20,12 +21,16 @@ export interface UserProfile {
 }
 
 export type AuthPhase = 
-  | 'NEW'
+  | 'INITIALIZING'
+  | 'CHECKING_PLATFORM'
+  | 'RESTORING_SESSION'
   | 'AUTHENTICATING'
-  | 'AUTHENTICATED'
-  | 'WORKSPACE_LOADING'
-  | 'PERMISSIONS_LOADING'
+  | 'LOADING_ORGANIZATION'
+  | 'LOADING_WORKSPACE'
+  | 'INITIALIZING_RBAC'
+  | 'REDIRECTING'
   | 'READY'
+  | 'NEW'
   | 'EXPIRED'
   | 'LOGGED_OUT'
 
@@ -49,237 +54,63 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-// In-memory access token storage (OWASP Security standard)
-let memoryAccessToken: string | null = null
-
-// axios interceptor to inject bearer token
-api.interceptors.request.use((config) => {
-  if (memoryAccessToken) {
-    config.headers.Authorization = `Bearer ${memoryAccessToken}`
-  }
-  return config
-}, (error) => {
-  return Promise.reject(error)
-})
-
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [authPhase, setAuthPhase] = useState<AuthPhase>('AUTHENTICATING')
+  const [authPhase, setAuthPhase] = useState<AuthPhase>('INITIALIZING')
   const [platformInitialized, setPlatformInitialized] = useState(true)
   const [providers, setProviders] = useState<string[]>(['password'])
   const [providersMetadata, setProvidersMetadata] = useState<Record<string, any>>({})
 
-  // Token refresh scheduler reference
-  const refreshTimerRef = useRef<any>(null)
-  const userRef = useRef<UserProfile | null>(null)
-
   useEffect(() => {
-    userRef.current = user
-  }, [user])
+    authOrchestrator.subscribe({
+      onPhaseChange: (phase) => setAuthPhase(phase),
+      onUserChange: (usr) => setUser(usr),
+      onPlatformChange: (init) => setPlatformInitialized(init),
+      onProvidersChange: (provs, meta) => {
+        setProviders(provs)
+        setProvidersMetadata(meta)
+      }
+    })
 
-  const clearRefreshTimer = useCallback(() => {
-    if (refreshTimerRef.current) {
-      clearTimeout(refreshTimerRef.current)
-      refreshTimerRef.current = null
+    authOrchestrator.initialize()
+
+    return () => {
+      authOrchestrator.clearRefreshTimer()
     }
   }, [])
 
-  // Schedule silent refresh 1 minute before access token expiration (15m expiry -> refresh at 14m)
-  const scheduleSilentRefresh = useCallback(() => {
-    clearRefreshTimer()
-    
-    // Refresh every 14 minutes
-    const intervalMs = 14 * 60 * 1000 
-    refreshTimerRef.current = setTimeout(async () => {
-      try {
-        if (import.meta.env.DEV) {
-          console.log('[Auth] Performing silent session refresh...')
-        }
-        const res = await api.post('/auth/refresh')
-        memoryAccessToken = res.data.access_token
-        setUser(res.data.user)
-        scheduleSilentRefresh()
-      } catch (err) {
-        console.warn('[Auth] Silent refresh failed, logging out user', err)
-        memoryAccessToken = null
-        setUser(null)
-        setAuthPhase('EXPIRED')
-      }
-    }, intervalMs)
-  }, [clearRefreshTimer])
-
-  // Explicit checkSession to restore session on boot
-  const checkSession = useCallback(async (): Promise<UserProfile | null> => {
-    // If session is already active (e.g. from dynamic login/registration), do nothing
-    if (memoryAccessToken) {
-      setLoading(false)
-      return userRef.current
-    }
-    
-    try {
-      // 1. Fetch bootstrap configuration (detect first startup / admin state)
-      const bootstrapRes = await api.get(`/auth/bootstrap?t=${Date.now()}`)
-      const isInitialized = bootstrapRes.data.platform_initialized
-      setPlatformInitialized(isInitialized)
-      setProviders(bootstrapRes.data.providers)
-      setProvidersMetadata(bootstrapRes.data.providers_metadata)
-
-      if (!isInitialized) {
-        setAuthPhase('NEW')
-        setUser(null)
-        memoryAccessToken = null
-        return null
-      }
-
-      // 2. Fetch fresh access token via refresh token cookie
-      const res = await api.post('/auth/refresh')
-      if (!memoryAccessToken) {
-        memoryAccessToken = res.data.access_token
-        setUser(res.data.user)
-        setAuthPhase('READY')
-        scheduleSilentRefresh()
-      }
-      return res.data.user
-    } catch (err) {
-      if (import.meta.env.DEV) {
-        console.log('[Auth] No active persistent session found.')
-      }
-      if (!memoryAccessToken) {
-        memoryAccessToken = null
-        setUser(null)
-        setAuthPhase('LOGGED_OUT')
-      }
-      return null
-    } finally {
-      setLoading(false)
-    }
-  }, [scheduleSilentRefresh])
-
-  useEffect(() => {
-    checkSession()
-    return () => clearRefreshTimer()
-  }, [checkSession, clearRefreshTimer])
-
-  const login = async (email: string, password: string, rememberMe: boolean): Promise<UserProfile> => {
-    setLoading(true)
-    setAuthPhase('AUTHENTICATING')
-    try {
-      const res = await api.post('/auth/login', { email, password })
-      memoryAccessToken = res.data.access_token
-      setUser(res.data.user)
-      setAuthPhase('READY')
-      
-      if (rememberMe) {
-        localStorage.setItem('yowon_remember_me', 'true')
-      } else {
-        localStorage.removeItem('yowon_remember_me')
-      }
-      
-      scheduleSilentRefresh()
-      return res.data.user
-    } catch (err: any) {
-      setUser(null)
-      memoryAccessToken = null
-      setAuthPhase('LOGGED_OUT')
-      throw err
-    } finally {
-      setLoading(false)
-    }
+  const login = async (email: string, password: string, rememberMe: boolean) => {
+    return authOrchestrator.login(email, password, rememberMe)
   }
 
-  const setupOrganization = async (
-    orgName: string,
-    adminName: string,
-    email: string,
-    password: string
-  ): Promise<UserProfile> => {
-    setLoading(true)
-    setAuthPhase('AUTHENTICATING')
-    try {
-      const res = await api.post('/auth/setup-organization', {
-        organization_name: orgName,
-        admin_name: adminName,
-        email,
-        password
-      })
-      memoryAccessToken = res.data.access_token
-      setUser(res.data.user)
-      setPlatformInitialized(true)
-      setAuthPhase('READY')
-      scheduleSilentRefresh()
-      return res.data.user
-    } catch (err) {
-      setUser(null)
-      memoryAccessToken = null
-      setAuthPhase('NEW')
-      throw err
-    } finally {
-      setLoading(false)
-    }
+  const setupOrganization = async (orgName: string, adminName: string, email: string, password: string) => {
+    return authOrchestrator.setupOrganization(orgName, adminName, email, password)
   }
 
-  const register = async (
-    fullName: string,
-    email: string,
-    password: string
-  ): Promise<UserProfile> => {
-    setLoading(true)
-    setAuthPhase('AUTHENTICATING')
-    try {
-      const res = await api.post('/auth/register', {
-        full_name: fullName,
-        email,
-        password
-      })
-      memoryAccessToken = res.data.access_token
-      setUser(res.data.user)
-      setAuthPhase('READY')
-      scheduleSilentRefresh()
-      return res.data.user
-    } catch (err) {
-      setUser(null)
-      memoryAccessToken = null
-      setAuthPhase('LOGGED_OUT')
-      throw err
-    } finally {
-      setLoading(false)
-    }
+  const register = async (fullName: string, email: string, password: string) => {
+    return authOrchestrator.register(fullName, email, password)
   }
 
   const logout = async () => {
-    clearRefreshTimer()
-    setLoading(true)
-    setAuthPhase('LOGGED_OUT')
-    try {
-      await api.post('/auth/logout')
-    } catch (err) {
-      console.error('[Auth] Logout endpoint call failed', err)
-    } finally {
-      memoryAccessToken = null
-      setUser(null)
-      setLoading(false)
-      localStorage.removeItem('yowon_remember_me')
-    }
+    return authOrchestrator.logout()
+  }
+
+  const checkSession = async () => {
+    await authOrchestrator.initialize()
+    return null
   }
 
   const updateProfile = async (profileData: Partial<UserProfile>): Promise<UserProfile> => {
-    try {
-      const res = await api.put('/auth/profile', profileData)
-      setUser(res.data)
-      return res.data
-    } catch (err) {
-      throw err
-    }
+    const res = await api.put('/auth/profile', profileData)
+    setUser(res.data)
+    return res.data
   }
 
   const changePassword = async (oldPassword: string, newPassword: string): Promise<void> => {
-    try {
-      await api.put('/auth/change-password', { old_password: oldPassword, new_password: newPassword })
-    } catch (err) {
-      throw err
-    }
+    await api.put('/auth/change-password', { old_password: oldPassword, new_password: newPassword })
   }
+
+  const loading = authPhase !== 'READY' && authPhase !== 'NEW' && authPhase !== 'LOGGED_OUT' && authPhase !== 'EXPIRED'
 
   const value = {
     user,

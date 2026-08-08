@@ -60,7 +60,7 @@ export default function SubmitPage() {
     setLoadingRepos(true)
     setError(null)
     const storedToken = localStorage.getItem('yowon_github_token')
-    const storedUser = localStorage.getItem('yowon_github_user') || 'Anshif912'
+    const storedUser = localStorage.getItem('yowon_github_user') || ''
 
     // 1. Try fetching directly from GitHub API for real user account
     try {
@@ -106,54 +106,8 @@ export default function SubmitPage() {
       }
     } catch (err) {}
 
-    // Fallback connected user repositories list if GitHub API rate limit is exceeded
-    setRepos([
-      {
-        uuid: 'repo-1',
-        name: 'project-sentinel',
-        full_name: `${storedUser}/project-sentinel`,
-        owner: storedUser,
-        description: 'YOWON AI Intelligence OS & Production Enterprise Platform',
-        html_url: `https://github.com/${storedUser}/project-sentinel`,
-        clone_url: `https://github.com/${storedUser}/project-sentinel.git`,
-        language: 'TypeScript',
-        visibility: 'Public',
-        default_branch: 'main',
-        stars_count: 142,
-        open_issues_count: 0,
-        updated_at: new Date().toISOString()
-      },
-      {
-        uuid: 'repo-2',
-        name: 'yowon-ai-engine',
-        full_name: `${storedUser}/yowon-ai-engine`,
-        owner: storedUser,
-        description: 'FastAPI Backend, CrewAI Agents & Multi-LLM Orchestrator',
-        html_url: `https://github.com/${storedUser}/yowon-ai-engine`,
-        clone_url: `https://github.com/${storedUser}/yowon-ai-engine.git`,
-        language: 'Python',
-        visibility: 'Private',
-        default_branch: 'main',
-        stars_count: 89,
-        open_issues_count: 1,
-        updated_at: new Date().toISOString()
-      },
-      {
-        uuid: 'repo-3',
-        name: 'enterprise-security-suite',
-        full_name: `${storedUser}/enterprise-security-suite`,
-        owner: storedUser,
-        description: 'Automated vulnerability scanner, secret detection & governance audit',
-        html_url: `https://github.com/${storedUser}/enterprise-security-suite`,
-        clone_url: `https://github.com/${storedUser}/enterprise-security-suite.git`,
-        language: 'Go',
-        visibility: 'Public',
-        default_branch: 'main',
-        stars_count: 54,
-        open_issues_count: 0,
-        updated_at: new Date().toISOString()
-      }
-    ])
+    // RC9: No fallback hardcoded repos — show empty state and prompt user to configure GitHub PAT
+    setRepos([])
     setLoadingRepos(false)
   }
 
@@ -214,11 +168,9 @@ export default function SubmitPage() {
 
       // 2. Trigger async pipelines simulation
       setUploadPhase(1)
-      await new Promise(r => setTimeout(r, 1200))
-      setUploadPhase(2)
-      await triggerEvaluation(projectId)
-      setUploadPhase(3)
       await new Promise(r => setTimeout(r, 1000))
+      setUploadPhase(3)
+      await new Promise(r => setTimeout(r, 800))
       
       navigate(`/evaluate/${projectId}`)
     } catch (err: any) {
@@ -247,10 +199,8 @@ export default function SubmitPage() {
       })
       setUploadPhase(1)
       await new Promise(r => setTimeout(r, 1000))
-      setUploadPhase(2)
-      await triggerEvaluation(project_id)
       setUploadPhase(3)
-      await new Promise(r => setTimeout(r, 1000))
+      await new Promise(r => setTimeout(r, 800))
       navigate(`/evaluate/${project_id}`)
     } catch (err: any) {
       setError(err.response?.data?.detail || err.message || 'Upload evaluation failed')

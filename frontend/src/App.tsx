@@ -19,6 +19,7 @@ const LeaderboardPage  = lazy(() => import('./pages/LeaderboardPage'))
 const JuryDashboardPage= lazy(() => import('./pages/JuryDashboardPage'))
 const ProjectsPage     = lazy(() => import('./pages/ProjectsPage'))
 const LoginPage        = lazy(() => import('./pages/Login/LoginPage'))
+const ForgotPasswordPage = lazy(() => import('./pages/Login/ForgotPasswordPage'))
 const RegisterPage     = lazy(() => import('./pages/Login/RegisterPage'))
 const RegisterOrganizationPage = lazy(() => import('./pages/Login/RegisterOrganizationPage'))
 const LoadingWorkspacePage = lazy(() => import('./pages/Login/LoadingWorkspacePage'))
@@ -116,6 +117,7 @@ export default function App() {
             {/* Public routes outside shell */}
             <Route path="/"           element={<LandingPage />} />
             <Route path="/login"      element={<GuestRoute><LoginPage /></GuestRoute>} />
+            <Route path="/forgot-password" element={<GuestRoute><ForgotPasswordPage /></GuestRoute>} />
             <Route path="/register"   element={<GuestRoute><RegisterPage /></GuestRoute>} />
             <Route path="/register-organization" element={<RegisterOrganizationPage />} />
             <Route path="/loading-workspace" element={<LoadingWorkspacePage />} />
@@ -161,22 +163,24 @@ export default function App() {
                   </RequireProjectId>
                 }
               />
-              <Route
-                path="/report/:projectId"
-                element={
-                  <RequireProjectId>
-                    <ReportPage />
-                  </RequireProjectId>
-                }
-              />
-              <Route
-                path="/report/:projectId/:section"
-                element={
-                  <RequireProjectId>
-                    <ReportPage />
-                  </RequireProjectId>
-                }
-              />
+              <Route path="/report/:projectId">
+                <Route
+                  index
+                  element={
+                    <RequireProjectId>
+                      <ReportPage />
+                    </RequireProjectId>
+                  }
+                />
+                <Route
+                  path=":section"
+                  element={
+                    <RequireProjectId>
+                      <ReportPage />
+                    </RequireProjectId>
+                  }
+                />
+              </Route>
               <Route
                 path="/authenticity/:projectId"
                 element={

@@ -77,8 +77,9 @@ CHROMA_COLLECTION_NAME: str = "yowon_projects"
 
 CORS_ORIGINS: list[str] = os.getenv(
     "CORS_ORIGINS",
-    "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173",
+    "http://localhost:5173,http://localhost:5174,http://localhost:5175,http://localhost:4173,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:5174,http://127.0.0.1:5175,http://127.0.0.1:4173,http://127.0.0.1:3000",
 ).split(",")
+
 
 MAX_GITHUB_FILE_BYTES: int = 1_000_000
 MAX_REPOSITORY_FILES: int = 300
@@ -115,3 +116,26 @@ ENABLE_ENTERPRISE_WORKSPACES: bool = os.getenv("ENABLE_ENTERPRISE_WORKSPACES", "
 ENABLE_AI_COUNCIL: bool = os.getenv("ENABLE_AI_COUNCIL", "true").lower() in ("1", "true", "yes")
 ENABLE_LEADERBOARD: bool = os.getenv("ENABLE_LEADERBOARD", "true").lower() in ("1", "true", "yes")
 ENABLE_OWNERSHIP_ENGINE: bool = os.getenv("ENABLE_OWNERSHIP_ENGINE", "false").lower() in ("1", "true", "yes")
+
+# ── Password Reset / OTP ──────────────────────────────────────────────────────
+OTP_LENGTH: int = int(os.getenv("OTP_LENGTH", "6"))
+OTP_EXPIRY_MINUTES: int = int(os.getenv("OTP_EXPIRY_MINUTES", "5"))
+OTP_MAX_ATTEMPTS: int = int(os.getenv("OTP_MAX_ATTEMPTS", "5"))
+OTP_RESEND_LIMIT: int = int(os.getenv("OTP_RESEND_LIMIT", "3"))
+OTP_RESEND_COOLDOWN_S: int = int(os.getenv("OTP_RESEND_COOLDOWN_S", "60"))
+OTP_MAX_SESSIONS_PER_HOUR: int = int(os.getenv("OTP_MAX_SESSIONS_PER_HOUR", "5"))
+OTP_PEPPER: str = os.getenv("OTP_PEPPER", "")
+
+RESET_TOKEN_EXPIRY_MIN: int = int(os.getenv("RESET_TOKEN_EXPIRY_MIN", "10"))
+PASSWORD_RESET_JWT_SECRET: str = os.getenv(
+    "PASSWORD_RESET_JWT_SECRET",
+    os.getenv("JWT_SECRET_KEY", "yowon-ai-super-secret-key-2026-auth-prod-ready")
+)
+
+FORGOT_RATE_LIMIT_COUNT: int = int(os.getenv("FORGOT_RATE_LIMIT_COUNT", "5"))
+FORGOT_RATE_LIMIT_WINDOW: int = int(os.getenv("FORGOT_RATE_LIMIT_WINDOW", "3600"))
+
+# ── Email (Resend) ────────────────────────────────────────────────────────────
+RESEND_API_KEY: str = os.getenv("RESEND_API_KEY", "")
+RESEND_FROM_EMAIL: str = os.getenv("RESEND_FROM_EMAIL", os.getenv("EMAIL_FROM_ADDRESS", "onboarding@resend.dev"))
+EMAIL_DEV_MODE: bool = os.getenv("EMAIL_DEV_MODE", "true").lower() in ("1", "true", "yes")

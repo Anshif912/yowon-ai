@@ -5,9 +5,10 @@ from fastapi import APIRouter, Depends, HTTPException, status, Header
 from sqlalchemy.orm import Session
 
 from database import get_db, User
-from auth.security import get_current_user
+from auth.security import get_current_user, RoleChecker
 
 from modules.governance.schemas import GovernanceWorkflowResponse, ReviewSubmitRequest
+
 from modules.decision_intelligence.schemas import DecisionPolicyResponse
 from modules.governance.service import (
     get_project_governance_workflow,
@@ -68,8 +69,9 @@ def submit_governance_review_endpoint(
     step_name: str,
     payload: ReviewSubmitRequest,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(RoleChecker(["admin", "SUPER_ADMIN", "ORG_OWNER", "WORKSPACE_ADMIN", "JUDGE", "REVIEWER", "EVALUATOR", "evaluator"]))
 ):
+
     """Submits review status and writes audit trace entry."""
     step = submit_governance_review(
         db,

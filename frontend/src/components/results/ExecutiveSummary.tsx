@@ -24,6 +24,8 @@ function SectionCard({
   color: string
   delay: number
 }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const I = Icon as any
   if (!items.length) return null
 
   return (
@@ -34,7 +36,7 @@ function SectionCard({
       transition={{ delay }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <Icon size={16} style={{ color }} />
+        <I size={16} style={{ color }} />
         <h3 className="font-display font-semibold text-yowon-text">{title}</h3>
       </div>
       <ul className="space-y-2">

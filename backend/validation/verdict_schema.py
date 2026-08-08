@@ -39,6 +39,8 @@ class ChiefVerdictModel(BaseModel):
     calibration_explanation: str = ""
     project_type_justification: str = ""
     community_impact_score: int = 0
+    reasoning_sections: dict[str, Any] = Field(default_factory=dict)
+
 
 
 AGENT_DEFAULTS: dict[str, dict[str, Any]] = {
@@ -191,6 +193,7 @@ def merge_chief_verdict(parsed: dict[str, Any], computed: dict[str, Any]) -> dic
         "calibration_explanation": computed.get("calibration_explanation") or parsed.get("calibration_explanation", ""),
         "project_type_justification": computed.get("project_type_justification") or parsed.get("project_type_justification", ""),
         "community_impact_score": computed.get("community_impact_score", parsed.get("community_impact_score", 0)),
+        "reasoning_sections": parsed.get("reasoning_sections") or {},
     }
 
     if not merged["recommended_fixes"]:

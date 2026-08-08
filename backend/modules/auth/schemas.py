@@ -46,3 +46,38 @@ class UserRegister(BaseModel):
     full_name: str = Field(..., min_length=1, max_length=100)
     email: str = Field(..., description="Email address of the user")
     password: str = Field(..., min_length=8, description="Password must be at least 8 characters long")
+
+# ── Password Reset Schemas ────────────────────────────────────────────────────
+
+class ForgotPasswordRequest(BaseModel):
+    """Request body for POST /auth/password/forgot."""
+    email: str = Field(..., description="User email address")
+
+
+class VerifyOTPRequest(BaseModel):
+    """Request body for POST /auth/password/verify."""
+    email: str = Field(..., description="User email address")
+    otp: str = Field(min_length=6, max_length=6, pattern=r"^\d{6}$")
+
+
+class ResetPasswordRequest(BaseModel):
+    """Request body for POST /auth/password/reset."""
+    token: str
+    password: str = Field(min_length=8, max_length=128)
+
+
+class ResendOTPRequest(BaseModel):
+    """Request body for POST /auth/password/resend."""
+    email: str = Field(..., description="User email address")
+
+
+class GenericSuccessResponse(BaseModel):
+    """Generic success envelope."""
+    success: bool = True
+    message: str = ""
+
+
+class VerifyOTPResponse(BaseModel):
+    """Response from POST /auth/password/verify."""
+    success: bool = True
+    resetToken: str

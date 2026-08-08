@@ -152,20 +152,14 @@ export interface UploadProjectPayload {
 
 
 export interface AgentStateEntry {
-
   status: AgentStatus | 'failed'
   label?: string | null
-
   started_at?: number | null
-
   ended_at?: number | null
-
   duration_sec?: number | null
-
+  score?: number | null
   model?: string | null
-
   error?: string | null
-
 }
 
 
@@ -220,6 +214,10 @@ export interface EvaluationProgress {
   events?: ProgressEvent[]
 
   project_id?: string
+
+  correlation_id?: string
+
+  task_id?: string
 
 }
 

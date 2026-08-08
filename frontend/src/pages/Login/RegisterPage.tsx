@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../components/auth/AuthContext'
 import SoftAurora from '../../components/effects/SoftAurora'
 
+const AURORA_COLORS: [string, string, string] = ['#00e5ff', '#3B82F6', '#8B5CF6'];
+
 export default function RegisterPage() {
-  const { register, isSubmitLoading } = useAuth() as any
+  const { register } = useAuth()
   const navigate = useNavigate()
 
   // Form fields state
@@ -32,13 +34,9 @@ export default function RegisterPage() {
     }
   }
 
-  // Password complexity check
+  // Password complexity check (minimum 8 characters)
   const validateComplexity = (pwd: string) => {
     if (pwd.length < 8) return 'Password must be at least 8 characters long.'
-    if (!/[A-Z]/.test(pwd)) return 'Password must contain at least one uppercase letter.'
-    if (!/[a-z]/.test(pwd)) return 'Password must contain at least one lowercase letter.'
-    if (!/[0-9]/.test(pwd)) return 'Password must contain at least one digit.'
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(pwd)) return 'Password must contain at least one special character.'
     return null
   }
 
@@ -72,14 +70,31 @@ export default function RegisterPage() {
 
     setIsLoading(true)
     try {
-      const { register: registerFunc } = useAuth()
-      await registerFunc(fullName, email, password)
+      await register(fullName, email, password)
       setSuccessMsg('Account registered successfully. Redirecting...')
       setTimeout(() => {
         navigate('/dashboard')
       }, 1500)
     } catch (err: any) {
-      const serverMsg = err.response?.data?.detail || err.response?.data?.message || 'Registration connection failed.'
+      console.error('[RegisterPage] Registration failed:', err)
+      let serverMsg = 'Registration connection failed.'
+      if (err.response?.data?.detail) {
+        const detail = err.response.data.detail
+        if (Array.isArray(detail)) {
+          serverMsg = detail.map((d: any) => `${d.loc?.[d.loc.length - 1] || 'field'}: ${d.msg}`).join(', ')
+        } else if (typeof detail === 'string') {
+          serverMsg = detail
+        } else if (detail.message) {
+          serverMsg = detail.message
+        }
+      } else if (err.response?.data?.message) {
+        serverMsg = err.response.data.message
+      }
+
+      if (serverMsg.toLowerCase().includes('already exists')) {
+        serverMsg = 'An account with this email address already exists.'
+      }
+
       setFormError(serverMsg)
       triggerErrorState()
     } finally {
@@ -95,7 +110,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-[#05070a] px-4 py-12">
       {/* Background Aurora effects */}
-      <SoftAurora colorStops={['#00e5ff', '#3B82F6', '#8B5CF6']} amplitude={1.2} />
+      <SoftAurora colorStops={AURORA_COLORS} amplitude={1.2} />
       
       <AnimatePresence>
         <motion.div 
@@ -201,7 +216,17 @@ export default function RegisterPage() {
                   className="p-2.5 rounded-lg border border-red-500/20 bg-red-500/5 text-red-400 text-[10px] flex items-start gap-2 leading-relaxed"
                 >
                   <AlertTriangle size={13} className="shrink-0 mt-0.5" />
-                  <span>{formError}</span>
+                  <div className="flex-1">
+                    <span>{formError}</span>
+                    {formError.includes('already exists') && (
+                      <Link
+                        to="/login"
+                        className="block mt-1 font-mono font-bold text-cyan-400 hover:underline uppercase text-[9px]"
+                      >
+                        Click here to Sign In →
+                      </Link>
+                    )}
+                  </div>
                 </motion.div>
               )}
               {successMsg && (

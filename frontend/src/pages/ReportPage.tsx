@@ -9,7 +9,16 @@ import { useEvaluationReport } from '../components/report/queries'
 import { getPdfUrl } from '../api/api'
 import { ErrorBoundary } from '../components/report/ErrorBoundary'
 import ScoreRing from '../components/ScoreRing'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from '../components/report/PremiumWorkspaceCard'
 import { BentoCard, BentoCardGrid, GlobalSpotlight, useMobileDetection } from '../components/graphs/MagicBento'
+import VerdictDetailView from '../components/report/VerdictDetailView'
+import PerformanceDetailView from '../components/report/PerformanceDetailView'
+import CouncilDetailView from '../components/report/CouncilDetailView'
+import MissionControlWorkspace from '../components/report/MissionControlWorkspace'
 
 // Particle drift component for key featured cards inside Jury Report
 function LiveIntelligenceParticles() {
@@ -199,78 +208,59 @@ export default function ReportPage() {
     ]
   }, [vd])
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[300px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400" />
-      </div>
-    )
-  }
-
-  if (!reportData) {
-    return (
-      <div className="p-8 text-center text-zinc-500 font-mono">
-        No evaluation data loaded for this project ID.
-      </div>
-    )
-  }
-
-  const pdfUrl = projectId ? getPdfUrl(projectId) : '#'
-
-  // Navigation Cards for Jury Report Workspace
-  const cards = [
+  const cards = useMemo(() => [
     {
       id: 'verdict',
       title: 'Executive Verdict',
-      description: 'Review system status summaries, production clearance clearances, and health rankings.',
+      description: 'AI consensus decision, confidence propagation, and production clearance status.',
       icon: CheckCircle,
       color: 'text-emerald-400 border-zinc-800 bg-[#0c1017]',
       rgb: '16, 185, 129',
       desktopStyle: { gridColumn: 'span 2', minHeight: '300px' },
-      scoreChip: 'Consensus Verdict',
+      scoreChip: vd?.final_recommendation ? vd.final_recommendation.toUpperCase().replace('_', ' ') : 'CONDITIONAL APPROVE',
       featured: true,
       titleSize: '32px'
     },
     {
       id: 'performance',
       title: 'Performance Scorecard',
-      description: 'Audit separation metrics, AST layers static analysis, and modularity ratings.',
+      description: 'AST analysis, static metrics, architecture separation and modularity ratings.',
       icon: BarChart3,
       color: 'text-blue-400 border-zinc-800 bg-[#0c1017]',
       rgb: '59, 130, 246',
       desktopStyle: { gridColumn: 'span 1', minHeight: '300px' },
-      scoreChip: 'separation index',
+      scoreChip: `${overallScore}/100`,
       featured: false,
       titleSize: '24px'
     },
     {
       id: 'ai-council',
-      title: 'AI Council Status',
-      description: 'Detailed auditor agent checkmarks, reasoning logs, and individual confidence bounds.',
+      title: 'AI Council',
+      description: 'Full council chamber — agent reasoning, confidence, evidence, dimension scores.',
       icon: Cpu,
       color: 'text-violet-400 border-zinc-800 bg-[#0c1017]',
       rgb: '139, 92, 246',
       desktopStyle: { gridColumn: 'span 1', minHeight: '300px' },
-      scoreChip: '8 Evaluators Ready',
+      scoreChip: '6 Agents',
       featured: false,
       titleSize: '24px'
     },
     {
       id: 'risk',
       title: 'Risk Analysis',
-      description: 'Inspect codebase weaknesses checklist, credentials security risks, and technical debt warnings.',
+      description: 'Visual risk matrix, security likelihood, impact scores all 6 risk subcategories.',
       icon: ShieldAlert,
       color: 'text-red-400 border-zinc-800 bg-[#0c1017]',
       rgb: '239, 68, 68',
       desktopStyle: { gridColumn: 'span 2', minHeight: '300px' },
-      scoreChip: 'SAST Weaknesses',
+      scoreChip: 'Low Risk',
       featured: true,
       titleSize: '32px'
     },
     {
       id: 'business',
-      title: 'Business Value',
-      description: 'Technical debt days estimations and maintainability timelines.',
+      title: 'Business Intelligence',
+      description: 'Market opportunity analysis, ROI estimation, and competitive positioning.',
       icon: Compass,
       color: 'text-purple-400 border-zinc-800 bg-[#0c1017]',
       rgb: '168, 85, 247',
@@ -282,7 +272,7 @@ export default function ReportPage() {
     {
       id: 'recommendations',
       title: 'Jury Recommendations',
-      description: 'Prioritized technical improvements list to increase safety score.',
+      description: 'Prioritized action plan with effort estimation and strategic value ranking.',
       icon: Wrench,
       color: 'text-orange-400 border-zinc-800 bg-[#0c1017]',
       rgb: '249, 115, 22',
@@ -294,7 +284,7 @@ export default function ReportPage() {
     {
       id: 'innovation',
       title: 'Innovation Index',
-      description: 'Audits for codebase design pattern adaptations.',
+      description: 'Technology novelty scoring, framework adoption metrics, and future-readiness.',
       icon: Sparkles,
       color: 'text-pink-400 border-zinc-800 bg-[#0c1017]',
       rgb: '236, 72, 153',
@@ -315,7 +305,25 @@ export default function ReportPage() {
       featured: false,
       titleSize: '24px'
     }
-  ]
+  ], [vd, overallScore])
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[300px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400" />
+      </div>
+    )
+  }
+
+  if (!reportData) {
+    return (
+      <div className="p-8 text-center text-zinc-500 font-mono">
+        No evaluation data loaded for this project ID.
+      </div>
+    )
+  }
+
+  const pdfUrl = projectId ? getPdfUrl(projectId) : '#'
 
   const handleCardClick = (id: string) => {
     localStorage.setItem('yowon_last_report_section', id)
@@ -382,6 +390,12 @@ export default function ReportPage() {
         </div>
       </div>
 
+      {/* Interactive Mission Control Workspace */}
+      <div className="border-t border-zinc-800/40 pt-8 mt-10">
+        <h3 className="text-sm font-black font-display text-white mb-6 uppercase tracking-widest font-mono text-zinc-400">Jury Decision Mission Control</h3>
+        <MissionControlWorkspace projectId={projectId!} reportData={report} />
+      </div>
+
       {/* Global spotlight hover effect */}
       <GlobalSpotlight
         gridRef={gridRef}
@@ -441,7 +455,7 @@ export default function ReportPage() {
               {/* Explore action CTA (Explore →) */}
               <div className="flex items-center justify-between relative z-10 mt-4 pt-3 border-t border-white/[0.04] text-[14px]">
                 <span className="text-zinc-500 font-mono uppercase tracking-wider block font-bold">
-                  Jury Gateway
+                  Intelligence Workspace
                 </span>
                 <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-cyan-400 group-hover:translate-x-1.5 transition-transform shrink-0">
                   Explore <ArrowRight size={14} />
@@ -459,120 +473,13 @@ export default function ReportPage() {
   const renderDetailView = () => {
     switch (section) {
       case 'verdict':
-        return (
-          <div className="border border-zinc-800 bg-[#090d13] rounded-xl p-8 space-y-8 text-zinc-300">
-            <h3 className="text-2xl font-bold text-white border-b border-zinc-800/80 pb-3 flex items-center gap-1.5 font-display">
-              <CheckCircle size={18} className="text-emerald-400" /> Executive Verdict Detail
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-[13px]">
-              <div className="bg-[#0c1017] p-6 rounded-xl border border-zinc-800/60 space-y-4">
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Consensus Verdict</span>
-                <span className={`text-4xl font-extrabold block ${verdictColors[verdict] || 'text-white'}`}>{verdict}</span>
-                <p className="text-[12px] text-zinc-400 font-sans leading-normal pt-2">
-                  All evaluator agents completed structural validations and approved package release guidelines.
-                </p>
-              </div>
-              <div className="bg-[#0c1017] p-6 rounded-xl border border-zinc-800/60 space-y-4">
-                <span className="text-zinc-500 uppercase tracking-widest block font-bold">Production Readiness</span>
-                <span className="text-2xl font-extrabold text-white block">{vd?.production_readiness || 'READY FOR PRODUCTION'}</span>
-                <p className="text-[12px] text-zinc-400 font-sans leading-normal pt-2">
-                  Codebase outlines show robust static parameter checks and clean pipeline logs.
-                </p>
-              </div>
-            </div>
-            <div className="pt-4 flex items-center justify-between border-t border-zinc-800/60 font-mono text-[12px]">
-              <button 
-                onClick={() => navigate(`/intelligence/${projectId}/story`)}
-                className="text-cyan-400 hover:underline flex items-center gap-1 cursor-pointer"
-              >
-                View Repository Story Spec →
-              </button>
-            </div>
-          </div>
-        )
+        return <VerdictDetailView report={report!} />
 
       case 'performance':
-        return (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 font-sans text-white text-[14px]">
-            <div className="lg:col-span-2 p-6 border border-zinc-800 rounded-xl bg-[#090d13] space-y-6">
-              <h3 className="text-xl font-bold text-white border-b border-zinc-800/80 pb-3 flex items-center gap-1.5 font-display">
-                <TrendingUp size={16} className="text-cyan-400" /> Score parameters breakdown
-              </h3>
-              <div className="space-y-5">
-                {[
-                  { label: 'Technical Quality Index', value: Math.max(0, Math.min(100, overallScore + 2)), target: 'metrics' },
-                  { label: 'Innovation Coverage', value: Math.max(0, Math.min(100, confidence)), target: 'technology' },
-                  { label: 'Security & Vulnerability Posture', value: Math.max(0, Math.min(100, overallScore - 4)), target: 'evidence' },
-                  { label: 'Architecture Layers Separation', value: Math.max(0, Math.min(100, overallScore + 4)), target: 'architecture' },
-                  { label: 'Dependencies import loop checks', value: Math.max(0, Math.min(100, overallScore - 6)), target: 'dependency' }
-                ].map((item, idx) => (
-                  <div key={idx} className="space-y-2">
-                    <div className="flex justify-between items-center text-[12px]">
-                      <span className="text-zinc-400 font-mono">{item.label}</span>
-                      <span className="font-bold text-white font-mono">{item.value}%</span>
-                    </div>
-                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden flex items-center">
-                      <div className="h-full bg-cyan-400 rounded-full" style={{ width: `${item.value}%` }} />
-                    </div>
-                    <button
-                      onClick={() => navigate(`/intelligence/${projectId}/${item.target}`)}
-                      className="text-[11px] text-cyan-400 hover:underline mt-1 block font-mono cursor-pointer"
-                    >
-                      View Architecture Details →
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-6 border border-zinc-800 rounded-xl bg-[#090d13] flex flex-col justify-between">
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-white border-b border-zinc-800/80 pb-3 font-display">Analysis Index</h3>
-                <p className="text-zinc-400 leading-relaxed text-[13px]">
-                  The codebase shows robust static type validations and decoupled architectural subsystems, but exhibits moderate technical debt in middleware module paths.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-zinc-800/80 space-y-1 font-mono">
-                <span className="text-zinc-500 uppercase tracking-widest block text-[9px] font-bold">OVERALL SCORE</span>
-                <span className="text-3xl font-extrabold text-cyan-400">{overallScore}/100</span>
-              </div>
-            </div>
-          </div>
-        )
+        return <PerformanceDetailView report={report!} projectId={projectId || ''} />
 
       case 'ai-council':
-        return (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {agentVerdicts.map((agent, i) => {
-              const Icon = agent.icon
-              const scoreColor = agent.score >= 85 ? 'text-emerald-400' : agent.score >= 70 ? 'text-cyan-400' : 'text-amber-400'
-              return (
-                <div key={i} className="p-6 rounded-xl border border-zinc-800 bg-[#090d13] flex flex-col justify-between gap-4 min-h-[160px] font-mono text-[11px]">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <span className="p-2 rounded-lg bg-zinc-900 border border-zinc-800" style={{ color: agent.color }}>
-                        <Icon size={14} />
-                      </span>
-                      <div>
-                        <h4 className="text-sm font-bold text-white leading-none font-display">{agent.name}</h4>
-                        <span className="text-[9px] text-zinc-500 uppercase mt-1 block font-mono">{agent.role}</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className={`text-base font-bold block ${scoreColor}`}>{agent.score}/100</span>
-                      <span className="text-[8px] text-zinc-500 block">Weight: {agent.weight}%</span>
-                    </div>
-                  </div>
-                  <p className="text-[12px] text-zinc-400 font-sans leading-relaxed">{agent.reasoning}</p>
-                  <div className="pt-3 border-t border-zinc-800/60 flex items-center justify-between text-[8px] text-zinc-600 uppercase tracking-wider font-mono">
-                    <span>Confidence: {agent.confidence}%</span>
-                    <span>Contribution Index: Balanced</span>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        )
+        return <CouncilDetailView report={report!} />
 
       case 'risk':
         return (
@@ -770,6 +677,13 @@ export default function ReportPage() {
             <div className="h-4 w-px bg-white/[0.08]" />
             <span className="text-zinc-500 uppercase tracking-widest">Jury Report Workspace:</span>
             <span className="text-white font-bold">{report?.project_name || 'Codebase'}</span>
+          </div>
+        )}
+
+        {/* Section Header (overview) */}
+        {isOverview && (
+          <div>
+            <p className="text-[9px] text-zinc-600 uppercase tracking-[0.3em] font-mono font-bold mb-8">Report Workspace</p>
           </div>
         )}
 

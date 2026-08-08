@@ -4,6 +4,11 @@ import { DashboardSection } from './DashboardSection'
 import { CardSkeleton } from './Skeletons'
 import { ErrorBoundary } from './ErrorBoundary'
 import { getPdfUrl } from '../../api/api'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 
 interface RoadmapPanelProps {
   projectId: string
@@ -136,84 +141,98 @@ function RoadmapContent({ projectId, demo }: { projectId: string; demo?: boolean
 
   return (
     <DashboardSection id="deployment-roadmap" title="Deployment Roadmap" icon={Map}>
-      <div className="space-y-6 font-mono text-[10px] text-white">
-        <div className="p-4 rounded-xl border border-white/[0.06] bg-white/[0.01]">
-          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block font-mono">deployment plan summary</span>
-          <p className="text-[10px] text-zinc-400 mt-1 leading-relaxed font-sans">
-            The chief judge compiled this 8-stage roadmap to resolve system vulnerabilities, structural coupling issues, and optimize scalability indices before launching to production.
-          </p>
-        </div>
+      <div className="space-y-6 font-mono text-[10px] text-white select-text">
+        <PremiumWorkspaceCard accent="timeline" className="!p-4">
+          <WorkspaceBody>
+            <span className="text-[9px] text-zinc-550 uppercase tracking-widest block font-mono font-bold select-none">deployment plan summary</span>
+            <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed font-sans">
+              The chief judge compiled this 8-stage roadmap to resolve system vulnerabilities, structural coupling issues, and optimize scalability indices before launching to production.
+            </p>
+          </WorkspaceBody>
+        </PremiumWorkspaceCard>
 
         {/* The 8 Phases */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {phases.map(phase => {
             const Icon = phase.icon
             return (
-              <div key={phase.title} className={`p-4 rounded-2xl border ${phase.color} space-y-3 transition-colors hover:border-white/10`}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Icon size={14} />
-                    <h4 className="text-xs font-bold text-white font-display">{phase.title}</h4>
-                  </div>
-                  <span className={`text-[8px] font-mono px-2 py-0.5 rounded font-bold ${
-                    phase.priority === 'CRITICAL' ? 'bg-red-500/20 text-red-300' :
-                    phase.priority === 'HIGH' ? 'bg-orange-500/20 text-orange-300' :
-                    phase.priority === 'MEDIUM' ? 'bg-blue-500/20 text-blue-300' :
-                    'bg-zinc-800 text-zinc-500'
-                  }`}>
-                    {phase.priority}
-                  </span>
-                </div>
+              <div key={phase.title} className="flex flex-col h-full">
+                <PremiumWorkspaceCard accent="timeline" className="!p-4 flex-grow flex flex-col justify-between">
+                  <WorkspaceBody className="flex-grow flex flex-col justify-between gap-3 h-full">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between select-none">
+                        <div className="flex items-center gap-2">
+                          <Icon size={14} className="text-cyan-400" />
+                          <h4 className="text-xs font-bold text-white font-display leading-tight">{phase.title}</h4>
+                        </div>
+                        <span className={`text-[8px] font-mono px-2 py-0.5 rounded font-bold ${
+                          phase.priority === 'CRITICAL' ? 'bg-red-500/20 text-red-300' :
+                          phase.priority === 'HIGH' ? 'bg-orange-500/20 text-orange-300' :
+                          phase.priority === 'MEDIUM' ? 'bg-blue-500/20 text-blue-300' :
+                          'bg-zinc-800 text-zinc-500'
+                        }`}>
+                          {phase.priority}
+                        </span>
+                      </div>
 
-                <div className="space-y-1">
-                  <span className="text-zinc-500 block uppercase text-[8px]">impact</span>
-                  <p className="text-zinc-300 leading-relaxed font-sans">{phase.impact}</p>
-                </div>
+                      <div className="space-y-1">
+                        <span className="text-zinc-500 block uppercase text-[8px] font-bold select-none">impact</span>
+                        <p className="text-zinc-350 leading-relaxed font-sans text-[11px]">{phase.impact}</p>
+                      </div>
 
-                <div className="space-y-1">
-                  <span className="text-zinc-500 block uppercase text-[8px]">business benefit</span>
-                  <p className="text-zinc-300 leading-relaxed font-sans">{phase.benefit}</p>
-                </div>
+                      <div className="space-y-1">
+                        <span className="text-zinc-500 block uppercase text-[8px] font-bold select-none">business benefit</span>
+                        <p className="text-zinc-350 leading-relaxed font-sans text-[11px]">{phase.benefit}</p>
+                      </div>
+                    </div>
 
-                <div className="grid grid-cols-2 gap-3 pt-1 border-t border-white/[0.04]">
-                  <div>
-                    <span className="text-zinc-600 block uppercase text-[8px]">effort</span>
-                    <span className="text-zinc-300 font-bold block">{phase.effort}</span>
-                  </div>
-                  <div>
-                    <span className="text-zinc-600 block uppercase text-[8px]">depends on</span>
-                    <span className="text-zinc-400 block truncate">{phase.dependencies}</span>
-                  </div>
-                </div>
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.04] select-none">
+                        <div>
+                          <span className="text-zinc-500 block uppercase text-[8px] font-bold">effort</span>
+                          <span className="text-zinc-300 font-bold block text-[11px]">{phase.effort}</span>
+                        </div>
+                        <div>
+                          <span className="text-zinc-500 block uppercase text-[8px] font-bold">depends on</span>
+                          <span className="text-zinc-400 block truncate text-[11px]">{phase.dependencies}</span>
+                        </div>
+                      </div>
 
-                <div className="pt-2 flex flex-wrap gap-1 items-center">
-                  <span className="text-[8px] text-zinc-600 uppercase">files:</span>
-                  {phase.files.map(f => (
-                    <span key={f} className="px-1.5 py-0.2 rounded bg-zinc-900 border border-white/5 text-zinc-500 text-[8px]">{f}</span>
-                  ))}
-                </div>
+                      <div className="pt-2 flex flex-wrap gap-1.5 items-center select-none">
+                        <span className="text-[8px] text-zinc-500 uppercase font-bold">files:</span>
+                        {phase.files.map(f => (
+                          <span key={f} className="px-1.5 py-0.2 rounded bg-zinc-900 border border-zinc-800 text-zinc-400 text-[8px] font-bold">{f}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </WorkspaceBody>
+                </PremiumWorkspaceCard>
               </div>
             )
           })}
         </div>
 
         {pdfId && report.report_status !== 'failed' && (
-          <div className="glass-card text-center py-8 border border-violet-500/10">
-            <Shield size={36} className="mx-auto mb-3 text-cyan-400" />
-            <h3 className="font-display font-bold text-sm text-white mb-1">
-              Export Complete System Intelligence Report
-            </h3>
-            <p className="text-zinc-500 mb-4 text-[10px] max-w-sm mx-auto leading-relaxed">
-              Download the complete PDF containing the Executive Briefing, 8-Phase Deployment Roadmap, AI Agent transcripts, and technical debt calculations.
-            </p>
-            <a
-              href={getPdfUrl(pdfId)}
-              target="_blank"
-              rel="noreferrer"
-              className="yowon-btn-primary inline-flex items-center gap-2 h-9 text-xs"
-            >
-              <Download size={14} /> Download PDF Report
-            </a>
+          <div className="flex flex-col select-none">
+            <PremiumWorkspaceCard accent="timeline" className="!p-8 text-center flex flex-col items-center justify-center">
+              <WorkspaceBody className="space-y-3.5 max-w-sm mx-auto">
+                <Shield size={36} className="mx-auto text-cyan-400" />
+                <h3 className="font-display font-bold text-sm text-white leading-snug">
+                  Export Complete System Intelligence Report
+                </h3>
+                <p className="text-zinc-500 text-[10px] leading-relaxed">
+                  Download the complete PDF containing the Executive Briefing, 8-Phase Deployment Roadmap, AI Agent transcripts, and technical debt calculations.
+                </p>
+                <a
+                  href={getPdfUrl(pdfId)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 h-9 text-xs bg-cyan-400 hover:bg-cyan-300 text-zinc-950 px-6 rounded-lg font-mono font-extrabold transition-colors cursor-pointer w-full"
+                >
+                  <Download size={14} /> Download PDF Report
+                </a>
+              </WorkspaceBody>
+            </PremiumWorkspaceCard>
           </div>
         )}
       </div>

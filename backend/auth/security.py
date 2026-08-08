@@ -19,23 +19,16 @@ REFRESH_TOKEN_EXPIRE_DAYS = 7
 reusable_oauth2 = HTTPBearer(auto_error=False)
 
 
+from modules.auth.password_service import PasswordService
+
 def hash_password(password: str) -> str:
-    """Hashes a plain password using native bcrypt."""
-    # bcrypt max password length is 72 bytes
-    pwd_bytes = password.encode('utf-8')[:72]
-    salt = bcrypt.gensalt(rounds=12)
-    hashed = bcrypt.hashpw(pwd_bytes, salt)
-    return hashed.decode('utf-8')
+    """Hashes a plain password using PasswordService."""
+    return PasswordService.hash_password(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verifies a plain password against its bcrypt hash using native bcrypt."""
-    try:
-        pwd_bytes = plain_password.encode('utf-8')[:72]
-        hashed_bytes = hashed_password.encode('utf-8')
-        return bcrypt.checkpw(pwd_bytes, hashed_bytes)
-    except Exception:
-        return False
+    """Verifies a plain password against its hash using PasswordService."""
+    return PasswordService.verify_password(plain_password, hashed_password)
 
 
 def create_access_token(subject: str, role: str) -> str:
@@ -127,11 +120,12 @@ def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
         
-    if user.status != "active":
+    if (user.status or "").lower() not in ("active", "pending_verification"):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="User account is deactivated",
         )
+
         
     if user.account_locked:
         raise HTTPException(
@@ -149,15 +143,51 @@ def get_current_active_user(
     return current_user
 
 
+# Canonical System Roles
+ROLE_SUPER_ADMIN = "SUPER_ADMIN"
+ROLE_ORG_OWNER = "ORG_OWNER"
+ROLE_WORKSPACE_ADMIN = "WORKSPACE_ADMIN"
+ROLE_JUDGE = "JUDGE"
+ROLE_REVIEWER = "REVIEWER"
+ROLE_EVALUATOR = "EVALUATOR"
+ROLE_PROJECT_OWNER = "PROJECT_OWNER"
+ROLE_TEAM_LEADER = "TEAM_LEADER"
+ROLE_TEAM_MEMBER = "TEAM_MEMBER"
+ROLE_GUEST = "GUEST"
+
+# Friendly Role Alias Mappings
+ROLE_ALIASES: Dict[str, list[str]] = {
+    "admin": [ROLE_SUPER_ADMIN, ROLE_ORG_OWNER, ROLE_WORKSPACE_ADMIN],
+    "owner": [ROLE_SUPER_ADMIN, ROLE_ORG_OWNER],
+    "platform owner": [ROLE_SUPER_ADMIN],
+    "organization admin": [ROLE_ORG_OWNER, ROLE_WORKSPACE_ADMIN],
+    "security engineer": [ROLE_SUPER_ADMIN, ROLE_ORG_OWNER, ROLE_WORKSPACE_ADMIN],
+    "developer": [ROLE_PROJECT_OWNER, ROLE_TEAM_LEADER, ROLE_TEAM_MEMBER],
+    "viewer": [ROLE_GUEST, ROLE_TEAM_MEMBER, ROLE_JUDGE, ROLE_REVIEWER, ROLE_EVALUATOR],
+    "evaluator": [ROLE_JUDGE, ROLE_REVIEWER, ROLE_EVALUATOR],
+    "member": [ROLE_TEAM_MEMBER, ROLE_PROJECT_OWNER, ROLE_TEAM_LEADER]
+}
+
+
 class RoleChecker:
-    """FastAPI dependency to enforce role-based access control."""
+    """FastAPI dependency to enforce role-based access control with alias support."""
     def __init__(self, allowed_roles: list[str]):
-        self.allowed_roles = allowed_roles
+        # Expand allowed roles including aliases
+        expanded = set()
+        for role in allowed_roles:
+            role_clean = role.strip()
+            expanded.add(role_clean.upper())
+            alias_matches = ROLE_ALIASES.get(role_clean.lower(), [])
+            for alias_role in alias_matches:
+                expanded.add(alias_role.upper())
+        self.allowed_roles = list(expanded)
 
     def __call__(self, user: User = Depends(get_current_active_user)) -> User:
-        if user.role not in self.allowed_roles:
+        user_role = (user.role or "").strip().upper()
+        if user_role not in self.allowed_roles:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail=f"Access forbidden: requires one of roles: {', '.join(self.allowed_roles)}",
+                detail=f"Access forbidden: User role '{user.role}' is not authorized for this resource.",
             )
         return user
+

@@ -10,6 +10,13 @@ Combines:
 Optimized for local Ollama models.
 """
 
+# ─────────────────────────────────────────────────────────────────────────────
+# DEPRECATED — RC9 (2026-08-04)
+# This agent uses a legacy free-text output format, superseded by
+# the JSON-output council agents in agents/council_agents.py.
+# Do NOT use in new evaluation pipelines. Will be removed in a future release.
+# ─────────────────────────────────────────────────────────────────────────────
+
 from crewai import Agent
 from llm_utils import get_crewai_llm, get_model_name
 from logging_config import get_logger

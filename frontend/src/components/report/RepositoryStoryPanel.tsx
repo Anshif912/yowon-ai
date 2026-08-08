@@ -5,6 +5,11 @@ import { DashboardSection } from './DashboardSection'
 import { CardSkeleton } from './Skeletons'
 import { StoryErrorBoundary } from './StoryErrorBoundary'
 import { StoryValueRenderer } from './StoryValueRenderer'
+import PremiumWorkspaceCard, {
+  WorkspaceHeader,
+  WorkspaceBody,
+  WorkspaceFooter
+} from './PremiumWorkspaceCard'
 
 interface RepositoryStoryPanelProps {
   projectId: string
@@ -134,47 +139,44 @@ function RepositoryStoryContent({ projectId }: { projectId: string }) {
   if (isLoading) return <CardSkeleton />
 
   return (
-    <DashboardSection
-      id="story"
-      title="Repository Story"
-      icon={BookOpen}
-    >
-      <div className="space-y-4 font-mono text-[10px] text-white">
+    <DashboardSection id="story" title="Repository Story" icon={BookOpen}>
+      <div className="space-y-6 font-mono text-[10px] text-white select-text">
         
-        <div className="space-y-1.5 pb-2 border-b border-white/[0.04] text-zinc-500 font-sans">
+        <div className="space-y-1.5 pb-2 border-b border-white/[0.04] text-zinc-500 font-sans select-none">
           Concise executive brief of the repository identity, purpose, decisions, and security postures.
         </div>
 
-        {/* 9 Executive Sections */}
+        {/* 11 Executive Sections */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {execSections.map((sec, i) => (
-            <div
-              key={i}
-              className="p-3.5 rounded-xl border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.02] hover:border-white/10 transition-all flex flex-col justify-between gap-3 min-h-[140px]"
-            >
-              <div className="space-y-1">
-                <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                  <h4 className="text-[9.5px]">{sec.title}</h4>
-                </div>
-                <div className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">
-                  <StoryValueRenderer value={sec.content} />
-                </div>
-              </div>
+            <div key={i} className="flex flex-col h-full">
+              <PremiumWorkspaceCard accent="executive" className="!p-4 flex-grow flex flex-col justify-between">
+                <WorkspaceBody className="flex-grow flex flex-col justify-between gap-3 h-full">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-1.5 text-cyan-400 font-bold select-none">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      <h4 className="text-[9.5px] uppercase tracking-wider">{sec.title}</h4>
+                    </div>
+                    <div className="text-zinc-300 font-sans leading-relaxed text-[11px] pt-1">
+                      <StoryValueRenderer value={sec.content} />
+                    </div>
+                  </div>
 
-              {/* Clickable Provenance */}
-              <div className="pt-2 border-t border-white/[0.03] flex flex-wrap gap-1.5">
-                {sec.files.map((file, fIdx) => (
-                  <span
-                    key={fIdx}
-                    className="text-[7.5px] font-mono text-cyan-300 hover:underline cursor-pointer flex items-center gap-1"
-                    title={sec.evidence.join(' | ')}
-                  >
-                    <FileText size={8} />
-                    {file.split('/').pop()}
-                  </span>
-                ))}
-              </div>
+                  {/* Clickable Provenance */}
+                  <div className="pt-2 border-t border-white/[0.03] flex flex-wrap gap-1.5 select-none">
+                    {sec.files.map((file, fIdx) => (
+                      <span
+                        key={fIdx}
+                        className="text-[7.5px] font-mono text-cyan-400 hover:underline cursor-pointer flex items-center gap-1"
+                        title={sec.evidence.join(' | ')}
+                      >
+                        <FileText size={8} className="text-zinc-500" />
+                        {file.split('/').pop()}
+                      </span>
+                    ))}
+                  </div>
+                </WorkspaceBody>
+              </PremiumWorkspaceCard>
             </div>
           ))}
         </div>
@@ -183,42 +185,43 @@ function RepositoryStoryContent({ projectId }: { projectId: string }) {
         {readMore && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 border-t border-white/[0.04]">
             {detailSections.map((sec, i) => (
-              <div
-                key={i}
-                className="p-3.5 rounded-xl border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.02] hover:border-white/10 transition-all flex flex-col justify-between gap-3 min-h-[140px]"
-              >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-1.5 text-purple-400 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                    <h4 className="text-[9.5px]">{sec.title}</h4>
-                  </div>
-                  <div className="text-zinc-300 font-sans leading-relaxed text-[8.5px] pt-1">
-                    <StoryValueRenderer value={sec.content} />
-                  </div>
-                </div>
+              <div key={i} className="flex flex-col h-full">
+                <PremiumWorkspaceCard accent="executive" className="!p-4 flex-grow flex flex-col justify-between">
+                  <WorkspaceBody className="flex-grow flex flex-col justify-between gap-3 h-full">
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-1.5 text-purple-400 font-bold select-none">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-450" />
+                        <h4 className="text-[9.5px] uppercase tracking-wider">{sec.title}</h4>
+                      </div>
+                      <div className="text-zinc-300 font-sans leading-relaxed text-[11px] pt-1">
+                        <StoryValueRenderer value={sec.content} />
+                      </div>
+                    </div>
 
-                <div className="pt-2 border-t border-white/[0.03] flex flex-wrap gap-1.5">
-                  {sec.files.map((file, fIdx) => (
-                    <span
-                      key={fIdx}
-                      className="text-[7.5px] font-mono text-purple-300 hover:underline cursor-pointer flex items-center gap-1"
-                      title={sec.evidence.join(' | ')}
-                    >
-                      <FileText size={8} />
-                      {file.split('/').pop()}
-                    </span>
-                  ))}
-                </div>
+                    <div className="pt-2 border-t border-white/[0.03] flex flex-wrap gap-1.5 select-none">
+                      {sec.files.map((file, fIdx) => (
+                        <span
+                          key={fIdx}
+                          className="text-[7.5px] font-mono text-purple-400 hover:underline cursor-pointer flex items-center gap-1"
+                          title={sec.evidence.join(' | ')}
+                        >
+                          <FileText size={8} className="text-zinc-500" />
+                          {file.split('/').pop()}
+                        </span>
+                      ))}
+                    </div>
+                  </WorkspaceBody>
+                </PremiumWorkspaceCard>
               </div>
             ))}
           </div>
         )}
 
         {/* Read More Trigger Button */}
-        <div className="pt-2 flex justify-center">
+        <div className="pt-2 flex justify-center select-none">
           <button
             onClick={() => setReadMore(!readMore)}
-            className="flex items-center gap-1.5 py-1 px-4 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/5 text-[9px] font-bold uppercase tracking-wider text-cyan-300 hover:text-white transition-all cursor-pointer"
+            className="flex items-center gap-1.5 py-1.5 px-5 rounded-lg border border-zinc-800 bg-zinc-900 hover:bg-zinc-850 text-[10px] font-mono font-extrabold uppercase tracking-wider text-cyan-300 hover:text-white transition-all cursor-pointer"
           >
             {readMore ? (
               <>

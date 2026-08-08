@@ -253,7 +253,7 @@ def generate_workspace_similarity_matrix(db: Session, workspace_id: str) -> Dict
                 matrix[i][j] = cached.overall_similarity
                 continue
                 
-            # Temporary dummy session to run calculation
+            # Initialize ephemeral comparison session for pairwise similarity computation
             temp_session = ComparisonSession(
                 uuid=str(uuid.uuid4()),
                 workspace_id=workspace_id,

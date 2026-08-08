@@ -1,16 +1,35 @@
 import os
 import uuid
+import asyncio
 from datetime import datetime
 from typing import Optional, List, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, status, Response, Request
+from fastapi import APIRouter, Depends, HTTPException, status, Response, Request, BackgroundTasks
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
-from database import get_db, User, Organization, Workspace, WorkspaceMember, OrganizationMember
+from database import get_db, User, Organization, Workspace, WorkspaceMember, OrganizationMember, PasswordResetSession, SessionLocal
 from modules.auth.service import AuthService
-from modules.auth.schemas import SetupOrganization, UserLogin, TokenResponse, BootstrapResponse, UserRegister
+from modules.auth.schemas import (
+    SetupOrganization,
+    UserLogin,
+    TokenResponse,
+    BootstrapResponse,
+    UserRegister,
+    ForgotPasswordRequest,
+    VerifyOTPRequest,
+    ResetPasswordRequest,
+    ResendOTPRequest,
+    GenericSuccessResponse,
+    VerifyOTPResponse,
+)
 from modules.auth.provider_registry import provider_registry
 from modules.auth.token_service import TokenService
 from auth.security import get_current_user
+from fastapi import BackgroundTasks
+from modules.auth.password_reset import PasswordResetService, _parse_user_agent
+from services.email_service import email_service
+from config import OTP_EXPIRY_MINUTES
+from database import PasswordResetSession, SessionLocal
+
 
 router = APIRouter(prefix="/auth", tags=["Enterprise Authentication"])
 
@@ -37,9 +56,10 @@ def setup_organization(
     result = service.setup_organization(payload, ip, user_agent)
     
     is_secure = (
-        request.url.scheme == "https"
+        (request.url.scheme == "https"
         or request.headers.get("X-Forwarded-Proto") == "https"
-        or os.getenv("ENVIRONMENT", "development") != "development"
+        or os.getenv("ENVIRONMENT", "development") != "development")
+        and not any(x in (request.url.hostname or "") for x in ("localhost", "127.0.0.1"))
     )
 
     response.set_cookie(
@@ -83,9 +103,10 @@ def register(
     result = service.register_user(payload, ip, user_agent)
     
     is_secure = (
-        request.url.scheme == "https"
+        (request.url.scheme == "https"
         or request.headers.get("X-Forwarded-Proto") == "https"
-        or os.getenv("ENVIRONMENT", "development") != "development"
+        or os.getenv("ENVIRONMENT", "development") != "development")
+        and not any(x in (request.url.hostname or "") for x in ("localhost", "127.0.0.1"))
     )
 
     response.set_cookie(
@@ -129,9 +150,10 @@ def login(
     result = service.authenticate_user(payload, ip, user_agent)
     
     is_secure = (
-        request.url.scheme == "https"
+        (request.url.scheme == "https"
         or request.headers.get("X-Forwarded-Proto") == "https"
-        or os.getenv("ENVIRONMENT", "development") != "development"
+        or os.getenv("ENVIRONMENT", "development") != "development")
+        and not any(x in (request.url.hostname or "") for x in ("localhost", "127.0.0.1"))
     )
 
     response.set_cookie(
@@ -179,9 +201,10 @@ def refresh(
     result = service.rotate_session_token(refresh_token, ip)
     
     is_secure = (
-        request.url.scheme == "https"
+        (request.url.scheme == "https"
         or request.headers.get("X-Forwarded-Proto") == "https"
-        or os.getenv("ENVIRONMENT", "development") != "development"
+        or os.getenv("ENVIRONMENT", "development") != "development")
+        and not any(x in (request.url.hostname or "") for x in ("localhost", "127.0.0.1"))
     )
 
     response.set_cookie(
@@ -444,9 +467,10 @@ async def oauth_callback(
     auth_logger.info(f"[OAuth Callback] Preparing redirect to Frontend URL: {frontend_url}{redirect_target}")
     
     is_secure = (
-        request.url.scheme == "https"
+        (request.url.scheme == "https"
         or request.headers.get("X-Forwarded-Proto") == "https"
-        or os.getenv("ENVIRONMENT", "development") != "development"
+        or os.getenv("ENVIRONMENT", "development") != "development")
+        and not any(x in (request.url.hostname or "") for x in ("localhost", "127.0.0.1"))
     )
     
     redirect_resp.set_cookie(
@@ -471,4 +495,179 @@ async def oauth_callback(
     auth_logger.info(f"[OAuth Callback] Auth cookies set (is_secure={is_secure}). Handshake successful.")
     
     return redirect_resp
+
+
+@router.get("/google/login")
+def google_login(request: Request, redirect_to: Optional[str] = None):
+    """Direct Google OAuth login endpoint."""
+    return oauth_redirect("google", request, redirect_to)
+
+
+@router.get("/google/callback")
+async def google_callback(
+    code: str,
+    state: str,
+    request: Request,
+    response: Response,
+    db: Session = Depends(get_db)
+):
+    """Direct Google OAuth callback endpoint."""
+    return await oauth_callback("google", code, state, request, response, db)
+
+
+@router.get("/github/login")
+def github_login(request: Request, redirect_to: Optional[str] = None):
+    """Direct GitHub OAuth login endpoint."""
+    return oauth_redirect("github", request, redirect_to)
+
+
+@router.get("/github/callback")
+async def github_callback(
+    code: str,
+    state: str,
+    request: Request,
+    response: Response,
+    db: Session = Depends(get_db)
+):
+    """Direct GitHub OAuth callback endpoint."""
+    return await oauth_callback("github", code, state, request, response, db)
+
+
+# ── Password Reset Endpoints ──────────────────────────────────────────────────
+
+async def _send_otp_with_retry(session_id: str, email: str, otp: str, ua_info: dict, now_str: str):
+    max_retries = 3
+    retry_delay = 1.0
+    success = False
+    for attempt in range(1, max_retries + 1):
+        try:
+            await email_service.send_password_reset_otp(
+                to_email=email,
+                otp=otp,
+                expires_min=OTP_EXPIRY_MINUTES,
+                context={
+                    "browser": f"{ua_info['browser']} on {ua_info['os']}",
+                    "os": ua_info["os"],
+                    "timestamp": now_str,
+                },
+            )
+            success = True
+            break
+        except Exception as exc:
+            auth_logger.warning(
+                f"[PasswordReset] Email delivery attempt {attempt}/{max_retries} failed for session {session_id}: {exc}"
+            )
+            if attempt < max_retries:
+                await asyncio.sleep(retry_delay)
+                retry_delay *= 2.0
+
+    new_status = "EMAIL_SENT" if success else "EMAIL_FAILED"
+    with SessionLocal() as fresh_db:
+        sess = fresh_db.query(PasswordResetSession).filter_by(id=session_id).first()
+        if sess:
+            sess.email_status = new_status
+            fresh_db.commit()
+
+@router.post(
+    "/password/forgot",
+    response_model=GenericSuccessResponse,
+    summary="Request password reset OTP",
+    description=(
+        "Sends a 6-digit OTP to the registered email address. "
+        "Always returns 200 regardless of whether the email exists "
+        "(prevents email enumeration). Rate limited to 5 requests/hour per IP."
+    ),
+)
+async def forgot_password(
+    payload: ForgotPasswordRequest,
+    request: Request,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
+    ip = request.client.host if request.client else None
+    user_agent = request.headers.get("User-Agent")
+    ua_info = _parse_user_agent(user_agent)
+    now_str = datetime.utcnow().strftime("%I:%M %p UTC, %d %b %Y")
+
+    service = PasswordResetService(db)
+    session_id, otp = service.request_otp(str(payload.email), ip, user_agent)
+
+    background_tasks.add_task(_send_otp_with_retry, session_id, str(payload.email), otp, ua_info, now_str)
+
+    return GenericSuccessResponse(
+        success=True,
+        message="If an account exists, a verification code has been sent.",
+    )
+
+
+@router.post(
+    "/password/verify",
+    response_model=VerifyOTPResponse,
+    summary="Verify OTP and obtain reset token",
+    description=(
+        "Verifies the 6-digit OTP submitted by the user. "
+        "Returns a short-lived JWT reset token (10 min) on success. "
+        "Max 5 attempts per session before the session is locked."
+    ),
+)
+def verify_otp(
+    payload: VerifyOTPRequest,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    ip = request.client.host if request.client else None
+    user_agent = request.headers.get("User-Agent")
+    service = PasswordResetService(db)
+    reset_token = service.verify_otp(str(payload.email), payload.otp, ip, user_agent)
+    return VerifyOTPResponse(success=True, resetToken=reset_token)
+
+
+@router.post(
+    "/password/reset",
+    response_model=GenericSuccessResponse,
+    summary="Reset password using reset token",
+    description=(
+        "Applies a new password using the JWT issued by /verify. "
+        "Revokes all active sessions across all devices. "
+        "The reset token is single-use and expires in 10 minutes."
+    ),
+)
+def reset_password(
+    payload: ResetPasswordRequest,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    ip = request.client.host if request.client else None
+    user_agent = request.headers.get("User-Agent")
+    service = PasswordResetService(db)
+    service.reset_password(payload.token, payload.password, ip, user_agent)
+    return GenericSuccessResponse(success=True, message="Password updated successfully.")
+
+
+@router.post(
+    "/password/resend",
+    response_model=GenericSuccessResponse,
+    summary="Resend password reset OTP",
+    description=(
+        "Resends the OTP for an active session. "
+        "Limited to 3 resends per session with a 60-second cooldown between each."
+    ),
+)
+async def resend_otp(
+    payload: ResendOTPRequest,
+    request: Request,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
+    ip = request.client.host if request.client else None
+    user_agent = request.headers.get("User-Agent")
+    ua_info = _parse_user_agent(user_agent)
+    now_str = datetime.utcnow().strftime("%I:%M %p UTC, %d %b %Y")
+
+    service = PasswordResetService(db)
+    session_id, otp = service.resend_otp(str(payload.email), ip, user_agent)
+
+    background_tasks.add_task(_send_otp_with_retry, session_id, str(payload.email), otp, ua_info, now_str)
+    return GenericSuccessResponse(success=True, message="A new verification code has been sent.")
+
 

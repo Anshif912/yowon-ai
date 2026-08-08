@@ -200,7 +200,7 @@ export function CommandPalette({ onClose }: CommandPaletteProps) {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-white/[0.02] border border-white/[0.04] flex items-center justify-center group-hover:bg-white/[0.04] group-hover:border-white/[0.06] transition-all">
-                      <cmd.icon size={14} className={cmd.color} />
+                      {(() => { const CmdIcon = cmd.icon as React.FC<{ size?: number; className?: string }>; return <CmdIcon size={14} className={cmd.color} /> })()}
                     </div>
                     <div>
                       <h4 className="text-[11px] font-semibold text-white tracking-wide">{cmd.label}</h4>
